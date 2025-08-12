@@ -1,0 +1,102 @@
+# JupyterBook v2 Configuration
+title: "ASTR 596: Modeling the Universe"
+author: "Professor Anna Rosen"
+copyright: "2025, Anna Rosen"
+logo: assets/images/logo.png
+
+# Book settings
+only_build_toc_files: true
+
+# Execution settings - v2 syntax
+execute:
+  execute_notebooks: cache
+  timeout: 600
+  allow_errors: false
+  stderr_output: show
+  run_in_temp: false
+
+# Repository settings
+repository:
+  url: https://github.com/astrobytes-edu/astr596-modeling-universe
+  path_to_book: .
+  branch: main
+
+# HTML settings - enhanced v2 options
+html:
+  favicon: assets/images/favicon.ico
+  use_edit_page_button: true
+  use_repository_button: true
+  use_issues_button: true
+  use_download_button: true
+  use_fullscreen_button: true
+  home_page_in_navbar: false
+  baseurl: https://astrobytes-edu.github.io/astr596-modeling-universe
+  announcement: "🚀 Welcome to ASTR 596! Check the <a href='course-info/schedule.html'>schedule</a> for updates."
+  google_analytics_id: # Add if you want analytics
+  extra_footer: |
+    <div style="text-align: center; margin-top: 2rem; padding: 1rem; border-top: 1px solid #eee;">
+    <p><strong>ASTR 596: Modeling the Universe</strong><br>
+    SDSU | Fall 2025<br>
+    <a href="mailto:alrosen@sdsu.edu">Contact Anna</a> | 
+    <a href="https://astrobytes-edu.github.io">astrobytes-edu</a></p>
+    </div>
+
+# Launch buttons for interactive content
+launch_buttons:
+  notebook_interface: jupyterlab
+  binderhub_url: https://mybinder.org
+  colab_url: https://colab.research.google.com
+  thebe: true  # v2 feature for live code execution
+
+# Sphinx configuration - v2 enhancements
+sphinx:
+  config:
+    html_theme_options:
+      repository_url: https://github.com/astrobytes-edu/astr596-modeling-universe
+      repository_branch: main
+      use_source_button: true
+      use_repository_button: true
+      use_edit_page_button: true
+      navigation_with_keys: true
+      show_navbar_depth: 2
+      search_bar_text: "Search course materials..."
+      show_toc_level: 2
+    mathjax3_config:
+      tex:
+        macros:
+          "vec": ["\\boldsymbol{#1}", 1]
+          "mat": ["\\mathbf{#1}", 1]
+          "prob": ["\\mathbb{P}", 0]
+          "expect": ["\\mathbb{E}", 0]
+          "dd": ["\\mathrm{d}", 0]
+    nb_execution_mode: auto
+    nb_execution_timeout: 600
+
+# MyST parser configuration - v2 syntax
+parse:
+  myst_enable_extensions:
+    - amsmath
+    - attrs_inline
+    - colon_fence
+    - deflist
+    - dollarmath
+    - fieldlist
+    - html_admonition
+    - html_image
+    - linkify
+    - replacements
+    - smartquotes
+    - strikethrough
+    - substitution
+    - tasklist
+  myst_url_schemes: [mailto, http, https]
+
+# LaTeX/PDF output
+latex:
+  latex_documents:
+    targetname: astr596-complete-course.tex
+  latex_engine: pdflatex
+
+# BibTeX references (v2 feature)
+bibtex_bibfiles:
+  - references.bib
