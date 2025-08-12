@@ -1,7 +1,9 @@
 # ASTR 596: Course Learning Guide
-**Expanded Philosophy, Strategies, and Resources**
+
+## Expanded Philosophy, Strategies, and Resources
 
 ## Table of Contents
+
 1. [Extended Course Philosophy](#extended-course-philosophy)
 2. [What This Course Is NOT](#what-this-course-is-not)
 3. [Learning Strategies](#learning-strategies)
@@ -27,6 +29,7 @@ Rather than spending an entire semester on theoretical proofs for a single metho
 ### Our Goal
 
 Give you comprehensive understanding to:
+
 1. Implement core algorithms from scratch with mathematical rigor
 2. Know what these methods do, when to use them, and their limitations
 3. Recognize when you need deeper theoretical knowledge
@@ -43,6 +46,7 @@ Once you've built MCMC from scratch, understand why it works, and have used it f
 ### Your Future Learning
 
 With the foundation from this course plus AI as your tutor, you'll be equipped to:
+
 - Take advanced courses with deeper theoretical coverage
 - Self-study specialized topics relevant to your research and interests
 - Read and implement papers in computational astrophysics
@@ -71,18 +75,21 @@ Understanding what we're NOT doing is as important as knowing what we ARE doing.
 ### Effective Learning Workflow
 
 #### Before Class
+
 1. **Read actively** - Don't just skim the JupyterBook chapters
 2. **Try examples** - Type out code examples yourself (no copy-paste!)
 3. **Note questions** - Write down confusion points to ask in class
 4. **Attempt project start** - Even 30 minutes of trying helps frame questions
 
 #### During Class
+
 1. **Ask "dumb" questions** - They're usually the most important
 2. **Engage in pair programming** - Explain your thinking out loud
 3. **Take implementation notes** - Document approaches that work
 4. **Debug together** - Learn from others' errors too
 
 #### After Class
+
 1. **Review immediately** - Solidify concepts while fresh
 2. **Implement incrementally** - Small, tested pieces beat large untested code
 3. **Document learnings** - Your future self will thank you
@@ -91,12 +98,14 @@ Understanding what we're NOT doing is as important as knowing what we ARE doing.
 ### Using AI Tools Effectively
 
 Remember: AI is your tutor, not your programmer. Use it to:
+
 - **Understand concepts** - "Explain eigenvalues like I'm a physics student"
 - **Clarify confusion** - "Why does my Monte Carlo simulation converge slowly?"
 - **Debug intelligently** - "This error suggests X, but I checked Y..."
 - **Find resources** - "Where can I learn more about symplectic integrators?"
 
 NOT to:
+
 - Generate your solution code
 - Complete your projects
 - Replace your thinking
@@ -147,29 +156,34 @@ def problematic_function(x):
 ### Essential References
 
 #### Python Fundamentals
+
 - [Official Python Documentation](https://docs.python.org/3/)
 - [Python for Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
 - [Real Python Tutorials](https://realpython.com/)
 - [Python Tutor Visualizer](http://pythontutor.com/) - See your code execute step-by-step
 
 #### Scientific Computing
+
 - [NumPy Documentation](https://numpy.org/doc/stable/)
 - [SciPy Documentation](https://docs.scipy.org/doc/scipy/)
 - [Matplotlib Gallery](https://matplotlib.org/stable/gallery/index.html)
 - [Numerical Recipes](http://numerical.recipes/)
 
 #### Machine Learning & JAX
+
 - [JAX Documentation](https://jax.readthedocs.io/)
 - [Equinox Documentation](https://docs.kidger.site/equinox/)
 - [Flax Documentation](https://flax.readthedocs.io/)
 - [ML for Physics](https://arxiv.org/abs/2506.12230) - Ting's excellent review
 
 #### Astronomical Computing
+
 - [Astropy Documentation](https://docs.astropy.org/)
 - [AstroBetter Programming Tips](https://www.astrobetter.com/wiki/python/)
 - [SDSU HPC Documentation](https://sdsu-research-ci.github.io/instructionalcluster)
 
 ### Recommended YouTube Channels
+
 - **3Blue1Brown** - Mathematical intuition through visualization
 - **Two Minute Papers** - Latest ML research explained simply
 - **Computerphile** - Computer science concepts
@@ -209,6 +223,7 @@ def problematic_function(x):
 ### Creating Psychological Safety
 
 In our classroom:
+
 - No question is too basic
 - Mistakes are learning opportunities
 - We celebrate "aha!" moments
@@ -218,6 +233,7 @@ In our classroom:
 ### Dealing with Imposter Syndrome
 
 Remember:
+
 - Everyone googles basic syntax
 - Senior developers still print debug
 - Published researchers make coding errors
@@ -231,6 +247,7 @@ Remember:
 Beyond the red flags in the syllabus, watch for:
 
 **Technical Warning Signs:**
+
 - Your code "works" but you don't know why
 - You're changing things randomly hoping it works
 - You've been stuck on the same error for hours
@@ -238,6 +255,7 @@ Beyond the red flags in the syllabus, watch for:
 - You're avoiding entire sections of projects
 
 **Emotional Warning Signs:**
+
 - Feeling overwhelmed consistently
 - Comparing yourself negatively to peers
 - Considering dropping the course
@@ -245,6 +263,7 @@ Beyond the red flags in the syllabus, watch for:
 - Physical stress symptoms (sleep loss, anxiety)
 
 **What to Do:**
+
 1. **Reach out immediately** - Don't wait until it's critical
 2. **Be specific** - "I don't understand X" beats "I'm lost"
 3. **Show your work** - Even broken attempts help diagnosis
@@ -256,6 +275,7 @@ Beyond the red flags in the syllabus, watch for:
 ### Project Management
 
 **Two-Week Project Timeline:**
+
 - **Day 1-2:** Read assignment, understand requirements
 - **Day 3-4:** Initial implementation attempt
 - **Day 5-6:** Debug, test edge cases
@@ -317,6 +337,7 @@ def integrate_orbit(initial_conditions, time_span, method='RK4'):
 ### Testing Your Code
 
 Always test with:
+
 - **Known solutions** - Can you reproduce textbook examples?
 - **Limiting cases** - Does your code behave correctly at extremes?
 - **Conservation laws** - Is energy/momentum conserved when it should be?

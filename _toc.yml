@@ -1,0 +1,48 @@
+format: jb-book
+root: index
+title: ASTR 596 Home
+
+parts:
+- caption: Course Information
+  chapters:
+  - file: course-info/syllabus
+    title: Syllabus & Policies
+  - file: course-info/schedule
+    title: Schedule & Timeline  
+  - file: course-info/ai-guidelines
+    title: AI Usage Guidelines
+  - file: course-info/learning-guide
+    title: Learning Guide
+
+- caption: Projects
+  chapters:
+  - file: short-projects/1_project1_description
+    title: "Project 1: Python/OOP/Stellar Physics"
+  - file: short-projects/2_project2_description
+    title: "Project 2: N-Body Dynamics & Monte Carlo"
+  - file: short-projects/3_project3_description
+    title: "Project 3: Linear Regression & ML"
+  - file: final-project/final_project_guide
+    title: "Final Project: Neural Networks & JAX"
+
+- caption: Learning Materials
+  chapters:
+  - file: computational-methods/python-foundations/index
+    title: Python Foundations
+  - file: computational-methods/numerical-methods/index
+    title: Numerical Methods
+  - file: computational-methods/machine-learning/index
+    title: Machine Learning
+  - file: computational-methods/modern-frameworks/index
+    title: Modern Frameworks
+
+- caption: Astrophysics Applications  
+  chapters:
+  - file: astrophysics/stellar-physics/index
+    title: Stellar Physics
+  - file: astrophysics/gravitational-dynamics/index
+    title: Gravitational Dynamics
+  - file: astrophysics/radiative-transfer/index
+    title: Radiative Transfer
+  - file: astrophysics/advanced_topics/index
+    title: Advanced Topics

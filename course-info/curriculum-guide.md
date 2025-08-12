@@ -5,6 +5,7 @@
 ## Table of Contents
 
 ### Quick Navigation
+
 - [Why This Course is Designed the Way It Is](#why-this-course-is-designed-the-way-it-is)
 - [The Big Picture: Your Learning Journey](#the-big-picture-your-learning-journey-through-computational-astrophysics)
 - [Phase 1: Foundation Building (Overview)](#phase-1-foundation-building-weeks-1-2)
@@ -14,7 +15,9 @@
 - [Why This Progression Works](#why-this-progression-works)
 
 ### Detailed Course Structure
+
 #### [Phase 1: Foundation Building](#phase-1-foundation-building-weeks-1-3)
+
 - [Week 1-2: Python, OOP, and Stellar Physics](#week-1-2-python-object-oriented-programming-and-stellar-physics)
   - [Mathematical Foundations](#mathematical-foundations)
   - [Scientific Background](#scientific-background)
@@ -25,6 +28,7 @@
   - [Computational Implementation](#computational-implementation-1)
 
 #### [Phase 2: Bridge to Statistical Thinking](#phase-2-bridge-to-statistical-thinking-weeks-4-6)
+
 - [Week 4: Monte Carlo Methods and Statistical Sampling](#week-4-monte-carlo-methods-and-statistical-sampling)
   - [Mathematical Foundations](#mathematical-foundations-2)
   - [Scientific Background](#scientific-background-2)
@@ -35,6 +39,7 @@
   - [Computational Implementation](#computational-implementation-3)
 
 #### [Phase 3: Deep Statistical Methods](#phase-3-deep-statistical-methods-weeks-7-10)
+
 - [Weeks 7-8: Monte Carlo Radiative Transfer](#weeks-7-8-monte-carlo-radiative-transfer)
   - [Mathematical Foundations](#mathematical-foundations-4)
   - [Scientific Background](#scientific-background-4)
@@ -45,6 +50,7 @@
   - [Computational Implementation](#computational-implementation-5)
 
 #### [Phase 4: Modern Machine Learning](#phase-4-modern-machine-learning-weeks-11-16)
+
 - [Weeks 11-12: Gaussian Processes](#weeks-11-12-gaussian-processes)
   - [Mathematical Foundations](#mathematical-foundations-6)
   - [Scientific Background](#scientific-background-6)
@@ -57,6 +63,7 @@
   - [Mathematical and Computational Foundations](#mathematical-and-computational-foundations)
 
 ### Pedagogical Framework
+
 - [Integration and Synthesis](#integration-and-synthesis)
 - [Pedagogical Insights for Course Design](#pedagogical-insights-for-course-design)
   - [Building Intuition Through Implementation](#building-intuition-through-implementation)
@@ -117,12 +124,12 @@ This serves as the perfect bridge topic. Monte Carlo connects deterministic phys
 
 This prepares your mind for the probabilistic thinking required in machine learning, while still feeling like "physics."
 
-
 ### **Linear Regression/ML Fundamentals**
 
 Now you'll make the leap to data-driven methods, but regression is familiar enough not to overwhelm you. Here's what makes this placement perfect in your learning journey:
 
 Starting from scratch means deriving the normal equation $(X^T X)β = X^T y$, which shows:
+
 - **Linear algebra underpins everything** in ML
 - **Optimization** (minimizing squared error) - your first loss function!
 - **Gradient descent** - THE fundamental algorithm of deep learning
@@ -136,6 +143,7 @@ By building this from `numpy` arrays rather than using `sklearn`, you'll underst
 ### **Monte Carlo Radiative Transfer**
 
 This is where things get beautiful. Radiative transfer combines everything you've learned:
+
 - Monte Carlo methods (photon packets)
 - Object-oriented design (`Photon` class, `Grid` class)
 - Physical insight (scattering, absorption)
@@ -143,12 +151,12 @@ This is where things get beautiful. Radiative transfer combines everything you'v
 
 MCRT is how astronomers actually model real observations - from stellar atmospheres to galaxy formation. You'll see your code produce synthetic observations that look like real telescope data. This connection between your code and real science is incredibly motivating.
 
-
 ### **Bayesian Inference and MCMC**
 
 This represents the intellectual peak of the course. Bayesian thinking will fundamentally change how you see uncertainty and inference. You'll learn:
 
 **Bayesian Fundamentals**:
+
 - Prior beliefs + Data = Updated beliefs (conceptually)
 - Bayes Law: $P(\text{model|data}) ∝ P(\text{data|model}) × P(\text{model})$
 - Everything is a probability distribution, not a single number
@@ -157,6 +165,7 @@ This represents the intellectual peak of the course. Bayesian thinking will fund
 This is where minds get blown. MCMC solves the problem: "I can calculate $P(θ|\text{data})$ but I can't integrate it analytically to get parameter distributions."
 
 The Metropolis-Hastings algorithm is surprisingly simple:
+
 1. Propose new parameters.
 2. Calculate likelihood ratio.
 3. Accept/reject based on ratio.
@@ -164,7 +173,7 @@ The Metropolis-Hastings algorithm is surprisingly simple:
 
 But the implications are profound - suddenly you can fit models with hundreds of parameters, get full uncertainty distributions, and do model comparison. This is how astronomers measure dark energy, find exoplanets, and determine stellar parameters.
 
-## Phase 4: Modern Machine Learning (Weeks 11-16)
+## Phase 4: Modern Machine Learning (Overview - Weeks 11-16)
 
 ### **Gaussian Processes**
 
@@ -173,9 +182,7 @@ Gaussian Processes serve as the perfect bridge between classical statistics and 
 A GP is basically saying: "I don't know the function $f(x)$, but I know it's smooth, and here's my uncertainty everywhere." It's like having error bars on your interpolation. In astronomy, GPs are used for:
 
 - Removing stellar variability from exoplanet data.
-
 - Interpolating sparse observations.
-
 - Quantifying uncertainty in predictions.
 
 The covariance function (kernel) determines your prior beliefs about smoothness, periodicity, etc. This connects to the kernel trick in SVMs and prepares you for thinking about feature spaces.
@@ -185,25 +192,27 @@ The covariance function (kernel) determines your prior beliefs about smoothness,
 This is your culmination. In your final project, you'll build a neural network using only `JAX`, understanding every piece:
 
 **Forward propagation**:
+
 - Linear transformation: $z = Wx + b$
 - Non-linearity: $a = σ(z)$
 - Stack these to get deep networks
 
 **Backpropagation** (the key insight):
 Using the chain rule to propagate errors backwards:
+
 - $∂L/∂W = ∂L/∂z × ∂z/∂W$
 - This is just calculus, not magic!
 
 You'll implement:
+
 - Gradient descent variants (SGD, momentum, Adam).
-
 - Different architectures (fully connected, CNN basics).
-
 - Regularization (dropout, batch norm).
 
 ### **JAX and Modern Tools**
 
 Finally, you'll see how your from-scratch implementations translate to modern tools. JAX is perfect for this because:
+
 - It looks like numpy (familiar!)
 - But adds automatic differentiation (grad(f) just works!)
 - And JIT compilation (100x speedups)
@@ -214,13 +223,9 @@ You'll see that your hand-coded backpropagation is exactly what `jax.grad()` doe
 ## Why This Progression Works
 
 1. **Each topic motivates the next**: Numerical integration struggles motivate Monte Carlo. Monte Carlo motivates statistics. Statistics motivates ML.
-
 2. **Complexity ramps gradually**: Start with $F=ma$, end with training neural networks, but each step is manageable.
-
 3. **Theory and practice interleave**: Implement first, understand deeply, see limitations, motivate next method.
-
 4. **Real astrophysics throughout**: Every algorithm solves actual astronomy problems, maintaining relevance and motivation.
-
 5. **Modern skills emerge from fundamentals**: By the end, you aren't just using the `JAX`ecosystem (e.g., `Flax`, `Optax`) - you'll understand what these tools are doing *under* the hood.
 
 This progression takes you from "I can code physics" to "I can implement any algorithm from a paper" - which is exactly what research requires. You're not just learning techniques; you're building computational intuition and confidence.
@@ -241,7 +246,7 @@ The strength of this structure lies in how it interweaves three threads: the phy
 
 ### Week 1-2: Python, Object-Oriented Programming, and Stellar Physics
 
-#### Mathematical Foundations
+#### Mathematical Foundations (Stellar Physics)
 
 The stellar physics component introduces you to power laws and scaling relations, which appear throughout astrophysics and machine learning. The fundamental stellar structure equations provide a perfect playground for understanding how physical constraints translate to code structure.
 
@@ -249,9 +254,9 @@ The mass-luminosity relation, $L ∝ M^α$ where $α ≈ 3.5$ for main sequence 
 
 The Stefan-Boltzmann law, $L = 4πR²σT⁴$, teaches you about radiation physics while introducing the concept of effective temperature. This becomes crucial later when you'll implement radiative transfer. The relationship between mass, radius, and temperature for main sequence stars ($R ∝ M^{0.7}$, $T ∝ M^{0.5}$) emerges from solving the stellar structure equations for main-sequence stars, showing how complex systems can often be understood through dimensional analysis and scaling arguments.
 
-#### Scientific Background
+#### Scientific Background (Stellar Physics)
 
-Stars are self-gravitating balls of gas in hydrostatic equilibrium (HSE), where the outward pressure gradient $\left(\tfrac{dP}{dr}\right)$ of a star with mass $M$ exactly balances the inward gravitational pull ($\rho(r) g$) where $\rho(r)$ is the local density) is the density and $g = \tfrac{GM(<r)}{r^2}$ is the . This balance, expressed as
+Stars are self-gravitating balls of gas in hydrostatic equilibrium (HSE), where the outward pressure gradient $\left(\tfrac{dP}{dr}\right)$ of a star with mass $M$ exactly balances the inward gravitational pull $\rho(r) g$ where $\rho(r)$ is the local density is the density and $g = \tfrac{GM(<r)}{r^2}$ is the local gravitational acceleration. This balance, expressed as
 
 $$ dP/dr = -GMρ/r², $$
 
@@ -259,7 +264,7 @@ is our first differential equation. You'll learn that this simple equation, comb
 
 The Hertzsprung-Russell diagram, plotting luminosity versus temperature, isn't just a classification scheme—it's a map of stellar physics. The main sequence represents hydrogen fusion equilibrium, the giant branch shows shell burning and envelope expansion, and white dwarfs demonstrate quantum degeneracy pressure. By implementing a simple stellar evolution model, you'll see how stars move through this parameter space over time.
 
-#### Computational Implementation
+#### Computational Implementation (Stellar Physics)
 
 The object-oriented design emerges naturally from the physics. A Star class encapsulates properties (mass, temperature, luminosity, composition) and methods (evolve, calculate_luminosity, determine_lifetime). This teaches you that OOP isn't about abstract inheritance hierarchies—it's about modeling real systems with interacting components.
 
@@ -297,7 +302,7 @@ This code structure teaches modular thinking—each method does one thing well, 
 
 ### Week 3: N-Body Dynamics and Numerical Integration
 
-#### Mathematical Foundations
+#### Mathematical Foundations (N-Body Dynamics)
 
 N-body dynamics introduces the fundamental challenge of numerical methods: solving differential equations that have no analytical solution. For N gravitating bodies, we have a system of coupled second-order ODEs:
 
@@ -309,13 +314,13 @@ The critical insight you'll gain is that discretization introduces error. The Eu
 
 The Verlet integration scheme, $r(t+\Delta t) = 2r(t) - r(t-\Delta t) + a(t)\Delta t^2$, is symplectic—it conserves phase space volume. This means errors in position and velocity are bounded rather than growing exponentially. The mathematics of symplectic integrators connects to Hamiltonian mechanics and Liouville's theorem, showing you that numerical methods aren't just recipes but have deep theoretical foundations.
 
-#### Scientific Background
+#### Scientific Background (N-Body Dynamics)
 
 The N-body problem is foundational to astronomy. From planetary systems to galaxy clusters, gravitational dynamics shapes the universe. The three-body problem's lack of general analytical solution (proven by Poincaré) demonstrates that even simple physical laws can produce intractable mathematics, motivating numerical approaches.
 
 You'll implement increasingly complex scenarios: two-body orbits (testing Kepler's laws), the restricted three-body problem (introducing Lagrange points), and finally full N-body systems. You'll discover emergent phenomena like orbital resonances, tidal disruption, and dynamical relaxation. The computational cost scaling as $O(N^2)$ for direct summation motivates discussion of tree codes and fast multipole methods, connecting to computer science concepts like spatial data structures.
 
-#### Computational Implementation
+#### Computational Implementation (N-Body Dynamics)
 
 The implementation teaches crucial numerical computing concepts:
 
@@ -371,7 +376,7 @@ You'll learn about computational units (setting $G=1$, measuring distances in AU
 
 ### Week 4: Monte Carlo Methods and Statistical Sampling
 
-#### Mathematical Foundations
+#### Mathematical Foundations (Monte Carlo Methods)
 
 Monte Carlo methods rest on the profound insight that we can solve deterministic problems using random numbers. The mathematical foundation is the Law of Large Numbers: as we take more random samples, their average converges to the expected value.
 
@@ -385,13 +390,13 @@ $$\int f(x)dx = \int \frac{f(x)}{p(x)}p(x)dx \approx \frac{1}{N}\sum \frac{f(x_i
 
 The art lies in choosing p(x) to minimize variance while remaining easy to sample from. This concept reappears in MCMC, particle filters, and variational inference.
 
-#### Scientific Background
+#### Scientific Background (Monte Carlo Methods)
 
 Monte Carlo methods revolutionized radiation transport, nuclear physics, and statistical mechanics. The name comes from the Manhattan Project, where Ulam and von Neumann used random sampling to study neutron diffusion. In astrophysics, Monte Carlo is essential for modeling radiative transfer in complex geometries, cosmic ray propagation, and stellar population synthesis.
 
 The pedagogical beauty of starting with Monte Carlo is that it bridges deterministic and probabilistic thinking. Computing $\pi$ by randomly throwing darts at a circle inscribed in a square gives you an intuitive feel for how randomness can yield precise answers. You'll learn that Monte Carlo isn't about getting lucky—it's about using the law of large numbers to your advantage.
 
-#### Computational Implementation
+#### Computational Implementation (Monte Carlo Methods)
 
 You'll implement progressively sophisticated Monte Carlo algorithms:
 
@@ -436,7 +441,7 @@ Through these implementations, you'll discover key concepts: variance reduction 
 
 ### Weeks 5-6: Linear Regression and Machine Learning Fundamentals
 
-#### Mathematical Foundations
+#### Mathematical Foundations (Linear Regression)
 
 Linear regression introduces the core mathematical framework of machine learning: optimization. The problem is to find parameters β that minimize the squared error:
 
@@ -455,13 +460,13 @@ $$\beta_{t+1} = \beta_t - \alpha\nabla L(\beta_t) = \beta_t + \alpha X^T(y - X\b
 
 This simple update rule is the foundation of all deep learning. You'll learn about learning rates, convergence conditions, and the geometry of loss surfaces. The quadratic loss surface of linear regression has a unique global minimum (if $X^T X$ is invertible), but you'll implement examples where poor conditioning leads to slow convergence, foreshadowing challenges in neural network training.
 
-#### Scientific Background
+#### Scientific Background (Linear Regression)
 
 In astronomy, linear regression appears everywhere: fitting spectral lines to measure redshifts, determining period-luminosity relations for Cepheid variables, and calibrating photometric redshifts. But more importantly, regression introduces the conceptual framework for all supervised learning.
 
 The method of least squares has a rich history dating to Gauss and Legendre's work on orbital determination. Gauss used it to recover the dwarf planet Ceres after it was lost in the sun's glare—one of the first "big data" problems in astronomy. The connection between least squares and maximum likelihood estimation under Gaussian noise assumptions provides a probabilistic interpretation that prepares you for Bayesian methods.
 
-#### Computational Implementation
+#### Computational Implementation (Linear Regression)
 
 Building regression from scratch demystifies machine learning:
 
@@ -526,7 +531,7 @@ Through implementation, you'll discover practical issues: feature scaling, numer
 
 ### Weeks 7-8: Monte Carlo Radiative Transfer
 
-#### Mathematical Foundations
+#### Mathematical Foundations (Radiative Transfer)
 
 Radiative transfer combines all previous concepts: Monte Carlo sampling, physical modeling, and statistical thinking. The radiative transfer equation describes how radiation propagates through a medium:
 
@@ -544,13 +549,13 @@ where $\xi$ is a uniform random number. This transforms the deterministic PDE in
 
 Scattering introduces angular redistribution. For Thomson scattering (electrons) or Rayleigh scattering (atoms), the phase function determines the scattering angle distribution. For dust grains, Mie theory provides complex angular distributions that you must sample efficiently using techniques like rejection sampling or inverse transform sampling.
 
-#### Scientific Background
+#### Scientific Background (Radiative Transfer)
 
 Radiative transfer is how we understand everything we see in astronomy. From stellar atmospheres to protoplanetary disks to cosmological reionization, radiation transport shapes observations. MCRT handles arbitrary 3D geometries, making it essential for modeling real astrophysical systems.
 
 You'll implement increasing complexity: photon escape from a uniform sphere (testing against analytical solutions), dust absorption and scattering (understanding extinction and reddening), and finally frequency-dependent transfer with line profiles (connecting to spectroscopy). You'll discover why the interstellar medium looks patchy, how dust lanes in galaxies form, and why molecular clouds appear dark in optical but bright in infrared.
 
-#### Computational Implementation
+#### Computational Implementation (Radiative Transfer)
 
 MCRT teaches advanced programming patterns:
 
@@ -656,7 +661,7 @@ You'll learn about variance reduction (biasing photon emission toward the observ
 
 ### Weeks 9-10: Bayesian Inference and MCMC
 
-#### Mathematical Foundations
+#### Mathematical Foundations (Bayesian Inference)
 
 Bayesian inference will fundamentally change how you think about parameters and uncertainty. Instead of finding the "best" parameter values, you want the full probability distribution. Bayes' theorem:
 
@@ -675,13 +680,13 @@ $$P(\theta)P(\theta'|\theta) = P(\theta')P(\theta|\theta')$$
 
 This seemingly abstract mathematics has profound implications: we can explore million-dimensional parameter spaces, quantify correlations between parameters, and make probabilistic predictions with full uncertainty propagation.
 
-#### Scientific Background
+#### Scientific Background (Bayesian Inference)
 
 Bayesian methods revolutionized astronomy. From exoplanet detection to cosmological parameter estimation, Bayesian inference handles complex models with many parameters and non-Gaussian uncertainties. The cosmic microwave background analysis that confirmed dark energy used MCMC to explore a 20+ dimensional parameter space.
 
 You'll implement classic astronomy problems: fitting orbital parameters for exoplanets (dealing with degeneracies and non-linear models), inferring stellar parameters from spectra (handling measurement uncertainties and model uncertainties), and even simple cosmological parameter estimation. You'll learn why frequentist confidence intervals can be misleading for bounded parameters and how Bayesian methods naturally handle upper limits and non-detections.
 
-#### Computational Implementation
+#### Computational Implementation (Bayesian Inference)
 
 Building MCMC from scratch reveals its elegant simplicity:
 
@@ -833,7 +838,7 @@ You'll learn about convergence diagnostics (trace plots, autocorrelation, Gelman
 
 ### Weeks 11-12: Gaussian Processes
 
-#### Mathematical Foundations
+#### Mathematical Foundations (Gaussian Processes)
 
 Gaussian processes (GPs) represent a paradigm shift from parametric to non-parametric modeling. Instead of fitting parameters of a fixed functional form, GPs learn the function itself. A GP is fully specified by its mean function m(x) and covariance function k(x, x'):
 
@@ -848,21 +853,21 @@ The power of GPs emerges in their closed-form predictions. Given observations $y
 
 $$f_* | X, y, X_* \sim \mathcal{N}(\mu_*, \Sigma_*)$$
 
-$$\mu_* = K(X_*, X)[K(X, X) + \sigma^2 I]^{-1}y$$
+$$\mu_* = K(X_*, X)\{K(X, X) + \sigma^2 I\}^{-1}y$$
 
-$$\Sigma_* = K(X_*, X_*) - K(X_*, X)[K(X, X) + \sigma^2 I]^{-1}K(X, X_*)$$
+$$\Sigma_* = K(X_*, X_*) - K(X_*, X)\{K(X, X) + \sigma^2 I\}^{-1}K(X, X_*)$$
 
 This gives not just predictions but full uncertainty quantification—we know where we're confident and where we're guessing.
 
 The computational challenge is the $O(N^3)$ cost of matrix inversion. This motivates approximate methods: sparse GPs, local GPs, and connections to neural networks (infinitely wide neural networks are GPs!).
 
-#### Scientific Background
+#### Scientific Background (Gaussian Processes)
 
 In astronomy, GPs excel at problems with sparse, irregular sampling and where uncertainty quantification is crucial. They're used for removing stellar variability from exoplanet transits (the star's intrinsic variability is modeled as a GP), interpolating light curves for supernova cosmology, and emulating expensive simulations in cosmological parameter estimation.
 
 The kernel choice encodes physical assumptions. A periodic kernel models stellar rotation, a Matérn kernel captures turbulent processes, and combining kernels (sums and products) builds sophisticated models. You'll learn that the art of GP modeling lies in kernel engineering—encoding domain knowledge into mathematical structures.
 
-#### Computational Implementation
+#### Computational Implementation (Gaussian Processes)
 
 Implementing GPs reveals their elegant structure:
 
@@ -999,7 +1004,7 @@ You'll learn about kernel composition (building complex behaviors from simple co
 
 ### Weeks 13-15: Neural Networks from Scratch
 
-#### Mathematical Foundations
+#### Mathematical Foundations (Neural Networks)
 
 Neural networks are universal function approximators built from simple components. A single neuron computes:
 $$y = \sigma(w^T x + b)$$
@@ -1024,13 +1029,13 @@ This recursive structure makes gradient computation efficient—$O(N)$ instead o
 
 The mathematics reveals why deep learning works: depth enables compositional representations (building complex functions from simple pieces), non-linearity enables universal approximation (linear models can't escape their subspace), and gradient descent finds good solutions despite non-convex loss landscapes (the blessing of overparameterization).
 
-#### Scientific Background
+#### Scientific Background (Neural Networks)
 
 Neural networks are transforming astronomy. They're used for photometric redshift estimation (replacing expensive spectroscopy), transient classification (finding supernovae in real-time surveys), gravitational lens finding (pattern recognition in images), and even solving differential equations (physics-informed neural networks).
 
 You'll implement networks for astronomical tasks: classifying galaxy morphologies (convolutional features), predicting stellar parameters from spectra (regression with uncertainty), and even generating synthetic observations (touching on generative models). You'll learn that neural networks aren't magic—they're sophisticated function approximators that excel when we have lots of data but unclear functional forms.
 
-#### Computational Implementation
+#### Computational Implementation (Neural Networks)
 
 Building a neural network from numpy arrays demystifies deep learning:
 
@@ -1262,6 +1267,7 @@ JAX represents a paradigm shift in scientific computing: functional programming 
 JAX's `grad` function transforms a function $f: \mathbb{R}^n \to \mathbb{R}$ into its gradient $\nabla f: \mathbb{R}^n \to \mathbb{R}^n$. This works through automatic differentiation—systematically applying the chain rule to elementary operations. Unlike numerical differentiation (finite differences) or symbolic differentiation (expression manipulation), autodiff is exact and efficient.
 
 The functional programming paradigm means functions are pure—no side effects, no mutation. This enables powerful transformations:
+
 - `jit`: Just-in-time compilation to XLA (100x speedups)
 - `vmap`: Vectorization over batch dimensions
 - `pmap`: Parallelization across devices
@@ -1391,23 +1397,27 @@ Your projects will build something real: a galaxy collision simulator, a transit
 ## Resources and References for Course Development
 
 ### Essential Textbooks
+
 - **Numerical Methods**: Press et al., "Numerical Recipes" - The bible of scientific computing
 - **Machine Learning**: Bishop, "Pattern Recognition and Machine Learning" - Rigorous but accessible
 - **Bayesian Methods**: Gelman et al., "Bayesian Data Analysis" - The definitive reference
 - **Deep Learning**: Goodfellow et al., "Deep Learning" - Comprehensive modern coverage
 
 ### Astrophysics Applications
+
 - **N-body**: Binney & Tremaine, "Galactic Dynamics" - The standard reference
 - **Radiative Transfer**: Rybicki & Lightman, "Radiative Processes in Astrophysics"
 - **Astrostatistics**: Feigelson & Babu, "Modern Statistical Methods for Astronomy"
 
 ### Online Resources
+
 - **JAX Documentation**: Excellent tutorials on functional programming and autodiff
 - **Distill.pub**: Beautiful visual explanations of ML concepts
 - **Stan Documentation**: Great Bayesian modeling examples
 - **AstroPy Tutorials**: Practical astronomy computing
 
 ### Key Papers for Inspiration
+
 - "Gaussian Processes for Machine Learning" (Rasmussen & Williams) - The GP bible
 - "Auto-Encoding Variational Bayes" (Kingma & Welling) - Modern generative modeling
 - "Neural Ordinary Differential Equations" (Chen et al.) - Bridging numerical methods and deep learning

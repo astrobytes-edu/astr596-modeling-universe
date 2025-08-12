@@ -9,7 +9,7 @@
 - **Dr. Anna Rosen**
 - **Office:** Physics 239
 - **Hacking Hours:** TBD in class (also available by appointment)
-- **Email:** alrosen@sdsu.edu
+- **Email:** <alrosen@sdsu.edu>
 
 ## Course Information
 
@@ -17,18 +17,20 @@
 - **Meeting Time:** Fridays 11:00 AM - 1:40 PM
 - **Format:** ~30-45min lecture review + 2h hands-on project work
 - **Location:** PA 215
-- **Course Website:** www.anna-rosen.com
+- **Course Website:** <www.anna-rosen.com>
 - **Platforms:** Canvas, Slack, GitHub Classroom
 - **Expectations:** Students must come prepared having completed assigned JupyterBook readings
 
 ### Class Meeting Structure
 
 **Pre-Class Preparation (Required):**
+
 - Complete assigned JupyterBook chapter readings
 - Review project requirements if new project assigned
 - Prepare questions on material and implementation challenges
 
 **Friday Class Sessions:**
+
 - **11:00-11:45 AM:** Interactive review of week's concepts, Q&A on readings, clarification of project requirements
 - **11:45 AM-1:40 PM:** Hands-on project work with pair programming, implementation support, and peer collaboration
 
@@ -75,32 +77,35 @@ Upon successful completion of this course, students will be able to:
 ## Required and Recommended Materials
 
 ### Textbooks (Free Online Resources)
-- ASTR 596 Course JupyterBook (www.anna-rosen.com)
-- VanderPlas, *Python Data Science Handbook* (https://jakevdp.github.io/PythonDataScienceHandbook/)
-- Ting, *Statistical Machine Learning for Astronomy* (https://arxiv.org/abs/2506.12230)
+
+- ASTR 596 Course JupyterBook (<www.anna-rosen.com>)
+- VanderPlas, *Python Data Science Handbook* (<https://jakevdp.github.io/PythonDataScienceHandbook/>)
+- Ting, *Statistical Machine Learning for Astronomy* (<https://arxiv.org/abs/2506.12230>)
 
 ### Software Requirements
 
 - Python 3.10+ with scientific stack (`NumPy`, `SciPy`, `matplotlib`, `pandas`, `jax`, `equinox`, `flax`, `optax`)
-- Git and GitHub account (https://github.com/)
+- Git and GitHub account (<https://github.com/>)
 - Jupyter Lab/Notebooks (**Project 1 only** - afterwards, all code in .py scripts)
-- IDE (Integrated Development Environment, [VS Code](https://code.visualstudio.com/) recommended) with **ALL AI assistants disabled for entire semester**.
+- IDE (Integrated Development Environment, [VS Code](<https://code.visualstudio.com/>) recommended) with **ALL AI assistants disabled for entire semester**.
 - Terminal/command line access (introduced in class and course materials)
 
 **Recommended Python Installation Method:** Install Python and all required packages using `Miniforge`/`Conda` for simplified dependency management. To do this:
-- Download Miniforge: https://conda-forge.org/download/ or install from source https://github.com/conda-forge/miniforge
+
+- Download Miniforge: <https://conda-forge.org/download/> or install from source <https://github.com/conda-forge/miniforge>
 
 `Miniforge` provides conda package manager with conda-forge as the default channel and ensures reproducible environments across different operating systems
 
 ### Computational Resources
 
-- **SDSU Instructional Cluster (Verne):** https://sdsu-research-ci.github.io/instructionalcluster
-- **GitHub Classroom:** https://sdsu-research-ci.github.io/github/classroom
+- **SDSU Instructional Cluster (Verne):** <https://sdsu-research-ci.github.io/instructionalcluster>
+- **GitHub Classroom:** <https://sdsu-research-ci.github.io/github/classroom>
 - All students will have access to high-performance computing resources for intensive computations.
 
 ## Grading Information
 
 ### Assessment Components
+
 | Component | Weight | Description |
 |-----------|--------|-------------|
 | **Projects 1-6** | 50% | 8.33% each, due biweekly on Mondays |
@@ -114,6 +119,7 @@ Upon successful completion of this course, students will be able to:
 **Participation & Engagement (10%):** Active participation requires coming to each class having completed the assigned readings and initial project attempts. Students are expected to contribute meaningfully to discussions, ask clarifying questions, answer peers' questions when able, engage productively in pair programming and peer review, and help create a collaborative learning environment. Preparation is non-negotiable: unprepared students cannot contribute effectively to our small group's collective learning.
 
 ### Grading Scale
+
 - A: 93-100% (Outstanding) | A-: 90-92%
 - B+: 87-89% | B: 83-86% (Praiseworthy) | B-: 80-82%
 - C+: 77-79% | C: 73-76% (Average) | C-: 70-72%
@@ -129,6 +135,7 @@ Six reflective memos (1-2 pages each) submitted as PDFs to *Canvas* on Wednesday
 ## Course Schedule
 
 ### Projects Overview
+
 Projects are carefully scaffolded to build upon each other—later projects may require importing and extending code from earlier ones. Each project deepens your computational toolkit while reinforcing previous concepts. Projects are assigned on Mondays (posted to GitHub Classroom) and due the following Monday at 11:59 PM. This schedule allows students to review requirements before Friday's class, where we'll work on implementation together.
 
 | Project | Assigned | Due Date | Topic |
@@ -140,30 +147,6 @@ Projects are carefully scaffolded to build upon each other—later projects may 
 | **Project 5** | Oct 20 (Mon) | Nov 3 (Mon) | Bayesian/MCMC |
 | **Project 6** | Nov 3 (Mon) | Nov 17 (Mon) | Gaussian Processes |
 | **Final Project** | Nov 17 (Mon) | Dec 18 (Thu) | Neural Networks (From Scratch + JAX ecosystem) |
-
-### Weekly Schedule Structure
-**Mondays:** New project assigned via GitHub Classroom, previous project due at 11:59 PM
-**Wednesdays:** Growth Memo due (when applicable) via Canvas PDF submission
-**Fridays:** Class meeting with prepared discussion and project work time.
-
-### Weekly Topics
-- **Week 1 (Aug 29):** Course introduction, Python fundamentals, execution control, functions and modular programming
-- **Week 2 (Sept 5):** `NumPy` and `matplotlib` basics, OOP, stellar physics
-- **Week 3 (Sept 12):** Gravitational dynamics, numerical integration
-- **Week 4 (Sept 19):** Monte Carlo methods, statistical sampling
-- **Week 5 (Sept 26):** Linear regression from first principles
-- **Week 6 (Oct 3):** Advanced regression, model selection
-- **Week 7 (Oct 10):** Monte Carlo radiative transfer
-- **Week 8 (Oct 17):** Observational effects, synthetic data
-- **Week 9 (Oct 24):** Bayesian inference foundations
-- **Week 10 (Oct 31):** Markov Chain Monte Carlo
-- **Week 11 (Nov 7):** Gaussian processes and kernel methods
-- **Week 12 (Nov 14):** Advanced GP applications and optimization
-- **Week 13 (Nov 21):** Neural network fundamentals, forward propagation
-- **Week 14 (Nov 28):** THANKSGIVING - No class
-- **Week 15 (Dec 5):** Backpropagation, Flax/JAX introduction
-- **Week 16 (Dec 12):** Project workshop and presentations prep
-- **Finals Week (Dec 14-18):** Final presentations (Dec 17 or 18 TBD)
 
 ## Project Submission Requirements
 
@@ -181,7 +164,7 @@ Projects are carefully scaffolded to build upon each other—later projects may 
    - Proper imports and function definitions.
    - No Jupyter notebooks after Project 1.
 
-2. **Project Memo (Markdown .md format):** 
+2. **Project Memo (Markdown .md format):**
    - Summary of methodology and approach.
    - Key results with embedded and readable plots with descriptive captions.
    - Understanding and interpretation of results, demonstrating conceptual grasp.
@@ -204,9 +187,11 @@ Projects are carefully scaffolded to build upon each other—later projects may 
 **See the Project Submission Guide for detailed requirements, grading rubric, and examples.**
 
 ### Final Project: Neural Network Synthesis
+
 The final project leverages your existing codebase to tackle a new, more advanced scientific question using neural networks. You'll select one of your previous implementations (P1-P6), refactor it to JAX, then apply neural network methods to solve a related but distinct problem that extends beyond the original project scope. This approach lets you build on familiar code while exploring how NNs enable new scientific investigations that would be difficult with classical methods alone.
 
 **Requirements:**
+
 - Select and refactor previous code to JAX ecosystem.
 - Define a new scientific question that extends the original project.
 - Implement NN solution from scratch + use JAX tools (Equinox/Flax/Optax).
@@ -233,26 +218,31 @@ Attendance at Friday sessions is essential as they combine lecture and hands-on 
 - Early submissions are encouraged—you may submit anytime after the project is assigned.
 
 ### Collaboration Policy
+
 Pair programming is encouraged during lab sessions. While you may discuss approaches with classmates, all submitted code must be individually written and understood. Acknowledge all collaborators in your submissions. You must be able to explain every line of code you submit.
 
 ### Pair Programming Logistics
-With our small class size, pairs will be assigned randomly and rotate each week to ensure everyone works with different partners. If we have an odd number due to absence, one group will have three members or someone will work independently. 
+
+With our small class size, pairs will be assigned randomly and rotate each week to ensure everyone works with different partners. If we have an odd number due to absence, one group will have three members or someone will work independently.
 
 **Equal Contribution Policy:** Pair programming is a privilege, not a right. While you may collaborate, discuss ideas, and look at each other's code during class, every student must submit their own independently written code. Copying or submitting identical code will result in strict disciplinary action. The goal is mutual support and learning — help each other understand concepts, debug issues, discuss ideas, and think through problems, but write your own implementation. This privilege will be revoked for students who abuse it.
 
 ### AI Usage Policy (Three-Phase Scaffolded Approach)
 
-**Phase 1: Foundation Building (Weeks 1-4)**
+#### Phase 1: Foundation Building (Weeks 1-4)
+
 - Minimal AI usage, Python documentation-first approach.
 - 20-30 minute struggle rule before seeking help.
 - AI only for debugging after genuine effort.
 
-**Phase 2: Strategic Integration (Weeks 5-8)**
+#### Phase 2: Strategic Integration (Weeks 5-8)
+
 - Use AI for clarification after consulting documentation.
 - Verify all AI suggestions against official sources.
 - Begin developing prompt engineering skills.
 
-**Phase 3: Professional Practice (Weeks 9-16)**
+#### Phase 3: Professional Practice (Weeks 9-16)
+
 - Full AI integration with critical evaluation.
 - Use AI as research accelerator.
 - Maintain deep understanding requirement.
@@ -264,6 +254,7 @@ All AI usage must be cited in code comments and project memos. **See the detaile
 This course operates on the principle that intelligence and computational abilities are not fixed traits but skills that can be developed through dedication and practice. Your current ability is just your starting point.
 
 **Our Classroom Culture:**
+
 - Struggle is necessary for growth - bugs and errors are where learning happens.
 - Questions are celebrated, especially "basic" ones.
 - Helping peers solidifies your own understanding.
@@ -274,6 +265,7 @@ The specific tools you learn today will evolve, but your ability to learn, adapt
 ## Red Flags: When You're Struggling
 
 Recognize these warning signs and seek help immediately:
+
 - **Can't explain your code** - If you can't describe what each line does, you don't understand it.
 - **Copy-pasting without understanding** - Using code you found without knowing why it works.
 - **Avoiding error messages** - Clearing outputs instead of reading and understanding errors.
@@ -292,7 +284,7 @@ For comprehensive documentation, debugging strategies, and learning resources, s
 
 ## Academic Integrity
 
-All work submitted must be your own, including code, written analysis, and project documentation. Plagiarism includes submitting code you cannot explain or understand, copying written work, or using content from online sources, AI tools, or other students without proper attribution and understanding. 
+All work submitted must be your own, including code, written analysis, and project documentation. Plagiarism includes submitting code you cannot explain or understand, copying written work, or using content from online sources, AI tools, or other students without proper attribution and understanding.
 
 To ensure academic integrity and support your learning, I may ask you to explain any aspect of your submitted work during office hours or class discussions. This is a normal part of the learning process and helps verify that you truly understand the concepts and methods you've implemented.
 
@@ -300,7 +292,7 @@ Violations will be reported to the Center for Student Rights and Responsibilitie
 
 ## Accommodations
 
-Students with disabilities who may need accommodations should make an appointment with Student Disability Services (sds@sdsu.edu, 619-594-6473). Please consult with SDS within the first two weeks of class.
+Students with disabilities who may need accommodations should make an appointment with Student Disability Services (<sds@sdsu.edu>, 619-594-6473). Please consult with SDS within the first two weeks of class.
 
 ## Land Acknowledgement
 
@@ -376,6 +368,7 @@ This syllabus constitutes our course contract. You are responsible for reading a
 ## Additional Course Documents
 
 Detailed guides expanding on these policies are available on the course website:
+
 - **Course Learning Guide** - Expanded philosophy, learning strategies, debugging tips, resources
 - **Project Submission Guide** - Detailed requirements, rubric, and examples
 - **AI Usage Policy & Guide** - Specific examples and best practices
