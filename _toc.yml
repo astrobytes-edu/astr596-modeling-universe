@@ -18,25 +18,17 @@ parts:
   - file: course-info/why-astr596-is-different
     title: Why This Course is Different
 
-- caption: Short Projects
+- caption: Python Fundamentals
   chapters:
-  - file: short-projects/index
-    title: Projects Overview
-  - file: short-projects/0_project_submission_guide
-    title: "Submission Guidelines"
-  - file: short-projects/1_project1_description
-    title: "Project 1: Python/OOP/Stellar Physics"
-  - file: short-projects/2_project2_description
-    title: "Project 2: N-Body Dynamics & Monte Carlo"
-  - file: short-projects/3_project3_description
-    title: "Project 3: Linear Regression & ML"
-
-- caption: Final Project
-  chapters:
-  - file: final-project/index
-    title: Project Overview
-  - file: final-project/final_project_guide
-    title: "Detailed Guide & Requirements"
+  - file: python/index
+    title: Why Python?
+  - file: python/python-fundamentals/chapter1-python-calculator
+    title: Python Basics
+  - file: python/python-fundamentals/chapter2-control-flow
+    title: Control Flow & Logic
+  - file: python/python-fundamentals/chapter3-functions
+    title: Functions
+    #TODO: Data Structures, Object-Oriented Programming, Error Handling
 
 - caption: Computational Methods
   chapters:
@@ -63,6 +55,26 @@ parts:
     title: Radiative Transfer
   - file: astrophysics/advanced_topics/index
     title: Advanced Topics
+
+- caption: Short Projects
+  chapters:
+  - file: short-projects/index
+    title: Projects Overview
+  - file: short-projects/0_project_submission_guide
+    title: "Submission Guidelines"
+  - file: short-projects/1_project1_description
+    title: "Project 1: Python/OOP/Stellar Physics"
+  - file: short-projects/2_project2_description
+    title: "Project 2: N-Body Dynamics & Monte Carlo"
+  - file: short-projects/3_project3_description
+    title: "Project 3: Linear Regression & ML"
+
+- caption: Final Project
+  chapters:
+  - file: final-project/index
+    title: Project Overview
+  - file: final-project/final_project_guide
+    title: "Detailed Guide & Requirements"
 
 - caption: Reference Materials
   chapters:
