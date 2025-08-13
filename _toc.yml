@@ -68,10 +68,20 @@ parts:
   chapters:
   - file: reference/index
     title: Reference Overview
-  - file: reference/quick-references/index
-    title: Quick References
-  - file: reference/external-resources/index
-    title: External Resources
-  - file: reference/troubleshooting/index
-    title: Troubleshooting Guide
+    
+  - file: reference/software-setup-guide
+    title: Software Setup Guide
+  - file: reference/cli-intro-guide.md
+    title: CLI Intro Guide
+  - file: reference/git-intro-guide.md
+    title: Git Intro Guide
+  - file: reference/cli-advanced-guide
+    title: CLI Advanced Guide (Optional)
+    
+#  - file: reference/quick-references/index
+#    title: Quick References
+#  - file: reference/external-resources/index
+#    title: External Resources
+#  - file: reference/troubleshooting/index
+#    title: Troubleshooting Guide
 
