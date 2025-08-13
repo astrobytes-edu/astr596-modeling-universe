@@ -11,5 +11,5 @@ project:
 site:
   template: book-theme #scientific-python
   options:
-    logo_text: "⭐ASTR 596⭐"
+    logo_text: "✨ASTR 596✨"
     custom_css: "_static/custom.css"
