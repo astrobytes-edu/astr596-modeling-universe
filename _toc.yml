@@ -22,12 +22,18 @@ parts:
   chapters:
   - file: python/index
     title: Why Python?
-  - file: python/python-fundamentals/chapter1-python-calculator
-    title: Python Basics
-  - file: python/python-fundamentals/chapter2-control-flow
-    title: Control Flow & Logic
-  - file: python/python-fundamentals/chapter3-functions
-    title: Functions
+  - file: python/python_chapter1_environment
+    title: Setting Up Your Environment
+  - file: python/python_chapter2_fundamentals
+    title: Fundamentals & Control Flow
+  - file: python/python_chapter3_functions
+    title: Functions & Modules
+  - file: python/python_chapter4_data_structures
+    title: Data Structures
+  - file: python/python_chapter5_object_oriented_programming
+    title: Object-Oriented Programming
+  - file: python/python_chapter6_error_handling
+    title: Error Handling
     #TODO: Data Structures, Object-Oriented Programming, Error Handling
 
 - caption: Computational Methods

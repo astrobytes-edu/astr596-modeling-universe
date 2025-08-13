@@ -35,9 +35,9 @@
 
 This course provides a hands-on introduction to the practice and theory of scientific computing, with an emphasis on numerical methods and machine learning, applied to astrophysical problems. Beginning with Python programming fundamentals and object-oriented design, the course progresses through sophisticated numerical methods including N-body dynamics, Monte Carlo radiative transfer, Bayesian inference, Gaussian processes, and culminates with neural networks. Students will implement all algorithms from first principles ("glass box" approach) before transitioning to modern frameworks (JAX ecosystem). The course emphasizes professional software development practices, responsible AI integration, and preparation for computational research careers.
 
-**Important Note:** I'm not testing your physics knowledge. All necessary equations and scientific background will be provided. Your task is to understand the scientific concepts, implement them correctly, and connect the computation to the physics.
+**Important Note:** I'm not testing your astrophysics knowledge. All necessary equations and scientific background will be provided. Your task is to understand the scientific concepts, implement them correctly, and connect the computation to the physics.
 
-> **For expanded course philosophy and approach, see:** [Why This Course is Different](course-info/why-astr596-is-different)
+> **For an expanded description of the course philosophy and approach, see:** [Why This Course is Different](course-info/why-astr596-is-different)
 
 ## Course Learning Outcomes
 
@@ -54,12 +54,17 @@ Upon successful completion of this course, students will be able to:
 9. **Communicate computational methods and scientific results effectively** through written reports and code documentation.
 10. **Think computationally about physics** developing intuition for numerical stability and convergence.
 
-## Required Materials
+## Materials
 
 ### Textbooks (Free Online Resources)
-- ASTR 596 Course JupyterBook (<www.anna-rosen.com>)
-- VanderPlas, *Python Data Science Handbook* (<https://jakevdp.github.io/PythonDataScienceHandbook/>)
-- Ting, *Statistical Machine Learning for Astronomy* (<https://arxiv.org/abs/2506.12230>)
+
+- **Required:** ASTR 596 Course Website (powered by Jupyterbook/MystMD) [www.astrobytes-edu.github.io/astr596-modeling-universe](https://astrobytes-edu.github.io/astr596-modeling-universe/)
+
+- Linge \& Langtangen (2020), [*Programming for Computations - Python (2nd Edition)](https://library.oapen.org/bitstream/id/35449b29-cca0-4d71-8553-2d49609b75fd/1007055.pdf), Springer Open
+
+- VanderPlas (2016), [*Python Data Science Handbook*][Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/), O'Reilly
+
+- Ting (2025), [*Statistical Machine Learning for Astronomy*](https://arxiv.org/abs/2506.12230), ArXiV.org
 
 ### Software Requirements
 - Python 3.10+ with scientific stack
