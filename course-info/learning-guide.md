@@ -1,68 +1,17 @@
 # ASTR 596: Course Learning Guide
 
-## Expanded Philosophy, Strategies, and Resources
+## Quick Links
+- [Course Philosophy](course-info/why-astr596-is-different)
+- [AI Usage Guidelines](course-info/ai-guidelines)
+- [Project Requirements](short-projects/0_project_submission_guide)
+- [Software Setup](reference/software-setup)
 
 ## Table of Contents
-
-1. [Extended Course Philosophy](#extended-course-philosophy)
-2. [What This Course Is NOT](#what-this-course-is-not)
-3. [Learning Strategies](#learning-strategies)
-4. [Debugging Strategies](#debugging-strategies)
-5. [Resources & Documentation](#resources--documentation)
-6. [Growth Mindset & Classroom Culture](#growth-mindset--classroom-culture)
-7. [Recognizing When You Need Help](#recognizing-when-you-need-help)
-8. [Study Tips & Best Practices](#study-tips--best-practices)
-
-## Extended Course Philosophy
-
-### Comprehensive Methods with Essential Theory
-
-This course provides comprehensive coverage of essential computational methods in astrophysics. For each topic, we develop understanding through four integrated perspectives:
-
-- **The core mathematical foundations** - Why algorithms work, key equations, and their derivations
-- **The physical intuition** - What the math means physically, how it connects to astronomical phenomena  
-- **The computational implementation** - How to build it correctly from first principles
-- **The practical limitations** - When methods break, why they fail, and how to diagnose issues
-
-Rather than spending an entire semester on theoretical proofs for a single method (as traditional courses do), we spend 2-3 weeks per topic developing deep, practical understanding through implementation and experimentation. This is not a "cookbook" course—you will understand the "why" behind every algorithm you build.
-
-### Our Goal
-
-Give you comprehensive understanding to:
-
-1. Implement core algorithms from scratch with mathematical rigor
-2. Know what these methods do, when to use them, and their limitations
-3. Recognize when you need deeper theoretical knowledge
-4. Have the foundation to self-learn advanced topics
-
-### The Strategy
-
-By implementing methods from first principles while understanding their mathematical foundations and physical meaning, you'll develop both theoretical insight and practical skills. This course is your **launching pad**, not your final destination.
-
-### Why This Works
-
-Once you've built MCMC from scratch, understand why it works, and have used it for real problems, diving into convergence theory or advanced samplers becomes a natural next step rather than an abstract exercise. Once you've implemented Euler's method, Runge-Kutta, and leapfrog integration and understand their trade-offs, applying these concepts to adaptive step-size methods, symplectic integrators, or entirely different domains becomes straightforward. The same applies to neural networks, Gaussian processes, and every other topic we cover.
-
-### Your Future Learning
-
-With the foundation from this course plus AI as your tutor, you'll be equipped to:
-
-- Take advanced courses with deeper theoretical coverage
-- Self-study specialized topics relevant to your research and interests
-- Read and implement papers in computational astrophysics
-- Contribute to open-source scientific software
-
-This approach—broad exposure with hands-on implementation—is designed to transform you from a passive consumer of computational tools into an active creator. You'll develop the confidence to peek under the hood of any algorithm, the judgment to choose appropriate methods for your research, and most importantly, the foundation to build custom solutions when existing tools fall short.
-
-## What This Course Is NOT
-
-- **NOT a physics course** - All equations and physics background provided; no physics exams
-- **NOT a software engineering bootcamp** - We focus on scientific computing, not web development
-- **NOT a pure ML/AI course** - ML is one tool among many in our computational toolkit
-- **NOT cookbook programming** - You'll understand why algorithms work, not just copy recipes
-- **NOT a math theory course** - We emphasize practical implementation over formal proofs
-
-Understanding what we're NOT doing is as important as knowing what we ARE doing. This clarity helps you focus your efforts appropriately.
+1. [Learning Strategies](#learning-strategies)
+2. [Debugging Strategies](#debugging-strategies)
+3. [Resources & Documentation](#resources--documentation)
+4. [Study Tips & Best Practices](#study-tips--best-practices)
+5. [Getting Help](#getting-help)
 
 ## Learning Strategies
 
@@ -75,41 +24,22 @@ Understanding what we're NOT doing is as important as knowing what we ARE doing.
 ### Effective Learning Workflow
 
 #### Before Class
-
 1. **Read actively** - Don't just skim the JupyterBook chapters
 2. **Try examples** - Type out code examples yourself (no copy-paste!)
 3. **Note questions** - Write down confusion points to ask in class
 4. **Attempt project start** - Even 30 minutes of trying helps frame questions
 
 #### During Class
-
 1. **Ask "dumb" questions** - They're usually the most important
 2. **Engage in pair programming** - Explain your thinking out loud
 3. **Take implementation notes** - Document approaches that work
 4. **Debug together** - Learn from others' errors too
 
 #### After Class
-
 1. **Review immediately** - Solidify concepts while fresh
 2. **Implement incrementally** - Small, tested pieces beat large untested code
 3. **Document learnings** - Your future self will thank you
 4. **Help peers** - Teaching solidifies understanding
-
-### Using AI Tools Effectively
-
-Remember: AI is your tutor, not your programmer. Use it to:
-
-- **Understand concepts** - "Explain eigenvalues like I'm a physics student"
-- **Clarify confusion** - "Why does my Monte Carlo simulation converge slowly?"
-- **Debug intelligently** - "This error suggests X, but I checked Y..."
-- **Find resources** - "Where can I learn more about symplectic integrators?"
-
-NOT to:
-
-- Generate your solution code
-- Complete your projects
-- Replace your thinking
-- Avoid struggling (struggle is where learning happens!)
 
 ## Debugging Strategies
 
@@ -125,12 +55,26 @@ NOT to:
 
 ### Common Python Pitfalls
 
-- **Mutable defaults** - `def func(lst=[]):` is usually wrong
-- **Integer division** - Python 2 vs 3 differences
-- **Indentation errors** - Mixing tabs and spaces
-- **Off-by-one errors** - Remember Python is 0-indexed
-- **Scope issues** - Local vs global variables
-- **NumPy broadcasting** - Shape mismatches in array operations
+```python
+# Mutable default arguments - WRONG
+def bad_function(lst=[]):  
+    lst.append(1)
+    return lst
+
+# Correct approach
+def good_function(lst=None):
+    if lst is None:
+        lst = []
+    lst.append(1)
+    return lst
+```
+
+Other common issues:
+- **Integer division**: Be aware of Python 2 vs 3 differences
+- **Indentation errors**: Never mix tabs and spaces
+- **Off-by-one errors**: Remember Python is 0-indexed
+- **Scope confusion**: Understand local vs global variables
+- **NumPy broadcasting**: Check array shapes with `.shape`
 
 ### Using Python Debugger (pdb)
 
@@ -149,164 +93,77 @@ def problematic_function(x):
 # l - list code
 # p variable - print variable
 # pp variable - pretty print
+# h - help
 ```
 
 ## Resources & Documentation
 
-### Essential References
+### Essential Python References
 
-#### Python Fundamentals
+| Resource | Best For | Link |
+|----------|----------|------|
+| Official Python Docs | Language features | [docs.python.org](https://docs.python.org/3/) |
+| NumPy Documentation | Array operations | [numpy.org/doc](https://numpy.org/doc/stable/) |
+| Matplotlib Gallery | Plot examples | [matplotlib.org/gallery](https://matplotlib.org/stable/gallery/index.html) |
+| SciPy Documentation | Scientific functions | [docs.scipy.org](https://docs.scipy.org/doc/scipy/) |
+| Real Python | Tutorials | [realpython.com](https://realpython.com/) |
+| Python Tutor | Visualize execution | [pythontutor.com](http://pythontutor.com/) |
 
-- [Official Python Documentation](https://docs.python.org/3/)
-- [Python for Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
-- [Real Python Tutorials](https://realpython.com/)
-- [Python Tutor Visualizer](http://pythontutor.com/) - See your code execute step-by-step
+### Machine Learning & JAX
 
-#### Scientific Computing
+| Resource | Purpose |
+|----------|---------|
+| [JAX Documentation](https://jax.readthedocs.io/) | Core JAX features |
+| [Equinox Docs](https://docs.kidger.site/equinox/) | Neural network library |
+| [Flax Documentation](https://flax.readthedocs.io/) | Alternative NN library |
+| [Ting's ML Review](https://arxiv.org/abs/2506.12230) | Astronomy-specific ML |
 
-- [NumPy Documentation](https://numpy.org/doc/stable/)
-- [SciPy Documentation](https://docs.scipy.org/doc/scipy/)
-- [Matplotlib Gallery](https://matplotlib.org/stable/gallery/index.html)
-- [Numerical Recipes](http://numerical.recipes/)
+### Recommended Video Resources
 
-#### Machine Learning & JAX
-
-- [JAX Documentation](https://jax.readthedocs.io/)
-- [Equinox Documentation](https://docs.kidger.site/equinox/)
-- [Flax Documentation](https://flax.readthedocs.io/)
-- [ML for Physics](https://arxiv.org/abs/2506.12230) - Ting's excellent review
-
-#### Astronomical Computing
-
-- [Astropy Documentation](https://docs.astropy.org/)
-- [AstroBetter Programming Tips](https://www.astrobetter.com/wiki/python/)
-- [SDSU HPC Documentation](https://sdsu-research-ci.github.io/instructionalcluster)
-
-### Recommended YouTube Channels
-
-- **3Blue1Brown** - Mathematical intuition through visualization
-- **Two Minute Papers** - Latest ML research explained simply
+- **3Blue1Brown** - Visual mathematical intuition
+- **StatQuest** - Statistics with clear explanations
 - **Computerphile** - Computer science concepts
-- **StatQuest** - Statistics and ML with humor
-
-### Key Tools to Master
-
-1. **Version Control (Git)**
-   - Learn branching, merging, rebasing
-   - Write meaningful commit messages
-   - Use .gitignore properly
-
-2. **Command Line**
-   - Navigate directories
-   - Run Python scripts
-   - Use grep, sed, awk for data manipulation
-
-3. **Virtual Environments**
-   - Create reproducible environments
-   - Manage dependencies
-   - Avoid "works on my machine" syndrome
-
-4. **Profiling & Optimization**
-   - Use `cProfile` for performance analysis
-   - Understand Big-O notation practically
-   - Know when to optimize (hint: usually later)
-
-## Growth Mindset & Classroom Culture
-
-### Core Beliefs
-
-- **Intelligence is not fixed** - Your brain literally grows new connections when learning
-- **Struggle is necessary** - If it's not hard, you're not learning
-- **Errors are data** - Bugs teach you how things really work
-- **Questions reveal strength** - Asking shows engagement, not weakness
-
-### Creating Psychological Safety
-
-In our classroom:
-
-- No question is too basic
-- Mistakes are learning opportunities
-- We celebrate "aha!" moments
-- Everyone's learning journey is different
-- Imposter syndrome is normal and discussable
-
-### Dealing with Imposter Syndrome
-
-Remember:
-
-- Everyone googles basic syntax
-- Senior developers still print debug
-- Published researchers make coding errors
-- The learning never stops, even for experts
-- Feeling lost sometimes is part of the process
-
-## Recognizing When You Need Help
-
-### Red Flags Expanded
-
-Beyond the red flags in the syllabus, watch for:
-
-**Technical Warning Signs:**
-
-- Your code "works" but you don't know why
-- You're changing things randomly hoping it works
-- You've been stuck on the same error for hours
-- Your solution is significantly longer than expected
-- You're avoiding entire sections of projects
-
-**Emotional Warning Signs:**
-
-- Feeling overwhelmed consistently
-- Comparing yourself negatively to peers
-- Considering dropping the course
-- Losing interest in the material
-- Physical stress symptoms (sleep loss, anxiety)
-
-**What to Do:**
-
-1. **Reach out immediately** - Don't wait until it's critical
-2. **Be specific** - "I don't understand X" beats "I'm lost"
-3. **Show your work** - Even broken attempts help diagnosis
-4. **Use office hours** - They exist for you
-5. **Form study groups** - Collective struggle is easier
+- **Two Minute Papers** - Latest research explained
 
 ## Study Tips & Best Practices
 
-### Project Management
+### Project Management Timeline
 
-**Two-Week Project Timeline:**
+**Two-Week Project Workflow:**
 
-- **Day 1-2:** Read assignment, understand requirements
-- **Day 3-4:** Initial implementation attempt
-- **Day 5-6:** Debug, test edge cases
-- **Day 7 (Friday):** Class work session
-- **Day 8-9:** Refine based on class insights
-- **Day 10-11:** Complete extensions
-- **Day 12-13:** Polish, document, write memo
-- **Day 14:** Final review and submit
+| Days | Focus | Actions |
+|------|-------|---------|
+| 1-2 | Understanding | Read requirements, review relevant chapters |
+| 3-4 | Initial attempt | Start coding, identify challenges |
+| 5-6 | Debug & test | Fix errors, test edge cases |
+| 7 (Fri) | Class session | Get help, collaborate |
+| 8-9 | Refinement | Incorporate class insights |
+| 10-11 | Extensions | Complete required extensions |
+| 12-13 | Polish | Document, create figures, write memo |
+| 14 | Submit | Final review and push to GitHub |
 
-### Code Organization
+### Code Organization Best Practices
 
 ```python
-# Good structure example
-project/
+# Project structure
+project_name/
+├── README.md           # Installation and usage instructions
+├── requirements.txt    # Package dependencies
 ├── src/
 │   ├── __init__.py
-│   ├── physics.py      # Physics calculations
-│   ├── numerics.py     # Numerical methods
-│   └── visualization.py # Plotting functions
+│   ├── physics.py     # Physics calculations
+│   ├── numerics.py    # Numerical methods
+│   └── plotting.py    # Visualization functions
 ├── tests/
 │   └── test_physics.py
 ├── data/
-│   └── input_data.csv
+│   └── input_files/
 ├── outputs/
 │   └── figures/
-├── README.md
-├── requirements.txt
 └── main.py            # Entry point
 ```
 
-### Documentation Best Practices
+### Writing Good Documentation
 
 ```python
 def integrate_orbit(initial_conditions, time_span, method='RK4'):
@@ -327,35 +184,125 @@ def integrate_orbit(initial_conditions, time_span, method='RK4'):
     trajectory : ndarray
         Shape (n_steps, 6) array of positions and velocities
     
-    Notes
-    -----
-    Uses adaptive timestep for RK4 method.
+    Examples
+    --------
+    >>> ic = [1, 0, 0, 0, 1, 0]  # Circular orbit
+    >>> t_span = (0, 10)
+    >>> orbit = integrate_orbit(ic, t_span)
     """
     # Implementation here
 ```
 
-### Testing Your Code
+### Testing Strategies
 
-Always test with:
+Always validate your code with:
 
-- **Known solutions** - Can you reproduce textbook examples?
-- **Limiting cases** - Does your code behave correctly at extremes?
-- **Conservation laws** - Is energy/momentum conserved when it should be?
-- **Dimensional analysis** - Do your units make sense?
-- **Visualization** - Plot everything; eyes catch patterns
+1. **Known solutions** - Reproduce textbook examples
+2. **Limiting cases** - Check behavior at extremes
+3. **Conservation laws** - Verify energy/momentum when applicable
+4. **Unit analysis** - Ensure dimensional consistency
+5. **Visualization** - Plot everything; patterns reveal bugs
 
-### Time Management
+Example test:
+```python
+def test_circular_orbit():
+    """Test that circular orbit maintains constant radius."""
+    ic = [1, 0, 0, 0, 1, 0]
+    orbit = integrate_orbit(ic, (0, 2*np.pi))
+    radii = np.sqrt(orbit[:, 0]**2 + orbit[:, 1]**2)
+    assert np.allclose(radii, 1.0, rtol=1e-3)
+```
 
-- **Start early** - Day 1, not day 10
-- **Work daily** - 1 hour/day beats 7 hours in one day
-- **Take breaks** - Pomodoro technique (25 min work, 5 min break)
-- **Set boundaries** - Perfect is the enemy of done
-- **Track time** - Know where your hours go
+## Getting Help
 
-## Final Thoughts
+### When to Seek Help
 
-This course will challenge you, and that's intentional. You're not just learning to code; you're learning to think computationally about the universe. Every struggle, every bug, every "aha!" moment is building neural pathways that will serve you throughout your career.
+**Immediate help needed:**
+- Stuck on same error for >1 hour
+- Don't understand project requirements
+- Technical issues (can't install software, GitHub problems)
 
-Remember: Everyone feels lost sometimes. The difference between those who succeed and those who don't isn't ability—it's persistence and willingness to seek help.
+**Office hours appropriate:**
+- Conceptual confusion after reading
+- Want to discuss approach before coding
+- Need debugging help after genuine attempt
 
-*You've got this.* And when you don't feel like you do, reach out. That's what we're here for.
+### How to Ask Good Questions
+
+**Good question format:**
+```
+"I'm trying to [goal]. 
+I've attempted [what you tried].
+I expected [expected result] but got [actual result].
+I've checked [what you've verified].
+Could you help me understand [specific confusion]?"
+```
+
+**Include:**
+- Minimal reproducible example
+- Full error message
+- What you've already tried
+- Relevant code snippet (not entire file)
+
+### Red Flags: You Need Help NOW
+
+**Technical Warning Signs:**
+- Your code "works" but you can't explain why
+- Changing things randomly hoping for success
+- Solution is 10x longer than expected
+- Avoiding entire project sections
+
+**Emotional Warning Signs:**
+- Consistent overwhelm
+- Comparing yourself negatively to peers
+- Physical stress symptoms
+- Considering dropping the course
+
+**What to do:** Email instructor immediately or visit office hours. Don't wait!
+
+### Study Group Guidelines
+
+With only 4 students, you're all in this together:
+
+1. **Form partnerships early** - Don't work in isolation
+2. **Rotate pairs weekly** - Learn from everyone
+3. **Share struggles** - Everyone gets stuck
+4. **Teach each other** - Best way to solidify understanding
+5. **Respect boundaries** - Individual work stays individual
+
+## Time Management
+
+### Daily Practice Schedule
+
+**Recommended daily workflow:**
+- **15 min**: Review previous day's work
+- **45 min**: New implementation
+- **15 min**: Test and debug
+- **15 min**: Document and commit
+
+This 90-minute daily practice is more effective than marathon sessions.
+
+### Pomodoro Technique for Coding
+
+```
+25 min: Focused coding (no distractions)
+5 min: Break (stretch, water, look away from screen)
+25 min: Continue coding
+5 min: Break
+25 min: Debug and test
+5 min: Break
+25 min: Document and refactor
+15 min: Longer break, review progress
+```
+
+## Final Reminders
+
+- **The struggle is the learning** - Don't avoid it
+- **Mistakes are data** - Learn from every bug
+- **Progress over perfection** - Working code beats perfect theory
+- **You're not alone** - Use office hours and peers
+- **Celebrate small wins** - Every function that works is progress
+
+Remember: Everyone feels lost sometimes. The difference between success and failure isn't ability—it's persistence and willingness to seek help.
+
+**You've got this!** 🚀
