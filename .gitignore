@@ -207,10 +207,10 @@ marimo/_lsp/
 __marimo__/
 
 # MyST build outputs
-_build
+#_build
 
 # MyST build outputs
-_build
+#_build
 
 # MyST build outputs
-_build
+#_build
