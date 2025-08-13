@@ -1,4 +1,4 @@
-# Chapter 1: Understanding Your Learning Journey in ASTR 596: Modeling the Universe
+# Understanding Your Learning Journey in ASTR 596: Modeling the Universe
 
 ## Course Design and Pedagogical Framework
 

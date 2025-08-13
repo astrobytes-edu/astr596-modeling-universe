@@ -13,46 +13,39 @@ Welcome to computational astrophysics! This course takes you on a journey from P
 ## Course Trajectory
 
 ::::{grid} 1 1 2 3
-:gutter: 3
 
 :::{grid-item-card} 🐍 **Python Foundations**
-:link: projects/project1
-:link-type: doc
+:link: short-projects/1_project1_description
 
 Professional development environment, OOP design, and stellar physics modeling
 :::
 
-:::{grid-item-card} 🪐 **N-Body Dynamics**
-:link: projects/project2
-:link-type: doc
+:::{grid-item-card} 🪐 **N-Body Dynamics**  
+:link: short-projects/2_project2_description
 
 Gravitational systems, numerical integration, and Monte Carlo sampling
 :::
 
 :::{grid-item-card} 📈 **Machine Learning**
-:link: projects/project3
-:link-type: doc
+:link: short-projects/3_project3_description
 
 Linear regression, optimization, and statistical modeling from scratch
 :::
 
 :::{grid-item-card} 🎲 **Monte Carlo Methods**
-:link: projects/project4
-:link-type: doc
+:link: short-projects/index
 
 Radiative transfer, photon transport, and observational effects
 :::
 
 :::{grid-item-card} 🔍 **Bayesian Inference**
-:link: projects/project5
-:link-type: doc
+:link: short-projects/index
 
 MCMC sampling, parameter estimation, and uncertainty quantification
 :::
 
 :::{grid-item-card} 🧠 **Neural Networks**
-:link: projects/final-project
-:link-type: doc
+:link: final-project/final_project_guide
 
 From backpropagation to JAX ecosystem and research applications
 :::
@@ -62,32 +55,27 @@ From backpropagation to JAX ecosystem and research applications
 ## Quick Navigation
 
 ::::{grid} 2 2 2 2
-:gutter: 2
 
 :::{grid-item-card} 📋 **Course Information**
 :link: course-info/syllabus
-:link-type: doc
 
 Syllabus, schedule, policies, and expectations
 :::
 
 :::{grid-item-card} 🎯 **Projects**
-:link: projects/project1
-:link-type: doc
+:link: short-projects/1_project1_description
 
 Six progressive projects building computational skills
 :::
 
 :::{grid-item-card} 🤖 **AI Guidelines**
 :link: course-info/ai-guidelines
-:link-type: doc
 
 Three-phase approach to responsible AI integration
 :::
 
 :::{grid-item-card} 🛠️ **Resources**
-:link: course-info/resources
-:link-type: doc
+:link: reference/index
 
 Setup guides, references, and learning materials
 :::
@@ -137,10 +125,10 @@ This course teaches you to use AI tools (GitHub Copilot, ChatGPT) as **learning 
 
 ## Getting Started
 
-1. 📖 Review the {doc}`course-info/syllabus` and {doc}`course-info/ai-guidelines`
-2. ⚙️ Set up your development environment (see {doc}`course-info/resources`)
+1. 📖 Review the [Syllabus](course-info/syllabus) and [AI Guidelines](course-info/ai-guidelines)
+2. ⚙️ Set up your development environment (see [Resources](reference/index))
 3. 👥 Join the course GitHub organization
-4. 🚀 Start with {doc}`projects/project1`
+4. 🚀 Start with [Project 1](short-projects/1_project1_description)
 
 ---
 

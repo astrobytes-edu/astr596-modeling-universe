@@ -1,0 +1,47 @@
+/* Minimalist Modern Color Scheme */
+
+:root {
+    /* Primary Colors */
+    --primary-color: #1f2937;     /* Dark gray */
+    --accent-color: #3b82f6;      /* Clean blue */
+    --text-color: #374151;        /* Medium gray */
+    --bg-color: #ffffff;          /* Pure white */
+    
+    /* Subtle Colors */
+    --border-color: #e5e7eb;      /* Light gray */
+    --hover-color: #f3f4f6;       /* Very light gray */
+  }
+  
+  /* Navigation */
+  .sidebar {
+    background-color: var(--bg-color);
+    border-right: 1px solid var(--border-color);
+  }
+  
+  /* Headers */
+  h1, h2, h3 {
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+  
+  /* Links */
+  a {
+    color: var(--accent-color);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    background-color: var(--hover-color);
+  }
+  
+  /* Cards/Buttons */
+  .card {
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+  }
+  
+  /* Code blocks */
+  pre {
+    background-color: #f8fafc;
+    border: 1px solid var(--border-color);
+  }
