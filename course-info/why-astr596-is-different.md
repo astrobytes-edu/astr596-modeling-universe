@@ -253,3 +253,9 @@ This requires ~9 hours weekly outside class—not punishment, but practice. Like
 **Remember**: The struggle is the point. That's where the learning happens. But struggling alone when help is available? That's just inefficient.
 
 Welcome to the beginning of your transformation from student to scientist. 🚀
+
+#### References & Additional Resources
+
+- [Students' Mindsets for Learning and Their Neural Underpinnings](https://www.scirp.org/journal/paperinformation?paperid=69884), Tirri & Kujala (2016)
+- [The Influence of Learners’ Mindsets on Their Mathematics Learning](https://www.scirp.org/journal/paperinformation?paperid=122622), Uwerhiavwe (2023)
+- [Mind your errors: evidence for a neural mechanism linking growth mind-set to adaptive posterror adjustments](https://pubmed.ncbi.nlm.nih.gov/22042726/), Moser et al. (2011)

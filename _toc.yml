@@ -18,23 +18,35 @@ parts:
   - file: course-info/why-astr596-is-different
     title: Why This Course is Different
 
-- caption: Python Fundamentals
+- caption: Python
   chapters:
   - file: python/index
     title: Why Python?
-  - file: python/python_chapter1_environment
+  - file: python/chapter1_environment
     title: Setting Up Your Environment
-  - file: python/python_chapter2_fundamentals
+  - file: python/chapter2_fundamentals
     title: Fundamentals & Control Flow
-  - file: python/python_chapter3_functions
+  - file: python/chapter3_functions
     title: Functions & Modules
-  - file: python/python_chapter4_data_structures
+  - file: python/chapter4_data_structures
     title: Data Structures
-  - file: python/python_chapter5_object_oriented_programming
+  - file: python/chapter5_object_oriented_programming
     title: Object-Oriented Programming
-  - file: python/python_chapter6_error_handling
+  - file: python/chapter6_error_handling
     title: Error Handling
-    #TODO: Data Structures, Object-Oriented Programming, Error Handling
+  - file: python/chapter7_optimization
+    title: NumPy: Performance & Optimization
+
+- caption: Python Libraries
+  chapters:
+  - file: python/01_numpy
+    title: NumPy: Numerical Python
+  - file: python/02_matplotlib
+    title: Matplotlib: Visualization with Python
+  - file: python/03_scipy
+    title: SciPy: Scientific Python
+  - file: python/04_pandas
+    title: Pandas: Data Analysis Library
 
 - caption: Computational Methods
   chapters:
