@@ -183,7 +183,7 @@ site:
     
     # Announcement banner (update as needed for deadlines/announcements)
     # Uncomment and modify when you have announcements
-    # announcement: "🚨 Project 1 due Monday 11:59 PM! Office hours Thursday 11am."
+    announcement: "🚨 Project 1 due Monday 11:59 PM! Office hours Thursday 11am."
     
     # Search configuration
     search:
