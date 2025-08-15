@@ -1,3 +1,5 @@
+# ASTR 596 Learning Guide
+
 ## Failure Recovery Protocols
 
 ### When Things Go Wrong (And They Will)
