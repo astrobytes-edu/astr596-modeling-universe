@@ -4,12 +4,56 @@ version: 1
 project:
   id: 76c4875f-ba4c-4a35-bc58-52304ee2705e
   title: "ASTR 596: Modeling the Universe"
+  keywords: [computational astrophysics, python, machine learning, monte carlo, neural networks, radiative transfer, bayesian inference, JAX]
+  authors:
+    - name: Anna Rosen
+      email: alrosen@sdsu.edu
+      affiliation: San Diego State University
+  license: CC-BY-4.0
+  subject: Computational Astrophysics
+  venue:
+    title: ASTR 596 - Fall 2025
+    url: https://www.sdsu.edu
   github: https://github.com/astrobytes-edu/astr596-modeling-universe
+  
+  # Math rendering improvements
+  math:
+    mathjax3:
+      tex:
+        packages:
+          '[+]': ['ams', 'physics']
+        macros:
+          # Common macros for the course
+          vec: ['\boldsymbol{#1}', 1]
+          del: '\nabla'
+          avg: ['\langle #1 \rangle', 1]
+          norm: ['\left\lVert #1 \right\rVert', 1]
+  
+  # MyST markdown extensions
+  myst:
+    enable_extensions:
+      - amsmath
+      - colon_fence
+      - deflist
+      - dollarmath
+      - html_admonition
+      - linkify
+      - replacements
+      - smartquotes
+      - substitution
+      - tasklist
+  
+  # Code formatting
+  settings:
+    code_style: github
+    code_line_numbers: true
+    code_copy: true
+  
   toc:
     - file: index
       title: ASTR 596 Home
-    - part: Course Information
-      chapters:
+    - title: Course Information
+      children:
         - file: course-info/syllabus
           title: Syllabus & Policies
         - file: course-info/schedule
@@ -22,8 +66,8 @@ project:
           title: Course Overview
         - file: course-info/why-astr596-different-final
           title: Why This Course is Different
-    - part: Python
-      chapters:
+    - title: Python
+      children:
         - file: python/index
           title: Why Python?
         - file: python/chapter1_environment
@@ -40,8 +84,8 @@ project:
           title: Error Handling
         - file: python/chapter7_optimization
           title: "NumPy: Performance & Optimization"
-    - part: Python Libraries
-      chapters:
+    - title: Python Libraries
+      children:
         - file: python/01_numpy
           title: "NumPy: Numerical Python"
         - file: python/02_matplotlib
@@ -50,8 +94,8 @@ project:
           title: "SciPy: Scientific Python"
         - file: python/04_pandas
           title: "Pandas: Data Analysis Library"
-    - part: Computational Methods
-      chapters:
+    - title: Computational Methods
+      children:
         - file: computational-methods/index
           title: Methods Overview
         - file: computational-methods/python-fundamentals/index
@@ -62,8 +106,8 @@ project:
           title: Machine Learning
         - file: computational-methods/modern-frameworks/index
           title: Modern Frameworks
-    - part: Astrophysics Applications
-      chapters:
+    - title: Astrophysics Applications
+      children:
         - file: astrophysics/index
           title: Applications Overview
         - file: astrophysics/stellar-physics/index
@@ -74,8 +118,8 @@ project:
           title: Radiative Transfer
         - file: astrophysics/advanced_topics/index
           title: Advanced Topics
-    - part: Short Projects
-      chapters:
+    - title: Short Projects
+      children:
         - file: short-projects/index
           title: Projects Overview
         - file: short-projects/0_project_submission_guide
@@ -86,14 +130,14 @@ project:
           title: "Project 2: N-Body Dynamics & Monte Carlo"
         - file: short-projects/3_project3_description
           title: "Project 3: Linear Regression & ML"
-    - part: Final Project
-      chapters:
+    - title: Final Project
+      children:
         - file: final-project/index
           title: Project Overview
         - file: final-project/final_project_guide
           title: Detailed Guide & Requirements
-    - part: Reference Materials
-      chapters:
+    - title: Reference Materials
+      children:
         - file: reference/index
           title: Reference Overview
         - file: reference/software-setup-guide
@@ -110,4 +154,39 @@ site:
   options:
     logo_text: "✨ASTR 596✨"
     custom_css: "_static/custom.css"
+    
+    # Footer customization
+    footer:
+      content: "ASTR 596: Modeling the Universe | Fall 2025 | Dr. Anna Rosen | San Diego State University"
+    
+    # Code execution and interactivity
+    launch_buttons:
+      notebook_interface: jupyterlab
+      binderhub_url: https://mybinder.org
+      colab_url: https://colab.research.google.com
+      thebe: true
+    
+    # Download options for students
+    downloads:
+      - pdf
+      - ipynb
+      - md
+    
+    # Repository integration
+    repository:
+      url: https://github.com/astrobytes-edu/astr596-modeling-universe
+      path_to_book: ""
+      branch: main
+    use_repository_button: true
+    use_issues_button: true
+    use_edit_page_button: true
+    
+    # Announcement banner (update as needed for deadlines/announcements)
+    # Uncomment and modify when you have announcements
+    # announcement: "🚨 Project 1 due Monday 11:59 PM! Office hours Thursday 11am."
+    
+    # Search configuration
+    search:
+      enable: true
+      limit_results: 20
 ```
