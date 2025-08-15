@@ -13,7 +13,7 @@ parts:
     title: AI Usage Guidelines
   - file: course-info/learning-guide-final
     title: Learning Guide
-  - file: course-info/course-overview
+  - file: course-info/course-overview-final
     title: Course Overview
   - file: course-info/why-astr596-different-final
     title: Why This Course is Different
