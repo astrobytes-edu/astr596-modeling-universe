@@ -1,4 +1,4 @@
-# ASTR 596 Learning Guide
+# Troubleshooting & Learning Guide
 
 ## Failure Recovery Protocols
 

@@ -1,4 +1,4 @@
-# Course Schedule
+# Course Schedule & Important Dates
 
 ## Schedule Structure
 

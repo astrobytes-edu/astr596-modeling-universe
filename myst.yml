@@ -15,6 +15,17 @@ project:
     url: https://www.sdsu.edu
   github: https://github.com/astrobytes-edu/astr596-modeling-universe
   
+  exclude:
+    - 'draft-*.md'                    # Any file starting with "draft-"
+    - 'course-info/draft-exam.md'     # Specific file you're working on
+    - 'projects/project4-wip.md'      # Work-in-progress project
+    - '**/NOTES.md'                   # Personal notes files
+    - 'test-*.md'                     # Test files
+    - 'TODO.md'                       # Your TODO list
+    - '02-python/2-advanced-topics/*.md'
+    - '03-python/3-jax-ecosystem/*.md'
+  
+  
   # Math rendering improvements
   math:
     mathjax3:
@@ -70,29 +81,29 @@ project:
         entries:
           - file: 02-python/index.md
             title: Why Python?
-          - file: 02-python/chapter1_environment.md
+          - file: 02-python/0-fundamentals/chapter1_environment.md
             title: Setting Up Your Environment
-          - file: 02-python/chapter2_fundamentals.md
+          - file: 02-python/0-fundamentals/chapter2_fundamentals.md
             title: Fundamentals & Control Flow
-          - file: 02-python/chapter3_functions.md
+          - file: 02-python/0-fundamentals/chapter3_functions.md
             title: Functions & Modules
-          - file: 02-python/chapter4_data_structures.md
+          - file: 02-python/0-fundamentals/chapter4_data_structures.md
             title: Data Structures
-          - file: 02-python/chapter5_object_oriented_programming.md
+          - file: 02-python/0-fundamentals/chapter5_object_oriented_programming.md
             title: Object-Oriented Programming
-          - file: 02-python/chapter6_error_handling.md
+          - file: 02-python/0-fundamentals/chapter6_error_handling.md
             title: Error Handling
-          - file: 02-python/chapter7_optimization.md
+          - file: 02-python/0-fundamentals/chapter7_optimization.md
             title: Optimizing Performance
       - title: Python Libraries
         entries:
-          - file: 02-python/01_numpy.md
+          - file: 02-python/scientific-libraries/01_numpy.md
             title: "NumPy: Numerical Python"
-          - file: 02-python/02_matplotlib.md
+          - file: 02-python/scientific-libraries/02_matplotlib.md
             title: "Matplotlib: Visualization with Python"
-          - file: 02-python/03_scipy.md
+          - file: 02-python/scientific-libraries/03_scipy.md
             title: "SciPy: Scientific Python"
-          - file: 02-python/04_pandas.md
+          - file: 02-python/scientific-libraries/04_pandas.md
             title: "Pandas: Data Analysis Library"
       # 03 Computational Methods
       - title: Computational Methods
