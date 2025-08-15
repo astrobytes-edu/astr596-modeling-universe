@@ -17,13 +17,9 @@ project:
   
   exclude:
     - 'draft-*.md'                    # Any file starting with "draft-"
-    - 'course-info/draft-exam.md'     # Specific file you're working on
-    - 'projects/project4-wip.md'      # Work-in-progress project
-    - '**/NOTES.md'                   # Personal notes files
-    - 'test-*.md'                     # Test files
     - 'TODO.md'                       # Your TODO list
-    - '02-python/2-advanced-topics/*.md'
-    - '03-python/3-jax-ecosystem/*.md'
+    - '02-python/03-advanced-topics/*.md'
+    - '02-python/04-jax-ecosystem/*.md'
   
   
   # Math rendering improvements
@@ -59,111 +55,6 @@ project:
     code_line_numbers: true
     code_copy: true
   
-  toc:
-    entries:
-      - file: index
-        title: ASTR 596 Home
-      - title: Course Information
-        entries:
-          - file: 01-course-info/syllabus.md
-            title: Syllabus & Policies
-          - file: 01-course-info/schedule.md
-            title: Schedule & Timeline
-          - file: 01-course-info/ai-guidelines-final.md
-            title: AI Usage Guidelines
-          - file: 01-course-info/learning-guide-final.md
-            title: Learning Guide
-          - file: 01-course-info/course-overview-final.md
-            title: Course Overview
-          - file: 01-course-info/why-astr596-different-final.md
-            title: Why This Course is Different
-      - title: Python
-        entries:
-          - file: 02-python/index.md
-            title: Why Python?
-          - file: 02-python/0-fundamentals/chapter1_environment.md
-            title: Setting Up Your Environment
-          - file: 02-python/0-fundamentals/chapter2_fundamentals.md
-            title: Fundamentals & Control Flow
-          - file: 02-python/0-fundamentals/chapter3_functions.md
-            title: Functions & Modules
-          - file: 02-python/0-fundamentals/chapter4_data_structures.md
-            title: Data Structures
-          - file: 02-python/0-fundamentals/chapter5_object_oriented_programming.md
-            title: Object-Oriented Programming
-          - file: 02-python/0-fundamentals/chapter6_error_handling.md
-            title: Error Handling
-          - file: 02-python/0-fundamentals/chapter7_optimization.md
-            title: Optimizing Performance
-      - title: Python Libraries
-        entries:
-          - file: 02-python/scientific-libraries/01_numpy.md
-            title: "NumPy: Numerical Python"
-          - file: 02-python/scientific-libraries/02_matplotlib.md
-            title: "Matplotlib: Visualization with Python"
-          - file: 02-python/scientific-libraries/03_scipy.md
-            title: "SciPy: Scientific Python"
-          - file: 02-python/scientific-libraries/04_pandas.md
-            title: "Pandas: Data Analysis Library"
-      # 03 Computational Methods
-      - title: Computational Methods
-        entries:
-          - file: 03-computational-methods/index.md
-            title: Methods Overview
-          - file: 03-computational-methods/python-fundamentals/index.md
-            title: Python Foundations
-          - file: 03-computational-methods/numerical-methods/index.md
-            title: 03-Numerical Methods
-          - file: 03-computational-methods/machine-learning/index.md
-            title: 03-Machine Learning
-          - file: 03-computational-methods/modern-frameworks/index.md
-            title: Modern Frameworks
-      # 04 Astrophysics
-      - title: Astrophysics Applications
-        entries:
-          - file: 04-astrophysics/index.md
-            title: Applications Overview
-          - file: 04-astrophysics/stellar-physics/index.md
-            title: Stellar Physics
-          - file: 04-astrophysics/gravitational-dynamics/index.md
-            title: Gravitational Dynamics
-          - file: 04-astrophysics/radiative-transfer/index.md
-            title: Radiative Transfer
-          - file: 04-astrophysics/advanced_topics/index.md
-            title: Advanced Topics
-      #05 Short Projects
-      - title: Short Projects
-        entries:
-          - file: 05-short-projects/index.md
-            title: Projects Overview
-          - file: 05-short-projects/0_project_submission_guide.md
-            title: Submission Guidelines
-          - file: 05-short-projects/1_project1_description.md
-            title: "Project 1: Python/OOP/Stellar Physics"
-          - file: 05-short-projects/2_project2_description.md
-            title: "Project 2: N-Body Dynamics & Monte Carlo"
-          - file: 05-short-projects/3_project3_description.md
-            title: "Project 3: Linear Regression & ML"
-      #06 Final Project
-      - title: Final Project
-        entries:
-          - file: 06-final-project/index.md
-            title: Project Overview
-          - file: 06-final-project/final_project_guide.md
-            title: Detailed Guide & Requirements
-      # 07 Reference Materials
-      - title: Reference & Trouble Shooting Materials
-        entries:
-          - file: 07-reference/index.md
-            title: Reference Overview
-          - file: 07-reference/software-setup-guide.md
-            title: Software Setup Guide
-          - file: 07-reference/cli-intro-guide.md
-            title: CLI Intro Guide
-          - file: 07-reference/git-intro-guide.md
-            title: Git Intro Guide
-          - file: 07-reference/cli-advanced-guide.md
-            title: CLI Advanced Guide (Optional)
 site:
   template: book-theme
   title: "ASTR 596: Modeling the Universe"
