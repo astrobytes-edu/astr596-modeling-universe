@@ -54,99 +54,104 @@ project:
         title: ASTR 596 Home
       - title: Course Information
         entries:
-          - file: course-info/syllabus
+          - file: 01-course-info/syllabus
             title: Syllabus & Policies
-          - file: course-info/schedule
+          - file: 01-course-info/schedule
             title: Schedule & Timeline
-          - file: course-info/ai-guidelines-final
+          - file: 01-course-info/ai-guidelines-final
             title: AI Usage Guidelines
-          - file: course-info/learning-guide-final
+          - file: 01-course-info/learning-guide-final
             title: Learning Guide
-          - file: course-info/course-overview-final
+          - file: 01-course-info/course-overview-final
             title: Course Overview
-          - file: course-info/why-astr596-different-final
+          - file: 01-course-info/why-astr596-different-final
             title: Why This Course is Different
       - title: Python
         entries:
-          - file: python/index
+          - file: 02-python/index
             title: Why Python?
-          - file: python/chapter1_environment
+          - file: 02-python/chapter1_environment
             title: Setting Up Your Environment
-          - file: python/chapter2_fundamentals
+          - file: 02-python/chapter2_fundamentals
             title: Fundamentals & Control Flow
-          - file: python/chapter3_functions
+          - file: 02-python/chapter3_functions
             title: Functions & Modules
-          - file: python/chapter4_data_structures
+          - file: 02-python/chapter4_data_structures
             title: Data Structures
-          - file: python/chapter5_object_oriented_programming
+          - file: 02-python/chapter5_object_oriented_programming
             title: Object-Oriented Programming
-          - file: python/chapter6_error_handling
+          - file: 02-python/chapter6_error_handling
             title: Error Handling
-          - file: python/chapter7_optimization
-            title: "NumPy: Performance & Optimization"
+          - file: 02-python/chapter7_optimization
+            title: Optimizing Performance
       - title: Python Libraries
         entries:
-          - file: python/01_numpy
+          - file: 02-python/01_numpy
             title: "NumPy: Numerical Python"
-          - file: python/02_matplotlib
+          - file: 02-python/02_matplotlib
             title: "Matplotlib: Visualization with Python"
-          - file: python/03_scipy
+          - file: 02-python/03_scipy
             title: "SciPy: Scientific Python"
-          - file: python/04_pandas
+          - file: 02-python/04_pandas
             title: "Pandas: Data Analysis Library"
+      # 03 Computational Methods
       - title: Computational Methods
         entries:
-          - file: computational-methods/index
+          - file: 03-computational-methods/index
             title: Methods Overview
-          - file: computational-methods/python-fundamentals/index
+          - file: 03-computational-methods/python-fundamentals/index
             title: Python Foundations
-          - file: computational-methods/numerical-methods/index
-            title: Numerical Methods
-          - file: computational-methods/machine-learning/index
-            title: Machine Learning
-          - file: computational-methods/modern-frameworks/index
+          - file: 03-computational-methods/numerical-methods/index
+            title: 03-Numerical Methods
+          - file: 03-computational-methods/machine-learning/index
+            title: 03-Machine Learning
+          - file: 03-computational-methods/modern-frameworks/index
             title: Modern Frameworks
+      # 04 Astrophysics
       - title: Astrophysics Applications
         entries:
-          - file: astrophysics/index
+          - file: 04-astrophysics/index
             title: Applications Overview
-          - file: astrophysics/stellar-physics/index
+          - file: 04-astrophysics/stellar-physics/index
             title: Stellar Physics
-          - file: astrophysics/gravitational-dynamics/index
+          - file: 04-astrophysics/gravitational-dynamics/index
             title: Gravitational Dynamics
-          - file: astrophysics/radiative-transfer/index
+          - file: 04-astrophysics/radiative-transfer/index
             title: Radiative Transfer
-          - file: astrophysics/advanced_topics/index
+          - file: 04-astrophysics/advanced_topics/index
             title: Advanced Topics
+      #05 Short Projects
       - title: Short Projects
         entries:
-          - file: short-projects/index
+          - file: 05-short-projects/index
             title: Projects Overview
-          - file: short-projects/0_project_submission_guide
+          - file: 05-short-projects/0_project_submission_guide
             title: Submission Guidelines
-          - file: short-projects/1_project1_description
+          - file: 05-short-projects/1_project1_description
             title: "Project 1: Python/OOP/Stellar Physics"
-          - file: short-projects/2_project2_description
+          - file: 05-short-projects/2_project2_description
             title: "Project 2: N-Body Dynamics & Monte Carlo"
-          - file: short-projects/3_project3_description
+          - file: 05-short-projects/3_project3_description
             title: "Project 3: Linear Regression & ML"
+      #06 Final Project
       - title: Final Project
         entries:
-          - file: final-project/index
+          - file: 06-final-project/index
             title: Project Overview
-          - file: final-project/final_project_guide
+          - file: 06-final-project/final_project_guide
             title: Detailed Guide & Requirements
-      - title: Reference Materials
+      # 07 Reference Materials
+      - title: Reference & Trouble Shooting Materials
         entries:
-          - file: reference/index
+          - file: 07-reference/index
             title: Reference Overview
-          - file: reference/software-setup-guide
+          - file: 07-reference/software-setup-guide
             title: Software Setup Guide
-          - file: reference/cli-intro-guide
+          - file: 07-reference/cli-intro-guide
             title: CLI Intro Guide
-          - file: reference/git-intro-guide
+          - file: 07-reference/git-intro-guide
             title: Git Intro Guide
-          - file: reference/cli-advanced-guide
+          - file: 07-reference/cli-advanced-guide
             title: CLI Advanced Guide (Optional)
 site:
   template: book-theme
