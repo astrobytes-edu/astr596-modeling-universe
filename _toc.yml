@@ -9,13 +9,13 @@ parts:
     title: Syllabus & Policies
   - file: course-info/schedule
     title: Schedule & Timeline
-  - file: course-info/ai-guidelines
+  - file: course-info/ai-guidelines-final
     title: AI Usage Guidelines
-  - file: course-info/learning-guide
+  - file: course-info/learning-guide-final
     title: Learning Guide
   - file: course-info/course-overview
     title: Course Overview
-  - file: course-info/why-astr596-is-different
+  - file: course-info/why-astr596-different-final
     title: Why This Course is Different
 
 - caption: Python
