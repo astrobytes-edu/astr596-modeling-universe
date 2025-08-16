@@ -58,11 +58,11 @@ Upon successful completion of this course, students will be able to:
 
 ### Textbooks (Free Online Resources)
 
-- **Required:** ASTR 596 Course Website (powered by Jupyterbook/MystMD) [www.astrobytes-edu.github.io/astr596-modeling-universe](https://astrobytes-edu.github.io/astr596-modeling-universe/)
+- **Required:** Rosen (2025), *ASTR 596 Course Website* (powered by Jupyterbook/MystMD) [www.astrobytes-edu.github.io/astr596-modeling-universe](https://astrobytes-edu.github.io/astr596-modeling-universe/)
 
-- Linge \& Langtangen (2020), [*Programming for Computations - Python (2nd Edition)](https://library.oapen.org/bitstream/id/35449b29-cca0-4d71-8553-2d49609b75fd/1007055.pdf), Springer Open
+- Linge & Langtangen (2020), [*Programming for Computations - Python (2nd Edition)](https://library.oapen.org/bitstream/id/35449b29-cca0-4d71-8553-2d49609b75fd/1007055.pdf), Springer Open
 
-- VanderPlas (2016), [*Python Data Science Handbook*][Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/), O'Reilly
+- Deisenroth, Faisal, \& Ong (2020), [*Mathematics for Machine Learning*](https://mml-book.github.io/), Cambridge University Press
 
 - Ting (2025), [*Statistical Machine Learning for Astronomy*](https://arxiv.org/abs/2506.12230), ArXiV.org
 
