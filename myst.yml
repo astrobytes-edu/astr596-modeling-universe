@@ -18,9 +18,10 @@ project:
   exclude:
     - 'draft-*.md'                    # Any file starting with "draft-"
     - 'TODO.md'                       # Your TODO list
-    - '02-python/03-advanced-topics/*.md'
-    - '02-python/04-jax-ecosystem/*.md'
-  
+    - 'instructor-notes/*'
+    - '03-python/03-advanced-scientific-computing/*.md'
+    - '03-python/04-parallel-and-hpc/*.md'
+    - '03-python/05-modern-approaches-jax-ecosystem/*.md'
   
   # Math rendering improvements
   math:
