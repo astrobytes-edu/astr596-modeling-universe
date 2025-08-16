@@ -1,99 +1,320 @@
+# MyST Project Configuration
 # See docs at: https://mystmd.org/guide/frontmatter
 version: 1
+
 project:
+  # Project metadata
   id: 76c4875f-ba4c-4a35-bc58-52304ee2705e
   title: "ASTR 596: Modeling the Universe"
-  keywords: [computational astrophysics, python, machine learning, monte carlo, neural networks, radiative transfer, bayesian inference, JAX]
+  description: "Graduate-level computational astrophysics course emphasizing glass-box modeling and modern computational frameworks"
+  keywords: 
+    - computational astrophysics
+    - python
+    - machine learning
+    - monte carlo
+    - neural networks
+    - radiative transfer
+    - bayesian inference
+    - JAX
+  
+  # Author information
   authors:
     - name: Anna Rosen
       email: alrosen@sdsu.edu
-      affiliation: San Diego State University
-  license: CC-BY-4.0
-  subject: Modeling the Universe
+      affiliations:
+        - San Diego State University
+      orcid: 0000-0000-0000-0000  # Add your ORCID if available
+  
+  # License and copyright
+  license:
+    content: CC-BY-4.0
+    code: MIT
+  
+  # Venue information
   venue:
     title: ASTR 596 - Fall 2025
     url: https://www.sdsu.edu
-  github: https://github.com/astrobytes-edu/astr596-modeling-universe
   
+  # Repository information
+  github: https://github.com/astrobytes-edu/astr596-modeling-universe
+  binder: https://mybinder.org/v2/gh/astrobytes-edu/astr596-modeling-universe/main
+  
+  # Build configuration
   exclude:
-    - 'draft-*.md'                    # Any file starting with "draft-"
-    - 'TODO.md'                       # Your TODO list
-    - 'instructor-notes/*'
+    - 'draft-*.md'
+    - 'TODO.md'
+    - 'instructor-notes/**'
     - '03-python/03-advanced-scientific-computing/*.md'
     - '03-python/04-parallel-and-hpc/*.md'
     - '03-python/05-modern-approaches-jax-ecosystem/*.md'
+    - '.ipynb_checkpoints/**'
+    - '__pycache__/**'
+    - '*.pyc'
+    - '.DS_Store'
   
-  # Math rendering improvements
-  math:
-    mathjax3:
-      tex:
-        packages:
-          '[+]': ['ams', 'physics']
-        macros:
-          # Common macros for the course
-          vec: ['\boldsymbol{#1}', 1]
-          del: '\nabla'
-          avg: ['\langle #1 \rangle', 1]
-          norm: ['\left\lVert #1 \right\rVert', 1]
+  # Table of contents configuration
+  toc:
+    format: jb-book
+    chapters:
+      - file: index
+      - file: syllabus
+      - file: 01-introduction/index
+        sections:
+          - file: 01-introduction/01-course-overview
+          - file: 01-introduction/02-computational-thinking
+      - file: 02-python-fundamentals/index
+        sections:
+          - file: 02-python-fundamentals/01-variables-types
+          - file: 02-python-fundamentals/02-control-flow
+          - file: 02-python-fundamentals/03-functions
+          - file: 02-python-fundamentals/04-data-structures
+      - file: 03-python/index
+        sections:
+          - file: 03-python/01-core-language/*.md
+          - file: 03-python/02-scientific-computing-essentials/*.md
+      - file: 09-robust-computing/index
+        sections:
+          - file: 09-robust-computing/01-error-handling
+          - file: 09-robust-computing/02-testing-debugging
   
-  # MyST markdown extensions
-  myst:
-    enable_extensions:
-      - amsmath
-      - colon_fence
-      - deflist
-      - dollarmath
-      - html_admonition
-      - linkify
-      - replacements
-      - smartquotes
-      - substitution
-      - tasklist
+  # Bibliography configuration
+  bibliography:
+    - references.bib
   
-  # Code formatting
-  settings:
-    code_style: github
-    code_line_numbers: true
-    code_copy: true
-  
+  # Export and download formats
+  exports:
+    - format: pdf
+      template: book
+      output: exports/astr596-textbook.pdf
+    - format: tex
+      template: book
+      output: exports/astr596-textbook.tex
+    - format: docx
+      output: exports/astr596-textbook.docx
+
 site:
-  template: book-theme
   title: "ASTR 596: Modeling the Universe"
+  template: book-theme
+  
+  # Site navigation and options
   options:
-    logo_text: "✨ASTR 596✨"
-    custom_css: "_static/custom.css"
+    logo: _static/logo.svg  # Add your logo file
+    favicon: _static/favicon.ico  # Add favicon
     
-    # Footer customization
-    footer:
-      content: "ASTR 596: Modeling the Universe | Fall 2025 | Dr. Anna Rosen | San Diego State University"
+    # Navigation bar
+    navbar_number_sections: true
+    navbar_center:
+      - title: Home
+        url: /
+      - title: Syllabus
+        url: /syllabus
+      - title: Schedule
+        url: /schedule
+      - title: Resources
+        url: /resources
     
-    # Code execution and interactivity
+    # Footer configuration
+    extra_footer: |
+      <p>ASTR 596: Modeling the Universe | Fall 2025<br>
+      Dr. Anna Rosen | San Diego State University<br>
+      <a href="https://github.com/astrobytes-edu/astr596-modeling-universe">
+        <i class="fab fa-github"></i> View on GitHub
+      </a></p>
+    
+    # Code and execution
     launch_buttons:
       notebook_interface: jupyterlab
       binderhub_url: https://mybinder.org
       colab_url: https://colab.research.google.com
       thebe: true
     
-    # Download options for students
-    downloads:
-      - pdf
-      - ipynb
-      - md
-    
     # Repository integration
-    repository:
-      url: https://github.com/astrobytes-edu/astr596-modeling-universe
-      path_to_book: ""
-      branch: main
     use_repository_button: true
     use_issues_button: true
     use_edit_page_button: true
+    repository_url: https://github.com/astrobytes-edu/astr596-modeling-universe
+    repository_branch: main
     
-    # Announcement banner (update as needed for deadlines/announcements)
-    # Uncomment and modify when you have announcements
-    # announcement: "🚨 Project 1 due Monday 11:59 PM! Office hours Thursday 11am."
+    # Analytics (optional - add your ID)
+    # google_analytics_id: G-XXXXXXXXXX
+
+# MyST Parser Configuration
+myst:
+  # Enable MyST extensions
+  enable_extensions:
+    - amsmath
+    - colon_fence
+    - deflist
+    - dollarmath
+    - fieldlist
+    - html_admonition
+    - html_image
+    - linkify
+    - replacements
+    - smartquotes
+    - strikethrough
+    - substitution
+    - tasklist
+    - attrs_inline
+    - attrs_block
+  
+  # Configure extensions
+  myst_number_code_blocks:
+    - python
+    - javascript
+  
+  myst_heading_anchors: 3
+  
+  myst_footnote_transition: true
+  
+  # Substitutions for common terms
+  myst_substitutions:
+    astr596: "ASTR 596: Modeling the Universe"
+    python: Python 3.11+
+    jax: JAX
+    numpy: NumPy
     
-    # Search configuration
-    search:
-      enable: true
-      limit_results: 20
+  # Enable figure numbering
+  numfig: true
+  numfig_secnum_depth: 2
+  
+  # Math rendering with custom macros
+  mathjax3_config:
+    tex:
+      packages:
+        '[+]': ['ams', 'physics', 'color']
+      macros:
+        # Vector notation
+        vec: ['\\boldsymbol{#1}', 1]
+        bvec: ['\\mathbf{#1}', 1]
+        # Operators
+        del: '\\nabla'
+        grad: '\\nabla'
+        div: '\\nabla \\cdot'
+        curl: '\\nabla \\times'
+        # Statistical
+        avg: ['\\langle #1 \\rangle', 1]
+        var: ['\\text{Var}\\left[#1\\right]', 1]
+        std: ['\\sigma_{#1}', 1]
+        # Linear algebra
+        norm: ['\\left\\lVert #1 \\right\\rVert', 1]
+        abs: ['\\left\\lvert #1 \\right\\rvert', 1]
+        # Common astronomy symbols
+        msun: '\\,M_\\odot'
+        rsun: '\\,R_\\odot'
+        lsun: '\\,L_\\odot'
+
+# Execution Configuration
+execute:
+  # Execute notebooks during build
+  execute_notebooks: cache
+  
+  # Execution patterns
+  exclude_patterns:
+    - '*draft*'
+    - '*test*'
+    - 'instructor-notes/*'
+  
+  # Timeout for cell execution (seconds)
+  timeout: 120
+  
+  # Allow errors in execution
+  allow_errors: false
+  
+  # Cache directory
+  cache: .jupyter_cache
+  
+  # Kernel name
+  kernel_name: python3
+
+# HTML Output Configuration  
+html:
+  # Favicon and logos
+  favicon: _static/favicon.ico
+  logo: _static/logo.png
+  
+  # Use custom CSS
+  css:
+    - _static/custom.css
+  
+  # JavaScript files
+  js:
+    - _static/custom.js
+    - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js
+  
+  # Home page configuration
+  home_page_in_navbar: true
+  
+  # Comments system (optional)
+  comments:
+    hypothesis: false
+    utterances:
+      repo: "astrobytes-edu/astr596-modeling-universe"
+      issue-term: "pathname"
+      theme: "github-light"
+
+# LaTeX/PDF Output Configuration
+latex:
+  latex_engine: xelatex
+  use_jupyterbook_latex: true
+  latex_documents:
+    targetname: astr596-textbook.tex
+    title: "ASTR 596: Modeling the Universe"
+    author: "Anna Rosen"
+    theme: manual
+    
+# Sphinx Configuration (Advanced)
+sphinx:
+  config:
+    # Basic Sphinx configuration
+    language: en
+    html_theme: sphinx_book_theme
+    html_theme_options:
+      home_page_in_toc: true
+      repository_url: https://github.com/astrobytes-edu/astr596-modeling-universe
+      repository_branch: main
+      use_repository_button: true
+      use_issues_button: true
+      use_edit_page_button: true
+      use_download_button: true
+      use_fullscreen_button: true
+      launch_buttons:
+        binderhub_url: https://mybinder.org
+        colab_url: https://colab.research.google.com
+        notebook_interface: jupyterlab
+        thebe: true
+    
+    # Extensions
+    extensions:
+      - sphinx_copybutton
+      - sphinx_design
+      - sphinx_inline_tabs
+      - sphinx_proof
+      - sphinx_togglebutton
+      - sphinxcontrib.mermaid
+      - sphinx_thebe
+      
+    # Code highlighting
+    pygments_style: sphinx
+    
+    # Numbering
+    numfig: true
+    numfig_secnum_depth: 2
+    
+    # Copybutton configuration
+    copybutton_prompt_text: ">>> |\\$ "
+    copybutton_prompt_is_regexp: true
+    
+    # Proof environment configuration
+    proof_theorem_types:
+      - "theorem"
+      - "lemma"
+      - "corollary"
+      - "proposition"
+      - "definition"
+      - "example"
+      - "remark"
+      - "note"
+    
+    # Mermaid configuration
+    mermaid_version: "10.6.1"
