@@ -7,8 +7,8 @@
 
 - **Dr. Anna Rosen**
 - **Office:** Physics 239
-- **Office Hours:** Thursdays 11:00 AM - 12:00 PM (also available by appointment or virtually)
-- **Email:** [alrosen@sdsu.edu](alrosen@sdsu.edu)
+- **Hacking Hours:** TBD (also available by appointment or virtually)
+- **Email:** <alrosen@sdsu.edu>
 
 ## Course Information
 
@@ -16,7 +16,7 @@
 - **Meeting Time:** Fridays 11:00 AM - 1:40 PM
 - **Format:** ~30-45min lecture review + 2h hands-on project work
 - **Location:** PA 215
-- **Course Website:** [https://astrobytes-edu.github.io/astr596-modeling-universe/](https://astrobytes-edu.github.io/astr596-modeling-universe/)
+- **Course Website:** <https://astrobytes-edu.github.io/astr596-modeling-universe/>
 - **Platforms:** Canvas, Slack, GitHub Classroom
 - **Expectations:** Students must come prepared having completed assigned JupyterBook readings
 
@@ -30,7 +30,7 @@
 
 **Friday Class Sessions:**
 
-- **11:00-11:45 AM:** Interactive review of week's concepts, Q&A on readings, clarification of project requirements
+- **11:00-11:45 AM:** Interactive review of the week's concepts, Q&A on required course readings, clarification of project requirements
 - **11:45 AM-1:40 PM:** Hands-on project work with pair programming, implementation support, and peer collaboration
 
 ## Course Description
@@ -54,7 +54,20 @@ Upon successful completion of this course, students will be able to:
 7. **Integrate AI tools strategically** through a scaffolded three-phase approach while maintaining deep understanding.
 8. **Simulate advanced astrophysical phenomena** including N-body dynamics, stellar physics, and radiative processes.
 9. **Communicate computational methods and scientific results effectively** through written reports and code documentation.
-10. **Think computationally about physics** developing intuition for numerical stability and convergence.
+10. **Think computationally about astrophysics** developing intuition for numerical stability and convergence.
+
+**Where outcomes are assessed**
+
+- LO1 (implement schemes) → Projects 1–6, Final Project
+- LO2 (professional practices) → repo hygiene, tests, Growth Memos
+- LO3 (numerical techniques) → Projects 2–4
+- LO4 (Monte Carlo methods) → Projects 4–5
+- LO5 (build NNs) → Final Project
+- LO6 (JAX migration) → Final Project
+- LO7 (strategic AI) → Growth Memos + code comments
+- LO8 (advanced phenomena) → Projects 2–4 (N-body/RT)
+- LO9 (communication) → reports + Technical Growth Synthesis
+- LO10 (numerical intuition) → reflections + error analyses
 
 ## Materials
 
@@ -92,15 +105,22 @@ Upon successful completion of this course, students will be able to:
 |-----------|--------|-------------|
 | **Projects 1-6** | 50% | 8.33% each, due biweekly on Mondays via GitHub Classroom |
 | **Growth Memos** | 10% | 6 reflections at 1.67% each, submitted to Canvas as PDF |
-| **Technical Growth Synthesis** | 5% | Cumulative reflection due Dec 11 via Canvas |
-| **Final Project** | 25% | JAX implementation with research component |
+| **Technical Growth Synthesis** | 5% | Cumulative reflection due Thu Dec 11, 11:59 pm PT via Canvas |
+| **Final Project** | 25% | JAX implementation with research component due Thu Dec 18, 11:59 pm PT via GitHub Classroom |
 | **Participation & Engagement** | 10% | Active contribution and collaboration |
 
 > **For detailed project requirements and rubrics, see:** [Project Submission Guide](short-projects/0_project_submission_guide)
 
-**Participation & Engagement (10%):** Evaluated based on demonstrated preparation for class (engagement with readings, thoughtful questions), productive collaboration during pair programming, and consistent contribution to the learning environment. Chronic tardiness or lack of preparation will negatively impact this grade. This is assessed through instructor observation throughout the semester.
+**Participation & Engagement — 10%**
 
-### Grading Scale
+| Level | Observable weekly behaviors |
+|------|------------------------------|
+| 10/10 | Prepared (specific Qs on readings), active in pair work, posts 1 helpful note or code review tip, constructive feedback |
+| 8/10  | Prepared, steady collaboration, occasional questions |
+| 6/10  | Minimal prep; reactive participation; rare Q&A |
+| 4/10  | Unprepared; disengaged; slows partner progress |
+
+### **Grading Scale**
 
 - A: 93-100% | A-: 90-92%
 - B+: 87-89% | B: 83-86% | B-: 80-82%
@@ -110,30 +130,41 @@ Upon successful completion of this course, students will be able to:
 
 ## Course Policies
 
-### Attendance Policy
+### **Attendance Policy**
 
-Attendance at Friday sessions is essential. While not explicitly tracked, participation requires presence. Two absences permitted without penalty; additional absences may impact participation grade and project success.
+Participation is based on engagement, not roll call. Frequent absences will lower your participation grade. Habitual tardiness disrupts the class and will also negatively impact your participation grade.**
 
-### Late Work Policy
+### **Late Work Policy**
 
-- One no-questions-asked 2-day extension per semester
-- Must be requested 24+ hours before deadline
-- 10% penalty per day after grace period
-- Early submissions encouraged
+- Extension requested ≥24h before deadline → 2-day grace, no penalty.
+- Submitted 36h late with no extension → 20% deduction (10%/day).
+- $>3$ days late without prior arrangement → no credit barring documented emergency.
 
-### Collaboration Policy
+### **Regrade Requests**
 
-Pair programming encouraged during lab sessions. All submitted code must be individually written and understood. You must be able to explain every line of code you submit.
+- Submit within 7 calendar days of grade release.
+- ≤200-word case referencing rubric criteria.
+- I re-evaluate the entire item (score may go up/down/unchanged).
+
+### **Collaboration & Pair Programming**
+
+- **Allowed:** discussing strategy, whiteboarding equations & algorithm design, sharing tests you wrote.  
+- **Not allowed:** sharing solution code or copying any code blocks.  
+- **Must:** credit collaborators and list contributions in README.md project document.
 
 ### AI Usage Policy
 
 This course uses a three-phase scaffolded approach to AI integration:
 
-- **Phase 1 (Weeks 1-4):** Foundation building with minimal AI
-- **Phase 2 (Weeks 5-8):** Strategic integration with verification
-- **Phase 3 (Weeks 9-16):** Professional practice with critical evaluation
+- **Universal rules (apply all term):** Docs-first; verify all AI suggestions (tests/derivations); disclose AI use briefly in submissions; if you can’t explain a line of code, you can’t submit it.
 
-> **For complete AI usage guidelines and examples, see:** [AI Usage Policy & Guide](course-info/ai-guidelines)
+- **Phase 1 — Foundations (Weeks 1–6):** No AI-generated first drafts of code. After 30 minutes of documented struggle, AI may be used for debugging/clarification only.
+
+- **Phase 2 — Strategic Integration (Weeks 7–12):** Once a baseline solution works, AI may propose refactors, tests, docstrings, and performance ideas. Keep/Reject each suggestion with a 1–2 line rationale in comments.
+
+- **Phase 3 — Professional Practice (Weeks 13–15 + finals week):** AI allowed for acceleration/boilerplate. All non-trivial logic must be authored or rewritten from memory and justified.
+
+**For complete AI usage guidelines and examples, see:** [AI Usage Policy & Learning Guide](02-astr596-ai-policy)
 
 ## Academic Integrity
 

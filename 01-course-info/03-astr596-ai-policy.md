@@ -1,14 +1,14 @@
 # ASTR 596 AI Policy & Learning Framework
 
-> **Living Document Notice:** Given the rapid evolution of AI in education, this policy is essentially a pedagogical experiment. We're exploring together how to best integrate these powerful tools while maintaining deep learning. Your feedback and experiences will help refine these guidelines. Open communication is essential—if something isn't working or you discover better approaches, please share during Hacking Hours or class discussions. We're all learning how to navigate this new landscape together.
+**Living Document Notice:** Given the rapid evolution of AI in education, this policy is essentially a pedagogical experiment. We're exploring together how to best integrate these powerful tools while maintaining deep learning. Your feedback and experiences will help refine these guidelines. Open communication is essential—if something isn't working or you discover better approaches, please share during Hacking Hours or class discussions. We're all learning how to navigate this new landscape together.
 
-## TL;DR Quick Reference
+## TL;DR Quick Reference (AI Policy)
 
-| Phase | Projects | Coding with AI | Learning with AI | Key Rule |
-|-------|----------|---------------|------------------|----------|
-| **1: Foundation** | Projects 1-3<br>(Python/OOP, N-body, Regression) | ❌ No initial implementation<br>✅ Debugging after 30min struggle<br>✅ Conceptual understanding of code | ✅ Always OK for physics concepts<br>✅ NotebookLM for study guides<br>✅ Understanding docs & syntax<br>✅ "How does this function work?" | Struggle first, AI second<br>Docs are primary source |
-| **2: Strategic** | Projects 4-6<br>(MCRT, Bayesian/MCMC, GP) | ✅ After working solution<br>✅ With documentation<br>✅ Improving existing code | ✅ All conceptual learning<br>✅ Extension ideas<br>✅ Paper summaries<br>✅ "Why does this approach work?" | Document & verify everything<br>Cross-check with official docs |
-| **3: Professional** | Final Project<br>(Neural Networks + JAX) | ✅ Complex problems<br>✅ Optimization<br>❌ Still no copy-paste | ✅ Research exploration<br>✅ Advanced topics<br>✅ Career prep | Must explain every line |
+| Phase | Weeks | Coding with AI | Learning with AI | Key Rule |
+|------|-------|----------------|------------------|----------|
+| **1: Foundation** | 1–6 | ❌ No first-draft code. ✅ Debugging **after 30 min** documented effort. | ✅ Always allowed, **docs-first**; use AI to clarify after reading | Struggle → Docs → AI (debug) |
+| **2: Strategic** | 7–12 | ✅ After a working baseline; AI for refactors/tests/perf with verification | ✅ Always allowed (summaries, extensions) | Verify & cite source; explain why kept/rejected |
+| **3: Professional** | 13–16 | ✅ Acceleration/boilerplate; ❌ Not for logic you can’t explain | ✅ Research exploration; career prep | **Explain every line** |
 
 **Universal Rules:**
 
@@ -20,22 +20,22 @@
 
 ## Quick Links
 
-- [Course Syllabus](course-info/syllabus)
-- [Why This Course is Different](course-info/why-astr596-is-different)
-- [Learning Guide](course-info/learning-guide)
+- [Course Syllabus](astr596-syllabus)
+- [Why This Course is Different](why-astr596-is-different)
+- [Learning Guide](astr596-learning-guide)
 - [Project Submission Guide](short-projects/0_project_submission_guide)
 
-## Should I Use AI for This? Decision Flowchart
+## **Should I Use AI for This? Decision Flowchart**
 
 ```mermaid
 flowchart TD
     Start[I need help with something] --> Q1{What week is it?}
     
-    Q1 -->|Weeks 1-4| Phase1[Phase 1: Foundation]
-    Q1 -->|Weeks 5-8| Phase2[Phase 2: Strategic]
-    Q1 -->|Weeks 9-16| Phase3[Phase 3: Professional]
+    Q1 -->|Weeks 1-6| Phase1[Phase 1: Foundation]
+    Q1 -->|Weeks 7-12| Phase2[Phase 2: Strategic]
+    Q1 -->|Weeks 13-16| Phase3[Phase 3: Professional]
     
-    Phase1 --> P1Q1{Have I struggled for<br/>20-30 minutes?}
+    Phase1 --> P1Q1{Have I struggled for<br/>~30 minutes?}
     P1Q1 -->|No| Struggle[Keep trying!<br/>Check documentation first]
     P1Q1 -->|Yes| P1Q2{Is it a debugging issue?}
     P1Q2 -->|No| NoAI1[Don't use AI yet<br/>Ask instructor/peers]
@@ -73,7 +73,8 @@ flowchart TD
 
 **Our Approach**: Develop core competencies through productive struggle, then use AI strategically to amplify performance.
 
-**Research Foundation**: 
+**Research Foundation**:
+
 - **Ting & O'Briain (2025)**: Astronomy students using structured AI with documentation requirements showed decreased dependence over time and accelerated learning
 - **Kasneci et al. (2023)**: Scaffolded AI use enhances STEM learning when properly integrated
 - **Bitzenbauer (2023)**: AI chatbots effective when students engage critically with outputs
@@ -84,8 +85,9 @@ These studies confirm that scaffolded AI use with reflection enhances rather tha
 ### 🤔 When in Doubt
 
 **Build judgment through community:**
-1. **Come to Hacking Hours** (Thursdays 11 AM - 12 PM)
-2. **Ask during Friday class** 
+
+1. **Come to Hacking Hours** (TBD)
+2. **Ask during Friday class**
 3. **Discuss with classmates**
 4. **Email if urgent**: <alrosen@sdsu.edu>
 
@@ -96,10 +98,9 @@ Your questions help everyone develop better intuition!
 ### In-Code Documentation Template
 
 ```python
-# AI-assisted: [Tool name] helped with [specific aspect]
-# Verified against: [documentation URL or source]
-# Original approach: [what you tried first]
-# Why AI suggestion works: [your understanding]
+# AI: [Tool] suggested [very short what]
+# Verified: [doc/source or quick check: limit test / unit / plot]
+# Because: [1 short reason you kept it]
 def your_function():
     # Implementation here
     pass
@@ -134,27 +135,31 @@ Write this however works for you—paragraphs, bullets, diagrams. Emojis encoura
 ## Scaffolded AI Integration Framework
 
 ### Phase 1: Foundation Building (Weeks 1-6)
+
 **Dates: Aug 29 - Oct 10** | **Rule: Struggle First, AI Second**
 
-- **Primary**: Documentation and manual implementation
+- **Primary**: Documentation and manual code implementation
 - **30-Minute Rule**: Minimum struggle before AI
 - **AI Usage**: Debugging only after genuine effort
 - **Document**: All interactions with verification
 - **Friday Labs**: Try solving with your partner first—two brains often beat ChatGPT
 
 **Using AI for Conceptual Understanding (Always OK):**
+
 - ✅ **OK**: Open NumPy docs → confused by broadcasting → "Can you explain NumPy broadcasting with examples?"
 - ✅ **OK**: "Why does matplotlib need both Figure and Axes objects?"
 - ❌ **NOT OK**: "Write a function to calculate stellar luminosity" (that's implementation)
 - **The Rule**: Docs open first, identify confusion, then ask AI to clarify
 
 **What counts as genuine effort:**
+
 - Document 3+ approaches attempted
 - Investigate specific errors
 - Consult relevant documentation
 - Create minimal reproducible example
 
 **Good Example:**
+
 ```python
 # Spent 30 min on matplotlib subplots
 # Checked docs, AI clarified Figure vs Axes
@@ -162,7 +167,8 @@ Write this however works for you—paragraphs, bullets, diagrams. Emojis encoura
 fig, axes = plt.subplots(2, 2, figsize=(10, 8))
 ```
 
-### Phase 2: Strategic Integration (Weeks 7-12)
+### **Phase 2: Strategic Integration (Weeks 7-12)**
+
 **Dates: Oct 11 - Nov 21** | **Rule: Documentation-First**
 
 - **Primary**: Continue documentation-first
@@ -170,7 +176,8 @@ fig, axes = plt.subplots(2, 2, figsize=(10, 8))
 - **Verify**: Cross-reference all suggestions
 - **Evaluate**: Explain why suggestions work
 
-### Phase 3: Professional Practice (Weeks 13-16)
+### **Phase 3: Professional Practice (Weeks 13-16)**
+
 **Dates: Nov 22 - Dec 18** | **Rule: AI as Productivity Tool**
 
 - **Assumption**: Foundation enables evaluation
@@ -179,6 +186,7 @@ fig, axes = plt.subplots(2, 2, figsize=(10, 8))
 - **Continue**: Citing all usage
 
 **Now AI can handle tedious tasks:**
+
 - Generate docstrings from your working code
 - Create unit tests for your functions
 - Refactor repetitive code into clean functions
@@ -209,11 +217,13 @@ Date | Project | What AI Helped With | Key Insight
 ## Specific Examples: Good vs Bad AI Usage
 
 ### Debugging (All Phases - After Struggle)
+
 ✅ **GOOD**: "I'm getting IndexError on line 45. I've checked array dimensions, confirmed indices are within bounds, and added print statements. The error happens when i=n. Why might this occur in a loop?"
 
 ❌ **BAD**: "Fix this error: [paste entire code and error]"
 
 ### Concept Understanding (Phase 2+)
+
 ✅ **GOOD**: "I understand Euler integration accumulates error. Can you explain why RK4 has O(h^4) error while Euler has O(h)? I've read that it's related to Taylor series but don't see the connection."
 
 ❌ **BAD**: "Explain RK4 integration"
@@ -233,27 +243,24 @@ Each Growth Memo (see [Growth Memo Guidelines](short-projects/growth-memo-guidel
 ## AI Usage Reflection
 
 **Most Significant AI Interaction This Project:**
-Brief description of when AI was most helpful and why (2-3 sentences)
+Brief description of when AI was most helpful and why.
 
 **Critical Thinking Check:**
 Did AI give you any incorrect/misleading information? How did you verify its suggestions? 
-(2-3 sentences - helps us all learn what to watch for!)
 
 **Key Learning:**
 What did this interaction teach you about the problem, concept, or about using AI effectively? 
-(2-3 sentences)
 
 **Evolution of My AI Use:**
 How has your approach to using AI changed since the last project? 
-Are you becoming more independent, more strategic, or finding new ways to use it? (3-4 sentences)
+Are you becoming more independent, more strategic, or finding new ways to use it?
 
-**Next Steps:**
-One specific way you plan to improve your AI usage next project (1-2 sentences)
 ```
 
 ### Understanding Verification
 
 Throughout the course, expect supportive check-ins:
+
 - "Walk me through your approach here"
 - "What alternatives did you consider?"
 - "How would this change if...?"
@@ -262,15 +269,9 @@ These conversations support your learning—catching confusion early helps!
 
 ## The Cognitive Ownership Principle
 
-**Every line of code you submit must be code you can explain and modify**
+After consulting AI, **close the tab and re-implement from memory**. Do not paste generated code. If you can’t write it yourself, you don’t understand it yet.
 
-After any AI assistance:
-1. **Close the AI chat**
-2. **Write the solution from memory**
-3. **Explain it to your rubber duck**
-4. **Modify it to prove understanding**
-
-## How AI Usage Affects Your Learning
+## **How AI Usage Affects Your Learning**
 
 **The Simple Rule**: You must be able to explain every line of code you submit and why you implemented it that way.
 
@@ -278,10 +279,12 @@ During class, I may ask you to walk through your approach or explain your implem
 
 Your Growth Memos will include the AI reflection template above, helping you track your own journey toward independence and mastery.
 
-## Assessment Standards for AI-Assisted Work
+## **Assessment Standards for AI-Assisted Work**
 
 ### Quality Expectations
+
 Work demonstrating deep understanding through:
+
 - **Iterative development** evidenced by Git history
 - **Verification practices** shown in documentation
 - **Conceptual mastery** demonstrated in explanations
@@ -289,22 +292,27 @@ Work demonstrating deep understanding through:
 
 These represent graduate-level computational science standards.
 
-### When Work Doesn't Meet Standards
+### **When Work Doesn't Meet Standards**
+
 If submitted work lacks evidence of understanding:
+
 1. **Learning Intervention**: One-on-one discussion to identify gaps
 2. **Revision Opportunity**: Resubmit with enhanced documentation (one time)
 3. **Adjusted Assessment**: Work evaluated based on demonstrated independent understanding
 
-### Clear Violations
+### **Clear Violations**
+
 Extensive undocumented AI use or inability to explain submitted code:
+
 - Referred to academic integrity process per university policy
 - Project receives assessment based solely on demonstrated understanding
 
-## AI as Learning Companion vs. Code Generator
+## **AI as Learning Companion vs. Code Generator**
 
-### The Critical Distinction
+### **The Critical Distinction**
 
 **AI for Learning (ALWAYS ENCOURAGED):**
+
 - Understanding astrophysical concepts
 - Exploring theoretical foundations
 - Connecting ideas across domains
@@ -313,6 +321,7 @@ Extensive undocumented AI use or inability to explain submitted code:
 - Clarifying mathematical derivations
 
 **AI for Coding (PHASE-DEPENDENT):**
+
 - Follow the three-phase scaffold
 - Document all code assistance
 - Verify against documentation
@@ -320,30 +329,36 @@ Extensive undocumented AI use or inability to explain submitted code:
 
 ### When AI Tutoring is ALWAYS Appropriate
 
-#### Conceptual Understanding (All Phases)
+#### **Conceptual Understanding (All Phases)**
+
 ✅ **Physics & Astrophysics Concepts**
+
 - "Explain why the virial theorem matters for stellar stability"
 - "How does optical depth relate to extinction?"
 - "What's the physical intuition behind the Jeans mass?"
 - "Connect radiative transfer to what we observe with telescopes"
 
 ✅ **Mathematical Foundations**
+
 - "Walk me through the derivation of the diffusion approximation"
 - "Why does the Monte Carlo method converge as 1/√N?"
 - "Explain the connection between Gaussian processes and Bayesian inference"
 
 ✅ **Going Deeper (Extension Work)**
+
 - "What would happen if I added magnetic fields to my N-body simulation?"
 - "How could I extend this to include relativistic effects?"
 - "What research questions could I explore with this code?"
 - "What are current open problems in computational radiative transfer?"
 
-### Recommended Learning Tools
+### **Recommended Learning Tools**
 
-#### NotebookLM (Preferred for Course Study)
+#### **NotebookLM (Preferred for Course Study)**
+
 **Why it's ideal:** Uses ONLY the sources you provide, dramatically reducing hallucination risk compared to general-purpose LLMs. While no AI is perfect, NotebookLM's responses are grounded in your uploaded materials.
 
 **Perfect uses:**
+
 - Upload course readings → Generate study guide
 - Upload your notes → Create practice questions
 - Upload project specs → Generate clarifying questions
@@ -352,17 +367,19 @@ Extensive undocumented AI use or inability to explain submitted code:
 - Generate FAQs → Test your understanding
 
 **How to use effectively:**
+
 1. Upload all course materials for that week
 2. Ask it to explain connections between readings
 3. Generate different perspectives on difficult concepts
 4. Create personalized study materials
 
-#### ChatGPT (For Conceptual Exploration)
-*Note: SDSU provides enterprise access to all students via ChatGPT Plus*
+#### **ChatGPT (For Conceptual Exploration)
 
+*Note: SDSU provides enterprise access to all students via ChatGPT Plus*
 **Privacy Protection:** The SDSU enterprise account ensures "OpenAI doesn't use San Diego State University workspace data to train its models." Your conversations are private—this tool is provided to enhance your learning, not to monitor your work. Use it freely for conceptual understanding!
 
 **Best for:**
+
 - Interactive concept exploration
 - Socratic dialogue about physics
 - "What if?" scenarios
@@ -373,26 +390,20 @@ Extensive undocumented AI use or inability to explain submitted code:
 ### Strategic Learning Dialogues
 
 #### Example: Using AI to Deepen Understanding
-```
-You: "I implemented the leapfrog integrator and it conserves energy 
-     better than RK4. But I don't understand WHY. Can you help me 
-     build intuition about symplectic integrators without just 
-     telling me the answer?"
 
-AI: "Let's think about this together. First, what do you notice 
-    about the structure of the leapfrog algorithm compared to RK4? 
-    Specifically, how does it update positions vs velocities?"
+```markdown
+**You:** "I implemented the leapfrog integrator and it conserves energy better than RK4. But I don't understand WHY. Can you help me build intuition about symplectic integrators without just telling me the answer?"
 
-You: "They're updated separately... offset by half a timestep?"
+**AI:** "Let's think about this together. First, what do you notice about the structure of the leapfrog algorithm compared to RK4? Specifically, how does it update positions vs velocities?"
 
-AI: "Exactly! Now think about what conservation laws tell us about 
-    physical systems. What quantity should remain constant in your 
-    N-body simulation if no energy is added or removed?"
+**You:** "They're updated separately... offset by half a timestep?"
+
+AI: "Exactly! Now think about what conservation laws tell us about physical systems. What quantity should remain constant in your N-body simulation if no energy is added or removed?"
 
 [Continue building understanding through dialogue]
 ```
 
-### The Learning Enhancement Framework
+### **The Learning Enhancement Framework**
 
 | Learning Goal | AI Tool | How to Use | Expected Outcome |
 |--------------|---------|------------|------------------|
@@ -405,12 +416,14 @@ AI: "Exactly! Now think about what conservation laws tell us about
 
 ## Recommended AI Tools and Strategies
 
-### Tools for This Course
+### **Tools for This Course**
+
 - **NotebookLM**: Upload course materials for grounded study aids (free through 2026)
 - **ChatGPT**: Conceptual learning and code debugging (SDSU enterprise access)
 - **Code Completion in IDE**: DISABLED per syllabus
 
 ### Strategic Usage Tips
+
 1. **Separate learning from implementation** - Use AI freely for concepts, carefully for code
 2. **Request teaching, not answers**: "Help me understand..." not "What's the solution?"
 3. **Build mental models**: "What's the intuition behind..." 
@@ -419,50 +432,47 @@ AI: "Exactly! Now think about what conservation laws tell us about
 
 ### AI Learning Best Practices
 
+
 **Two-Track System:**
+
 1. **Learning Track** (unrestricted): Use AI freely for physics concepts, math, research
 2. **Implementation Track** (phase-restricted): Follow scaffolding rules for code
 
-**Example Workflow:**
-```
-Monday: Read assignment → Use NotebookLM for study guide
-Tuesday: Understand physics → ChatGPT dialogue (unrestricted)
-Wednesday: Plan approach → Work out algorithm on paper
-Thursday: Implementation → Follow phase rules for coding
-Friday: Extensions → Explore "what if" scenarios with AI
-```
+### **Signs You're Using AI Correctly**
 
-### Signs You're Using AI Correctly
-- **For Learning**: You're asking deeper questions each week
-- **For Coding**: Your AI usage decreases over time
-- You catch errors in AI suggestions
-- You can explain why AI's approach works/doesn't work
-- You modify AI suggestions to improve them
-- You're learning faster, not just finishing faster
-- You're excited about extensions beyond requirements
+- **For Learning**: You're asking deeper questions each week.
+- **For Coding**: Your AI usage decreases over time.
+- You catch errors in AI suggestions.
+- You can explain why AI's approach works/doesn't work.
+- You modify AI suggestions to improve them.
+- You're learning faster, not just finishing faster.
+- You're excited about extensions beyond requirements.
 
-## Bottom Line
+## **Bottom Line**
 
 AI amplifies capability—it doesn't replace understanding. Master fundamentals AND strategic AI usage to thrive. The struggle is where learning happens; AI should enhance your journey, not bypass it.
 
 **Questions?** Come to Hacking Hours or ask in class. Open communication helps everyone!
 
-## Quick Reference Card
+## **Quick Reference Card**
 
-### Phase 1 (Weeks 1-4): Foundation
-✅ **Allowed**: Debugging after 20 min struggle  
-❌ **Not Allowed**: Concept explanations, initial implementations  
-📝 **Document**: Every interaction with verification
+### Phase 1 (Weeks 1-6): Foundation
 
-### Phase 2 (Weeks 5-8): Strategic  
-✅ **Allowed**: Efficiency improvements after working solution  
-❌ **Not Allowed**: First attempts, without documentation  
-📝 **Document**: Why AI suggestion improves your approach
+- ✅ **Allowed**: Concept explanations, Debugging after ~30 min struggle  
+- ❌ **Not Allowed**: Initial code implementations  
+- 📝 **Document**: Your most significant interaction with verification
 
-### Phase 3 (Weeks 9-16): Professional  
-✅ **Allowed**: Complex problem-solving, optimization  
-❌ **Not Allowed**: Work you can't explain  
-📝 **Document**: Critical evaluation of suggestions
+### **Phase 2 (Weeks 7-12): Strategic**
+
+- ✅ **Allowed**: Efficiency improvements after working solution
+- ❌ **Not Allowed**: First attempts, without documentation  
+- 📝 **Document**: Why AI suggestion improves your approach
+
+### **Phase 3 (Weeks 13-16): Professional**
+
+- ✅ **Allowed**: Complex problem-solving, optimization  
+- ❌ **Not Allowed**: Work you can't explain  
+- 📝 **Document**: Critical evaluation of suggestions
 
 **Remember**: Can't explain it = Didn't learn it = Can't submit it
 
@@ -470,14 +480,14 @@ AI amplifies capability—it doesn't replace understanding. Master fundamentals 
 
 ## References
 
-Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, O., & Mariman, R. (2024). *Generative AI can harm learning*. arXiv preprint. https://arxiv.org/abs/2401.12438
+- Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, O., & Mariman, R. (2024). [*Generative AI can harm learning*](https://arxiv.org/abs/2401.12438), arXiv preprint
 
-Bitzenbauer, P. (2023). ChatGPT in physics education: A pilot study on easy-to-implement activities. *Contemporary Educational Technology*, 15(3), ep430. https://doi.org/10.1088/1361-6552/acc749
+- Bitzenbauer, P. (2023), [*ChatGPT in physics education: A pilot study on easy-to-implement activities*](https://doi.org/10.1088/1361-6552/acc749), Contemporary Educational Technology
 
-Dahlkemper, M. N., Lahme, S. Z., & Klein, P. (2023). How do physics students evaluate artificial intelligence responses on comprehension questions? A study on the perceived scientific accuracy and linguistic quality of ChatGPT. *Physical Review Physics Education Research*, 19(1), 010142. https://doi.org/10.1103/PhysRevPhysEducRes.19.010142
+- Dahlkemper, M. N., Lahme, S. Z., & Klein, P. (2023). [*How do physics students evaluate artificial intelligence responses on comprehension questions? A study on the perceived scientific accuracy and linguistic quality of ChatGPT*](https://doi.org/10.1103/PhysRevPhysEducRes.19.010142), Physical Review Physics Education Research
 
-Kasneci, E., Sessler, K., Küchemann, S., Bannert, M., Dementieva, D., Fischer, F., ... & Kasneci, G. (2023). ChatGPT for good? On opportunities and challenges of large language models for education. *Learning and Individual Differences*, 103, 102274. https://doi.org/10.1016/j.learninstruc.2023.101874
+- Kasneci, E., Sessler, K., Küchemann, S., Bannert, M., Dementieva, D., Fischer, F., ... & Kasneci, G. (2023). [*ChatGPT for good? On opportunities and challenges of large language models for education*](https://doi.org/10.1016/j.learninstruc.2023.101874), Learning and Individual Differences
 
-Koedinger, K. R., Aleven, V., & Stamper, J. (2024). The case for conversation-based assessment of data literacy. In *Proceedings of the 14th Learning Analytics and Knowledge Conference* (pp. 91-100). https://doi.org/10.1145/3636555.3636596
+- Koedinger, K. R., Aleven, V., & Stamper, J. (2024). [*The case for conversation-based assessment of data literacy*](https://doi.org/10.1145/3636555.3636596), Proceedings of the 14th Learning Analytics and Knowledge Conference
 
-Ting, Y. S., & O'Briain, D. (2025). *Teaching machine learning in the era of large language models: Lessons learned from a graduate astronomy course*. Journal of Astronomy Education (in press).
+- Ting, Y. S., & O'Briain, D. (2025). [*Teaching machine learning in the era of large language models: Lessons learned from a graduate astronomy course*](https://arxiv.org/abs/2506.06921) (arXiv preprint)

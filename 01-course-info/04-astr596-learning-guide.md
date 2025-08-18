@@ -5,6 +5,7 @@
 ### When Things Go Wrong (And They Will)
 
 **Your code is a disaster? Good, now you're learning:**
+
 - **Git broke everything?** `git reflog` shows all commits, even "lost" ones
 - **Accidentally deleted files?** Check your IDE's local history (VS Code: Timeline view) OR if you've been committing regularly, `git checkout -- filename` recovers the last committed version. This is why you should commit every time you get something working, even partially.
 - **Algorithm completely wrong?** Keep it in `failed_attempts/` folder—documenting what doesn't work is valuable
