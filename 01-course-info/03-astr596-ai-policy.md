@@ -6,16 +6,16 @@
 
 | Phase | Weeks | Coding with AI | Learning with AI | Key Rule |
 |------|-------|----------------|------------------|----------|
-| **1: Foundation** | 1–6 | ❌ No first-draft code. ✅ Debugging **after 30 min** documented effort. | ✅ Always allowed, **docs-first**; use AI to clarify after reading | Struggle → Docs → AI (debug) |
+| **1: Foundation** | 1–6 | ❌ No first-draft code. ✅ Debugging **after 30 min** documented effort. | ✅ Always allowed, **docs-first**; use AI to clarify after reading | Struggle → Docs → AI (debug only) |
 | **2: Strategic** | 7–12 | ✅ After a working baseline; AI for refactors/tests/perf with verification | ✅ Always allowed (summaries, extensions) | Verify & cite source; explain why kept/rejected |
 | **3: Professional** | 13–16 | ✅ Acceleration/boilerplate; ❌ Not for logic you can’t explain | ✅ Research exploration; career prep | **Explain every line** |
 
 **Universal Rules:**
 
 - 📚 **Conceptual learning**: AI always encouraged for understanding physics, math, and how code works.
-- 📖 **Documentation first**: Official docs are your primary source. Use AI to clarify, not replace them,
-- 💻 **Code implementation**: Follow phase rules for writing actual code
-- 📝 **Attribution**: Every AI-assisted code needs documentation
+- 📖 **Documentation first**: Official docs are your primary source. Use AI to clarify, not replace them.
+- 💻 **Code implementation**: Follow phase rules for writing actual code.
+- 📝 **Attribution**: Every AI-assisted code change must include the in-code 3-line note (*AI* / *Verified* / *Because*).
 - 🧠 **Ownership**: Can't explain it = Can't submit it
 
 ## Quick Links
@@ -87,7 +87,7 @@ These studies confirm that scaffolded AI use with reflection enhances rather tha
 **Build judgment through community:**
 
 1. **Come to Hacking Hours** (TBD)
-2. **Ask during Friday class**
+2. **Ask during class**
 3. **Discuss with classmates**
 4. **Email if urgent**: <alrosen@sdsu.edu>
 
@@ -105,6 +105,8 @@ def your_function():
     # Implementation here
     pass
 ```
+
+Place the 3-line note directly above the edited function or block.
 
 ### Growth Memo AI Section Template
 
@@ -153,10 +155,7 @@ Write this however works for you—paragraphs, bullets, diagrams. Emojis encoura
 
 **What counts as genuine effort:**
 
-- Document 3+ approaches attempted
-- Investigate specific errors
-- Consult relevant documentation
-- Create minimal reproducible example
+**Any 2 of:** link a relevant doc section; show a ≤20-line minimal repro; note one failed approach and why it failed.
 
 **Good Example:**
 
@@ -180,27 +179,27 @@ fig, axes = plt.subplots(2, 2, figsize=(10, 8))
 
 **Dates: Nov 22 - Dec 18** | **Rule: AI as Productivity Tool**
 
-- **Assumption**: Foundation enables evaluation
-- **Usage**: Acceleration and complex problems
-- **Standard**: AI work must exceed manual quality
-- **Continue**: Citing all usage
+- **Assumption**: Foundation enables evaluation.
+- **Usage**: Acceleration and complex problems.
+- **Standard**: AI work must match or exceed manual quality.
+- **Continue**: Cite all usage.
 
 **Now AI can handle tedious tasks:**
 
-- Generate docstrings from your working code
-- Create unit tests for your functions
-- Refactor repetitive code into clean functions
-- Generate boilerplate code (argparse, logging setup)
-- Convert your plots into publication-quality figures
-- Write regex patterns for data parsing
+- Generate docstrings from your working code.
+- Create unit tests for your functions.
+- Refactor repetitive code into clean functions.
+- Generate boilerplate code (argparse, logging setup).
+- Convert your plots into publication-quality figures.
+- Write regex patterns for data parsing.
 
 **Note:** Tool availability subject to change. If access issues occur, document and discuss in class.
 
-## AI Usage Log (Optional but Recommended)
+## **AI Usage Log (Optional but Recommended)**
 
 ### Building Your Technical Growth Portfolio
 
-Keep a simple log of significant AI interactions for your final portfolio. **For your learning, not weekly review.**
+Keep a simple log of significant AI interactions for your final portfolio (for your learning, not graded weekly).
 
 **Why?** Documents journey, reveals patterns, provides interview examples, mirrors industry practice
 
@@ -222,7 +221,7 @@ Date | Project | What AI Helped With | Key Insight
 
 ❌ **BAD**: "Fix this error: [paste entire code and error]"
 
-### Concept Understanding (Phase 2+)
+### Concept Understanding (All Phases)
 
 ✅ **GOOD**: "I understand Euler integration accumulates error. Can you explain why RK4 has O(h^4) error while Euler has O(h)? I've read that it's related to Taylor series but don't see the connection."
 
@@ -269,13 +268,13 @@ These conversations support your learning—catching confusion early helps!
 
 ## The Cognitive Ownership Principle
 
-After consulting AI, **close the tab and re-implement from memory**. Do not paste generated code. If you can’t write it yourself, you don’t understand it yet.
+After consulting AI, **close the tab and re-implement from memory**. Do not paste generated code. If you can’t write it yourself, you don’t understand it yet. You may be asked for a 1–2 minute walkthrough of a function during lab to demonstrate understanding; this is supportive, not punitive.
 
 ## **How AI Usage Affects Your Learning**
 
 **The Simple Rule**: You must be able to explain every line of code you submit and why you implemented it that way.
 
-During class, I may ask you to walk through your approach or explain your implementation choices. This isn't a formal assessment—it's how we learn together and ensure you're building real understanding. If you can't explain your code, that's a signal you need to revisit it until you truly understand it. Expect 1–2 minute micro-vivas during lab: I’ll choose a function, you walk me through the logic and a quick modification.
+During class, I may ask you to walk through your approach or explain your implementation choices. This isn't a formal assessment—it's how we learn together and ensure you're building real understanding. If you can't explain your code, that's a signal you need to revisit it until you truly understand it.
 
 Your Growth Memos will include the AI reflection template above, helping you track your own journey toward independence and mastery.
 
@@ -353,7 +352,9 @@ Extensive undocumented AI use or inability to explain submitted code:
 
 ### **Recommended Learning Tools**
 
-#### **NotebookLM (Preferred for Course Study)**
+#### **NotebookLM (For grounded study aids)**
+
+*Use with an institutional/SSO account when possible; availability can change.*
 
 **Why it's ideal:** Uses ONLY the sources you provide, dramatically reducing hallucination risk compared to general-purpose LLMs. While no AI is perfect, NotebookLM's responses are grounded in your uploaded materials.
 
@@ -441,7 +442,7 @@ AI: "Exactly! Now think about what conservation laws tell us about physical syst
 ### **Signs You're Using AI Correctly**
 
 - **For Learning**: You're asking deeper questions each week.
-- **For Coding**: Your AI usage decreases over time.
+- **For Coding**: Your AI usage becomes more selective and strategic over time.
 - You catch errors in AI suggestions.
 - You can explain why AI's approach works/doesn't work.
 - You modify AI suggestions to improve them.
