@@ -7,7 +7,7 @@
 - ✓ 3 GB free disk space (Miniforge ~400 MB + packages ~1-2 GB)
 - ✓ Stable internet connection (will download ~800 MB total)
 - ✓ Administrator privileges on your computer
-- ✓ 60-90 minutes of uninterrupted time
+- ✓ ~30 minutes of uninterrupted time
 
 **If on campus**: Use eduroam WiFi, not guest network (firewall issues)
 
@@ -16,16 +16,16 @@
 
 ## Setup Roadmap
 
-Total time: ~60 minutes
+Total time: ~30 minutes
 
 :::{admonition} Your Setup Journey
 :class: tip
 
-📦 **Step 1**: Install Python with Miniforge (15 min)  
-🌍 **Step 2**: Create your course environment (10 min)  
-📝 **Step 3**: Install VS Code editor (10 min)  
-✅ **Step 4**: Verify everything works (5 min)  
-🚀 **Step 5**: Quick practice session (20 min)
+📦 **Step 1**: Install Python with Miniforge  
+🌍 **Step 2**: Create your course environment  
+📝 **Step 3**: Install VS Code editor  
+✅ **Step 4**: Verify everything works  
+🚀 **Step 5**: Quick practice session
 :::
 
 ## Understanding the Setup (2-minute read)
@@ -252,8 +252,8 @@ No (astr596) in prompt = wrong environment = packages "not found"!
 :::{admonition} ⏱️ Installation Time
 :class: note
 
-Package installation takes 5-15 minutes depending on internet speed.
-If it's taking longer than 20 minutes:
+Package installation takes 5-10 minutes depending on internet speed.
+If it's taking longer than 15 minutes:
 
 1. Press `Ctrl+C` to cancel
 2. Check your internet connection
@@ -520,7 +520,7 @@ Your progress is saved! When you return:
 :::
 
 1. ✅ Environment is ready
-2. → Continue to [Git and GitHub Guide](02-git-intro-guide)
+2. → Continue to [Git and GitHub Guide](03-git-intro-guide)
 3. → Start working on Project 1
 
 :::{admonition} 💡 Pro Tips
@@ -565,7 +565,3 @@ mkdir -p ~/astr596/{projects,notes,data}
 * - `code .`
   - Open VS Code in current folder
 :::
-
----
-
-**Remember:** Everyone struggles with setup—it's genuinely complex. But once it works, it just works. If you're stuck after 15 minutes on any step, ask for help on Slack with your OS, the command you ran, and the full error message.

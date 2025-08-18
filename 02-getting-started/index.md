@@ -77,10 +77,11 @@ After completing this module in order, you will:
 ::::{grid} 2 2 2 2
 
 :::{grid-item}
-**Module Total**: 4-5 hours
-- CLI Introduction: 90 minutes
-- Software Setup: 60 minutes  
-- Git Introduction: 90 minutes
+**Module Total**: 3-4 hours (estimated)
+
+- CLI Introduction: 45 minutes
+- Software Setup: 30 minutes  
+- Git Introduction: 45 minutes
 - Practice: 60+ minutes
 :::
 
