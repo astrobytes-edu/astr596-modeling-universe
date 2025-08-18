@@ -35,8 +35,9 @@ Before starting this chapter, verify you can:
 - [ ] Create and import modules (Chapter 5)
 - [ ] Handle mutable vs immutable objects (Chapter 4)
 
-Quick diagnostic:
-```{code-cell} python
+**Quick diagnostic:**
+
+```{code-cell} ipython3
 # Can you predict what this prints?
 def modify(data):
     data['value'] = data['value'] * 2
@@ -60,12 +61,14 @@ This chapter introduces OOP's essential concepts through practical scientific ex
 
 ## 6.1 From Functions to Objects: The Conceptual Leap
 
-{margin} **Object-Oriented Programming**
+:::{margin}
+**Object-Oriented Programming**
 A programming paradigm that organizes code around objects (data) and methods (behavior) rather than functions and logic.
+:::
 
 Let's start with a problem you've already solved with functions, then transform it into objects to see the difference. In Python, everything is actually an object - even functions and modules! But some objects are more complex than others, and creating your own classes lets you model your specific problem domain.
 
-```{code-cell} python
+```{code-cell} ipython3
 # Approach 1: Functions with dictionaries (what you know)
 def create_particle(mass, x, y, vx, vy):
     """Create a particle dictionary."""
@@ -95,7 +98,7 @@ print(f"Energy: {energy:.1f} ergs")
 
 Now let's see the same problem with OOP:
 
-```{code-cell} python
+```{code-cell} ipython3
 # Approach 2: Object-Oriented (what you're learning)
 class Particle:
     """A particle with position and velocity."""
@@ -131,8 +134,8 @@ Both approaches solve the problem, but notice the differences:
 - **State**: The object maintains its own state between method calls
 - **Clarity**: The object-oriented version reads more naturally
 
-:::{admonition} 🎭 The More You Know: How Objects Saved the Mars Rover
-:class: note, story
+:::{admonition} 🌟 The More You Know: How Objects Saved the Mars Rover
+:class: note, dropdown
 
 In 2004, NASA's Spirit rover suddenly stopped responding, 18 days into its mission. The cause? Procedural code managing 250+ hardware components through global variables and scattered functions. When flash memory filled up, the initialization functions couldn't track which subsystems were already started, causing an infinite reboot loop.
 
@@ -158,14 +161,20 @@ You're learning the same pattern that keeps billion-dollar spacecraft alive on o
 
 ## 6.2 Classes and Objects: Building Blocks
 
-{margin} **Class**
+:::{margin}
+**Class**
 A blueprint or template for creating objects that defines attributes and methods.
+:::
 
-{margin} **Object**
+:::{margin}
+**Object**
 A specific instance of a class containing data (attributes) and behavior (methods).
+:::
 
-{margin} **Constructor**
+:::{margin}
+**Constructor**
 The `__init__` method that initializes new objects when they're created.
+:::
 
 Before we dive into creating classes, let's understand why we need them beyond the simple example we just saw. As your programs grow, you face several challenges that classes elegantly solve:
 
@@ -179,7 +188,7 @@ Before we dive into creating classes, let's understand why we need them beyond t
 
 A **class** is a blueprint for creating objects. An **object** (or instance) is a specific realization of that blueprint. Think of a class as the concept "thermometer" and objects as specific thermometers in your lab.
 
-```{code-cell} python
+```{code-cell} ipython3
 # Define a class (blueprint)
 class Measurement:
     """A scientific measurement with uncertainty."""
@@ -207,12 +216,14 @@ print(f"Pressure relative error: {pressure.relative_error():.3f}%")
 
 ### Understanding `self`
 
-{margin} **self**
+:::{margin}
+**self**
 The first parameter of instance methods, referring to the specific object being operated on.
+:::
 
 The `self` parameter is how each object keeps track of its own data. When you call `temp.relative_error()`, Python automatically passes `temp` as the first argument. Here's what happens behind the scenes:
 
-```{code-cell} python
+```{code-cell} ipython3
 class Counter:
     """Demonstrates how self works."""
     
@@ -245,8 +256,8 @@ print(f"Counter 2: {c2.get_count()}")  # 1
 
 This seemingly simple concept of bundling data with behavior revolutionized programming. Let me tell you how it started...
 
-:::{admonition} 🎭 The More You Know: How Norwegian Scientists Invented OOP to Model Ships
-:class: note, story
+:::{admonition} 🌟 The More You Know: How Norwegian Scientists Invented OOP to Model Ships
+:class: note, dropdown
 
 In 1962, Norwegian computer scientists Kristen Nygaard and Ole-Johan Dahl faced an impossible problem at the Norwegian Computing Center. They were trying to simulate ship movement through fjords, tracking hundreds of vessels with different properties, behaviors, and interactions. Their FORTRAN code had become an unmaintainable nightmare of global variables and GOTO statements - a single change could break the entire simulation.
 
@@ -275,7 +286,7 @@ The irony? Nygaard and Dahl's supervisor initially rejected their idea, reported
 :::{admonition} ⚠️ Common Bug Alert: Forgetting self
 :class: warning
 
-```{code-cell} python
+```{code-cell} ipython3
 :tags: [raises-exception]
 
 # WRONG - Missing self parameter
@@ -301,18 +312,24 @@ This is probably the most common OOP error. Remember: instance methods ALWAYS ne
 
 ### Instance vs Class Attributes
 
-{margin} **Instance Attribute**
+:::{margin}
+**Instance Attribute**
 Data unique to each object, defined with `self.attribute`.
+:::
 
-{margin} **Class Attribute**
+:::{margin}
+**Class Attribute**
 Data shared by all instances of a class, defined directly in the class body.
+:::
 
-{margin} **Encapsulation**
+:::{margin}
+**Encapsulation**
 The bundling of data and methods that operate on that data within a single unit (class).
+:::
 
 Instance attributes belong to specific objects. Class attributes are shared by all instances. This bundling of data and methods is called **encapsulation** - a core principle of OOP:
 
-```{code-cell} python
+```{code-cell} ipython3
 class Simulation:
     """Demonstrates instance vs class attributes."""
     
@@ -348,7 +365,7 @@ print(f"Speed of light: {Simulation.speed_of_light} cm/s")
 
 What's the output of this code? Why?
 
-```{code-cell} python
+```{code-cell} ipython3
 class DataPoint:
     count = 0  # Class attribute
     
@@ -377,14 +394,16 @@ When you write `p1.count = 100`, you create a new instance attribute that shadow
 
 ## 6.3 Methods: Functions Attached to Objects
 
-{margin} **Method**
+:::{margin}
+**Method**
 A function defined inside a class that operates on instances of that class.
+:::
 
 Methods are functions that belong to a class. They can access and modify the object's state through `self`. Let's build up from simple to complex.
 
 Note: In Python, we typically import modules at the top of our files for clarity and efficiency. While Python allows imports anywhere in code, importing at the top makes dependencies clear and avoids repeated import overhead. In these examples, we sometimes import inside methods for pedagogical clarity, but in production code, prefer top-level imports.
 
-```{code-cell} python
+```{code-cell} ipython3
 import math  # Best practice: import at the top
 
 # First: A simple class with basic methods
@@ -412,7 +431,7 @@ print(f"Sinks in water: {iron.is_denser_than_water()}")
 
 Now let's advance to more complex mathematical methods:
 
-```{code-cell} python
+```{code-cell} ipython3
 class Vector2D:
     """A 2D vector for physics calculations."""
     
@@ -472,7 +491,7 @@ This follows a common convention in programming: methods that transform an objec
 
 ### Method Types: Instance, Class, and Static
 
-```{code-cell} python
+```{code-cell} ipython3
 class DataProcessor:
     """Demonstrates different method types."""
     
@@ -537,15 +556,19 @@ This separation allows you to change implementation without breaking code that u
 
 ## 6.4 Properties: Smart Attributes
 
-{margin} **Property**
+:::{margin}
+**Property**
 A special attribute that executes code when accessed or set, created with the `@property` decorator.
+:::
 
-{margin} **Setter**
+:::{margin}
+**Setter**
 A property method that validates and sets attribute values, defined with `@attribute.setter`.
+:::
 
 Properties let you compute attributes dynamically and validate data when it's set. They make objects safer and more intuitive:
 
-```{code-cell} python
+```{code-cell} ipython3
 class Circle:
     """Circle with computed properties."""
     
@@ -595,7 +618,7 @@ except ValueError as e:
 
 ### Properties for Unit Safety
 
-```{code-cell} python
+```{code-cell} ipython3
 class Temperature:
     """Temperature with automatic unit conversion."""
     
@@ -642,8 +665,8 @@ temp.celsius = 100
 print(f"Boiling: {temp.kelvin:.1f} K")
 ```
 
-:::{admonition} 🎭 The More You Know: How Properties Could Have Saved Hubble's Mirror
-:class: note, story
+:::{admonition} 🌟 The More You Know: How Properties Could Have Saved Hubble's Mirror
+:class: note, dropdown
 
 In 1990, the Hubble Space Telescope reached orbit with a catastrophic flaw - its primary mirror was ground to the wrong shape by 2.2 micrometers, about 1/50th the width of a human hair. The error occurred because a measuring device called a null corrector had been assembled incorrectly, with one lens positioned 1.3mm out of place. But here's the tragic part: the computer software accepting test measurements had no validation. It accepted clearly impossible values without question.
 
@@ -737,7 +760,7 @@ You get an `AttributeError: can't set attribute`. Properties without setters are
 :::{admonition} ⚠️ Common Bug Alert: Property Recursion
 :class: warning
 
-```{code-cell} python
+```{code-cell} ipython3
 # WRONG - Infinite recursion!
 class BadExample:
     @property
@@ -764,16 +787,20 @@ Always use a different internal name (usually with underscore) for the actual st
 
 ## 6.5 Special Methods: Making Objects Pythonic
 
-{margin} **Special Method**
+:::{margin}
+**Special Method**
 Methods with double underscores (like `__init__`, `__str__`) that define object behavior for built-in operations.
+:::
 
-{margin} **Duck Typing**
+:::{margin}
+**Duck Typing**
 Python's philosophy that an object's suitability is determined by its methods, not its type. "If it walks like a duck and quacks like a duck, it's a duck."
+:::
 
 Special methods (also called "magic methods" or "dunder methods") let your objects work with Python's built-in functions and operators. The term "duck typing" comes from the saying "If it walks like a duck and quacks like a duck, it's a duck" - meaning Python cares about what an object can do, not what type it is.
 
-:::{admonition} 🎭 The More You Know: How Python Democratized Programming
-:class: note, story
+:::{admonition} 🌟 The More You Know: How Python Democratized Programming
+:class: note, dropdown
 
 In December 1989, Guido van Rossum was frustrated. Working at CWI (Centrum Wiskunde & Informatica) in Amsterdam on the Amoeba distributed operating system, he found existing languages inadequate. ABC was too rigid and couldn't be extended. C was too low-level for rapid development. So during the Christmas vacation (he was bored and the office was closed), he started writing his own language, naming it after the British comedy group Monty Python's Flying Circus.
 
@@ -810,7 +837,7 @@ When you implement `__str__` or `__add__`, you're using the democratic principle
 *[Sources: Van Rossum, G. (1996). Foreword for "Programming Python" (1st ed.). Various interviews compiled. Martelli's "duck typing" coined circa 2000.]*
 :::
 
-```{code-cell} python
+```{code-cell} ipython3
 class Fraction:
     """A fraction with arithmetic operations."""
     
@@ -864,7 +891,7 @@ print(f"f1 == Fraction(2,4): {f1 == Fraction(2, 4)}")  # Calls __eq__
 
 ### Essential Special Methods
 
-```{code-cell} python
+```{code-cell} ipython3
 class DataSet:
     """Collection that acts like a built-in container."""
     
@@ -944,7 +971,8 @@ Here's how to decide. This distinction is fundamental - in Chapter 7, we'll expl
 ### Use Objects When:
 
 1. **Managing State Over Time**
-```{code-cell} python
+
+```{code-cell} ipython3
 class RunningStatistics:
     """Maintains statistics as data arrives."""
     
@@ -981,7 +1009,8 @@ for value in [1, 2, 3, 4, 5]:
 ```
 
 2. **Modeling Real Entities**
-```{code-cell} python
+
+```{code-cell} ipython3
 class Galaxy:
     """Model a galaxy with properties."""
     
@@ -1009,7 +1038,8 @@ print(f"{m31.name}: v={m31.recession_velocity():.0f} km/s")
 ### Use Functions When:
 
 1. **Simple Transformations**
-```{code-cell} python
+
+```{code-cell} ipython3
 # No need for a class here
 def celsius_to_kelvin(celsius):
     """Convert Celsius to Kelvin."""
@@ -1027,7 +1057,8 @@ print(f"Period: {period} years")
 ```
 
 2. **Stateless Operations**
-```{code-cell} python
+
+```{code-cell} ipython3
 # These don't need to remember anything between calls
 def mean(values):
     """Calculate mean."""
@@ -1066,8 +1097,8 @@ reshaped = array.reshape(3, 1)
 The object approach won because arrays maintain state (shape, dtype, memory layout) and operations naturally belong to the data. This decision made NumPy intuitive and helped it become the foundation of scientific Python. You're learning to make the same architectural decisions!
 :::
 
-:::{admonition} 🎭 The More You Know: How OOP United Astronomy's Warring Packages
-:class: note, story
+:::{admonition} 🌟 The More You Know: How OOP United Astronomy's Warring Packages
+:class: note, dropdown
 
 By 2011, Python astronomy had descended into chaos. Every research group had created their own packages with incompatible interfaces. There was PyFITS for reading FITS files, PyWCS for world coordinate systems, vo.table for Virtual Observatory tables, asciitable for text data, cosmolopy for cosmological calculations, and dozens more. Installing a working astronomy environment was a nightmare - each package had different conventions, different dependencies, and different ways of representing the same concepts.
 
@@ -1123,7 +1154,7 @@ Today, Astropy has over 10 million downloads and is astronomy's most-used packag
 
 Understanding how to inspect and debug objects is crucial. Python provides powerful introspection tools to examine objects at runtime:
 
-```{code-cell} python
+```{code-cell} ipython3
 class Instrument:
     """Scientific instrument for debugging demo."""
     
@@ -1167,7 +1198,7 @@ print(f"__dict__ has {len(vars(spectrometer))} items (instance only)")
 
 This code has a subtle but critical bug. Can you find it?
 
-```{code-cell} python
+```{code-cell} ipython3
 class Observatory:
     def __init__(self, name, telescopes=[]):  # Bug here!
         self.name = name
@@ -1208,7 +1239,7 @@ This bug has caused real problems in production systems. Always use `None` as de
 
 Let's start with a fundamental building block for data analysis:
 
-```{code-cell} python
+```{code-cell} ipython3
 """
 Part A: Basic DataPoint class (5 minutes)
 Create a class that stores a value with timestamp
@@ -1239,7 +1270,7 @@ time.sleep(0.01)
 print(f"Age: {dp.age_seconds():.3f} seconds")
 ```
 
-```{code-cell} python
+```{code-cell} ipython3
 """
 Part B: Add validation and properties (10 minutes)
 Enhance with properties for safety
@@ -1278,7 +1309,7 @@ print(f"Relative error: {dp.relative_error:.1f}%")
 print(f"Significant?: {dp.is_significant}")
 ```
 
-```{code-cell} python
+```{code-cell} ipython3
 """
 Part C: Complete DataSeries class (15 minutes)
 Container for multiple DataPoints with analysis
@@ -1345,7 +1376,7 @@ print(f"All values: {series.values}")
 
 Building on Chapter 5's lightcurve analysis - now we organize our variable star code using OOP:
 
-```{code-cell} python
+```{code-cell} ipython3
 """
 Transform our functional variable star analysis into OOP
 This connects directly to what you learned in Chapter 5!
@@ -1437,7 +1468,7 @@ print(f"First folded point: phase={folded[0][0]:.3f}, mag={folded[0][1]:.2f}")
 
 ### Exercise 3: Performance Comparison
 
-```{code-cell} python
+```{code-cell} ipython3
 """
 Compare OOP vs functional approaches for performance
 Understanding the tradeoffs helps you choose wisely
