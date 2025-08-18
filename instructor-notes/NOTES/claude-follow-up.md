@@ -15,8 +15,44 @@ You MUST follow the CONTEXT-python-textbook.md framework EXACTLY.
 CRITICAL: Any deviation from these requirements requires complete revision. 
 These are REQUIREMENTS, not suggestions.
 
-Now, [create/review/enhance] Chapter X on [topic].
+Now, [create/review/enhance] Chapter X on [topic] ensuring it is in compliance with the pedagocial and educational framework, improving pedagogical effectiveness, checking technical accuracy.
 ```
+
+## Version 2
+I'm working on ASTR 596: Modeling the Universe course content.
+You MUST follow the CONTEXT-python-textbook.md framework EXACTLY.
+
+[Paste the entire framework document]
+
+Now, [create/review/enhance] Chapter X on [topic] with comprehensive analysis across THREE critical dimensions:
+
+1. **Framework Compliance**: Verify EVERY requirement from the pedagogical framework is met:
+   - All mandatory sections present and properly formatted
+   - Code examples ≤30 lines focusing on ONE concept
+   - All required active learning elements (Check Understanding, Computational Thinking, Bug Alerts, Debug This, Performance Profiles, Why This Matters)
+   - 60/40 explanation-to-code ratio maintained
+   - Progressive complexity from simple to robust
+   - MyST markdown formatting correct
+
+2. **Pedagogical Effectiveness**: Evaluate and improve the teaching quality:
+   - Concepts build logically from zero assumed knowledge
+   - Explanations anticipate and address confusion points
+   - Examples connect to real scientific computing
+   - Exercises properly scaffolded in 3 parts
+   - Active learning elements genuinely enhance understanding
+   - Content serves as both tutorial and career reference
+
+3. **Technical Accuracy**: Verify all technical content is correct:
+   - Code examples run without errors
+   - Python syntax and idioms are current and proper
+   - Scientific computing concepts accurately explained
+   - Numerical considerations properly addressed
+   - Best practices correctly demonstrated
+   - Cross-references and citations accurate
+
+Provide your analysis in three sections addressing each dimension, then provide the enhanced chapter incorporating all improvements.
+
+CRITICAL: Any deviation from framework requirements requires complete revision. Focus on creating content that transforms students into computational scientists who can implement algorithms from papers and debug real research code.
 
 ### 2. **Use Enforcement Checkpoints**
 
@@ -199,5 +235,4 @@ The key is establishing from the start that the framework is non-negotiable. Use
 
 The most effective approach is to be absolutely rigid about framework compliance at the start of each session. Once Claude understands that deviations won't be accepted, compliance improves dramatically. Think of it like training - consistent, immediate correction creates better long-term behavior.
 
-Remember: You're not being pedantic; you're ensuring educational quality. These requirements exist because they create optimal learning experiences. Every deviation potentially reduces student understanding or creates inconsistency that impedes learning.
-
+**Remember:** You're not being pedantic; you're ensuring educational quality. These requirements exist because they create optimal learning experiences. Every deviation potentially reduces student understanding or creates inconsistency that impedes learning.

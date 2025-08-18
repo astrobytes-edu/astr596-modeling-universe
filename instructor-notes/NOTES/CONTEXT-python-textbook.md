@@ -129,7 +129,7 @@ Before completion, verify:
 "Create/Review Chapter X on [topic] following ASTR 596 pedagogical framework. Ensure: progressive complexity from zero knowledge to proficiency, 60/40 explanation/code balance, all required active learning elements distributed throughout, defensive programming practices included, real scientific contexts without requiring domain expertise, and clear connections to both previous concepts and future applications. Verify the chapter serves as both initial learning and long-term reference."
 
 ## Very Important
-Code examples should not be overly dense, too long. They must get the educational points apart and easy to understand and follow. Avoid long complex Astronomy examples that do not add to the core focus of these Python chapters: becoming a Python and Scientific Computing expert. Do not overcomplicate code examples that will megatively impact students' cognitive load and take away from their learning and understanding.
+Code examples should not be overly dense or too long. They must get the educational points apart and easy to understand and follow. Avoid long complex Astronomy examples that do not add to the core focus of these Python chapters: becoming a Python and Scientific Computing expert. Do not overcomplicate code examples that will megatively impact students' cognitive load and take away from their learning and understanding.
 
 ## Remember
 We're fixing the broken system where astronomy students can't implement algorithms from papers. Every chapter must build deep computational thinking skills—creating scientists who understand not just syntax but the principles that make code reliable, efficient, and scientifically valid.

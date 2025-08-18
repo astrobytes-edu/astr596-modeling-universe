@@ -1,13 +1,7 @@
-# MyST/Jupyter Book 2 Configuration
-# Documentation: https://mystmd.org/guide/frontmatter
 version: 1
 
-# Project configuration defines your book's metadata and structure
 project:
-  # Unique identifier for your project
   id: 76c4875f-ba4c-4a35-bc58-52304ee2705e
-  
-  # Book metadata
   title: "ASTR 596: Modeling the Universe"
   description: "Graduate-level computational astrophysics course emphasizing glass-box modeling and modern computational frameworks"
   keywords: 
@@ -21,27 +15,35 @@ project:
     - bayesian inference
     - JAX
   
-  # Author information
   authors:
     - name: Anna Rosen
       email: alrosen@sdsu.edu
       affiliations:
         - San Diego State University
-      orcid: https://orcid.org/0000-0003-4423-0660
+      orcid: 0000-0003-4423-0660
   
-  # Licensing
   license:
     content: CC-BY-4.0
     code: MIT
   
-  # Course information
   subject: Modeling the Universe
   venue:
     title: ASTR 596 - Fall 2025
     url: https://www.anna-rosen.com
   
-  # GitHub repository
   github: https://github.com/astrobytes-edu/astr596-modeling-universe
+  
+  # Execution configuration for Jupyter notebooks
+  jupyter:
+    kernelName: python3
+    executeNotebooks: cache
+    cache: .jupyter_cache
+    timeout: 120
+    allow_errors: false
+    exclude_patterns:
+      - '*draft*'
+      - '*test*'
+      - 'instructor-notes/*'
   
   # Files to exclude from build
   exclude:
@@ -55,20 +57,78 @@ project:
     - '__pycache__/**'
     - '*.pyc'
     - '.DS_Store'
+    - '_build/**'
   
-  # Bibliography files
   bibliography:
-    - references.bib
+  #  - references.bib
+  
+  # Parser and MyST extension settings
+  settings:
+    myst_enable_extensions:
+      - amsmath
+      - colon_fence
+      - deflist
+      - dollarmath
+      - fieldlist
+      - html_admonition
+      - html_image
+      - linkify
+      - replacements
+      - smartquotes
+      - strikethrough
+      - substitution
+      - tasklist
+      - attrs_inline
+      - attrs_block
+    
+    myst_heading_anchors: 3
+    myst_footnote_transition: true
+    numfig: true
+    numfig_secnum_depth: 2
+    
+    myst_substitutions:
+      astr596: "ASTR 596: Modeling the Universe"
+      python: Python 3.11+
+      jax: JAX
+      numpy: NumPy
+    
+    # Math rendering configuration with custom macros
+    mathjax3_config:
+      tex:
+        packages:
+          '[+]': ['ams', 'physics', 'color']
+        macros:
+          # Vector notation
+          vec: ['\\boldsymbol{#1}', 1]
+          bvec: ['\\mathbf{#1}', 1]
+          # Operators
+          del: '\\nabla'
+          grad: '\\nabla'
+          div: '\\nabla \\cdot'
+          curl: '\\nabla \\times'
+          # Statistical
+          avg: ['\\langle #1 \\rangle', 1]
+          var: ['\\text{Var}\\left[#1\\right]', 1]
+          std: ['\\sigma_{#1}', 1]
+          # Linear algebra
+          norm: ['\\left\\lVert #1 \\right\\rVert', 1]
+          abs: ['\\left\\lvert #1 \\right\\rvert', 1]
+          # Astronomy symbols
+          msun: '\\,M_\\odot'
+          rsun: '\\,R_\\odot'
+          lsun: '\\,L_\\odot'
 
-# Site configuration for web output
 site:
   template: book-theme
   title: "ASTR 596: Modeling the Universe"
   
-  # Site navigation options
   options:
-    logo: _static/logo.svg
-    favicon: _static/favicon.ico
+    # Logo as text instead of image file
+    logo_text: "✨ASTR 596✨"
+    
+    # Commented out until you have these files
+    # logo: _static/logo.svg
+    # favicon: _static/favicon.ico
     
     # Footer content
     extra_footer: |
@@ -89,178 +149,10 @@ site:
     use_edit_page_button: true
     repository_url: https://github.com/astrobytes-edu/astr596-modeling-universe
     repository_branch: main
-
-# MyST Parser configuration (at root level, not nested)
-myst:
-  # Enable MyST extensions
-  enable_extensions:
-    - amsmath
-    - colon_fence
-    - deflist
-    - dollarmath
-    - fieldlist
-    - html_admonition
-    - html_image
-    - linkify
-    - replacements
-    - smartquotes
-    - strikethrough
-    - substitution
-    - tasklist
-    - attrs_inline
-    - attrs_block
-  
-  # Configure heading anchors
-  myst_heading_anchors: 3
-  
-  # Enable footnote transitions
-  myst_footnote_transition: true
-  
-  # Enable figure numbering
-  numfig: true
-  numfig_secnum_depth: 2
-  
-  # Text substitutions for common terms
-  myst_substitutions:
-    astr596: "ASTR 596: Modeling the Universe"
-    python: Python 3.11+
-    jax: JAX
-    numpy: NumPy
-  
-  # Math rendering configuration with custom macros
-  mathjax3_config:
-    tex:
-      packages:
-        '[+]': ['ams', 'physics', 'color']
-      macros:
-        # Vector notation
-        vec: ['\\boldsymbol{#1}', 1]
-        bvec: ['\\mathbf{#1}', 1]
-        # Operators
-        del: '\\nabla'
-        grad: '\\nabla'
-        div: '\\nabla \\cdot'
-        curl: '\\nabla \\times'
-        # Statistical
-        avg: ['\\langle #1 \\rangle', 1]
-        var: ['\\text{Var}\\left[#1\\right]', 1]
-        std: ['\\sigma_{#1}', 1]
-        # Linear algebra
-        norm: ['\\left\\lVert #1 \\right\\rVert', 1]
-        abs: ['\\left\\lvert #1 \\right\\rvert', 1]
-        # Astronomy symbols
-        msun: '\\,M_\\odot'
-        rsun: '\\,R_\\odot'
-        lsun: '\\,L_\\odot'
-
-# Code execution configuration (at root level)
-execute:
-  # Execute notebooks during build with caching
-  execute_notebooks: cache
-  
-  # Cache directory for execution results
-  cache: .jupyter_cache
-  
-  # Maximum execution time per cell (seconds)
-  timeout: 120
-  
-  # Whether to allow errors in cell execution
-  allow_errors: false
-  
-  # Kernel to use for execution
-  kernel_name: python3
-  
-  # Patterns to exclude from execution
-  exclude_patterns:
-    - '*draft*'
-    - '*test*'
-    - 'instructor-notes/*'
-
-# HTML output configuration (at root level)
-html:
-  # Path to favicon
-  favicon: _static/favicon.ico
-  
-  # Path to logo
-  logo: _static/logo.png
-  
-  # Custom CSS files
-  css:
-    - _static/custom.css
-  
-  # Custom JavaScript files
-  js:
-    - _static/custom.js
-  
-  # Show home page in navbar
-  home_page_in_navbar: true
-  
-  # Comments configuration (optional)
-  comments:
-    hypothesis: false
-    utterances:
-      repo: "astrobytes-edu/astr596-modeling-universe"
-      issue-term: "pathname"
-      theme: "github-light"
-
-# LaTeX/PDF output configuration (at root level)
-latex:
-  # LaTeX engine to use
-  latex_engine: xelatex
-  
-  # Use Jupyter Book LaTeX styles
-  use_jupyterbook_latex: true
-  
-  # LaTeX document configuration
-  latex_documents:
-    targetname: astr596-textbook.tex
-    title: "ASTR 596: Modeling the Universe"
-    author: "Anna Rosen"
-    theme: manual
-
-# Sphinx configuration for advanced features (at root level)
-sphinx:
-  config:
-    # Language setting
-    language: en
     
-    # Theme configuration
-    html_theme: sphinx_book_theme
-    html_theme_options:
-      home_page_in_toc: true
-      repository_url: https://github.com/astrobytes-edu/astr596-modeling-universe
-      repository_branch: main
-      use_repository_button: true
-      use_issues_button: true
-      use_edit_page_button: true
-      use_download_button: true
-      use_fullscreen_button: true
-      launch_buttons:
-        binderhub_url: https://mybinder.org
-        colab_url: https://colab.research.google.com
-        notebook_interface: jupyterlab
-        thebe: true
-    
-    # Sphinx extensions
-    extensions:
-      - sphinx_copybutton
-      - sphinx_design
-      - sphinx_inline_tabs
-      - sphinx_proof
-      - sphinx_togglebutton
-      - sphinxcontrib.mermaid
-      - sphinx_thebe
-    
-    # Syntax highlighting style
-    pygments_style: sphinx
-    
-    # Figure numbering
-    numfig: true
-    numfig_secnum_depth: 2
-    
-    # Copy button configuration
-    copybutton_prompt_text: ">>> |\\$ "
-    copybutton_prompt_is_regexp: true
-    
-    # Mermaid diagrams version
-    mermaid_version: "10.6.1"
+    # Comments configuration (optional)
+    comments:
+      utterances:
+        repo: "astrobytes-edu/astr596-modeling-universe"
+        issue-term: "pathname"
+        theme: "github-light"
