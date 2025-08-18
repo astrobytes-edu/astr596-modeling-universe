@@ -1,358 +1,411 @@
-# Troubleshooting & Learning Guide
+# ASTR 596: Course Learning Guide
 
-## Failure Recovery Protocols
+## Quick Links
 
-### When Things Go Wrong (And They Will)
+- [Course Philosophy](why-astr596-is-different)
+- [AI Usage Policy](astr596-ai-policy)
+- [Project Submission Guide](short-projects/0_project_submission_guide)
+- [Software Setup](../02-getting-started/02-software-setup)
 
-**Your code is a disaster? Good, now you're learning:**
+\:::{admonition} Quick Start (read this first) {#sec-quick-start} **Before class (≤30 min):** skim the chapter → attempt the project for **30 min** (capture **effort evidence** per the AI Policy) → note two questions.\
+**In class:** ask; pair program; debug one issue to closure.\
+**After class (≤45 min):** implement one increment; add one figure; write one takeaway.\
+[Workflow](#sec-learning-workflow) · [Debug & Test](#sec-debug-test) · [Getting Help](#sec-getting-help)\
+**Note:** This course has **no exams** — progress is demonstrated through projects, growth memos, and participation. :::
 
-- **Git broke everything?** `git reflog` shows all commits, even "lost" ones
-- **Accidentally deleted files?** Check your IDE's local history (VS Code: Timeline view) OR if you've been committing regularly, `git checkout -- filename` recovers the last committed version. This is why you should commit every time you get something working, even partially.
-- **Algorithm completely wrong?** Keep it in `failed_attempts/` folder—documenting what doesn't work is valuable
-- **Can't understand your own code from last week?** You forgot to comment. Fix it now, learn for next time.
+\:::{admonition} What you can expect from me / from you **From me:** clear milestones, fast feedback, chances to re-try, and honest coaching.\
+**From you:** start early, verify claims, ask for help with context, and explain your code in your own words. :::
 
-**Recovery is a skill:** Industry developers break things daily. The difference is they know how to recover quickly. Every disaster teaches you a new git command or IDE feature.
+\:::{dropdown} Quick Reference Card (toggle) **Daily Checklist**
 
-**Git saves you from yourself:** Commit early, commit often, push regularly. Your future self will thank you when you need to recover that working version from 3 days ago.
+-
 
-## Building Research Intuition
+**When Stuck**
 
-**Debugging IS hypothesis testing:**
-1. Hypothesis: "The error is in the boundary conditions"
-2. Test: Add print statement at boundaries
-3. Result: Boundaries are fine
-4. New hypothesis: "Check the indexing in the main loop"
-5. Test: Print indices at each iteration
-6. Result: Off-by-one error found
+1. Re‑read error
+2. Minimal repro (≤20 lines)
+3. Check docs
+4. Rubber‑duck
+5. Search *specific* error
+6. Ask with context
 
-This IS the scientific method. You're already doing research, just with code instead of lab equipment.
+**Git Workflow**
 
-**Read error messages like papers:** Both require parsing dense technical text for the one crucial piece of information buried in paragraph 3.# ASTR 596: Course Learning Guide
+```bash
+git pull origin main
+git checkout -b feat/short-name
+# ... work ...
+git add -A && git commit -m "message"
+git push -u origin feat/short-name
+```
 
-This document contains practical strategies for succeeding in this course. It's not about course policies (see syllabus) or philosophy (see "Why ASTR 596 is Different")—it's your technical reference when you're stuck, confused, or need to level up your skills. Everything here is based on cognitive science research and industry best practices. Use this guide to build strong computational habits that will serve you throughout your career.
+\:::
 
-## Learning Strategies
+---
 
-### Effective Learning Workflow
+## Effective Learning Workflow {#sec-learning-workflow}
 
-**Before Class:**
-- Read actively - type out examples yourself
-- Note specific confusion points
-- Attempt project for 30 min (primes your brain for learning)
+### Before Class
 
-**During Class:**
-- Ask your confusion points immediately
-- Debug with partners
-- Take implementation notes
+1. **Read actively** — skim headings, figures, equations.
+2. **Try examples** — type code yourself (no paste).
+3. **Attempt project start (30 min)** — capture **effort evidence** (see AI Policy): link a relevant doc section; a ≤20‑line minimal repro; one failed approach + why it failed.
+4. **Note questions** — two precise questions for class/Slack.
 
-**After Class:**
-- Review within 24 hours (critical for retention)
-- Implement incrementally
-- Test each piece before moving on
+### During Class
 
-## Debugging Strategies
+1. **Ask high‑leverage questions.**
+2. **Pair program** — switch driver/navigator every 20–25 min.\
+   **Driver/Navigator (20–25 min):** Driver talks while typing; Navigator asks “what/why” and tracks TODOs. Switch on a timer; summarize decisions in 2 bullets.
+3. **Debug together** — close one issue to completion.
+4. **Record decisions** — brief bullets in README or notebook.
+
+### After Class
+
+1. **Implement incrementally** — one small, verified feature.
+2. **Visualize** — plot and annotate with units.
+3. **Reflect** — one paragraph: what worked, next step.
+4. **Commit/push** — treat your repo as a lab notebook.
+
+## Algorithm Planning & Pseudocode {#sec-algo-planning}
+
+**Why plan first:** coding without a plan leads to brittle code and wasted time. A 5‑minute sketch saves hours.
+
+**5‑minute pseudocode habit (before you open the editor)**
+
+1. Define **inputs/outputs** (with units).
+2. Write **3–10 steps** in plain language.
+3. Note **assumptions** and **edge cases**.
+4. Mark **checks** (units, limits, shape).
+5. Only then start coding the smallest step.
+
+**Template**
+
+```
+# Function: what does it compute?
+# Inputs: ... (units)
+# Outputs: ... (units)
+# Steps:
+# 1) ...
+# 2) ...
+# 3) ...
+# Checks: units/limits/shape
+```
+
+**Example (luminosity distance ****\(D_L(z)\)****)**
+
+```
+# compute_DL(z, params)
+# Inputs: z (unitless), params = {H0 [km/s/Mpc], Om0, Ode0}
+# Output: D_L [Mpc]
+# Steps:
+# 1) define H(z) from params
+# 2) integrate 1/H(z) from 0→z (numerical)
+# 3) Dc = c * integral
+# 4) DL = (1+z) * Dc
+# Checks: DL(z) monotonic; Om0→0 limit; units via your **Units** module
+```
+
+**Test plan (before code)**
+
+- Compare small‑z series against analytical approx.
+- Check \(D_L(z=0)=0\); verify units using your **Units** module.
+
+---
+
+## Evidence‑Based Learning Frameworks {#sec-evidence-frameworks}
+
+*A transparent, honest map of what actually improves learning and transfer.*
+
+### Retrieval Practice
+
+- **Why it works:** strengthens memory traces; outperforms re‑reading.
+- **Use here:** forecast quizzes; “blank‑sheet” code (rebuild a function from memory); oral minute on algorithm steps.
+
+**Forecast Quiz (5 minutes, before you read)**
+
+1. Without notes, write two equations or invariants you expect to need.
+2. Sketch the steps you’d take to compute the main quantity (e.g., \(D_L(z)\)).
+3. After reading, check what you got right/wrong; correct in place.
+
+### Spacing & Interleaving
+
+- **Why:** spacing boosts retention; interleaving improves discrimination/transfer.
+- **Use:** revisit old content weekly; mix tasks (Friedmann distances ↔ likelihoods ↔ JAX vectorization) in problem sets.
+
+### Worked Examples → Example‑Problem Pairs → Faded Guidance
+
+- **Why:** reduces cognitive load then scaffolds independence.
+- **Use:** each section: one worked example, one isomorphic problem, then a “faded” version with steps removed.
+
+**Faded version checklist**
+
+- Remove numeric scaffolds; keep symbols.
+- Hide one intermediate identity (name it).
+- Ask for a unit/limit check instead of providing it.
+
+### Self‑Explanation
+
+- **Why:** explaining steps reveals gaps and builds schema.
+- **Use:** include two lines under key solutions: *principle used* and *why it applies*.
+
+**Two lines to add under key solutions**
+
+- *Principle used:* e.g., “chain rule on \(D_L(z)\); small-z limit; log-sum-exp for stability.”
+- *Why applicable:* e.g., “expansion is monotonic in z; avoiding overflow in the likelihood.”
+
+### Productive Failure (Guided Struggle)
+
+- **Why:** early struggle increases post‑instruction learning.
+- **Use:** 10–15 min “invent the method” prompts before the canonical approach.
+
+### Multiple Representations (Dual Coding)
+
+- **Why:** linking equations, graphs, and words builds robust understanding.
+- **Use:** require graph ↔ equation ↔ verbal mapping for core ideas (e.g., H(z), D\_L(z)).
+
+### Error Analysis & the Hypercorrection Effect
+
+- **Why:** correcting confident errors produces large gains.
+- **Use:** annotate flawed solutions; submit fixes in growth memos.
+
+### ICAP Framework (Interactive > Constructive > Active > Passive)
+
+- **Why:** learning tracks engagement mode.
+- **Use:** prioritize pair explanations, whiteboarding, student‑generated derivations.
+
+### Deliberate Practice
+
+- **Why:** targeted practice on weak subskills accelerates growth.
+- **Use:** short, focused drills (units checks; limit cases; vectorization patterns).
+
+### Metacognition (Assignment Wrappers)
+
+- **Why:** planning/monitoring improves regulation and transfer.
+- **Use:** one‑page wrapper with strategies used, errors made, next adjustments.
+
+\:::{admonition} Evidence at a Glance Retrieval > re‑reading; active learning > lecture; spacing & interleaving improve transfer; worked‑example → faded guidance builds independence; self‑explanation and error analysis are high‑yield. (See course site references.) :::
+
+---
+
+## Debugging & Testing Playbook {#sec-debug-test}
 
 ### The Systematic Approach
 
-1. **Read the error message** - Really read it, don't just panic
-2. **Identify the line** - Where exactly is the problem?
-3. **Check your assumptions** - What do you think should happen?
-4. **Simplify the problem** - Can you reproduce with minimal code?
-5. **Print debugging** - Sometimes `print()` beats fancy debuggers
-6. **Use Python debugger (pdb)** - Set breakpoints and step through code (see example below)
-7. **Rubber duck debugging** - Explain to an imaginary listener
-8. **Take a break** - Fresh eyes catch obvious errors
+1. **Read the error** — slowly.
+2. **Pin the line** — where exactly?
+3. **Check assumptions** — inputs, shapes, units, limits.
+4. **Simplify** — minimal repro (≤20 lines).
+5. **Instrument** — print key values; plot intermediates.
+6. **Use the debugger** — step, inspect, continue.
+7. **Take a break** — reset attention, then retry.
+
+### Using the Debugger (`breakpoint()` / pdb)
+
+```python
+def problematic_function(x):
+    result = x * 2
+    breakpoint()  # Execution stops here (Python 3.7+)
+    return result / 0  # Obviously wrong
+```
+
+**pdb cheatsheet:** `n` next · `s` step into · `c` continue · `l` list · `p x` print · `q` quit\
+**IPython:** after a crash, run `%debug` to drop into the last exception.
 
 ### Common Python Pitfalls
 
-```python
-# Mutable default arguments - WRONG
-def bad_function(lst=[]):  
-    lst.append(1)
-    return lst
+- **Division semantics:** Python 3: `/` is float; use `//` for integer division.
+- **Mutable defaults:** avoid `[]`/`{}` as defaults; use `None` + set inside.
+- **Broadcasting:** check `.shape` carefully.
+- **Off‑by‑one:** remember 0‑indexed slices.
+- **Tabs vs spaces:** don’t mix.
 
-# Correct approach
-def good_function(lst=None):
-    if lst is None:
-        lst = []
-    lst.append(1)
-    return lst
+### Testing Strategies
+
+- **Known solutions** — reproduce textbook cases.
+- **Limiting cases** — e.g., \(\Omega_\Lambda \to 0\).
+- **Conservation laws** — where applicable.
+- **Units** — use your **Units** module (from Project 1) and verify conversions.
+- **Visualization** — plots often reveal bugs.
+
+**Units sanity snippet (Course Units module)**
+
+````python
+# Example API; adapt to your Units module
+from units import U, Q  # or your names
+
+H0 = Q(70, U.km/U.s/U.Mpc)   # 70 km/s/Mpc
+H0_s = H0.to(U.s**-1)        # convert to 1/s
+assert H0_s.value > 0
+
+
+:::{admonition} Minimal Repro (≤20 lines)
+Include this repro in your PR/issue so others can run it in isolation.
+
+- Expected vs actual behavior
+- Short code to reproduce (≤20 lines)
+- Version info: python, numpy, jax
+  :::
+
+---
+
+
+### Course Units Module (reference) {#sec-units-module}
+- You will **build a small Units/Quantity library in Project 1** and extend it across the term.
+- **Design goals:**
+  - explicit base units (e.g., km, s, Mpc) and **dimension system** (L, T, …)
+  - derived units via `*`, `/`, and exponentiation; unit simplification
+  - `Quantity(value, unit)` type with `.to(target_unit)` conversion
+  - **dimension checking** that raises on incompatible conversions
+  - immutable quantities; pure conversions (no hidden globals)
+- **Recommended invariants/tests:** identity `Q(1,u).to(u)==1`, round‑trip `Q(v,a).to(b).to(a)≈v`, dimensional errors on `km.to(s)`.
+- **Starter snippet (adapt to your API):**
+```python
+from units import U, Q
+v = Q(300_000, U.km/U.s)
+lam = Q(500, U.nm)
+nu = (U.c / lam).to(U.Hz)     # if you represent constants as quantities
+````
+
+| Resource                                                                                                                 | Purpose                     |
+| ------------------------------------------------------------------------------------------------------------------------ | --------------------------- |
+| [https://jax.readthedocs.io/](https://jax.readthedocs.io/)                                                               | Core JAX API and tutorials  |
+| [https://jax.readthedocs.io/en/latest/thinking\_in\_jax.html](https://jax.readthedocs.io/en/latest/thinking_in_jax.html) | Mental model for JAX        |
+| [https://flax.readthedocs.io/](https://flax.readthedocs.io/)                                                             | Flax neural‑network library |
+
+\:::{admonition} Docs‑First Rule When stuck: consult the docs → attempt minimal repro → then (and only then) use AI for clarification. Place the **AI / Verified / Because** 3‑line note above any code you accept.
+
+**When you do use AI, ask like this:**\
+“Given the following course excerpt [paste small, relevant passage], what is a numerically stable way to compute \(D_L(z)\) at high z? Return a short rationale and one limit test. If unsupported by the excerpt, say so.” :::
+
+---
+
+## Getting Help {#sec-getting-help}
+
+**Immediate help:** blocked >1 hour; can’t install; don’t understand the prompt even after reading.\
+**Office hours / class:** approach choice; after genuine attempt; debugging with context.
+
+**Ask like a pro (template)**
+
+```
+Context: I’m working on [specific part] of [project].
+Attempt: I tried [approach] (code snippet/minimal repro).
+Expected: I expected [outcome]; Actual: I got [error/behavior].
+Hypothesis: I think the issue is [your guess].
+Question: Can you help me understand [specific aspect]?
 ```
 
-Other common issues:
-- **Integer division**: Be aware of Python 2 vs 3 differences
-- **Indentation errors**: Never mix tabs and spaces
-- **Off-by-one errors**: Remember Python is 0-indexed
-- **Scope confusion**: Understand local vs global variables
-- **NumPy broadcasting**: Check array shapes with `.shape`
+**Red flags (ask now):** “It works but I can’t explain why”; random changes; solution is 10× longer than expected; overwhelm >3 days.
 
-### Common Error Messages Decoded
+---
 
-`IndexError: list index out of range`  
-→ You're trying to access element N in a list with <N elements. Check loop bounds and off-by-one errors.
+## Project Workflow (milestones, not micromanagement) {#sec-project-workflow}
 
-`TypeError: 'NoneType' object is not subscriptable`  
-→ A function returned None when you expected a list/array. Check your return statements.
+**Principle:** start early, iterate in small steps, scaffold your work. Use milestones as guardrails—not a daily schedule.
 
-`ValueError: too many values to unpack`  
-→ Mismatch between variables and returned values. Print the shape/length of what you're unpacking.
+### Core milestones (suggested windows)
 
-`KeyError: 'key_name'`  
-→ Dictionary doesn't have that key. Print dict.keys() to see what's actually there.
+- **Kickoff (days 1–2):** clarify the question; clone template; run a sanity script; list risks.
+- **Baseline (first third):** get a minimal model running (one correct figure/metric).
+- **Deepening (second third):** improve correctness/performance; add one new capability (e.g., likelihood, refactor, vectorization).
+- **Polish (final third):** clean figures; write short results; tighten repo; prepare demo.
+- **Repro pass (24h before submit):** fresh clone → single command regenerates the key result.
 
-`NameError: name 'variable' is not defined`  
-→ You're using a variable before defining it, or it's out of scope. Check spelling and indentation.
+### Choose‑your‑own cadence (pick a few per work session)
 
-### Using Python Debugger (pdb)
+**Foundation**
 
-```python
-import pdb
+- read one section + extract equations
+- set up config/env; pin versions
+- create a minimal repro for the core calculation
 
-def problematic_function(x):
-    result = x * 2
-    pdb.set_trace()  # Execution stops here
-    return result / 0  # Obviously wrong
+**Build**
 
-# Commands in pdb:
-# n - next line
-# s - step into function
-# c - continue
-# l - list code
-# p variable - print variable
-# pp variable - pretty print
-# h - help
+- implement one function
+- replace a loop with vectorization
+- add one plot with labeled axes + units
+
+**Validate**
+
+- check one limit case
+- compare to a known solution/textbook value
+- add/run a simple test or assert
+
+**Communicate**
+
+- write a 3–5 sentence log or figure caption
+- file a TODO/issue; link a doc section
+- record a 60‑sec demo clip (optional)
+
+### Minimum weekly evidence (to keep you honest)
+
+- A visible commit trail (small, descriptive commits)
+- One new figure or metric with units/labels
+- A brief progress note (what worked, next step)
+
+\:::{dropdown} Example lightweight timelines (optional)
+
+- **Fast‑start:** kickoff Day 1 → baseline by Day 3 → deepen Day 6–9 → polish Day 12–13 → repro Day 13–14.
+- **Research‑heavy:** kickoff Day 1–2 → baseline by Day 5 → literature/analysis Day 6–10 → polish/repro Day 11–14. :::
+
+**Project structure (suggested)**
+
 ```
-
-## Resources & Documentation
-
-### Essential Python References
-
-| Resource | Best For | Link |
-|----------|----------|------|
-| Official Python Docs | Language features | [docs.python.org](https://docs.python.org/3/) |
-| NumPy Documentation | Array operations | [numpy.org/doc](https://numpy.org/doc/stable/) |
-| Matplotlib Gallery | Plot examples | [matplotlib.org/stable/gallery](https://matplotlib.org/stable/gallery/index.html) |
-| SciPy Documentation | Scientific functions | [docs.scipy.org](https://docs.scipy.org/doc/scipy/) |
-| Real Python | Tutorials | [realpython.com](https://realpython.com/) |
-| Python Tutor | Visualize execution | [pythontutor.com](http://pythontutor.com/) |
-
-### Machine Learning & JAX
-
-| Resource | Purpose |
-|----------|---------|
-| [JAX Documentation](https://jax.readthedocs.io/) | Core JAX features |
-| [Equinox Docs](https://docs.kidger.site/equinox/) | Neural network library |
-| [Flax Documentation](https://flax.readthedocs.io/) | Alternative NN library |
-| [Ting's ML Review](https://arxiv.org/abs/2506.12230) | Astronomy-specific ML |
-
-### Recommended Video Resources
-
-- **3Blue1Brown** - Visual mathematical intuition
-- **StatQuest** - Statistics with clear explanations
-- **Computerphile** - Computer science concepts
-
-## Study Tips & Best Practices
-
-### Why Projects Take Time (It's Not You, It's Neuroscience)
-
-**Distributed Practice > Massed Practice**  
-Your brain needs time between sessions to consolidate learning (Cepeda et al., 2006). Complex debugging and algorithm design rarely happen in single marathon sessions—they require "diffuse mode" processing, where your brain works on problems subconsciously between active work periods.
-
-**Practical reality:** Yes, learning to code is time-intensive. A "simple" implementation might take 8+ hours when you're learning. But those hours spread across a week with sleep cycles between them yield better understanding than 8 straight hours of increasingly frustrated debugging.
-
-### Code Organization Best Practices
-
-```python
-# Project structure
 project_name/
-├── README.md           # Installation and usage instructions
-├── requirements.txt    # Package dependencies
+├── README.md                     # how to run + purpose
+├── environment.yml               # or requirements.txt
 ├── src/
 │   ├── __init__.py
-│   ├── physics.py     # Physics calculations
-│   ├── numerics.py    # Numerical methods
-│   └── plotting.py    # Visualization functions
-├── tests/
-│   └── test_physics.py
+│   ├── physics.py                # physics calculations
+│   ├── numerics.py               # numerical methods
+│   └── plotting.py               # visualization
+├── tests/                        # provided or optional (start simple)
 ├── data/
 │   └── input_files/
 ├── outputs/
 │   └── figures/
-└── main.py            # Entry point
+└── main.py
 ```
 
-### Writing Good Documentation
+---
 
-**Why this matters:** In research and industry, undocumented code is dead code. Your future self (and collaborators) need to understand what you wrote and why. Good documentation is expected in any professional setting.
+## Work Habits & Mindset (Appendix) {#sec-habits}
 
-```python
-def integrate_orbit(initial_conditions, time_span, method='RK4'):
-    """
-    Integrate orbital dynamics using specified method.
-    
-    This is a docstring - it appears when someone types help(integrate_orbit).
-    Use triple quotes and follow NumPy/SciPy style (industry standard).
-    
-    Parameters
-    ----------
-    initial_conditions : array-like
-        [x, y, z, vx, vy, vz] initial position and velocity
-        Describe type and what it represents
-    time_span : tuple
-        (t_start, t_end) integration time bounds
-        Always specify units in docs (assumed: seconds)
-    method : str, optional
-        Integration method: 'Euler', 'RK4', or 'Leapfrog'
-        List all valid options explicitly
-    
-    Returns
-    -------
-    trajectory : ndarray
-        Shape (n_steps, 6) array of positions and velocities
-        Always specify output shape/structure
-    
-    Examples
-    --------
-    >>> ic = [1, 0, 0, 0, 1, 0]  # Circular orbit
-    >>> t_span = (0, 10)
-    >>> orbit = integrate_orbit(ic, t_span)
-    
-    Notes
-    -----
-    The RK4 method is 4th-order accurate but not symplectic.
-    For long-term stability, use 'Leapfrog' despite lower order.
-    """
-    # Implementation here
+### Focus & Distraction Tools
+
+- 25→45 min focus blocks; notifications off; phone in another room.
+- Optional site blockers during work sessions.
+
+### Time Management & Energy
+
+- 90‑min daily minimum: plan → implement → test → document.
+- Respect 90–120 min ultradian cycles; real breaks between cycles.
+
+### Growth Mindset
+
+- Reframe: “I’m not there *yet*.”
+- Normalize struggle; track progress; celebrate small wins.
+
+### Imposter Syndrome (Reality Check)
+
+- Nearly everyone reports it at some point; share struggles; document wins.
+
+---
+
+\:::{dropdown} Quick Reference Card (printable) **Daily Checklist**
+
+-
+
+**When Stuck**\
+Re‑read error → minimal repro → docs → rubber‑duck → search → ask
+
+**AI Note Template (place above the edited block)**
+
+```
+# AI: [Tool] suggested [very short what]
+# Verified: [doc / limit test / unit / plot]
+# Because: [1 short reason kept]
 ```
 
-**Key Documentation Principles:**
-1. **Docstrings are contracts** - They promise what your function does
-2. **Parameters section** - Type, shape, units, and valid ranges
-3. **Returns section** - Exactly what comes back and in what form
-4. **Examples section** - Copy-pasteable code showing usage
-5. **Notes section** - Gotchas, algorithm choices, or citations
+\:::
 
-**Industry expectation:** Every public function needs a docstring. In research, include citations to papers/equations you're implementing.
-
-### Testing Strategies
-
-Always validate your code with:
-
-1. **Known solutions** - Reproduce textbook examples
-2. **Limiting cases** - Check behavior at extremes
-3. **Conservation laws** - Verify energy/momentum when applicable
-4. **Unit analysis** - Ensure dimensional consistency
-5. **Visualization** - Plot everything; patterns reveal bugs
-
-Example of a test that teaches:
-```python
-def test_energy_conservation():
-    """This test SHOULD fail for Euler method—that teaches us about numerical stability."""
-    energy_initial = calculate_total_energy(state_0)
-    state_final = integrate_euler(state_0, dt=0.1, steps=1000)
-    energy_final = calculate_total_energy(state_final)
-    # This assertion will fail, teaching you Euler doesn't conserve energy
-    assert np.isclose(energy_initial, energy_final)  # FAILS - that's the lesson!
-```
-
-## Getting Help
-
-### When to Seek Help
-
-**Immediate help needed:**
-- Stuck on same error for >1 hour
-- Don't understand project requirements
-- Technical issues (can't install software, GitHub problems)
-
-**Hacking Hours (Thursdays 11 AM) ideal for:**
-- Conceptual confusion after genuine attempt
-- Discussing different approaches to problems
-- Debugging help after you've tried the systematic approach
-- "Is my thinking on track?" questions
-
-**Friday class questions valuable for everyone:**
-- Your confusion probably helps 3 other students
-- Real-time problem solving benefits the whole class
-- No question is too basic if you've attempted it first
-
-### How to Ask Good Questions
-
-**Good question format:**
-```
-"I'm trying to [goal]. 
-I've attempted [what you tried].
-I expected [expected result] but got [actual result].
-I've checked [what you've verified].
-Could you help me understand [specific confusion]?"
-```
-
-**Include:**
-- Minimal reproducible example
-- Full error message
-- What you've already tried
-- Relevant code snippet (not entire file)
-
-### Red Flags: You Need Help NOW
-
-**Technical Warning Signs:**
-- Your code "works" but you can't explain why
-- Changing things randomly hoping for success
-- Solution is 10x longer than expected
-- Avoiding entire project sections
-
-**Green Flags You're Growing:**
-- Your questions are becoming more specific
-- You're catching bugs faster
-- You can predict what will break before running code
-- You're helping classmates debug
-
-**What to do:** Visit Hacking Hours or ask in class. Don't wait!
-
-## Time Management
-
-### Evidence-Based Learning Strategies
-
-**These techniques are proven by cognitive science to enhance retention and understanding:**
-
-#### Active Recall (Most Powerful)
-**What it is:** Testing yourself WITHOUT looking at notes/code first  
-**Why it works:** Retrieval strengthens memory more than re-reading (Karpicke & Blunt, 2011)  
-**How to use it:**
-- Before checking documentation, try to write the function signature from memory
-- Close your code and explain what each function does
-- Weekly: Write down everything you remember about a topic, THEN check notes
-
-#### Spaced Repetition
-**What it is:** Review material at increasing intervals (1 day, 3 days, 1 week, 2 weeks)  
-**Why it works:** Forgetting and re-learning strengthens long-term memory (Cepeda et al., 2006)  
-**How to use it:**
-- Day after class: Review notes (5 min)
-- Three days later: Try to recreate key code (10 min)
-- Week later: Implement similar problem without looking
-- Two weeks: Explain concept to someone else
-
-#### Interleaving (Mix It Up)
-**What it is:** Switch between different topics/projects instead of focusing on one  
-**Why it works:** Forces your brain to actively retrieve and apply the right method (Rohrer & Taylor, 2007)  
-**How to use it:**
-- Work on current project for 1-2 hours, then switch
-- Review old projects before starting new ones
-- Mix conceptual learning with implementation
-
-#### The Testing Effect
-**What it is:** Taking practice tests improves learning more than studying  
-**Why it works:** Identifies gaps and strengthens retrieval pathways (Roediger & Karpicke, 2006)  
-**How to use it:**
-- Write code without any auto-complete (remember: AI/Copilot should be disabled in your IDE)
-- Predict output before running code
-- Create minimal examples to test your understanding
-
-#### Elaborative Interrogation
-**What it is:** Asking "why" and "how" questions while learning  
-**Why it works:** Connecting new information to existing knowledge (Dunlosky et al., 2013)  
-**How to use it:**
-- Don't just learn WHAT broadcasting does, understand WHY NumPy designed it that way
-- Ask: "Why does this algorithm fail for this case?"
-- Connect: "How is this similar to what we did last week?"
-
-Remember: Everyone feels lost sometimes. The difference between success and failure isn't ability—it's persistence and willingness to seek help.
