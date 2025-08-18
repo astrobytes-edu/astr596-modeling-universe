@@ -9,7 +9,7 @@ kernelspec:
   language: python
   name: python3
 ---
-# Syllabus - ASTR 596: Modeling the Universe
+# Syllabus - ASTR 596: Modeling the Universe (in prep.)
 
 **Fall 2025 - San Diego State University (SDSU)**  
 **Fridays 11:00 AM - 1:40 PM | PA 215**
