@@ -275,7 +275,7 @@ After consulting AI, **close the tab and re-implement from memory**. Do not past
 
 **The Simple Rule**: You must be able to explain every line of code you submit and why you implemented it that way.
 
-During class, I may ask you to walk through your approach or explain your implementation choices. This isn't a formal assessment—it's how we learn together and ensure you're building real understanding. If you can't explain your code, that's a signal you need to revisit it until you truly understand it.
+During class, I may ask you to walk through your approach or explain your implementation choices. This isn't a formal assessment—it's how we learn together and ensure you're building real understanding. If you can't explain your code, that's a signal you need to revisit it until you truly understand it. Expect 1–2 minute micro-vivas during lab: I’ll choose a function, you walk me through the logic and a quick modification.
 
 Your Growth Memos will include the AI reflection template above, helping you track your own journey toward independence and mastery.
 
@@ -450,35 +450,22 @@ AI: "Exactly! Now think about what conservation laws tell us about physical syst
 
 ## **Bottom Line**
 
-AI amplifies capability—it doesn't replace understanding. Master fundamentals AND strategic AI usage to thrive. The struggle is where learning happens; AI should enhance your journey, not bypass it.
+AI amplifies capability—it doesn't replace understanding. Master fundamentals AND strategic AI usage to thrive. The struggle is where learning happens; AI should enhance your learning and skill development journey, not bypass it.
 
 **Questions?** Come to Hacking Hours or ask in class. Open communication helps everyone!
 
 ## **Quick Reference Card**
 
-### Phase 1 (Weeks 1-6): Foundation
-
-- ✅ **Allowed**: Concept explanations, Debugging after ~30 min struggle  
-- ❌ **Not Allowed**: Initial code implementations  
-- 📝 **Document**: Your most significant interaction with verification
-
-### **Phase 2 (Weeks 7-12): Strategic**
-
-- ✅ **Allowed**: Efficiency improvements after working solution
-- ❌ **Not Allowed**: First attempts, without documentation  
-- 📝 **Document**: Why AI suggestion improves your approach
-
-### **Phase 3 (Weeks 13-16): Professional**
-
-- ✅ **Allowed**: Complex problem-solving, optimization  
-- ❌ **Not Allowed**: Work you can't explain  
-- 📝 **Document**: Critical evaluation of suggestions
-
-**Remember**: Can't explain it = Didn't learn it = Can't submit it
+**Phase 1 (Weeks 1–6):** Debug after 30 min effort. Concepts via AI are allowed (docs-first).  
+**Phase 2 (Weeks 7–12):** Efficiency/refactors after baseline; verify & cite.  
+**Phase 3 (Weeks 13–16):** Acceleration/boilerplate; not for logic you can’t explain.  
+**Always:** If you can’t explain it, you can’t submit it.
 
 ---
 
 ## References
+
+**TODO:** verify before publish
 
 - Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, O., & Mariman, R. (2024). [*Generative AI can harm learning*](https://arxiv.org/abs/2401.12438), arXiv preprint
 
