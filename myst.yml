@@ -63,24 +63,7 @@ project:
   #  - references.bib
   
   # Parser and MyST extension settings
-  settings:
-    myst_enable_extensions:
-      - amsmath
-      - colon_fence
-      - deflist
-      - dollarmath
-      - fieldlist
-      - html_admonition
-      - html_image
-      - linkify
-      - replacements
-      - smartquotes
-      - strikethrough
-      - substitution
-      - tasklist
-      - attrs_inline
-      - attrs_block
-    
+  settings:    
     myst_heading_anchors: 3
     myst_footnote_transition: true
     numfig: true
@@ -92,31 +75,6 @@ project:
       jax: JAX
       numpy: NumPy
     
-    # Math rendering configuration with custom macros
-    mathjax3_config:
-      tex:
-        packages:
-          '[+]': ['ams', 'physics', 'color']
-        macros:
-          # Vector notation
-          vec: ['\\boldsymbol{#1}', 1]
-          bvec: ['\\mathbf{#1}', 1]
-          # Operators
-          del: '\\nabla'
-          grad: '\\nabla'
-          div: '\\nabla \\cdot'
-          curl: '\\nabla \\times'
-          # Statistical
-          avg: ['\\langle #1 \\rangle', 1]
-          var: ['\\text{Var}\\left[#1\\right]', 1]
-          std: ['\\sigma_{#1}', 1]
-          # Linear algebra
-          norm: ['\\left\\lVert #1 \\right\\rVert', 1]
-          abs: ['\\left\\lvert #1 \\right\\rvert', 1]
-          # Astronomy symbols
-          msun: '\\,M_\\odot'
-          rsun: '\\,R_\\odot'
-          lsun: '\\,L_\\odot'
 
 site:
   template: book-theme

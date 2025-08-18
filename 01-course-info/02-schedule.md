@@ -10,10 +10,10 @@
 
 | Week | Date | Topic | Reading Assignment |
 |------|------|-------|-------------------|
-| 1 | Aug 29 | Course introduction, Python fundamentals, terminal/Git basics | *TBD - Python Foundations Ch. 1* |
-| 2 | Sept 5 | NumPy/matplotlib basics, OOP, stellar physics | *TBD - Python Foundations Ch. 2* |
-| 3 | Sept 12 | Gravitational dynamics, numerical integration | *TBD - Numerical Methods Ch. 1* |
-| 4 | Sept 19 | Monte Carlo methods, statistical sampling | *TBD - Numerical Methods Ch. 2* |
+| 1 | Aug 29 | Course introduction, terminal/Git basics, Python fundamentals | *Getting Started Ch. 1-3*, *Python Fundamentals Ch. 1-4* |
+| 2 | Sept 5 | NumPy/matplotlib basics, OOP, stellar physics | *Python Fundamentals Ch. 5-8* |
+| 3 | Sept 12 | Gravitational dynamics, numerical integration | *TBD* |
+| 4 | Sept 19 | Monte Carlo methods, statistical sampling | *TBD* - Numerical Methods Ch. 2** |
 | 5 | Sept 26 | Linear regression from first principles | *TBD - Machine Learning Ch. 1* |
 | 6 | Oct 3 | Advanced regression, model selection | *TBD - Machine Learning Ch. 2* |
 | 7 | Oct 10 | Monte Carlo radiative transfer | *TBD - Radiative Transfer Ch. 1* |
