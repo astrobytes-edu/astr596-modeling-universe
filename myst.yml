@@ -36,14 +36,6 @@ project:
   # Execution configuration for Jupyter notebooks
   jupyter:
     kernelName: python3
-    executeNotebooks: cache
-    cache: .jupyter_cache
-    timeout: 120
-    allow_errors: false
-    exclude_patterns:
-      - '*draft*'
-      - '*test*'
-      - 'instructor-notes/*'
   
   # Files to exclude from build
   exclude:
@@ -61,21 +53,7 @@ project:
   
   bibliography:
   #  - references.bib
-  
-  # Parser and MyST extension settings
-  settings:    
-    myst_heading_anchors: 3
-    myst_footnote_transition: true
-    numfig: true
-    numfig_secnum_depth: 2
-    
-    myst_substitutions:
-      astr596: "ASTR 596: Modeling the Universe"
-      python: Python 3.11+
-      jax: JAX
-      numpy: NumPy
-    
-
+       
 site:
   template: book-theme
   title: "ASTR 596: Modeling the Universe"
