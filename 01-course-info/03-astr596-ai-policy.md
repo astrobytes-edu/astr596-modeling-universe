@@ -1,3 +1,15 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
 # ASTR 596 AI Policy & Learning Framework
 
 **Living Document Notice:** Given the rapid evolution of AI in education, this policy is essentially a pedagogical experiment. We're exploring together how to best integrate these powerful tools while maintaining deep learning. Your feedback and experiences will help refine these guidelines. Open communication is essential—if something isn't working or you discover better approaches, please share during Hacking Hours or class discussions. We're all learning how to navigate this new landscape together.
@@ -35,25 +47,25 @@ flowchart TD
     Q1 -->|Weeks 7-12| Phase2[Phase 2: Strategic]
     Q1 -->|Weeks 13-16| Phase3[Phase 3: Professional]
     
-    Phase1 --> P1Q1{Have I struggled for<br/>~30 minutes?}
-    P1Q1 -->|No| Struggle[Keep trying!<br/>Check documentation first]
+    Phase1 --> P1Q1{"Have I struggled for<br/>~30 minutes?"}
+    P1Q1 -->|No| Struggle["Keep trying!<br/>Check documentation first"]
     P1Q1 -->|Yes| P1Q2{Is it a debugging issue?}
-    P1Q2 -->|No| NoAI1[Don't use AI yet<br/>Ask instructor/peers]
-    P1Q2 -->|Yes| UseAI1[OK to use AI<br/>Document the interaction]
+    P1Q2 -->|No| NoAI1["Don't use AI yet<br/>Ask instructor/peers"]
+    P1Q2 -->|Yes| UseAI1["OK to use AI<br/>Document the interaction"]
     
-    Phase2 --> P2Q1{Have I checked<br/>documentation first?}
-    P2Q1 -->|No| CheckDocs[Check official docs<br/>then reconsider]
-    P2Q1 -->|Yes| P2Q2{Can I verify<br/>AI's answer?}
-    P2Q2 -->|No| NoAI2[Don't use AI<br/>Need more foundation]
-    P2Q2 -->|Yes| UseAI2[Use AI strategically<br/>Verify & document]
+    Phase2 --> P2Q1{"Have I checked<br/>documentation first?"}
+    P2Q1 -->|No| CheckDocs["Check official docs<br/>then reconsider"]
+    P2Q1 -->|Yes| P2Q2{"Can I verify<br/>AI's answer?"}
+    P2Q2 -->|No| NoAI2["Don't use AI<br/>Need more foundation"]
+    P2Q2 -->|Yes| UseAI2["Use AI strategically<br/>Verify & document"]
     
-    Phase3 --> P3Q1{Do I understand<br/>the core concept?}
-    P3Q1 -->|No| Foundation[Build foundation first<br/>Review materials]
-    P3Q1 -->|Yes| P3Q2{Will AI enhance<br/>my solution?}
+    Phase3 --> P3Q1{"Do I understand<br/>the core concept?"}
+    P3Q1 -->|No| Foundation["Build foundation first<br/>Review materials"]
+    P3Q1 -->|Yes| P3Q2{"Will AI enhance<br/>my solution?"}
     P3Q2 -->|No| NoNeed[No need for AI]
-    P3Q2 -->|Yes| UseAI3[Use AI professionally<br/>Critical evaluation required]
+    P3Q2 -->|Yes| UseAI3["Use AI professionally<br/>Critical evaluation required"]
     
-    UseAI1 --> Document[Document in code<br/>and growth memo]
+    UseAI1 --> Document["Document in code<br/>and growth memo"]
     UseAI2 --> Document
     UseAI3 --> Document
     
@@ -419,9 +431,9 @@ AI: "Exactly! Now think about what conservation laws tell us about physical syst
 
 ### **Tools for This Course**
 
-- **NotebookLM**: Upload course materials for grounded study aids (free through 2026)
-- **ChatGPT**: Conceptual learning and code debugging (SDSU enterprise access)
-- **Code Completion in IDE**: DISABLED per syllabus
+- **NotebookLM**: Upload course materials for grounded study aids and personalized AI tutoring.
+- **ChatGPT**: Conceptual learning and code debugging (SDSU enterprise access).
+- **Code Completion in IDE**: DISABLED per syllabus.
 
 ### Strategic Usage Tips
 

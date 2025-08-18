@@ -1,3 +1,14 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
 # Syllabus - ASTR 596: Modeling the Universe
 
 **Fall 2025 - San Diego State University (SDSU)**  
@@ -7,7 +18,7 @@
 
 - **Dr. Anna Rosen**
 - **Office:** Physics 239
-- **Hacking Hours:** TBD (also available by appointment or virtually)
+- **``Hacking" Hours:** Thursdays 1-2 pm
 - **Email:** <alrosen@sdsu.edu>
 
 ## Course Information
@@ -75,7 +86,7 @@ Upon successful completion of this course, students will be able to:
 
 - **Required:** Rosen (2025), [www.astrobytes-edu.github.io/astr596-modeling-universe](https://astrobytes-edu.github.io/astr596-modeling-universe/), ASTR 596 Course Website (powered by [Jupyter Book](https://next.jupyterbook.org/))
 
-- Linge & Langtangen (2020), [*Programming for Computations - Python (2nd Edition)](https://library.oapen.org/bitstream/id/35449b29-cca0-4d71-8553-2d49609b75fd/1007055.pdf), Springer Open
+- Linge & Langtangen (2020), [*Programming for Computations - Python (2nd Edition)*](https://library.oapen.org/bitstream/id/35449b29-cca0-4d71-8553-2d49609b75fd/1007055.pdf), Springer Open
 
 - Deisenroth, Faisal, \& Ong (2020), [*Mathematics for Machine Learning*](https://mml-book.github.io/), Cambridge University Press
 
@@ -164,7 +175,7 @@ This course uses a three-phase scaffolded approach to AI integration:
 
 - **Phase 3 — Professional Practice (Weeks 13–15 + finals week):** AI allowed for acceleration/boilerplate. All non-trivial logic must be authored or rewritten from memory and justified.
 
-**For complete AI usage guidelines and examples, see:** [AI Usage Policy & Learning Guide](02-astr596-ai-policy)
+**For complete AI usage guidelines and examples, see:** [AI Usage Policy & Learning Guide](03-astr596-ai-policy)
 
 ## **Academic Integrity**
 

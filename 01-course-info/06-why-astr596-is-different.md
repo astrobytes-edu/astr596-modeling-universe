@@ -1,3 +1,15 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
 # Why ASTR 596 is Designed This Way
 
 ## TL;DR: This Course Prepares You for Research Reality
@@ -28,7 +40,7 @@ Whether pursuing academia, industry, or other technical careers, you'll face:
 
 ### The Jarring Transition: Student → Scientist
 
-As Martin Schwartz explains in his influential 2008 essay ["The Importance of Stupidity in Scientific Research"](https://doi.org/10.1242/jcs.033340) (required reading for Week 1):
+As Martin Schwartz explains in his 2008 essay ["The Importance of Stupidity in Scientific Research"](https://doi.org/10.1242/jcs.033340) published in *Nature* (required reading for Week 1):
 
 > **Undergraduate coursework**: Getting the right answers, feeling smart when you know them.
 > 
@@ -128,30 +140,46 @@ Research scientists don't endure the struggle despite the difficulty — they do
 ### The Skills You're Actually Developing
 
 **Computational Competencies:**
+
 - Code literacy and debugging.
 - Documentation and version control.
 - Performance optimization.
 - Testing and validation.
 
 **Scientific Thinking:**
+
 - Hypothesis formation.
 - Method selection.
 - Result interpretation.
 - Limitation assessment.
 
-**Professional Habits:**
+### **Professional Habits:**
+
 - Intellectual honesty.
 - Collaborative learning.
 - Continuous improvement.
 - Resilience through challenges.
 
+### Technical Python Skills You'll Build
+
+This is a Python-intensive course. You'll develop:
+
+- Proficiency with NumPy, Matplotlib, SciPy  
+- Debugging complex numerical code
+- Performance optimization techniques
+- Version control and documentation practices
+- JAX and modern ML frameworks
+- Ability to implement research papers from scratch
+
+These aren't just academic exercises – these are the exact tools used at NASA, national labs, and tech companies.
+
 ---
 
 ## Addressing Your Concerns
 
-### "This seems harder than other courses"
+### "This seems different than other courses"
 
-**Yes, it is harder — intentionally.** You're developing new neural pathways for independent thinking and creative problem-solving. This isn't metaphorical — neuroscience research shows this literally requires brain rewiring through effortful practice.
+**Yes, it is different — intentionally.** This requires consistent daily practice unlike lecture-based courses. You're developing new neural pathways for independent thinking and creative problem-solving. This isn't metaphorical — neuroscience research shows this literally requires brain rewiring through effortful practice.
 
 **The neuroscience is clear:**
 
@@ -219,14 +247,14 @@ All are valid. I hope you choose deeper engagement, but it's your decision.
 
 ### Expect This Trajectory
 
-```
-Week 1-2: "I'm completely lost" → Normal, your brain is rewiring
-Week 3-4: "Some things make sense" → Patterns emerging
-Week 5-6: "I can do this" → Confidence building
-Week 7+: "This is actually fun" → Mastery developing
-```
+- **Initial adjustment period**: "I'm completely lost" → Normal, your brain is rewiring through project-based learning
+- **Connecting concepts phase**: "Some things make sense" → Patterns emerging across projects
+- **Acceleration phase**: "I can do this" → Confidence and speed increase notably
+- **Mastery development**: "This is actually fun" → Solving problems becomes genuinely enjoyable
 
-That "actually fun" phase is real. Once you experience the satisfaction of solving something yourself — debugging that stubborn error, watching your simulation finally work, seeing your MCMC converge — you'll understand why researchers voluntarily spend their lives tackling hard problems and consistently learn new topics and techniques independently. The struggle becomes worth it for those moments of triumph.
+This progression aligns with research on skill acquisition and deliberate practice [(*Peak: Secrets from the New Science of Expertise*, Ericsson & Pool, 2016)](https://notes.andymatuschak.org/Peak_-_Ericsson_and_Pool).
+
+That "actually fun" phase is real. Once you experience the satisfaction of solving something yourself — debugging that stubborn error, watching your simulation finally work, seeing your MCMC converge — you'll understand why researchers voluntarily spend their lives tackling hard problems and consistently learn new topics and techniques independently. 
 
 ### Immediate Actions
 
