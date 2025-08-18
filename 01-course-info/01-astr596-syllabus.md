@@ -24,9 +24,9 @@
 
 **Pre-Class Preparation (Required):**
 
-- Complete assigned JupyterBook chapter readings
-- Review project requirements if new project assigned
-- Prepare questions on material and implementation challenges
+- Complete assigned readings on course website.
+- Review project requirements if new project assigned.
+- Prepare questions on material and implementation challenges.
 
 **Friday Class Sessions:**
 
@@ -39,7 +39,7 @@ This course provides a hands-on introduction to the practice and theory of scien
 
 **Important Note:** I'm not testing your astrophysics knowledge. All necessary equations and scientific background will be provided. Your task is to understand the scientific concepts, implement them correctly, and connect the computation to the physics.
 
-> **For an expanded description of the course philosophy and approach, see:** [Why This Course is Different](course-info/why-astr596-is-different)
+**For an expanded description of the course philosophy and approach, see:** [Why This Course is Different](06-why-astr596-is-different)
 
 ## Course Learning Outcomes
 
@@ -56,7 +56,7 @@ Upon successful completion of this course, students will be able to:
 9. **Communicate computational methods and scientific results effectively** through written reports and code documentation.
 10. **Think computationally about astrophysics** developing intuition for numerical stability and convergence.
 
-**Where outcomes are assessed**
+**Where Outcomes Are Assessed**
 
 - LO1 (implement schemes) → Projects 1–6, Final Project
 - LO2 (professional practices) → repo hygiene, tests, Growth Memos
@@ -73,7 +73,7 @@ Upon successful completion of this course, students will be able to:
 
 ### Textbooks (Free Online Resources)
 
-- **Required:** Rosen (2025), *ASTR 596 Course Website* (powered by Jupyterbook/MystMD) [www.astrobytes-edu.github.io/astr596-modeling-universe](https://astrobytes-edu.github.io/astr596-modeling-universe/)
+- **Required:** Rosen (2025), [www.astrobytes-edu.github.io/astr596-modeling-universe](https://astrobytes-edu.github.io/astr596-modeling-universe/), ASTR 596 Course Website (powered by [Jupyter Book](https://next.jupyterbook.org/))
 
 - Linge & Langtangen (2020), [*Programming for Computations - Python (2nd Edition)](https://library.oapen.org/bitstream/id/35449b29-cca0-4d71-8553-2d49609b75fd/1007055.pdf), Springer Open
 
@@ -89,17 +89,17 @@ Upon successful completion of this course, students will be able to:
 - IDE (VS Code recommended) with **ALL AI assistants disabled**
 - Terminal/command line access
 
-> **For detailed setup instructions, see:** [Software Installation Guide](reference/software-setup)
+**For detailed setup instructions, see:** [Software Installation Guide](..02-getting-started/02-software-setup)
 
-### Computational Resources
+### **Computational Resources**
 
 - **SDSU Instructional Cluster (Verne):** Access provided
 
 - **GitHub Classroom:** All projects distributed and submitted here
 
-## Grading Information
+## **Grading Information**
 
-### Assessment Components
+### **Assessment Components**
 
 | Component | Weight | Description |
 |-----------|--------|-------------|
@@ -109,9 +109,9 @@ Upon successful completion of this course, students will be able to:
 | **Final Project** | 25% | JAX implementation with research component due Thu Dec 18, 11:59 pm PT via GitHub Classroom |
 | **Participation & Engagement** | 10% | Active contribution and collaboration |
 
-> **For detailed project requirements and rubrics, see:** [Project Submission Guide](short-projects/0_project_submission_guide)
+**For detailed project requirements and rubrics, see:** [Project Submission Guide](short-projects/0_project_submission_guide)
 
-**Participation & Engagement — 10%**
+### **Participation & Engagement — 10%**
 
 | Level | Observable weekly behaviors |
 |------|------------------------------|
@@ -132,7 +132,7 @@ Upon successful completion of this course, students will be able to:
 
 ### **Attendance Policy**
 
-Participation is based on engagement, not roll call. Frequent absences will lower your participation grade. Habitual tardiness disrupts the class and will also negatively impact your participation grade.**
+Participation is based on engagement, not roll call. Frequent absences will lower your participation grade. Habitual tardiness disrupts the class and will also negatively impact your participation grade.
 
 ### **Late Work Policy**
 
@@ -146,7 +146,7 @@ Participation is based on engagement, not roll call. Frequent absences will lowe
 - ≤200-word case referencing rubric criteria.
 - I re-evaluate the entire item (score may go up/down/unchanged).
 
-### **Collaboration & Pair Programming**
+### **Peer Collaboration & Pair Programming**
 
 - **Allowed:** discussing strategy, whiteboarding equations & algorithm design, sharing tests you wrote.  
 - **Not allowed:** sharing solution code or copying any code blocks.  
@@ -166,13 +166,13 @@ This course uses a three-phase scaffolded approach to AI integration:
 
 **For complete AI usage guidelines and examples, see:** [AI Usage Policy & Learning Guide](02-astr596-ai-policy)
 
-## Academic Integrity
+## **Academic Integrity**
 
 All work must be your own. Violations will be reported to the Center for Student Rights and Responsibilities. You may be asked to explain any aspect of your submitted work.
 
 > **See:** [SDSU Academic Integrity Policy](https://sacd.sdsu.edu/student-rights/academic-dishonesty)
 
-## Accommodations
+## **Accommodations**
 
 Students with disabilities should contact Student Disability Services (<sds@sdsu.edu>, 619-594-6473) within the first two weeks of class.
 
