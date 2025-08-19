@@ -101,7 +101,7 @@ Upon successful completion of this course, students will be able to:
 - IDE (VS Code recommended) with **ALL AI assistants and tab completion disabled**
 - Terminal/command line access
 
-**For detailed setup instructions, see:** [Software Installation Guide](02-getting-started/02-software-setup)
+**For detailed setup instructions, see:** [Software Installation Guide](../02-getting-started/02-software-setup)
 
 ### Computational Resources
 
@@ -220,8 +220,6 @@ A comprehensive portfolio document (3-5 pages), excluding figures, submitted wit
 | Final Project & Technical Growth Synthesis | Thursday, Dec 18, 11:59 PM PT |
 
 *Counts toward Participation grade
-
-**For detailed project requirements and individual rubrics, see:** [Project Submission Guide](short-projects/0_project_submission_guide)
 
 ### Grading Scale
 
