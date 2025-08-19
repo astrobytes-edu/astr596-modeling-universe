@@ -4,6 +4,7 @@
 :class: checklist
 
 **System Requirements**:
+
 - ✓ 3 GB free disk space (Miniforge ~400 MB + packages ~1-2 GB)
 - ✓ Stable internet connection (will download ~800 MB total)
 - ✓ Administrator privileges on your computer
