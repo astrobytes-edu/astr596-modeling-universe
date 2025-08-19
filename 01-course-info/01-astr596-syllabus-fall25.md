@@ -40,8 +40,8 @@ kernelspec:
 
 **Friday Class Sessions:**
 
-- **11:00-11:45 AM:** Interactive review of the week's concepts, Q&A on required course readings, clarification of project requirements.
-- **11:45 AM-1:40 PM:** Hands-on project work with pair programming, implementation support, and peer collaboration.
+- **11:00-11:40 AM:** Interactive review of the week's concepts, Q&A on required course readings, clarification of project requirements.
+- **11:40 AM-1:40 PM:** Hands-on project work with pair programming, implementation support, and peer collaboration.
 
 ## Course Description
 
@@ -49,7 +49,7 @@ This course provides a hands-on introduction to the practice and theory of scien
 
 **Important Note:** I'm not testing your astrophysics knowledge. All necessary equations and scientific background will be provided. Your task is to learn and understand the scientific concepts, implement them correctly in Python, and connect the computation to the physics. The focus is on computational thinking and implementation skills that transfer to any research domain.
 
-**For an expanded description of the course philosophy and approach, see:** [Why This Course is Different](06-why-astr596-is-different)
+**For an expanded description of the course philosophy and approach, see:** [Why ASTR 596 is Designed This Way](06-why-astr596-is-different) and [Understanding Your Learning Journey in ASTR 596](05-astr596-course-overview)
 
 ## Course Learning Outcomes
 
@@ -71,13 +71,13 @@ Upon successful completion of this course, students will be able to:
 - LO1 (implement schemes) → Projects 1–6, Final Project
 - LO2 (professional practices) → repo hygiene, tests, Growth Memos
 - LO3 (numerical techniques) → Projects 2–4
-- LO4 (Monte Carlo methods) → Projects 3, 5
+- LO4 (Monte Carlo methods) → Projects 2, 3, 5
 - LO5 (build NNs) → Final Project
 - LO6 (JAX migration) → Final Project
 - LO7 (strategic AI) → Growth Memos + code comments
 - LO8 (advanced phenomena) → Projects 2–5 (N-body/RT/Bayesian)
-- LO9 (communication) → Research Memos + Technical Growth Synthesis
-- LO10 (numerical intuition) → Growth Memos + validation analyses
+- LO9 (communication) → Research Memos + Final Research Report + Technical Growth Synthesis
+- LO10 (numerical intuition) → Growth Memos + Technical Growth Synthesis + validation analyses + project extensions
 
 ## Materials
 
@@ -85,13 +85,13 @@ Upon successful completion of this course, students will be able to:
 
 - **Required:** Rosen (2025), [www.astrobytes-edu.github.io/astr596-modeling-universe](https://astrobytes-edu.github.io/astr596-modeling-universe/), ASTR 596 Course Website (powered by [Jupyter Book](https://next.jupyterbook.org/))
 
-- Linge & Langtangen (2020), [*Programming for Computations - Python (2nd Edition)*](https://library.oapen.org/bitstream/id/35449b29-cca0-4d71-8553-2d49609b75fd/1007055.pdf), Springer Open
+- Linge & Langtangen (2020), [Programming for Computations - Python (2nd Edition)](https://library.oapen.org/bitstream/id/35449b29-cca0-4d71-8553-2d49609b75fd/1007055.pdf), Springer Open
 
-- Mehta et. al. (2018), [*A high-bias, low-variance introduction to Machine Learning for physicists*](https://doi-org.libproxy.sdsu.edu/10.1016/j.physrep.2019.03.001), [arXiv e-print](https://arxiv.org/abs/1803.08823)
+- Mehta et. al. (2018), [A High-Bias, Low-Variance Introduction to Machine Learning for Physicists](https://doi-org.libproxy.sdsu.edu/10.1016/j.physrep.2019.03.001), [arXiv e-print](https://arxiv.org/abs/1803.08823)
 
-- Deisenroth, Faisal, & Ong (2020), [*Mathematics for Machine Learning*](https://mml-book.github.io/), Cambridge University Press
+- Deisenroth, Faisal, & Ong (2020), [Mathematics for Machine Learning](https://mml-book.github.io/), Cambridge University Press
 
-- Ting (2025), [*Statistical Machine Learning for Astronomy*](https://arxiv.org/abs/2506.12230), arXiv preprint
+- Ting (2025), [Statistical Machine Learning for Astronomy](https://arxiv.org/abs/2506.12230), arXiv preprint
 
 ### Software Requirements
 
@@ -110,10 +110,6 @@ Access to Jupyter Hub provided to enrolled students.
 
 - **GitHub Classroom:** <https://sdsu-research-ci.github.io/github/students>  
 All projects distributed and submitted here. Your last repository push by the deadline will count as your submitted assignment.
-
-## Essential Student Information
-
-For essential information about student academic success, please see the [SDSU Student Academic Success Handbook](https://sacd.sdsu.edu/_resources/files/academic-success-handbook.pdf).
 
 ## Grading Information
 
@@ -161,7 +157,7 @@ Each short project submission includes both technical implementation and a growt
 
 | Component | Weight | Description |
 |-----------|--------|-------------|
-| **Proposal** | 15% | Clear research question, methodology, and timeline. |
+| **Proposal** | 15% | Clear research question, methodology, and proposed implementation plan. |
 | **Code Package** | 45% | Professional package structure with `__init__.py`, tests, and documentation. |
 | **Written Report** | 25% | Scientific writeup with scientific background and motivation, methods, results, and conclusions. |
 | **Presentation** | 15% | 15-minute total: research project, technical growth summary, and Q&A. |
@@ -274,7 +270,7 @@ This course uses a three-phase scaffolded approach to AI integration. **Note:** 
 
 ## Academic Integrity
 
-The California State University system requires instructors to report all instances of academic misconduct to the Center for Student Rights and Responsibilities. Academic dishonesty will result in disciplinary review by the University and may lead to probation, suspension, or expulsion. Instructors may also, at their discretion, penalize student grades on any assignment discovered to have been produced in an academically dishonest manner such as cheating and plagiarism as described here: [SDSU Academic Integrity Policy](https://sacd.sdsu.edu/student-rights/academic-dishonesty).
+The California State University system requires instructors to report all instances of academic misconduct to the [Center for Student Rights and Responsibilities](https://sacd.sdsu.edu/student-rights). Academic dishonesty will result in disciplinary review by the University and may lead to probation, suspension, or expulsion. Instructors may also, at their discretion, penalize student grades on any assignment discovered to have been produced in an academically dishonest manner such as cheating and plagiarism as described here: [SDSU Academic Integrity Policy](https://sacd.sdsu.edu/student-rights/academic-dishonesty).
 
 In this course, submitted work must demonstrate your understanding. You are expected to:
 
@@ -308,11 +304,15 @@ Trust the process, embrace the challenge, and discover that you're capable of do
 
 ## Diversity and Inclusivity Statement
 
-I consider this classroom to be a place where you will be treated with respect, and I welcome individuals of all ages, back-grounds, beliefs, ethnicities, genders, gender identities, gender expressions, national origins, religious affliations, sexual orientations, ability–and other visible and non-visible differences. All members of this class are expected to contribute to a respectful, welcoming and inclusive environment for every other member of the class. If something is said in class by myself or others that made you uncomfortable, please contact me or submit anonymous feedback.
+I consider this classroom to be a place where you will be treated with respect, and I welcome individuals of all ages, backgrounds, beliefs, ethnicities, genders, gender identities, gender expressions, national origins, religious affliations, sexual orientations, ability, and other visible and non-visible differences. All members of this class are expected to contribute to a respectful, welcoming and inclusive environment for every other member of the class. If something is said in class by myself or others that made you uncomfortable, please contact me or submit anonymous feedback.
 
 ## Essential Student Information
 
-Class rosters are provided to the instructor with the student’s legal name. Please let the instructor know if you prefer an alternate name and/or gender pronoun. For essential information and graduate student resources please refer to the Graduate Student Resources (<https://grad.sdsu.edu/current-students>) and the SDSU Student Success Hub (<https://studentsuccess.sdsu.edu/success-hub>). SDSU provides disability-related accommodations via Student Disability Services (<sds@sdsu.edu> | <https://sds.sdsu.edu/>). Please allow 10-14 business days for processing.
+For essential information about student academic success, please see the [SDSU Student Academic Success Handbook](https://sacd.sdsu.edu/_resources/files/academic-success-handbook.pdf) and the [SDSU Student Success Hub](https://studentsuccess.sdsu.edu/success-hub). For graduate student resources please refer to [SDSU's Graduate Student Resources](https://grad.sdsu.edu/current-students) .
+
+Class rosters are provided to the instructor with the student’s legal name. Please let the instructor know if you prefer an alternate name and/or gender pronoun. 
+
+SDSU provides disability-related accommodations via [Student Disability Services](https://sds.sdsu.edu) (email: <sds@sdsu.edu>). Please allow 10-14 business days for processing.
 
 ## Land Acknowledgement
 

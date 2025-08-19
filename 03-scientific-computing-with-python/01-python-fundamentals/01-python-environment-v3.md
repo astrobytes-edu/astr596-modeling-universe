@@ -863,20 +863,28 @@ print("\nAlways document your random seeds in papers!")
 :::{admonition} 🌟 The More You Know: Reproducing a Nobel Prize Discovery
 :class: tip, dropdown
 
-When the LIGO Scientific Collaboration announced the first detection of gravitational waves on February 11, 2016, the scientific community demanded proof. This wasn't just any claim - it confirmed a 100-year-old prediction by Einstein and would earn the 2017 Nobel Prize in Physics.
+When the LIGO Scientific Collaboration announced the first detection of gravitational waves (GW150914) on February 11, 2016, they didn't just publish a paper - they released their data publicly. This detection confirmed Einstein's 100-year-old prediction and earned the 2017 Nobel Prize in Physics for Rainer Weiss, Barry Barish, and Kip Thorne.
 
-The LIGO team didn't just publish their results ([Abbott et al., 2016](https://doi.org/10.1103/PhysRevLett.116.061102)) - they provided complete reproducibility. They released:
+Through the Gravitational Wave Open Science Center (gwosc.org), LIGO made available:
 
-1. **Raw data**: 32 seconds of strain data around the event (GW150914) from both detectors
-2. **Analysis code**: Complete Python scripts and Jupyter notebooks on [GitHub](https://github.com/ligo-scientific-collaboration/GW150914)
-3. **Environment specifications**: Exact versions of all software dependencies
-4. **Random seeds**: For all Monte Carlo analyses in their statistical validation
+- The strain data from both detectors around the time of the event
+- Jupyter notebooks demonstrating the analysis
+- Documentation of their methods
 
-The result? Within days, independent scientists worldwide confirmed the detection. As the team noted in their software paper, "The analyses used to support the first direct detection... have been reproduced by independent scientists using the publicly available data and software" ([Abbott et al., 2021](https://doi.org/10.1088/1361-6382/abfd85)).
+This public release allowed scientists worldwide to independently analyze the data from this historic detection - a gravitational wave from two black holes merging 1.3 billion years ago.
 
-The LIGO team even created "blind injections" — fake signals secretly added to the data stream to test their analysis pipeline. Only after the analysis was complete would they reveal whether a signal was real or injected. This prevented confirmation bias and ensured their computational methods were robust.
+The detection required measuring distance changes 10,000 times smaller than a proton. By sharing their data and methods openly, LIGO demonstrated that even "Big Science" experiments can embrace open science principles.
 
-Your `random.seed()` calls and environment files might seem trivial now, but they're the same practices that enabled one of the most important physics discoveries of the 21st century to be independently verified. When you set a random seed, you're following in the footsteps of Nobel laureates!
+Your `random.seed()` calls and environment documentation follow the same scientific tradition of reproducible research.
+
+```{figure} images/ligo20160211a.jpg
+:label: ligo
+:width: 500px
+:align: center
+
+Gravitational wave signals produced by two-merging black holes, each about 30 times the mass of our sun, detected by the twin LIGO observatories at Livingston, Louisiana, and Hanford, Washington in 2015. *Image Credit:* Caltech/MIT/LIGO Lab
+```
+
 :::
 
 ## 1.6 Essential Debugging Strategies

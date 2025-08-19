@@ -51,7 +51,7 @@ project:
     - '.DS_Store'
     - '_build/**'
   
-  bibliography:
+  #bibliography:
   #  - references.bib
        
 site:
