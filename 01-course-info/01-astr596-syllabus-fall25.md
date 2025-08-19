@@ -306,17 +306,9 @@ Our classroom cultivates a growth mindset by creating a supportive environment w
 
 Trust the process, embrace the challenge, and discover that you're capable of doing hard things.
 
-Changes made:
-
-Replaced "impossible" with "overwhelming" (less intimidating while still acknowledging difficulty)
-Removed the specific student example as requested
-Kept the flow clean and encouraging
-RetryClaude can make mistakes. Please double-check responses.Research Opus 4.1
-
 ## Diversity and Inclusivity Statement
 
-I consider this classroom to be a place where you will be treated with respect, and I welcome individuals of all ages, back-grounds, beliefs, ethnicities, genders, gender identities, gender expressions, national origins, religious affliations, sexual orientations, ability–and other visible and non-visible differences. All members of this class are expected to contribute to a
-respectful, welcoming and inclusive environment for every other member of the class. If something is said in class by myself or others that made you uncomfortable, please contact me or submit anonymous feedback.
+I consider this classroom to be a place where you will be treated with respect, and I welcome individuals of all ages, back-grounds, beliefs, ethnicities, genders, gender identities, gender expressions, national origins, religious affliations, sexual orientations, ability–and other visible and non-visible differences. All members of this class are expected to contribute to a respectful, welcoming and inclusive environment for every other member of the class. If something is said in class by myself or others that made you uncomfortable, please contact me or submit anonymous feedback.
 
 ## Essential Student Information
 
@@ -328,4 +320,4 @@ SDSU sits on Kumeyaay land. The Kumeyaay people have lived in this region for ov
 
 ## Your Responsibility
 
-This syllabus constitutes our course contract. You are responsible for reading and understanding all policies stated here. Additional details are provided in the linked course documents.
+This syllabus constitutes our course contract. You are responsible for reading and understanding all policies stated here.
