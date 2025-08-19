@@ -153,6 +153,8 @@ Each short project submission includes both technical implementation and a growt
 - 2-3 pages of text (not counting figures/references).
 - Include literature citations, methods, results, and discussion.
 
+**For detailed guidelines for the short projects, see:** [](..07-short-projects/00-project-submission-guide)
+
 ### Final Project Components (25% of course grade)
 
 | Component | Weight | Description |
@@ -166,7 +168,7 @@ Each short project submission includes both technical implementation and a growt
 
 - Proper modular package structure with `__init__.py` files.
 - Unit tests with >70% coverage.
-- Documentation (docstrings, README, and Jupyter notebook tutorial).
+- Documentation (docstrings, README.md, and Jupyter notebook tutorial).
 - Clean Git history showing iterative development.
 - Requirements.txt/environment.yml.
 

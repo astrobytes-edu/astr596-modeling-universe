@@ -51,6 +51,16 @@ project:
     - '.DS_Store'
     - '_build/**'
   
+  # Add this section for PDF exports
+  exports:
+    - format: pdf
+      template: plain_latex_book
+      output: exports/astr596-book.pdf
+    # Optional: add another format/template
+    - format: pdf
+      template: arxiv_two_column
+      output: exports/astr596-article.pdf
+      
   #bibliography:
   #  - references.bib
        

@@ -69,7 +69,7 @@ Six progressive projects building computational skills
 :::
 
 :::{grid-item-card} 🤖 **AI Guidelines**
-:link: course-info/ai-guidelines
+:link: course-info/03-astr596-ai-policy
 
 Three-phase approach to responsible AI integration
 :::

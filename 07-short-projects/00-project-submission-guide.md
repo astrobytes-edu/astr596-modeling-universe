@@ -7,35 +7,43 @@ Projects are assigned on Mondays (posted to GitHub Classroom) and due the follow
 
 | Project | Assigned | Due Date | Topic | Key Concepts |
 |---------|----------|----------|-------|--------------|
-| **Project 1** | Aug 25 (Mon) | Sept 8 (Mon) | Python/OOP/Stellar Physics Basics | Classes, inheritance, HR diagrams |
-| **Project 2** | Sept 8 (Mon) | Sept 22 (Mon) | ODE Integration + N-Body Dynamics + Monte Carlo Sampling | Euler, RK4, Leapfrog, IMF sampling |
-| **Project 3** | Sept 22 (Mon) | Oct 6 (Mon) | Regression/ML Fundamentals | Gradient descent, loss functions, optimization |
-| **Project 4** | Oct 6 (Mon) | Oct 20 (Mon) | Monte Carlo Radiative Transfer | Photon packets, scattering, absorption |
-| **Project 5** | Oct 20 (Mon) | Nov 3 (Mon) | Bayesian/MCMC | Priors, likelihood, Metropolis-Hastings |
-| **Project 6** | Nov 3 (Mon) | Nov 17 (Mon) | Gaussian Processes | Kernels, hyperparameters, regression |
-| **Final Project** | Nov 17 (Mon) | Dec 18 (Thu) | Neural Networks (From Scratch + JAX) | Backprop, autodiff, JAX ecosystem |
+| **Project 1** | Aug 29 (Fri) | Sept 8 (Mon) | Python/OOP/Stellar Physics Basics | OOP & Classes, HR diagrams |
+| **Project 2** | Sept 8 (Mon) | Sept 22 (Mon) | ODE Integration + N-Body Dynamics + Monte Carlo Sampling | Euler, RK4, Leapfrog, Planetary + Star Cluster Dynamics, IMF Sampling |
+| **Project 3** | Sept 22 (Mon) | Oct 6 (Mon) | Monte Carlo Radiative Transfer (MCRT) | Photon packets, scattering, absorption |
+| **Project 4** | Oct 6 (Mon) | Oct 20 (Mon) | Regression/ML Fundamentals | Gradient descent, loss functions, optimization |
+| **Project 5** | Oct 20 (Mon) | Nov 3 (Mon) | Bayesian Inference/MCMC | Priors, Likelihood, Metropolis-Hastings |
+| **Project 6** | Nov 3 (Mon) | Nov 17 (Mon) | Gaussian Processes | Kernels, Hyperparameters, Regression |
+| **Final Project** | Nov 17 (Mon) | Dec 18 (Thu) | Neural Networks (From Scratch + JAX) | Backprop, `autodiff`, JAX Ecosystem |
 
-### Two-Week Project Workflow
+### Example Two-Week Project Workflow
+
+**Note:** This timeline is meant to serve as an example workflow. How you manage your time outside of class will likely vary week-to-week, but staying on track is crucial for producing quality work. If you're struggling with time management on your projects, please reach out early—I'm here to help you find strategies that work.
 
 **Week 1: Understanding & Initial Implementation**
-- **Day 1-2 (Mon-Tue):** Read assignment thoroughly, understand requirements, review relevant JupyterBook chapter
+
+- **Day 1-2 (Mon-Tue):** Read assignment thoroughly, understand requirements, review relevant Course Jupyter Book chapters
 - **Day 3-4 (Wed-Thu):** Begin implementation, focus on core functionality
 - **Day 5 (Fri):** Class session - ask questions, pair programming, debug with peers
-- **Day 6-7 (Sat-Sun):** Continue implementation based on class insights
+- *Optional* **Day 6-7 (Sat-Sun):** Continue implementation based on class insights
 
 **Week 2: Refinement & Completion**
+
 - **Day 8-9 (Mon-Tue):** Complete base requirements, begin mandatory extensions
 - **Day 10-11 (Wed-Thu):** Test edge cases, optimize performance
 - **Day 12 (Fri):** Class session - final debugging, optimization discussions
-- **Day 13 (Sat-Sun):** Polish code, write documentation, complete project memo
+- *Optional* **Day 13 (Sat-Sun):** Polish code, write documentation, complete project memo
 - **Day 14 (Mon):** Final review, submit by 11:59 PM
 
 ## Submission Requirements
 
 ### Each Project Must Include
 
-#### 1. Code Components
-```
+**Note:** The project code and research memo structures below are provided as starting points. Feel free to adapt or restructure them based on what makes sense for your project—developing your own organizational approach is part of the learning process.
+
+#### 1. Code Components (recommended structure)
+
+```markdown
+
 project_N/
 ├── src/
 │   ├── __init__.py
@@ -56,16 +64,18 @@ project_N/
 ```
 
 **Code Standards:**
-- Modular design with clear separation of concerns
+
+- Modular design with clear separation of concerns.
 - No God functions (functions should do one thing well)
-- Meaningful variable names (no single letters except for indices)
-- Type hints encouraged for function signatures
-- No global variables unless absolutely necessary
-- Error handling for edge cases
+- No magic numbers (use variables and attributes appropriately and consistently).
+- Meaningful variable names (avoid single letters except for indices).
+- Correct type hints encouraged for function signatures.
+- No global variables unless absolutely necessary.
+- Error handling for edge cases.
 
 #### 2. Project Memo (Markdown Format)
 
-Your memo should be **2-5 pages** and include:
+Your memo should be **2-3 pages** (excluding figures) and include:
 
 ```markdown
 # Project N: [Title] - Memo
@@ -98,6 +108,7 @@ Date: [Submission Date]
 #### 3. Documentation Requirements
 
 **README.md must include:**
+
 ```markdown
 # Project N: [Descriptive Title]
 
@@ -210,38 +221,15 @@ outputs/data/*.txt
 
 | Component | Points | Criteria |
 |-----------|--------|----------|
-| **Core Implementation** | 40 | Correctness, completeness, follows specifications |
-| **Mandatory Extensions** | 30 | All required extensions implemented and working |
-| **Code Quality** | 15 | Structure, readability, documentation, style |
-| **Project Memo** | 15 | Analysis quality, reflection depth, visualization |
-
-### Detailed Rubric
-
-#### Core Implementation (40 points)
-- **Excellent (36-40):** All requirements met, code runs without errors, produces correct results, handles edge cases
-- **Good (32-35):** Most requirements met, minor bugs, generally correct results
-- **Satisfactory (28-31):** Core functionality works, some requirements missing, several bugs
-- **Needs Improvement (0-27):** Major functionality missing, significant bugs, incorrect results
-
-#### Mandatory Extensions (30 points)
-- **Excellent (27-30):** All extensions complete, creative implementation, goes beyond minimum
-- **Good (24-26):** All extensions complete, solid implementation
-- **Satisfactory (21-23):** Most extensions complete, basic implementation
-- **Needs Improvement (0-20):** Extensions missing or non-functional
-
-#### Code Quality (15 points)
-- **Structure (5 pts):** Modular design, appropriate file organization
-- **Documentation (5 pts):** Clear docstrings, helpful comments, complete README
-- **Style (5 pts):** Consistent formatting, meaningful names, follows Python conventions
-
-#### Project Memo (15 points)
-- **Analysis (7 pts):** Demonstrates understanding, interprets results correctly
-- **Reflection (4 pts):** Thoughtful discussion of challenges and learning
-- **Presentation (4 pts):** Clear writing, effective visualizations, proper formatting
+| **Core Implementation** | TBD | Correctness, completeness, follows specifications |
+| **Mandatory Extensions** | TBD | All required extensions implemented and working |
+| **Code Quality** | TBD | Structure, readability, documentation, style |
+| **Project Memo** | TBD | Analysis quality, reflection depth, visualization |
+| **Growth Memo** | TBD | Skill development/growth, challenges/solutions, AI usage, next learning goals |
 
 ## Mandatory Extensions
 
-Each project includes required extensions that push you beyond the base implementation. These are NOT optional and constitute 30% of your project grade.
+Each project must include **at least one** extension that push you beyond the base implementation described in the project description.
 
 ### Types of Extensions
 
@@ -251,16 +239,19 @@ Each project includes required extensions that push you beyond the base implemen
 - Parallel processing implementation
 
 **Scientific Extensions:**
+
 - Parameter studies and sensitivity analysis
 - Comparison with analytical solutions where available
 - Error analysis and convergence studies
 
 **Methodological Extensions:**
+
 - Implement alternative algorithms and compare
 - Add adaptive methods (timestep, resolution, etc.)
 - Extend to more complex physics
 
 **Visualization Extensions:**
+
 - Interactive plots
 - Animations of time evolution
 - 3D visualizations where appropriate
@@ -272,6 +263,7 @@ Each project includes required extensions that push you beyond the base implemen
 ### Git/GitHub Issues
 
 **Problem:** "I accidentally committed large files"
+
 ```bash
 git rm --cached large_file.dat
 git commit -m "Remove large file"
@@ -279,6 +271,7 @@ git push
 ```
 
 **Problem:** "I forgot to commit regularly"
+
 - Start committing now! Better late than never
 - Break your current code into logical pieces and commit each
 
@@ -330,6 +323,7 @@ Before submitting, verify:
 ## Getting Help
 
 **When to seek help:**
+
 - After 20-30 minutes of genuine effort on a bug
 - When you don't understand the physics/math despite reading
 - If you're unsure about project requirements
