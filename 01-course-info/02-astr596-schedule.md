@@ -35,43 +35,21 @@ kernelspec:
 | 11 | Nov 7 | Gaussian processes and kernel methods | *TBD - Machine Learning Ch. 3* |
 | 12 | Nov 14 | Advanced GP applications and optimization | *TBD - Machine Learning Ch. 4* |
 | 13 | Nov 21 | Neural network fundamentals, forward propagation | *TBD - Neural Networks Ch. 1* |
-| 14 | Nov 28 | **THANKSGIVING - No class** | — |
+| 14 | Nov 28 | **THANKSGIVING BREAK - No class** | — |
 | 15 | Dec 5 | Backpropagation, JAX/Flax introduction | *TBD - Modern Frameworks Ch. 1* |
 | 16 | Dec 12 | Project workshop and presentations prep | — |
 | Finals | Dec 17/18 | Final presentations (date TBD) | — |
 
 ## Project Timeline
 
-| Project | Topic | Assigned | Due | Memo Due |
-|---------|-------|----------|-----|----------|
-| **Project 1** | Python/OOP/Stellar Physics | Aug 25 | Sept 8 | Sept 10 |
-| **Project 2** | ODE Integration/N-Body/Monte Carlo | Sept 8 | Sept 22 | Sept 24 |
-| **Project 3** | Regression/ML Fundamentals | Sept 22 | Oct 6 | Oct 8 |
-| **Project 4** | Monte Carlo Radiative Transfer | Oct 6 | Oct 20 | Oct 22 |
-| **Project 5** | Bayesian/MCMC | Oct 20 | Nov 3 | Nov 5 |
-| **Project 6** | Gaussian Processes | Nov 3 | Nov 17 | Nov 19 |
-| **Final Project** | Neural Networks + JAX | Nov 17 | Dec 18 | — |
+| Project | Topic | Assigned | Due |
+|---------|-------|----------|-----|
+| **Project 1** | Python/OOP/Stellar Physics | Aug 25 | Sept 8 |
+| **Project 2** | ODE Integration/N-Body/Monte Carlo | Sept 8 | Sept 22 |
+| **Project 3** | Monte Carlo Radiative Transfer | Sept 22 | Oct 6 |
+| **Project 4** | Regression/ML Fundamentals | Oct 6 | Oct 20 |
+| **Project 5** | Bayesian/MCMC | Oct 20 | Nov 3 |
+| **Project 6** | Gaussian Processes | Nov 3 | Nov 17 |
+| **Final Project** | Neural Networks + JAX | Nov 17 | Dec 18 |
 
-## Important Dates
-
-| Date | Item | Submission Method |
-|------|------|-------------------|
-| Sept 8 (Mon) | Project 1 Due | GitHub Classroom |
-| Sept 10 (Wed) | Growth Memo 1 Due | Canvas PDF |
-| Sept 22 (Mon) | Project 2 Due | GitHub Classroom |
-| Sept 24 (Wed) | Growth Memo 2 Due | Canvas PDF |
-| Oct 6 (Mon) | Project 3 Due | GitHub Classroom |
-| Oct 8 (Wed) | Growth Memo 3 Due | Canvas PDF |
-| Oct 20 (Mon) | Project 4 Due | GitHub Classroom |
-| Oct 22 (Wed) | Growth Memo 4 Due | Canvas PDF |
-| Nov 3 (Mon) | Project 5 Due | GitHub Classroom |
-| Nov 5 (Wed) | Growth Memo 5 Due | Canvas PDF |
-| Nov 17 (Mon) | Project 6 Due | GitHub Classroom |
-| Nov 19 (Wed) | Growth Memo 6 Due | Canvas PDF |
-| Nov 21 (Fri) | Final Project Proposal Due | Canvas PDF |
-| Dec 5 (Fri) | Final Project Progress Report | Canvas PDF |
-| Dec 11 (Wed) | Technical Growth Synthesis Due | Canvas PDF |
-| Dec 17 or 18 | Final Presentations | In-person (TBD) |
-| Dec 18 (Thu) | Final Project Due | GitHub + Canvas |
-
-> **Note:** Reading assignments will be updated as JupyterBook chapters are completed. Check the course website weekly for updates.
+**Note:** Reading assignments will be updated as JupyterBook chapters are completed. Check the course website weekly for updates.
