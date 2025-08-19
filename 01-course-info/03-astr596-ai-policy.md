@@ -98,7 +98,7 @@ These studies confirm that scaffolded AI use with reflection enhances rather tha
 
 **Build judgment through community:**
 
-1. **Come to Hacking (Office) Hours**: Thurs 1-2 pm, or by appointment
+1. **Come to Hacking (Office) Hours**
 2. **Ask during class**
 3. **Discuss with classmates**
 4. **Email if urgent**: <alrosen@sdsu.edu>

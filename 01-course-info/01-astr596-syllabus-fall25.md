@@ -18,7 +18,7 @@ kernelspec:
 
 - **Dr. Anna Rosen**
 - **Office:** Physics 239
-- **Office Hours:** Thursdays 1-2 PM or by appointment
+- **Office Hours:** Wednesdays 1-2 PM or by appointment
 - **Email:** <alrosen@sdsu.edu>
 
 ## Course Information
