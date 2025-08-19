@@ -308,7 +308,7 @@ I consider this classroom to be a place where you will be treated with respect, 
 
 ## Essential Student Information
 
-For essential information about student academic success, please see the [SDSU Student Academic Success Handbook](https://sacd.sdsu.edu/_resources/files/academic-success-handbook.pdf) and the [SDSU Student Success Hub](https://studentsuccess.sdsu.edu/success-hub). For graduate student resources please refer to [SDSU's Graduate Student Resources](https://grad.sdsu.edu/current-students) .
+For essential information about student academic success, please see the [SDSU Student Academic Success Handbook](https://docs.google.com/document/d/1rXNpNGs1K7nIxcS73o6R-fxZqPIWQwS9gHD7XpIqjhM/edit) and the [SDSU Student Success Hub](https://studentsuccess.sdsu.edu/success-hub). For graduate student resources please refer to [SDSU's Graduate Student Resources](https://grad.sdsu.edu/current-students).
 
 Class rosters are provided to the instructor with the student’s legal name. Please let the instructor know if you prefer an alternate name and/or gender pronoun. 
 

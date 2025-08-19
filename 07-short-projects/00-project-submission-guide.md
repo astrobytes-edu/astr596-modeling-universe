@@ -225,7 +225,7 @@ outputs/data/*.txt
 | **Mandatory Extensions** | TBD | All required extensions implemented and working |
 | **Code Quality** | TBD | Structure, readability, documentation, style |
 | **Project Memo** | TBD | Analysis quality, reflection depth, visualization |
-| **Growth Memo** | TBD | Skill development/growth, challenges/solutions, AI usage, next learning goals |
+| **Growth Memo** | TBD | key learning moments, skill evolution, AI usage, next learning goals |
 
 ## Mandatory Extensions
 
@@ -234,6 +234,7 @@ Each project must include **at least one** extension that push you beyond the ba
 ### Types of Extensions
 
 **Performance Extensions:**
+
 - Optimize algorithms for speed (vectorization, better algorithms)
 - Memory optimization for large-scale problems
 - Parallel processing implementation
