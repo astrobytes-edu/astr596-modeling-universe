@@ -24,7 +24,7 @@ kernelspec:
 
 **Universal Rules:**
 
-- 📚 **Conceptual learning**: AI always encouraged for understanding physics, math, and how code works.
+- 📚 **Conceptual learning**: AI always encouraged for understanding (astro)physics, math, and how code works.
 - 📖 **Documentation first**: Official docs are your primary source. Use AI to clarify, not replace them.
 - 💻 **Code implementation**: Follow phase rules for writing actual code.
 - 📝 **Attribution**: Every AI-assisted code change must include the in-code 3-line note (*AI* / *Verified* / *Because*).
