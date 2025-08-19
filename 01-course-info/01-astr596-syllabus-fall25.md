@@ -268,7 +268,7 @@ This course uses a three-phase scaffolded approach to AI integration. **Note:** 
 
 **For complete AI usage guidelines and examples, see:** [AI Usage Policy & Learning Guide](03-astr596-ai-policy)
 
-## Academic Integrity
+### Academic Integrity
 
 The California State University system requires instructors to report all instances of academic misconduct to the [Center for Student Rights and Responsibilities](https://sacd.sdsu.edu/student-rights). Academic dishonesty will result in disciplinary review by the University and may lead to probation, suspension, or expulsion. Instructors may also, at their discretion, penalize student grades on any assignment discovered to have been produced in an academically dishonest manner such as cheating and plagiarism as described here: [SDSU Academic Integrity Policy](https://sacd.sdsu.edu/student-rights/academic-dishonesty).
 
