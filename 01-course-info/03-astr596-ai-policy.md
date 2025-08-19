@@ -81,16 +81,16 @@ flowchart TD
 
 **The Reality**: AI tools are transforming scientific computing. You'll work in an AI-integrated environment throughout your career.
 
-**The Challenge**: Research reveals both risks and opportunities. Over-reliance impairs learning ([Bastani et al., 2024](https://arxiv.org/abs/2401.12438); [Koedinger et al., 2024](https://doi.org/10.1145/3636555.3636596)), while strategic use accelerates understanding ([Kasneci et al., 2023](https://doi.org/10.1016/j.learninstruc.2023.101874); [Bitzenbauer, 2023](https://doi.org/10.1088/1361-6552/acc749); [Ting & O'Briain, 2025](https://doi.org/10.xxxx/xxxxx)). HOW you engage matters—passive consumption atrophies skills, active collaboration enhances capability.
+**The Challenge**: Research reveals both risks and opportunities. Over-reliance impairs learning (Bastani et al., 2024), while strategic use accelerates understanding (Kasneci et al., 2023; Bitzenbauer, 2023; Ting & O'Briain, 2025). HOW you engage matters—passive consumption atrophies skills, active collaboration enhances capability.
 
 **Our Approach**: Develop core competencies through productive struggle, then use AI strategically to amplify performance.
 
 **Research Foundation**:
 
-- **Ting & O'Briain (2025)**: Astronomy students using structured AI with documentation requirements showed decreased dependence over time and accelerated learning
-- **Kasneci et al. (2023)**: Scaffolded AI use enhances STEM learning when properly integrated
-- **Bitzenbauer (2023)**: AI chatbots effective when students engage critically with outputs
-- **Dahlkemper et al. (2023)**: Students often fail to identify AI errors without proper training
+- **Ting & O'Briain (2025)**: Astronomy students using structured AI with documentation requirements showed decreased dependence over time and accelerated learning.
+- **Kasneci et al. (2023)**: Scaffolded AI use enhances STEM learning when properly integrated.
+- **Bitzenbauer (2023)**: AI chatbots effective when students engage critically with outputs.
+- **Dahlkemper et al. (2023)**: Students often fail to identify AI errors without proper training.
 
 These studies confirm that scaffolded AI use with reflection enhances rather than replaces learning.
 
@@ -98,7 +98,7 @@ These studies confirm that scaffolded AI use with reflection enhances rather tha
 
 **Build judgment through community:**
 
-1. **Come to Hacking Hours** (TBD)
+1. **Come to Hacking (Office) Hours**: Thurs 1-2 pm, or by appointment
 2. **Ask during class**
 3. **Discuss with classmates**
 4. **Email if urgent**: <alrosen@sdsu.edu>
@@ -357,10 +357,10 @@ Extensive undocumented AI use or inability to explain submitted code:
 
 ✅ **Going Deeper (Extension Work)**
 
-- "What would happen if I added magnetic fields to my N-body simulation?"
+- "What would happen if I added several very massive stars ($>100 M_{\odot}$) to my N-body simulation?"
 - "How could I extend this to include relativistic effects?"
 - "What research questions could I explore with this code?"
-- "What are current open problems in computational radiative transfer?"
+- "What other absorption/scattering effects can I add to my MCRT algorithm?"
 
 ### **Recommended Learning Tools**
 
@@ -478,16 +478,12 @@ AI amplifies capability—it doesn't replace understanding. Master fundamentals 
 
 ## References
 
-**TODO:** verify before publish
+- Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, O., & Mariman, R. (2024). [*Generative AI can harm learning*](http://dx.doi.org/10.2139/ssrn.4895486) 
 
-- Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, O., & Mariman, R. (2024). [*Generative AI can harm learning*](https://arxiv.org/abs/2401.12438), arXiv preprint
-
-- Bitzenbauer, P. (2023), [*ChatGPT in physics education: A pilot study on easy-to-implement activities*](https://doi.org/10.1088/1361-6552/acc749), Contemporary Educational Technology
+- Bitzenbauer, P. (2023), [*ChatGPT in physics education: A pilot study on easy-to-implement activities*](https://doi.org/10.30935/cedtech/13176), Contemporary Educational Technology
 
 - Dahlkemper, M. N., Lahme, S. Z., & Klein, P. (2023). [*How do physics students evaluate artificial intelligence responses on comprehension questions? A study on the perceived scientific accuracy and linguistic quality of ChatGPT*](https://doi.org/10.1103/PhysRevPhysEducRes.19.010142), Physical Review Physics Education Research
 
-- Kasneci, E., Sessler, K., Küchemann, S., Bannert, M., Dementieva, D., Fischer, F., ... & Kasneci, G. (2023). [*ChatGPT for good? On opportunities and challenges of large language models for education*](https://doi.org/10.1016/j.learninstruc.2023.101874), Learning and Individual Differences
-
-- Koedinger, K. R., Aleven, V., & Stamper, J. (2024). [*The case for conversation-based assessment of data literacy*](https://doi.org/10.1145/3636555.3636596), Proceedings of the 14th Learning Analytics and Knowledge Conference
+- Kasneci, E., Sessler, K., Küchemann, S., Bannert, M., Dementieva, D., Fischer, F., ... & Kasneci, G. (2023). [*ChatGPT for good? On opportunities and challenges of large language models for education*](https://doi-org.libproxy.sdsu.edu/10.1016/j.lindif.2023.102274), Learning and Individual Differences
 
 - Ting, Y. S., & O'Briain, D. (2025). [*Teaching machine learning in the era of large language models: Lessons learned from a graduate astronomy course*](https://arxiv.org/abs/2506.06921) (arXiv preprint)
