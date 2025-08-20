@@ -1659,12 +1659,12 @@ phi = -G * M / r # this happens why more than you think!
 
 :::
 
-## Practice Exercises
+## ⚠️ Practice Exercises
 
-### Exercise 1.1: IPython Mastery
+### ⚠️ Exercise 1.1: IPython Mastery
 
 :::{admonition} Part A: Explore Scientific Libraries (5 min)
-:class: exercise
+:class: exercise, dropdown
 
 Execute these commands in IPython to explore `astropy`:
 
@@ -1689,8 +1689,8 @@ print(f"Jeans mass: {M_J.to(u.M_sun):.1f}")
 
 :::
 
-:::{admonition} Part B: Time Array Operations (10 min)
-:class: exercise
+:::{admonition} ⚠️ Part B: Time Array Operations (10 min)
+:class: exercise, dropdown
 
 Compare different methods for calculating stellar distances:
 
@@ -1736,8 +1736,8 @@ print(f"NumPy is {t1/t2:.1f}x faster!")
 
 :::
 
-:::{admonition} Part C: Create Your Own Analysis (15 min)
-:class: exercise
+:::{admonition} ⚠️ Part C: Create Your Own Analysis (15 min)
+:class: exercise, dropdown
 
 Design a timing experiment for period-finding algorithms:
 
@@ -1814,10 +1814,10 @@ print(f"Found period: {best_period:.3f} days")
 ```
 :::
 
-### Exercise 1.2: Notebook State Detective - Cosmology Edition
+### ⚠️ Exercise 1.2: Notebook State Detective - Cosmology Edition
 
 :::{admonition} Part A: Trace the Cosmological Calculation (5 min)
-:class: exercise
+:class: exercise, dropdown
 
 Given this notebook execution order, trace the state:
 
@@ -1840,12 +1840,14 @@ Cell 3: H0 = 67.4  # Planck value
 
 Cell 4: print(f"Age: {age_of_universe():.2f} Gyr")
 
-What age gets printed each time? Which cosmology is used?
 ```
+
+**What age gets printed each time? Which cosmology is used?**
+
 :::
 
-:::{admonition} Part B: Find the Bug (10 min)
-:class: exercise
+:::{admonition} ⚠️ Part B: Find the Bug (10 min)
+:class: exercise, dropdown
 
 ```python
 # Simulate the execution to find the bug
@@ -1877,8 +1879,8 @@ print("\nThe function definition captures values when defined!")
 ```
 :::
 
-:::{admonition} Part C: Explain the Scientific Impact (15 min)
-:class: exercise
+:::{admonition} ⚠️ Part C: Explain the Scientific Impact (15 min)
+:class: exercise, dropdown
 
 Write a paragraph explaining how this notebook behavior could affect:
 
@@ -1886,13 +1888,13 @@ Write a paragraph explaining how this notebook behavior could affect:
 2. **Reproducibility** - Collaborators get different results
 3. **Scientific conclusions** - Age estimates could be off by gigayears
 
-Consider: What if this was analyzing Planck CMB data or Type Ia supernovae for dark energy constraints?
+**Consider:** What if this was analyzing Planck CMB data or Type Ia supernovae for dark energy constraints?
 :::
 
-### Exercise 1.3: Environment Diagnostic
+### ⚠️ Exercise 1.3: Environment Diagnostic
 
 :::{admonition} Part A: Check Your Setup (5 min)
-:class: exercise
+:class: exercise, dropdown
 
 ```python
 import sys
@@ -1923,8 +1925,8 @@ for pkg, description in packages.items():
 ```
 :::
 
-:::{admonition} Part B: Test Data Access (10 min)
-:class: exercise
+:::{admonition} ⚠️ Part B: Test Data Access (10 min)
+:class: exercise, dropdown
 
 ```python
 from pathlib import Path
@@ -1971,8 +1973,8 @@ check_astronomy_data()
 ```
 :::
 
-:::{admonition} Part C: Complete Observatory Diagnostic (15 min)
-:class: exercise
+:::{admonition} ⚠️ Part C: Complete Observatory Diagnostic (15 min)
+:class: exercise, dropdown
 
 ```python
 import sys
@@ -2053,10 +2055,12 @@ observatory_diagnostic()
 ```
 :::
 
-### Exercise 1.4: Variable Star Exercise Thread
+### ⚠️ Exercise 1.4: Variable Star Exercise Thread
+
+**TODO:** Fix to a simpler problem, this or similar exercise should be in Chapter 6 (i.e., provide partial class implementation for them to complete.)
 
 :::{admonition} Chapter 1: Variable Star Analysis Foundation
-:class: exercise
+:class: exercise, dropdown
 
 ```python
 # Chapter 1: Variable Star Analysis - Professional Foundation
