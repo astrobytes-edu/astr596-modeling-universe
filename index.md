@@ -122,17 +122,13 @@ AI as a Learning Partner
 
 This course teaches you to use AI tools (GitHub Copilot, ChatGPT) as **learning amplifiers**, not replacement thinking. You'll develop critical evaluation skills while building the foundational knowledge that makes AI truly powerful.
 
-Or if you prefer a more detailed version with additional styling:
-
-```{list-table} AI Tool Usage Throughout the Semester
+:::{list-table} Scaffolded AI Usage Policy: Building Computational Independence
 :header-rows: 1
-:widths: 15 20 65
-:class: full-width
-:align: left
+:widths: 20 30 40
 
-* - **Phase**
-  - **Timeline**
-  - **Learning Approach**
+* - Phase
+  - Timeline
+  - Permitted Usage
 * - **Phase 1**
   - Weeks 1-6
   - Foundation building with limited AI assistance
@@ -141,8 +137,8 @@ Or if you prefer a more detailed version with additional styling:
   - Strategic AI integration with critical evaluation
 * - **Phase 3**
   - Weeks 12-16
-  - Full AI partnership for advanced implementations
-```
+  - AI-augmented workflow for professional practice
+:::
 
 ## Getting Started
 
