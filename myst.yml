@@ -39,16 +39,16 @@ project:
   
   # Files to exclude from build
   exclude:
-    - 'draft-*.md'
+    - 'draft-**.md'
     - 'TODO.md'
     - 'instructor-notes/**'
     - '03-python/03-advanced-scientific-computing/**'
     - '03-python/04-parallel-and-hpc/**'
     - '03-python/05-modern-approaches-jax-ecosystem/**'
-    - '04-computational-methods/**'
-    - '05-astrophysics/**'
-    - '06-math-and-probability/**'
-    - '07-short-projects/**'
+    #- '04-computational-methods/**'
+    #- '05-astrophysics/**'
+    #- '06-math-and-probability/**'
+    #- '07-short-projects/**'
     - '08-final-project/**'
     - '09-reference/**'
     - '.ipynb_checkpoints/**'
@@ -57,7 +57,7 @@ project:
     - '.DS_Store'
     - '_build/**'
     - '**/draft-*.md'  # Excludes all draft-*.md files in any directory
-  
+    - '**/paper-*.md'
   # Add this section for PDF exports
   exports:
     - format: pdf

@@ -12,7 +12,7 @@ kernelspec:
 
 # Understanding Your Learning Journey in ASTR 596
 
-## Why This Course is Designed the Way It Is
+## Why ASTR 596 is designed this way
 
 This course follows a specific progression: **Fundamentals → Classical Methods → Statistical Methods → Modern ML**. This mirrors how the field itself evolved, but more importantly, each topic builds essential skills for the next. You'll essentially recreate the historical development of computational astrophysics, but in a compressed, logical sequence that maximizes your learning.
 

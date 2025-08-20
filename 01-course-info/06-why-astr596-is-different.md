@@ -10,11 +10,11 @@ kernelspec:
   name: python3
 ---
 
-# Why ASTR 596 is Designed This Way
+# Why ASTR 596 is Different
 
-## TL;DR: This Course Prepares You for Research Reality
+:::{note} **TL;DR:** This Course Prepares You for Research Reality
 
-Traditional courses teach you to follow recipes and get right answers. Research requires creating solutions to problems nobody has solved yet. This course bridges that gap through:
+Traditional lecture-based courses teach you to follow recipes and get right answers. Research requires creating solutions to problems nobody has solved yet. This course bridges that gap through:
 
 - **"Glass box" modeling** - Build it yourself to truly understand it.
 - **Productive struggle** - Embrace confusion and frustration as the beginning of discovery.
@@ -22,7 +22,7 @@ Traditional courses teach you to follow recipes and get right answers. Research 
 - **Strategic AI integration** - Use tools to amplify, not replace, thinking.
 - **Neuroplasticity in action** - Your brain literally rewires through challenge (this is proven neuroscience, not motivational fluff).
 
----
+:::
 
 ## The Research Environment You're Entering
 
