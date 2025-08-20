@@ -79,8 +79,8 @@ site:
     # Logo as text instead of image file
     logo_text: "✨ASTR 596✨"
     # Google Analytics
-    analytics_google: G-DFP60RS1NZ # Measurement ID or Tracking ID
-    
+    analytics_google: G-QJLKLBMDSZ # Measurement ID or Tracking ID
+
     # Commented out until you have these files
     # logo: _static/logo.svg
     # favicon: _static/favicon.ico
