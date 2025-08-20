@@ -143,6 +143,6 @@ This course teaches you to use AI tools (GitHub Copilot, ChatGPT) as **learning 
 - **Email**: <alrosen@sdsu.edu>
 - **Office Hours**: Wednesday 1-2 pm or  by appointment
 - **Course Issues**: [GitHub repository](https://github.com/astrobytes-edu/astr596-modeling-universe/issues)
-```
+:::
 
 ✨ *Welcome to a journey from Python basics to the frontiers of computational astrophysics. Together, we'll model the universe, one algorithm at a time.* ✨
