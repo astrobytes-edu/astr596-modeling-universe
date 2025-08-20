@@ -1,6 +1,6 @@
-# ASTR 596 Project 1: Python Fundamentals + Numerical Analysis + Stellar Physics
-**Duration**: 3 weeks
-**Weight**: 12% of course grade
+# ⚠️ ASTR 596 Project 1: Python Fundamentals + Numerical Analysis + Stellar Physics
+**Duration**: 2 weeks
+**Weight**: 10% of course grade
 **Theme**: "From Observations to Blackbody Physics"
 
 ---

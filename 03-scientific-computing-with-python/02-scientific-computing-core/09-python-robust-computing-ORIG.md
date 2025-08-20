@@ -1,8 +1,9 @@
-# Chapter 9: Robust Computing Fundamentals - Error Handling and Best Practices
+# ⚠️ Chapter 9: Robust Computing Fundamentals - Error Handling and Best Practices
 
 ## Learning Objectives
 
 By the end of this chapter, you will be able to:
+
 - Read and interpret Python **error messages** to diagnose problems efficiently
 - Write **try/except blocks** to handle errors gracefully
 - Validate inputs to prevent errors before they occur

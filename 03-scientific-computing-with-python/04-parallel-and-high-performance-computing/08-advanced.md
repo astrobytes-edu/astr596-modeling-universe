@@ -1,9 +1,11 @@
-# Chapter 8: Advanced Python Topics (Optional Sampler)
+# ⚠️ Chapter 8: Advanced Python Topics (Optional Sampler)
 
 *This chapter provides a sampling of advanced Python topics. Choose sections relevant to your projects.*
 
 ## Learning Objectives
+
 This optional chapter introduces:
+
 - Async programming for concurrent I/O operations
 - Advanced decorators and descriptors
 - Context managers for resource management

@@ -1,4 +1,4 @@
-# ASTR 596 Project 3: Monte Carlo Radiative Transfer + MCMC + Bayesian Statistics
+# ⚠️ ASTR 596 Project 3: Monte Carlo Radiative Transfer + MCMC + Bayesian Statistics
 **Duration**: 4 weeks
 **Weight**: 18% of course grade
 **Theme**: "Rosen (2016) Direct Radiation + Deep Bayesian Inference"

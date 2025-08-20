@@ -45,6 +45,11 @@ project:
     - '03-python/03-advanced-scientific-computing/*.md'
     - '03-python/04-parallel-and-hpc/*.md'
     - '03-python/05-modern-approaches-jax-ecosystem/*.md'
+    - '04-computational-methods/**'
+    - '05-astrophysics/**'
+    - '06-math-and-probability/**'
+    - '07-short-projects/**'
+    - '08-short-projects/**'
     - '.ipynb_checkpoints/**'
     - '__pycache__/**'
     - '*.pyc'
@@ -60,7 +65,7 @@ project:
     - format: pdf
       template: arxiv_two_column
       output: exports/astr596-article.pdf
-      
+
   #bibliography:
   #  - references.bib
        

@@ -1,4 +1,4 @@
-# Chapter 1: Introduction to the Command Line Interface (CLI)
+# ⚠️ Chapter 1: Introduction to the Command Line Interface (CLI)
 
 ## Before You Begin: Safety Rules
 

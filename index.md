@@ -1,11 +1,14 @@
-# ASTR 596: Modeling the Universe
+# ⚠️ ASTR 596: Modeling the Universe
 
 **SDSU | Fall 2025 | Fridays 11:00 AM - 1:40 PM | PA 215**
 
-Welcome to computational astrophysics! This course takes you on a journey from Python fundamentals to cutting-edge JAX implementations, building transparent "glass box" models that reveal the physics underlying astronomical phenomena.
+:::{warning}
+⚠️ **Warning!** *This course textbook is a work-in-progress. Pages with ⚠️ in front are still being edited. Please proceed with caution.*
+:::
 
-```{admonition} Course Philosophy: "Glass Box" Modeling
-:class: tip
+Welcome to **ASTR 596: Modeling the Universe**! This course takes you on a journey from Python fundamentals to cutting-edge JAX implementations, building transparent "glass box" models that reveal the physics underlying astronomical phenomena.
+
+:::{tip} Course Philosophy: "Glass Box" Modeling
 
 **Earned Complexity**: We implement fundamental algorithms from first principles before leveraging advanced frameworks. Every line of code serves understanding—no black boxes allowed until you've built the glass box yourself.
 ```
@@ -63,7 +66,7 @@ Syllabus, schedule, policies, and expectations
 :::
 
 :::{grid-item-card} 🎯 **Projects**
-:link: short-projects/1_project1_description
+:link: short-projects/
 
 Six progressive projects building computational skills
 :::

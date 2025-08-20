@@ -1,4 +1,4 @@
-# JAX Advanced Patterns: Control Flow and Optimization (Continued)
+# ⚠️ JAX Advanced Patterns: Control Flow and Optimization (Continued)
 
 ## Memory and Performance Optimization (Continued)
 

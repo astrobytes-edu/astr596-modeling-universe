@@ -1,4 +1,4 @@
-# ASTR 596: Project Submission Guide
+# ⚠️ ASTR 596: Project Submission Guide
 
 ## Project Schedule & Deadlines
 

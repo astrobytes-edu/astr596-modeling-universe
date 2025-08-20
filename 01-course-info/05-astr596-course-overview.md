@@ -10,7 +10,7 @@ kernelspec:
   name: python3
 ---
 
-# Understanding Your Learning Journey in ASTR 596
+# ⚠️ Understanding Your Learning Journey in ASTR 596
 
 ## Why This Course is Designed the Way It Is
 
