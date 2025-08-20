@@ -1,4 +1,4 @@
-# ⚠️ ASTR 596: Modeling the Universe
+# ASTR 596: Modeling the Universe
 
 **SDSU | Fall 2025 | Fridays 11:00 AM - 1:40 PM | PA 215**
 
