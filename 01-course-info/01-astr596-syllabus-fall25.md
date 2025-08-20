@@ -29,7 +29,7 @@ kernelspec:
 - **Location:** PA 215
 - **Course Website:** <https://astrobytes-edu.github.io/astr596-modeling-universe/>
 - **Platforms:** Canvas, Slack, GitHub Classroom
-
+💩
 ### Class Meeting Structure
 
 **Pre-Class Preparation (Required):**
@@ -153,7 +153,7 @@ Each short project submission includes both technical implementation and a growt
 - 2-3 pages of text (not counting figures/references).
 - Include literature citations, methods, results, and discussion.
 
-**For detailed guidelines for the short projects, see:** [ASTR 596 Project Submission Guide](../07-short-projects/00-project-submission-guide)
+**For detailed guidelines for the short projects, see:** [ASTR 596 Project Submission Guide](../08-short-projects/00-project-submission-guide)
 
 ### Final Project Components (25% of course grade)
 
