@@ -316,27 +316,29 @@ The Sloan Digital Sky Survey (SDSS) has addressed reproducibility through versio
 Tools like IPython's `%history` and `%save` commands create an audit trail that helps ensure your future self (and others) can reproduce your analysis.
 
 **Additional Resources:**
+
 - [Nature's reproducibility survey (2016)](https://doi.org/10.1038/533452a) - More than 70% of researchers have failed to reproduce another scientist's experiments
 - [SDSS Data Release Documentation](https://www.sdss.org/dr18/)
 :::
 
-## 1.2 Understanding Python's Hidden Machinery
+---
 
-:::{margin}
-**module**
-A Python file containing code that can be imported and used in other programs
-:::
+## Section 1.2: Understanding Python's Hidden Machinery
 
 When you type `import astropy`, a complex process unfolds behind the scenes. Understanding this machinery is the difference between guessing why `ImportError: No module named 'astropy.cosmology'` fails and knowing exactly how to fix it.
 
+**Why Import Systems Matter in Astronomy:** Modern astronomical analysis relies on dozens of specialized packages. A typical spectroscopic pipeline might import `astropy` for FITS handling, `specutils` for spectral analysis, `astroquery` for archive access, and `matplotlib` for visualization. When you're reducing data at 3 AM at the telescope, understanding how Python finds and loads these packages can save your observing run.
+
 ### The Import System Exposed
+
+Python's **import system** is like a librarian searching through a card catalog. When you request a book (module), the librarian (Python) has a specific search order (sys.path) and won't randomly guess where to look. This systematic approach ensures consistency but can cause confusion when multiple versions exist.
 
 :::{margin}
 **import system**
 Python's mechanism for loading code from external files
 :::
 
-Let's peek behind the curtain to understand Python's **import system**, particularly for astronomical libraries:
+Let's peek behind the curtain to understand this process, particularly for astronomical libraries. Every time Python starts, it builds a search path based on your environment, installation method, and current directory. This path determines everything about which code gets loaded:
 
 ```{code-cell} ipython3
 import sys
@@ -373,7 +375,7 @@ print("\n--- Computational Example: Virial Theorem ---")
 
 # Galaxy cluster parameters (CGS units)
 M_cluster = 1e15 * 1.989e33  # 10^15 solar masses in grams
-R_cluster = 1e6 * 3.086e18   # 1 Mpc in cm
+R_cluster = 1 * 3.086e24     # 1 Mpc in cm (1 Mpc = 10^6 pc = 3.086e24 cm)
 m_proton = 1.673e-24         # Proton mass in g
 k_B = 1.381e-16              # Boltzmann constant in erg/K
 G = 6.674e-8                 # Gravitational constant
@@ -383,20 +385,21 @@ T_virial = (G * M_cluster * m_proton) / (3 * k_B * R_cluster)
 T_virial_keV = k_B * T_virial / 1.602e-9  # Convert to keV
 
 print(f"Galaxy cluster mass: {M_cluster/1.989e33:.1e} M☉")
-print(f"Cluster radius: {R_cluster/3.086e18:.1f} Mpc")
+print(f"Cluster radius: {R_cluster/3.086e24:.1f} Mpc")
 print(f"Virial temperature: {T_virial:.2e} K")
 print(f"Temperature in keV: {T_virial_keV:.1f} keV")
 print("(Typical observed: 2-10 keV - we're in the right ballpark!)")
 ```
+
+The search path (**sys.path**) acts as Python's roadmap for finding modules. Think of it like the light path through a telescope: light follows a specific route through primary mirror, secondary mirror, and eyepiece. Similarly, Python follows sys.path in order, using the first matching module it finds. This is why having multiple versions of the same package can cause confusion—Python doesn't look for the "best" version, just the first one.
 
 :::{margin}
 **sys.path**
 Python's list of directories to search when importing modules
 :::
 
-This search path (**sys.path**) determines everything. When you `import astropy`, Python checks each directory in order and uses the first match it finds.
+This ordered search has important implications for astronomical software development. If you have a file named `astropy.py` in your current directory, Python will import that instead of the real astropy package. This is a common source of mysterious errors when students name their test scripts after the packages they're learning.
 
-:::{margin}
 **cache**
 A temporary storage area that keeps frequently accessed data for quick retrieval, avoiding repeated expensive operations
 :::
@@ -866,6 +869,28 @@ After Project 1, we'll abandon notebooks for **scripts**. Here's why scripts are
 * - Reproducible Results
   - Often impossible
   - Guaranteed
+:::
+
+:::{important} 🎯 Why This Matters: Your Paper's Data Analysis Must Be Bulletproof
+:class: dropdown
+
+When you submit your first paper to ApJ or MNRAS. The referee may ask: "Can you verify that your period-finding algorithm consistently identifies the 0.5673-day period in your RR Lyrae sample?"
+
+With a **notebook**, you'll panic:
+
+- Which cells did you run to get that result?
+- Did you update the detrending before or after finding that period?
+- Your memory says one thing, but re-running gives different periods
+
+With a **script**, you'll confidently respond:
+
+- "Run `python find_periods.py --input data/rr_lyrae.csv --method lomb-scargle`"
+- "Results are identical: P = 0.5673 ± 0.0002 days"
+- "See our GitHub repository for version-controlled analysis code"
+
+Real example: The TESS mission requires all planet discoveries to be verified with independent analysis pipelines. These are **always scripts**, never notebooks. Why? Because when claiming you've found an Earth-like exoplanet, there's no room for hidden state corruption. Your career depends on reproducible results.
+
+Remember: **Notebooks are for exploration. Scripts are for science.**
 :::
 
 ```{mermaid}
@@ -1406,20 +1431,24 @@ This echoes our discussion about environments: sharing code without documenting 
 
 ---
 
-## 1.6 Essential Debugging Strategies
+## Section 1.6: Essential Debugging Strategies
 
 :::{margin}
 **defensive programming**
 Writing code that anticipates and handles failures gracefully
 :::
 
-When your spectral analysis crashes at 3 AM on the telescope, systematic debugging saves the night. Here are battle-tested strategies from observatory trenches.
+When your star cluster simulation produces unphysical orbits after running for 12 hours, your N-body dynamics code likely violates energy conservation, or your spectral reduction pipeline crashes during an observing run, systematic debugging saves the day. Debugging isn't just about fixing errors—**it's about understanding why they occurred and preventing them in the future**. Here are battle-tested strategies from both computational laboratories and observatories that will serve you throughout your research career, whether you're modeling galaxy formation, solving the equations of stellar structure, or processing telescope data.
+
+**The Psychology of Debugging:** When code fails, especially if you're new to Python or transitioning from Jupyter notebooks, the problem is often a bug in your code—a typo, incorrect indentation, wrong variable name, or logical error. These are normal and expected! However, before diving into line-by-line debugging, a quick environment check can save you hours if the problem is actually a missing package or wrong Python version. Think of it as triage: the environment check takes 5 seconds and catches ~30% of problems immediately. The other 70%? Those are real bugs that require careful debugging.
 
 ### The Universal First Check
 
-Before anything else, verify your environment:
+Before examining your algorithm for why virial equilibrium isn't converging, before questioning whether your Runge-Kutta integrator is correctly implemented, before doubting your understanding of the Saha equation—always, always verify your environment first. This simple discipline will save you hours of frustration:
 
-:::{admonition} Full Environment Diagnostic Function
+**Why Environment Checks Matter:** Your code doesn't exist in isolation. It runs within a complex ecosystem of Python interpreters, installed packages, system libraries, and configuration files. A mismatch in any of these layers can cause mysterious failures. This is especially critical when moving code between laptops, workstations, and high-performance computing clusters where you run large simulations.
+
+:::{tip} Full Environment Diagnostic Function Example
 :class: dropdown
 
 ```{code-cell} ipython3
@@ -1455,7 +1484,7 @@ def astronomy_environment_check():
             env_name = parts[idx + 1] if idx + 1 < len(parts) else "unknown"
             print(f"   ✓ Active environment: {env_name}")
         else:
-            print(f"   ⚠️  Base environment (not recommended)")
+            print(f"   ⚠ Base environment (not recommended)")
     else:
         print(f"   ✗ Not in conda environment")
     
@@ -1485,9 +1514,13 @@ astronomy_environment_check()
 
 :::
 
+This diagnostic function should be your first line of defense. Copy it, modify it for your specific needs, and run it whenever something seems wrong. The few seconds it takes to run can save hours of misguided debugging.
+
 ### Using IPython's Debugger
 
-When your code crashes, IPython's `%debug` magic lets you investigate:
+When your code does crash — *and it will* — IPython's `%debug` magic command lets you perform a post-mortem examination. Think of it as having a time machine that takes you back to the moment of failure, letting you inspect all variables and understand exactly what went wrong:
+
+**The Power of Post-Mortem Debugging:** Unlike adding print statements everywhere (which changes your code's behavior and timing), the debugger lets you explore the crash site without modifications. You can examine variables, test hypotheses, and even run new code in the context of the failure. This is invaluable when debugging complex algorithms where the error might be subtle—a sign error in your gravitational potential, an incorrect boundary condition in your PDE solver, or bad pixel values in your CCD reduction.
 
 ```{code-cell} ipython3
 def process_photometry(fluxes, zero_point=25.0):
@@ -1539,73 +1572,56 @@ ipdb> q  # Quit debugger
 """)
 ```
 
-:::{note} Your Turn: Try Breaking This Code
-:class: dropdown
+**Debugging Strategies for Theoretical/Computational Astrophysics:**
 
-``` {code-cell} ipython3
-def calculate_jeans_mass(temperature_K, density_cgs, mu=2.33):
-    """
-    Calculate the Jeans mass for gravitational collapse.
-    
-    The Jeans mass is the critical mass above which a gas cloud
-    will collapse under its own gravity.
-    
-    Parameters
-    ----------
-    temperature_K : float
-        Gas temperature in Kelvin
-    density_cgs : float
-        Gas density in g/cm^3
-    mu : float
-        Mean molecular weight (2.33 for molecular gas)
-        
-    Returns
-    -------
-    float
-        Jeans mass in grams
-    """
-    import numpy as np
-    
-    # Physical constants (CGS)
-    k_B = 1.381e-16      # Boltzmann constant [erg/K]
-    G = 6.674e-8         # Gravitational constant
-    m_H = 1.673e-24      # Hydrogen mass [g]
-    
-    # Validate inputs - common source of errors!
-    if temperature_K <= 0:
-        raise ValueError(f"Temperature must be positive, got {temperature_K} K")
-    if density_cgs <= 0:
-        raise ValueError(f"Density must be positive, got {density_cgs} g/cm^3")
-    if mu <= 0:
-        raise ValueError(f"Mean molecular weight must be positive, got {mu}")
-    
-    # Jeans length
-    c_s = np.sqrt(k_B * temperature_K / (mu * m_H))  # Sound speed
-    lambda_J = np.sqrt(np.pi * c_s**2 / (G * density_cgs))
-    
-    # Jeans mass: M_J = (π/6) * ρ * λ_J^3
-    M_J = (np.pi / 6) * density_cgs * lambda_J**3
-    
-    return M_J
+1. **Unit Conversion Errors:** The #1 killer of calculations
+   - Always write units in comments: `R_cluster = 1 * 3.086e24  # 1 Mpc in cm`
+   - Test with known values: Solar radius = 6.96e10 cm, Earth orbit = 1.496e13 cm
+   - Use **dimensional analysis**: Check that [Energy] = [Mass][Length]²[Time]⁻²
 
-# Example: Molecular cloud conditions
-print("\n--- Jeans Mass Calculation Example ---")
-T_cloud = 10  # K (cold molecular cloud)
-n_H2 = 1e4    # cm^-3 (number density)
-rho = n_H2 * 2.33 * 1.673e-24  # Convert to mass density
+2. **Math Transcription Errors:** From equations to code
+   - Compare implementation character-by-character with paper equations
+   - Common mistakes: Missing parentheses, wrong exponents, forgotten 2π factors
+   - Split up complex equations into multiple calculations (e.g., `planck_fcn = num/denom`)
+   - Test limiting cases: Newtonian limit of GR, non-relativistic limit of SR
 
-try:
-    M_jeans = calculate_jeans_mass(T_cloud, rho)
-    M_jeans_solar = M_jeans / 1.989e33
-    print(f"Temperature: {T_cloud} K")
-    print(f"Number density: {n_H2:.1e} cm^-3")
-    print(f"Jeans mass: {M_jeans_solar:.1f} M☉")
-    print("(Typical for star-forming regions!)")
-except ValueError as e:
-    print(f"Error in calculation: {e}")
-```
+3. **Numerical Method Failures:**
+   - **Integration instabilities:** Symplectic integrators for long-term stability
+   - **Stiff ODEs:** Use implicit methods (`scipy.integrate.solve_ivp` with 'Radau')
+   - **Boundary conditions:** Ghost zones for hydro codes
+   - **Convergence:** Richardson extrapolation to test resolution dependence
 
-:::
+4. **Physical Validity Checks:**
+   - **Conservation laws**: Energy, momentum, angular momentum, mass
+   - **Causality**: Nothing faster than c
+   - **Thermodynamics**: Entropy shouldn't decrease (except with cooling)
+   - **Stability**: Jeans mass, Chandrasekhar limit, Eddington luminosity
+
+5. **Scale and Precision Issues:**
+   - **Log-space for extreme ratios, order of magnitude ranges**
+   - **Catastrophic cancellation**: Rewrite `1 - cos(x)` as `2*sin(x/2)**2` for small `x` (i.e., Taylor series expansion)
+   - **Double precision limits**: ~15 decimal digits (problems for age of universe calculations)
+
+**Always start simple**: test your algorithms on simplified/idealized test problems, where the answer is known - e.g., testing your N-body ODE integrator on the $N=2$ Earth-Sun system before jumping to simulating a $N \gg 2$ star cluster.
+
+**Debugging Strategies for Observational Astronomy:**
+
+1. **Instrument-Specific Issues:**
+   - Bad pixels, hot pixels, cosmic rays: Use median filtering
+   - Flat fielding errors: Check twilight flats vs dome flats
+   - Dark current: Temperature-dependent, check CCD temperature logs
+
+2. **Coordinate and Time Systems:**
+   - Frame confusion: ICRS vs Galactic vs ecliptic
+   - Epoch differences: J2000 vs current epoch for proper motion
+   - Time scales: UTC vs TAI vs TDB (critical for pulsar timing)
+
+3. **Data Pipeline Problems:**
+   - NaN propagation: Use np.nanmean(), check after each step
+   - Memory overflow: Process in chunks for large surveys
+   - File I/O: FITS header corruption, endianness issues
+
+Example debugging session:
 
 :::{important} 💡 Computational Thinking: Defensive Astronomy Programming
 :class: dropdown
@@ -1614,13 +1630,7 @@ Astronomical data is messy. Defensive programming anticipates common failures:
 
 **Common Issues & Defensive Solutions:**
 
-1. **Bad pixels/cosmic rays** → Median filtering, sigma clipping
-2. **Missing FITS headers** → Provide defaults, log warnings
-3. **Coordinate mismatches** → Validate units, check epochs
-4. **NaN propagation** → Use `np.nanmean()`, check for NaNs
-5. **Memory overflow** → Process in chunks, use memmap
-
-Example defensive pattern:
+Example defensive patterns:
 ```python
 def safe_magnitude(flux, zero_point=25.0):
     """Calculate magnitude with error handling."""
@@ -1637,6 +1647,16 @@ def safe_magnitude(flux, zero_point=25.0):
 ```
 
 This robustness is essential when processing thousands of images automatically!
+
+```python
+# THEORETICAL: Sign error in gravitational potential
+# WRONG: Missing negative sign
+phi = G * M / r  # Should be negative!
+
+# CORRECT: Gravitational potential is negative
+phi = -G * M / r # this happens why more than you think!
+```
+
 :::
 
 ## Practice Exercises
@@ -1646,7 +1666,7 @@ This robustness is essential when processing thousands of images automatically!
 :::{admonition} Part A: Explore Scientific Libraries (5 min)
 :class: exercise
 
-Execute these commands in IPython to explore astropy:
+Execute these commands in IPython to explore `astropy`:
 
 ```python
 # In IPython:
@@ -1666,6 +1686,7 @@ n = 1e4 * u.cm**-3  # Number density
 M_J = 2.0 * (const.k_B * T / (const.G * const.m_p))**(3/2) * n**(-1/2)
 print(f"Jeans mass: {M_J.to(u.M_sun):.1f}")
 ```
+
 :::
 
 :::{admonition} Part B: Time Array Operations (10 min)
@@ -1712,6 +1733,7 @@ print(f"List comprehension: {t1*10:.3f} ms")
 print(f"NumPy vectorized:   {t2*10:.3f} ms")
 print(f"NumPy is {t1/t2:.1f}x faster!")
 ```
+
 :::
 
 :::{admonition} Part C: Create Your Own Analysis (15 min)
