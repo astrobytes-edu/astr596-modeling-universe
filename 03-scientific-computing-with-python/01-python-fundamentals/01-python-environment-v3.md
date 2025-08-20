@@ -9,7 +9,7 @@ kernelspec:
   language: python
   name: python3
 ---
-# ⚠️ Chapter 1: Computational Environments & Scientific Workflows
+# Chapter 1: Computational Environments & Scientific Workflows
 
 ## Learning Objectives
 
@@ -186,8 +186,8 @@ Timing results vary significantly between machines due to:
 Never assume timing results from one machine apply to another. Always benchmark on your target system.
 :::
 
-:::{admonition} 🌟 The More You Know: When 0.1 Seconds = 28 Dead
-:class: tip, dropdown
+:::{tip} 🌟 The More You Know: When 0.1 Seconds = 28 Dead
+:class: dropdown
 
 **TODO:** should be be in Chapter 2 instead in the floating-point/precision section? Most likely yes
 
