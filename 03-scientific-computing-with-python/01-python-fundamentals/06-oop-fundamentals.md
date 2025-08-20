@@ -255,35 +255,35 @@ print(f"Counter 2: {c2.get_count()}")  # 1
 
 This seemingly simple concept of bundling data with behavior revolutionized programming. Let me tell you how it started...
 
-:::{admonition} 🌟 The More You Know: How Norwegian Scientists Invented OOP to Model Ships
-:class: note, dropdown
+:::{note} ⚠️🌟 The More You Know: How Norwegian Scientists Invented OOP to Simulate Complex Systems
+:class: dropdown
 
-In 1962, Norwegian computer scientists Kristen Nygaard and Ole-Johan Dahl faced an impossible problem at the Norwegian Computing Center. They were trying to simulate ship movement through fjords, tracking hundreds of vessels with different properties, behaviors, and interactions. Their FORTRAN code had become an unmaintainable nightmare of global variables and GOTO statements - a single change could break the entire simulation.
+In 1962, Norwegian computer scientists Kristen Nygaard and Ole-Johan Dahl faced a mounting challenge at the Norwegian Computing Center. Nygaard had been developing simulations since 1957 - first for nuclear reactor calculations, then for operations research problems. Their early projects included analyzing factory layouts, airport departure systems, and harbor operations. The existing approaches using ALGOL 60 were becoming unwieldy for modeling these complex, interconnected systems with hundreds of interacting components.
 
-Their revolutionary solution? Create "objects" that bundled ship data with ship behavior. Each ship would know its own position, speed, cargo capacity, and fuel consumption, and could execute its own navigation methods. They called their language Simula (SIMUlation LAnguage), and in 1967, Simula 67 introduced the world to classes, objects, inheritance, and virtual methods - all the concepts you're learning now.
+Their revolutionary solution? Create "objects" that bundled data with behavior. In 1965, they successfully used SIMULA I to analyze the Raufoss ammunitions factory layout - determining optimal arrangements for cranes and storage points. The program, punched on 1,130 cards, could simulate 2.5 days of factory operations in just 22 seconds. Each crane, storage point, and workstation became an object that knew its own state and could respond to events.
 
 ```python
-# Simplified version of their concept in modern Python:
-class Ship:
-    def __init__(self, name, position, cargo):
+# Simplified concept in modern Python:
+class FactoryStation:
+    def __init__(self, name, capacity, processing_time):
         self.name = name
-        self.position = position
-        self.cargo = cargo
+        self.capacity = capacity
+        self.queue = []
     
-    def navigate_through_fjord(self, fjord_map):
-        # Each ship knows how to navigate based on its own properties
-        pass
+    def receive_item(self, item):
+        # Each station manages its own queue and processing
+        self.queue.append(item)
 ```
 
-The impact was profound. Alan Kay, who later created Smalltalk, said: "I thought of objects being like biological cells... only able to communicate with messages" (simplified paraphrase of his 1960s realization). This biological metaphor transformed computing. IBM adopted OOP for their systems. C++ brought it to systems programming. Java made it mainstream.
+By 1967, Simula 67 formalized these concepts into classes, inheritance, and virtual methods - the foundation of modern OOP. Alan Kay, influenced by Simula (along with Sketchpad and his biology background), coined "object-oriented programming" around the same time. He later explained: "I thought of objects being like biological cells and/or individual computers on a network, only able to communicate with messages."
 
-The irony? Nygaard and Dahl's supervisor initially rejected their idea, reportedly saying something like "We're here to solve problems, not create new programming paradigms!" (paraphrased from various historical accounts). That "paradigm" now powers everything from video games to Mars rovers to the Large Hadron Collider's data analysis. Today, when you create a Particle class or a Galaxy object, you're using concepts invented to help Norwegian ships navigate safely through narrow fjords!
+The impact was profound but gradual. Simula influenced Smalltalk in the 1970s, then C++ in the 1980s, and eventually Java in the 1990s. The Norwegian Computing Center, initially focused on practical simulation problems, had accidentally created one of computing's most transformative paradigms. Today, when you create a Particle class or a Galaxy object, you're using concepts born from the need to simulate factories, airports, and harbors in 1960s Norway!
 
-*[Source: Nygaard, K., & Dahl, O. J. (1978). The development of the SIMULA languages. ACM SIGPLAN Notices, 13(8), 245-272.]*
+*[Sources: Dahl & Nygaard (1978). "The development of the SIMULA languages." ACM SIGPLAN Notices; Kay, A. (2003). Email to Stefan Ram on OOP definition]*
 :::
 
-:::{admonition} ⚠️ Common Bug Alert: Forgetting self
-:class: warning
+:::{warning} ⚠️ Common Bug Alert: Forgetting self
+:class: dropdown
 
 ```{code-cell} ipython3
 :tags: [raises-exception]

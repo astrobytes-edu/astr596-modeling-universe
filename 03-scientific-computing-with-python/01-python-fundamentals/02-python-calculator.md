@@ -199,16 +199,119 @@ This **arbitrary precision** is wonderful but comes with a cost — Python integ
 International standard for floating-point arithmetic in binary
 :::
 
+This is it — the concept that separates casual programmers from computational scientists! Don't worry if this seems complex at first; every professional scientist had to learn these same lessons.
+
+Floating-point numbers use **IEEE 754** representation: 64 bits split into sign (1 bit), exponent (11 bits), and **mantissa** (52 bits). This creates fundamental limitations that every computational scientist must understand.
+
 :::{margin}
 **mantissa**
 The significant digits of a floating-point number
 :::
 
-This is it — the concept that separates casual programmers from computational scientists! Don't worry if this seems complex at first; every professional scientist had to learn these same lessons.
+### Understanding Bits and Precision
 
-**TODO:** add 32- vs. 64-bit (single vs. double precision), state that Python uses 64-bit by default, but as we'll see with `jax` its default is 32-bit.
+:::{margin}
+**bit**
+the fundamental unit of computer memory that can store exactly one of two values: 0 or 1
+:::
 
-Floating-point numbers use **IEEE 754** representation: 64 bits split into sign (1 bit), exponent (11 bits), and **mantissa** (52 bits). This creates fundamental limitations that every computational scientist must understand:
+Before diving into floating-point challenges, let's understand the fundamental unit of computer memory: the **bit**. A bit (binary digit) can store exactly one of two values: 0 or 1. Think of it as a light switch—either on or off. Everything your computer does ultimately reduces to manipulating billions of these tiny switches.
+
+Groups of bits form larger units:
+
+- **8 bits** = 1 byte (can represent 256 different values: 2⁸)
+- **32 bits** = 4 bytes (can represent ~4.3 billion values: 2³²)
+- **64 bits** = 8 bytes (can represent ~18 quintillion values: 2⁶⁴)
+
+### Single vs Double Precision: The 32-bit vs 64-bit Choice
+
+Floating-point numbers come in two main flavors:
+
+```{code-cell} ipython3
+import numpy as np
+import sys
+
+# Python's default float is 64-bit (double precision)
+regular_float = 3.14159265358979323846
+print(f"Python float: {sys.getsizeof(regular_float)} bytes")
+print(f"Precision: {regular_float}")
+
+# NumPy lets us choose 32-bit (single precision)
+single_precision = np.float32(3.14159265358979323846)
+double_precision = np.float64(3.14159265358979323846)
+
+print(f"\n32-bit representation: {single_precision}")
+print(f"64-bit representation: {double_precision}")
+print(f"Lost digits in 32-bit: {double_precision - single_precision:.10e}")
+
+# Where do those bits go?
+print("\nIEEE 754 Standard bit allocation:")
+print("32-bit: 1 sign + 8 exponent + 23 mantissa bits")
+print("64-bit: 1 sign + 11 exponent + 52 mantissa bits")
+```
+
+The trade-offs are crucial for scientific computing:
+
+| Aspect | 32-bit (float32) | 64-bit (float64) |
+|--------|------------------|------------------|
+| **Precision** | ~7 decimal digits | ~15 decimal digits |
+| **Range** | ±10⁻³⁸ to 10³⁸ | ±10⁻³⁰⁸ to 10³⁰⁸ |
+| **Memory** | 4 bytes | 8 bytes |
+| **Speed** | Faster on GPU | Standard on CPU |
+| **Use case** | Graphics, ML training | Scientific computing |
+
+```{code-cell} ipython3
+# Precision matters for astronomical calculations!
+import math
+
+# Distance to Proxima Centauri in meters
+distance_m = 4.0e16  
+
+# Small measurement error
+error_32bit = distance_m * np.float32(1.0000001) - distance_m
+error_64bit = distance_m * np.float64(1.0000001) - distance_m
+
+print(f"Measurement error with 32-bit: {error_32bit:.0f} meters")
+print(f"Measurement error with 64-bit: {error_64bit:.0f} meters")
+print(f"Difference: {abs(error_32bit - error_64bit):.0f} meters")
+print(f"That's {abs(error_32bit - error_64bit)/1000:.0f} km of error!")
+```
+
+Python defaults to 64-bit because scientific computing needs that precision. But libraries like JAX default to 32-bit for machine learning where speed matters more than precision. *Always know which you're using!*
+
+:::{note} ⚠️ 🌟 The More You Know: Why Quantum Computers Could Change Everything
+:class: dropdown
+
+While your classical computer uses bits that must be either 0 or 1, quantum computers use **qubits** that can exist in **superposition**—simultaneously 0 and 1 until measured. This isn't just a faster bit; it's fundamentally different.
+
+**Classical bit**: Like a coin that's either heads OR tails
+**Qubit**: Like a spinning coin that's both heads AND tails until it lands
+
+This superposition enables quantum parallelism:
+
+- **Classical**: To try 1,000 possibilities, do 1,000 calculations sequentially
+- **Quantum**: Try all 1,000 possibilities simultaneously in superposition
+
+**Why it matters for astronomy:**
+
+1. **Simulation**: A classical computer needs 2ⁿ bits to perfectly simulate n qubits. Just 300 qubits would require more classical bits than there are atoms in the universe!
+
+2. **Optimization**: Finding optimal telescope scheduling among millions of targets, or searching for patterns in cosmological data, could be exponentially faster.
+
+3. **Many-body problems**: Simulating quantum systems (like stellar interiors or the early universe) naturally—quantum systems simulating quantum physics.
+
+**The catch?** Qubits are incredibly fragile. Current quantum computers need to be cooled to near absolute zero and isolated from all vibrations. A single cosmic ray can destroy a calculation. Google's 2019 "quantum supremacy" demonstration used 53 qubits for just 200 seconds of computation.
+
+**Current reality (2024)**: Quantum computers excel at specific tasks (cryptography, optimization, quantum simulation) but can't run Python or browse the web. They're specialized tools, not general-purpose computers. IBM, Google, and others offer cloud access to real quantum computers you can experiment with today!
+
+The dream? Hybrid systems where quantum processors handle what they do best (optimization, simulation) while classical computers handle everything else. Your orbital mechanics simulation might one day use quantum algorithms to find optimal trajectories, then classical computing to visualize the results.
+
+For now, we're stuck with bits—but understanding their limitations helps us write better code within those constraints!
+:::
+
+### Back to Classical Reality: Why 0.1 + 0.2 ≠ 0.3
+
+Now that you understand bits and precision, let's see why even 64-bit floats can't exactly represent simple decimals.
 
 ```{code-cell} ipython3
 # The famous example that confuses beginners
@@ -304,7 +407,7 @@ print(f"That's about {tiny_change/100:.2f} meters!")
 
 When the Kepler Space Telescope searched for exoplanets by detecting brightness dips of 0.01%, understanding machine epsilon was essential to distinguish real planetary transits from numerical noise.
 
-:::{warning} 💥 Why This Matters: The Patriot Missile Timing Disaster
+:::{warning} ⚠️ 💥 **Why This Matters**: The Patriot Missile Timing Disaster
 :class: dropdown
 
 On February 25, 1991, an American Patriot missile battery in Dhahran, Saudi Arabia, failed to intercept an incoming Iraqi Scud missile. The Scud struck an Army barracks, killing 28 soldiers and injuring 98 others. The cause? A tiny numerical error that accumulated over time.
