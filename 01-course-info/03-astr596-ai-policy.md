@@ -30,12 +30,7 @@ kernelspec:
 - 📝 **Attribution**: Every AI-assisted code change must include the in-code 3-line note (*AI* / *Verified* / *Because*).
 - 🧠 **Ownership**: Can't explain it = Can't submit it
 
-## Quick Links
-
-- [Course Syllabus](astr596-syllabus)
-- [Why This Course is Different](why-astr596-is-different)
-- [Learning Guide](astr596-learning-guide)
-- [Project Submission Guide](short-projects/0_project_submission_guide)
+![*First Internet Interaction*, xkcd.com](https://imgs.xkcd.com/comics/first_internet_interaction.png)
 
 ## **Should I Use AI for This? Decision Flowchart**
 

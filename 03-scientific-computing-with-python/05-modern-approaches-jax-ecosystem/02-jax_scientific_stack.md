@@ -1,4 +1,4 @@
-# JAX Scientific Computing Stack: Equinox, Diffrax, and Optimistix
+# ⚠️ JAX Scientific Computing Stack: Equinox, Diffrax, and Optimistix
 
 ## Learning Objectives
 By the end of this chapter, you will:

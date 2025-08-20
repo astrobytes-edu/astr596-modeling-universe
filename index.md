@@ -15,6 +15,8 @@ Welcome to **ASTR 596: Modeling the Universe**! This course takes you on a journ
 **Earned Complexity**: We implement fundamental algorithms from first principles before leveraging advanced frameworks. Every line of code serves understanding—no black boxes allowed until you've built the glass box yourself.
 :::
 
+![*image credit:* xkcd.com](https://imgs.xkcd.com/comics/astrophysics.png)
+
 ## Course Trajectory
 
 ::::{grid} 1 1 2 3

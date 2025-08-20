@@ -1,4 +1,4 @@
-# JAX Specialized Libraries: BlackJAX, Numpyro, and Domain-Specific Tools
+# ⚠️ JAX Specialized Libraries: BlackJAX, Numpyro, and Domain-Specific Tools
 
 ## Learning Objectives
 By the end of this chapter, you will:

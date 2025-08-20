@@ -15,80 +15,84 @@ kernelspec:
 
 By the end of this chapter, you will be able to:
 
-- Configure and navigate **IPython** as your primary interactive computing environment
-- Diagnose why identical code produces different results on different machines
-- Explain how Python locates and loads code when you type `import`
-- Identify the hidden dangers of **Jupyter notebooks** that corrupt scientific results
-- Create reproducible computational environments using **conda**
-- Debug environment problems systematically using diagnostic tools
-- Transform notebook explorations into reproducible Python **scripts**
-- Execute Python code effectively from the terminal and IPython environment
+1. **Configure and navigate IPython** as your primary interactive computing environment for scientific projects and astronomical data analysis.
+2. **Diagnose and fix three common causes** of environment-dependent behavior in scientific code.
+3. **Explain step-by-step how Python's import system** locates and loads modules when you type `import module`.
+4. **Identify five specific dangers** of Jupyter notebooks that can corrupt scientific results.
+5. **Create fully reproducible computational environments** using `conda` with proper version pinning.
+6. **Debug environment problems systematically** using a four-stage diagnostic protocol.
+7. **Transform notebook explorations into reproducible Python scripts** following best practices.
+8. **Execute Python code effectively** from both terminal and IPython environments.
 
 ## Prerequisites Check
 
-:::{admonition} ✅ Before Starting This Chapter
-:class: note
+:::{important} ✅ Prerequisites Self-Assessment
+:class: dropdown
 
-- [ ] You have completed the Getting Started module (basic setup, CLI, git)
-- [ ] You can navigate directories using `cd`, `ls`, and `pwd`
-- [ ] You have Miniforge installed with the `astr596` environment created
-- [ ] You can activate your conda environment: `conda activate astr596`
-- [ ] You understand file paths (absolute vs. relative)
+Before starting this chapter, verify you have completed these items:
 
-If any boxes are unchecked, review the Getting Started module first.
+- [ ] You can open a terminal/command prompt and are able to navigate directories (via `cd`, `ls`, `lsdir`, `pwd`).
+- [ ] You have Miniforge installed and created a `astr596` python conda environment for this course.
+- [ ] You have a text editor (e.g., Vim)or IDE (e.g., VS Code) installed.
+- [ ] You have `git` installed and can you use basic `git` commands (e.g.,`clone`, `add`, `commit`, `pull`).
+
+⚠️ If you checked 'no' to any item, see the [Getting Started](../../02-getting-started/index) module . 
 :::
 
 ## Chapter Overview
 
-Picture this: You download code from a groundbreaking astronomy paper, eager to reproduce their results. You run it exactly as instructed. Instead of the published results, you get error messages, or worse — completely different numbers with no indication why. This frustrating scenario happens to nearly every computational scientist, from undergraduates to professors. The problem isn't bad code or user error; it's that scientific computing happens in complex **environments** where tiny differences can cascade into complete failures.
+Picture this: You download code from a groundbreaking exoplanet detection paper, eager to reproduce their radial velocity analysis. You run it exactly as instructed. Instead of the published planetary parameters, you get error messages, or worse — completely different orbital periods with no indication why. This frustrating scenario happens to nearly every astrophysicist, from graduate students to professors. The problem isn't bad code or user error; it's that scientific computing happens in complex **environments** where tiny differences can cascade into complete failures.
 
 :::{margin}
 **environment**
 An isolated Python installation with its own packages and settings
 :::
 
-This chapter reveals the hidden machinery that makes Python work (or not work) on your computer. You'll discover why the same code produces different results on different machines, master **IPython** as your computational laboratory, understand the dangers of **Jupyter notebooks**, and learn to create truly reproducible computational environments. These aren't just technical skills — they're the foundation of trustworthy computational science.
+This chapter reveals the hidden machinery that makes Python work (or not work) on your computer. You'll discover why the same spectral analysis code produces different results on different machines, master **IPython** as your computational laboratory for rapid prototyping, understand the dangers of **Jupyter notebooks** in scientific computing, and learn to create truly reproducible computational environments for your research. These aren't just technical skills — they're the foundation of trustworthy astrophysics research.
 
-By chapter's end, you'll transform from someone who hopes code works to someone who knows exactly why it works (or doesn't). You'll diagnose "module not found" errors in seconds, create environments that work identically on any machine, and understand the critical difference between exploration and reproducible science. Let's begin by exploring the tool that will become your new best friend: IPython.
-
-## 1.1 IPython: Your Computational Laboratory
+By chapter's end, you'll transform from someone who hopes code works to someone who knows exactly why it works (or doesn't). You'll diagnose "No module named 'astropy'" errors in seconds, create environments that work identically on any supercomputer cluster, and understand the critical difference between exploration and reproducible science. Let's begin by exploring the tool that will become your new best friend: **IPython**.
 
 :::{margin}
 **IPython**
-Interactive Python - an enhanced interpreter for scientific computing
+Interactive Python - an enhanced interpreter designed for scientific computing
 :::
 
-While you could use the basic Python interpreter by typing `python`, **IPython** (just type `ipython` instead) transforms your terminal into a powerful environment for scientific exploration. Think of it as the difference between a basic calculator and a graphing calculator — both do math, but one is designed for serious work. Let's see why every professional computational scientist prefers IPython over the basic Python **REPL**.
+## 1.1 IPython: Your Computational Laboratory
+
+While you could use the basic Python interpreter by typing `python`, **IPython** (type `ipython` at the terminal instead) transforms your terminal into a powerful environment for scientific computing and **exploratory data analysis** (EDA). Think of it as the difference between an basic amateur telescope and one with adaptive optics — both observe, but one is designed for serious scientific work. Let's see why every professional computational astrophysicist prefers IPython over the basic Python **REPL**.
+
+:::{margin}
+**exploratory data analysis** (EDA)
+A systematic approach to investigating datasets through visualization and summary statistics to uncover patterns, detect anomalies, and identify relationships between variables before formal modeling or hypothesis testing.
+:::
+
+### Launching Your Laboratory
+
+First, ensure you're in the right environment, then launch IPython. Here's how to do it properly:
 
 :::{margin}
 **REPL**
 Read-Eval-Print Loop - an interactive programming environment
 :::
 
-### Launching Your Laboratory
+:::{note}
+**Terminal Commands vs Python Code**
 
-First, ensure you're in the right environment, then launch IPython:
+Throughout this book:
+- Lines starting with `$` are terminal/shell commands
+- Lines starting with `In []:` are IPython commands
+- Regular code blocks are Python scripts
+:::
 
-```{code-cell} ipython3
-# IMPORTANT: These are terminal commands, not Python code!
-# Type these in your terminal/command prompt, not in Python
-
-# Step 1: Open your terminal (Terminal on Mac/Linux, Anaconda Prompt on Windows)
-# Step 2: Activate your conda environment
-print("In terminal: conda activate astr596")
-
-# Step 3: Launch IPython
-print("In terminal: ipython")
+```bash
+# Terminal commands (type these in your terminal, not in Python!)
+$ conda activate astr596
+$ ipython
 
 # You'll see something like this appear:
-print("""
 Python 3.11.5 | packaged by conda-forge
 IPython 8.14.0 -- An enhanced Interactive Python
 In [1]: 
-""")
-
-# The 'In [1]:' prompt means you're now in IPython, ready to type Python code
-print("Now you can type Python commands at the In [1]: prompt")
 ```
 
 Notice the prompt says `In [1]:` instead of `>>>` (which is what basic Python shows). This numbering system is your first hint that IPython is different — it remembers everything. Each command you type gets a number, making it easy to reference previous work.
@@ -99,25 +103,49 @@ IPython maintains a complete history of your session, accessible through special
 
 ```{code-cell} ipython3
 # Type these commands one at a time in IPython
-import math
+import numpy as np
 
-# Earth's radius in km
-radius = 6371  
+# Hubble constant in km/s/Mpc
+H0 = 70.0  
 
-# Calculate Earth's volume
-volume = (4/3) * math.pi * radius**3
-print(f"Earth's volume: {volume:.2e} km³")
+# Calculate Hubble time (age of universe for flat, matter-only cosmology)
+t_hubble = 1.0 / H0  # in units where c = 1
+t_hubble_gyr = t_hubble * 978  # Convert to Gyr (approximation)
+
+print(f"Hubble time: {t_hubble_gyr:.1f} Gyr")
 
 # In IPython, you can reference previous work:
 print("In IPython, Out[n] stores outputs, In[n] stores inputs")
 print("The underscore _ references the last output")
 ```
 
-:::{admonition} 🤔 Check Your Understanding
-:class: hint
+```{code-cell} ipython3
+# Type these commands one at a time in IPython
+# Kepler's Third Law: Orbital Mechanics
+# Another fundamental calculation - orbital periods
+a_earth = 1.496e13  # cm (1 AU)
+M_sun = 1.989e33    # g (solar mass)
+G = 6.674e-8        # cm^3 g^-1 s^-2
+
+# Calculate Earth's orbital period using Kepler's third law
+# P^2 = 4π^2 a^3 / (GM)
+
+import math
+
+P_squared = (4 * math.pi**2 * a_earth**3) / (G * M_sun)
+
+P_seconds = math.sqrt(P_squared)
+P_days = P_seconds / (24 * 3600)
+
+print(f"\nEarth's orbital period: {P_days:.1f} days")
+
+print(f"(Actual: 365.25 days - pretty close!)")
+```
+
+::::{hint} 🤔 Check Your Understanding
+:class: dropdown
 
 What's the difference between `In[5]` and `Out[5]` in IPython?
-:::
 
 :::{admonition} Solution
 :class: tip, dropdown
@@ -126,27 +154,31 @@ What's the difference between `In[5]` and `Out[5]` in IPython?
 - `Out[5]` contains the result/value that cell 5 produced (if any)
 
 For example:
-- `In[5]` might be `"2 + 2"`
-- `Out[5]` would be `4`
 
-This history system lets you reference and reuse previous computations without retyping.
+- `In[5]` might be `"np.sqrt(2)"`
+- `Out[5]` would be `1.4142135623730951`
+
+This history system lets you reference and reuse previous computations without retyping — crucial when analyzing large datasets or iterating on algorithms.
 :::
+::::
 
 ### Tab Completion: Your Exploration Tool
 
-Tab completion helps you discover what's available without memorizing everything:
+Tab completion helps you discover astronomical libraries without memorizing everything:
 
 ```{code-cell} ipython3
-import math
+import numpy as np
 
-# In real IPython, type: math.<TAB>
+# In real IPython, type: np.<TAB>
 # Shows all available functions
-available_functions = [item for item in dir(math) if not item.startswith('_')]
-print("math module contains:", available_functions[:10], "...")
 
-# To see functions containing 'sin' (math.*sin*?<TAB> in IPython):
-sin_functions = [item for item in dir(math) if 'sin' in item]
-print("\nFunctions with 'sin':", sin_functions)
+available_functions = [item for item in dir(np) if not item.startswith('_')]
+print("NumPy contains:", len(available_functions), "functions/attributes")
+print("Sample:", available_functions[:10])
+
+# To see functions for FFT analysis (np.*fft*?<TAB> in IPython):
+fft_functions = [item for item in dir(np) if 'fft' in item.lower()]
+print("\nFFT-related functions:", fft_functions)
 ```
 
 ### Magic Commands: IPython's Superpowers
@@ -156,92 +188,136 @@ print("\nFunctions with 'sin':", sin_functions)
 IPython commands prefixed with % providing special functionality
 :::
 
-IPython's **magic commands** give you capabilities far beyond standard Python:
+IPython's **magic commands** give you capabilities far beyond standard Python. Here's a practical example comparing different methods to calculate stellar magnitudes:
 
-```{code-cell} ipython3
-# In IPython, you would use: %timeit sum(range(1000))
-# Here we simulate timing comparisons
+```{code-cell} python
+# In IPython, you would use: %timeit
+# Here we simulate timing different approaches to photometry calculations
+
 import timeit
+import numpy as np
 
-# Time list comprehension
-time1 = timeit.timeit('[i**2 for i in range(100)]', number=10000)
-print(f"List comprehension: {time1*100:.4f} µs per loop")
+# Method 1: List comprehension for magnitude calculation
+def mag_list_comp(fluxes):
+    return [-2.5 * np.log10(f/3631) for f in fluxes if f > 0]
 
-# Time map/lambda approach
-time2 = timeit.timeit('list(map(lambda x: x**2, range(100)))', number=10000)
-print(f"Map with lambda: {time2*100:.4f} µs per loop")
+# Method 2: NumPy vectorized
+def mag_numpy(fluxes):
+    return -2.5 * np.log10(fluxes[fluxes > 0] / 3631)
 
-# Show which is faster
-print(f"\nList comprehension is {time2/time1:.1f}x faster")
+# Generate test data: stellar fluxes in Jansky
+np.random.seed(42)
+test_fluxes = np.random.lognormal(7, 1, 1000)
+
+# Time both methods
+time1 = timeit.timeit(lambda: mag_list_comp(test_fluxes), number=100)
+time2 = timeit.timeit(lambda: mag_numpy(test_fluxes), number=100)
+
+print(f"List comprehension: {time1*10:.4f} ms per call")
+print(f"NumPy vectorized:   {time2*10:.4f} ms per call")
+print(f"\nNumPy is {time1/time2:.1f}x faster for photometry!")
 ```
 
 :::{warning} 🚨 Common Bug Alert: Platform-Specific Timing
+:class: dropdown
 
 Timing results vary significantly between machines due to:
 
-- CPU speed and architecture
+- CPU speed and architecture (Intel vs AMD vs ARM)
+- NumPy compilation (MKL vs OpenBLAS vs BLIS)
 - System load and background processes
 - Python version and compilation options
 
-Never assume timing results from one machine apply to another. Always benchmark on your target system.
+**Best Practice**: Always benchmark on your target system (laptop vs cluster)
 :::
 
 ### Getting Help Instantly
 
 IPython makes documentation accessible without leaving your workflow:
 
-```{code-cell} ipython3
-import math
-
-# In real IPython, use: math.sqrt?
+```{code-cell} python
+# Demonstrating IPython's help system
 print("In IPython, use ? for quick help:")
-print("  math.sqrt?  - shows documentation")
-print("  math.sqrt?? - shows source code (if available)")
-print("\nExample documentation for math.sqrt:")
-print("  Return the square root of x.")
-print("  Domain: x ≥ 0, Range: result ≥ 0")
+print("  np.fft.fft?  - shows documentation")
+print("  np.fft.fft?? - shows source code (if available)")
+print("\nExample documentation for np.fft.fft:")
+print("  Compute the one-dimensional discrete Fourier Transform.")
+print("  Used for: spectral analysis, period finding, filtering")
+print("  Returns: complex array of Fourier coefficients")
 ```
 
-:::{admonition} 💡 Computational Thinking: Interactive Exploration
-:class: important
+:::{important} 💡 Computational Thinking: Interactive Exploration
+:class: dropdown
 
-The ability to quickly test ideas and explore APIs interactively is fundamental to computational science. IPython's environment encourages experimentation:
+The ability to quickly test ideas and explore APIs interactively is fundamental to computational astrophysics. IPython's environment encourages experimentation:
 
-**Explore** → **Test** → **Refine**
+**Explore** → **Test** → **Refine** → **Validate**
 
-This rapid iteration cycle is how algorithms are born and bugs are discovered. This pattern appears everywhere: interactive debuggers, REPLs in other languages, and computational notebooks all follow this explore-test-refine cycle.
+This rapid iteration cycle is how algorithms are born and bugs are discovered. You might:
+1. Explore a new spectral library's API
+2. Test different periodogram algorithms
+3. Refine parameters for optimal performance
+4. Validate against known variable stars
+
+This pattern appears everywhere: from testing cosmological simulations to debugging telescope control software.
 :::
 
 ### Managing Your Workspace
 
-```{code-cell} ipython3
+```{code-cell} python
 import sys
+import numpy as np
 
-# Create some variables for demonstration
-data = [1, 2, 3, 4, 5]
-result = sum(data)
-name = "Earth"
+# Create some astronomical variables for demonstration
+redshift = 0.5
+luminosity_distance = 2590.3  # Mpc for z=0.5, standard cosmology
+apparent_mag = 18.5
+filters = ['u', 'g', 'r', 'i', 'z']
 
 # Show variables (simulating %who in IPython)
 current_vars = [var for var in dir() 
-                if not var.startswith('_') and var not in ['sys', 'timeit', 'math']]
-print("Variables in workspace (%who in IPython):", current_vars[:3])
+                if not var.startswith('_') and not var.startswith('__')]
+print("Variables in workspace (%who in IPython):")
+print(", ".join(current_vars[:8]))
 
 # Detailed info (simulating %whos in IPython)
 print("\nDetailed variable info (%whos in IPython):")
-for var in current_vars[:3]:
-    obj = eval(var)
-    print(f"  {var:10} {type(obj).__name__:10} {str(obj)[:30]}")
+print(f"{'Variable':<20} {'Type':<15} {'Value/Info'}")
+print("-"*55)
+print(f"{'redshift':<20} {'float':<15} {redshift}")
+print(f"{'luminosity_distance':<20} {'float':<15} {luminosity_distance:.1f} Mpc")
+print(f"{'filters':<20} {'list':<15} {len(filters)} SDSS filters")
 ```
 
-:::{admonition} 🌟 The More You Know: The Reproducibility Crisis
-:class: tip, dropdown
+:::{important} 🎯 Why This Matters: Your First Day of Research
+:class: dropdown
 
-In 2016, a survey in *Nature* found that more than 70% of researchers failed to reproduce another scientist's experiments, and more than 50% failed to reproduce their own experiments ([Baker, 2016](https://doi.org/10.1038/533452a)). While this survey focused on experimental sciences, computational reproducibility faces unique challenges.
+Next week when your advisor hands you a FITS file and says "can you check if this galaxy is interesting?", you'll open IPython and in 5 minutes:
+- Load the data with `astropy.io.fits`
+- Check the header with tab completion
+- Plot a quick spectrum with `%matplotlib`
+- Test if it's a quasar with `z = wavelength_obs/wavelength_rest - 1`
 
-A study by Stodden et al. (2018) attempted to reproduce 204 computational results from *Science* magazine and found that only 26% could be reproduced without author assistance ([Stodden et al., 2018](https://doi.org/10.1073/pnas.1708290115)). The main barriers? Missing dependencies, absent random seeds, and undocumented computational environments—exactly what you're learning to manage with IPython's session history and environment controls.
+Without IPython, this becomes a 30-minute script-writing exercise. With IPython, you'll have an answer before your advisor finishes their coffee.
+:::
 
-Tools like IPython's `%history` and `%save` commands create an audit trail that helps ensure your future self (and others) can reproduce your work. It's not just good practice—it's becoming a requirement at many journals!
+:::{tip} 🌟 The More You Know: The Reproducibility Crisis in Science
+:class: dropdown
+
+A 2018 study attempted to obtain data and code from 204 computational papers in *Science* magazine, finding that materials were available for only 26% of articles, with many of those still having reproducibility issues ([Stodden et al., 2018](https://doi.org/10.1073/pnas.1708290115)). Common reproducibility barriers included:
+
+- Missing dependencies and software versions
+- Hardcoded file paths to data
+- Undocumented parameter choices
+- Missing random seeds for simulations
+
+The Sloan Digital Sky Survey (SDSS) has addressed reproducibility through versioned data releases (DR1 through DR18), standardized pipelines, and detailed documentation of software versions. Their approach ensures that a spectrum analyzed with specific data release tools will give consistent results years later.
+
+Tools like IPython's `%history` and `%save` commands create an audit trail that helps ensure your future self (and others) can reproduce your analysis.
+
+**Additional Resources:**
+- [Nature's reproducibility survey (2016)](https://doi.org/10.1038/533452a) - More than 70% of researchers have failed to reproduce another scientist's experiments
+- [SDSS Data Release Documentation](https://www.sdss.org/dr18/)
 :::
 
 ## 1.2 Understanding Python's Hidden Machinery
@@ -251,7 +327,7 @@ Tools like IPython's `%history` and `%save` commands create an audit trail that 
 A Python file containing code that can be imported and used in other programs
 :::
 
-When you type a simple line like `import math`, a complex process unfolds behind the scenes. Understanding this machinery is the difference between guessing why code fails and knowing exactly how to fix it.
+When you type `import astropy`, a complex process unfolds behind the scenes. Understanding this machinery is the difference between guessing why `ImportError: No module named 'astropy.cosmology'` fails and knowing exactly how to fix it.
 
 ### The Import System Exposed
 
@@ -260,7 +336,7 @@ When you type a simple line like `import math`, a complex process unfolds behind
 Python's mechanism for loading code from external files
 :::
 
-Let's peek behind the curtain to understand Python's **import system**:
+Let's peek behind the curtain to understand Python's **import system**, particularly for astronomical libraries:
 
 ```{code-cell} ipython3
 import sys
@@ -279,6 +355,38 @@ for i, path in enumerate(sys.path[:5], 1):
     display_path = str(path).replace(str(Path.home()), "~")
     print(f"  {i}. {display_path}")
 print("  ... and more")
+
+# Check for astronomy packages
+print("\nChecking for key astronomy packages:")
+for pkg in ['numpy', 'astropy', 'matplotlib']:
+    try:
+        mod = __import__(pkg)
+        version = getattr(mod, '__version__', 'unknown')
+        print(f"  ✓ {pkg:12} version {version}")
+    except ImportError:
+        print(f"  ✗ {pkg:12} NOT INSTALLED")
+
+# Virial Theorem Application: Galaxy Cluster Temperature
+print("\n--- Computational Example: Virial Theorem ---")
+# For a self-gravitating system in equilibrium: 2K + U = 0
+# This gives us the virial temperature of a galaxy cluster
+
+# Galaxy cluster parameters (CGS units)
+M_cluster = 1e15 * 1.989e33  # 10^15 solar masses in grams
+R_cluster = 1e6 * 3.086e18   # 1 Mpc in cm
+m_proton = 1.673e-24         # Proton mass in g
+k_B = 1.381e-16              # Boltzmann constant in erg/K
+G = 6.674e-8                 # Gravitational constant
+
+# Virial temperature: kT ~ GMm_p/(3R)
+T_virial = (G * M_cluster * m_proton) / (3 * k_B * R_cluster)
+T_virial_keV = k_B * T_virial / 1.602e-9  # Convert to keV
+
+print(f"Galaxy cluster mass: {M_cluster/1.989e33:.1e} M☉")
+print(f"Cluster radius: {R_cluster/3.086e18:.1f} Mpc")
+print(f"Virial temperature: {T_virial:.2e} K")
+print(f"Temperature in keV: {T_virial_keV:.1f} keV")
+print("(Typical observed: 2-10 keV - we're in the right ballpark!)")
 ```
 
 :::{margin}
@@ -286,125 +394,249 @@ print("  ... and more")
 Python's list of directories to search when importing modules
 :::
 
-This search path (**sys.path**) determines everything. When you `import something`, Python checks each directory in order and uses the first match it finds.
+This search path (**sys.path**) determines everything. When you `import astropy`, Python checks each directory in order and uses the first match it finds.
+
+:::{margin}
+**cache**
+A temporary storage area that keeps frequently accessed data for quick retrieval, avoiding repeated expensive operations
+:::
+
+:::{important} 💡 Computational Thinking: The Import Resolution Algorithm
+:class: dropdown
+
+When Python executes `import astropy.cosmology`, it follows this algorithm:
+
+1. **Check cache**: Is `astropy` already in `sys.modules`?
+2. **Search paths**: For each directory in `sys.path`:
+   - Look for `astropy/` directory with `__init__.py`
+   - Look for `astropy.py` file
+   - Look for compiled extension `astropy.so/.pyd`
+3. **Load module**: Execute the module code once
+4. **Cache result**: Store in `sys.modules` to avoid reloading
+5. **Access submodule**: Repeat for `cosmology` within `astropy`
+
+Understanding this algorithm helps you debug why `import astropy` works but `from astropy import cosmology` might fail (missing subpackage installation).
+:::
+
+```{mermaid}
+flowchart TD
+    A[import astropy.cosmology] --> B{Is 'astropy' in<br/>sys.modules cache?}
+    B -->|Yes| H[Use cached module]
+    B -->|No| C[Search sys.path directories]
+    C --> D{Found<br/>astropy/?}
+    D -->|No| E{Found<br/>astropy.py?}
+    E -->|No| F{Found<br/>astropy.so?}
+    F -->|No| G[ImportError!]
+    D -->|Yes| I[Load & execute module]
+    E -->|Yes| I
+    F -->|Yes| I
+    I --> J[Store in sys.modules]
+    J --> K[Look for 'cosmology' submodule]
+    H --> K
+    
+    style G fill:#ff6b6b
+    style I fill:#51cf66
+    style J fill:#339af0
+```
 
 ### Debugging Import Problems
 
-Here's a diagnostic function you'll use throughout your career, broken into manageable stages:
+Here's a diagnostic function specifically for astronomical libraries:
 
-**Stage 1: Check Environment**
+:::{tip} **Stage 1: Check Environment**
+:class: dropdown
 
 ```{code-cell} ipython3
-def check_python_environment():
-    """Verify we're in the correct Python environment."""
+def check_astro_environment():
+    """Verify we're in the correct astronomy Python environment."""
     import sys
     
     env_path = sys.executable
-    if 'astr596' in env_path:
-        return True, f"✓ Correct environment: {env_path}"
-    return False, f"✗ Wrong environment: {env_path}"
+    env_name = "Unknown"
+    
+    # Extract environment name from path
+    if 'envs' in env_path:
+        parts = env_path.split('/')
+        if 'envs' in parts:
+            idx = parts.index('envs')
+            env_name = parts[idx + 1] if idx + 1 < len(parts) else "base"
+    
+    # Check for astronomy-specific environment
+    if 'astr' in env_name.lower() or 'astro' in env_name.lower():
+        return True, f"✓ Astronomy environment: {env_name}"
+    elif 'base' in env_name:
+        return False, f"⚠️ In base environment (not recommended)"
+    else:
+        return None, f"🔍 Current environment: {env_name}"
 
-status, message = check_python_environment()
+status, message = check_astro_environment()
 print(message)
 ```
 
-**Stage 2: Try Import**
-
-```{code-cell} ipython3
-def try_import(module_name):
-    """Attempt to import a module with informative error."""
-    try:
-        module = __import__(module_name)
-        if hasattr(module, '__file__'):
-            location = module.__file__
-        else:
-            location = "built-in module"
-        return True, f"✓ Found: {location}"
-    except ImportError as e:
-        return False, f"✗ Failed: {str(e)}"
-
-# Test with standard library
-success, msg = try_import('math')
-print(msg)
-```
-
-**Stage 3: Suggest Fix**
-
-```{code-cell} ipython3
-def suggest_import_fix(module_name, error):
-    """Suggest solutions for import failures."""
-    if "No module named" in str(error):
-        return f"Install with: conda install {module_name}"
-    elif "cannot import name" in str(error):
-        return "Check version compatibility"
-    return "Verify environment activation"
-
-# Example usage
-fix = suggest_import_fix('numpy', "No module named 'numpy'")
-print(fix)
-```
-
-:::{admonition} 🤔 Check Your Understanding
-:class: hint
-
-You get `ModuleNotFoundError: No module named 'astropy'`. What are three possible causes?
 :::
+
+:::{tip} **Stage 2: Test Astronomy Imports**
+:class: dropdown
+
+```{code-cell} ipython3
+def test_astro_imports():
+    """Test critical astronomy package imports with versions."""
+    critical_packages = {
+        'numpy': 'Numerical computing',
+        'astropy': 'Core astronomy library',
+        'scipy': 'Scientific algorithms',
+        'matplotlib': 'Plotting',
+        'pandas': 'Data manipulation'
+    }
+    
+    print("Astronomy Package Status:")
+    print("-" * 50)
+    
+    for pkg, description in critical_packages.items():
+        try:
+            mod = __import__(pkg)
+            version = getattr(mod, '__version__', '???')
+            location = getattr(mod, '__file__', 'built-in')
+            print(f"✓ {pkg:12} v{version:8} - {description}")
+        except ImportError as e:
+            print(f"✗ {pkg:12} MISSING    - {description}")
+            print(f"  Fix: conda install -c conda-forge {pkg}")
+    
+    return True
+
+test_astro_imports()
+```
+
+:::
+
+:::{tip} **Stage 3: Verify Subpackages**
+:class: dropdown
+
+```{code-cell} python
+def check_astropy_subpackages():
+    """Check if key astropy subpackages are accessible."""
+    subpackages = [
+        ('astropy.io.fits', 'FITS file I/O'),
+        ('astropy.coordinates', 'Coordinate transformations'),
+        ('astropy.cosmology', 'Cosmological calculations'),
+        ('astropy.units', 'Unit conversions'),
+        ('astropy.time', 'Time systems')
+    ]
+    
+    print("\nAstropy Subpackage Check:")
+    print("-" * 50)
+    
+    for subpkg, description in subpackages:
+        try:
+            __import__(subpkg)
+            print(f"✓ {subpkg:25} - {description}")
+        except ImportError:
+            print(f"✗ {subpkg:25} - {description}")
+    
+    return True
+
+# Only run if astropy is available
+try:
+    import astropy
+    check_astropy_subpackages()
+except ImportError:
+    print("Astropy not installed - skipping subpackage check")
+```
+
+:::
+
+::::{hint} 🤔 Check Your Understanding
+:class: dropdown
+
+You get `ModuleNotFoundError: No module named 'astropy.io.fits'`. What are three possible causes and their solutions?
 
 :::{admonition} Solution
 :class: tip, dropdown
 
-1. **Wrong environment**: You're not in the conda environment where astropy is installed
-2. **Not installed**: Astropy isn't installed in the current environment
-3. **Path issues**: Python's sys.path doesn't include the directory containing astropy
+Three possible causes and solutions:
 
-To diagnose:
+1. **Incomplete astropy installation**: Some distributions split astropy
+   - Solution: `conda install -c conda-forge astropy` (get complete package)
+
+2. **Old astropy version**: Pre-1.0 versions had different structure
+   - Check: `python -c "import astropy; print(astropy.__version__)"`
+   - Solution: `conda update astropy`
+
+3. **Mixed pip/conda installation**: Conflicting installations
+   - Check: `conda list astropy` vs `pip list | grep astropy`
+   - Solution: Stick to conda for scientific packages
+
+The most robust fix:
 ```bash
-which python          # Are you using the right Python?
-conda list astropy    # Is it installed?
-python -c "import sys; print(sys.path)"  # Where is Python looking?
+conda create -n astro_clean python=3.11
+conda activate astro_clean
+conda install -c conda-forge astropy numpy scipy matplotlib
 ```
 
-The most common cause is forgetting to activate your conda environment!
 :::
+::::
 
 ### Multiple Pythons: A Common Disaster
 
-Most systems have multiple Python installations, leading to confusion:
+Most systems have multiple Python installations, especially on shared computing clusters:
 
 ```{code-cell} ipython3
 from pathlib import Path
+import sys
 
-# Common Python locations on Unix-like systems
-possible_pythons = [
-    '/usr/bin/python3',          # System Python
-    '/usr/local/bin/python3',    # Homebrew Python (Mac)
-    '~/miniforge3/bin/python',   # Conda Python
-    '~/.pyenv/shims/python',     # Pyenv Python
-]
+# Common Python locations on astronomy systems
+astronomy_pythons = {
+    'System Python': '/usr/bin/python3',
+    'Conda (base)': '~/miniforge3/bin/python',
+    'Conda (astro env)': '~/miniforge3/envs/astro/bin/python',
+    'AstroConda': '~/astroconda3/bin/python',
+    'Homebrew (Mac)': '/usr/local/bin/python3',
+    'Module system': '/software/astro/python/bin/python'
+}
 
-print("Potential Python locations on Unix-like systems:")
-for path in possible_pythons:
+print("Common Python locations on astronomy systems:")
+print("-" * 50)
+for name, path in astronomy_pythons.items():
     expanded_path = Path(path).expanduser()
     exists = "✓" if expanded_path.exists() else "✗"
-    print(f"  {exists} {path}")
+    current = "← CURRENT" if str(expanded_path) in sys.executable else ""
+    print(f"  {exists} {name:20} {path:30} {current}")
 
-print("\nThis is why 'conda activate' is crucial!")
+print("\n⚠️  This is why 'conda activate' is crucial!")
+print("📚 Each Python has its own packages - they don't share!")
 ```
 
-:::{admonition} 🚨 Common Bug Alert: The Wrong Python
-:class: warning
+:::{warning} 🚨 Common Bug Alert: The Cluster Python Confusion
+:class: dropdown
 
-**Symptom**: Code works in terminal but fails in IDE, or vice versa
+**Symptom**: Code works on laptop but fails on computing cluster
 
-**Cause**: Different tools using different Python installations
+**Cause**: Different Python modules loaded by default
 
-**Fix**: Always verify with:
+**Example**: On many clusters:
 ```bash
-which python       # Unix/Mac
-where python       # Windows
+$ module load python  # Loads system Python
+$ python script.py    # Uses wrong Python!
 ```
 
-**Prevention**: Always activate your conda environment first!
+**Fix**: Always use explicit paths or conda:
+```bash
+$ conda activate astr596
+$ which python  # Verify it's YOUR Python
+$ python script.py
+```
+
+**Best Practice**: Add to your job scripts:
+```bash
+#!/bin/bash
+#SBATCH --job-name=astro_analysis
+
+# Always activate your environment first!
+source ~/miniforge3/etc/profile.d/conda.sh
+conda activate astr596
+python your_script.py
+```
+
 :::
 
 ## 1.3 Jupyter Notebooks: Beautiful Disasters Waiting to Happen
@@ -414,113 +646,169 @@ where python       # Windows
 Web-based platform that executes code in cells while maintaining state
 :::
 
-**Jupyter notebooks** seem perfect for scientific computing - you can mix code, results, and explanations in one document. However, they harbor dangerous flaws that can corrupt your scientific results. You may use them for Short Project 1 to understand their appeal, but then you must abandon them for more robust approaches.
+**Jupyter notebooks** seem perfect for scientific computing and data analysis - you can mix code, plots, and explanations in one document. You'll see them in tutorials and even published papers. However, they harbor dangerous flaws that can corrupt your scientific results. You are allowed to use them for `Short Project 1` to understand their appeal - and also because its likely the only way you've been taught Python, but then you must abandon them for more robust approaches.
 
 ### The Seductive Power of Notebooks
 
 To start Jupyter (after activating your environment):
 
-```{code-cell} ipython3
-# In terminal:
-# conda activate astr596
-# jupyter lab
+```bash
+# Terminal commands:
+$ conda activate astr596
+$ jupyter lab
 
-print("Jupyter Lab would open at: http://localhost:8888")
-print("You can create notebooks, write code in cells, and see results inline")
+# Opens browser at http://localhost:8888
+# You can create notebooks, write code, see plots inline
 ```
 
 ### The Hidden State Monster
 
-The most insidious problem: notebooks maintain the hidden state between cell executions:
+The most insidious problem: notebooks maintain hidden state between cell executions. Here's an astronomical example:
 
 ```{code-cell} ipython3
 # Simulating notebook cells with execution order problems
 
-# Cell 1 (first execution)
-gravity = 980  # cm/s², Earth's gravity
-print(f"Cell 1: Set gravity = {gravity}")
+# Cell 1: Set cosmological parameters
+H0 = 70.0  # Hubble constant [km/s/Mpc]
+omega_m = 0.3  # Matter density
+print(f"Cell 1: Set H0 = {H0}, Ωm = {omega_m}")
 
-# Cell 2 (depends on gravity)
-import math
-def calculate_fall_time(height):
-    """Calculate time using gravity from when function was created."""
-    return math.sqrt(2 * height / gravity)
+# Cell 2: Define distance calculation
+def luminosity_distance(z):
+    """Calculate luminosity distance (simplified flat universe)."""
+    # This captures H0 and omega_m from when function was defined!
+    c = 3e5  # km/s
+    return (c * z / H0) * (1 + z/2 * (1 - omega_m))  # Approximation
 
-print(f"Cell 2: Defined function with gravity = {gravity}")
+print(f"Cell 2: Defined function with H0 = {H0}")
 
-# Cell 3 (changes gravity)
-gravity = 371  # cm/s², Mars gravity
-print(f"Cell 3: Changed gravity = {gravity}")
+# Cell 3: User updates cosmology for Planck results
+H0 = 67.4  # Updated Hubble constant
+omega_m = 0.315  # Updated matter density
+print(f"Cell 3: Updated to Planck cosmology H0 = {H0}")
 
-# Cell 4 (which gravity does this use?)
-time = calculate_fall_time(100)
-print(f"Cell 4: Fall time = {time:.2f} seconds")
-print(f"  But function still uses gravity = 980!")
-print(f"  This hidden state causes wrong results!")
+# Cell 4: Calculate distance - which H0 does this use?
+z_galaxy = 1.0
+d_L = luminosity_distance(z_galaxy)
+print(f"Cell 4: Distance to z=1 galaxy = {d_L:.0f} Mpc")
+print(f"  But function still uses OLD H0 = 70!")
+print(f"  This gives WRONG distance by {(70/67.4-1)*100:.1f}%!")
 ```
 
-:::{admonition} 🔧 Debug This!
-:class: challenge
+::::{important} 🔧 Debug This!
+:class: dropdown
 
-A student's notebook has these cells:
+An astronomy student's notebook analyzes variable star data:
 
-```python
-Cell 1: data = [1, 2, 3]
-Cell 2: result = sum(data) / len(data)
-Cell 3: data.append(4)
-Cell 4: print(f"Average: {result}")
+```ipython3
+Cell 1: periods = [0.5, 1.2, 2.3]  # days
+        magnitudes = [12.5, 13.1, 11.8]
+
+Cell 2: mean_period = np.mean(periods)
+        mean_mag = np.mean(magnitudes)
+
+Cell 3: periods.append(5.4)  # Add Cepheid
+        magnitudes.append(10.2)
+
+Cell 4: print(f"Average period: {mean_period:.2f} days")
+        print(f"Average magnitude: {mean_mag:.2f}")
+
+Cell 5: # Classify based on period
+        if mean_period < 1:
+            print("RR Lyrae stars")
+        elif mean_period < 10:
+            print("Cepheids")
 ```
 
-They run cells in order: 1, 2, 3, 4, 2, 4. What prints the second time?
-:::
+They run cells: 1, 2, 3, 4, 2, 4, 5. What's the classification? Is it correct?
 
 :::{admonition} Solution
 :class: solution, dropdown
 
-The second execution of Cell 4 prints: `Average: 2.5`
+**Execution trace:**
 
-Execution trace:
+1. Cell 1: `periods = [0.5, 1.2, 2.3]`, `magnitudes = [12.5, 13.1, 11.8]`
+2. Cell 2: `mean_period = 1.33`, `mean_mag = 12.47`
+3. Cell 3: Lists become `[0.5, 1.2, 2.3, 5.4]` and `[12.5, 13.1, 11.8, 10.2]`
+4. Cell 4: Prints "Average period: 1.33 days" (OLD value!)
+5. Cell 2 again: `mean_period = 2.35`, `mean_mag = 11.90` (NEW values)
+6. Cell 4 again: Prints "Average period: 2.35 days"
+7. Cell 5: Classifies as "Cepheids" (1 < 2.35 < 10)
 
-1. Cell 1: `data = [1, 2, 3]`
-2. Cell 2: `result = 2.0` (sum=6, len=3)
-3. Cell 3: `data = [1, 2, 3, 4]`
-4. Cell 4: Prints `"Average: 2.0"`
-5. Cell 2 again: `result = 2.5` (sum=10, len=4)
-6. Cell 4 again: Prints `"Average: 2.5"`
+**Problems:**
 
-This demonstrates how re-running cells creates different states than sequential execution!
+- Classification uses updated mean (2.35) but that includes the Cepheid itself!
+- This is circular reasoning - using a Cepheid to classify as Cepheids
+- The correct mean without the Cepheid is 1.33 days (RR Lyrae range)
+
+**This demonstrates how notebook state corruption leads to incorrect scientific conclusions!**
 :::
+::::
 
-### Memory Accumulation Disasters
+```{mermaid}
+graph LR
+    subgraph "What You Think Happens"
+        A1[Cell 1: Set variables] --> A2[Cell 2: Calculate mean]
+        A2 --> A3[Cell 3: Add data]
+        A3 --> A4[Cell 4: Print results]
+    end
+    
+    subgraph "What Actually Happened"
+        B1[Cell 1: periods=[0.5,1.2,2.3]] --> B3[Cell 3: periods=[0.5,1.2,2.3,5.4]]
+        B3 --> B2a[Cell 2: mean=1.33]
+        B2a --> B4a[Cell 4: Prints 1.33]
+        B4a --> B2b[Cell 2 again: mean=2.35]
+        B2b --> B4b[Cell 4: Prints 2.35]
+    end
+    
+    subgraph "Hidden State"
+        HS[Variables persist and<br/>accumulate between runs!]
+    end
+    
+    style HS fill:#ff6b6b
+    style B2b fill:#ffd43b
+```
+
+### Memory Accumulation in Data Analysis
 
 ```{code-cell} ipython3
 import sys
+import numpy as np
 
-# Simulating repeated cell execution
-big_data = []
+# Simulating repeated cell execution with telescope data
+spectra_list = []
 
 print("Initial memory state")
 
-# First run of the cell
+# First run: Load night 1 data
 for i in range(100):
-    big_data.append([0] * 1000)
+    # Simulate 100 spectra, 4000 wavelength bins each
+    spectrum = np.random.randn(4000)
+    spectra_list.append(spectrum)
     
-# Calculate approximate memory usage
-size_mb = sys.getsizeof(big_data) / (1024 * 1024)
-print(f"After 1st run: ~{size_mb:.1f} MB")
+# Calculate memory usage
+n_spectra = len(spectra_list)
+n_pixels = n_spectra * 4000
+memory_mb = (n_pixels * 8) / (1024 * 1024)  # 8 bytes per float64
+print(f"After night 1: {n_spectra} spectra, ~{memory_mb:.1f} MB")
 
-# Second run (accumulates!)
+# Second run (cell executed again) - adds MORE data!
 for i in range(100):
-    big_data.append([0] * 1000)
+    spectrum = np.random.randn(4000)
+    spectra_list.append(spectrum)
     
-size_mb = sys.getsizeof(big_data) / (1024 * 1024)
-print(f"After 2nd run: ~{size_mb:.1f} MB")
+n_spectra = len(spectra_list)
+n_pixels = n_spectra * 4000
+memory_mb = (n_pixels * 8) / (1024 * 1024)
+print(f"After re-run: {n_spectra} spectra, ~{memory_mb:.1f} MB")
 
-print("\nEach run ADDS to memory - notebooks don't reset!")
+print("\n⚠️  Each run ADDS data - notebook doesn't reset!")
+print("📈 With real spectroscopic surveys (millions of spectra),")
+print("   this crashes your kernel and loses all work!")
 ```
 
-:::{admonition} 🌟 The More You Know: The $6 Trillion Excel Error
-:class: tip, dropdown
+:::{tip} 🌟 The More You Know: The $125 Billion Excel Error
+:class: dropdown
 
 In 2013, graduate student Thomas Herndon couldn't reproduce the results from a highly influential economics paper by Carmen Reinhart and Kenneth Rogoff. This paper, ["Growth in a Time of Debt,"](https://www.aeaweb.org/articles?id=10.1257/aer.100.2.573) had been cited by politicians worldwide to justify austerity policies affecting millions of people.
 
@@ -529,16 +817,28 @@ When Herndon finally obtained the original Excel spreadsheet, he discovered a co
 Just like hidden state in Jupyter notebooks, the error was invisible in the final spreadsheet. The lesson? Computational transparency and reproducibility aren't just academic exercises — they have real-world consequences. Always make your computational process visible and reproducible!
 :::
 
+:::{tip} 🌟 The More You Know: The BICEP2 "Discovery" Retraction
+:class: tip, dropdown
+
+In March 2014, the BICEP2 collaboration announced the detection of primordial gravitational waves via B-mode polarization in the cosmic microwave background - evidence for cosmic inflation and a likely Nobel Prize discovery.
+
+By September 2014, they retracted the claim. The issue? Dust contamination in their analysis pipeline. While not directly a notebook problem, it illustrates how hidden state and assumptions in analysis workflows can corrupt results. The team had underestimated galactic dust contribution, and their analysis pipeline didn't properly propagate this uncertainty through all steps.
+
+The lesson extends to notebooks: when your analysis state isn't clear and reproducible, you can mistake foreground contamination for cosmological signals. The BICEP2 team now publishes their entire analysis pipeline as reproducible scripts, not notebooks.
+
+This $10+ million experiment's false discovery shows why computational reproducibility matters. Always use scripts for final analysis!
+:::
+
 ### The Notebook-to-Script Transition
 
 :::{margin}
 **script**
-Plain text file (`.py` extension) with Python code that executes top-to-bottom
+Plain text file with Python code that executes top-to-bottom, the same way every time
 :::
 
-After Project 1, we'll abandon notebooks for **scripts**. Here's why scripts are superior:
+After Project 1, we'll abandon notebooks for **scripts**. Here's why scripts are superior for astronomical research:
 
-:::{list-table} Script vs Notebook Comparison
+:::{list-table} Script vs Notebook: Astronomical Data Analysis
 :header-rows: 1
 :widths: 30 35 35
 
@@ -551,146 +851,299 @@ After Project 1, we'll abandon notebooks for **scripts**. Here's why scripts are
 * - Hidden State
   - Accumulates invisibly
   - Fresh start each run
+* - Large Data Processing
+  - Memory leaks common
+  - Controlled memory usage
+* - Cluster Jobs
+  - Can't run with SLURM
+  - Easy batch submission
 * - Version Control
   - JSON mess with outputs
   - Clean text diffs
-* - Testing
+* - Pipeline Integration
   - Nearly impossible
   - Straightforward
-* - Debugging
-  - Cell-by-cell only
-  - Professional tools
-* - Reproducibility
+* - Reproducible Results
   - Often impossible
   - Guaranteed
 :::
 
-:::{admonition} 💡 Computational Thinking: Reproducible by Design
-:class: important
+```{mermaid}
+graph TD
+    subgraph "Notebook Execution"
+        N1[Any cell] --> N2[Any cell]
+        N2 --> N3[Any cell]
+        N3 --> N1
+        N1 -.->|Hidden State| NS[(Persistent Memory)]
+        N2 -.->|Hidden State| NS
+        N3 -.->|Hidden State| NS
+    end
+    
+    subgraph "Script Execution"
+        S1[Line 1] --> S2[Line 2]
+        S2 --> S3[Line 3]
+        S3 --> S4[Line 4]
+        S4 --> S5[Fresh start each run]
+    end
+    
+    style NS fill:#ff6b6b
+    style S5 fill:#51cf66
+```
+:::{important} 💡 Computational Thinking: Reproducible Analysis Pipelines
+:class: dropdown
 
-**Reproducibility** isn't just about sharing code — it's about ensuring that code produces identical results regardless of who runs it or when. Scripts enforce this by eliminating hidden state and ambiguous execution order.
+Modern astronomical surveys process terabytes of data through complex pipelines. Consider the Vera Rubin Observatory (LSST):
 
-This principle extends beyond Python: declarative configurations, containerization, and infrastructure-as-code all follow the same philosophy of explicit, reproducible computation.
+**Data Flow**: Raw images → Calibration → Source detection → Photometry → Catalogs
 
-Remember the mantra: "It should work the same way every time, for everyone."
+Each step must be:
+
+- **Deterministic**: Same input = same output
+- **Versioned**: Track software versions
+- **Logged**: Record all parameters
+- **Testable**: Unit tests for each component
+
+Notebooks fail at every requirement. Scripts excel at all of them. This is why major surveys use workflow managers (Snakemake, Pegasus) orchestrating Python scripts, never notebooks.
+
+Remember: *"If it's not reproducible, it's not science."*
 :::
+
+---
 
 ## 1.4 Scripts: Write Once, Run Anywhere (Correctly)
 
-Python scripts are simple text files containing Python code, executed from top to bottom, the same way every time. No hidden state, no ambiguity, just predictable execution.
+Python scripts are simple text files containing Python code, executed from top to bottom, the same way every time. No hidden state, no ambiguity, just predictable execution - essential for scientific computing.
 
-### From IPython to Script
+### From IPython to Scripting
 
-Start by experimenting in IPython:
+Start by experimenting in IPython with a real astronomical calculation:
 
 ```{code-cell} ipython3
-# Quick calculation in IPython
-earth_mass = 5.97e27  # g
-moon_mass = 7.35e25   # g
-ratio = earth_mass / moon_mass
-print(f"Earth is {ratio:.1f}× more massive than the Moon")
+# Quick calculation in IPython: Schwarzschild radius
+import numpy as np
+
+# Constants (CGS units)
+G = 6.67430e-8   # cm^3 g^-1 s^-2
+c = 2.99792458e10  # cm/s
+M_sun = 1.98847e33  # g
+
+# Calculate for stellar-mass black hole
+M_bh = 10 * M_sun  # 10 solar mass black hole
+r_s = 2 * G * M_bh / c**2
+
+print(f"Schwarzschild radius for 10 M☉ black hole: {r_s/1e5:.1f} km")
 ```
 
-Now create a proper script. Save this as `mass_ratio.py`:
+Now create a proper script. Save this as `schwarzschild.py`:
 
-```{code-cell} ipython3
+:::{admonition} Complete schwarzschild.py Script
+:class: dropdown
+
+```{code-cell} python
 #!/usr/bin/env python
-"""Calculate mass ratios between celestial bodies."""
+"""
+Calculate Schwarzschild radii for various astrophysical objects.
 
-# Constants in CGS units [g]
-EARTH_MASS = 5.97e27
-MOON_MASS = 7.35e25
-SUN_MASS = 1.99e33
+This module provides functions to calculate the Schwarzschild radius
+(event horizon) for black holes of different masses.
+"""
 
-def calculate_ratio(mass1, mass2):
-    """Calculate mass ratio between two bodies.
-    
-    Args:
-        mass1: Mass of first body [g]
-        mass2: Mass of second body [g]
-        
-    Returns:
-        float: Ratio of mass1 to mass2
+import numpy as np
+import argparse
+
+# Physical constants (CGS units)
+G = 6.67430e-8      # Gravitational constant [cm^3 g^-1 s^-2]
+c = 2.99792458e10   # Speed of light [cm/s]
+M_sun = 1.98847e33  # Solar mass [g]
+
+def schwarzschild_radius(mass_g):
     """
-    if mass2 == 0:
-        raise ValueError("Cannot divide by zero mass")
-    return mass1 / mass2
+    Calculate Schwarzschild radius for a given mass.
+    
+    The Schwarzschild radius is the radius of the event horizon
+    for a non-rotating black hole.
+    
+    Parameters
+    ----------
+    mass_g : float
+        Mass in grams
+        
+    Returns
+    -------
+    float
+        Schwarzschild radius in centimeters
+        
+    Examples
+    --------
+    >>> r_s = schwarzschild_radius(10 * M_sun)
+    >>> print(f"{r_s/1e5:.1f} km")
+    29.5 km
+    """
+    if mass_g <= 0:
+        raise ValueError("Mass must be positive")
+    return 2 * G * mass_g / c**2
+
+def classify_black_hole(mass_solar):
+    """
+    Classify black hole by mass.
+    
+    Parameters
+    ----------
+    mass_solar : float
+        Mass in solar masses
+        
+    Returns
+    -------
+    str
+        Classification (stellar, intermediate, supermassive)
+    """
+    if mass_solar < 100:
+        return "Stellar-mass black hole"
+    elif mass_solar < 1e5:
+        return "Intermediate-mass black hole"
+    else:
+        return "Supermassive black hole"
 
 def main():
-    """Main execution function."""
-    # Earth to Moon ratio
-    earth_moon = calculate_ratio(EARTH_MASS, MOON_MASS)
-    print(f"Earth is {earth_moon:.1f}× more massive than the Moon")
+    """Main execution function with example calculations."""
     
-    # Sun to Earth ratio
-    sun_earth = calculate_ratio(SUN_MASS, EARTH_MASS)
-    print(f"Sun is {sun_earth:.0f}× more massive than Earth")
+    # Example objects
+    objects = {
+        "Cygnus X-1": 21.2,           # Solar masses
+        "GW150914 remnant": 62,       # First LIGO detection
+        "Sagittarius A*": 4.154e6,    # Milky Way center
+        "M87*": 6.5e9,                # First black hole image
+    }
+    
+    print("Schwarzschild Radii of Famous Black Holes")
+    print("=" * 50)
+    
+    for name, mass_solar in objects.items():
+        mass_g = mass_solar * M_sun
+        r_s = schwarzschild_radius(mass_g)
+        classification = classify_black_hole(mass_solar)
+        
+        # Convert to appropriate units
+        if r_s < 1e5:
+            r_s_display = f"{r_s:.1f} cm"
+        elif r_s < 1e8:
+            r_s_display = f"{r_s/1e5:.1f} km"
+        elif r_s < 1.5e13:  # 1 AU in cm
+            r_s_display = f"{r_s/1e11:.1f} million km"
+        else:
+            r_s_display = f"{r_s/1.496e13:.2f} AU"
+            
+        print(f"\n{name}:")
+        print(f"  Mass: {mass_solar:.2e} M☉")
+        print(f"  Type: {classification}")
+        print(f"  Event horizon: {r_s_display}")
 
 # This pattern makes the script both runnable and importable
 if __name__ == "__main__":
     main()
 ```
 
-### The `if __name__ == "__main__"` Pattern
+:::
+
+### The `if __name__ == "__main__"` Pattern for Python Scripts
 
 :::{margin}
 **__name__**
 Python variable that equals "__main__" when run directly, or the module name when imported
 :::
 
-This crucial pattern makes your code both runnable and importable. Don't worry if this seems confusing at first — it's a pattern you'll use in every script you write, and it will become second nature:
+This crucial pattern makes your astronomy code both runnable and importable:
 
 ```{code-cell} ipython3
-# Understanding the __name__ variable
-def useful_function(x):
-    """A function others might want to use."""
-    return x ** 2
-
-# Python automatically sets __name__ based on how the file is used
-print(f"Module's __name__ is: {__name__}")
-
-# This is the magic pattern - memorize it even if you don't fully understand it yet
-if __name__ == "__main__":
-    # This code ONLY runs when you execute the script directly
-    # It does NOT run when someone imports your script
-    print("Running as a script!")
-    result = useful_function(5)
-    print(f"5 squared is {result}")
+# Understanding __name__ in scientific context
+def planck_function(wavelength_nm, temperature_K):
+    """
+    Calculate Planck function for blackbody radiation.
     
-# Think of it like this:
-# - Running directly: Python sets __name__ to "__main__", so the code runs
-# - Importing: Python sets __name__ to the filename, so the code doesn't run
-```
+    Used for stellar spectra modeling.
+    """
+    import numpy as np
+    
+    # Constants (CGS units)
+    h = 6.62607015e-27  # Planck constant [erg⋅s]
+    c = 2.99792458e10   # Speed of light [cm/s]
+    k_B = 1.380649e-16  # Boltzmann constant [erg/K]
+    
+    # Convert wavelength to centimeters
+    wavelength = wavelength_nm * 1e-7
+    
+    # Planck function
+    exp_term = np.exp(h * c / (wavelength * k_B * temperature_K))
+    B = (2 * h * c**2 / wavelength**5) / (exp_term - 1)
+    
+    return B
 
-:::{admonition} 🤔 Check Your Understanding
-:class: hint
-
-Why would you want code that behaves differently when imported versus run directly?
-:::
-
-:::{admonition} Solution
-:class: tip, dropdown
-
-This pattern serves multiple purposes:
-
-1. **Testing**: Include test code that runs when developing but not when others use your functions
-2. **Reusability**: Others can import your functions without triggering test/demo code
-3. **Library Design**: Create modules that work both as tools and standalone programs
-4. **Development**: Test functions immediately while writing them
-
-Example:
-```python
-# orbital_mechanics.py
-def orbital_period(a, M):
-    # ... calculation ...
-    return period
+# Python sets __name__ based on how the file is used
+print(f"Current __name__ is: {__name__}")
 
 if __name__ == "__main__":
-    # Test with Earth's orbit
-    period = orbital_period(1.496e13, 1.989e33)
-    print(f"Earth's period: {period/86400:.1f} days")
+    # This runs ONLY when script is executed directly
+    # Perfect for testing your functions
+    print("\nTesting Planck function for the Sun:")
+    
+    # Sun's peak wavelength should be ~500 nm (green)
+    wavelengths = [400, 500, 600, 700]  # nm (violet to red)
+    T_sun = 5778  # K
+    
+    for wl in wavelengths:
+        B = planck_function(wl, T_sun)
+        print(f"  λ={wl}nm: B={B:.2e} erg/cm²/s/sr/cm")
+        
+    # When others import this file, this test code won't run
+    # They can just use: from your_module import planck_function
 ```
+
+::::{hint} 🤔 Check Your Understanding
+:class: dropdown
+
+Why is the `if __name__ == "__main__"` pattern crucial for scientific instrument control software?
+
+:::{tip} Solution
+:class: dropdown
+
+In scientific instrument control and data acquisition:
+
+1. **Safety**: Test functions without activating equipment
+   ```python
+   def move_to_position(x, y, z):
+       # Moves expensive/dangerous equipment!
+       pass
+   
+   if __name__ == "__main__":
+       # Safe testing with simulated coordinates
+       print("Testing movement (not really moving):")
+       # move_to_position(10.0, 20.0, 5.0)  # Commented for safety
+   ```
+
+2. **Module Testing**: Test detector readout without taking real data
+3. **Pipeline Components**: Each script works standalone or in pipeline
+4. **Calibration Scripts**: Can process test data or real observations
+
+Real example from laboratory operations:
+```python
+# focus_control.py
+def optimize_focus(detector, n_steps=10):
+    """Find optimal focus position."""
+    # ... complex focusing routine ...
+    return best_focus
+
+if __name__ == "__main__":
+    # Test with simulated detector, not real hardware
+    from simulator import FakeDetector
+    test_detector = FakeDetector()
+    focus = optimize_focus(test_detector, n_steps=5)
+    print(f"Test focus position: {focus}")
+```
+
 :::
+::::
+
+---
 
 ## 1.5 Creating Reproducible Environments
 
@@ -699,178 +1152,259 @@ if __name__ == "__main__":
 Package and environment manager for isolated Python installations
 :::
 
-:::{margin}
-**virtual environment**
-An isolated Python installation with its own packages, preventing conflicts between projects
-:::
-
-Your code's behavior depends on its **environment** — Python version, installed packages, even operating system. Creating reproducible environments ensures your code works identically everywhere.
+Your astronomical analysis depends on its **environment** — Python version, astropy version, even NumPy's linear algebra backend. Creating reproducible environments ensures your code produces identical results on any system, from your laptop to a supercomputer.
 
 ### The Conda Solution
 
-**Conda** creates isolated environments — separate Python installations with their own packages:
+**Conda** creates isolated environments — separate Python installations with their own packages. This is essential for research where different projects need different package versions:
 
-```{code-cell} ipython3
-print("""Essential conda commands:
+```bash
+# Essential conda commands for astronomy
 
-# Create new environment with specific Python version
-conda create -n myproject python=3.11
+# Create environment for photometry project
+$ conda create -n photometry python=3.11
+$ conda activate photometry
+$ conda install -c conda-forge numpy scipy astropy photutils
 
-# Activate environment (ALWAYS do this first!)
-conda activate myproject
+# Create separate environment for spectroscopy
+$ conda create -n spectroscopy python=3.10
+$ conda activate spectroscopy  
+$ conda install -c conda-forge numpy scipy astropy specutils
 
-# Install packages
-conda install numpy scipy matplotlib
+# List all your environments
+$ conda env list
 
-# List installed packages
-conda list
-
-# Deactivate when done
-conda deactivate
-
-# Remove environment completely
-conda env remove -n myproject
-""")
+# Switch between projects
+$ conda deactivate
+$ conda activate photometry
 ```
 
-### Environment Files: Reproducibility in Practice
+:::{attention} 🎯 Why This Matters: Cluster Time = Money
+:class: dropdown
 
-Create an `environment.yml` file that others can use to recreate your exact setup:
+Your university pays ~$0.10 per CPU-hour on the cluster. A typical research project uses 10,000+ hours. If your code crashes after 8 hours because of environment issues, you've wasted:
 
-```{code-cell} ipython3
-environment_yml = """name: astr596_project
+- $80 in compute time
+- 8 hours of waiting
+- Your queue priority (back to the end of the line!)
+
+Get your environment right ONCE, and every subsequent run just works. This chapter will literally save you hundreds of dollars and weeks of time.
+:::
+
+### Environment Files: Share Your Exact Setup
+
+Create an `environment.yml` file for your research project:
+
+:::{tip} Example environment.yml for exoplanet research
+:class: dropdown
+
+```{code-cell} python
+environment_yml = """name: exoplanet_analysis
 channels:
   - conda-forge
+  - astropy
 dependencies:
+  # Core scientific stack
   - python=3.11
-  - numpy=1.24
-  - scipy=1.11
-  - matplotlib=3.7
+  - numpy=1.24.*
+  - scipy=1.11.*
+  - matplotlib=3.7.*
+  - pandas=2.0.*
+  
+  # Astronomy specific
+  - astropy=5.3.*
+  - astroquery=0.4.*
+  - photutils=1.9.*
+  - astroplan=0.9
+  - ccdproc=2.4.*
+  
+  # Exoplanet packages
+  - batman-package=2.4.*
+  - emcee=3.1.*
+  - corner=2.2.*
+  
+  # Development tools
   - ipython
   - jupyter
+  - pytest
+  
+  # Additional packages via pip
   - pip
   - pip:
-    - astroquery==0.4.6
+    - exoplanet==0.5.3
+    - lightkurve==2.4.0
 """
 
-print("environment.yml content:")
+print("environment.yml for exoplanet research:")
 print(environment_yml)
 
-print("\nOthers recreate your environment with:")
-print("conda env create -f environment.yml")
-print("conda activate astr596_project")
+print("\nCollaborators recreate your exact environment:")
+print("$ conda env create -f environment.yml")
+print("$ conda activate exoplanet_analysis")
 ```
 
-:::{admonition} 🚨 Common Bug Alert: Channel Confusion
-:class: warning
+:::
 
-**Problem**: Package not found or wrong version installed
+:::{warning} 🚨 Common Bug Alert: The AstroConda Deprecation
+:class: dropdown
 
-**Cause**: Different conda channels have different package versions
+**Old tutorials may reference AstroConda** - it's deprecated!
 
-**Solution**: Always specify channels in environment.yml
-
-**Best Practice**: Use `conda-forge` channel for scientific packages
-
-```yaml
-channels:
-  - conda-forge  # Always list this first
-  - defaults     # Fallback if needed
+**Don't use:**
+```bash
+$ conda config --add channels http://ssb.stsci.edu/astroconda  # DEPRECATED
 ```
+
+**Instead use conda-forge and astropy channels:**
+```bash
+$ conda config --add channels conda-forge
+$ conda config --add channels astropy
+$ conda config --set channel_priority strict
+```
+
+**Why this matters:**
+
+- AstroConda stopped updating in 2023
+- conda-forge has more recent versions
+- Better compatibility with modern Python
+
+**For STScI tools specifically:**
+
+```bash
+$ conda install -c conda-forge stsynphot
+$ pip install webbpsf  # Some tools installed only via pip
+```
+
 :::
 
 ### Proper Path Management
 
-Stop hardcoding paths that break on other systems. If you've only used Jupyter notebooks, you might not realize that file paths like `C:\Users\YourName\data.txt` only work on YOUR computer:
+Stop hardcoding paths that break when moving between laptop and cluster:
 
-```{code-cell} ipython3
+```{code-cell} python
 from pathlib import Path
 import os
 
-# BAD: Only works on one specific computer
-bad_path = '/Users/yourname/research/data.txt'
+# BAD: Hardcoded path to telescope data
+bad_path = '/Users/jane/Desktop/observations/2024-03-15/raw/science_001.fits'
 print(f"BAD (hardcoded): {bad_path}")
-print("  Problem: This exact folder structure doesn't exist on other computers!")
+print("  Problem: Doesn't exist on cluster or collaborator's machine!")
 
-# GOOD: Works everywhere (relative to where your script is)
-script_dir = Path.cwd()  # cwd = "current working directory" (where you are now)
-data_file = script_dir / 'data' / 'observations.txt'  # The / operator joins paths!
-print(f"\nGOOD (relative): {data_file}")
-print("  This looks for 'data' folder relative to where your script runs")
+# GOOD: Relative to data directory
+data_root = Path.cwd() / 'data'
+night = '2024-03-15'
+fits_file = data_root / night / 'raw' / 'science_001.fits'
+print(f"\nGOOD (relative): {fits_file}")
 
-# BETTER: Handle missing files gracefully (defensive programming!)
-if data_file.exists():
-    print(f"\n✓ Found data at: {data_file}")
+# BETTER: Configuration-based approach
+# In your script or config file:
+DATA_DIR = Path(os.getenv('ASTRO_DATA', './data'))  
+PROCESSED_DIR = Path(os.getenv('ASTRO_PROCESSED', './processed'))
+
+def get_observation_path(date_obs, frame_num, data_type='raw'):
+    """
+    Construct path to observation file.
+    
+    Parameters
+    ----------
+    date_obs : str
+        Observation date (YYYY-MM-DD)
+    frame_num : int
+        Frame number
+    data_type : str
+        'raw', 'reduced', or 'calibrated'
+    """
+    filename = f"science_{frame_num:03d}.fits"
+    return DATA_DIR / date_obs / data_type / filename
+
+# Usage
+obs_path = get_observation_path('2024-03-15', 1)
+print(f"\nBEST (configurable): {obs_path}")
+
+# Check if file exists before processing
+if obs_path.exists():
+    print(f"  ✓ Ready to process: {obs_path.name}")
 else:
-    print(f"\n✗ Data not found at: {data_file}")
-    print(f"    (Expected - this is just a demo)")
-
-# BEST: Use configuration with environment variables
-# Environment variables are settings your computer stores
-# You can set DATA_DIR to different paths on different computers
-data_dir = Path(os.getenv('DATA_DIR', './data'))  # Use DATA_DIR or default to ./data
-print(f"\nBEST (configurable): {data_dir}")
-print("  Falls back to './data' if DATA_DIR environment variable not set")
+    print(f"  ✗ File not found - check DATA_DIR environment variable")
+    print(f"    Expected location: {obs_path}")
 ```
 
-### Random Seed Control
+### Random Seed Control for Monte Carlo
 
-Make "random" results reproducible:
+Make Monte Carlo simulations reproducible by using a default random number generator seed value:
 
 ```{code-cell} ipython3
-import random
+import numpy as np
 
-def reproducible_random(seed=42):
-    """Generate reproducible random numbers.
-    
-    Args:
-        seed: Random seed for reproducibility
-        
-    Returns:
-        list: Five random numbers (always same for same seed)
+def simulate_photometric_errors(n_stars=100, seed=42):
     """
-    random.seed(seed)
+    Simulate photometric measurements with realistic errors.
     
-    # These will be the same every time with same seed
-    values = [random.random() for _ in range(5)]
-    return values
+    Parameters
+    ----------
+    n_stars : int
+        Number of stars to simulate
+    seed : int
+        Random seed for reproducibility
+        
+    Returns
+    -------
+    tuple
+        True magnitudes, observed magnitudes, errors
+    """
+    # CRITICAL: Set seed for reproducibility
+    np.random.seed(seed)
+    
+    # True stellar magnitudes (roughly following IMF)
+    true_mags = np.random.uniform(12, 18, n_stars)
+    
+    # Photometric errors increase with magnitude
+    # Typical for ground-based observations
+    base_error = 0.01  # Bright star error
+    errors = base_error * np.exp((true_mags - 12) / 4)
+    
+    # Add Gaussian noise
+    observed_mags = true_mags + np.random.normal(0, errors)
+    
+    return true_mags, observed_mags, errors
 
-# Run multiple times - same results with same seed
-print("First run: ", [f"{x:.3f}" for x in reproducible_random(42)])
-print("Second run:", [f"{x:.3f}" for x in reproducible_random(42)])
+# Run simulation multiple times - same results!
+for run in range(3):
+    true, obs, err = simulate_photometric_errors(n_stars=5, seed=42)
+    print(f"Run {run+1}: First obs mag = {obs[0]:.3f} ± {err[0]:.3f}")
 
-# Different seed = different results
-print("New seed:  ", [f"{x:.3f}" for x in reproducible_random(137)])
+print("\n⚠️  Different seed = different results:")
+true2, obs2, err2 = simulate_photometric_errors(n_stars=5, seed=137)
+print(f"Seed 137: First obs mag = {obs2[0]:.3f} ± {err2[0]:.3f}")
 
-print("\nAlways document your random seeds in papers!")
+print("\n🔍 Always document seeds in papers for reproducibility!")
 ```
 
-:::{admonition} 🌟 The More You Know: Reproducing a Nobel Prize Discovery
-:class: tip, dropdown
+:::{tip} 🌟 The More You Know: When Code Sharing Isn't Enough
+:class: dropdown
 
-When the LIGO Scientific Collaboration announced the first detection of gravitational waves (GW150914) on February 11, 2016, they didn't just publish a paper - they released their data publicly. This detection confirmed Einstein's 100-year-old prediction and earned the 2017 Nobel Prize in Physics for Rainer Weiss, Barry Barish, and Kip Thorne.
+In 2022, researchers attempted to run over 9,000 R scripts from 2,000+ publicly shared research datasets in the Harvard Dataverse repository ([Trisovic et al., 2022](https://doi.org/10.1038/s41597-022-01143-6)). The results were sobering: **74% of the R files failed to run** on the first attempt. Even after automated code cleaning to fix common issues, **56% still failed**.
 
-Through the Gravitational Wave Open Science Center (gwosc.org), LIGO made available:
+The most common errors weren't complex algorithmic problems but basic issues:
 
-- The strain data from both detectors around the time of the event
-- Jupyter notebooks demonstrating the analysis
-- Documentation of their methods
+- Missing package imports (`library()` statements)
+- Hardcoded file paths that don't exist on other systems
+- Dependencies on variables defined in other scripts
+- Assuming specific working directories
 
-This public release allowed scientists worldwide to independently analyze the data from this historic detection - a gravitational wave from two black holes merging 1.3 billion years ago.
+What makes this particularly striking is that these researchers had already taken the crucial step of sharing their code—they were trying to do the right thing! But code availability alone doesn't guarantee reproducibility.
 
-The detection required measuring distance changes 10,000 times smaller than a proton. By sharing their data and methods openly, LIGO demonstrated that even "Big Science" experiments can embrace open science principles.
+The study found that simple practices could have prevented most failures:
 
-Your `random.seed()` calls and environment documentation follow the same scientific tradition of reproducible research.
+- Using relative paths instead of absolute paths
+- Explicitly loading all required libraries at the script beginning
+- Setting random seeds for any stochastic processes
+- Including session information (R version, package versions)
 
-```{figure} images/ligo20160211a.jpg
-:label: ligo
-:width: 500px
-:align: center
-
-Gravitational wave signals produced by two-merging black holes, each about 30 times the mass of our sun, detected by the twin LIGO observatories at Livingston, Louisiana, and Hanford, Washington in 2015. *Image Credit:* Caltech/MIT/LIGO Lab
-```
-
+This echoes our discussion about environments: sharing code without documenting its environment is like sharing a recipe without mentioning it's for a high-altitude kitchen. The code might be perfect, but it still won't work!
 :::
+
+---
 
 ## 1.6 Essential Debugging Strategies
 
@@ -879,499 +1413,949 @@ Gravitational wave signals produced by two-merging black holes, each about 30 ti
 Writing code that anticipates and handles failures gracefully
 :::
 
-When code fails (and it will), systematic debugging saves hours of frustration. Here are strategies that work every time, demonstrating **defensive programming**.
+When your spectral analysis crashes at 3 AM on the telescope, systematic debugging saves the night. Here are battle-tested strategies from observatory trenches.
 
 ### The Universal First Check
 
 Before anything else, verify your environment:
+
+:::{admonition} Full Environment Diagnostic Function
+:class: dropdown
 
 ```{code-cell} ipython3
 import sys
 import os
 from pathlib import Path
 
-def environment_check():
-    """Universal debugging first check.
-    
-    Returns:
-        bool: True if in correct environment
+def astronomy_environment_check():
     """
-    print("=== Environment Debug Check ===")
-    print(f"Python: {sys.executable}")
-    print(f"Version: {sys.version.split()[0]}")
-    print(f"Current dir: {os.getcwd()}")
+    Universal debugging first check for astronomical Python.
     
-    # Check for conda environment
-    if 'conda' in sys.executable or 'miniconda' in sys.executable:
-        # Extract environment name
-        path_parts = sys.executable.split(os.sep)
-        if 'envs' in path_parts:
-            env_idx = path_parts.index('envs')
-            env_name = path_parts[env_idx + 1] if env_idx + 1 < len(path_parts) else "base"
-            
-            if 'astr596' in env_name:
-                print(f"✓ Correct environment: {env_name}")
-                return True
-            else:
-                print(f"✗ Wrong environment: {env_name}")
-                print("  Fix: conda activate astr596")
-                return False
+    Returns
+    -------
+    dict
+        Environment status and diagnostics
+    """
+    print("=" * 60)
+    print("ASTRONOMICAL PYTHON ENVIRONMENT CHECK")
+    print("=" * 60)
     
-    print("✗ Not in a conda environment")
-    print("  Fix: conda activate astr596")
-    return False
+    # 1. Python location and version
+    print("\n1. PYTHON INTERPRETER:")
+    print(f"   Path: {sys.executable}")
+    print(f"   Version: {sys.version.split()[0]}")
+    
+    # 2. Environment detection
+    print("\n2. CONDA ENVIRONMENT:")
+    env_path = sys.executable
+    if 'conda' in env_path or 'miniforge' in env_path:
+        if 'envs' in env_path:
+            parts = env_path.split(os.sep)
+            idx = parts.index('envs')
+            env_name = parts[idx + 1] if idx + 1 < len(parts) else "unknown"
+            print(f"   ✓ Active environment: {env_name}")
+        else:
+            print(f"   ⚠️  Base environment (not recommended)")
+    else:
+        print(f"   ✗ Not in conda environment")
+    
+    # 3. Critical astronomy packages
+    print("\n3. ASTRONOMY PACKAGES:")
+    critical = ['numpy', 'astropy', 'matplotlib']
+    for pkg in critical:
+        try:
+            mod = __import__(pkg)
+            ver = getattr(mod, '__version__', '?')
+            print(f"   ✓ {pkg:12} {ver}")
+        except ImportError:
+            print(f"   ✗ {pkg:12} NOT FOUND")
+    
+    # 4. Data directories
+    print("\n4. DATA PATHS:")
+    data_dir = Path(os.getenv('ASTRO_DATA', './data'))
+    print(f"   ASTRO_DATA: {data_dir.absolute()}")
+    print(f"   Exists: {'✓' if data_dir.exists() else '✗'}")
+    
+    print("\n" + "=" * 60)
+    return True
 
-# Run the check
-environment_check()
+# Run the diagnostic
+astronomy_environment_check()
 ```
+
+:::
 
 ### Using IPython's Debugger
 
-When code crashes, IPython's `%debug` magic enters the debugger at the crash point:
+When your code crashes, IPython's `%debug` magic lets you investigate:
 
 ```{code-cell} ipython3
-def divide_list(numbers, divisor):
-    """Divide all numbers in a list.
-    
-    Args:
-        numbers: List of numbers to divide
-        divisor: Number to divide by
-        
-    Returns:
-        list: Results of division
+def process_photometry(fluxes, zero_point=25.0):
     """
-    # This will crash if divisor is zero
-    return [n / divisor for n in numbers]
+    Convert instrumental fluxes to magnitudes.
+    
+    Parameters
+    ----------
+    fluxes : array-like
+        Instrumental fluxes (ADU)
+    zero_point : float
+        Photometric zero point
+        
+    Returns
+    -------
+    array
+        Calibrated magnitudes
+    """
+    import numpy as np
+    
+    # This will crash if any flux is negative or zero!
+    magnitudes = zero_point - 2.5 * np.log10(fluxes)
+    return magnitudes
 
-print("""In IPython, after an error occurs, type: %debug
+# Example of debugging workflow
+print("""When this crashes in IPython:
 
-Debugger commands:
-  p variable  - print variable value
-  l          - list code around error
-  u/d        - go up/down the call stack
-  c          - continue execution
-  n          - next line
-  s          - step into function
-  q          - quit debugger
-  
-Example session:
-  ipdb> p divisor
-  0
-  ipdb> p numbers
-  [1, 2, 3]
-  ipdb> q
+>>> fluxes = [1000, 500, -10, 2000]  # Bad data!
+>>> mags = process_photometry(fluxes)
+ValueError: math domain error
+
+>>> %debug  # Enter debugger
+
+ipdb> p fluxes
+[1000, 500, -10, 2000]
+
+ipdb> p fluxes[2]
+-10  # Found the problem!
+
+ipdb> import numpy as np
+ipdb> np.where(np.array(fluxes) <= 0)
+(array([2]),)  # Index of bad value
+
+ipdb> q  # Quit debugger
+
+# Fix: Filter bad data
+>>> good_fluxes = [f for f in fluxes if f > 0]
+>>> mags = process_photometry(good_fluxes)
 """)
 ```
 
-:::{admonition} 💡 Computational Thinking: Defensive Programming
-:class: important
+:::{note} Your Turn: Try Breaking This Code
+:class: dropdown
 
-Defensive programming means assuming things will go wrong and coding accordingly. Instead of hoping files exist, check first. Instead of assuming imports work, verify them.
+``` {code-cell} ipython3
+def calculate_jeans_mass(temperature_K, density_cgs, mu=2.33):
+    """
+    Calculate the Jeans mass for gravitational collapse.
+    
+    The Jeans mass is the critical mass above which a gas cloud
+    will collapse under its own gravity.
+    
+    Parameters
+    ----------
+    temperature_K : float
+        Gas temperature in Kelvin
+    density_cgs : float
+        Gas density in g/cm^3
+    mu : float
+        Mean molecular weight (2.33 for molecular gas)
+        
+    Returns
+    -------
+    float
+        Jeans mass in grams
+    """
+    import numpy as np
+    
+    # Physical constants (CGS)
+    k_B = 1.381e-16      # Boltzmann constant [erg/K]
+    G = 6.674e-8         # Gravitational constant
+    m_H = 1.673e-24      # Hydrogen mass [g]
+    
+    # Validate inputs - common source of errors!
+    if temperature_K <= 0:
+        raise ValueError(f"Temperature must be positive, got {temperature_K} K")
+    if density_cgs <= 0:
+        raise ValueError(f"Density must be positive, got {density_cgs} g/cm^3")
+    if mu <= 0:
+        raise ValueError(f"Mean molecular weight must be positive, got {mu}")
+    
+    # Jeans length
+    c_s = np.sqrt(k_B * temperature_K / (mu * m_H))  # Sound speed
+    lambda_J = np.sqrt(np.pi * c_s**2 / (G * density_cgs))
+    
+    # Jeans mass: M_J = (π/6) * ρ * λ_J^3
+    M_J = (np.pi / 6) * density_cgs * lambda_J**3
+    
+    return M_J
 
-This mindset—expect failure, handle it gracefully — separates robust scientific code from scripts that work "sometimes."
+# Example: Molecular cloud conditions
+print("\n--- Jeans Mass Calculation Example ---")
+T_cloud = 10  # K (cold molecular cloud)
+n_H2 = 1e4    # cm^-3 (number density)
+rho = n_H2 * 2.33 * 1.673e-24  # Convert to mass density
 
-Pattern:
-```python
-# Fragile code
-data = open('file.txt').read()
-
-# Defensive code
-if Path('file.txt').exists():
-    with open('file.txt') as f:
-        data = f.read()
-else:
-    print("Warning: file.txt not found, using defaults")
-    data = default_data
+try:
+    M_jeans = calculate_jeans_mass(T_cloud, rho)
+    M_jeans_solar = M_jeans / 1.989e33
+    print(f"Temperature: {T_cloud} K")
+    print(f"Number density: {n_H2:.1e} cm^-3")
+    print(f"Jeans mass: {M_jeans_solar:.1f} M☉")
+    print("(Typical for star-forming regions!)")
+except ValueError as e:
+    print(f"Error in calculation: {e}")
 ```
 
-This pattern appears everywhere: network requests that might timeout, sensors that might malfunction, or data that might be corrupted.
+:::
+
+:::{important} 💡 Computational Thinking: Defensive Astronomy Programming
+:class: dropdown
+
+Astronomical data is messy. Defensive programming anticipates common failures:
+
+**Common Issues & Defensive Solutions:**
+
+1. **Bad pixels/cosmic rays** → Median filtering, sigma clipping
+2. **Missing FITS headers** → Provide defaults, log warnings
+3. **Coordinate mismatches** → Validate units, check epochs
+4. **NaN propagation** → Use `np.nanmean()`, check for NaNs
+5. **Memory overflow** → Process in chunks, use memmap
+
+Example defensive pattern:
+```python
+def safe_magnitude(flux, zero_point=25.0):
+    """Calculate magnitude with error handling."""
+    if flux <= 0:
+        return np.nan  # Don't crash, return NaN
+    
+    try:
+        mag = zero_point - 2.5 * np.log10(flux)
+        if not np.isfinite(mag):
+            return np.nan
+        return mag
+    except (ValueError, TypeError):
+        return np.nan
+```
+
+This robustness is essential when processing thousands of images automatically!
 :::
 
 ## Practice Exercises
 
 ### Exercise 1.1: IPython Mastery
 
-:::{admonition} Part A: Follow These Steps (5 min)
-:class: exercise, dropdown
+:::{admonition} Part A: Explore Scientific Libraries (5 min)
+:class: exercise
 
-Execute these commands exactly in IPython:
+Execute these commands in IPython to explore astropy:
 
-```{code-cell} ipython3
-# Step 1: Import and explore
-import math
+```python
+# In IPython:
+import astropy
+import astropy.units as u
+import astropy.constants as const
 
-# Step 2: Check available functions
-print("Functions:", [x for x in dir(math) if not x.startswith('_')][:5])
+# Explore available constants
+print("Astronomical constants:", 
+      [x for x in dir(const) if not x.startswith('_')][:10])
 
-# Step 3: Time a simple calculation
-import timeit
-time = timeit.timeit('sum(range(100))', number=10000)
-print(f"Time: {time*100:.4f} µs per loop")
+# Quick calculation: Jeans mass
+T = 10 * u.K  # Molecular cloud temperature
+n = 1e4 * u.cm**-3  # Number density
+
+# Calculate Jeans mass (simplified)
+M_J = 2.0 * (const.k_B * T / (const.G * const.m_p))**(3/2) * n**(-1/2)
+print(f"Jeans mass: {M_J.to(u.M_sun):.1f}")
 ```
 :::
 
-:::{admonition} Part B: Modify the Approach (10 min)
-:class: exercise, dropdown
+:::{admonition} Part B: Time Array Operations (10 min)
+:class: exercise
 
-Compare two methods for squaring numbers:
+Compare different methods for calculating stellar distances:
 
-```{code-cell} ipython3
+```python
+import numpy as np
 import timeit
 
 # Method 1: List comprehension
-time1 = timeit.timeit('[i**2 for i in range(100)]', number=1000)
+def distance_list(parallaxes_mas):
+    """Calculate distances using list comprehension."""
+    return [1000.0/p if p > 0 else np.nan 
+            for p in parallaxes_mas]
 
-# Method 2: Map with lambda
-time2 = timeit.timeit('list(map(lambda x: x**2, range(100)))', number=1000)
+# Method 2: NumPy vectorized
+def distance_numpy(parallaxes_mas):
+    """Calculate distances using NumPy."""
+    par = np.array(parallaxes_mas)
+    with np.errstate(divide='ignore', invalid='ignore'):
+        distances = 1000.0 / par
+        distances[par <= 0] = np.nan
+    return distances
 
-print(f"List comp: {time1*1000:.2f} ms")
-print(f"Map/lambda: {time2*1000:.2f} ms")
-print(f"Ratio: {time2/time1:.2f}x")
+# Test data: parallaxes in milliarcseconds
+# Include some bad data (negative, zero)
+np.random.seed(42)
+test_parallaxes = np.random.exponential(2, 1000)
+test_parallaxes[::50] = -1  # Some bad measurements
 
-# Which is faster? Why?
+# Time both methods
+t1 = timeit.timeit(
+    lambda: distance_list(test_parallaxes), 
+    number=100
+)
+t2 = timeit.timeit(
+    lambda: distance_numpy(test_parallaxes), 
+    number=100
+)
+
+print(f"List comprehension: {t1*10:.3f} ms")
+print(f"NumPy vectorized:   {t2*10:.3f} ms")
+print(f"NumPy is {t1/t2:.1f}x faster!")
 ```
 :::
 
-:::{admonition} Part C: Apply Your Knowledge (15 min)
-:class: exercise, dropdown
+:::{admonition} Part C: Create Your Own Analysis (15 min)
+:class: exercise
 
-Design your own timing experiment for calculating factorials:
+Design a timing experiment for period-finding algorithms:
 
-```{code-cell} ipython3
-# Create three different ways to calculate factorials for 1-20
-# Hint: Consider recursion, iteration, and math.factorial
-
-import math
+```python
+import numpy as np
 import timeit
 
-# Method 1: Using math.factorial
-def method1(n):
-    return [math.factorial(i) for i in range(1, n+1)]
+# Generate synthetic light curve
+np.random.seed(42)
+n_points = 1000
+times = np.sort(np.random.uniform(0, 100, n_points))
+true_period = 2.35  # days
+true_amplitude = 0.5  # magnitudes
 
-# Method 2: Iterative approach
-def method2(n):
-    results = []
-    for i in range(1, n+1):
-        fact = 1
-        for j in range(1, i+1):
-            fact *= j
-        results.append(fact)
-    return results
+# Create variable star signal
+signal = true_amplitude * np.sin(2 * np.pi * times / true_period)
+noise = np.random.normal(0, 0.05, n_points)
+magnitudes = 15.0 + signal + noise
 
-# Method 3: Recursive (be careful with large n!)
-def factorial_recursive(n):
-    if n <= 1:
-        return 1
-    return n * factorial_recursive(n-1)
+# Method 1: Lomb-Scargle periodogram (simplified)
+def lomb_scargle_simple(t, y, periods):
+    """Simplified Lomb-Scargle (for demonstration)."""
+    powers = []
+    for period in periods:
+        omega = 2 * np.pi / period
+        cos_wt = np.cos(omega * t)
+        sin_wt = np.sin(omega * t)
+        
+        # Simplified power calculation
+        c = np.sum(y * cos_wt)
+        s = np.sum(y * sin_wt)
+        power = c**2 + s**2
+        powers.append(power)
+    return np.array(powers)
 
-def method3(n):
-    return [factorial_recursive(i) for i in range(1, n+1)]
+# Method 2: String-length method
+def string_length(t, y, periods):
+    """String-length period finding."""
+    lengths = []
+    for period in periods:
+        # Fold light curve
+        phases = (t % period) / period
+        # Sort by phase
+        idx = np.argsort(phases)
+        y_sorted = y[idx]
+        
+        # Calculate string length
+        length = np.sum(np.abs(np.diff(y_sorted)))
+        lengths.append(length)
+    return np.array(lengths)
 
-# Time each approach
-t1 = timeit.timeit('method1(20)', globals=globals(), number=1000)
-t2 = timeit.timeit('method2(20)', globals=globals(), number=1000)
-t3 = timeit.timeit('method3(20)', globals=globals(), number=1000)
+# Test periods
+test_periods = np.linspace(0.5, 5.0, 100)
 
-print(f"math.factorial: {t1*1000:.2f} ms")
-print(f"Iterative:      {t2*1000:.2f} ms")
-print(f"Recursive:      {t3*1000:.2f} ms")
-print(f"\nFastest: math.factorial (built-in C implementation)")
-```
+# Time both methods
+t1 = timeit.timeit(
+    lambda: lomb_scargle_simple(times, magnitudes, test_periods),
+    number=10
+)
+t2 = timeit.timeit(
+    lambda: string_length(times, magnitudes, test_periods),
+    number=10
+)
 
-:::
+print(f"Lomb-Scargle: {t1*100:.1f} ms")
+print(f"String-length: {t2*100:.1f} ms")
+print(f"Ratio: {t1/t2:.2f}x")
 
-### Exercise 1.2: Notebook State Detective
-
-:::{admonition} Part A: Trace Execution (5 min)
-:class: exercise, dropdown
-
-Given this execution order, trace the state:
-
-```{code-cell} ipython3
-print("""Execution order: Cell 1, Cell 3, Cell 2, Cell 4, Cell 2, Cell 4
-
-Cell 1: counter = 0
-        data = []
-
-Cell 2: counter += 1
-        data.append(counter)
-
-Cell 3: counter = 10
-
-Cell 4: print(f"Counter: {counter}, Data: {data}")
-
-Work through each step on paper first.""")
-```
-:::
-
-:::{admonition} Part B: Find the Final State (10 min)
-:class: exercise, dropdown
-
-```{code-cell} ipython3
-# Simulate the execution
-counter = 0      # Cell 1
-data = []        # Cell 1
-counter = 10     # Cell 3
-counter += 1     # Cell 2
-data.append(counter)  # Cell 2
-print(f"After first Cell 4: Counter: {counter}, Data: {data}")
-
-counter += 1     # Cell 2 again
-data.append(counter)  # Cell 2 again
-print(f"After second Cell 4: Counter: {counter}, Data: {data}")
+# Find the period
+powers = lomb_scargle_simple(times, magnitudes, test_periods)
+best_period = test_periods[np.argmax(powers)]
+print(f"\nTrue period: {true_period:.3f} days")
+print(f"Found period: {best_period:.3f} days")
 ```
 :::
 
-:::{admonition} Part C: Explain the Danger (15 min)
-:class: exercise, dropdown
+### Exercise 1.2: Notebook State Detective - Cosmology Edition
 
-Write a paragraph explaining why this execution pattern would be:
-1. Hard to debug
-2. Impossible to reproduce
-3. Dangerous for scientific computing
+:::{admonition} Part A: Trace the Cosmological Calculation (5 min)
+:class: exercise
 
-Consider: What if this was calculating orbital trajectories?
+Given this notebook execution order, trace the state:
+
+```python
+# Execution order: Cell 1, Cell 3, Cell 2, Cell 4, Cell 2, Cell 4
+
+Cell 1: H0 = 70.0  # km/s/Mpc
+        omega_m = 0.3
+        omega_lambda = 0.7
+
+Cell 2: def age_of_universe():
+            # Simplified calculation
+            from math import sqrt
+            H0_SI = H0 * 1000 / 3.086e22  # Convert to 1/s
+            age = (2/3) / H0_SI / sqrt(omega_lambda)
+            return age / (365.25 * 24 * 3600 * 1e9)  # Gyr
+
+Cell 3: H0 = 67.4  # Planck value
+        omega_lambda = 0.685
+
+Cell 4: print(f"Age: {age_of_universe():.2f} Gyr")
+
+What age gets printed each time? Which cosmology is used?
+```
 :::
 
-### Exercise 1.3: Environment Diagnostic Tool
+:::{admonition} Part B: Find the Bug (10 min)
+:class: exercise
 
-:::{admonition} Part A: Basic Diagnostic (5 min)
-:class: exercise, dropdown
+```python
+# Simulate the execution to find the bug
+H0 = 70.0  # Cell 1
+omega_m = 0.3
+omega_lambda = 0.7
 
-```{code-cell} ipython3
+H0 = 67.4  # Cell 3
+omega_lambda = 0.685
+
+# Cell 2 - function captures H0 and omega_lambda NOW
+def age_of_universe():
+    from math import sqrt
+    H0_SI = H0 * 1000 / 3.086e22
+    age = (2/3) / H0_SI / sqrt(omega_lambda)
+    return age / (365.25 * 24 * 3600 * 1e9)
+
+print(f"First Cell 4: Age = {age_of_universe():.2f} Gyr")
+
+# Cell 2 again - NOW it uses updated values!
+def age_of_universe():
+    from math import sqrt
+    H0_SI = H0 * 1000 / 3.086e22
+    age = (2/3) / H0_SI / sqrt(omega_lambda)
+    return age / (365.25 * 24 * 3600 * 1e9)
+
+print(f"Second Cell 4: Age = {age_of_universe():.2f} Gyr")
+print("\nThe function definition captures values when defined!")
+```
+:::
+
+:::{admonition} Part C: Explain the Scientific Impact (15 min)
+:class: exercise
+
+Write a paragraph explaining how this notebook behavior could affect:
+
+1. **Cosmological parameter estimation** - Wrong H₀ leads to wrong distances
+2. **Reproducibility** - Collaborators get different results
+3. **Scientific conclusions** - Age estimates could be off by gigayears
+
+Consider: What if this was analyzing Planck CMB data or Type Ia supernovae for dark energy constraints?
+:::
+
+### Exercise 1.3: Environment Diagnostic
+
+:::{admonition} Part A: Check Your Setup (5 min)
+:class: exercise
+
+```python
 import sys
-import os
+import importlib
 
-# Basic environment info
-print(f"Python: {sys.version.split()[0]}")
-print(f"Location: {sys.executable}")
-print(f"Working dir: {os.getcwd()}")
-```
-:::
+# Check Python and key packages
+print(f"Python: {sys.version}")
+print(f"Executable: {sys.executable}")
+print("\nAstronomy packages:")
 
-:::{admonition} Part B: Check Key Packages (10 min)
-:class: exercise, dropdown
+packages = {
+    'numpy': 'Numerical computing',
+    'scipy': 'Scientific algorithms', 
+    'matplotlib': 'Plotting',
+    'astropy': 'Core astronomy',
+    'astroquery': 'Archive queries',
+    'photutils': 'Photometry',
+    'specutils': 'Spectroscopy'
+}
 
-```{code-cell} ipython3
-# Check for scientific packages
-packages = ['numpy', 'scipy', 'matplotlib', 'pandas']
-
-for pkg in packages:
+for pkg, description in packages.items():
     try:
-        __import__(pkg)
-        print(f"✓ {pkg}")
+        mod = importlib.import_module(pkg)
+        version = getattr(mod, '__version__', 'unknown')
+        print(f"  ✓ {pkg:12} {version:10} - {description}")
     except ImportError:
-        print(f"✗ {pkg}")
+        print(f"  ✗ {pkg:12} MISSING     - {description}")
 ```
 :::
 
-:::{admonition} Part C: Complete Diagnostic (15 min)
-:class: exercise, dropdown
+:::{admonition} Part B: Test Data Access (10 min)
+:class: exercise
 
-```{code-cell} ipython3
-import sys
-import subprocess
+```python
 from pathlib import Path
 import os
 
-def full_diagnostic():
-    """Complete environment diagnostic."""
-    print("=== Full Environment Diagnostic ===\n")
+# Check standard astronomy data locations
+def check_astronomy_data():
+    """Check for standard astronomical data directories."""
     
-    # 1. Python info
-    print(f"1. Python: {sys.version.split()[0]}")
-    print(f"   Location: {sys.executable}")
+    # Common environment variables
+    env_vars = {
+        'ASTRO_DATA': 'Local observation data',
+        'CALDB': 'Calibration database',
+        'PYSYN_CDBS': 'Synphot reference data',
+        'WEBBPSF_PATH': 'Webb PSF data',
+        'CRDS_PATH': 'Calibration references'
+    }
     
-    # 2. Environment name
-    if 'conda' in sys.executable:
-        parts = sys.executable.split(os.sep)
-        if 'envs' in parts:
-            idx = parts.index('envs')
-            env = parts[idx + 1] if idx + 1 < len(parts) else "base"
-            print(f"\n2. Environment: {env}")
+    print("Astronomy Data Paths:")
+    print("-" * 50)
     
-    # 3. Search paths (first 3)
-    print("\n3. Python paths:")
-    for i, path in enumerate(sys.path[:3], 1):
-        display = str(path).replace(str(Path.home()), "~")
-        print(f"   {i}. {display}")
+    for var, description in env_vars.items():
+        path = os.getenv(var)
+        if path:
+            path_obj = Path(path)
+            exists = "✓" if path_obj.exists() else "✗"
+            print(f"{exists} {var:15} = {path}")
+            print(f"  └─ {description}")
+        else:
+            print(f"- {var:15} not set")
+            print(f"  └─ {description}")
     
-    # 4. Package count
+    # Check for common data directories
+    print("\nLocal data directories:")
+    for dirname in ['data', 'raw', 'reduced', 'catalogs']:
+        path = Path(dirname)
+        if path.exists():
+            n_files = len(list(path.glob('*')))
+            print(f"  ✓ ./{dirname}/ ({n_files} items)")
+        else:
+            print(f"  - ./{dirname}/ not found")
+
+check_astronomy_data()
+```
+:::
+
+:::{admonition} Part C: Complete Observatory Diagnostic (15 min)
+:class: exercise
+
+```python
+import sys
+import subprocess
+from pathlib import Path
+import platform
+
+def observatory_diagnostic():
+    """
+    Complete diagnostic for astronomical computing environment.
+    
+    Checks everything needed for telescope data analysis.
+    """
+    print("=" * 60)
+    print("OBSERVATORY COMPUTING ENVIRONMENT DIAGNOSTIC")
+    print("=" * 60)
+    
+    # 1. System info
+    print("\n1. SYSTEM INFORMATION:")
+    print(f"   OS: {platform.system()} {platform.release()}")
+    print(f"   Machine: {platform.machine()}")
+    print(f"   Python: {sys.version.split()[0]}")
+    
+    # 2. Memory check (important for large images)
     try:
-        result = subprocess.run(
-            [sys.executable, '-m', 'pip', 'list'],
-            capture_output=True, text=True, timeout=5
-        )
-        count = len(result.stdout.strip().split('\n')) - 2
-        print(f"\n4. Total packages: {count}")
-    except:
-        print("\n4. Could not count packages")
+        import psutil
+        mem = psutil.virtual_memory()
+        print(f"\n2. MEMORY:")
+        print(f"   Total: {mem.total / 1e9:.1f} GB")
+        print(f"   Available: {mem.available / 1e9:.1f} GB")
+    except ImportError:
+        print("\n2. MEMORY: psutil not installed")
     
+    # 3. Check for astronomy tools
+    print("\n3. ASTRONOMY TOOLS:")
+    tools = {
+        'ds9': 'SAOImage DS9 viewer',
+        'fv': 'FITS viewer',
+        'topcat': 'Table analysis',
+        'aladin': 'Sky atlas'
+    }
+    
+    for tool, description in tools.items():
+        try:
+            result = subprocess.run(
+                ['which', tool], 
+                capture_output=True, 
+                text=True
+            )
+            if result.returncode == 0:
+                print(f"   ✓ {tool:8} - {description}")
+            else:
+                print(f"   - {tool:8} - {description}")
+        except:
+            print(f"   ? {tool:8} - {description}")
+    
+    # 4. Python packages for specific telescopes
+    print("\n4. TELESCOPE-SPECIFIC PACKAGES:")
+    telescope_packages = {
+        'drizzlepac': 'HST data',
+        'jwst': 'JWST pipeline',
+        'ccdproc': 'CCD reduction',
+        'pyraf': 'IRAF tasks'
+    }
+    
+    for pkg, telescope in telescope_packages.items():
+        try:
+            __import__(pkg)
+            print(f"   ✓ {pkg:12} - {telescope}")
+        except ImportError:
+            print(f"   - {pkg:12} - {telescope}")
+    
+    print("\n" + "=" * 60)
     return True
 
-full_diagnostic()
+# Run the diagnostic
+observatory_diagnostic()
 ```
 :::
 
 ### Exercise 1.4: Variable Star Exercise Thread
 
-:::{admonition} Chapter 1: Variable Star Exercise Thread
-:class: exercise, dropdown
+:::{admonition} Chapter 1: Variable Star Analysis Foundation
+:class: exercise
 
-```{code-cell} ipython3
-# Chapter 1: Variable Star Basics - Setting up our environment
-# This simple start will grow into a full VariableStar class by Chapter 6
+```python
+# Chapter 1: Variable Star Analysis - Professional Foundation
+# This will grow into a complete variable star analysis pipeline
 
-# Define basic properties of a Cepheid variable star
-star_name = "Delta Cephei"
-period = 5.366319  # days
-magnitude_mean = 3.95
-magnitude_amplitude = 0.88
-
-# Store in a simple dictionary for now
-variable_star = {
-    'name': star_name,
-    'period': period,
-    'mag_mean': magnitude_mean,
-    'mag_amp': magnitude_amplitude
-}
-
-print(f"Variable star {variable_star['name']}:")
-print(f"  Period: {variable_star['period']:.3f} days")
-print(f"  Magnitude: {variable_star['mag_mean']:.2f} ± {variable_star['mag_amp']:.2f}")
-
-# Save to file for next chapter with error handling (defensive programming!)
 import json
-try:
-    with open('variable_star_ch1.json', 'w') as f:
-        json.dump(variable_star, f, indent=2)
-    print("\n✓ Data saved successfully for Chapter 2!")
-    
-    # Verify the save worked by reading it back
-    with open('variable_star_ch1.json', 'r') as f:
-        verification = json.load(f)
-    print(f"  Verified: {verification['name']} data intact")
-    
-except IOError as e:
-    print(f"\n✗ Warning: Could not save data: {e}")
-    print("  You'll need to recreate this in Chapter 2")
-except json.JSONDecodeError as e:
-    print(f"\n✗ Warning: Data corruption detected: {e}")
-    print("  Try running this cell again")
-```
+import numpy as np
+from pathlib import Path
+from datetime import datetime
+import sys
 
+class VariableStarObservation:
+    """
+    Container for variable star observations.
+    
+    This class will be expanded in each chapter to include:
+    - Chapter 2: Numerical precision for period analysis
+    - Chapter 3: Time series arrays and phase folding
+    - Chapter 4: Period finding algorithms
+    - Chapter 5: Statistical analysis and error propagation
+    - Chapter 6: Full object-oriented analysis pipeline
+    """
+    
+    def __init__(self, star_name, star_type, period, 
+                 mag_mean, mag_amplitude, epoch=None):
+        """
+        Initialize variable star observation.
+        
+        Parameters
+        ----------
+        star_name : str
+            Star designation (e.g., 'Delta Cephei')
+        star_type : str
+            Variable type ('Cepheid', 'RR Lyrae', etc.)
+        period : float
+            Period in days
+        mag_mean : float
+            Mean magnitude
+        mag_amplitude : float
+            Peak-to-peak amplitude
+        epoch : float, optional
+            Reference epoch (JD)
+        """
+        self.star_name = star_name
+        self.star_type = star_type
+        self.period = period
+        self.mag_mean = mag_mean
+        self.mag_amplitude = mag_amplitude
+        self.epoch = epoch or 2451545.0  # J2000.0 default
+        
+        # Metadata for reproducibility
+        self.metadata = {
+            'created': datetime.now().isoformat(),
+            'python_version': sys.version.split()[0],
+            'environment': sys.executable,
+            'numpy_version': np.__version__
+        }
+    
+    def __str__(self):
+        """String representation."""
+        return (f"{self.star_name} ({self.star_type}): "
+                f"P={self.period:.4f}d, "
+                f"<m>={self.mag_mean:.2f}, "
+                f"Δm={self.mag_amplitude:.2f}")
+    
+    def phase_fold(self, times, magnitudes):
+        """
+        Phase fold observations (preview of Chapter 3).
+        
+        Parameters
+        ----------
+        times : array-like
+            Observation times (JD)
+        magnitudes : array-like
+            Observed magnitudes
+            
+        Returns
+        -------
+        phases : array
+            Phases (0-1)
+        folded_mags : array
+            Phase-folded magnitudes
+        """
+        # Calculate phases
+        phases = ((times - self.epoch) % self.period) / self.period
+        
+        # Sort by phase
+        sort_idx = np.argsort(phases)
+        return phases[sort_idx], np.array(magnitudes)[sort_idx]
+    
+    def save(self, filename=None):
+        """
+        Save observation with full metadata.
+        
+        Parameters
+        ----------
+        filename : str, optional
+            Output filename (default: star_name_ch1.json)
+        """
+        if filename is None:
+            # Safe filename from star name
+            safe_name = self.star_name.replace(' ', '_').replace('*', 'star')
+            filename = f"{safe_name}_ch1.json"
+        
+        data = {
+            'star': {
+                'name': self.star_name,
+                'type': self.star_type,
+                'period': self.period,
+                'mag_mean': self.mag_mean,
+                'mag_amplitude': self.mag_amplitude,
+                'epoch': self.epoch
+            },
+            'metadata': self.metadata
+        }
+        
+        path = Path(filename)
+        try:
+            path.write_text(json.dumps(data, indent=2))
+            print(f"✓ Saved to {path.absolute()}")
+            
+            # Verify save
+            verify = json.loads(path.read_text())
+            assert verify['star']['name'] == self.star_name
+            print(f"✓ Verified: {self.star_name} data intact")
+            
+        except (IOError, json.JSONDecodeError) as e:
+            print(f"✗ Error saving: {e}")
+            return None
+        
+        return path
+    
+    @classmethod
+    def load(cls, filename):
+        """
+        Load observation from file.
+        
+        Parameters
+        ----------
+        filename : str
+            Input filename
+            
+        Returns
+        -------
+        VariableStarObservation
+            Loaded observation object
+        """
+        path = Path(filename)
+        data = json.loads(path.read_text())
+        
+        star_data = data['star']
+        obs = cls(
+            star_name=star_data['name'],
+            star_type=star_data['type'],
+            period=star_data['period'],
+            mag_mean=star_data['mag_mean'],
+            mag_amplitude=star_data['mag_amplitude'],
+            epoch=star_data.get('epoch', 2451545.0)
+        )
+        
+        # Preserve original metadata
+        obs.metadata.update(data.get('metadata', {}))
+        return obs
+
+
+# Create example variable stars
+print("Creating variable star catalog...")
+print("=" * 50)
+
+# Classical Cepheid
+delta_cep = VariableStarObservation(
+    star_name="Delta Cephei",
+    star_type="Classical Cepheid",
+    period=5.366319,
+    mag_mean=3.95,
+    mag_amplitude=0.88,
+    epoch=2451545.0
+)
+print(delta_cep)
+delta_cep.save()
+
+# RR Lyrae star
+rr_lyr = VariableStarObservation(
+    star_name="RR Lyrae",
+    star_type="RR Lyrae",
+    period=0.56686776,
+    mag_mean=7.92,
+    mag_amplitude=1.04,
+    epoch=2451545.0
+)
+print(rr_lyr)
+rr_lyr.save()
+
+# Eclipsing binary
+algol = VariableStarObservation(
+    star_name="Algol",
+    star_type="Eclipsing Binary",
+    period=2.8673043,
+    mag_mean=2.12,
+    mag_amplitude=1.27,
+    epoch=2451545.0
+)
+print(algol)
+algol.save()
+
+print("\n✓ Chapter 1 complete: Environment configured")
+print("✓ Variable star foundation established")
+print("→ Next: Chapter 2 will add numerical precision analysis")
+```
 :::
 
 ## Main Takeaways
 
-This chapter has revealed the hidden complexity underlying every Python program you'll write. You've learned that when code fails to run or produces different results on different machines, it's rarely due to the code itself — it's the **environment** surrounding that code. Understanding this distinction transforms you from someone who gets frustrated by errors to someone who systematically diagnoses and fixes them.
+This chapter has revealed the hidden complexity underlying every astronomical Python analysis you'll perform. You've learned that when your spectral fitting code fails or produces different radial velocities on different systems, it's rarely the algorithm — it's the **environment** surrounding that code. Understanding this distinction transforms you from someone frustrated by `ImportError: No module named 'astropy.modeling'` to someone who systematically diagnoses and fixes environment issues in seconds.
 
-**IPython** is more than just an enhanced Python prompt - it's a scientific laboratory where ideas become code. The ability to quickly test hypotheses, examine results, and iterate on solutions is fundamental to computational science. The **magic commands** like `%timeit` and `%debug` aren't just conveniences; they're essential tools that separate casual coding from professional scientific computing. Master IPython now, and you'll use it daily throughout your research career.
+**IPython** is more than an enhanced prompt - it's your astronomical data exploration laboratory. The ability to quickly test period-finding algorithms, explore new spectroscopy libraries, and time different approaches to photometry is fundamental to computational astrophysics. The **magic commands** like `%timeit` for benchmarking and `%debug` for post-mortem analysis aren't conveniences; they're essential tools for developing robust data reduction pipelines. Master IPython now, because you'll use it every day at the telescope and in your office.
 
-The **Jupyter notebook** trap is real and dangerous. While notebooks seem perfect for scientific work — mixing code, results, and narrative — their hidden state and execution ambiguity make them unsuitable for serious scientific computing. The out-of-order execution problem isn't a minor inconvenience; it's a fundamental flaw that can corrupt your scientific results. After Project 1, you'll leave notebooks behind for the reliability of **scripts**, but understanding their dangers now will help you recognize similar issues in other tools.
+The **Jupyter notebook** trap is particularly dangerous in astronomy where we often explore large datasets interactively. While notebooks seem perfect for examining spectra or plotting light curves, their hidden state makes them unsuitable for serious analysis. That beautiful notebook showing exoplanet transit fits might give different planet radii each time it's run due to out-of-order execution. After Project 1, you'll transition to **scripts** that guarantee reproducibility — essential when your results might influence million-dollar telescope time allocations.
 
-Scripts enforce **reproducibility** through simplicity. By executing top-to-bottom every time, they eliminate the ambiguity that plagues notebooks. The `if __name__ == "__main__"` pattern might seem like unnecessary boilerplate now, but it's the key to writing code that's both immediately useful and reusable by others. This pattern embodies a core principle: good scientific code serves multiple purposes without compromising any of them.
+Scripts enforce **reproducibility** through predictable execution. The `if __name__ == "__main__"` pattern enables you to build modular analysis tools that work both standalone and as part of larger pipelines — crucial for survey astronomy where individual components must integrate into massive data processing systems. This pattern is why you can `import photometry` from a colleague's module while they can still run it directly to process their data.
 
-Creating reproducible environments isn't just about making your code run on other machines — it's about scientific integrity. When you can't reproduce your own results from six months ago, you've lost the thread of your research. The tools you've learned — **conda** environments, environment files, proper path handling, and seed control — aren't optional extras. They're the foundation of trustworthy computational science. Every major discovery in computational science, from gravitational waves to exoplanet detection, has depended on reproducible environments.
+Creating reproducible environments is about scientific integrity, not just convenience. When you can't reproduce your own gravitational lens modeling from six months ago because NumPy updated and changed its random number generator, you've lost crucial research continuity. The tools you've learned — **conda** environments with version pinning, `environment.yml` files for exact reproduction, proper path handling for cluster compatibility — are the foundation of trustworthy computational astrophysics. Every major discovery, from exoplanets to gravitational waves, depends on reproducible computational environments.
 
-The debugging strategies you've learned will save you countless hours. The universal first check — verifying your environment — solves most "mysterious" errors. Systematic import debugging reveals exactly why **modules** can't be found. IPython's debugger lets you examine failures at the moment they occur. These aren't just troubleshooting techniques; they're the difference between guessing and knowing.
+The debugging strategies you've learned will save you countless hours at the telescope. The universal environment check solves most "mysterious" failures before they waste observing time. Systematic import debugging reveals why `astropy.io.fits` can't be found (usually forgetting to activate your environment). IPython's debugger lets you examine why your centroiding algorithm failed without rerunning the entire night's reduction.
 
-**Remember:** computational science and performing astronomical research isn't just about writing code that works once. It's about creating reliable, reproducible tools that advance human knowledge. The practices you've learned in this chapter — from IPython exploration to environment management — are the foundation of that reliability. **Defensive programming** isn't paranoia; it's professionalism.
+**Remember:** Computational astrophysics isn't just about implementing algorithms from papers. It's about creating reliable, reproducible tools that can process terabytes of telescope data and produce trustworthy scientific results. The practices you've learned — from IPython exploration to environment management — are the foundation that enables discoveries. **Defensive programming** isn't paranoia; it's what keeps pipelines running when processing millions of galaxy spectra.
 
 ## Definitions
 
-**conda**: A package and environment management system that creates isolated Python installations with specific package versions, ensuring reproducibility across different machines.
+**conda**: Package and environment management system that creates isolated Python installations with specific package versions, essential for maintaining different analysis environments for different telescopes or surveys.
 
-**defensive programming**: Writing code that anticipates and handles potential failures gracefully, checking inputs, validating assumptions, and providing informative error messages rather than assuming everything will work correctly.
+**defensive programming**: Writing code that anticipates failures (bad pixels, missing FITS headers, cosmic rays) and handles them gracefully rather than crashing, crucial for automated telescope pipelines.
 
-**environment**: An isolated Python installation with its own interpreter, packages, and settings, preventing conflicts between projects with different requirements.
+**environment**: An isolated Python installation with its own interpreter, packages, and settings, preventing conflicts between different projects or different versions of astronomy software.
 
-**import system**: Python's mechanism for loading code from external files (modules) into your current program, searching through directories listed in sys.path in order.
+**import system**: Python's mechanism for loading code from external modules, searching through directories listed in sys.path in order until finding the requested package.
 
-**IPython**: Interactive Python — an enhanced version of the basic Python interpreter designed specifically for scientific computing, offering features like magic commands, tab completion, and integrated help.
+**IPython**: Interactive Python — an enhanced interpreter designed for scientific computing, offering features like magic commands, tab completion, and post-mortem debugging essential for astronomical data analysis.
 
-**Jupyter notebook**: A web-based interactive computing platform that allows you to create notebooks combining code, results, and text in cells that can be executed individually while maintaining state between executions.
+**Jupyter notebook**: Web-based interactive computing platform combining code, results, and text in cells that maintain state between executions, useful for exploration but dangerous for reproducible science.
 
-**magic command**: Special IPython commands prefixed with `%` (line magics) or `%%` (cell magics) that provide functionality beyond standard Python, such as timing code execution or entering the debugger.
+**magic command**: Special IPython commands prefixed with `%` or `%%` providing functionality beyond standard Python, such as timing code (`%timeit`), debugging (`%debug`), or profiling memory usage.
 
-**module**: A Python file containing code (functions, classes, variables) that can be imported and used in other Python programs, enabling code reuse and organization.
+**module**: A Python file containing functions, classes, and variables that can be imported and used in other programs, enabling code reuse across different analysis scripts.
 
-**REPL**: Read-Eval-Print Loop — an interactive programming environment that takes single expressions, evaluates them, and returns the result immediately, facilitating exploration and testing.
+**REPL**: Read-Eval-Print Loop — an interactive programming environment that immediately evaluates expressions, essential for testing algorithms and exploring telescope data.
 
-**reproducibility**: The ability to obtain consistent results using the same data and code, regardless of who runs it, when, or on what machine — fundamental to scientific integrity.
+**reproducibility**: The ability to obtain identical scientific results using the same data and code, regardless of when or where it's run — fundamental to validating astronomical discoveries.
 
-**script**: A plain text file containing Python code that executes from top to bottom when run, providing consistent and reproducible execution without hidden state.
+**script**: Plain text file containing Python code that executes from top to bottom predictably, providing reproducible execution essential for telescope data pipelines.
 
-**sys.path**: Python's list of directories to search when importing modules, checked in order until a matching module is found, determining what code is available to import.
+**sys.path**: Python's list of directories to search when importing modules, determining which version of astropy or other packages gets loaded.
 
-**__name__**: A special Python variable that equals `"__main__"` when a script is run directly, or the module name when imported, enabling code to behave differently in each context.
+**__name__**: Special Python variable that equals `"__main__"` when a script runs directly or the module name when imported, enabling code to serve both as a standalone tool and importable library.
 
 ## Key Takeaways
 
-✓ **IPython is your primary tool**: Use it for exploration, testing, and quick calculations — not the basic Python interpreter
+✓ **IPython is your primary astronomical tool**: Use it for testing algorithms, exploring data, and rapid prototyping — not the basic Python REPL
 
-✓ **Environment problems cause most "broken code"**: When code fails, check your environment first with `sys.executable`
+✓ **Environment problems cause most "broken" analysis code**: When imports fail, check your environment first with `sys.executable` and `conda list`
 
-✓ **Notebooks corrupt scientific computing**: Hidden state and out-of-order execution make results irreproducible
+✓ **Notebooks corrupt scientific analysis**: Hidden state and execution ambiguity make results irreproducible — use them only for initial exploration
 
-✓ **Scripts enforce reproducibility**: Top-to-bottom execution eliminates ambiguity and hidden state
+✓ **Scripts enforce reproducibility**: Top-to-bottom execution eliminates ambiguity essential for publishable results
 
-✓ **The `__name__` pattern enables reusability**: Code can be both runnable and importable without modification
+✓ **The `__name__` pattern enables pipeline integration**: Code can be both a standalone tool and an importable module
 
-✓ **Conda environments isolate projects**: Each project gets its own Python and packages, preventing conflicts
+✓ **Conda environments isolate telescope projects**: Each survey or instrument can have its own package versions without conflicts
 
-✓ **Always specify package versions**: Use environment.yml files to ensure others can recreate your exact setup
+✓ **Always version-pin packages**: Use `environment.yml` files to ensure collaborators can reproduce your exact analysis
 
-✓ **Paths should be relative, not absolute**: Use `pathlib.Path` for cross-platform compatibility
+✓ **Paths must be configurable**: Use environment variables and Path objects for code that works on both laptops and clusters
 
-✓ **Control randomness with seeds**: Set random seeds for reproducible "random" results
+✓ **Control randomness with seeds**: Always set and document random seeds for Monte Carlo simulations
 
-✓ **Systematic debugging saves time**: Check environment → verify imports → test incrementally
+✓ **Systematic debugging saves telescope time**: Environment check → verify imports → test with known data
 
-✓ **Defensive programming prevents disasters**: Assume things will fail and handle errors gracefully
+✓ **Defensive programming handles messy astronomical data**: Assume bad pixels, cosmic rays, and missing headers
 
 ## Quick Reference Tables
 
-```{list-table} Essential IPython Commands
+:::{list-table} Essential IPython Commands for Astronomy
 :header-rows: 1
 :widths: 20 30 50
 
 * - Command
   - Purpose
-  - Example
+  - Astronomy Example
 * - `%timeit`
   - Time code execution
-  - `%timeit sum(range(1000))`
+  - `%timeit photometry(image)`
 * - `%run`
   - Run script keeping variables
-  - `%run analysis.py`
+  - `%run reduce_spectra.py`
 * - `%debug`
-  - Enter debugger after error
-  - `%debug`
+  - Debug after error
+  - Debug failed source extraction
 * - `%who`
-  - List all variables
-  - `%who`
+  - List variables
+  - Check loaded catalogs
 * - `%whos`
-  - Detailed variable information
-  - `%whos`
-* - `%reset`
-  - Clear all variables
-  - `%reset -f`
-* - `%history`
-  - Show command history
-  - `%history -n 10`
+  - Detailed variable info
+  - Inspect array dimensions
+* - `%matplotlib`
+  - Configure plotting
+  - `%matplotlib inline` for notebooks
+* - `%load`
+  - Load code file
+  - `%load photometry_utils.py`
 * - `%save`
-  - Save code to file
-  - `%save script.py 1-10`
+  - Save session code
+  - `%save reduction.py 1-50`
 * - `?`
   - Quick help
-  - `len?`
+  - `astropy.io.fits.open?`
 * - `??`
-  - Show source code
-  - `len??`
-```
+  - Show source
+  - `photutils.aperture??`
+:::
 
-```{list-table} Environment Debugging Checklist
+:::{list-table} Astronomy Environment Debugging
 :header-rows: 1
 :widths: 25 35 40
 
@@ -1380,230 +2364,171 @@ The debugging strategies you've learned will save you countless hours. The unive
   - What to Look For
 * - Python location
   - `which python`
-  - Should show conda environment path
-* - Python version
-  - `python --version`
-  - Should match project requirements
-* - Active environment
+  - Should show conda environment
+* - Astropy version
+  - `python -c "import astropy; print(astropy.__version__)"`
+  - Version 5.0+ recommended
+* - Environment name
   - `conda info --envs`
-  - Asterisk marks active environment
-* - Installed packages
-  - `conda list`
-  - Verify required packages present
-* - Import paths
-  - `python -c "import sys; print(sys.path)"`
-  - Should include project directories
-* - Package location
-  - `python -c "import pkg; print(pkg.__file__)"`
-  - Should be in conda environment
-```
+  - Asterisk marks active
+* - Astronomy packages
+  - `conda list | grep astro`
+  - astropy, astroquery, etc.
+* - FITS support
+  - `python -c "from astropy.io import fits"`
+  - Should import without error
+* - Data paths
+  - `echo $ASTRO_DATA`
+  - Your data directory
+:::
 
 ## Python Module & Method Reference
 
 :::{note}
-**Your Growing Python Toolkit**
+**Building Your Astronomy Python Toolkit**
 
-This reference section starts with Chapter 1's tools and will expand with each chapter. By course end, you'll have built a comprehensive personal Python reference covering everything from basic file operations to advanced machine learning libraries. Think of this as your Python cookbook that you're writing as you learn — bookmark it, you'll use it constantly!
+This reference focuses on modules and methods essential for astronomical data analysis. Each chapter adds new tools to your arsenal. By course end, you'll have a comprehensive reference covering everything from FITS I/O to cosmological calculations.
 :::
 
-This reference section catalogs all Python modules, functions, and methods introduced in this chapter. It will grow throughout the course as you learn new tools. Think of this as your personal Python toolkit that you're building piece by piece.
+### Astronomy-Specific Modules
 
-### Standard Library Modules
-
-**`sys` module** - System-specific parameters and functions
+**`astropy` core modules**
 ```python
-import sys
+import astropy
+import astropy.units as u
+import astropy.constants as const
+import astropy.coordinates as coord
+import astropy.time as time
+import astropy.io.fits as fits
 ```
-- `sys.executable` - Path to the Python interpreter currently running
-- `sys.version` - Python version information as a string
-- `sys.path` - List of directories Python searches for modules
-- `sys.getsizeof(object)` - Returns size of object in bytes
 
-**`os` module** - Operating system interface
+Key components:
+- `u.Quantity(value, unit)` - Numbers with units
+- `const.c`, `const.G`, `const.M_sun` - Physical constants
+- `coord.SkyCoord(ra, dec)` - Celestial coordinates
+- `time.Time(value, format='jd')` - Astronomical time
+- `fits.open(filename)` - FITS file I/O
+
+**`numpy` for astronomical arrays**
 ```python
-import os
+import numpy as np
 ```
-- `os.getcwd()` - Returns current working directory as string
-- `os.getenv('VAR_NAME', default)` - Gets environment variable value
-- `os.sep` - Path separator for your OS ('/' on Unix, '\\' on Windows)
+Essential for astronomy:
+- `np.median()` - Robust against cosmic rays
+- `np.nanmean()` - Handle masked pixels
+- `np.fft.fft()` - Fourier analysis for periods
+- `np.random.seed()` - Reproducible Monte Carlo
+- `np.memmap()` - Large FITS files
 
-**`math` module** - Mathematical functions
+**`matplotlib` for astronomical plots**
 ```python
-import math
+import matplotlib.pyplot as plt
 ```
-- `math.pi` - Mathematical constant π (3.14159...)
-- `math.sqrt(x)` - Square root of x
-- `math.factorial(n)` - Returns n! (n factorial)
+Astronomy-specific:
+- `plt.imshow(image, origin='lower')` - Display FITS images
+- `plt.scatter(phase, mag)` - Phase-folded light curves
+- `plt.errorbar(x, y, yerr)` - Measurements with errors
+- `plt.subplot(projection=wcs)` - WCS projections
 
-**`pathlib` module** - Object-oriented filesystem paths
+### Standard Library for Astronomy
+
+**`pathlib` for data management**
 ```python
 from pathlib import Path
-```
-- `Path()` - Creates a path object
-- `Path.cwd()` - Current working directory as Path object
-- `Path.home()` - User's home directory
-- `path.exists()` - Returns True if path exists
-- `path.expanduser()` - Expands ~ to home directory
-- `path / 'subdir'` - Joins paths using `/` operator
 
-**`random` module** - Generate random numbers
-```python
-import random
+data_dir = Path('/data/observations')
+night = '2024-03-15'
+fits_path = data_dir / night / 'raw' / 'science_001.fits'
 ```
-- `random.seed(n)` - Initialize random number generator for reproducibility
-- `random.random()` - Random float between 0.0 and 1.0
 
-**`timeit` module** - Time small code snippets
-```python
-import timeit
-```
-- `timeit.timeit(code, number=N)` - Times code execution N times, returns total seconds
-
-**`subprocess` module** - Run external commands
-```python
-import subprocess
-```
-- `subprocess.run(cmd, capture_output=True, text=True)` - Executes command and captures output
-
-**`json` module** - JSON encoder and decoder
+**`json` for observation logs**
 ```python
 import json
-```
-- `json.dump(obj, file)` - Write Python object as JSON to file
-- `json.load(file)` - Read JSON from file into Python object
 
-### Built-in Functions (No Import Needed)
-
-**Core Functions**
-- `print(*args)` - Display output to console
-- `len(obj)` - Returns length/size of object
-- `sum(iterable)` - Sum all elements in an iterable
-- `range(start, stop, step)` - Generate sequence of numbers
-- `enumerate(iterable, start=0)` - Returns index-value pairs
-- `dir(object)` - List all attributes of an object
-- `type(object)` - Returns the type of an object
-- `eval(string)` - Evaluates a Python expression string (use carefully!)
-
-**Type Conversions**
-- `int(x)` - Convert to integer
-- `float(x)` - Convert to floating-point number
-- `str(x)` - Convert to string
-- `list(x)` - Convert to list
-
-**Object Inspection**
-- `hasattr(obj, 'attribute')` - Check if object has an attribute
-- `getattr(obj, 'attribute', default)` - Get attribute value or default
-- `__import__(name)` - Import module by name (rarely used directly)
-
-**File Operations**
-```python
-with open('file.txt', 'r') as f:
-    content = f.read()
-```
-- `open(filename, mode)` - Open file ('r' read, 'w' write, 'a' append)
-- `file.read()` - Read entire file as string
-- `file.write(string)` - Write string to file
-- `with` statement - Ensures file is properly closed after use
-
-### IPython Magic Commands
-
-These special commands only work in IPython, not regular Python scripts. They're prefixed with `%` for line magics or `%%` for cell magics.
-
-**Timing and Profiling**
-- `%timeit code` - Time execution with statistical analysis
-- `%time code` - Time single execution
-
-**Workspace Management**
-- `%who` - List all variables
-- `%whos` - Detailed variable information with types and values
-- `%reset` - Clear all variables from memory
-- `%reset -f` - Force reset without confirmation
-
-**Code Execution**
-- `%run script.py` - Execute Python script in IPython
-- `%save filename.py n-m` - Save lines n through m to file
-- `%load filename.py` - Load code from file into cell
-
-**Debugging**
-- `%debug` - Enter debugger after an exception
-- `%pdb` - Automatic debugger on exceptions
-
-**Help and History**
-- `?` - Quick help (e.g., `len?`)
-- `??` - Show source code (e.g., `len??`)
-- `%history` - Show command history
-- `%history -n 10` - Show last 10 commands
-
-**IPython Special Variables**
-- `In[n]` - Input history (code you typed in cell n)
-- `Out[n]` - Output history (result from cell n)
-- `_` - Previous output
-- `__` - Second-to-last output
-- `___` - Third-to-last output
-
-### Data Structures and Patterns
-
-**List Comprehensions**
-```python
-# Pattern: [expression for item in iterable if condition]
-squares = [x**2 for x in range(10)]
-filtered = [x for x in data if x > 0]
-```
-
-**Dictionary Creation**
-```python
-# Creating dictionaries for data organization
-star_data = {
-    'name': 'Delta Cephei',
-    'period': 5.366,
-    'magnitude': 3.95
+obs_log = {
+    'target': 'M31',
+    'exposure': 300,
+    'filter': 'r',
+    'airmass': 1.2
 }
+json.dump(obs_log, open('obs_log.json', 'w'))
 ```
 
-**The `if __name__ == "__main__"` Pattern**
+### IPython Magic for Astronomy
+
+**Astronomy-specific magics**
+- `%timeit photometry(image)` - Time reduction steps
+- `%debug` - Debug failed extractions
+- `%run reduce_night.py` - Run reduction scripts
+- `%load_ext autoreload` - Reload modified modules
+- `%matplotlib widget` - Interactive plots
+
+### Environment Management
+
+**Conda for astronomy**
+```bash
+# Create astronomy environment
+conda create -n astro python=3.11
+conda activate astro
+
+# Essential astronomy stack
+conda install -c conda-forge \
+    numpy scipy matplotlib \
+    astropy astroquery photutils \
+    specutils ccdproc
+
+# Telescope-specific
+conda install -c astropy ginga  # FITS viewer
+pip install webbpsf  # JWST PSFs
+```
+
+### Quick Astronomy Patterns
+
+**Safe FITS file reading**
 ```python
-# Makes code both importable and runnable
-if __name__ == "__main__":
-    # This code only runs when script is executed directly
-    main()
+from astropy.io import fits
+from pathlib import Path
+
+def read_fits_safely(filename):
+    """Read FITS with error handling."""
+    path = Path(filename)
+    if not path.exists():
+        raise FileNotFoundError(f"FITS file not found: {filename}")
+    
+    try:
+        with fits.open(path) as hdul:
+            data = hdul[0].data.copy()
+            header = hdul[0].header.copy()
+        return data, header
+    except Exception as e:
+        print(f"Error reading {filename}: {e}")
+        return None, None
 ```
 
-### Quick Usage Examples
-
-```{code-cell} ipython3
-# Finding what's in a module
-import math
-math_functions = [x for x in dir(math) if not x.startswith('_')]
-print(f"math has {len(math_functions)} functions")
-
-# Checking your environment
-import sys
-print(f"Python lives at: {sys.executable}")
-
-# Safe file reading
-from pathlib import Path
-file = Path("data.txt")
-if file.exists():
-    content = file.read_text()
-else:
-    print("File not found - using defaults")
-
-# Reproducible randomness
-import random
-random.seed(42)  # Always produces same "random" sequence
+**Reproducible Monte Carlo**
+```python
+def monte_carlo_errors(data, n_iterations=1000, seed=42):
+    """Monte Carlo error propagation."""
+    np.random.seed(seed)  # Always set seed!
+    
+    results = []
+    for i in range(n_iterations):
+        simulated = data + np.random.normal(0, data_err)
+        results.append(analyze(simulated))
+    
+    return np.mean(results), np.std(results)
 ```
 
 ### When to Use What?
 
-- **For file paths**: Always use `pathlib.Path`, never hardcode strings
-- **For timing code**: Use `%timeit` in IPython, `timeit.timeit()` in scripts  
-- **For checking Python**: Use `sys.executable` and `sys.version`
-- **For randomness**: Always set `random.seed()` for reproducibility
-- **For debugging**: Use `%debug` in IPython after errors occur
-- **For exploration**: Use `dir()` and `?` to discover functionality
-
-This reference will expand as you learn new modules. Keep it handy, you'll refer to it often as you build your computational toolkit!
+- **For coordinates**: Always use `astropy.coordinates`, never roll your own
+- **For time**: Use `astropy.time.Time` for precision (handles leap seconds)
+- **For units**: Use `astropy.units` to prevent Mars Climate Orbiter disasters
+- **For FITS**: Use `astropy.io.fits`, not older pyfits
+- **For plotting**: Start with matplotlib, consider plotly for interactive
+- **For large arrays**: Use numpy with memmap for files > RAM
+- **For Monte Carlo**: Always set random seed for reproducibility
 
 ## Next Chapter Preview
 
-Now that you understand your computational environment and can work effectively in IPython, Chapter 2 will transform Python into a powerful scientific calculator. You'll discover why `0.1 + 0.2 ≠ 0.3` in Python (and every programming language), learn to handle the numerical precision issues that plague computational physics, and understand how computers actually represent numbers. These fundamentals might seem basic, but small numerical errors compound exponentially - a tiny rounding error in an orbital calculation can send your simulated spacecraft to the wrong planet. Get ready to master the subtle art of computational arithmetic where every digit matters and where understanding floating-point representation can mean the difference between a successful mission and a spectacular failure.
+Now that you've mastered your computational environment, Chapter 2 will transform Python into a powerful astronomical calculator. You'll discover why `0.1 + 0.2 ≠ 0.3` matters when calculating planetary orbits, learn how floating-point errors compound during numerical integration of stellar evolution, and understand why spacecraft trajectories require quadruple precision arithmetic. You'll implement algorithms for coordinate transformations, time system conversions, and cosmological calculations — all while managing the numerical precision that separates a successful Mars landing from a crater. Get ready to understand why the Patriot missile disaster happened and how to prevent similar catastrophes in your astronomical computations!

@@ -1,4 +1,4 @@
-# JAX Deep Learning Stack: Flax, Optax, and Orbax
+# ⚠️ JAX Deep Learning Stack: Flax, Optax, and Orbax
 
 ## Learning Objectives
 By the end of this chapter, you will:

@@ -1,8 +1,8 @@
 # ASTR 596: Final Project Guide
 
-##Neural Networks for Astrophysical Discovery**
+## **Neural Networks for Astrophysical Discovery**
 
-### Overview
+### **Overview**
 
 The final project is your opportunity to synthesize everything you've learned by tackling a novel scientific question using neural networks. You'll extend one of your previous projects (P1-P6), refactor it to JAX, and apply neural network methods to solve a problem that would be difficult or impossible with classical approaches alone.
 

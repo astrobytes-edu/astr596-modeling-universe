@@ -45,12 +45,13 @@ project:
     - '03-python/03-advanced-scientific-computing/**'
     - '03-python/04-parallel-and-hpc/**'
     - '03-python/05-modern-approaches-jax-ecosystem/**'
-    #- '04-computational-methods/**'
-    #- '05-astrophysics/**'
-    #- '06-math-and-probability/**'
-    #- '07-short-projects/**'
-    - '08-final-project/**'
-    - '09-reference/**'
+    #- '04-astrophysics/**'
+    #- '05-math-and-statistics/**'
+    #- '06-numerical-methods/**'
+    #- '07-machine-learning/**'
+    #- '08-short-projects/**'
+    - '09-final-project/**'
+    - '10-reference/**'
     - '.ipynb_checkpoints/**'
     - '__pycache__/**'
     - '*.pyc'
@@ -58,6 +59,7 @@ project:
     - '_build/**'
     - '**/draft-*.md'  # Excludes all draft-*.md files in any directory
     - '**/paper-*.md'
+    - '**/OLD-*.md'
   # Add this section for PDF exports
   exports:
     - format: pdf

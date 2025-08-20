@@ -1,4 +1,4 @@
-# JAX Fundamentals: NumPy on Steroids
+# ⚠️ JAX Fundamentals: NumPy on Steroids
 
 ## Learning Objectives
 By the end of this chapter, you will:

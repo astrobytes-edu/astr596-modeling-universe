@@ -1,4 +1,4 @@
-# JAX Advanced Patterns: Control Flow and Optimization
+# ⚠️ JAX Advanced Patterns: Control Flow and Optimization
 
 ## Learning Objectives
 By the end of this chapter, you will:
