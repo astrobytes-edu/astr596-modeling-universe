@@ -29,7 +29,7 @@ kernelspec:
 - **Location:** PA 215
 - **Course Website:** <https://astrobytes-edu.github.io/astr596-modeling-universe/>
 - **Platforms:** Canvas, Slack, GitHub Classroom
-💩
+
 ### Class Meeting Structure
 
 **Pre-Class Preparation (Required):**

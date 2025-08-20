@@ -129,12 +129,10 @@ This course teaches you to use AI tools (GitHub Copilot, ChatGPT) as **learning 
 
 ## Getting Started
 
-1. 📖 Review the [Syllabus](./01-course-info/01-astr596-syllabus-fall25.md) and [AI Guidelines](./01-course-info/03-astr596-ai-policy.md)
-2. ⚙️ Set up your development environment (see [Resources](./02-getting-started/02-software-setup.md))
+1. 📖 Review the [Syllabus](01-course-info/01-astr596-syllabus-fall25) and [AI Guidelines](01-course-info/03-astr596-ai-policy)
+2. ⚙️ Set up your development environment (see [Getting Started](02-getting-started))
 3. 👥 Join the course GitHub organization **TBD**
-4. 🚀 Start with [Project 1 **TBD**](./08-short-projects/00-project-submission-guide.md)
-
----
+4. 🚀 Start with [Project 1 **TBD**](08-short-projects)
 
 :::{important} Questions or Issues?
 
