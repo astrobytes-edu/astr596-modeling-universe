@@ -13,7 +13,7 @@ kernelspec:
 
 ## Why Version Control Will Save Your Research
 
-**Imagine this:** It's 2 AM, three days before your thesis defense. You accidentally delete 400 lines of working code while trying to "clean up." Or worse—your laptop dies, taking six months of work with it.
+**Imagine this:** It's 2 AM, three days before your thesis defense. You accidentally delete 400 lines of working code while trying to "clean up." Or worse—your laptop dies, taking two years of work with it.
 
 **This happens to someone every semester.**
 

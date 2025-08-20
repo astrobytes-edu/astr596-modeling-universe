@@ -7,6 +7,7 @@
 Build a comprehensive `Star` class that calculates stellar properties with metallicity dependence and implements fundamental astronomical relations for synthetic data generation.
 
 ### Core Physics Components
+
 - **Stellar Structure**: Implement full Tout et al. (1996) metallicity-dependent ZAMS relations for L(M,Z) and R(M,Z)
 - **Stellar Evolution**: Basic stellar lifetime calculations, main sequence evolution tracks
 - **Fundamental Astronomy**: Wien's law, blackbody function, parallax-distance relation, angular size

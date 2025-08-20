@@ -42,19 +42,21 @@ project:
     - 'draft-*.md'
     - 'TODO.md'
     - 'instructor-notes/**'
-    - '03-python/03-advanced-scientific-computing/*.md'
-    - '03-python/04-parallel-and-hpc/*.md'
-    - '03-python/05-modern-approaches-jax-ecosystem/*.md'
+    - '03-python/03-advanced-scientific-computing/**'
+    - '03-python/04-parallel-and-hpc/**'
+    - '03-python/05-modern-approaches-jax-ecosystem/**'
     - '04-computational-methods/**'
     - '05-astrophysics/**'
     - '06-math-and-probability/**'
     - '07-short-projects/**'
-    - '08-short-projects/**'
+    - '08-final-project/**'
+    - '09-reference/**'
     - '.ipynb_checkpoints/**'
     - '__pycache__/**'
     - '*.pyc'
     - '.DS_Store'
     - '_build/**'
+    - '**/draft-*.md'  # Excludes all draft-*.md files in any directory
   
   # Add this section for PDF exports
   exports:

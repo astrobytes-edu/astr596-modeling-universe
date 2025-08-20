@@ -10,12 +10,12 @@ kernelspec:
   name: python3
 ---
 
-# Course Schedule & Important Dates (in prep.)
+# ⚠️ Course Schedule & Important Dates
 
 ## Tentative Schedule Structure
 
-**Mondays:** New project assigned via GitHub Classroom; previous project due at 11:59 PM  
-**Wednesdays:** Growth Memo due via Canvas PDF submission (when applicable)  
+**Mondays:** New project assigned via GitHub Classroom; previous project & growth memo due at 11:59 PM  
+ 
 **Fridays:** Class meeting (11:00 AM - 1:40 PM) with prepared discussion and project work
 
 ## Weekly Topics & Readings
