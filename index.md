@@ -122,19 +122,16 @@ This course teaches you to use AI tools (GitHub Copilot, ChatGPT) as **learning 
 
 :::{list-table} **Scaffolded AI Usage Policy: AI as a Learning Partner**
 :header-rows: 1
-:widths: 15 20 30
+:widths: 20 30
+:align: center
 
 * - Phase
-  - Timeline
   - Permitted Usage
-* - **Phase 1**
-  - Weeks 1-6
+* - **Phase 1**: Weeks 1-6
   - Foundation building with limited AI assistance
-* - **Phase 2**
-  - Weeks 7-12
+* - **Phase 2**: Weeks 7-12
   - Strategic AI integration with critical evaluation
-* - **Phase 3**
-  - Weeks 12-16
+* - **Phase 3**: Weeks 12-16
   - AI-augmented workflow for professional practice
 :::
 
