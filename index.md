@@ -118,14 +118,31 @@ graph TD
 
 ## Responsible AI Integration
 
-:::{note} AI as a Learning Partner
+AI as a Learning Partner
 
 This course teaches you to use AI tools (GitHub Copilot, ChatGPT) as **learning amplifiers**, not replacement thinking. You'll develop critical evaluation skills while building the foundational knowledge that makes AI truly powerful.
 
-**Phase 1 (Weeks 1-6)**: Foundation building with limited AI assistance  
-**Phase 2 (Weeks 7-12)**: Strategic AI integration with critical evaluation  
-**Phase 3 (Weeks 12-16)**: Full AI partnership for advanced implementations
-:::
+Or if you prefer a more detailed version with additional styling:
+
+```{list-table} AI Tool Usage Throughout the Semester
+:header-rows: 1
+:widths: 15 20 65
+:class: full-width
+:align: left
+
+* - **Phase**
+  - **Timeline**
+  - **Learning Approach**
+* - **Phase 1**
+  - Weeks 1-6
+  - Foundation building with limited AI assistance
+* - **Phase 2**
+  - Weeks 7-12
+  - Strategic AI integration with critical evaluation
+* - **Phase 3**
+  - Weeks 12-16
+  - Full AI partnership for advanced implementations
+```
 
 ## Getting Started
 
