@@ -118,8 +118,7 @@ graph TD
 
 ## Responsible AI Integration
 
-```{admonition} AI as a Learning Partner
-:class: note
+:::{note} AI as a Learning Partner
 
 This course teaches you to use AI tools (GitHub Copilot, ChatGPT) as **learning amplifiers**, not replacement thinking. You'll develop critical evaluation skills while building the foundational knowledge that makes AI truly powerful.
 
