@@ -9,7 +9,7 @@ kernelspec:
   language: python
   name: python3
 ---
-# ⚠️ Chapter 2: Software Setup Guide
+# Chapter 2: Software Setup Guide
 
 :::{admonition} 💻 Before You Start
 :class: checklist

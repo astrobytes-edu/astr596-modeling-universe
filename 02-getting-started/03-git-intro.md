@@ -9,7 +9,7 @@ kernelspec:
   language: python
   name: python3
 ---
-# ⚠️ Chapter 3: Introduction to Git and GitHub
+# Chapter 3: Introduction to Git and GitHub
 
 ## Why Version Control Will Save Your Research
 
@@ -22,6 +22,7 @@ Git prevents these disasters. It's your safety net, collaboration tool, and scie
 :::{tip} 🎯 What You'll Learn
 
 After this guide, you'll be able to:
+
 - ✓ Never lose code again (even if your laptop explodes)
 - ✓ Submit assignments via GitHub Classroom
 - ✓ Collaborate without fear of overwriting others' work
@@ -32,7 +33,8 @@ After this guide, you'll be able to:
 ## The Version Control Nightmare (Without Git)
 
 We've all been here:
-```
+
+```bash
 stellar_evolution.py
 stellar_evolution_v2.py
 stellar_evolution_v2_FIXED.py
@@ -40,7 +42,7 @@ stellar_evolution_v2_FIXED_actually_works.py
 stellar_evolution_OLD_DO_NOT_DELETE.py
 stellar_evolution_FINAL.py
 stellar_evolution_FINAL_REAL.py
-stellar_evolution_FINAL_REAL_USE_THIS_ONE.py
+stellar_evolution_FINAL_FOR_REAL_USE_THIS_ONE.py
 ```
 
 With Git, you have ONE file with complete history. Every change is tracked, documented, and reversible.
@@ -70,9 +72,11 @@ graph LR
 :::{tab-item} macOS
 :sync: tab1
 Git comes pre-installed. Verify with:
+
 ```bash
 git --version
 ```
+
 If not installed, it will prompt you to install Xcode Command Line Tools.
 :::
 
@@ -86,13 +90,15 @@ sudo apt-get install git
 # Fedora
 sudo dnf install git
 ```
+
 :::
 
 :::{tab-item} Windows
 :sync: tab3
-Download from https://git-scm.com/download/win
+Download from <https://git-scm.com/downloads>
 
 **Important**: During installation, select:
+
 - "Git from the command line and also from 3rd-party software"
 - "Use Visual Studio Code as Git's default editor"
 - "Override default branch name" → type "main"
@@ -124,7 +130,7 @@ git config --list
 1. Go to https://github.com
 2. Sign up with your **SDSU email** (critical for Student Pack!)
 3. Verify your email address
-4. Apply for Student Developer Pack: https://education.github.com/pack
+4. Apply for Student Developer Pack: <https://education.github.com/pack>
    - Free GitHub Pro account
    - **GitHub Copilot Pro** (free for students - normally $10/month)
    - GitHub Codespaces hours
@@ -133,6 +139,7 @@ git config --list
 :::{note} 📚 Student Developer Pack Benefits
 
 The pack includes professional tools worth thousands of dollars:
+
 - **GitHub Copilot Pro**: AI pair programmer (disabled for this course initially)
 - **Cloud credits**: Azure ($100), DigitalOcean, and more
 - **Domain names**: Free .tech, .me domains
@@ -146,6 +153,7 @@ Verification typically takes 1-72 hours. You'll get an email when approved.
 :::{important} 🔐 Required Since August 2021
 
 GitHub no longer accepts passwords for Git operations. You need either:
+
 1. **Personal Access Token (easier)** - We'll use this
 2. SSH Keys (more secure but complex)
 
@@ -167,6 +175,7 @@ We'll use Personal Access Tokens (classic) for simplicity. GitHub also offers "f
 9. **COPY THE TOKEN NOW!** You won't see it again!
 
 **Save your token securely:**
+
 ```bash
 # Configure Git to remember credentials (so you don't paste token every time)
 git config --global credential.helper cache  # Linux/Mac: remembers for 15 min
@@ -266,6 +275,7 @@ git push
 :::{warning} ⚠️ Critical: Submission = Push
 
 **Your submission is whatever is pushed to GitHub by the deadline!**
+
 - No "submit" button needed
 - Push early, push often
 - You can push unlimited times before deadline
@@ -616,14 +626,15 @@ You're ready for this course when you can:
 
 ## Beyond Basics: Useful Features
 
-```{admonition} 🚀 Level Up Your Git Skills
-:class: note, dropdown
+:::{note} 🚀 Level Up Your Git Skills
+:class: dropdown
 
 **Stashing** (temporary storage):
+
 ```bash
 git stash          # Save changes temporarily
 git stash pop      # Restore changes
-```
+:::
 
 **Viewing specific commits**:
 
@@ -649,6 +660,7 @@ git config --global alias.cm commit
 git config --global alias.br branch
 # Now use: git st, git cm, etc.
 ```
+
 :::
 
 ## Resources
@@ -664,8 +676,7 @@ git config --global alias.br branch
 1. ✅ Git is configured
 2. ✅ GitHub account ready
 3. ✅ Can clone, commit, and push
-4. → Continue to [Command Line Interface Guide](03-cli-intro-guide)
-5. → Accept your first assignment on GitHub Classroom!
+4. → Accept your first assignment on GitHub Classroom!
 
 ---
 

@@ -13,6 +13,7 @@ kernelspec:
 # Why ASTR 596 is Different
 
 :::{note} **TL;DR:** This Course Prepares You for Research Reality
+:class: dropdown
 
 Traditional lecture-based courses teach you to follow recipes and get right answers. Research requires creating solutions to problems nobody has solved yet. This course bridges that gap through:
 
@@ -40,7 +41,7 @@ Whether pursuing academia, industry, or other technical careers, you'll face:
 
 ### The Jarring Transition: Student → Scientist
 
-As Martin Schwartz explains in his 2008 essay ["The Importance of Stupidity in Scientific Research"](https://doi.org/10.1242/jcs.033340) published in *Nature* (required reading for Week 1):
+As Martin Schwartz explains in his 2008 essay ["The Importance of Stupidity in Scientific Research"](https://doi.org/10.1242/jcs.033340) (required reading for Week 1):
 
 > **Undergraduate coursework**: Getting the right answers, feeling smart when you know them.
 > 
@@ -80,7 +81,7 @@ Traditional courses accidentally train students to:
 
 **This doesn't prepare you for careers where creativity and independent thinking are essential.**
 
-But here's what traditional courses rob you of: **the addictive joy of discovery**. There's nothing quite like the rush of finally cracking a problem you've been wrestling with for hours. That "aha!" moment when disparate pieces suddenly click together. The pride of building something that works through your own effort and creativity. 
+But here's what traditional courses rob you of: **the addictive joy of discovery**. There's nothing quite like the rush of finally cracking a problem you've been wrestling with for hours. That "aha!" moment when disparate pieces suddenly click together. The pride of building something that works through your own effort and creativity.
 
 Research scientists don't endure the struggle despite the difficulty — they do it because solving hard problems and coming up with new ideas and strategies keeps things exciting. This course is designed to provide you with similar opportunities in a supportive, educational environment.
 
@@ -90,7 +91,7 @@ Research scientists don't endure the struggle despite the difficulty — they do
 
 ### Research Validation
 
-**Ting & O'Briain (2025)** studied LLM integration in astronomy education and found:
+[**Ting & O'Briain (2025)**](https://arxiv.org/abs/2506.06921) studied LLM integration in astronomy education and found:
 
 - Students **decreased AI dependence over time** with structured guidance.
 - AI became a **learning tool rather than shortcut**.
@@ -99,7 +100,7 @@ Research scientists don't endure the struggle despite the difficulty — they do
 
 **Key insight**: Thoughtful AI integration with reflection requirements enhances learning while building essential 21st-century skills.
 
-**Li (2024)** found that new-era university students need scaffolded transitions to autonomy — they have strong abilities but weak self-control without structure. This directly informs our three-phase approach.
+[**Li (2024)**](https://www.scirp.org/journal/paperinformation?paperid=134134) found that new-era university students need scaffolded transitions to autonomy — they have strong abilities but weak self-control without structure. This directly informs our three-phase approach.
 
 ### Core Design Elements
 
@@ -131,7 +132,7 @@ Research scientists don't endure the struggle despite the difficulty — they do
 
 ---
 
-![Growth vs. Fixed Mindset.](growth-mindset.jpeg)
+![Growth vs. Fixed Mindset (image credit: lifehack.org) ](growth-mindset.jpeg)
 
 ---
 
@@ -164,7 +165,7 @@ Research scientists don't endure the struggle despite the difficulty — they do
 
 This is a Python-intensive course. You'll develop:
 
-- Proficiency with NumPy, Matplotlib, SciPy  
+- Proficiency with `NumPy`, `Matplotlib`, `SciPy`, `Pandas`, `Jax`
 - Debugging complex numerical code
 - Performance optimization techniques
 - Version control and documentation practices
@@ -179,15 +180,15 @@ These aren't just academic exercises – these are the exact tools used at NASA,
 
 ### "This seems different than other courses"
 
-**Yes, it is different — intentionally.** This requires consistent daily practice unlike lecture-based courses. You're developing new neural pathways for independent thinking and creative problem-solving. This isn't metaphorical — neuroscience research shows this literally requires brain rewiring through effortful practice.
+**Yes, it is different — *intentionally*.** This requires consistent daily practice unlike lecture-based courses. You're developing new neural pathways for independent thinking and creative problem-solving. This isn't metaphorical — neuroscience research shows this literally requires brain rewiring through effortful practice.
 
 **The neuroscience is clear:**
 
-- **Your brain physically rewires when learning challenging material.** Woollett & Maguire (2011) demonstrated that London taxi drivers' hippocampi — the brain region crucial for spatial navigation — grew measurably larger after mastering the city's 25,000+ streets. This structural brain change occurred in adults averaging 40+ years old, proving neuroplasticity works at any age.
+- **Your brain physically rewires when learning challenging material.** [Woollett & Maguire (2011)](https://pmc.ncbi.nlm.nih.gov/articles/PMC3268356/) demonstrated that London taxi drivers' hippocampi — the brain region crucial for spatial navigation — grew measurably larger after mastering the city's 25,000+ streets. This structural brain change occurred in adults averaging 40+ years old, proving neuroplasticity works at any age.
 
-- **Struggle directly triggers neuroplasticity.** When you wrestle with difficult concepts, your brain releases BDNF (brain-derived neurotrophic factor), often called "Miracle Gro for the brain." This protein stimulates the formation of new synaptic connections (Draganski et al., 2004).
+- **Struggle directly triggers neuroplasticity.** When you wrestle with difficult concepts, your brain releases BDNF (brain-derived neurotrophic factor), often called "Miracle Gro for the brain." This protein stimulates the formation of new synaptic connections ([Draganski et al., 2004](https://www.nature.com/articles/427311a)).
 
-- **Error signals drive learning.** Moser et al. (2011) used EEG to show that the brain generates two distinct responses to mistakes: error detection (ERN) and error awareness (Pe). Students with growth mindsets showed enhanced Pe amplitude, which directly predicted improved performance. Your brain literally learns more from errors than successes.
+- **Error signals drive learning.** [Moser et al. (2011)](https://pubmed.ncbi.nlm.nih.gov/22042726/) used EEG to show that the brain generates two distinct responses to mistakes: error detection (ERN) and error awareness (Pe). Students with growth mindsets showed enhanced Pe amplitude, which directly predicted improved performance. Your brain literally learns more from errors than successes.
 
 - **Growth mindset has measurable neural correlates.** Tirri & Kujala (2016) found that believing intelligence is malleable activates different brain networks during problem-solving, leading to enhanced error processing and better learning outcomes across thousands of replicated studies.
 
@@ -291,21 +292,23 @@ Computational thinking requires consistent daily practice, not last-minute cramm
 ### References & Additional Resources
 
 **Core Readings:**
-- Schwartz, M. A. (2008). [The importance of stupidity in scientific research](https://journals.biologists.com/jcs/article/121/11/1771/30038/The-importance-of-stupidity-in-scientific-research). *Journal of Cell Science*, 121(11), 1771.
+- Schwartz, M. A. (2008). [The importance of stupidity in scientific research](https://journals.biologists.com/jcs/article/121/11/1771/30038/The-importance-of-stupidity-in-scientific-research). *Journal of Cell Science*
 
 **Neuroscience of Learning:**
-- Moser, J. S., Schroder, H. S., Heeter, C., Moran, T. P., & Lee, Y. H. (2011). [Mind your errors: Evidence for a neural mechanism linking growth mind-set to adaptive posterror adjustments](https://pubmed.ncbi.nlm.nih.gov/22042726/). *Psychological Science*, 22(12), 1484-1489.
 
-- Woollett, K., & Maguire, E. A. (2011). [Acquiring "the Knowledge" of London's layout drives structural brain changes](https://pmc.ncbi.nlm.nih.gov/articles/PMC3268356/). *Current Biology*, 21(24), 2109-2114.
+- Moser, J. S., Schroder, H. S., Heeter, C., Moran, T. P., & Lee, Y. H. (2011). [Mind your errors: Evidence for a neural mechanism linking growth mind-set to adaptive posterror adjustments](https://pubmed.ncbi.nlm.nih.gov/22042726/). *Psychological Science*
 
-- Draganski, B., Gaser, C., Busch, V., Schuierer, G., Bogdahn, U., & May, A. (2004). Neuroplasticity: Changes in grey matter induced by training. *Nature*, 427(6972), 311-312.
+- Woollett, K., & Maguire, E. A. (2011). [Acquiring "the Knowledge" of London's layout drives structural brain changes](https://pmc.ncbi.nlm.nih.gov/articles/PMC3268356/). *Current Biology*
+
+- Draganski, B., Gaser, C., Busch, V., Schuierer, G., Bogdahn, U., & May, A. (2004). [Neuroplasticity: Changes in grey matter induced by training](https://www.nature.com/articles/427311a). *Nature*
 
 **Growth Mindset & Educational Research:**
-- Tirri, K., & Kujala, T. (2016). [Students' mindsets for learning and their neural underpinnings](https://www.scirp.org/journal/paperinformation?paperid=69884). *Psychology*, 7(09), 1231-1239.
 
-- Uwerhiavwe, O. (2022). [The influence of learners' mathematical social identities on their mathematics learning](https://www.scirp.org/journal/paperinformation?paperid=122622). *Open Journal of Social Sciences*, 10(13), 458-473.
+- Tirri, K., & Kujala, T. (2016). [Students' mindsets for learning and their neural underpinnings](https://www.scirp.org/journal/paperinformation?paperid=69884). *Psychology*
 
-- Li, Y. (2024). [Characteristics of the mindset and behaviour of university students in the new era and educational countermeasures](https://www.scirp.org/journal/paperinformation?paperid=134134). *Creative Education*, 15(08), 1685-1700.
+- Uwerhiavwe, O. (2022). [The influence of learners' mathematical social identities on their mathematics learning](https://www.scirp.org/journal/paperinformation?paperid=122622). *Open Journal of Social Sciences*
+
+- Li, Y. (2024). [Characteristics of the mindset and behaviour of university students in the new era and educational countermeasures](https://www.scirp.org/journal/paperinformation?paperid=134134). *Creative Education*
 
 **AI in Education:**
 - Ting, Y. S. & O'Briain, D. (2025). [Teaching astronomy with large language models](https://arxiv.org/abs/2506.06921). *arXiv preprint* arXiv:2506.06921.

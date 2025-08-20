@@ -31,19 +31,23 @@ This isn't a survey of astronomical software packages where you learn to use ast
 You start with stellar physics because it's conceptually accessible — everyone intuitively understands that hot things glow and massive things attract. Implementing a `Star` class teaches object-oriented thinking naturally. A star has properties (mass, temperature, luminosity) and methods (evolve, radiate, calculate_lifetime). This makes OOP concrete rather than abstract.
 
 You'll then build a `StellarPopulation` class that manages hundreds to thousands of stars simultaneously. Here's where you'll discover the power of vectorization — a fundamental concept in scientific computing. Instead of writing loops like:
+
 ```python
 for star in stars:
     star.luminosity = calculate_luminosity(star.mass)
 ```
+
 You'll learn to think in arrays:
+
 ```python
 luminosities = stellar_constant * masses**3.5  # Main sequence relation, all stars at once!
 ```
+
 This single line replaces thousands of function calls. Your code will run *much* faster using NumPy's vectorized operations. This isn't just about speed—vectorized thinking changes how you approach problems. Instead of "for each particle, calculate force," you'll think "calculate all forces simultaneously as matrix operations." This mental shift is essential for everything that follows: Monte Carlo simulations, neural network operations, and JAX's array programming paradigm all require this vectorized mindset.
 
 N-body dynamics becomes your introduction to numerical methods. The physics is simple ($F = GM m/r^2$) but you can't solve it analytically for $N>2$. You'll discover firsthand why algorithm choices matter when your solar system flies apart using Euler integration but remains stable with Verlet and Leapfrog.
 
-### Phase 2: Bridge to Statistical Thinking (Weeks 4-6)
+### Phase 2: Bridge to Statistical Thinking
 
 After mastering deterministic physics, you're ready for the probabilistic world. Monte Carlo serves as the perfect bridge between these paradigms. Monte Carlo methods use random sampling to solve problems that would be intractable otherwise — imagine trying to calculate $\pi$ by randomly throwing darts at a circle inscribed in a square, or computing complex integrals by randomly sampling the function. You're still solving physics problems, but now through statistical approximation rather than exact calculation. This prepares your mind for the probabilistic thinking required in machine learning, where uncertainty and randomness are features, not bugs.
 
@@ -65,7 +69,7 @@ where $P(\theta|D)$ is the posterior (*what we want* — probability of our mode
 
 The revolutionary insight is the prior — you can mathematically encode what you believe is (physically) reasonable before seeing any data. These beliefs might be wrong! Often that's fine since strong data will override weak priors. But when data is sparse (like it always is in astronomy), priors help constrain solutions to physically plausible regions. MCMC (Markov Chain Monte Carlo) is how you explore these probability distributions. Imagine a random walker that spends more time in high-probability regions, eventually mapping out the entire parameter landscape.
 
-### Phase 4: Modern Machine Learning (Weeks 11-16)
+### Phase 4: Modern Machine Learning
 
 With strong statistical foundations, you're ready for the frontier. **Gaussian Processes** (GPs) bridge classical statistics and modern ML. They're still Bayesian but now you're *learning* functions, not parameters. Think of GPs as a probability distribution over functions. Instead of fitting a specific curve to your data, you're modeling all possible curves that could explain it, weighted by their probability. This lets you quantify uncertainty everywhere: you'll know not just the predicted value but also how confident you should be in that prediction. GPs are non-parametric models meaning that they grow in complexity with your data rather than having a fixed number of parameters.
 

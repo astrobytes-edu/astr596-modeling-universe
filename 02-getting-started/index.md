@@ -54,9 +54,9 @@ graph LR
 
 **Complete these guides in order**. Each builds on the previous:
 
-1. **CLI first**: Learn to navigate before installing anything
-2. **Setup second**: Use your CLI skills to install tools
-3. **Git last**: Apply everything to manage your code
+1. [**CLI first**](01-cli-intro): Learn to navigate before installing anything.
+2. [**Setup second**](02-software-setup): Use your CLI skills to install tools.
+3. [**Git last**](03-git-intro): Apply everything to manage your code.
 
 ## Learning Path
 
@@ -79,14 +79,15 @@ After completing this module in order, you will:
 :::{grid-item}
 **Module Total**: 3-4 hours (estimated)
 
-- CLI Introduction: 45 minutes
-- Software Setup: 30 minutes  
-- Git Introduction: 45 minutes
+- [CLI Introduction](01-cli-intro): 45 minutes
+- [Software Setup](02-software-setup): 30 minutes  
+- [Git Introduction](03-git-intro): 45 minutes
 - Practice: 60+ minutes
 :::
 
 :::{grid-item}
 **Daily Practice**: 5-10 min/day
+
 - Terminal navigation
 - Git commits
 - Python scripts
@@ -97,7 +98,7 @@ After completing this module in order, you will:
 
 ## Common Challenges (and Solutions)
 
-:::{warning} ⚠️ Expected Hurdles
+:::{warning} Expected Hurdles
 
 **Challenge 1: "The terminal is scary"**  
 *Solution*: Start with just 3 commands (pwd, ls, cd). Everything else builds on these.
@@ -117,29 +118,33 @@ After completing this module in order, you will:
 
 ## Your First Week Checklist
 
-:::{admonition} 📋 Setup Verification
+:::{note} 📋 Setup Verification
 :class: checklist
 
 Complete these milestones in order:
 
 **After CLI Guide**
+
 - [ ] Can navigate directories without clicking
 - [ ] Understand pwd, ls, cd, and Tab completion
 - [ ] Know the dangers of rm -rf
 
 **After Software Setup**
+
 - [ ] Miniforge installed and working
 - [ ] VS Code configured with Python extension
 - [ ] Can activate astr596 environment
 - [ ] Test script runs successfully
 
 **After Git Guide**
+
 - [ ] GitHub account with Student Developer Pack
 - [ ] Personal Access Token configured
 - [ ] Can clone, commit, and push
 - [ ] Understand GitHub Classroom workflow
 
 **Ready for Project 1**
+
 - [ ] Clone assignment from GitHub Classroom
 - [ ] Make commits with meaningful messages
 - [ ] Push changes to submit work
@@ -189,10 +194,10 @@ Complete these milestones in order:
 
 **Setup Issues**:
 
-- Read error messages carefully (they usually tell you what's wrong)
-- Google the exact error message in quotes
-- Check our troubleshooting sections in each guide
-- Post on course Slack with: OS, command tried, full error
+- Read error messages carefully (they usually tell you what's wrong).
+- Google the exact error message in quotes.
+- Check our troubleshooting sections in each guide.
+- Post on course Slack with: OS, command tried, full error.
 
 **Conceptual Questions**:
 
@@ -203,9 +208,9 @@ Complete these milestones in order:
 
 **Platform-Specific Issues**:
 
-- Windows: Use Git Bash for Unix commands
-- Mac: If commands fail, check if you need to install Xcode tools
-- Linux: Usually works out of the box
+- **Windows**: Use Git Bash for Unix commands
+- **Mac**: If commands fail, check if you need to install Xcode tools
+- **Linux**: Usually works out of the box
 
 **Remember**: Everyone struggles with setup. Once it's working, it just works.
 :::
@@ -214,7 +219,7 @@ Complete these milestones in order:
 
 :::{important} 🎉 Success Indicators
 
-You're ready for *Python Fundamentals* when you can:
+You're ready for [*Python Fundamentals*](../03-scientific-computing-with-python/01-python-fundamentals/index) when you can:
 
 1. **Open terminal** and navigate to any folder using cd and ls
 2. **Activate your environment** with `conda activate astr596`
@@ -227,7 +232,7 @@ If you can do these five things, you have the foundation for everything in this 
 
 ## What's Next?
 
-After completing this module, you'll begin the Python Fundamentals module where you'll:
+After completing this module, you'll begin the [*Python Fundamentals*](../03-scientific-computing-with-python/01-python-fundamentals/index) module where you'll:
 
 - Write your first object-oriented stellar evolution model
 - Use the terminal skills daily for running scripts
@@ -252,4 +257,4 @@ After completing this module, you'll begin the Python Fundamentals module where 
 **Remember**: These tools aren't just course requirements—they're essential skills for any scientific research career. The more you invest in mastering them now, the more prepared you'll be for real research challenges ahead.
 :::
 
-Ready to begin? Start with [Chapter 1: Command Line Interface](01-cli-intro-REVISED) →
+Ready to begin? Start with [Chapter 1: Command Line Interface](01-cli-intro) →
