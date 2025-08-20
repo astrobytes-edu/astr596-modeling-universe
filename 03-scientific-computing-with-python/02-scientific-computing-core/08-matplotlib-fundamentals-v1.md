@@ -9,8 +9,7 @@ kernelspec:
   language: python
   name: python3
 ---
-
-# Chapter 8: Matplotlib - Visualizing Your Universe
+# ⚠️ Chapter 8: Matplotlib - Visualizing Your Universe
 
 ## Learning Objectives
 

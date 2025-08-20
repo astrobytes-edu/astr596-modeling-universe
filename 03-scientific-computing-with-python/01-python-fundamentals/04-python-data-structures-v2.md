@@ -9,8 +9,7 @@ kernelspec:
   language: python
   name: python3
 ---
-
-# Chapter 4: Data Structures - Organizing Scientific Data
+# ⚠️ Chapter 4: Data Structures - Organizing Scientific Data
 
 ## Learning Objectives
 

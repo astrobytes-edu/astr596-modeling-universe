@@ -3,7 +3,8 @@
 **SDSU | Fall 2025 | Fridays 11:00 AM - 1:40 PM | PA 215**
 
 :::{warning}
-⚠️ **Warning!** *This course textbook is a work-in-progress. Pages with ⚠️ in front are still being edited. Please proceed with caution.*
+This course textbook is a work-in-progress. Pages that start with ⚠️ still a work in progress and subject to change. 
+*Please proceed with caution.*
 :::
 
 Welcome to **ASTR 596: Modeling the Universe**! This course takes you on a journey from Python fundamentals to cutting-edge JAX implementations, building transparent "glass box" models that reveal the physics underlying astronomical phenomena.

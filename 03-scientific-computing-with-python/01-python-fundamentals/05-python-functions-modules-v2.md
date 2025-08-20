@@ -9,8 +9,7 @@ kernelspec:
   language: python
   name: python3
 ---
-
-# Chapter 5: Functions & Modules - Building Reusable Scientific Code
+# ⚠️ Chapter 5: Functions & Modules - Building Reusable Scientific Code
 
 ## Learning Objectives
 

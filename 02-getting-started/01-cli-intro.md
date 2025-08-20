@@ -1,3 +1,14 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
 # ⚠️ Chapter 1: Introduction to the Command Line Interface (CLI)
 
 ## Before You Begin: Safety Rules

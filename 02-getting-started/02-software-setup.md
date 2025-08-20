@@ -1,4 +1,15 @@
-# Chapter 2: Software Setup Guide
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+# ⚠️ Chapter 2: Software Setup Guide
 
 :::{admonition} 💻 Before You Start
 :class: checklist

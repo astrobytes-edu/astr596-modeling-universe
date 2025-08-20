@@ -1,4 +1,15 @@
-# Chapter 3: Introduction to Git and GitHub
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+# ⚠️ Chapter 3: Introduction to Git and GitHub
 
 ## Why Version Control Will Save Your Research
 

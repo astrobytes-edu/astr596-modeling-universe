@@ -1,4 +1,15 @@
-# ⚠️ Pandas: Data Science for Astronomy
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+# ⚠️ Chapter 13: Pandas - Python Data Analysis Library
 
 ## Learning Objectives
 By the end of this chapter, you will:

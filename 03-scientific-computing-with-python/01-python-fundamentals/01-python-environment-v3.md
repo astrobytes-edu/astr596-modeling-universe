@@ -9,8 +9,7 @@ kernelspec:
   language: python
   name: python3
 ---
-
-# Chapter 1: Computational Environments & Scientific Workflows
+# ⚠️ Chapter 1: Computational Environments & Scientific Workflows
 
 ## Learning Objectives
 

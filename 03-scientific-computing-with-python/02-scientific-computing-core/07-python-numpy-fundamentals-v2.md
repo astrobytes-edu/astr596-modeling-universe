@@ -9,8 +9,7 @@ kernelspec:
   language: python
   name: python3
 ---
-
-# Chapter 7: NumPy - The Foundation of Scientific Computing
+# ⚠️ Chapter 7: NumPy - The Foundation of Scientific Computing
 
 ## Learning Objectives
 

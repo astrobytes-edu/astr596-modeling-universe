@@ -9,8 +9,7 @@ kernelspec:
   language: python
   name: python3
 ---
-
-# Chapter 3: Control Flow & Logic
+# ⚠️ Chapter 3: Control Flow & Logic
 
 ## Learning Objectives
 
