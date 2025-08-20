@@ -175,29 +175,15 @@ print(f"Map with lambda: {time2*100:.4f} µs per loop")
 print(f"\nList comprehension is {time2/time1:.1f}x faster")
 ```
 
-:::{admonition} 🚨 Common Bug Alert: Platform-Specific Timing
-:class: warning
+:::{warning} 🚨 Common Bug Alert: Platform-Specific Timing
 
 Timing results vary significantly between machines due to:
+
 - CPU speed and architecture
 - System load and background processes
 - Python version and compilation options
 
 Never assume timing results from one machine apply to another. Always benchmark on your target system.
-:::
-
-:::{tip} 🌟 The More You Know: When 0.1 Seconds = 28 Dead
-:class: dropdown
-
-**TODO:** should be be in Chapter 2 instead in the floating-point/precision section? Most likely yes
-
-On February 25, 1991, during the Gulf War, a Patriot missile defense system failed to intercept an incoming Iraqi Scud missile, resulting in 28 American soldiers killed and 98 wounded. The cause? A timing error that accumulated due to floating-point precision issues.
-
-The system's internal clock counted time in tenths of seconds, but 0.1 cannot be exactly represented in binary floating-point arithmetic—it's actually 0.099999999... in binary. After running for 100 hours, this tiny error had accumulated to 0.34 seconds. In that time, a Scud missile travels over 600 meters, causing the Patriot system to look in the wrong part of the sky ([GAO Report, 1992](https://www.gao.gov/products/imtec-92-26)).
-
-The truly tragic part? The software fix had already been written and was in transit to the base when the attack occurred. As noted in the official report: "The Patriot system was designed to operate for only 14 hours at a time... No one expected the system to run continuously for 100 hours."
-
-This disaster teaches us two critical lessons: First, tiny numerical errors compound over time—what seems like a trivial rounding error can have deadly consequences. Second, environment assumptions matter—software designed for one use case (14-hour operation) failed catastrophically when used differently (100-hour operation). When you learn about floating-point precision in Chapter 2, remember: those "boring" numerical details can literally be matters of life and death.
 :::
 
 ### Getting Help Instantly

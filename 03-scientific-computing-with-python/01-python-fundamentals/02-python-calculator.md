@@ -304,18 +304,29 @@ print(f"That's about {tiny_change/100:.2f} meters!")
 
 When the Kepler Space Telescope searched for exoplanets by detecting brightness dips of 0.01%, understanding machine epsilon was essential to distinguish real planetary transits from numerical noise.
 
-:::{admonition} 🌟 The More You Know: The Patriot Missile Timing Disaster
-:class: tip, dropdown
+:::{warning} 💥 Why This Matters: The Patriot Missile Timing Disaster
+:class: dropdown
 
-On February 25, 1991, an American Patriot missile battery in Dharan, Saudi Arabia, failed to intercept an incoming Iraqi Scud missile, resulting in 28 deaths and 98 injuries. The cause was a floating-point timing error that had accumulated over 100 hours of continuous operation.
+On February 25, 1991, an American Patriot missile battery in Dhahran, Saudi Arabia, failed to intercept an incoming Iraqi Scud missile. The Scud struck an Army barracks, killing 28 soldiers and injuring 98 others. The cause? A tiny numerical error that accumulated over time.
 
-The system's internal clock measured time in tenths of seconds using 24-bit floating-point arithmetic. But 0.1 cannot be exactly represented in binary — it's actually stored as 0.099999999... After 100 hours of operation (360,000 increments), this tiny error had accumulated to 0.34 seconds ([GAO Report IMTEC-92-26, 1992](https://www.gao.gov/products/imtec-92-26)).
+The Patriot's targeting system tracked time using a 24-bit fixed point register, counting in tenths of seconds. However, 1/10 has no exact binary representation—in 24-bit precision, the stored value was actually 0.099999904632568359375, creating an error of approximately 0.000000095 seconds per tenth of a second.
 
-In 0.34 seconds, a Scud missile travels over 600 meters — enough to completely miss the intercept. The Patriot radar looked in the wrong part of the sky and never saw the incoming missile.
+After running continuously for 100 hours (360,000 tenth-second increments), this microscopic error had grown to:
 
-The software had been designed for 14-hour maximum operation cycles, but field conditions in Desert Storm required continuous operation. Ironically, a software patch fixing this exact issue was literally in transit to Dharan when the attack occurred ([Skeel, R. (1992). "Roundoff Error and the Patriot Missile." SIAM News, 25(4)](https://www-users.cse.umn.edu/~arnold/disasters/Patriot-dharan-skeel-siam.pdf)).
+- **Timing error**: 0.34 seconds
+- **Range gate error**: ~687 meters (Scud velocity ≈ 2,000 m/s)
 
-The lesson: never use floating-point for precise time accumulation. Use integer counters and convert to float only for calculations. This tragedy shows that numerical errors aren't just about wrong answers — they can cost lives.
+The Patriot radar system looked in the wrong section of sky and never detected the incoming missile.
+
+The bitter irony? Israeli forces had already noticed targeting problems after 8 hours of continuous operation. A software patch had been written, and was literally in transit to Dhahran when the attack occurred. The original design specification called for maximum 14-hour operation periods—nobody anticipated 100 hours of continuous use.
+
+**The lesson for scientific computing**: Even "negligible" rounding errors become significant when accumulated over many iterations. Whether you're integrating orbits over millions of timesteps or tracking particles in a simulation, always consider:
+
+1. How errors propagate through iterations
+2. Whether your precision is adequate for the timescales involved
+3. The difference between relative and absolute error tolerances
+
+[Source: [GAO Report IMTEC-92-26](https://www.gao.gov/products/imtec-92-26), [Skeel, R. (1992). "Roundoff Error and the Patriot Missile." SIAM News](https://www-users.cse.umn.edu/~arnold/disasters/patriot.html)]
 :::
 
 ### Safe Floating-Point Comparisons
