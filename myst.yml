@@ -57,9 +57,9 @@ project:
     - '*.pyc'
     - '.DS_Store'
     - '_build/**'
-    - '**/draft-**.md'  # Excludes all draft-*.md files in any directory
-    - '**/paper-**.md'
-    - '**/OLD-**.md'
+    - '**/draft**'  # Excludes all draft-*.md files in any directory
+    - '**/paper**'
+    - '**/OLD**'
   # Add this section for PDF exports
   exports:
     - format: pdf
