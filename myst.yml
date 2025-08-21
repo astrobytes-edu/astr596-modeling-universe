@@ -61,6 +61,10 @@ project:
     - '_build/**'
   
   # Directories you're not ready to include
+    - 01-course-info/02-astr596-schedule.md
+    - 03-scientific-computing-with-python/03-**
+    - 03-scientific-computing-with-python/04-**
+    - 03-scientific-computing-with-python/05-**
     - '09-final-project/**'
     - '10-reference/**'
     - '**/OLD/**'           # Any OLD directory
