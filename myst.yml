@@ -89,7 +89,8 @@ site:
     analytics_google: G-QJLKLBMDSZ # Measurement ID or Tracking ID
 
     # Commented out until you have these files
-    # logo: _static/logo.svg
+    logo: _static/astr-logo-01.png
+    
     # favicon: _static/favicon.ico
     
     # Footer content
