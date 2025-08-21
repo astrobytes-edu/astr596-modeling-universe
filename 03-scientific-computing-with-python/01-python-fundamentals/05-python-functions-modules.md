@@ -9,11 +9,34 @@ kernelspec:
   language: python
   name: python3
 ---
-# ⚠️ Chapter 5: Functions & Modules - Building Reusable Scientific Code
+# Chapter 5: Functions & Modules - Building Reusable Scientific Code
+
+You're absolutely right - I apologize for not carefully reviewing the format. Looking at Chapters 3 and 4, I can see the learning objectives use **partial bolding** for key action phrases. Here's the corrected format:
+
+## Margin Definition for Abstractions
+
+:::{margin}
+**Abstraction**
+A simplified interface that hides complex implementation details, allowing users to work with concepts rather than low-level operations. Functions are the fundamental abstraction mechanism in programming.
+:::
+
+## Updated Learning Objectives for Chapter 5 (Correct Format)
 
 ## Learning Objectives
 
 By the end of this chapter, you will be able to:
+
+- [ ] (1) **Design functions that encapsulate** computational physics and astronomy algorithms with clear input/output contracts
+- **Apply Python's LEGB scope rules** to prevent variable conflicts in complex numerical simulations  
+- **Implement flexible function interfaces** using positional, keyword, and default arguments for scientific computing.
+- **Transform iterative calculations** into functional programming patterns using `map`, `filter`, and `lambda`.
+- **Organize related computational functions** into reusable modules following scientific Python conventions.
+- **Write comprehensive docstrings** that document physical units, assumptions, and numerical methods.
+- **Debug common function errors** including mutable defaults, `UnboundLocalError`, and scope violations.
+- **Optimize function performance** through memoization and vectorization strategies for large-scale computations.
+
+This format matches Chapters 3 and 4 exactly - with the key action verbs/phrases bolded at the start of each objective, followed by the specific details unbolded.
+
 - Design functions as clear contracts with well-defined inputs and outputs
 - Understand Python's scope rules and how they affect variable access
 - Master positional, keyword, and default arguments for flexible interfaces
@@ -33,33 +56,27 @@ Before starting this chapter, verify you can:
 - [ ] Use IPython for testing and timing code (Chapter 1)
 - [ ] Design algorithms with pseudocode (Chapter 3)
 
-```{code-cell} ipython3
-# Quick prerequisite check
-data = [2.5, 3.7, 1.2, 4.8]
-result = []
-for value in data:
-    if value > 2.0:
-        result.append(value * 2)
-print(f"If you got {result}, you're ready!")
-# Expected: [5.0, 7.4, 9.6]
-```
-
 ## Chapter Overview
 
-Functions are the fundamental building blocks of organized code. Without functions, you'd be copying and pasting the same code repeatedly, making bugs harder to fix and improvements impossible to maintain. But functions are more than just a way to avoid repetition—they're how we create abstractions, manage complexity, and build reliable software. Whether you're calculating statistical measures, simulating physical systems, or processing experimental data, every computational project starts with well-designed functions.
+:::{margin}
+**Function**
+A reusable block of code that performs a specific task, taking inputs (parameters) and optionally returning outputs. Functions encapsulate logic and create abstractions.
+:::
 
-This chapter teaches you to think about functions as contracts between different parts of your code. When you write a function that calculates energy or performs numerical integration, you're creating a promise: given valid input, the function will reliably return the correct output. This contract mindset helps you write functions that others (including future you) can trust and use effectively. You'll learn how to choose between positional and keyword arguments, when to use default values, and how to design interfaces that are both flexible and clear.
+**Functions** are the fundamental building blocks of organized code. Without functions, you'd be copying and pasting the same code repeatedly, making bugs harder to fix and improvements impossible to maintain. But functions are more than just a way to avoid repetition—they're how we create **abstractions**, manage complexity, and build reliable software. Whether you're calculating statistical measures, simulating star cluster dynamics, or processing multi-wavelength observational data, every computational project starts with well-designed functions.
+
+:::{margin}
+**Abstraction**
+A simplified interface that hides complex implementation details, allowing users to work with concepts rather than low-level operations. Functions are the fundamental abstraction mechanism in programming.
+:::
+
+This chapter teaches you to think about functions as contracts between different parts of your code. When you write a function that calculates energy or performs numerical integration, you're creating a promise: given valid input, the function will reliably return the correct output. This contract mindset helps you write functions that others (including future you) can trust and use effectively. You'll learn how to choose between positional and keyword **arguments**, when to use default values, and how to design interfaces that are both flexible and clear.
 
 We'll explore Python's scope rules, which determine where variables can be accessed, and learn how seemingly simple concepts like default arguments can create subtle bugs that have plagued even major scientific software packages. You'll discover how Python's flexible parameter system enables powerful interfaces, and how functional programming concepts prepare you for modern scientific computing frameworks. By the end, you'll be organizing your code into modules that can be shared, tested, and maintained professionally—essential skills for collaborative scientific research.
 
 ## 5.1 Defining Functions: The Basics
 
-:::{margin} 
-**Function**
-A reusable block of code that performs a specific task, taking inputs and optionally returning outputs.
-:::
-
-A **function** encapsulates a piece of logic that transforms inputs into outputs. Think of a function as a machine: you feed it raw materials (inputs), it performs some process (the function body), and it produces a product (output). In scientific computing, a function might calculate statistical measures, integrate equations, or transform data—each function performs one clear task that can be tested and trusted.
+A **function** encapsulates a piece of logic that transforms inputs into outputs. Think of a function as a machine: you feed it raw materials (inputs), it performs some process (the function body), and it produces a product (output). In scientific computing, a function might calculate statistical measures, integrate equations, or transform data—each function performs **one clear task** that can be tested and trusted.
 
 ### Your First Function
 
@@ -902,6 +919,7 @@ The list comprehension is generally preferred in Python for readability, but und
 ### Functions as First-Class Objects
 
 In Python, functions are objects you can pass around:
+
 
 ```{code-cell} ipython3
 def apply_operator(data, operator_func):

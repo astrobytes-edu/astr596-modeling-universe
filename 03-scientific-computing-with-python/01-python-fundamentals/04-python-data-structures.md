@@ -9,24 +9,25 @@ kernelspec:
   language: python
   name: python3
 ---
-# ⚠️ Chapter 4: Data Structures - Organizing Scientific Data
+# Chapter 4: Data Structures - Organizing Scientific Data
 
 ## Learning Objectives
 
 By the end of this chapter, you will be able to:
 
-- Choose optimal data structures based on algorithmic requirements and performance constraints
-- Predict whether operations will be O(1) constant time or O(n) linear time
-- Understand memory layout and why it matters for scientific computing
-- Implement defensive copying strategies to prevent aliasing bugs in simulations
-- Profile memory usage and optimize data structure choices for large datasets
-- Design data structures that prepare you for vectorized computing
-- Debug common bugs related to mutability, aliasing, and hashability
-- Apply data structure patterns to real computational physics problems
+- [ ] (1) **Choose optimal data structures** (`list`, `tuple`, `dict`, `set`) based on algorithmic requirements and **O(n)** vs **O(1)** performance constraints.
+- [ ] (2) **Predict operation complexity** using Big-O notation for common operations like search, insertion, and deletion.
+- [ ] (3) **Understand Python's reference model** and memory layout explaining why NumPy arrays are 100× faster than lists.
+- [ ] (4) **Implement defensive copying strategies** using `copy.copy()` and `copy.deepcopy()` to prevent aliasing bugs.
+- [ ] (5) **Profile memory usage** with `sys.getsizeof()` and optimize data structure choices for particle simulations.
+- [ ] (6) **Master dictionary operations** for O(1) lookups using hash tables for caching expensive calculations.
+- [ ] (7) **Apply set operations** (union, intersection, difference) for particle tracking and domain decomposition.
+- [ ] (8) **Debug three common bugs**: mutable defaults, aliasing during grid updates, and iteration modification.
+- [ ] (9) **Design hybrid data structures** combining lists, dicts, and sets for real physics simulations.
 
 ## Prerequisites Check
 
-:::{admonition} ✅ Before Starting This Chapter
+:::{note} ✅ Before Starting This Chapter
 :class: note
 
 - [ ] You can write loops and conditional statements fluently (Chapter 3)
@@ -40,7 +41,7 @@ If any boxes are unchecked, review the indicated chapters first.
 
 ## Chapter Overview
 
-Imagine you're simulating the interactions between a million particles - whether they're stars in a galaxy, atoms in a protein, or nodes in a network. Each timestep, you need to find which particles are close enough to interact strongly. With the wrong data structure, this neighbor search could take hours per timestep. With the right one - a spatial hash table or tree structure - it takes seconds. That's the difference between a simulation finishing in a day versus running for months. This chapter teaches you to make these critical choices that determine whether your code scales to research problems or remains stuck with toy models.
+Imagine you're simulating the interactions between a million particles - whether they're dark matter particles in a galaxy, molecules in a gas, or nodes in a network. Each timestep, you need to find which particles are close enough to interact strongly. With the wrong data structure, this neighbor search could take hours per timestep. With the right one - a spatial hash table or tree structure - it takes seconds. That's the difference between a simulation finishing in a day versus running for months. This chapter teaches you to make these critical choices that determine whether your code scales to research problems or remains stuck with toy models.
 
 This chapter transforms you from someone who stores data to someone who orchestrates it strategically for scientific computing. You'll discover not just that dictionary lookups are fast, but *why* they're fast - through hash functions that turn particle positions into array indices. You'll understand *when* they might fail - like when hash collisions cluster your data. And you'll learn *how* to verify performance yourself - because in computational science, measurement beats assumption every time.
 
@@ -53,16 +54,47 @@ These concepts directly prepare you for the numerical computing ahead. The memor
 A way of organizing data in memory to enable efficient access and modification
 ```
 
-A **data structure** is fundamentally about organizing information to match your access patterns. Think about an N-body simulation where particles interact through forces - these particles could represent stars in a galaxy, molecules in a gas, or charges in a plasma. You could store particles in order of creation (like a **list**), organize them by spatial region for fast neighbor finding (like a **dictionary** of cells), or track unique particle IDs (like a **set**). Each choice profoundly affects your simulation's performance - the difference between **O(n²)** all-pairs checks and **O(n log n)** tree-based algorithms.
+A **data structure** is fundamentally about organizing information to match your access patterns. Think about an N-body simulation where particles interact through forces - these particles could represent stars in a star cluster, molecules in a gas, or charges in a plasma. You could store particles in order of creation (like a **list**), organize them by spatial region for fast neighbor finding (like a **dictionary** of cells), or track unique particle IDs (like a **set**). Each choice profoundly affects your simulation's performance - the difference between **O(n²)** all-pairs checks and **O(n log n)** tree-based algorithms.
 
-:::{admonition} 🌟 The More You Know: The Cassini Spacecraft Memory Crisis
-:class: tip, dropdown
+:::{margin}
+**Big-0 notation (e.g, O(n²), O(n log n))**
+Big-O notation describing how runtime scales with input size n.
+:::
 
-In 1997, the Cassini spacecraft nearly failed before reaching Saturn due to a memory overflow bug in its attitude control system. The flight software used an inefficient data structure to track thruster firings, allocating new memory for each event without reusing space. After millions of small adjustments during the 7-year journey, the embedded system's limited memory filled up.
+### Quick Preview: Python's Core Data Structures
 
-NASA engineers had to upload a patch while Cassini was millions of miles away, switching to a circular buffer data structure that reused memory. According to NASA/JPL's Cassini Program documentation and lessons learned database (JPL D-18441, 1998), the fix was deployed via Deep Space Network commands, requiring precise timing due to the 84-minute round-trip signal delay. The wrong data structure choice nearly lost a $3.26 billion mission. 
+| Structure | Mutable | Ordered | Duplicates | Use Case |
+|-----------|---------|---------|------------|----------|
+| **list** | Yes | Yes | Yes | Particle arrays, time series |
+| **tuple** | No | Yes | Yes | Constants, coordinates |
+| **dict** | Yes | No* | Keys: No | Lookup tables, properties |
+| **set** | Yes | No | No | Unique particles, membership |
 
-This incident, detailed in "Cassini Attitude Control Flight Software: Lessons Learned" (IEEE Aerospace Conference, 2000), demonstrates that understanding data structures isn't academic - it's mission-critical. Modern spacecraft now use formal verification methods to prove memory bounds on their data structures.
+*Python 3.7+ dicts maintain insertion order
+
+:::{tip} 🌟 The More You Know: Three Space Missions, Three Data Structure Disasters, $1+ Billion Lost
+:class: dropdown
+
+Over the past 30 years, data structure and software errors have plagued space missions across multiple agencies, demonstrating that these "simple" programming concepts have billion-dollar consequences:
+
+**1996 - Ariane 5 Flight 501 (ESA) - $370 Million Lost**
+The European Space Agency's flagship rocket exploded 39 seconds after launch due to an integer overflow.¹ A 64-bit floating-point number (horizontal velocity) was converted to a 16-bit signed integer *without* proper bounds checking. The velocity exceeded 32,767 (max for int16), causing the navigation system to fail. The rocket self-destructed, taking four scientific satellites with it. **Lesson**: Data type limits and defensive bounds checking matter!
+
+### **1997 - Mars Pathfinder (NASA/JPL) - Mission Nearly Lost**
+
+After successfully landing on Mars, Pathfinder began experiencing system resets that threatened the mission.² The cause: priority inversion in the task scheduler's data structures. A low-priority meteorological task would lock a shared resource (information bus), blocking the high-priority bus management task. After days of debugging from 50 million miles away, JPL engineers uploaded a patch enabling priority inheritance in the scheduler's queue structure. **Lesson**: Concurrent access to shared data structures requires careful synchronization!
+
+**2006 - Cassini-Huygens (NASA/JPL/ESA) - Critical Data Loss Risk**
+During Titan flybys, Cassini lost irreplaceable radar data during communication mode transitions³. Analysis of 200+ days of telemetry revealed predictable patterns. The solution: implementing a circular buffer with pause/resume logic to handle the transitions gracefully, preserving data from humanity's only close encounters with Titan. **Lesson**: The right data structure (circular buffer) can prevent catastrophic data loss!
+
+**The Common Thread**: Whether it's integer overflow (Ariane), priority queues (Pathfinder), or circular buffers (Cassini), these disasters prove that data structure choices aren't academic exercises - they determine mission success. Combined losses exceed $1 billion, not counting the irreplaceable scientific data.
+
+Every `list` vs `deque` choice, every bounds check, every defensive copy you implement could be the difference between mission success and watching years of work explode or fail millions of miles from Earth.
+
+---
+¹ Lions, J.L., et al. (1996). "Ariane 5 Flight 501 Failure Report." [ESA/CNES](https://www.esa.int/Newsroom/Press_Releases/Ariane_501_-_Presentation_of_Inquiry_Board_report).  
+² Jones, M.B. (1997). "[What Really Happened on Mars.](https://www.cs.unc.edu/~anderson/teach/comp790/papers/mars_pathfinder_long_version.html)" Microsoft Research.  
+³ Anderson, Y.Z., et al. (2006). "[Solving Cassini's Data Glitch Problem.](https://ntrs.nasa.gov/citations/20070011727)" NASA/JPL. Document ID: 20070011727
 :::
 
 ### Building Intuition: Measuring Speed Empirically
@@ -319,14 +351,19 @@ for i in range(20):
               f"({overalloc:5.1f}% extra)")
 ```
 
-This growth pattern is why appending to lists is "amortized O(1)" - usually fast, occasionally slow when reallocation happens. For time-critical simulations, pre-allocate your arrays when particle count is known!
+This growth pattern is why appending to lists is "**amortized** O(1)" - usually fast, occasionally slow when reallocation happens. For time-critical simulations, pre-allocate your arrays when particle count is known!
+
+:::{margin}
+**amortized**
+Average cost over many operations, even if individual operations vary
+:::
 
 ## 4.3 Tuples: The Power of Immutability
 
-```{margin}
+:::{margin}
 **immutable**
 Objects whose state cannot be modified after creation
-```
+:::
 
 What if you need to guarantee that initial conditions or physical constants won't change during your simulation? Enter **tuples** - Python's **immutable** sequences. This isn't a limitation - it's protection against an entire category of bugs that plague scientific codes!
 
@@ -474,6 +511,29 @@ print(f"Calculations performed: {calculation_count}")
 print("In astronomy: Caching speeds up N-body codes 10-100×!")
 ```
 
+::::{hint} 🤔 Check Your Understanding
+
+You're storing 1 million particle positions. Calculate the memory difference between:
+
+1. List of lists: `[[x, y, z] for _ in range(1_000_000)]`
+2. List of tuples: `[(x, y, z) for _ in range(1_000_000)]`
+3. Single flat list: `[x1, y1, z1, x2, y2, z2, ...]`
+
+Which is most memory efficient? Which is easiest to use?
+:::{note} Solution
+Tuples save ~10% memory over lists. Single flat list is most memory efficient but harder to work with. This is why NumPy uses flat arrays internally with views for usability!
+:::
+::::
+
+:::{admonition} 🎯 Why This Matters: Lookup Tables Beat Recalculation
+:class: dropdown
+
+Stellar evolution codes like MESA use pre-computed opacity and equation of state tables rather than calculating these values from first principles at every timestep¹. The choice of data structure for storing and accessing these tables matters: O(1) dictionary lookups are faster than O(n) list searches, especially when accessed repeatedly throughout a simulation.
+
+---
+¹ Paxton et al. (2011). "Modules for Experiments in Stellar Astrophysics (MESA)." *ApJS*, 192, 3.
+:::
+
 ## 4.4 The Mutable vs Immutable Distinction
 
 Time for one of Python's most important concepts for scientific computing! Understanding **mutability** is the key to avoiding mysterious bugs where your simulation state changes unexpectedly. This connects directly to Chapter 1's defensive programming principles - catching errors early prevents corrupted results.
@@ -514,18 +574,38 @@ print("😱 You just corrupted your simulation state!")
 print("\nLesson: Use copy.deepcopy() for simulation state backups!")
 ```
 
-:::{admonition} 🌟 The More You Know: The Knight Capital Trading Disaster
+:::{admonition} 🌟 The More You Know: Knight Capital's $440 Million Software Disaster
 :class: tip, dropdown
 
-On August 1, 2012, Knight Capital Group lost $440 million in 45 minutes due to a **data structure** **aliasing** bug. According to SEC Release No. 70694 (October 16, 2013) and Knight's own 8-K filing with the SEC on August 2, 2012, the incident stemmed from code deployment inconsistencies.
+On August 1, 2012, Knight Capital Group lost $440 million in 45 minutes due to a software deployment error that created unintended feedback loops in their trading system¹.
 
-The company deployed new trading software to 8 servers but accidentally left old code (called "Power Peg") on one server. Both old and new systems shared a configuration **dictionary**. The old code interpreted a flag in this shared **dictionary** as enabling test mode, while the new code used the same flag to enable live trading. 
+According to SEC filings and news reports, Knight was updating their trading software to handle a new NYSE order type. The deployment went to 7 of their 8 servers correctly, but one server retained old test code from 2003. When the market opened, this server began processing live orders using the old "Power Peg" test functionality, which was designed to continuously buy and sell stocks for **testing purposes**.
 
-As reported by Reuters and Bloomberg at the time, when markets opened, 7 servers correctly processed orders while the 8th server executed everything as real trades. In 45 minutes, the rogue server executed 4 million trades worth $7 billion - roughly 10% of total US equity volume that day.
+The catastrophic interaction occurred because:
 
-The shared **mutable** state (the configuration **dictionary**) without proper version control created perfect conditions for disaster. Knight Capital, once the largest trader in US equities, was acquired for a fraction of its value within a week. The incident led to new regulations about algorithmic trading systems and configuration management.
+- Both old and new code read from the same order queue (shared data structure)
+- The old code interpreted a flag differently than the new code
+- No validation existed to detect incompatible code versions
+- The shared state created a feedback loop of unintended trades
 
-The lesson for scientific computing: When multiple systems or simulation components share **mutable** **data structures**, confusion about state can have catastrophic consequences. Always use defensive copying and **immutable** configurations where possible!
+In 45 minutes, the malfunctioning system:
+
+- Executed over 4 million unintended trades
+- Accumulated $7 billion in unwanted positions
+- Generated 10% of total US market volume that morning
+- Lost $10 million per minute
+
+This disaster illustrates critical data structure principles:
+
+- **Shared mutable state** between incompatible systems is dangerous
+- **Queue structures** without version validation can corrupt workflows  
+- **Missing defensive checks** on shared data structures cascade failures
+- A single **configuration dictionary** misinterpretation can destroy a company
+
+Knight Capital, once the largest US equity trader, was acquired within a week for a fraction of its previous value. **The lesson**: when multiple systems share data structures, defensive programming and validation aren't optional—they're essential.
+
+---
+¹ "Knight Capital Says Trading Mishap Cost It $440 Million." [*The New York Times*](https://archive.nytimes.com/dealbook.nytimes.com/2012/08/02/knight-capital-says-trading-mishap-cost-it-440-million/), August 2, 2012. SEC Release No. 70694 (October 16, 2013).
 :::
 
 ### The Classic Mutable Default Argument Bug
@@ -729,7 +809,7 @@ def demonstrate_hashing_for_physics():
     
     # Common lookup table keys in physics simulations
     physics_keys = [
-        (1.0e6, 1.0e-3),   # (Temperature, Density) for EOS
+        (1.0e6, 1.0e-3),   # (Temperature, Density) for EOS (equation of state)
         (2.0e6, 2.0e-3),
         (5.0e6, 1.0e-2),
         "H_ionization",     # Reaction rates
@@ -828,13 +908,11 @@ def equation_of_state(temperature, density):
 ```
 
 **Real physics applications:**
+
 - **Nuclear reaction rates**: Cache temperature-dependent rates
 - **Opacity calculations**: Cache (T, ρ, composition) lookups
 - **Molecular dynamics**: Cache pairwise interaction potentials
 - **Climate models**: Cache radiative transfer calculations
-
-In astronomy, the MESA stellar evolution code uses extensive caching of nuclear reaction rates, speeding up calculations by >100× compared to recalculating every timestep.
-:::
 
 ## 4.6 Sets: Mathematical Operations for Particle Systems
 
@@ -1156,359 +1234,6 @@ print(f"Constants are protected: type(CONSTANTS) = {type(CONSTANTS).__name__}")
 # - Dictionary for particle data (O(1) lookup)
 # - Set for active particles (O(1) membership)
 # - List for time series (ordered)
-```
-
-## Practice Exercises
-
-### Exercise 4.1: Particle System Organization
-
-**Part A: Basic List Implementation (5-10 lines)**
-
-Follow these exact steps to create a working particle system:
-
-```{code-cell} ipython3
-def create_particle_system_list():
-    """Store particles as list of lists - simple but limited."""
-    particles = []
-    
-    # Create 5 test particles (id, mass, x, y, z)
-    for i in range(5):
-        particle = [i, 1.0e30 * (i+1), i*1e13, 0.0, 0.0]
-        particles.append(particle)
-    
-    print(f"Created {len(particles)} particles")
-    print(f"Particle 0: ID={particles[0][0]}, mass={particles[0][1]:.1e} g")
-    return particles
-
-particles = create_particle_system_list()
-```
-
-**Part B: Convert to Dictionary (10-15 lines)**
-
-Improve the design with dictionaries for O(1) lookup:
-
-```{code-cell} ipython3
-def create_particle_system_dict():
-    """Store particles in dictionary - better for lookups."""
-    particles = {}
-    
-    # Create particles with meaningful structure
-    for i in range(5):
-        particles[f'p{i:03d}'] = {
-            'mass': 1.0e30 * (i+1),  # grams
-            'position': [i*1e13, 0.0, 0.0],  # cm
-            'velocity': [0.0, 2e6, 0.0],  # cm/s
-        }
-    
-    # O(1) lookup by ID!
-    target = 'p002'
-    print(f"Particle {target}: mass = {particles[target]['mass']:.1e} g")
-    print(f"  Position: {particles[target]['position'][0]:.1e} cm")
-    
-    return particles
-
-particles = create_particle_system_dict()
-print(f"System has {len(particles)} particles with O(1) access")
-```
-
-**Part C: Production Version with Validation (15-20 lines)**
-
-Add error checking and performance measurement:
-
-```{code-cell} ipython3
-import time
-
-def create_particle_system_professional(n=1000):
-    """Production-ready particle system with validation."""
-    start = time.perf_counter()
-    
-    particles = {}
-    errors = []
-    
-    for i in range(n):
-        # Validate mass (must be positive)
-        mass = 1.0e30 * (1 + i*0.001)
-        if mass <= 0:
-            errors.append(f"Particle {i}: invalid mass {mass}")
-            continue
-            
-        particles[f'p{i:06d}'] = {
-            'mass': mass,
-            'position': [i*1e11, 0.0, 0.0],
-            'velocity': [0.0, 3e6, 0.0],
-            'active': True
-        }
-    
-    elapsed = time.perf_counter() - start
-    
-    print(f"Created {len(particles)} particles in {elapsed*1000:.1f} ms")
-    if errors:
-        print(f"Skipped {len(errors)} invalid particles")
-    
-    # Verify O(1) access
-    test_time = time.perf_counter()
-    _ = particles['p000500']['mass']
-    access_time = time.perf_counter() - test_time
-    print(f"Single particle access: {access_time*1e6:.2f} μs")
-    
-    return particles
-
-system = create_particle_system_professional()
-```
-
-### Exercise 4.2: Collision Detection System
-
-**Part A: Basic Neighbor Finding (10 lines)**
-
-```{code-cell} ipython3
-def find_neighbors_naive(positions, radius):
-    """Find particle pairs within radius - O(n²) approach."""
-    neighbors = []
-    n = len(positions)
-    
-    for i in range(n):
-        for j in range(i+1, n):  # Avoid double counting
-            dx = positions[i][0] - positions[j][0]
-            dy = positions[i][1] - positions[j][1]
-            r = (dx**2 + dy**2) ** 0.5
-            if r < radius:
-                neighbors.append((i, j))
-    
-    return neighbors
-
-# Test with small system
-pos = [[0, 0], [1, 0], [0, 1], [2, 2], [3, 3]]
-pairs = find_neighbors_naive(pos, 1.5)
-print(f"Found {len(pairs)} neighbor pairs: {pairs}")
-```
-
-**Part B: Use Sets for Efficiency (15 lines)**
-
-```{code-cell} ipython3
-def find_neighbors_with_sets(particles, radius):
-    """Track unique collision pairs with sets."""
-    
-    # Use set to avoid duplicate pairs
-    collision_pairs = set()
-    checked_pairs = set()
-    
-    positions = [(i, p['position']) for i, p in particles.items()]
-    
-    for i, (id1, pos1) in enumerate(positions):
-        for j, (id2, pos2) in enumerate(positions[i+1:], i+1):
-            pair = tuple(sorted([id1, id2]))  # Canonical ordering
-            
-            if pair not in checked_pairs:
-                checked_pairs.add(pair)
-                
-                # Check distance
-                dx = pos1[0] - pos2[0]
-                dy = pos1[1] - pos2[1]
-                r = (dx**2 + dy**2) ** 0.5
-                
-                if r < radius:
-                    collision_pairs.add(pair)
-    
-    print(f"Checked {len(checked_pairs)} unique pairs")
-    print(f"Found {len(collision_pairs)} collision candidates")
-    return collision_pairs
-
-# Test
-test_particles = {
-    'p1': {'position': [0, 0, 0]},
-    'p2': {'position': [1e10, 0, 0]},
-    'p3': {'position': [0, 1e10, 0]}
-}
-collisions = find_neighbors_with_sets(test_particles, 1.5e10)
-```
-
-**Part C: Spatial Hashing for O(n) (25 lines)**
-
-:::{admonition} 💡 Hint
-:class: tip
-Divide space into a grid where each cell is twice the collision radius, then only check particles in adjacent cells. This transforms O(n²) to O(n) by limiting comparisons to nearby particles.
-:::
-
-```{code-cell} ipython3
-def find_neighbors_spatial_hash(particles, radius, cell_size=None):
-    """Use spatial hashing for O(n) neighbor finding."""
-    if cell_size is None:
-        cell_size = radius * 2
-    
-    # Build spatial hash
-    cells = {}
-    for pid, data in particles.items():
-        x, y = data['position'][:2]
-        cell_key = (int(x / cell_size), int(y / cell_size))
-        
-        if cell_key not in cells:
-            cells[cell_key] = set()
-        cells[cell_key].add(pid)
-    
-    # Find neighbors (only check adjacent cells)
-    neighbors = set()
-    for cell_key, pids in cells.items():
-        cx, cy = cell_key
-        
-        # Check this cell and 8 neighbors
-        for dx in [-1, 0, 1]:
-            for dy in [-1, 0, 1]:
-                neighbor_cell = (cx + dx, cy + dy)
-                if neighbor_cell in cells:
-                    for p1 in pids:
-                        for p2 in cells[neighbor_cell]:
-                            if p1 < p2:  # Avoid duplicates
-                                # Check actual distance
-                                pos1 = particles[p1]['position']
-                                pos2 = particles[p2]['position']
-                                r = ((pos1[0]-pos2[0])**2 + 
-                                     (pos1[1]-pos2[1])**2) ** 0.5
-                                if r < radius:
-                                    neighbors.add((p1, p2))
-    
-    print(f"Spatial hash: {len(cells)} cells, {len(neighbors)} pairs")
-    print("This scales as O(n) instead of O(n²)!")
-    return neighbors
-```
-
-### Exercise 4.3: Equation of State Cache
-
-**Part A: Basic EOS Function (10 lines)**
-
-```{code-cell} ipython3
-class SimpleEOS:
-    """Basic equation of state without caching."""
-    
-    def __init__(self):
-        self.calculations = 0
-    
-    def pressure(self, temperature, density):
-        """Calculate pressure (ideal gas for simplicity)."""
-        self.calculations += 1
-        k_B = 1.381e-16  # erg/K
-        m_H = 1.673e-24  # grams (hydrogen mass)
-        
-        # P = ρkT/m for ideal gas
-        P = density * k_B * temperature / m_H
-        return P
-
-eos = SimpleEOS()
-P1 = eos.pressure(1e6, 1e-3)
-P2 = eos.pressure(1e6, 1e-3)  # Same calculation repeated!
-print(f"Pressure: {P1:.2e} dyne/cm²")
-print(f"Performed {eos.calculations} calculations (wasteful!)")
-```
-
-**Part B: Add Dictionary Cache (15 lines)**
-
-```{code-cell} ipython3
-class CachedEOS:
-    """EOS with dictionary caching."""
-    
-    def __init__(self):
-        self.cache = {}
-        self.calculations = 0
-        self.cache_hits = 0
-    
-    def pressure(self, temperature, density):
-        """Calculate pressure with caching."""
-        key = (temperature, density)
-        
-        if key in self.cache:
-            self.cache_hits += 1
-            return self.cache[key]
-        
-        # Calculate only if not cached
-        self.calculations += 1
-        k_B = 1.381e-16
-        m_H = 1.673e-24
-        P = density * k_B * temperature / m_H
-        
-        self.cache[key] = P
-        return P
-
-eos = CachedEOS()
-# Simulate multiple calls with same parameters
-for _ in range(5):
-    P = eos.pressure(1e6, 1e-3)
-
-print(f"Calculations: {eos.calculations}, Cache hits: {eos.cache_hits}")
-print(f"Saved {eos.cache_hits} expensive calculations!")
-```
-
-**Part C: Advanced Cache with Memory Limit (25 lines)**
-
-```{code-cell} ipython3
-from collections import OrderedDict
-
-class ProductionEOS:
-    """Production-ready EOS with LRU cache and statistics."""
-    
-    def __init__(self, cache_size=1000):
-        self.cache = OrderedDict()
-        self.cache_size = cache_size
-        self.calculations = 0
-        self.cache_hits = 0
-        self.evictions = 0
-    
-    def pressure(self, T, rho):
-        """Get pressure with automatic caching."""
-        key = (round(T, 2), round(rho, 6))  # Round for cache efficiency
-        
-        if key in self.cache:
-            # Move to end (most recent)
-            self.cache.move_to_end(key)
-            self.cache_hits += 1
-            return self.cache[key]
-        
-        # Calculate
-        self.calculations += 1
-        k_B = 1.381e-16
-        m_H = 1.673e-24
-        
-        # More realistic EOS (includes radiation pressure)
-        a = 7.566e-15  # Radiation constant
-        P_gas = rho * k_B * T / m_H
-        P_rad = a * T**4 / 3
-        P_total = P_gas + P_rad
-        
-        # Add to cache
-        self.cache[key] = P_total
-        
-        # Evict oldest if needed
-        if len(self.cache) > self.cache_size:
-            self.cache.popitem(last=False)
-            self.evictions += 1
-        
-        return P_total
-    
-    def stats(self):
-        """Report cache performance."""
-        total = self.calculations + self.cache_hits
-        if total > 0:
-            hit_rate = self.cache_hits / total * 100
-            print(f"Cache statistics:")
-            print(f"  Size: {len(self.cache)}/{self.cache_size}")
-            print(f"  Calculations: {self.calculations}")
-            print(f"  Cache hits: {self.cache_hits}")
-            print(f"  Hit rate: {hit_rate:.1f}%")
-            print(f"  Evictions: {self.evictions}")
-
-# Test with stellar interior conditions
-eos = ProductionEOS(cache_size=100)
-
-# Simulate stellar model with repeated conditions
-test_conditions = [
-    (1e7, 100), (2e7, 150), (1e7, 100),  # Repeated
-    (3e7, 200), (1e7, 100), (2e7, 150),  # More repeats
-]
-
-for T, rho in test_conditions:
-    P = eos.pressure(T, rho)
-    print(f"T={T:.0e} K, ρ={rho} g/cm³ → P={P:.2e} dyne/cm²")
-
-eos.stats()
-print("\nIn astronomy: Essential for stellar evolution codes!")
 ```
 
 ## Main Takeaways

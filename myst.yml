@@ -39,27 +39,32 @@ project:
   
   # Files to exclude from build
   exclude:
-    - 'draft-**.md'
+  # Temporary/draft files
+    - 'draft-*.md'           # Draft files in root only
+    - '**/draft-*.md'        # Draft files in any directory
     - 'TODO.md'
     - 'instructor-notes/**'
-    - '/03-python/03-advanced-scientific-computing/**'
-    - '/03-python/04-parallel-and-hpc/**'
-    - '/03-python/05-modern-approaches-jax-ecosystem/**'
-    #- '04-astrophysics/**'
-    #- '05-math-and-statistics/**'
-    #- '06-numerical-methods/**'
-    #- '07-machine-learning/**'
-    #- '08-short-projects/**'
-    - '/09-final-project/**'
-    - '/10-reference/**'
+  
+  # Python subdirectories to exclude (no leading slash!)
+    - '03-python/03-advanced-scientific-computing/**'
+    - '03-python/04-parallel-and-hpc/**'
+    - '03-python/05-modern-approaches-jax-ecosystem/**'
+  
+  # Build artifacts and system files
     - '.ipynb_checkpoints/**'
+    - '**/.ipynb_checkpoints/**'  # In any subdirectory
     - '__pycache__/**'
-    - '*.pyc'
+    - '**/__pycache__/**'
+    - '**/*.pyc'
     - '.DS_Store'
+    - '**/.DS_Store'
     - '_build/**'
-    - '**/draft**'  # Excludes all draft-*.md files in any directory
-    - '**/paper**'
-    - '**/OLD**'
+  
+  # Directories you're not ready to include
+    - '09-final-project/**'
+    - '10-reference/**'
+    - '**/OLD/**'           # Any OLD directory
+    - '**/paper/**'         # Any paper directory
   # Add this section for PDF exports
   exports:
     - format: pdf

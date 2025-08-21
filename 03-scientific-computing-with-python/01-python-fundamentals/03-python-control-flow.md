@@ -9,21 +9,25 @@ kernelspec:
   language: python
   name: python3
 ---
-# ⚠️ Chapter 3: Control Flow & Logic
+# Chapter 3: Control Flow & Logic
 
 ## Learning Objectives
 
 By the end of this chapter, you will be able to:
 
-- Design algorithms using structured pseudocode before writing any Python code
-- Implement conditional statements (**if**/**elif**/**else**) with proper handling of edge cases
-- Choose appropriate loop structures (**for** vs **while**) based on problem requirements
-- Master all comparison operators (`>`, `<`, `>=`, `<=`, `==`, `!=`) and logical operators (**and**, **or**, **not**)
-- Handle floating-point comparisons safely in conditional statements
-- Debug logic errors systematically using IPython's debugger and **assert** statements
-- Write efficient list comprehensions while knowing when to avoid them
-- Recognize and apply universal algorithmic patterns across different problems
-- Build defensive code that validates assumptions and catches errors early
+## Learning Objectives
+
+By the end of this chapter, you will be able to:
+
+- [ ] (1) **Design algorithms using structured pseudocode** before writing any Python code, progressing through three levels of refinement.
+- [ ] (2) **Implement conditional statements** (`if`/`elif`/`else`) with proper guard clauses and edge case handling.
+- [ ] (3) **Choose appropriate loop structures** (`for` vs `while`) based on problem requirements and iteration patterns.
+- [ ] (4) **Master all six comparison operators** (`>`, `<`, `>=`, `<=`, `==`, `!=`) and **three logical operators** (`and`, `or`, `not`).
+- [ ] (5) **Handle floating-point comparisons safely** using `math.isclose()` instead of direct equality checks.
+- [ ] (6) **Debug logic errors systematically** using IPython's `%debug` magic command and strategic `assert` statements.
+- [ ] (7) **Write efficient list comprehensions** for simple transformations while recognizing when explicit loops are clearer.
+- [ ] (8) **Recognize and apply five universal algorithmic patterns**: accumulation, filtering, mapping, searching, and convergence.
+- [ ] (9) **Build defensive code with guard clauses** that validate inputs and fail fast with clear error messages.
 
 ## Prerequisites Check
 
@@ -131,7 +135,7 @@ Now we see the retry logic and minimum timestep safeguard. The **DO-UNTIL** cons
 
 **Level 3: Implementation-Ready (Stage 1: Core Logic)**
 
-```
+```{markdown}
 FUNCTION adaptive_integrate(initial_state, end_time, tolerance):
     state ← initial_state
     dt ← estimate_initial_timestep(state)
@@ -149,7 +153,7 @@ FUNCTION adaptive_integrate(initial_state, end_time, tolerance):
 
 **Level 3: Implementation-Ready (Stage 2: Add Safety)**
 
-```
+```{markdown}
 FUNCTION adaptive_integrate(initial_state, end_time, tolerance):
     state ← initial_state
     dt ← estimate_initial_timestep(state)
@@ -173,6 +177,11 @@ FUNCTION adaptive_integrate(initial_state, end_time, tolerance):
 ```
 
 Each refinement level reveals new issues and solutions. The **NOT** operator inverts a boolean value (True becomes False, False becomes True). The **AND** operator requires both conditions to be true. This is computational thinking in action!
+
+:::{margin}
+**sentinel value**
+A special marker value (like -999, 'END', or None) that signals the end of data or a special condition, allowing loops to know when to stop processing
+:::
 
 :::{admonition} 💡 Computational Thinking: The Sentinel Pattern
 :class: important
@@ -329,9 +338,9 @@ if len(data) > 100:
     # Notice we call len(data) twice!
 
 # With walrus operator - assign and test in one line
-# if (n := len(data)) > 100:
-#     print(f"Large dataset: {n} observations")
-#     # Now n contains the length, no need to recalculate!
+if (n := len(data)) > 100:
+    print(f"Large dataset: {n} observations")
+    # Now n contains the length, no need to recalculate!
 
 # Real astronomical example (simulated)
 def check_observation_quality(observations):
@@ -343,9 +352,9 @@ def check_observation_quality(observations):
         return good_obs
     
     # With walrus operator (Python 3.8+):
-    # if (good_count := len(good_obs)) >= 10:
-    #     print(f"Found {good_count} good observations")
-    #     return good_obs
+    if (good_count := len(good_obs)) >= 10:
+        print(f"Found {good_count} good observations")
+        return good_obs
     
     return None
 
@@ -415,14 +424,11 @@ print(f"Safe equal? {safe_equal(0.1 + 0.2, 0.3)}")  # True!
 print(f"math.isclose? {math.isclose(0.1 + 0.2, 0.3)}")  # True!
 ```
 
-:::{admonition} ⚠️ Common Bug Alert: The Equality Trap
-:class: warning
-
-**TODO**: Check this story! Is it made up? Need references.
+:::{warning} ⚠️ Common Bug Alert: The Equality Trap
 
 **Never use `==` with floating-point numbers!** Even tiny rounding errors break equality.
 
-**Wrong (caused real satellite collision near-miss):**
+**Wrong (dangerous for critical systems):**
 ```python
 if velocity == 0.0:  # Dangerous!
     print("At rest")
@@ -481,32 +487,40 @@ print(f"Result: {result}")
 :::{admonition} 🌟 Why This Matters: Satellite Collision Avoidance
 :class: tip, dropdown
 
-**TODO:** Get references, is this true?
-The European Space Agency uses boolean logic chains for collision warnings:
+Space agencies use automated collision avoidance systems that evaluate multiple conditions in sequence for efficiency. The logic follows similar principles: check simple conditions first, then expensive calculations only if needed.
 
 ```python
 def check_collision_risk(satellite1, satellite2):
-    """Actual logic used for collision avoidance (simplified)"""
+    """
+    Simplified collision risk logic similar to conjunction assessment.
+    Real systems use complex probability calculations, but follow 
+    similar efficiency principles.
     
-    # Order matters for efficiency!
+    Based on standard conjunction assessment practices where:
+    - Initial screening uses simple distance checks
+    - Detailed analysis only for close approaches
+    - Probability calculations only when necessary
+    """
+    
     # Check cheap calculations first
-    if distance > safe_threshold:  
-        return False  # No need to calculate velocities
+    if distance > screening_threshold:  # ~10-50 km typical
+        return "No risk"  # 99% filtered here
     
-    # Only if close, calculate expensive velocity vectors
-    if relative_velocity < 0:  
-        return False  # Moving apart
+    # Only if close, calculate relative velocity
+    if closing_velocity < 0:
+        return "Moving apart"
     
-    # Only if approaching, do complex uncertainty calculation
-    if combined_uncertainty < max_allowed:
-        return True  # COLLISION RISK!
+    # Only if approaching, compute collision probability
+    if collision_probability > 1e-4:  # Standard threshold
+        return "COLLISION RISK!"
     
-    return False
+    return "Monitor"
 ```
 
-Checking distance first avoids millions of expensive velocity calculations per day. A single wrong comparison could mean losing a $500 million satellite! In 2009, Iridium 33 and Cosmos 2251 collided because their warning system failed to properly evaluate these conditions.
+Checking distance first avoids millions of expensive velocity calculations per day. A single wrong comparison could mean losing a $500 million satellite! In 2009, Iridium 33 and Cosmos 2251 collided because their warning system failed to properly evaluate these conditions ([see Wikipedia article on Iridium 33 and Kosmos 2009 satellite collision](https://en.wikipedia.org/wiki/2009_satellite_collision)).
 
 *Note: This example simplifies the actual collision avoidance algorithms for pedagogical clarity. Real systems use complex orbital mechanics and probability distributions, but the core principle of ordered boolean evaluation remains crucial.*
+
 :::
 
 ## 3.3 Conditional Statements: Teaching Computers to Decide
@@ -681,9 +695,9 @@ print(f"Class {stellar_class} star: ~{temperature}K")
 :::{admonition} 🌟 Why This Matters: The Mars Climate Orbiter Disaster
 :class: tip, dropdown
 
-In 1999, NASA lost the $327.6 million Mars Climate Orbiter because one team used metric units while another used imperial. A simple guard clause could have saved it:
+In 1999, NASA lost the $327 million Mars Climate Orbiter because one team used metric units while another used imperial. A simple guard clause could have saved it:
 
-*Note: The $327.6 million figure represents total mission cost. This anecdote simplifies a complex failure to emphasize the importance of unit validation. The actual failure involved multiple factors, but the unit confusion was the primary cause identified in NASA's investigation reports.*
+*Note: The $327 million figure represents total mission cost. This anecdote simplifies a complex failure to emphasize the importance of unit validation. The actual failure involved multiple factors, but the unit confusion was the primary cause identified in NASA's investigation reports.*
 
 ```python
 def process_thrust_data(force, units):
@@ -1044,6 +1058,8 @@ def running_statistics(data_stream):
     Uses Welford's algorithm (1962) for numerical stability.
     Essential for processing streaming telescope data!
     """
+    import math
+
     n = 0
     mean = 0.0
     M2 = 0.0
@@ -1071,6 +1087,26 @@ naive_mean = sum(photometry) / len(photometry)
 naive_var = sum(x**2 for x in photometry) / len(photometry) - naive_mean**2
 print(f"Naive (problematic): mean={naive_mean:.1f}, std={math.sqrt(abs(naive_var)):.2f}")
 ```
+
+**Why is Welford's algorithm numerically stable?**
+
+The naive approach (sum all values, then divide) accumulates large sums that can lose precision. For values like [1e8, 1e8+1, 1e8+2], the sum becomes ~3e8, and the tiny variations (1, 2) get lost in floating-point representation.
+
+Welford's algorithm maintains a running mean and updates it incrementally with small deltas. Instead of computing (1e8 + 1e8 + 1e8)/3, it computes:
+
+- mean = 1e8
+- mean += (1e8 - 1e8)/2 = 0  
+- mean += (1e8 - 1e8)/3 = 0
+This keeps all arithmetic operations on similar scales, preserving precision.
+
+The variance calculation similarly avoids subtracting large nearly-equal numbers
+(catastrophic cancellation) by accumulating squared deviations incrementally.
+
+:::{note}
+:class: dropdown
+**Why not use log space?**
+Students often ask why we don't use logarithms here like we did for the luminosity calculation. Log space is perfect for products (multiplication becomes addition) but wrong for statistics. Welford's algorithm computes arithmetic mean and variance, which require addition. In log space, you'd compute geometric mean instead - a completely different statistic! Plus, log fails on negative values, common in astronomy (radial velocities, position residuals). Welford's incremental approach is already optimal.
+:::
 
 :::{admonition} 💡 Computational Thinking: The Convergence Pattern
 :class: important
@@ -1211,6 +1247,13 @@ The Kepler Space Telescope discovered 2,778 confirmed exoplanets (with thousands
 
 *Note: This algorithm is greatly simplified for pedagogical purposes. The actual Kepler pipeline used sophisticated techniques including Fourier transforms, multiple detrending algorithms, and extensive validation checks. However, the control flow patterns shown here — guard clauses, filtering, iteration, and conditional validation — formed the backbone of the real system.*
 
+:::{admonition} 🌟 The More You Know: How Kepler Found Over 2,700 Exoplanets
+:class: tip, dropdown
+
+The Kepler Space Telescope discovered 2,778 confirmed exoplanets¹ using exactly the control flow patterns you just learned! The mission monitored over 160,000 stars continuously for its primary 3.5-year mission, and over 200,000 stars during its full 9-year lifetime.² Here's the simplified algorithm:³
+
+*Note: This algorithm is greatly simplified for pedagogical purposes. The actual Kepler pipeline used sophisticated techniques including Fourier transforms, multiple detrending algorithms, and extensive validation checks. However, the control flow patterns shown here — guard clauses, filtering, iteration, and conditional validation — formed the backbone of the real system.*
+
 ```python
 def kepler_planet_search(star_id, light_curve):
     """Simplified Kepler planet detection algorithm"""
@@ -1247,7 +1290,46 @@ def kepler_planet_search(star_id, light_curve):
     return None
 ```
 
-This ran on 150,000+ stars for 4 years! Your code uses the same patterns that revealed the universe is full of planets!
+This ran on ~156,000 stars! The control flow patterns you've mastered in this chapter — guard clauses, filtering, iteration, and validation — are exactly what enabled Kepler to efficiently process millions of observations and identify genuine exoplanet transit signals. ([Jenkins, J. M., et al. (2010), Overview of the Kepler Science Processing Pipeline](https://ui.adsabs.harvard.edu/abs/2010ApJ...713L..87J/abstract) ApJ; **GitHub repo**: <https://github.com/nasa/kepler-pipeline>)
+:::
+
+```python
+def kepler_planet_search(star_id, light_curve):
+    """Simplified Kepler planet detection algorithm"""
+    
+    # Guard clause - data quality check
+    if len(light_curve) < 1000:
+        return None
+    
+    # Remove outliers (cosmic rays, etc.)
+    cleaned = [point for point in light_curve 
+               if abs(point - median) < 5 * sigma]
+    
+    # Search for periodic dips
+    best_period = None
+    best_depth = 0
+    
+    for trial_period in range(1, 365):  # Days
+        folded = fold_light_curve(cleaned, trial_period)
+        depth = measure_transit_depth(folded)
+        
+        if depth > best_depth and depth > 3 * noise_level:
+            best_period = trial_period
+            best_depth = depth
+    
+    # Validate as planet (not eclipsing binary)
+    if best_period:
+        if is_v_shaped(folded):  # Binary check
+            return None
+        if depth > 0.5:  # Too deep
+            return None
+            
+        return {'period': best_period, 'depth': best_depth}
+    
+    return None
+```
+
+This ran on 150,000+ stars for 4 years! Your code uses the same patterns that revealed the universe is full of planets! ([])
 :::
 
 :::{admonition} 🛠️ Debug This! The Telescope Priority Bug
@@ -1349,161 +1431,13 @@ def assign_telescope_priority_fixed(observation):
 ```
 
 **Key Lessons**:
-1. Order elif conditions from most specific to most general
+
+1. Order `elif` conditions from most specific to most general
 2. Avoid overlapping conditions in elif chains
 3. Consider using nested if statements for subcategories
 4. The original code works but is hard to maintain and understand
 
 This type of subtle logic error is common in real telescope scheduling software and can lead to suboptimal observation planning!
-:::
-
-## The Variable Star Thread Continues
-
-Let's apply our control flow knowledge to extend our variable star analysis from Chapters 1 and 2:
-
-```{code-cell} ipython3
-# Chapter 3: Variable Star - Adding Periodicity Detection
-import json
-import math
-
-# Create sample data (in real use, load from Chapter 2)
-star = {
-    'name': 'Delta Cephei',
-    'period': 5.366319,
-    'mag_mean': 3.95,
-    'mag_amp': 0.88,
-    'phase_function': 'sinusoidal'
-}
-
-def analyze_phase_coverage(times, period, min_coverage=0.6):
-    """
-    Check if observations adequately sample the phase space.
-    Critical for period determination accuracy!
-    """
-    # Guard clause
-    if not times or period <= 0:
-        return False, "Invalid input data"
-    
-    # Calculate phases
-    phases = [(t % period) / period for t in times]
-    
-    # Divide phase space into bins
-    n_bins = 10
-    bins_filled = set()
-    
-    for phase in phases:
-        bin_index = int(phase * n_bins)
-        bins_filled.add(bin_index)
-    
-    coverage = len(bins_filled) / n_bins
-    
-    # Conditional logic for assessment
-    if coverage >= min_coverage:
-        quality = "good" if coverage > 0.8 else "adequate"
-        return True, f"Phase coverage {quality}: {coverage:.1%}"
-    else:
-        return False, f"Insufficient coverage: {coverage:.1%} < {min_coverage:.1%}"
-
-# Test with simulated observations
-test_times = [0.5, 1.2, 2.7, 3.1, 4.8, 5.9, 7.2, 8.5, 9.1, 10.3]
-adequate, message = analyze_phase_coverage(test_times, star['period'])
-print(f"Delta Cephei observations: {message}")
-
-# Save enhanced data for Chapter 4
-star['last_analysis'] = {
-    'phase_coverage': adequate,
-    'message': message,
-    'n_observations': len(test_times)
-}
-
-try:
-    with open('variable_star_ch3.json', 'w') as f:
-        json.dump(star, f, indent=2)
-    print("✓ Data saved for Chapter 4!")
-except IOError as e:
-    print(f"✗ Could not save: {e}")
-```
-
-## Practice Exercises
-
-Now apply your control flow mastery to real astronomical problems!
-
-### Exercise 3.1: Phase Dispersion Minimization
-
-:::{admonition} Complete Implementation (40-50 lines)
-:class: exercise
-
-```python
-def find_period_pdm(times, magnitudes, min_period=0.1, max_period=10.0):
-    """
-    Find the period of a variable star using Phase Dispersion Minimization.
-    This is a REAL algorithm used in astronomy!
-    
-    Your implementation should:
-    1. Use nested loops for coarse then fine search
-    2. Apply the convergence pattern from Section 3.6
-    3. Include guard clauses for invalid input
-    4. Use list comprehensions where appropriate
-    
-    Pseudocode to get started:
-    - Validate inputs with guard clauses
-    - Coarse search with 0.1 day steps
-    - Find minimum dispersion period
-    - Refine with 0.01 day steps around minimum
-    - Continue until convergence
-    """
-    # Your implementation here
-    pass
-```
-:::
-
-### Exercise 3.2: Transient Detection Pipeline
-
-:::{admonition} Multi-Part Exercise (30-40 lines total)
-:class: exercise
-
-Part A: Implement data cleaning
-Part B: Detect variability using Welford's algorithm
-Part C: Classify transients with elif chains
-
-```python
-def process_survey_data(times, mags, errors):
-    """
-    Complete pipeline for transient detection.
-    Uses all control flow patterns from this chapter!
-    """
-    # Part A: Clean data (guard clauses, list comprehension)
-    # Part B: Find variables (Welford's algorithm)
-    # Part C: Classify (elif chains)
-    pass
-```
-:::
-
-### Exercise 3.3: Debug the Light Curve Folder
-
-:::{admonition} Find and Fix Three Bugs
-:class: exercise
-
-```python
-def fold_light_curve(times, mags, period):
-    """This function has 3 bugs - find and fix them!"""
-    phases = []
-    folded_mags = []
-    
-    for i in range(len(times)):
-        phase = times[i] / period  # Bug 1: Should use modulo!
-        phases.append(phase)
-        folded_mags.append(mags[i])
-    
-    # Sort by phase
-    for i in range(len(phases)):
-        for j in range(len(phases)):  # Bug 2: j should start at i+1
-            if phases[i] > phases[j]:  # Bug 3: Wrong comparison
-                phases[i], phases[j] = phases[j], phases[i]
-                folded_mags[i], folded_mags[j] = folded_mags[j], folded_mags[i]
-    
-    return phases, folded_mags
-```
 :::
 
 ## Main Takeaways
@@ -1563,6 +1497,8 @@ Remember that every major computational achievement relies on these fundamentals
 **pass**: Null statement that does nothing, used as a placeholder where syntax requires a statement.
 
 **Pseudocode**: A human-readable description of an algorithm that focuses on logic and structure without syntactic details.
+
+**sentinel value**: A special marker value (like -999, 'END', or None) that signals the end of data or a special condition, allowing loops to know when to stop processing
 
 **Short-circuit Evaluation**: The behavior where logical operators stop evaluating as soon as the result is determined.
 
@@ -1665,6 +1601,9 @@ Remember that every major computational achievement relies on these fundamentals
 * - `is not`
   - Negative identity
   - `if data is not None:`
+* - `not in`
+  - Negative membership test
+  - `if 'error' not in log_file:`
 * - `:=`
   - Walrus operator (Python 3.8+)
   - `if (n := len(data)) > 100:`

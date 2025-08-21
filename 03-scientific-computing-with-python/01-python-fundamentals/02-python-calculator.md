@@ -9,20 +9,22 @@ kernelspec:
   language: python
   name: python3
 ---
-# ⚠️ Chapter 2: Python as Your Astronomical Calculator
+# Chapter 2: Python as Your Astronomical Calculator
 
 ## Learning Objectives
 
 By the end of this chapter, you will be able to:
 
-- Use Python as an interactive scientific calculator with proper operator precedence
-- Understand how computers represent integers, floats, and complex numbers in memory
-- Explain why `0.1 + 0.2 ≠ 0.3` and handle floating-point comparisons correctly
-- Recognize and avoid catastrophic cancellation and numerical overflow/underflow
-- Choose appropriate numeric types for different astronomical calculations
-- Format output elegantly using f-strings with scientific notation and alignment
-- Convert between data types safely and understand when conversions lose information
-- Create defensive numerical code that catches precision problems early
+- [ ] (1) **Use Python as an interactive scientific calculator** with correct operator precedence (PEMDAS) and all seven arithmetic operators (`+`, `-`, `*`, `/`, `//`, `%`, `**`).
+- [ ] (2) **Explain how computers represent numbers in memory** using IEEE 754 standard for floats (64 bits: sign, exponent, mantissa) and arbitrary precision for integers.
+- [ ] (3) **Demonstrate why `0.1 + 0.2 ≠ 0.3`** due to binary representation limits and handle comparisons with `math.isclose()`.
+- [ ] (4) **Recognize and prevent three numerical hazards**: catastrophic cancellation, overflow (~10³⁰⁸ limit), and silent underflow to zero.
+- [ ] (5) **Choose appropriate numeric types** (int, float32, float64, complex) based on precision needs and memory constraints.
+- [ ] (6) **Format scientific output using f-strings** with format specifiers (`.2f`, `.2e`, `:10.2f`, `:,`) for publication-quality results.
+- [ ] (7)**Convert between data types safely** using `int()`, `float()`, `complex()` while understanding truncation vs rounding.
+- [ ] (8) **Apply defensive programming techniques** including validation functions, safe division, and domain-specific checks.
+- [ ] (9) **Use essential `math` module functions** for scientific computing: `sqrt()`, `log()`, `sin()`, `cos()`, `isfinite()`, `isnan()`.
+- [ ] (10) **Work with complex numbers** using Python's `j` notation for wave physics and Fourier analysis.
 
 ## Prerequisites Check
 
@@ -277,7 +279,7 @@ print(f"Difference: {abs(error_32bit - error_64bit):.0f} meters")
 print(f"That's {abs(error_32bit - error_64bit)/1000:.0f} km of error!")
 ```
 
-Python defaults to 64-bit because scientific computing needs that precision. But libraries like JAX default to 32-bit for machine learning where speed matters more than precision. *Always know which you're using!*
+Python defaults to 64-bit because scientific computing needs that precision. But libraries like JAX default to 32-bit for machine learning where speed matters more than precision. For numerical computing with JAX, you can configure it to use 64-bit precision by setting `jax.config.update('jax_enable_x64', True)` at the start of your program. *Always know which precision you're using!*
 
 :::{note} ⚠️ 🌟 The More You Know: Why Quantum Computers Could Change Everything
 :class: dropdown
@@ -487,37 +489,99 @@ result = math.isclose(v1, v2, rel_tol=1e-9)
 print(f"Using math.isclose: {result}")
 ```
 
-:::{admonition} 🚨 Common Bug Alert: The Float Comparison Trap
-:class: warning
+::::{important} 🔧 Debug This! Stellar Parallax Calculator
 
-**TODO:** Need to find reference for this. What team? Is this made up?
 
-This actual code from a published exoplanet detection pipeline failed intermittently:
+An astronomer's parallax calculation code produces inconsistent results:
 
 ```python
-# REAL BUG that made it to production!
-def check_transit_depth(observed, expected):
-    if observed == expected:  # BUG: Float comparison with ==
-        return "Perfect match!"
-    elif observed > expected:
-        return "Deeper than expected"
-    else:
-        return "Shallower than expected"
+def calculate_distance(parallax_mas):
+    """
+    Calculate distance from parallax.
+    Parallax in milliarcseconds, returns parsecs.
+    """
+    # Distance in parsecs = 1000 / parallax_in_mas
+    distance_pc = 1000.0 / parallax_mas
+    
+    return distance_pc
 
-# This failed even when values looked identical!
-depth1 = 0.001 * 3  # From three measurements
-depth2 = 0.003      # Expected value
-print(check_transit_depth(depth1, depth2))  # Returns "Shallower" not "Perfect"!
+# Test with Proxima Centauri
+parallax = 768.5  # milliarcseconds
+d_pc = calculate_distance(parallax)
+
+print(f"Distance: {d_pc} pc")
+
+# Verify with known value
+known_distance = 1.301  # parsecs
+if d_pc == known_distance:
+    print("✓ Calculation verified!")
+else:
+    print("✗ Calculation mismatch!")
+
+# Why does verification always fail even when values look identical?
 ```
 
-The fix: Always use tolerance-based comparison. The team lost three months of observations before finding this bug.
-:::
+**Find and fix the three bugs!** Think about:
 
-## 2.3 Numerical Hazards in Astronomical Computing
+1. The verification method
+2. Numerical precision
+3. Error propagation
+
+:::{admonition} Solution
+:class: tip, dropdown
+
+**Three bugs found:**
+
+**Bug 1: Float comparison with ==**
+```python
+# WRONG: Never use == with floats
+if d_pc == known_distance:
+
+# CORRECT: Use tolerance-based comparison
+if abs(d_pc - known_distance) < 0.001:
+```
+
+**Bug 2: Precision loss in calculation**
+```python
+# The calculated value is 1.3010375... not exactly 1.301
+print(f"Actual value: {d_pc:.10f}")  # Shows 1.3010375733
+```
+
+**Bug 3: No error handling for zero/negative parallax**
+```python
+def calculate_distance_safe(parallax_mas):
+    """Safe version with validation."""
+    if parallax_mas <= 0:
+        raise ValueError(f"Parallax must be positive: {parallax_mas}")
+    
+    if parallax_mas < 0.1:  # Less than 0.1 mas
+        raise ValueError(f"Parallax {parallax_mas} mas too small (>10 kpc)")
+    
+    distance_pc = 1000.0 / parallax_mas
+    
+    return distance_pc
+```
+
+**Complete fix:**
+```python
+import math
+
+def verify_distance(calculated, expected, tolerance=0.001):
+    """Properly compare floating-point distances."""
+    return math.isclose(calculated, expected, abs_tol=tolerance)
+
+# Now verification works correctly
+if verify_distance(d_pc, known_distance):
+    print("✓ Calculation verified within tolerance!")
+```
+
+**Key lesson:** Floating-point equality is an illusion. Always use tolerance-based comparisons in scientific computing!
+:::
+::::
+
+## 2.3 Numerical Hazards in Scientific Computing
 
 You've mastered how Python stores numbers — now let's see these concepts in action with real scientific calculations! This is where things get exciting: you're about to learn the techniques that enabled Cassini to thread the gap between Saturn's rings, that allow LIGO to detect gravitational waves smaller than a proton's width, and that help the Event Horizon Telescope image black holes.
-
-**TODO:** This is a bit over the top, consider rephrasing.
 
 ### Catastrophic Cancellation: When Subtraction Destroys Precision
 
@@ -526,7 +590,7 @@ You've mastered how Python stores numbers — now let's see these concepts in ac
 Loss of significant digits when subtracting nearly equal floating-point numbers
 :::
 
-Here's a numerical phenomenon that sounds scary but becomes manageable once you understand it! Catastrophic cancellation happens when you subtract nearly equal numbers, eliminating most significant digits and leaving only rounding errors.
+Here's a numerical phenomenon that sounds scary but becomes manageable once you understand it! **Catastrophic cancellation** happens when you subtract nearly equal numbers, eliminating most significant digits and leaving only rounding errors.
 
 **Stage 1: The Problem**
 
@@ -571,8 +635,8 @@ print(f"Much better! Error: {abs(result_good - true_value)/true_value:.2e}")
 # This preserves precision for small angles
 ```
 
-:::{admonition} 🌟 The More You Know: Mars Climate Orbiter's $327 Million Mistake
-:class: tip, dropdown
+:::{tip} 🌟 The More You Know: Mars Climate Orbiter's $327 Million Mistake
+:class: dropdown
 
 The Mars Climate Orbiter was destroyed on September 23, 1999, when it entered Mars' atmosphere at 57 kilometers altitude instead of the planned 140-226 kilometers. While the famous cause was a metric/imperial unit mix-up (Lockheed Martin used pound-force seconds while NASA used newton-seconds), the navigation software also struggled with numerical precision issues.
 
@@ -800,8 +864,7 @@ Complex numbers aren't just mathematical abstractions — they're essential for:
 
 Every spectrum you've ever seen from a telescope was processed using complex numbers!
 
-:::{admonition} 💡 Computational Thinking: Complex Numbers as 2D Vectors
-:class: important
+:::{important} 💡 Computational Thinking: Complex Numbers as 2D Vectors
 
 Think of complex numbers as 2D vectors that know how to multiply:
 
@@ -811,6 +874,43 @@ Think of complex numbers as 2D vectors that know how to multiply:
 - **Phase**: angle from positive real axis
 
 This pattern — representing compound data as single objects with rich behavior — appears throughout scientific computing. Master this concept here, and you'll recognize it everywhere!
+:::
+
+:::{important} 🎯 Why This Matters: Fourier Transforms Reveal Hidden Periods
+:class: dropdown
+
+Complex numbers aren't just mathematical elegance—they're essential for discovering exoplanets! The Fourier transform, which relies entirely on complex exponentials, transforms time-series brightness measurements into frequency space, revealing hidden periodicities.
+
+**Real Research Application:**
+
+The Kepler Space Telescope monitored 150,000 stars continuously for 4 years, collecting brightness measurements every 30 minutes. That's ~70,000 data points per star—over 10 billion measurements total! Finding periodic dimming (transiting planets) in this ocean of data requires Fourier analysis:
+
+```python
+# Simplified exoplanet detection
+import numpy as np
+
+# Time series: brightness over time
+time = np.linspace(0, 100, 10000)  # 100 days
+# Hidden planet: 3.5 day period, 0.01% dimming
+signal = 1.0 - 0.0001 * np.cos(2*np.pi*time/3.5)
+# Add noise
+noise = np.random.normal(0, 0.0005, len(time))
+brightness = signal + noise
+
+# Fourier transform uses complex exponentials
+frequencies = np.fft.fftfreq(len(time), time[1]-time[0])
+fft = np.fft.fft(brightness - np.mean(brightness))
+power = np.abs(fft)**2  # Complex magnitude squared
+
+# Peak in power spectrum reveals planet period!
+peak_idx = np.argmax(power[1:len(power)//2]) + 1
+planet_period = 1/frequencies[peak_idx]
+print(f"Detected period: {planet_period:.2f} days")
+```
+
+Without complex numbers and Euler's formula (e^(iωt) = cos(ωt) + i⋅sin(ωt)), we couldn't efficiently search for the 2,788 confirmed exoplanets discovered by Kepler. Every periodogram you'll ever compute—whether finding pulsation modes in stars, orbital periods in binaries, or rotation periods of stars—depends on complex arithmetic.
+
+**The bottom line:** Master complex numbers now, because every time-series analysis technique you'll learn builds on them!
 :::
 
 ## 2.5 Variables and Dynamic Typing
@@ -977,24 +1077,6 @@ print(f"-3.7 // 1 = {-3.7 // 1}")    # Gives -4.0 (toward -infinity)
 This inconsistency has caused numerous bugs in astronomical calculations where negative values represent positions before an epoch.
 :::
 
-:::{admonition} 🚨 Common Bug Alert: Silent Type Conversion Errors
-:class: warning
-
-**TO DO**: Check this! Likely not true, need to find references. WHAT TEAM?
-This bug appeared in actual pulsar timing software:
-
-```python
-# REAL BUG: Calculating rotation phase
-period_ms = "2.3"  # Read from config file as string
-rotations = 1000 / int(float(period_ms))  # int() truncates to 2!
-
-# Should be 434.78 rotations, but gets 500
-# The team published incorrect rotation rates for 17 pulsars!
-```
-
-Always use `float()` for decimal strings, then explicitly round if needed.
-:::
-
 ## 2.8 The Math Module: Your Scientific Calculator
 
 Here comes the fun part — Python's math module transforms your computer into a scientific calculator more powerful than anything that existed when we sent humans to the Moon!
@@ -1085,338 +1167,6 @@ if __name__ == "__main__":
         rs = schwarzschild_radius_robust(mass)
         print(f"{name}: Rs = {rs:.2e} cm ({rs/1e5:.2f} km)")
 ```
-
-## 2.10 Variable Star Exercise Thread
-
-Let's continue building on our variable star from Chapter 1, adding magnitude calculations:
-
-```{code-cell} ipython3
-# Chapter 2: Variable Star - Adding Magnitude Calculations
-import json
-import math
-
-# Create sample data (in real use, load from Chapter 1)
-star = {
-    'name': 'Delta Cephei',
-    'period': 5.366319,
-    'mag_mean': 3.95,
-    'mag_amp': 0.88
-}
-
-def calculate_phase(time, period):
-    """Calculate phase (0-1) for given time."""
-    phase = (time % period) / period
-    return phase
-
-def magnitude_at_phase(mean_mag, amplitude, phase):
-    """
-    Calculate magnitude at given phase.
-    Using simplified sinusoidal variation.
-    Real Cepheids have asymmetric light curves!
-    """
-    # Magnitude gets SMALLER (brighter) at maximum
-    variation = amplitude * math.cos(2 * math.pi * phase)
-    return mean_mag + variation
-
-# Test with our star
-test_time = 2.7  # days
-phase = calculate_phase(test_time, star['period'])
-current_mag = magnitude_at_phase(star['mag_mean'], 
-                                 star['mag_amp'], 
-                                 phase)
-
-print(f"{star['name']} at time {test_time:.1f} days:")
-print(f"  Phase: {phase:.3f}")
-print(f"  Magnitude: {current_mag:.2f}")
-print(f"  Brightness: {10**(-0.4 * current_mag):.3f} (relative flux)")
-
-# Save enhanced data for Chapter 3
-star['phase_function'] = 'sinusoidal'
-star['last_calculated'] = {'time': test_time, 'phase': phase, 'magnitude': current_mag}
-
-try:
-    with open('variable_star_ch2.json', 'w') as f:
-        json.dump(star, f, indent=2)
-    print("\n✓ Data saved for Chapter 3!")
-except IOError as e:
-    print(f"\n✗ Could not save: {e}")
-```
-
-## Practice Exercises
-
-### Exercise 2.1: Magnitude and Flux Conversions
-
-:::{admonition} Part A: Follow These Steps (5 min)
-:class: exercise, dropdown
-
-Execute this exact code to understand magnitude-flux conversion:
-
-```{code-cell} ipython3
-import math
-
-# Step 1: Define the conversion formula
-def mag_to_flux(magnitude, zero_point=0.0):
-    """Convert magnitude to relative flux."""
-    flux = 10**((zero_point - magnitude) / 2.5)
-    return flux
-
-# Step 2: Test with a specific magnitude
-test_mag = 10.0
-test_flux = mag_to_flux(test_mag)
-print(f"Magnitude {test_mag} = flux {test_flux:.6f}")
-
-# Step 3: Verify the logarithmic relationship
-mag_diff = 5.0  # 5 magnitude difference
-flux_ratio = mag_to_flux(0) / mag_to_flux(mag_diff)
-print(f"{mag_diff} mag difference = {flux_ratio:.1f}× flux ratio")
-```
-:::
-
-:::{admonition} Part B: Modify and Extend (10 min)
-:class: exercise, dropdown
-
-Now add the inverse function and test round-trip conversion:
-
-```{code-cell} ipython3
-def flux_to_mag(flux, zero_point=0.0):
-    """Convert flux to magnitude with error handling."""
-    if flux <= 0:
-        return float('inf')  # Infinitely faint
-    
-    magnitude = zero_point - 2.5 * math.log10(flux)
-    return magnitude
-
-# Test round-trip conversion
-original_mag = 15.5
-flux = mag_to_flux(original_mag)
-recovered_mag = flux_to_mag(flux)
-error = abs(original_mag - recovered_mag)
-
-print(f"Original: {original_mag}")
-print(f"Recovered: {recovered_mag}")
-print(f"Error: {error:.2e}")
-print(f"\nWhy isn't error exactly zero?")
-print("Floating-point arithmetic introduces tiny errors!")
-```
-:::
-
-:::{admonition} Part C: Apply to Real Data (15 min)
-:class: exercise, dropdown
-
-Create a function that correctly averages multiple magnitude measurements:
-
-```{code-cell} ipython3
-def average_magnitudes_wrong(mag_list):
-    """WRONG: Simple arithmetic mean of magnitudes."""
-    return sum(mag_list) / len(mag_list)
-
-def average_magnitudes_correct(mag_list):
-    """
-    CORRECT: Convert to flux, average, convert back.
-    This is how professional astronomy software works!
-    """
-    if not mag_list:
-        raise ValueError("Empty magnitude list")
-    
-    # Check for unreasonable values
-    for mag in mag_list:
-        if mag < -30 or mag > 40:
-            raise ValueError(f"Magnitude {mag} outside reasonable range")
-    
-    # Convert to fluxes
-    fluxes = [mag_to_flux(m) for m in mag_list]
-    
-    # Average the fluxes
-    mean_flux = sum(fluxes) / len(fluxes)
-    
-    # Convert back to magnitude
-    return flux_to_mag(mean_flux)
-
-# Test with example data
-test_mags = [10.0, 10.5, 11.0]
-
-wrong_result = average_magnitudes_wrong(test_mags)
-correct_result = average_magnitudes_correct(test_mags)
-
-print(f"Magnitudes: {test_mags}")
-print(f"Wrong (arithmetic mean): {wrong_result:.3f}")
-print(f"Correct (flux-weighted): {correct_result:.3f}")
-print(f"Difference: {wrong_result - correct_result:.3f} magnitudes")
-print(f"\nThis difference compounds with more measurements!")
-```
-:::
-
-### Exercise 2.2: Numerical Hazard Detection
-
-:::{admonition} Part A: Identify the Problem (5 min)
-:class: exercise, dropdown
-
-Run this code and identify the numerical hazard:
-
-```{code-cell} ipython3
-# Calculating small differences in large numbers
-distance1 = 1.496e13  # 1 AU in cm
-distance2 = 1.496e13 + 100  # 1 meter further
-
-difference = distance2 - distance1
-print(f"Distance 1: {distance1:.10e} cm")
-print(f"Distance 2: {distance2:.10e} cm")
-print(f"Difference: {difference} cm")
-print(f"Expected: 100 cm")
-print(f"\nWhat hazard is this demonstrating?")
-```
-:::
-
-:::{admonition} Part B: Implement Detection (10 min)
-:class: exercise, dropdown
-
-Create a function to detect potential catastrophic cancellation:
-
-```{code-cell} ipython3
-def detect_cancellation_risk(a, b, threshold=0.01):
-    """
-    Detect if subtracting a and b risks catastrophic cancellation.
-    
-    Returns True if |a-b| < threshold * max(|a|, |b|)
-    """
-    if a == 0 or b == 0:
-        return False
-    
-    difference = abs(a - b)
-    scale = max(abs(a), abs(b))
-    relative_diff = difference / scale
-    
-    is_risky = relative_diff < threshold
-    
-    if is_risky:
-        print(f"WARNING: Catastrophic cancellation risk!")
-        print(f"Relative difference: {relative_diff:.2e}")
-    
-    return is_risky
-
-# Test with our distance example
-detect_cancellation_risk(distance1, distance2)
-
-# Test with safe calculation
-detect_cancellation_risk(100, 50)
-```
-:::
-
-:::{admonition} Part C: Apply to Orbital Mechanics (15 min)
-:class: exercise, dropdown
-
-Implement safe calculation of orbital energy changes:
-
-```{code-cell} ipython3
-def orbital_energy_change_unsafe(r1, r2, M):
-    """
-    UNSAFE: Direct calculation of energy change.
-    E = -GM/(2r) for circular orbit
-    """
-    G = 6.67e-8  # CGS
-    E1 = -G * M / (2 * r1)
-    E2 = -G * M / (2 * r2)
-    return E2 - E1  # Catastrophic cancellation for r1 ≈ r2!
-
-def orbital_energy_change_safe(r1, r2, M):
-    """
-    SAFE: Reformulated to avoid cancellation.
-    ΔE = GM/2 * (1/r1 - 1/r2) = GM/2 * (r2-r1)/(r1*r2)
-    """
-    G = 6.67e-8
-    
-    if r1 == r2:
-        return 0.0
-    
-    # Use reformulated expression
-    delta_E = G * M / 2 * (r2 - r1) / (r1 * r2)
-    return delta_E
-
-# Test with nearly equal radii (1 AU ± 1 km)
-r1 = 1.496e13  # 1 AU in cm
-r2 = 1.496e13 + 1e5  # 1 km further
-M = 1.989e33  # Solar mass
-
-unsafe = orbital_energy_change_unsafe(r1, r2, M)
-safe = orbital_energy_change_safe(r1, r2, M)
-
-print(f"Unsafe calculation: {unsafe:.6e} erg")
-print(f"Safe calculation:   {safe:.6e} erg")
-print(f"Relative difference: {abs(unsafe-safe)/abs(safe):.2%}")
-```
-
-:::
-
-### Exercise 2.3: Build a Robust Calculator (Challenge)
-
-:::{admonition} Complete Project (20-30 min)
-:class: exercise, dropdown
-
-Build a scientific calculator with proper error handling:
-
-```{code-cell} ipython3
-import math
-
-class ScientificCalculator:
-    """A calculator with numerical safety features."""
-    
-    def __init__(self):
-        self.history = []
-        self.epsilon = sys.float_info.epsilon
-    
-    def safe_log(self, x, base=math.e):
-        """Logarithm with validation."""
-        if x <= 0:
-            raise ValueError(f"Cannot take log of {x}")
-        
-        if base == math.e:
-            result = math.log(x)
-        elif base == 10:
-            result = math.log10(x)
-        else:
-            result = math.log(x) / math.log(base)
-        
-        self.history.append(f"log_{base}({x}) = {result}")
-        return result
-    
-    def safe_power(self, base, exponent):
-        """Power operation with overflow protection."""
-        # Check for potential overflow
-        if abs(base) > 1 and exponent > 100:
-            # Use log space
-            log_result = exponent * math.log10(abs(base))
-            if log_result > 300:  # Would overflow
-                return f"10^{log_result:.1f}"
-        
-        result = base ** exponent
-        self.history.append(f"{base}^{exponent} = {result}")
-        return result
-    
-    def compare_floats(self, a, b, tolerance=1e-9):
-        """Safe float comparison."""
-        return math.isclose(a, b, rel_tol=tolerance)
-
-# Test your calculator
-calc = ScientificCalculator()
-
-# Test logarithm
-print(f"log₁₀(1000) = {calc.safe_log(1000, 10)}")
-
-# Test power with large numbers
-print(f"10^300 = {calc.safe_power(10, 300)}")
-
-# Test float comparison
-a = 0.1 + 0.2
-b = 0.3
-print(f"0.1 + 0.2 == 0.3? {calc.compare_floats(a, b)}")
-
-# Show history
-print("\nCalculation history:")
-for item in calc.history:
-    print(f"  {item}")
-```
-
-:::
 
 ## Main Takeaways
 

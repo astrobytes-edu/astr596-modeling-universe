@@ -9,7 +9,7 @@ kernelspec:
   language: python
   name: python3
 ---
-# ⚠️ Chapter 6: OOP Fundamentals - Organizing Scientific Code
+# Chapter 6: OOP Fundamentals - Organizing Scientific Code
 
 ## Learning Objectives
 
