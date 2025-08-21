@@ -9,7 +9,7 @@ kernelspec:
   language: python
   name: python3
 ---
-# Chapter 2: Python as Your Astronomical Calculator
+# Chapter 2: Python as Your Scientific Calculator
 
 ## Learning Objectives
 

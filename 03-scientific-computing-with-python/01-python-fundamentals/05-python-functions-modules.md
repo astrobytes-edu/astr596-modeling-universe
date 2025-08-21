@@ -11,40 +11,19 @@ kernelspec:
 ---
 # Chapter 5: Functions & Modules - Building Reusable Scientific Code
 
-You're absolutely right - I apologize for not carefully reviewing the format. Looking at Chapters 3 and 4, I can see the learning objectives use **partial bolding** for key action phrases. Here's the corrected format:
-
-## Margin Definition for Abstractions
-
-:::{margin}
-**Abstraction**
-A simplified interface that hides complex implementation details, allowing users to work with concepts rather than low-level operations. Functions are the fundamental abstraction mechanism in programming.
-:::
-
-## Updated Learning Objectives for Chapter 5 (Correct Format)
-
 ## Learning Objectives
 
 By the end of this chapter, you will be able to:
 
-- [ ] (1) **Design functions that encapsulate** computational physics and astronomy algorithms with clear input/output contracts
-- **Apply Python's LEGB scope rules** to prevent variable conflicts in complex numerical simulations  
-- **Implement flexible function interfaces** using positional, keyword, and default arguments for scientific computing.
-- **Transform iterative calculations** into functional programming patterns using `map`, `filter`, and `lambda`.
-- **Organize related computational functions** into reusable modules following scientific Python conventions.
-- **Write comprehensive docstrings** that document physical units, assumptions, and numerical methods.
-- **Debug common function errors** including mutable defaults, `UnboundLocalError`, and scope violations.
-- **Optimize function performance** through memoization and vectorization strategies for large-scale computations.
-
-This format matches Chapters 3 and 4 exactly - with the key action verbs/phrases bolded at the start of each objective, followed by the specific details unbolded.
-
-- Design functions as clear contracts with well-defined inputs and outputs
-- Understand Python's scope rules and how they affect variable access
-- Master positional, keyword, and default arguments for flexible interfaces
-- Apply functional programming patterns like map, filter, and lambda functions
-- Create and import your own modules for code organization
-- Document functions properly using docstrings
-- Recognize and avoid common function-related bugs
-- Build modular, reusable code for scientific applications
+- [ ] **(1) Design functions that encapsulate** computational physics and astronomy algorithms with clear input/output contracts
+- [ ] **(2) Apply Python's LEGB scope rules** to prevent variable conflicts in complex numerical simulations  
+- [ ] **(3) Implement flexible function interfaces** using positional, keyword, and default arguments for scientific computing.
+- [ ] **(4) Transform iterative calculations** into functional programming patterns using `map`, `filter`, and `lambda`.
+- [ ] **(5) Organize related computational functions** into reusable modules following scientific Python conventions.
+- [ ] **(6) Write comprehensive docstrings** that document physical units, assumptions, and numerical methods.
+- [ ] **(7) Debug common function errors** including mutable defaults, `UnboundLocalError`, and scope violations.
+- [ ] **(8) Optimize function performance** through memoization and vectorization strategies for large-scale computations.
+- [ ] **(9) Build modular, reusable code** for scientific applications.
 
 ## Prerequisites Check
 

@@ -62,8 +62,8 @@ project:
   
   # Directories you're not ready to include
     - 01-course-info/02-astr596-schedule.md
-    - 03-scientific-computing-with-python/02-scientific-computing-core/09-python-robust-computing-ORIG.md
-    - 03-scientific-computing-with-python/02-scientific-computing-core/10-python-advanced-oop-ORIG.md
+    #- 03-scientific-computing-with-python/02-scientific-computing-core/09-python-robust-computing-ORIG.md
+    #- 03-scientific-computing-with-python/02-scientific-computing-core/10-python-advanced-oop-ORIG.md
     - 03-scientific-computing-with-python/03-**
     - 03-scientific-computing-with-python/04-**
     - 03-scientific-computing-with-python/05-**

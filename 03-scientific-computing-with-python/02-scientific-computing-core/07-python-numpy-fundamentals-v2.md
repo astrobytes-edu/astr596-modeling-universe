@@ -15,15 +15,15 @@ kernelspec:
 
 By the end of this chapter, you will be able to:
 
-- Create and manipulate NumPy arrays for efficient numerical computation
-- Apply vectorized operations to eliminate explicit loops and improve performance by 10-100x
-- Master array indexing, slicing, and boolean masking for data selection and filtering
-- Understand and leverage broadcasting rules to perform operations on arrays of different shapes
-- Use essential NumPy functions for scientific computing (linspace, logspace, where, meshgrid)
-- Perform array transformations including reshaping, stacking, and splitting for data analysis
-- Generate random numbers from various distributions for Monte Carlo simulations
-- Apply NumPy to real astronomical calculations with proper CGS units
-- Recognize when to use NumPy instead of pure Python for numerical tasks
+- [ ] **(1) Create and manipulate NumPy arrays** for efficient numerical computation
+- **(2) Apply vectorized operations** to eliminate explicit loops and improve performance by 10-100x
+- **(3) Master array indexing, slicing, and boolean masking** for data selection and filtering
+- **(4) Understand and leverage broadcasting rules** to perform operations on arrays of different shapes
+- **(5) Use essential NumPy functions** for scientific computing (`linspace`, `logspace`, `where`, `meshgrid`)
+- **(6) Perform array transformations** including reshaping, stacking, and splitting for data analysis
+- **(7) Generate random numbers** from various distributions for Monte Carlo simulations
+- **(8) Apply NumPy to real astrophysical calculations** with proper CGS units
+- **(9) Recognize when to use NumPy** instead of pure Python for numerical tasks
 
 ## Prerequisites Check
 

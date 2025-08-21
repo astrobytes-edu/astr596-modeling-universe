@@ -12,14 +12,14 @@ The three short projects progress from foundations to advanced methods:
 
 ### 🐍 Project 1: Python Foundations & Stellar Physics
 
-**Duration**: 2 weeks | **Focus**: OOP design and stellar evolution modeling
+**Duration**: 2 weeks | **Focus**: OOP Design and Stellar Physics | **Due Date**:
 
 - Professional development environment setup
 - Object-oriented programming principles
 - Stellar physics implementation
 - Git workflow and documentation
 
-[→ Project 1 Details](1_project1_description.md)
+[→ Project 1 Details](00-project-submission-guide)
 
 ### 🪐 Project 2: N-Body Dynamics & Monte Carlo
 

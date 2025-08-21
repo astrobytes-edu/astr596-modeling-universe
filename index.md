@@ -4,8 +4,6 @@
 
 :::{warning}
 This course textbook is a work-in-progress. Pages that start with ⚠️ still a work in progress and subject to change.
-
-*Please proceed with caution.*
 :::
 
 Welcome to **ASTR 596: Modeling the Universe**! This course takes you on a journey from Python fundamentals to machine learning and cutting-edge JAX implementations, building transparent "glass box" models that reveal the physics underlying astronomical phenomena.
@@ -15,7 +13,12 @@ Welcome to **ASTR 596: Modeling the Universe**! This course takes you on a journ
 **Earned Complexity**: We implement fundamental algorithms from first principles before leveraging advanced frameworks. Every line of code serves understanding—no black boxes allowed until you've built the glass box yourself.
 :::
 
-![*image credit:* xkcd.com](https://imgs.xkcd.com/comics/astrophysics.png)
+```{image} https://imgs.xkcd.com/comics/astrophysics.png
+:alt: astrophysics <xkcd.com>
+:width: 400px
+:align: center
+*credit:* <xkcd.com>
+```
 
 ## Course Trajectory
 
