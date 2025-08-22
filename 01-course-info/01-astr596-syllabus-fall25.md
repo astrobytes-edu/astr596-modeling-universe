@@ -135,15 +135,18 @@ Each short project submission includes both technical implementation and a growt
 - **Research Memo** - 2-3 pages text plus figures (LaTeX/PDF required).
 - **Code Quality** - Documentation, organization, Git practices.
 - **Validation** - Testing against known solutions or benchmarks.
-- **Student-Led Exploration** - One self-directed investigation beyond base requirements.
+- **Student-Led Exploration** - Self-directed investigation extending beyond base requirements (**required for graduate students**, optional but encouraged for undergraduates).
 
-**Growth Memo Components (1 page, submit as .md or PDF in project repo):**
+**Growth Memo Components (1-2 pages, submit as .md or PDF in project repo):**
+
+*An informal reflection on your learning journey and skill development progression - write authentically about:*
 
 - Technical skills developed.
 - Challenges encountered and solutions found.
 - Connection to course concepts.
 - AI usage and verification process.
 - Next learning goals.
+- Any other insights, surprises, or moments that shaped your understanding.
 
 **Note:** The relative weight between project implementation and growth memo may vary by project based on learning objectives and complexity. Early projects may emphasize reflection more heavily to develop metacognitive skills, while later projects may weigh technical implementation more strongly as mastery develops.
 
@@ -180,15 +183,18 @@ Each short project submission includes both technical implementation and a growt
 
 ### Technical Growth Synthesis (5% of course grade)
 
-A comprehensive portfolio document (3-5 pages), excluding figures, submitted with the Final Project that:
+**Portfolio Components (3-5 pages excluding figures, submit with Final Project):**
 
-- Synthesizes learning across all projects.
-- **Demonstrates growth through code evolution** - Compare early vs. final code samples and visualizations with explanations of improvements.
-- Reflects on computational thinking development.
-- **Documents AI literacy journey** - How your AI usage evolved, effectiveness strategies, importance of domain expertise.
-- **Includes AI reflection** - Your informed opinion on AI's role in computational science and astrophysics, including its effectiveness as a learning tool and study aid.
+*An informal reflective narrative documenting your computational journey through the entire course - write authentically about your evolution as a computational scientist:*
 
-**Format:** A reflective narrative documenting your computational journey through the course. Write honestly and conversationally - this is your story of growth, not a formal document.
+- Synthesis of learning across all projects.
+- Technical growth through code evolution (compare early vs. final code samples with explanations).
+- Development of computational thinking skills.
+- Student-led explorations' impact on your research approach and interests (what you gained, challenges, preparation for independent work).
+- Shift in learning mindset (did you find yourself exploring beyond requirements out of curiosity rather than obligation).
+- AI's impact on your learning journey (did it accelerate understanding, push you beyond requirements, teach you why domain expertise matters).
+- Assessment of the AI scaffolding design (effectiveness of the structured approach, what worked/didn't, suggestions for improvement).
+- Key moments, breakthroughs, or realizations that defined your growth.
 
 ### Participation & Engagement (10% of course grade)
 
@@ -223,15 +229,13 @@ A comprehensive portfolio document (3-5 pages), excluding figures, submitted wit
 
 ### Grading Scale
 
-Final letter grades will be calculated using the grading scale listed below. Curving final grades is at the discretion of the instructor.
+Final letter grades will be calculated using the grading scale listed below. **These percentages represent guaranteed thresholds** - earning the stated percentage guarantees at least that grade. The instructor reserves the right to adjust borderline grades upward based on effort, improvement, and engagement.
 
 - A: 93-100% | A-: 90-92%
 - B+: 87-89% | B: 83-86% | B-: 80-82%
 - C+: 77-79% | C: 73-76% | C-: 70-72%
 - D+: 67-69% | D: 63-66% | D-: 60-62%
 - F: Below 60%
-
-For graduate students, a minimum grade of B (3.0) is typically required for satisfactory progress.
 
 ## Course Policies
 
@@ -304,7 +308,7 @@ Trust the process, embrace the challenge, and discover that you're capable of do
 
 ## Diversity and Inclusivity Statement
 
-I consider this classroom to be a place where you will be treated with respect, and I welcome individuals of all ages, backgrounds, beliefs, ethnicities, genders, gender identities, gender expressions, national origins, religious affliations, sexual orientations, ability, and other visible and non-visible differences. All members of this class are expected to contribute to a respectful, welcoming and inclusive environment for every other member of the class. If something is said in class by myself or others that made you uncomfortable, please contact me or submit anonymous feedback.
+I consider this classroom to be a place where you will be treated with respect, and I welcome individuals of all ages, backgrounds, beliefs, ethnicities, genders, gender identities, gender expressions, national origins, religious affliations, sexual orientations, ability, and other visible and non-visible differences. All members of this class are expected to contribute to a respectful, welcoming and inclusive environment for every other member of the class. If something is said in class by myself or others that made you uncomfortable, please contact me or submit anonymous feedback. Anonymous feedback can be placed in my department mailbox (located in the mail/copier room, [PA-1XX]) or given to Hilary Scalisi, Department Coordinator in [Office # P-1XX], for delivery to me.
 
 ## Essential Student Information
 
