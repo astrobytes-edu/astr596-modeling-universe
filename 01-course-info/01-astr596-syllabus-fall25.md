@@ -229,7 +229,7 @@ Each short project submission includes both technical implementation and a growt
 
 ### Grading Scale
 
-Final letter grades will be calculated using the grading scale listed below. **These percentages represent guaranteed thresholds** - earning the stated percentage guarantees at least that grade. The instructor reserves the right to adjust borderline grades upward based on effort, improvement, and engagement.
+Final letter grades will be calculated using the grading scale listed below. These percentages represent guaranteed thresholds - earning the stated percentage guarantees at least that grade. The instructor reserves the right to adjust borderline grades upward based on effort, improvement, and engagement.
 
 - A: 93-100% | A-: 90-92%
 - B+: 87-89% | B: 83-86% | B-: 80-82%
