@@ -7,6 +7,8 @@ Purpose
 
 Hard constraints (do NOT modify these):
 
+- gh pages deployment MUST follow the workflow described here: <https://next.jupyterbook.org/start/publish/#github-pages>
+- You must ask permission to run this and if the answer is yes, you must delete the .github/workflows/deploy.yml file first if it exists.
 - Do NOT modify or run `.github/workflows/deploy.yml` automatically. The user will manage it manually.
 - Do NOT run `myst init --gh-pages` or `jupyter book init --gh-pages` unless the user explicitly asks and confirms they have deleted any existing `deploy.yml` first.
 - Do NOT build the site locally or run `jupyter-book build` or `myst build` on behalf of the user unless explicitly requested. The user prefers the build to run on GitHub Actions.
