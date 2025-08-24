@@ -43,6 +43,7 @@ project:
     - 'draft-*.md'           # Draft files in root only
     - '**/draft-*.md'        # Draft files in any directory
     - 'TODO.md'
+    - 'CONTRIBUTING.md'
     - 'instructor-notes/**'
   
   # Python subdirectories to exclude (no leading slash!)
