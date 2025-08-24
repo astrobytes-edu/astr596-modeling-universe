@@ -1,0 +1,31 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "/Users/anna/miniforge3/envs/astro/bin/python",
+      "args": [
+        "-m", "mcp_server_filesystem",
+        "/Users/anna/Dropbox/astrophysics-workspace/courses/course-websites/astr596-modeling-universe"
+      ]
+    },
+    "github": {
+      "command": "/Users/anna/miniforge3/envs/astro/bin/python",
+      "args": ["-m", "mcp_server_github"],
+      "env": {"GITHUB_TOKEN": "${env:GITHUB_TOKEN}"}
+    },
+    "fetch": {
+      "command": "/Users/anna/miniforge3/envs/astro/bin/python",
+      "args": ["-m", "mcp_server_fetch"]
+    },
+    "jupyter": {
+      "command": "/Users/anna/miniforge3/envs/astro/bin/python",
+      "args": ["-m", "mcp_server_jupyter"],
+      "env": {
+        "JUPYTER_PATH": "/Users/anna/Dropbox/astrophysics-workspace/courses/course-websites/astr596-modeling-universe"
+      }
+    },
+    "memory": {
+      "command": "/Users/anna/miniforge3/envs/astro/bin/python",
+      "args": ["-m", "mcp_server_memory"]
+    }
+  }
+}

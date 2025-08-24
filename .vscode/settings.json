@@ -1,0 +1,20 @@
+{
+  "cline.customInstructions": "Working on ASTR596 - Modeling the Universe course materials using MyST markdown (mystmd.org) and Jupyter Book 2. Use MyST directives like {note}, {warning}, {code-cell}. Create clear pedagogical examples with executable code cells. Include interactive visualizations. Target advanced undergraduate/graduate level.",
+  "files.associations": {
+    "*.md": "markdown",
+    "*.myst.md": "markdown",
+    "myst.yml": "yaml",
+    "_config.yml": "yaml",
+    "_toc.yml": "yaml"
+  },
+  "jupyter.notebookFileRoot": "${workspaceFolder}",
+  "search.exclude": {
+    "**/_build": true,
+    "**/data": true,
+    "**/.jupyter_cache": true
+  },
+  "files.watcherExclude": {
+    "**/_build/**": true,
+    "**/.jupyter_cache/**": true
+  }
+}

@@ -71,15 +71,23 @@ project:
     - '10-reference/**'
     - '**/OLD/**'           # Any OLD directory
     - '**/paper/**'         # Any paper directory
+    - '**/notebooks/**'     # Any notebooks directory
+    - '**/scripts/**'       # Any scripts directory
+    - '**/data/**'          # Any data directory
+    - '**/figures/**'        # Any figures directory
+    - '**/images/**'        # Any images directory
+    - '**/tests/**'         # Any tests directory
+    - '**/drafts/**'        # Any drafts directory
+
   # Add this section for PDF exports
   exports:
     - format: pdf
       template: plain_latex_book
-      output: exports/astr596-book.pdf
+      output: exports/astr596-book-2025.pdf
     # Optional: add another format/template
     - format: pdf
       template: arxiv_two_column
-      output: exports/astr596-article.pdf
+      output: exports/astr596-article-2025.pdf
 
   #bibliography:
   #  - references.bib
@@ -124,4 +132,4 @@ site:
       utterances:
         repo: "astrobytes-edu/astr596-modeling-universe"
         issue-term: "pathname"
-        theme: "github-light"
+        theme: "github-dark"

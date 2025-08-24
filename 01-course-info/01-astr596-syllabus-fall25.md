@@ -28,6 +28,7 @@ kernelspec:
 - **Format:** ~30-45min lecture review + 2h hands-on project work
 - **Location:** PA 215
 - **Course Website:** <https://astrobytes-edu.github.io/astr596-modeling-universe/>
+- [**ASTR 596 Virtual Tutor (custom GPT link)**](https://chatgpt.com/g/g-68aabb9278d08191926feb3f5512686c-astr-596-modeling-the-universe-tutor)
 - **Platforms:** Canvas, Slack, GitHub Classroom
 
 ### Class Meeting Structure
@@ -117,7 +118,7 @@ All projects distributed and submitted here. Your last repository push by the de
 
 | Component | Weight | Description |
 |-----------|--------|-------------|
-| **Short Projects 1-6** | 50% | Due biweekly on Mondays at 11:59 PM PT via GitHub Classroom (includes Growth Memos). |
+| **Short Projects 1-5** | 50% | Due biweekly on Mondays at 11:59 PM PT via GitHub Classroom (includes Growth Memos). |
 | **Growth Memos** | 10% | Integrated with each project submission (.md or PDF in project repo) |
 | **Final Project** | 25% | JAX implementation with research component. Due Thu Dec 18, 11:59 PM PT. |
 | **Technical Growth Synthesis** | 5% | Comprehensive self-reflection growth portfolio integrated with Final Project submission (.md or PDF in project repo). |
@@ -162,10 +163,9 @@ Each short project submission includes both technical implementation and a growt
 
 | Component | Weight | Description |
 |-----------|--------|-------------|
-| **Proposal** | 15% | Clear research question, methodology, and proposed implementation plan. |
-| **Code Package** | 45% | Professional package structure with `__init__.py`, tests, and documentation. |
-| **Written Report** | 25% | Scientific writeup with scientific background and motivation, methods, results, and conclusions. |
-| **Presentation** | 15% | 15-minute total: research project, technical growth summary, and Q&A. |
+| **Code Package** | 55% | Professional package structure with `__init__.py`, tests, and documentation. |
+| **Written Report** | 30% | Scientific writeup with scientific background and motivation, methods, results, and conclusions. |
+| **Presentation** | 15% | 12-minute total: research project, technical growth summary, and Q&A. |
 
 **Code Package Requirements:**
 
@@ -175,9 +175,9 @@ Each short project submission includes both technical implementation and a growt
 - Clean Git history showing iterative development.
 - Requirements.txt/environment.yml.
 
-**Presentation Structure (15 minutes total):**
+**Presentation Structure (12 minutes total):**
 
-- 10 minutes on research project (motivation, methods, results, conclusions).
+- 7 minutes on research project (motivation, methods, results, conclusions).
 - 3 minutes on technical growth journey (key learning moments, skill evolution).
 - 2 minutes for Q&A.
 
@@ -218,11 +218,9 @@ Each short project submission includes both technical implementation and a growt
 | Initial Course Reflection & Setup (Project 0)* | Thursday, Aug 28, 11:59 PM PT |
 | Project 1: Python Fundamentals, OOP, & Stellar Physics (with Growth Memo 1) | Monday, Sept 8, 11:59 PM PT |
 | Project 2: ODE Integration & N-Body Dynamics (with Growth Memo 2) | Monday, Sept 22, 11:59 PM PT |
-| Project 3: Monte Carlo Radiative Transfer (with Growth Memo 3) | Monday, Oct 6, 11:59 PM PT |
-| Project 4: Linear Regression/ML Fundamentals (with Growth Memo 4) | Monday, Oct 20, 11:59 PM PT |
-| Project 5: Bayesian/MCMC (with Growth Memo 5) | Monday, Nov 3, 11:59 PM PT |
-| Project 6: Gaussian Processes (with Growth Memo 6) | Monday, Nov 17, 11:59 PM PT |
-| Final Project Proposal | Friday, Nov 21, 11:59 PM PT |
+| Project 3: Monte Carlo Radiative Transfer (with Growth Memo 3) | Monday, Oct 13, 11:59 PM PT |
+| Project 4: Bayesian/MCMC (with Growth Memo 4) | Monday, Nov 3, 11:59 PM PT |
+| Project 5: Gaussian Processes (with Growth Memo 5) | Monday, Nov 24, 11:59 PM PT |
 | Final Project & Technical Growth Synthesis | Thursday, Dec 18, 11:59 PM PT |
 
 *Counts toward Participation grade
@@ -308,7 +306,7 @@ Trust the process, embrace the challenge, and discover that you're capable of do
 
 ## Diversity and Inclusivity Statement
 
-I consider this classroom to be a place where you will be treated with respect, and I welcome individuals of all ages, backgrounds, beliefs, ethnicities, genders, gender identities, gender expressions, national origins, religious affliations, sexual orientations, ability, and other visible and non-visible differences. All members of this class are expected to contribute to a respectful, welcoming and inclusive environment for every other member of the class. If something is said in class by myself or others that made you uncomfortable, please contact me or submit anonymous feedback. Anonymous feedback can be placed in my department mailbox (located in the mail/copier room, [PA-1XX]) or given to Hilary Scalisi, Department Coordinator in [Office # P-1XX], for delivery to me.
+I consider this classroom to be a place where you will be treated with respect, and I welcome individuals of all ages, backgrounds, beliefs, ethnicities, genders, gender identities, gender expressions, national origins, religious affliations, sexual orientations, ability, and other visible and non-visible differences. All members of this class are expected to contribute to a respectful, welcoming and inclusive environment for every other member of the class. If something is said in class by myself or others that made you uncomfortable, please contact me or submit anonymous feedback. Anonymous feedback can be placed in my department mailbox (located in the mail/copier room, PA-122A) or given to Hilary Scalisi, Department Coordinator in office # P-132, for delivery to me.
 
 ## Essential Student Information
 
