@@ -5,42 +5,38 @@ Course materials and site source for ASTR 596 (Fall 2025).
 
 ## Quick start
 
-Set up a virtual environment, install dependencies, and build the site locally:
+Set up a virtual environment, install dependencies, and build the site locally (Jupyter Book 2.x only):
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-# Build with Jupyter Book (v2+)
+# Build with Jupyter Book 2.x
 jupyter-book build .
 ```
 
-Alternative: using the MyST CLI (`myst`) which provides similar commands:
+If you prefer the MyST CLI (Markdown-first workflow), install and use `mystmd`:
 
 ```bash
-# Install mystmd (if you prefer the myst CLI)
+# (optional) install myst CLI
 pip install mystmd
-# Initialize (if needed) and build
-myst init  # optional: creates myst.yml and basic structure
+# serve a local dev server (auto-rebuild)
+myst start
+# build statically
 myst build
 ```
 
-Serve the built site for local preview:
+Serve the built site for local preview (simple HTTP server):
 
 ```bash
 python -m http.server -d _build/html 8000
 # then open http://localhost:8000
 ```
 
-Alternative live preview with the CLI (auto-rebuilds and serves):
+Notes on `jupyter-book start`:
 
-```bash
-# Jupyter Book (v2+) local dev server
-jupyter-book start
-
-# Or with the MyST CLI
-myst start
-```
+- `jupyter-book build .` is the canonical build command for Jupyter Book 2.x and is the command we pin in `requirements.txt` (`jupyter-book==2.*`).
+- A `jupyter-book start` dev server may be available depending on the installed Jupyter Book release, but it is not required — `myst start` or the simple `http.server` approach are reliable alternatives.
 
 ## Prerequisites
 
@@ -67,11 +63,53 @@ See `CONTRIBUTING.md` for branching, commit style, local build, and PR checklist
 
 ## CI & Deployment
 
-We recommend adding a GitHub Actions workflow that builds the Jupyter Book on PRs and pushes the `_build/html` to GitHub Pages or another hosting provider. PRs should include a successful build check before merging.
+Recommended deploy workflow (follow `mystmd` / Jupyter Book docs):
+
+Use the built-in initializer to create a GitHub Actions workflow that deploys to GitHub Pages. This follows the `--gh-pages` flow in the official docs (preferred):
+
+- Option A (MyST CLI, Markdown-first):
+
+```bash
+# Run from the repository root; this interactively scaffolds a Pages action and config
+myst init --gh-pages
+
+# After answering prompts, commit the generated files and push to your repo
+git add .github/workflows && git commit -m "Add GitHub Pages workflow (myst init --gh-pages)" && git push
+```
+
+- Option B (Jupyter Book CLI):
+
+```bash
+# Run from the repository root; this interactively scaffolds a Pages action and config
+jupyter book init --gh-pages
+
+# After answering prompts, commit and push the generated workflow
+git add .github/workflows && git commit -m "Add GitHub Pages workflow (jupyter book init --gh-pages)" && git push
+```
+
+After you push the generated workflow, enable GitHub Pages in the repository Settings -> Pages and set the source to *GitHub Actions*. Pushing to the branch you selected (e.g., `main`) will trigger the action and publish your site to `https://<org-or-user>.github.io/<repo>/`.
+
+BASE_URL / repository subpath note:
+
+- If your repo is not a user/organization-level repo (i.e., `username.github.io`), your site will usually be served at `/repo-name/`. The MyST CLI's `--gh-pages` init will configure `BASE_URL` automatically; if not, set `BASE_URL` as an environment variable in the generated GitHub Action or in the action's `with:` configuration.
+
+Build commands (local testing):
+
+```bash
+# Build with Jupyter Book 2.x (canonical)
+jupyter-book build .
+
+# Or with MyST CLI (if using mystmd)
+myst build
+
+# Serve the built site locally
+python -m http.server -d _build/html 8000
+```
 
 Resources:
-- Jupyter Book 2 docs: https://next.jupyterbook.org/
-- MyST Markdown docs: https://mystmd.org/
+
+- Jupyter Book: <https://next.jupyterbook.org/>
+- MyST Markdown: <https://mystmd.org/>
 
 ## Excluded files
 
@@ -81,5 +119,5 @@ Files listed in `myst.yml` `exclude:` (for example `TODO.md` and `CONTRIBUTING.m
 
 - Content: CC-BY-4.0
 - Code: MIT
-- Contact: `@drannarosen` — alrosen@sdsu.edu
+- Contact: `@drannarosen` — <alrosen@sdsu.edu>
 

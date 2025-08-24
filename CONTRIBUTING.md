@@ -53,6 +53,52 @@ pip install -r requirements.txt
 jupyter-book build .
 ```
 
+If you prefer a Markdown-first workflow, install and use the MyST CLI:
+
+```bash
+# (optional) install myst CLI
+pip install mystmd
+# serve a local dev server (auto-rebuild)
+myst start
+# build statically
+myst build
+```
+
+## Deploying to GitHub Pages (recommended options)
+
+Choose one of the following:
+
+- Local manual push using `ghp-import`:
+
+```bash
+# Build the site
+jupyter-book build .
+
+# Install ghp-import if needed
+pip install ghp-import
+
+# Push to gh-pages branch
+ghp-import -n -p -f _build/html
+```
+
+- Automated deploy with GitHub Actions (recommended for CI): create `.github/workflows/deploy.yml` that installs dependencies, runs `jupyter-book build .`, and uses `peaceiris/actions-gh-pages` to publish `_build/html` to `gh-pages`.
+
+Follow the official `--gh-pages` init flow to generate a GitHub Action automatically:
+
+- From the repo root, run one of the following and answer prompts:
+
+```bash
+# MyST CLI (recommended for Markdown-first projects)
+myst init --gh-pages
+
+# Or Jupyter Book CLI
+jupyter book init --gh-pages
+```
+
+This scaffolds a `.github/workflows/*.yml` GitHub Action that will build and deploy your site on push to the configured branch. Commit and push the generated files to trigger the Action. If your repo is not `username.github.io`, ensure `BASE_URL` is set appropriately (the `--gh-pages` init handles this for you in most cases).
+
+See `README.md` for an example workflow and notes about `BASE_URL`.
+
 1. (Optional) If you add Python code, run tests:
 
 ```bash
