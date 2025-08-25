@@ -1,40 +1,162 @@
-# ⚠️ ASTR 596: Project Submission Guide
+# ASTR 596: Project Submission Guide
+
+## Course Philosophy on Collaboration
+
+This course thrives on collaboration! You are **strongly encouraged** to:
+
+- Discuss ideas and concepts with classmates
+- Help each other debug and troubleshoot
+- Share insights and "aha!" moments
+- Work through challenging concepts together
+- Learn from each other's approaches
+
+**Important:** While collaboration is encouraged, all submitted code, memos, and documentation must be your own work. Think of it like studying together for an exam—you can discuss and learn together, but when it's time to write, you do so independently.
+
+**This is not a competition!** We're all here to learn, grow, and support each other in mastering computational astrophysics.
 
 ## Project Schedule & Deadlines
 
 ### Project Timeline
-Projects are assigned on Mondays (posted to GitHub Classroom) and due the following Monday at 11:59 PM. This schedule allows you to review requirements before Friday's class, where we'll work on implementation together.
 
-| Project | Assigned | Due Date | Topic | Key Concepts |
-|---------|----------|----------|-------|--------------|
-| **Project 1** | Aug 29 (Fri) | Sept 8 (Mon) | Python/OOP/Stellar Physics Basics | OOP & Classes, HR diagrams |
-| **Project 2** | Sept 8 (Mon) | Sept 22 (Mon) | ODE Integration + N-Body Dynamics + Monte Carlo Sampling | Euler, RK4, Leapfrog, Planetary + Star Cluster Dynamics, IMF Sampling |
-| **Project 3** | Sept 22 (Mon) | Oct 6 (Mon) | Monte Carlo Radiative Transfer (MCRT) | Photon packets, scattering, absorption |
-| **Project 4** | Oct 6 (Mon) | Oct 20 (Mon) | Regression/ML Fundamentals | Gradient descent, loss functions, optimization |
-| **Project 5** | Oct 20 (Mon) | Nov 3 (Mon) | Bayesian Inference/MCMC | Priors, Likelihood, Metropolis-Hastings |
-| **Project 6** | Nov 3 (Mon) | Nov 17 (Mon) | Gaussian Processes | Kernels, Hyperparameters, Regression |
-| **Final Project** | Nov 17 (Mon) | Dec 18 (Thu) | Neural Networks (From Scratch + JAX) | Backprop, `autodiff`, JAX Ecosystem |
+Projects are assigned on Mondays (posted to GitHub Classroom) with varying completion periods based on complexity. This schedule allows you to review requirements before Friday's class, where we'll work on implementation together.
 
-### Example Two-Week Project Workflow
+| Project | Assigned | Due Date | Duration | Topic | Key Concepts |
+|---------|----------|----------|----------|-------|--------------|
+| **Project 1** | Aug 29 (Fri) | Sept 8 (Mon) | ~1.5 weeks | Python/OOP/Stellar Physics Basics | OOP & Classes, HR diagrams |
+| **Project 2** | Sept 8 (Mon) | Sept 22 (Mon) | 2 weeks | ODE Integration & N-Body Dynamics | Euler, RK4, Leapfrog, Planetary + Star Cluster Dynamics, IMF Sampling |
+| **Project 3** | Sept 22 (Mon) | Oct 13 (Mon) | 3 weeks | Monte Carlo Radiative Transfer (MCRT) | Photon packets, scattering, absorption |
+| **Project 4** | Oct 13 (Mon) | Nov 3 (Mon) | 3 weeks | Bayesian Inference/MCMC | Priors, Likelihood, Metropolis-Hastings, Gradient descent (integrated) |
+| **Project 5** | Nov 3 (Mon) | Nov 24 (Mon) | 3 weeks | Gaussian Processes | Kernels, Hyperparameters, Regression |
+| **Final Project** | Nov 24 (Mon) | Dec 18 (Thu) | 3.5 weeks | Neural Networks (From Scratch + `JAX`) | Backprop, `autodiff`, `JAX` Ecosystem |
 
-**Note:** This timeline is meant to serve as an example workflow. How you manage your time outside of class will likely vary week-to-week, but staying on track is crucial for producing quality work. If you're struggling with time management on your projects, please reach out early—I'm here to help you find strategies that work.
+### Project Workflows
+
+**Note:** These timelines serve as example workflows. How you manage your time outside of class will likely vary week-to-week, but staying on track is crucial for producing quality work. If you're struggling with time management on your projects, please reach out early—I'm here to help you find strategies that work.
+
+#### Two-Week Project Workflow (Project 2)
 
 **Week 1: Understanding & Initial Implementation**
 
 - **Day 1-2 (Mon-Tue):** Read assignment thoroughly, understand requirements, review relevant Course Jupyter Book chapters
-- **Day 3-4 (Wed-Thu):** Begin implementation, focus on core functionality
+- **Day 3-4 (Wed-Thu):** Begin implementation, focus on core functionality  
 - **Day 5 (Fri):** Class session - ask questions, pair programming, debug with peers
 - *Optional* **Day 6-7 (Sat-Sun):** Continue implementation based on class insights
 
 **Week 2: Refinement & Completion**
 
-- **Day 8-9 (Mon-Tue):** Complete base requirements, begin mandatory extensions
+- **Day 8-9 (Mon-Tue):** Complete base requirements, begin extensions
 - **Day 10-11 (Wed-Thu):** Test edge cases, optimize performance
 - **Day 12 (Fri):** Class session - final debugging, optimization discussions
-- *Optional* **Day 13 (Sat-Sun):** Polish code, write documentation, complete project memo
-- **Day 14 (Mon):** Final review, submit by 11:59 PM
+- *Optional* **Day 13-14 (Sat-Mon):** Polish code, write documentation, complete memos, submit by Monday 11:59 PM
+
+#### Three-Week Project Workflow (Projects 3-5)
+
+**Week 1: Foundation & Exploration**
+
+- **Day 1-3 (Mon-Wed):** Deep dive into theory, understand physics/math, plan approach
+- **Day 4 (Thu):** Begin initial implementation of core algorithms
+- **Day 5 (Fri):** Class session - clarify concepts, discuss approaches with peers
+- *Optional* **Day 6-7 (Sat-Sun):** Continue core implementation
+
+**Week 2: Core Implementation & Testing**
+
+- **Day 8-10 (Mon-Wed):** Complete base implementation, begin testing
+- **Day 11 (Thu):** Debug, validate against known solutions
+- **Day 12 (Fri):** Class session - share progress, get feedback, debug challenging issues
+- *Optional* **Day 13-14 (Sat-Sun):** Refine implementation, start extensions
+
+**Week 3: Extensions & Polish**
+
+- **Day 15-17 (Mon-Wed):** Complete extensions, optimize performance
+- **Day 18 (Thu):** Write memos, finalize documentation
+- **Day 19 (Fri):** Class session - final optimizations, peer code review
+- *Optional* **Day 20-21 (Sat-Mon):** Final polish, submit by Monday 11:59 PM
+
+## Project Extensions: Your Creative Playground
+
+### Extension Requirements
+
+**Graduate Students:** Must complete at least one substantial extension beyond base requirements.
+
+**Undergraduate Students:** Extensions are optional but **highly recommended**—they're where the real fun and deeper learning happen!
+
+### The Spirit of Extensions
+
+Extensions are meant to be **freeing and engaging** — this is YOUR opportunity to explore what interests you most about the project. The goal is to promote:
+
+- **Curiosity:** What happens if...?
+- **Experimentation:** Let me try this approach...
+- **Creativity:** I wonder if I could visualize this differently...
+- **Deep Diving:** I want to understand this aspect better...
+
+**This is about what YOU want to explore, not what you think I want to see!**
+
+### Example Extension Ideas (Jump-Off Points)
+
+**Parameter Exploration:**
+
+- How does the system behave under extreme conditions?
+- What parameter ranges produce interesting phenomena?
+- Can you identify phase transitions or critical points?
+
+**Additional Methods:**
+
+- Implement an alternative algorithm and compare
+- Try a different numerical scheme
+- Add adaptive methods (timestep, resolution, etc.)
+
+**Enhanced Visualizations:**
+
+- Create animations showing time evolution
+- Interactive plots for parameter exploration
+- 3D visualizations where appropriate
+- Novel ways to display multi-dimensional data
+
+**Scientific Investigation:**
+
+- Compare with analytical solutions
+- Error analysis and convergence studies
+- Stability analysis
+- Connection to real astronomical observations
+
+**Performance Optimization:**
+
+- Vectorization and algorithmic improvements
+- Memory optimization for large-scale problems
+- Parallel processing implementation
+- Profiling and bottleneck analysis
+
+**Physics Extensions:**
+
+- Add additional physical processes
+- Extend to more realistic scenarios
+- Include effects initially neglected
+
+### Not Sure About Your Extension Idea?
+
+**Talk to me or your classmates!** Some of the best extensions come from conversations like:
+
+- "I noticed something weird when..."
+- "I'm curious what would happen if..."
+- "Could we make this work for..."
+- "What if we tried..."
+
+**Remember:** The best extension is one that genuinely interests you. If you're excited about it, you're on the right track!
 
 ## Submission Requirements
+
+### GitHub Classroom Submission
+
+```{admonition} TBD: GitHub Classroom Setup
+:class: info
+Detailed instructions for submitting via GitHub Classroom will be provided once setup is complete. This will include:
+- How to accept assignments
+- Cloning your repository
+- Pushing your work
+- Ensuring all files are properly submitted
+- Verification that submission was successful
+- Please refer to [*Getting Started: Introduction to Git and GitHub*](../02-getting-started/03-git-intro.md). 
+```
 
 ### Each Project Must Include
 
@@ -42,8 +164,7 @@ Projects are assigned on Mondays (posted to GitHub Classroom) and due the follow
 
 #### 1. Code Components (recommended structure)
 
-```markdown
-
+```bash
 project_N/
 ├── src/
 │   ├── __init__.py
@@ -59,26 +180,27 @@ project_N/
 │   └── data/             # Any output data files
 ├── README.md             # Installation and usage instructions
 ├── requirements.txt      # All dependencies with versions
-├── project_memo.md       # Your analysis and reflection
-└── .gitignore           # Properly configured
+├── research_memo.pdf     # Your analysis (2-3 pages)
+├── growth_memo.md        # Your reflection (1-2 pages)
+└── .gitignore            # Properly configured
 ```
 
 **Code Standards:**
 
-- Modular design with clear separation of concerns.
+- Modular design with clear separation of concerns
 - No God functions (functions should do one thing well)
-- No magic numbers (use variables and attributes appropriately and consistently).
-- Meaningful variable names (avoid single letters except for indices).
-- Correct type hints encouraged for function signatures.
-- No global variables unless absolutely necessary.
-- Error handling for edge cases.
+- No magic numbers (use named constants and configuration variables)
+- Meaningful variable names (avoid single letters except for indices)
+- Type hints encouraged for function signatures
+- No global variables unless absolutely necessary
+- Error handling for edge cases
 
-#### 2. Project Memo (Markdown Format)
+#### 2. Research Memo (PDF Format)
 
-Your memo should be **2-3 pages** (excluding figures) and include:
+Your research memo should be **2-3 pages of text** (not counting figures/references) and include:
 
 ```markdown
-# Project N: [Title] - Memo
+# Project N: [Title] - Research Memo
 Author: [Your Name]
 Date: [Submission Date]
 
@@ -86,26 +208,41 @@ Date: [Submission Date]
 [1-2 paragraphs summarizing what you did and key findings]
 
 ## Methodology
-[How you approached the problem, key algorithmic choices]
+[How you approached the problem, key algorithmic choices, numerical methods used]
 
 ## Results
-[Key findings with embedded plots using relative paths]
+[Key findings with embedded figures, quantitative analysis]
 ![Description](outputs/figures/plot1.png)
 
 ## Computational Performance
 [Runtime analysis, bottlenecks identified, optimizations made]
 
-## Challenges & Solutions
-[What was hard, how you solved it, what you learned]
+## Validation
+[How you verified correctness - comparison to analytical solutions, convergence tests, etc.]
 
 ## Extensions Implemented
-[Description of mandatory extensions completed]
+[Description of extensions completed and their impact]
 
-## Reflection
-[What you learned about computational physics and programming]
+## Conclusions
+[What you learned about the physics and computational methods]
+
+## References
+[Literature citations if applicable]
 ```
 
-#### 3. Documentation Requirements
+#### 3. Growth Memo (Markdown or PDF Format)
+
+Your growth memo should be **1-2 pages** of informal reflection and include:
+
+- Technical skills developed
+- Challenges encountered and solutions found
+- Connection to course concepts
+- AI usage and verification process (following course phase guidelines)
+- Next learning goals
+- Any insights, surprises, or moments that shaped your understanding
+- How collaboration with peers enhanced your learning
+
+#### 4. Documentation Requirements
 
 **README.md must include:**
 
@@ -113,9 +250,11 @@ Date: [Submission Date]
 # Project N: [Descriptive Title]
 
 ## Description
+
 [Brief description of what this project does]
 
 ## Installation
+
 ```bash
 conda create -n proj_n python=3.10
 conda activate proj_n
@@ -123,15 +262,22 @@ pip install -r requirements.txt
 ```
 
 ## Usage
+
 ```bash
 python src/main.py --input data.txt --output results.png
 ```
 
 ## Project Structure
+
 [Brief description of each file's purpose]
 
 ## Key Results
+
 [Summary of main findings]
+
+## Acknowledgments
+
+[List classmates you discussed ideas with, acknowledging the nature of collaboration]
 
 ## Dependencies
 - Python 3.10+
@@ -176,9 +322,10 @@ def integrate_orbit(initial_conditions, time_span, method='RK4', dt=0.01):
     # Implementation here
 ```
 
-#### 4. GitHub Classroom Requirements
+#### 5. GitHub Best Practices
 
 **Commit Practices:**
+
 - Commit early and often (minimum 5-10 meaningful commits per project)
 - Each commit should represent a logical unit of work
 - Commit messages should be descriptive:
@@ -217,47 +364,19 @@ outputs/data/*.txt
 
 ## Grading Rubric
 
-### Project Grading Breakdown (100 points total)
+### Project Grading Breakdown
 
-| Component | Points | Criteria |
-|-----------|--------|----------|
-| **Core Implementation** | TBD | Correctness, completeness, follows specifications |
-| **Mandatory Extensions** | TBD | All required extensions implemented and working |
-| **Code Quality** | TBD | Structure, readability, documentation, style |
-| **Project Memo** | TBD | Analysis quality, reflection depth, visualization |
-| **Growth Memo** | TBD | key learning moments, skill evolution, AI usage, next learning goals |
+Each project is worth 100 points, distributed across the following components:
 
-## Mandatory Extensions
+| Component | Description |
+|-----------|-------------|
+| **Core Implementation** | Correctness, completeness, follows specifications |
+| **Extensions** | Required for grad students, optional but valued for undergrads |
+| **Code Quality** | Structure, readability, documentation, Git practices |
+| **Research Memo** | Analysis quality, scientific writing, visualizations |
+| **Growth Memo** | Reflection depth, learning insights, metacognitive development |
 
-Each project must include **at least one** extension that push you beyond the base implementation described in the project description.
-
-### Types of Extensions
-
-**Performance Extensions:**
-
-- Optimize algorithms for speed (vectorization, better algorithms)
-- Memory optimization for large-scale problems
-- Parallel processing implementation
-
-**Scientific Extensions:**
-
-- Parameter studies and sensitivity analysis
-- Comparison with analytical solutions where available
-- Error analysis and convergence studies
-
-**Methodological Extensions:**
-
-- Implement alternative algorithms and compare
-- Add adaptive methods (timestep, resolution, etc.)
-- Extend to more complex physics
-
-**Visualization Extensions:**
-
-- Interactive plots
-- Animations of time evolution
-- 3D visualizations where appropriate
-
-*Specific extensions for each project will be detailed in the individual project assignments.*
+**Note:** The relative weight between components may vary by project to align with learning objectives and skill development progression. Early projects may emphasize foundational skills and reflection, while later projects may weight technical implementation and scientific analysis more heavily.
 
 ## Common Issues & Solutions
 
@@ -290,12 +409,14 @@ git reset --hard HEAD~1  # Discards changes (careful!)
 - Install with: `pip install package_name`
 
 **Problem:** "My code is slow"
+
 - Profile first: `python -m cProfile -s time your_script.py`
 - Vectorize NumPy operations
 - Avoid loops where possible
-- Consider numba for critical sections
+- Consider `numba` for critical sections
 
 **Problem:** "Memory error with large arrays"
+
 - Use generators instead of lists where possible
 - Process data in chunks
 - Use `np.float32` instead of `np.float64` if precision allows
@@ -308,18 +429,21 @@ Before submitting, verify:
 - [ ] All required files are present and properly named
 - [ ] README includes clear installation and usage instructions
 - [ ] At least 5 meaningful commits in Git history
-- [ ] Project memo includes all required sections
+- [ ] Research memo includes all required sections (2-3 pages text)
+- [ ] Growth memo includes reflection (1-2 pages)
 - [ ] All plots are generated and saved in outputs/figures/
-- [ ] Mandatory extensions are complete and documented
-- [ ] Code follows style guidelines (no IDE AI assistance used)
+- [ ] Extensions are complete and documented (required for grad students)
+- [ ] Code follows style guidelines
+- [ ] AI usage follows current phase guidelines
+- [ ] Acknowledged any classmates you collaborated with
 - [ ] Final push completed before Monday 11:59 PM deadline
 
 ## Late Policy Reminder
 
-- One no-questions-asked 2-day extension per semester
-- Must be requested at least 24 hours before deadline
-- 10% penalty per day after grace period
-- Submit early if complete—no bonus, but peace of mind!
+- **One free extension per semester:** Request ≥24h before deadline → 2-day grace, no penalty
+- **Late submission penalty:** 10% per day (24 hours), maximum 3 days late (30% deduction)
+- **After 3 days:** Not accepted without documented emergency
+- **Note:** Late policy does not apply to Project 0 (Initial Course Reflection & Setup)
 
 ## Getting Help
 
@@ -328,17 +452,21 @@ Before submitting, verify:
 - After 20-30 minutes of genuine effort on a bug
 - When you don't understand the physics/math despite reading
 - If you're unsure about project requirements
+- When you want to bounce extension ideas off someone
 
 **How to ask for help effectively:**
+
 1. Describe what you're trying to do
 2. Show what you've tried (code snippets, error messages)
 3. Explain what you expected vs. what happened
 4. Include minimal reproducible example if possible
 
 **Resources:**
-- Course Slack (fastest response)
-- Office hours (for complex issues)
-- Pair programming sessions (learn from peers)
-- AI tutors (for concepts, not code generation)
 
-**Remember:** Struggling is part of learning. But struggling alone for too long is inefficient. Ask for help!
+- **Classmates** (collaborate, discuss, learn together!)
+- **[ASTR 596 Virtual Tutor](https://chatgpt.com/g/g-68aabb9278d08191926feb3f5512686c-astr-596-modeling-the-universe-tutor)** (custom GPT for concept help)
+- **Course Slack** (fastest response for quick questions)
+- **Office Hours** (Wednesdays 1-2 PM for complex issues)
+- **Friday Lab Sessions** (pair programming and peer support)
+
+**Remember:** Struggling is part of learning. But struggling alone for too long is inefficient. This is a collaborative learning environment—use it!

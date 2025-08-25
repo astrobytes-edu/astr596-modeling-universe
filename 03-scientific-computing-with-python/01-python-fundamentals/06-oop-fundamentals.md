@@ -15,14 +15,14 @@ kernelspec:
 
 By the end of this chapter, you will be able to:
 
-- Transform functions and data into cohesive classes that model scientific concepts.
-- **Distinguish between instance and class attributes and choose appropriately for scientific data.
-- Create methods that operate on object state while understanding the role of `self`.
-- Implement properties to compute derived values and validate scientific constraints
-- Write special methods (`__init__`, `__str__`, `__repr__`) to make objects Pythonic
-- Debug common OOP errors using introspection tools and error messages
-- Recognize when OOP improves code organization versus when functions suffice
-- Connect the transition from procedural to object-oriented thinking in scientific computing
+- [ ] **(1) Transform functions and data** into cohesive classes that model scientific concepts.
+- [ ] **(2) Distinguish between** instance and class attributes and choose appropriately for scientific data.
+- [ ] **(3) Create methods that operate** on object state while understanding the role of `self`.
+- [ ] **(4) Implement properties** to compute derived values and validate scientific constraints
+- [ ] **(5)Write special methods** (`__init__`, `__str__`, `__repr__`) to make objects Pythonic
+- [ ] **(6) Debug** common OOP errors using introspection tools and error messages
+- [ ] **(7) Recognize when OOP improves** code organization versus when functions suffice
+- [ ] **(8) Connect the transition** from procedural to object-oriented thinking in scientific computing
 
 ## Prerequisites Check
 

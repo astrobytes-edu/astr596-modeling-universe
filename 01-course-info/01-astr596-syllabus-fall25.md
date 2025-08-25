@@ -18,7 +18,7 @@ kernelspec:
 
 - **Dr. Anna Rosen**
 - **Office:** Physics 239
-- **Office Hours:** Wednesdays 1-2 PM or by appointment
+- **Student "Hacking" Hours:** Wednesdays 1-2 PM (P-239) or by appointment
 - **Email:** <alrosen@sdsu.edu>
 
 ## Course Information
@@ -28,7 +28,7 @@ kernelspec:
 - **Format:** ~30-45min lecture review + 2h hands-on project work
 - **Location:** PA 215
 - **Course Website:** <https://astrobytes-edu.github.io/astr596-modeling-universe/>
-- [**ASTR 596 Virtual Tutor (custom GPT link)**](https://chatgpt.com/g/g-68aabb9278d08191926feb3f5512686c-astr-596-modeling-the-universe-tutor)
+- **Virtual Tutor:** [✨ASTR 596: Modeling the Universe Tutor✨ *(Custom GPT)*](https://chatgpt.com/g/g-68aabb9278d08191926feb3f5512686c-astr-596-modeling-the-universe-tutor)
 - **Platforms:** Canvas, Slack, GitHub Classroom
 
 ### Class Meeting Structure
@@ -106,11 +106,13 @@ Upon successful completion of this course, students will be able to:
 
 ### Computational Resources
 
-- **SDSU Instructional Cluster (Verne):** <https://sdsu-research-ci.github.io/instructionalcluster>  
-Access to Jupyter Hub provided to enrolled students. 
+- **SDSU Instructional Cluster (Verne):** <https://sdsu-research-ci.github.io/instructionalcluster>
+  
+Access to Jupyter Hub provided to enrolled students, however students are strongly recommended to setup their own Python environment/workspace on their own machines. Detailed instructions are included in the [Getting Started](../02-getting-started/index.md) module.
 
-- **GitHub Classroom:** <https://sdsu-research-ci.github.io/github/students>  
-All projects distributed and submitted here. Your last repository push by the deadline will count as your submitted assignment.
+- **ASTR 596 GitHub Classroom:** <https://classroom.github.com/classrooms/226159624-astr-596-modeling-the-universe>
+
+All projects distributed and submitted here. Your last repository push by the deadline will count as your submitted assignment. For more information please see: <<https://sdsu-research-ci.github.io/github/students>.
 
 ## Grading Information
 

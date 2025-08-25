@@ -1,0 +1,88 @@
+{
+  "name": "ASTR 596: Modeling the Universe",
+  "image": "mcr.microsoft.com/devcontainers/python:3.10",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.10"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"
+    },
+    "ghcr.io/devcontainers/features/jupyter:1": {},
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  
+  // Install all course requirements
+  "postCreateCommand": ".devcontainer/setup.sh",
+  
+  // VS Code customizations
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.debugpy",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.jupyter-renderers",
+        "ms-toolsai.vscode-jupyter-cell-tags",
+        "github.copilot",
+        "github.copilot-chat",
+        "github.classroom",
+        "yzhang.markdown-all-in-one",
+        "executablebookproject.myst-highlight",
+        "streetsidesoftware.code-spell-checker"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "python.formatting.provider": "black",
+        "jupyter.askForKernelRestart": false,
+        "jupyter.runStartupCommands": [
+          "import numpy as np",
+          "import matplotlib.pyplot as plt",
+          "import pandas as pd",
+          "from astropy import units as u",
+          "from astropy import constants as const",
+          "%matplotlib inline"
+        ],
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "files.autoSave": "afterDelay",
+        "files.autoSaveDelay": 1000
+      }
+    }
+  },
+  
+  // Forward ports
+  "forwardPorts": [3000, 8888, 8000],
+  "portsAttributes": {
+    "3000": {
+      "label": "MyST Preview",
+      "onAutoForward": "notify"
+    },
+    "8888": {
+      "label": "JupyterLab",
+      "onAutoForward": "openBrowser"
+    },
+    "8000": {
+      "label": "Web Server",
+      "onAutoForward": "notify"
+    }
+  },
+  
+  // Resource requirements
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "8gb",
+    "storage": "32gb"
+  },
+  
+  // Environment variables
+  "remoteEnv": {
+    "JUPYTER_ENABLE_LAB": "yes",
+    "PYTHONPATH": "${containerWorkspaceFolder}"
+  }
+}

@@ -12,7 +12,7 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 # Build with Jupyter Book 2.x
-jupyter-book build .
+jupyter book start #Following https://next.jupyterbook.org/
 ```
 
 If you prefer the MyST CLI (Markdown-first workflow), install and use `mystmd`:

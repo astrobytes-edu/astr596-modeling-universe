@@ -4,70 +4,142 @@ This section contains the core programming projects for ASTR 596: Modeling the U
 
 ## Project Philosophy
 
-Each project implements fundamental algorithms from scratch using our "glass box" approach. You'll build understanding through manual implementation before leveraging modern frameworks.
+Each project implements fundamental algorithms from scratch using our "glass box" approach. You'll build understanding through manual implementation before leveraging modern frameworks. Projects include both technical implementation and growth reflection memos to develop metacognitive skills alongside computational expertise.
 
-## Project Structure
+## Project Timeline
 
-The three short projects progress from foundations to advanced methods:
+Short projects are assigned on Mondays and due the following Monday(s) at 11:59 PM PT via GitHub Classroom. See the [Short Project Submission Guide](00-project-submission-guide) for detailed requirements.
+
+## Short Projects (50% + 10% Growth Memos = 60% of course grade)
 
 ### 🐍 Project 1: Python Foundations & Stellar Physics
 
-**Duration**: 2 weeks | **Focus**: OOP Design and Stellar Physics | **Due Date**:
+**Assigned**: Aug 29 | **Due**: Sept 8 (Mon 11:59 PM)
 
+Build strong Python fundamentals while exploring stellar astrophysics. Implement object-oriented programming principles to model stellar properties and create HR diagrams.
+
+- Object-oriented programming & class design
+- Stellar physics implementation  
 - Professional development environment setup
-- Object-oriented programming principles
-- Stellar physics implementation
 - Git workflow and documentation
 
-[→ Project 1 Details](00-project-submission-guide)
+[**→ Project 1 Details (TBD)**](TBD)
 
-### 🪐 Project 2: N-Body Dynamics & Monte Carlo
+### 🪐 Project 2: ODE Integration & N-Body Dynamics
 
-**Duration**: 2 weeks | **Focus**: Gravitational systems and statistical sampling
+**Assigned**: Sept 8 | **Due**: Sept 22 (Mon 11:59 PM)
 
-- Numerical integration methods
-- N-body gravitational dynamics
-- Monte Carlo sampling techniques
-- Performance optimization
+Master numerical integration methods through gravitational dynamics. Implement multiple ODE solvers to simulate planetary orbits and star cluster evolution.
 
-[→ Project 2 Details](2_project2_description.md)
+- Euler, RK4, and Leapfrog integrators
+- Planetary and star cluster dynamics
+- Initial Mass Function (IMF) sampling
+- Performance analysis and optimization
 
-### 📈 Project 3: Linear Regression & Machine Learning
+[**→ Project 2 Details (TBD)**](TBD)
 
-**Duration**: 2 weeks | **Focus**: Statistical modeling from first principles
+### 💡 Project 3: Monte Carlo Radiative Transfer
 
-- Linear regression implementation
+**Assigned**: Sept 22 | **Due**: Oct 13 (Mon 11:59 PM)
+
+Dive deep into radiative transfer physics using Monte Carlo methods. Track photon packets through astrophysical media with scattering and absorption.
+
+- Photon packet Monte Carlo methods
+- Scattering and absorption physics
+- Optical depth calculations
+- Visualization of radiation fields
+
+[**→ Project 3 Details (TBD)**](TBD)
+
+### 📊 Project 4: Bayesian Inference & MCMC
+
+**Assigned**: Oct 13 | **Due**: Nov 3 (Mon 11:59 PM)
+
+Build Markov Chain Monte Carlo samplers from scratch while learning regression fundamentals. Apply Bayesian methods to astronomical parameter estimation.
+
+- Metropolis-Hastings algorithm
+- Prior and likelihood functions
 - Gradient descent optimization
-- Cross-validation and model selection
-- Astronomical data analysis
+- Parameter estimation and uncertainty quantification
 
-[→ Project 3 Details](3_project3_description.md)
+[**→ Project 4 Details (TBD)**](TBD)
 
-## Submission Guidelines
+### 📈 Project 5: Gaussian Processes
 
-All projects follow consistent submission requirements designed to build professional development skills:
+**Assigned**: Nov 3 | **Due**: Nov 24 (Mon 11:59 PM)
 
-- **Modular `.py` scripts** (no Jupyter notebooks after Project 1)
-- **GitHub version control** with meaningful commit history
-- **Professional documentation** with clear README files
-- **Project memos** explaining methodology and results
+Implement Gaussian processes for astronomical time series analysis. Master kernel functions and hyperparameter optimization for non-parametric regression.
 
-[→ Complete Submission Guide](0_project_submission_guide.md)
+- Kernel design and implementation
+- Hyperparameter optimization
+- Time series prediction
+- Uncertainty quantification
 
-## Skills Development
+[**→ Project 5 Details (TBD)**](TBD)
 
-Through these projects, you'll develop:
+## Short Project Submission Requirements
 
-- **Computational thinking** for complex astrophysical problems
-- **Professional coding practices** used in research and industry
-- **Mathematical intuition** behind numerical methods
-- **Scientific communication** through documentation and reports
+Each short project requires:
+
+- **Core Implementation** with working solution and correct physics/algorithms
+- **Research Memo** (2-3 pages text + figures, LaTeX/PDF required)
+- **Growth Memo** (1-2 pages, .md or PDF) reflecting on learning journey
+- **Code Quality** with documentation, organization, and Git practices
+- **Validation** through testing against known solutions
+- **Student-Led Exploration** extending beyond base requirements (required for grad students)
+
+See the [Project Submission Guide](00-project-submission-guide) for complete requirements.
+
+---
+
+## Final Project (25% of course grade)
+
+### 🧠 Neural Networks & JAX Implementation
+
+**Assigned**: Nov 24 | **Due**: Dec 18 (Thu 11:59 PM)  
+*Full project description available Nov 17 (one week before Project 5 due)*
+
+Culminate your learning by building neural networks from scratch, then translating to the JAX ecosystem. Choose from provided astronomical research problems to create a publication-quality implementation.
+
+**Topics Covered:**
+
+- Backpropagation from first principles
+- Automatic differentiation with JAX
+- Modern ML frameworks (`jit`, `vmap`, `grad`)
+- Research-quality scientific computing
+
+**Deliverables (different from short projects):**
+
+- **Code Package (55%)**: Professional package structure with `__init__.py`, unit tests (>70% coverage), documentation
+- **Written Report (30%)**: Scientific paper with background, methods, results, conclusions
+- **Presentation (15%)**: 12-minute presentation during finals week
+  - 7 minutes on research project
+  - 3 minutes on technical growth journey
+  - 2 minutes Q&A
+
+[→ Final Project Details (TBD)](TBD)
+
+## Technical Growth Synthesis (5% of course grade)
+
+**Due with Final Project**: Dec 18 (Thu 11:59 PM)
+
+A 3-5 page reflective portfolio documenting your computational journey through the entire course, including:
+
+- Synthesis of learning across all projects
+- Code evolution comparisons (early vs. final implementations)
+- Development of computational thinking
+- Impact of student-led explorations
+- Shift in learning mindset
+- AI scaffolding effectiveness
+
+Submit as .md or PDF with your Final Project.
 
 ## Getting Help
 
-- **Pair programming sessions** during Friday lab time
-- **Office hours** for conceptual guidance and debugging
-- **Course Slack** for quick questions and peer support
-- **AI tools integration** following our three-phase policy
+- **[ASTR 596 Virtual Tutor](https://chatgpt.com/g/g-68aabb9278d08191926feb3f5512686c-astr-596-modeling-the-universe-tutor)**: Custom GPT assistant for concept clarification and learning support
+- **Friday Lab Sessions**: Hands-on implementation support and pair programming
+- **Office Hours**: Wednesdays 1-2 PM for conceptual guidance
+- **Course Slack**: Quick questions and peer collaboration
+- **AI Policy**: Three-phase scaffolded approach to tool integration
 
-Each project builds the foundation for the final neural networks project where you'll apply these skills to cutting-edge machine learning implementations.
+**Remember:** Starting early and working steadily across the assignment period is key to success. Projects are designed for iterative development over their full timeline, not weekend sprints.

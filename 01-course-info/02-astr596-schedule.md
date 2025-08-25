@@ -18,7 +18,7 @@ kernelspec:
  
 **Fridays:** Class meeting (11:00 AM - 1:40 PM) with prepared discussion and project work
 
-## Weekly Topics & Readings
+## ⚠️ Weekly Topics & Readings
 
 | Week | Date | Topic | Reading Assignment |
 |------|------|-------|-------------------|
