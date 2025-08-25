@@ -1,13 +1,10 @@
-
 version: 1
 
 project:
-  # Basic project information
   id: 76c4875f-ba4c-4a35-bc58-52304ee2705e
   title: "ASTR 596: Modeling the Universe"
-  description: "Advanced Undergraduate- and Graduate-level computational astrophysics course emphasizing glass-box modeling and modern computational frameworks"
+  description: "Advanced Undergraduate/Graduate-level computational astrophysics course emphasizing glass-box modeling and modern computational frameworks"
   
-  # Keywords for search and discovery
   keywords: 
     - computational astrophysics
     - python
@@ -19,7 +16,6 @@ project:
     - bayesian inference
     - JAX
   
-  # Author information
   authors:
     - name: Anna Rosen
       email: alrosen@sdsu.edu
@@ -27,24 +23,20 @@ project:
         - San Diego State University
       orcid: 0000-0003-4423-0660
   
-  # Licensing
   license:
     content: CC-BY-4.0
     code: MIT
   
-  # Course metadata
   subject: Modeling the Universe
   venue:
     title: ASTR 596 - Fall 2025
     url: https://astrobytes-edu.github.io/astr596-modeling-universe/
   
-  # GitHub repository
   github: https://github.com/astrobytes-edu/astr596-modeling-universe
   
-  # Binder configuration for interactive code
+  # For interactive code on website (Live Code button)
   binder: https://mybinder.org/v2/gh/astrobytes-edu/astr596-modeling-universe/main
   
-  # Thebe configuration for live code execution
   thebe:
     binder:
       repo: astrobytes-edu/astr596-modeling-universe
@@ -53,52 +45,35 @@ project:
   
   # Notebook execution settings
   execute:
-    execute_notebooks: cache  # Options: cache, force, auto, inline, or false
+    execute_notebooks: cache
     cache: .jupyter_cache
     timeout: 300
     allow_errors: false
   
   # PDF Export configurations
   exports:
-    # Complete book PDF
     - format: pdf
       template: book-theme-pdf
       output: exports/astr596-complete-book.pdf
       id: complete-book
     
-    # Alternative article-style PDF
     - format: typst
       template: lapreprint
       output: exports/astr596-article.pdf
       id: article-pdf
   
-  # Table of contents - will be auto-generated if not specified
-  # Uncomment and modify as needed:
-  # toc:
-  #   - file: index
-  #   - file: 01-course-info/index
-  #     children:
-  #       - file: 01-course-info/syllabus
-  #       - file: 01-course-info/schedule
-  
   # Files to exclude from build
   exclude:
-    # Draft and temporary files
     - 'draft-*.md'
     - '**/draft-*.md'
     - 'TODO.md'
     - 'CONTRIBUTING.md'
     - 'context.md'
     - 'README.md'
-    - 'classroom-workflow.md'
     - 'instructor-notes/**'
-    
-    # Python subdirectories to exclude (from your original)
     - '03-python/03-advanced-scientific-computing/**'
     - '03-python/04-parallel-and-hpc/**'
     - '03-python/05-modern-approaches-jax-ecosystem/**'
-    
-    # Build artifacts and system files
     - '.ipynb_checkpoints/**'
     - '**/.ipynb_checkpoints/**'
     - '__pycache__/**'
@@ -107,16 +82,12 @@ project:
     - '.DS_Store'
     - '**/.DS_Store'
     - '_build/**'
-    
-    # Specific files from your original config
     - '01-course-info/02-astr596-schedule.md'
     - '03-scientific-computing-with-python/03-**'
     - '03-scientific-computing-with-python/04-**'
     - '03-scientific-computing-with-python/05-**'
     - '09-final-project/**'
     - '10-reference/**'
-    
-    # Pattern directories
     - '**/OLD/**'
     - '**/paper/**'
     - '**/notebooks/**'
@@ -131,44 +102,33 @@ site:
   template: book-theme
   title: "ASTR 596: Modeling the Universe"
   
-  # Navigation bar items
   nav:
     - title: GitHub
       url: https://github.com/astrobytes-edu/astr596-modeling-universe
-    - title: Course Home
-      url: https://astrobytes-edu.github.io/astr596-modeling-universe/
   
-  # Action buttons that appear on every page
   actions:
     - title: Open in GitHub Codespaces
       url: https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=astrobytes-edu/astr596-modeling-universe
-    - title: GitHub Classroom
-      url: https://classroom.github.com/classrooms/226159624-astr-596-modeling-the-universe
     - title: Download Complete Book PDF
       url: /exports/astr596-complete-book.pdf
   
   options:
-    # Logo configuration
     logo_text: "✨ASTR 596✨"
     logo: _static/astr-logo-01.png
     favicon: _static/astr-logo-01.png
     
-    # Google Analytics
     analytics:
       google: G-QJLKLBMDSZ
     
-    # Footer content
     extra_footer: |
       <p>ASTR 596: Modeling the Universe | Fall 2025<br>
       Dr. Anna Rosen | San Diego State University<br>
       <a href="https://github.com/astrobytes-edu/astr596-modeling-universe">View on GitHub</a></p>
     
-    # GitHub repository integration
     github_url: https://github.com/astrobytes-edu/astr596-modeling-universe
     
-    # Comments system using GitHub issues
     comments:
       utterances:
         repo: "astrobytes-edu/astr596-modeling-universe"
         issue_term: "pathname"
-        theme: "github-dark"
+        theme: "preferred-color-scheme"

@@ -1,44 +1,44 @@
-# JupyterBook v2.x (pin to 2.* to avoid older 1.x installs)
-# Use the 2.x line to ensure Jupyter Book 2 is installed (no 1.x fallback)
-jupyter-book==2.*
-# MyST / notebook integration
-# Use recent stable releases recommended by the projects
-myst-nb>=1.3.0
-myst-parser>=4.0.0
+# Requirements for ASTR 596: Modeling the Universe
+# For use with MyST/Jupyter Book 2 (mystmd)
+# Note: MyST itself is installed via npm, NOT pip
 
-# Optional: MyST CLI (mystmd) - useful for local quickstart / preview
-# Install if you want the `myst` CLI in addition to jupyter-book
-mystmd>=1.0.0
+# Scientific computing core
+numpy>=1.24.0
+scipy>=1.10.0
+matplotlib>=3.7.0
+pandas>=2.0.0
+seaborn>=0.12.0
+sympy>=1.12
+plotly>=5.14.0
 
-# Jupytext: optional but recommended for Markdown-first or paired-notebook workflows
-# Provides `md:myst` format and tools to pair/sync `.md` <-> `.ipynb` files
+# JAX ecosystem for later course weeks
+jax>=0.4.20
+jaxlib>=0.4.20
+optax>=0.1.7
+flax>=0.7.0
+
+# Astronomy packages
+astropy>=5.3.0
+healpy>=1.16.0
+
+# Jupyter for notebook execution
+jupyterlab>=4.0.0
+notebook>=7.0.0
+ipywidgets>=8.0.0
+ipykernel>=6.25.0
+nbformat>=5.9.0
+nbconvert>=7.8.0
+
+# Additional scientific packages
+h5py>=3.9.0
+scikit-learn>=1.3.0
+tqdm>=4.66.0
+
+# Development tools
+black>=23.0.0
+pylint>=2.17.0
+pytest>=7.4.0
+ipython>=8.14.0
+
+# For converting between notebook formats
 jupytext>=1.15.0
-
-# Scientific computing stack
-matplotlib>=3.5.0
-numpy>=1.21.0
-scipy>=1.7.0
-pandas>=1.3.0
-seaborn>=0.11.0
-sympy>=1.9
-plotly>=5.0.0
-
-# JAX ecosystem
-jax>=0.4.0
-jaxlib>=0.4.0
-optax>=0.1.0
-flax>=0.6.0
-
-# Astronomy specific
-# Astropy is the canonical astronomy package for Python
-astropy>=5.0
-healpy>=1.15.0
-
-# Jupyter ecosystem
-jupyterlab>=3.4.0
-notebook>=6.4.0
-ipywidgets>=7.6.0
-
-# Additional v2 features
-sphinx-thebe>=0.2.0
-sphinx-togglebutton>=0.3.0
