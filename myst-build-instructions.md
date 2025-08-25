@@ -228,6 +228,16 @@ jobs:
         uses: yusancky/setup-typst@v2
         with:
           version: 'latest'
+> **Note (Important):** The `yusancky/setup-typst` action has been migrated to the community-maintained `typst-community/setup-typst`. Update any workflow references to use `typst-community/setup-typst@v4` and rename the input `version` → `typst-version`. Example:
+
+```yaml
+      - name: Setup Typst for PDFs
+        uses: typst-community/setup-typst@v4
+        with:
+          typst-version: 'latest'
+```
+
+This migration is required to avoid workflow failures (older `yusancky` releases will not receive updates after July 2025). See: https://github.com/typst-community/setup-typst and the announcement in the project README for details.
       
       - name: Build PDFs
         run: myst build --pdf
