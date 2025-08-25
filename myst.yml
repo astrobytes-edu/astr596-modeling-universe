@@ -100,6 +100,7 @@ project:
 site:
   template: book-theme
   title: "ASTR 596: Modeling the Universe"
+  base_url: /astr596-modeling-universe/
   
   nav:
     - title: GitHub
