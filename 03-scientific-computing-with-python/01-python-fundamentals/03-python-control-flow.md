@@ -135,7 +135,7 @@ Now we see the retry logic and minimum timestep safeguard. The **DO-UNTIL** cons
 
 **Level 3: Implementation-Ready (Stage 1: Core Logic)**
 
-```{markdown}
+```
 FUNCTION adaptive_integrate(initial_state, end_time, tolerance):
     state ← initial_state
     dt ← estimate_initial_timestep(state)
@@ -153,7 +153,7 @@ FUNCTION adaptive_integrate(initial_state, end_time, tolerance):
 
 **Level 3: Implementation-Ready (Stage 2: Add Safety)**
 
-```{markdown}
+```
 FUNCTION adaptive_integrate(initial_state, end_time, tolerance):
     state ← initial_state
     dt ← estimate_initial_timestep(state)
@@ -551,9 +551,9 @@ if magnitude < 6.0:
 # Multiple statements in if block
 stellar_mass = 10.0  # Solar masses
 
-if stellar_mass > 8:
+    if stellar_mass > 8:
     print("Massive star detected!")
-    print(f"Mass: {stellar_mass} M☉")
+    print(f"Mass: {stellar_mass} $M_\\odot$")
     print("Will end as supernova")
     remnant = "neutron star or black hole"
 ```
@@ -648,7 +648,7 @@ def calculate_orbital_period(a, M, validate=True):
         if a <= 0:
             raise ValueError(f"Semi-major axis must be positive: {a} AU")
         if M <= 0:
-            raise ValueError(f"Mass must be positive: {M} M☉")
+            raise ValueError(f"Mass must be positive: {M} $M_\\odot$")
         
         # Check for orbit inside Schwarzschild radius!
         rs_au = 2.95e-8 * M  # Schwarzschild radius in AU
@@ -656,7 +656,7 @@ def calculate_orbital_period(a, M, validate=True):
             raise ValueError(f"Orbit inside black hole event horizon: a={a} AU, Rs={rs_au} AU")
     
     # Main calculation - only runs if guards pass
-    G_au_msun = 39.478  # G in AU³/M☉/year²
+    G_au_msun = 39.478  # G in AU³/$M_\\odot$/year²
     period_years = math.sqrt(a**3 / M)  # Simplified Kepler's third law
     
     # Sanity check result
@@ -773,8 +773,8 @@ for mass, position in zip(star_masses, star_positions):
     weighted_position += mass * position
 
 center_of_mass = weighted_position / total_mass
-print(f"Cluster center of mass: {center_of_mass:.3f} pc")
-print(f"Total cluster mass: {total_mass:.1f} M☉")
+    print(f"Cluster center of mass: {center_of_mass:.3f} pc")
+    print(f"Total cluster mass: {total_mass:.1f} $M_\\odot$")
 
 # This same pattern calculates:
 # - Barycenter of binary systems (how we detect exoplanets!)
@@ -1542,7 +1542,7 @@ Remember that every major computational achievement relies on these fundamentals
 
 ```{list-table} Comparison Operators
 :header-rows: 1
-:widths: 15 30 55
+ 
 
 * - Operator
   - Description
@@ -1569,7 +1569,7 @@ Remember that every major computational achievement relies on these fundamentals
 
 ```{list-table} Logical Operators
 :header-rows: 1
-:widths: 15 35 50
+ 
 
 * - Operator
   - Description
@@ -1587,7 +1587,7 @@ Remember that every major computational achievement relies on these fundamentals
 
 ```{list-table} Special Operators
 :header-rows: 1
-:widths: 15 35 50
+ 
 
 * - Operator
   - Description
@@ -1611,7 +1611,7 @@ Remember that every major computational achievement relies on these fundamentals
 
 ```{list-table} Control Flow Statements
 :header-rows: 1
-:widths: 20 30 50
+ 
 
 * - Statement
   - Purpose
@@ -1641,7 +1641,7 @@ Remember that every major computational achievement relies on these fundamentals
 
 ```{list-table} Built-in Functions for Loops
 :header-rows: 1
-:widths: 20 35 45
+ 
 
 * - Function
   - Purpose
@@ -1665,7 +1665,7 @@ Remember that every major computational achievement relies on these fundamentals
 
 ```{list-table} Comparison Functions
 :header-rows: 1
-:widths: 25 35 40
+ 
 
 * - Function
   - Purpose
@@ -1695,7 +1695,6 @@ Remember that every major computational achievement relies on these fundamentals
 
 ```{list-table} Common Algorithmic Patterns
 :header-rows: 1
-:widths: 25 35 40
 
 * - Pattern
   - Purpose

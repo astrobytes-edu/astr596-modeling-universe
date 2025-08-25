@@ -13,22 +13,19 @@ The difference between a computational scientist and someone who codes isn't kno
 ::::{grid} 1 1 2 3
 
 :::{grid-item-card} 💻 **Command Line Interface**
-:link: 01-cli-intro-REVISED
-:link-type: doc
+:link: 01-cli-intro
 
 Master the terminal with essential commands for file management, navigation, and automation
 :::
 
 :::{grid-item-card} 🔧 **Software Setup**
-:link: 02-software-setup-REVISED
-:link-type: doc
+:link: 02-software-setup
 
 Install Python with Miniforge, configure VS Code, and create your isolated course environment
 :::
 
 :::{grid-item-card} 📝 **Git & GitHub** 
-:link: 03-git-intro-REVISED
-:link-type: doc
+:link: 03-git-intro
 
 Version control fundamentals, GitHub Classroom workflow, and collaboration best practices
 :::
@@ -154,8 +151,7 @@ Complete these milestones in order:
 
 :::{list-table} Essential Commands You'll Use Daily
 :header-rows: 1
-:widths: 35 65
-
+:align: center
 * - Command
   - What It Does
 * - **Terminal Basics**

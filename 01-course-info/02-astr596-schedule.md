@@ -15,7 +15,7 @@ kernelspec:
 ## Tentative Schedule Structure
 
 **Mondays:** New project assigned via GitHub Classroom; previous project & growth memo due at 11:59 PM  
- 
+
 **Fridays:** Class meeting (11:00 AM - 1:40 PM) with prepared discussion and project work
 
 ## ⚠️ Weekly Topics & Readings

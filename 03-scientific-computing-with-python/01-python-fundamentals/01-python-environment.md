@@ -783,7 +783,7 @@ After Project 1, we'll abandon notebooks for **scripts**. Here's why scripts are
 
 :::{list-table} Script vs Notebook: Astronomical Data Analysis
 :header-rows: 1
-:widths: 30 35 35
+ 
 
 * - Aspect
   - Notebooks
@@ -1767,7 +1767,7 @@ The debugging strategies you've learned will save you countless hours at the tel
 
 :::{list-table} Essential IPython Commands for Astronomy
 :header-rows: 1
-:widths: 20 30 50
+ 
 
 * - Command
   - Purpose
@@ -1806,7 +1806,7 @@ The debugging strategies you've learned will save you countless hours at the tel
 
 :::{list-table} Astronomy Environment Debugging
 :header-rows: 1
-:widths: 25 35 40
+ 
 
 * - Check
   - Command

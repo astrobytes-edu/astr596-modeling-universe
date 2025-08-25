@@ -22,27 +22,27 @@ Think of these chapters as your **working reference**—a toolkit you'll return 
 
 ## Module Overview
 
-### [📊 Chapter 1: Computational Environments & Scientific Workflows](01-python-environment)
+### [📊 Chapter 1: Computational Environments & Scientific Workflows](./01-python-environment.md)
 
 Master IPython, understand how Python finds code, avoid Jupyter's hidden traps, and create reproducible computational environments
 
-### [🔢 Chapter 2: Python as Your Astronomical Calculator](02-python-calculator)
+### [🔢 Chapter 2: Python as Your Astronomical Calculator](./02-python-calculator.md)
 
 Discover why `0.1 + 0.2 ≠ 0.3`, handle extreme astronomical scales, and learn numerical safety that prevents spacecraft crashes
 
-### [🔀 Chapter 3: Control Flow & Logic](03-python-control-flow)
+### [🔀 Chapter 3: Control Flow & Logic](./03-python-control-flow.md)
 
 Design algorithms with pseudocode, implement conditional logic, master loops, and build the patterns that power every simulation
 
-### [🗂️ Chapter 4: Data Structures - Organizing Scientific Data](04-python-data-structures)
+### [🗂️ Chapter 4: Data Structures - Organizing Scientific Data](./04-python-data-structures.md)
 
 Choose between O(1) and O(n) operations, understand memory layout, and architect data organization for million-particle simulations
 
-### [🔧 Chapter 5: Functions & Modules - Building Reusable Scientific Code](05-python-functions-modules)
+### [🔧 Chapter 5: Functions & Modules - Building Reusable Scientific Code](./05-python-functions-modules.md)
 
 Create clear functional contracts, understand scope and namespaces, organize code into modules, and build professional scientific libraries
 
-### [🎯 Chapter 6: OOP Fundamentals - Organizing Scientific Code](06oop-fundamentals)
+### [🎯 Chapter 6: OOP Fundamentals - Organizing Scientific Code](./06-oop-fundamentals.md)
 
 Transform functions and data into cohesive classes, understand when objects improve code organization, and model scientific concepts naturally
 
@@ -71,16 +71,16 @@ Each chapter builds on a continuous project—analyzing Cepheid variable stars. 
 
 | When you need to... | Check this chapter... | Look for section on... |
 |---------------------|----------------------|------------------------|
-| Fix `ModuleNotFoundError` | [Ch 1: Environments](01-python-environment) | Import System, Debug Import Problems |
-| Compare floating-point numbers | [Ch 2: Calculator](02-python-calculator) | Safe Floating-Point Comparisons |
-| Break out of a loop early | [Ch 3: Control Flow](03-python-control-flow) | Loop Control: break, continue |
-| Speed up particle lookups | [Ch 4: Data Structures](04-python-data-structures) | Dictionaries: O(1) Lookup Magic |
-| Avoid mutable default bug | [Ch 5: Functions](05-python-functions-modules) | The Mutable Default Trap |
-| Handle numerical overflow | [Ch 2: Calculator](02-python-calculator) | Overflow and Underflow |
-| Design before coding | [Ch 3: Control Flow](03-python-control-flow) | Algorithmic Thinking: Pseudocode |
-| Cache expensive calculations | [Ch 4: Data Structures](04-python-data-structures) | Dictionaries for Caching |
-| Bundle data with behavior | [Ch 6: OOP](06-oop-fundamentals) | Classes and Objects |
-| Validate with properties | [Ch 6: OOP](06-oop-fundamentals) | Properties: Smart Attributes |
+| Fix `ModuleNotFoundError` | [Ch 1: Environments](./01-python-environment.md) | Import System, Debug Import Problems |
+| Compare floating-point numbers | [Ch 2: Calculator](./02-python-calculator.md) | Safe Floating-Point Comparisons |
+| Break out of a loop early | [Ch 3: Control Flow](./03-python-control-flow.md) | Loop Control: break, continue |
+| Speed up particle lookups | [Ch 4: Data Structures](./04-python-data-structures.md) | Dictionaries: O(1) Lookup Magic |
+| Avoid mutable default bug | [Ch 5: Functions](./05-python-functions-modules.md) | The Mutable Default Trap |
+| Handle numerical overflow | [Ch 2: Calculator](./02-python-calculator.md) | Overflow and Underflow |
+| Design before coding | [Ch 3: Control Flow](./03-python-control-flow.md) | Algorithmic Thinking: Pseudocode |
+| Cache expensive calculations | [Ch 4: Data Structures](./04-python-data-structures.md) | Dictionaries for Caching |
+| Bundle data with behavior | [Ch 6: OOP](./06-oop-fundamentals.md) | Classes and Objects |
+| Validate with properties | [Ch 6: OOP](./06-oop-fundamentals.md) | Properties: Smart Attributes |
 
 ## Common Patterns You'll Use Constantly
 
@@ -184,20 +184,9 @@ Keep this table handy when choosing data structures:
 | No duplicates | ✗ Manual | ✗ Manual | ✓ Automatic | Unique items → Set |
 | By position | **Fast O(1)** | ✗ No | ✗ No | Need indexing → List |
 
-## Connection to Research
-
-Every concept here appears in real astronomical software:
-
-- **Chapter 1's environments** → How LIGO manages reproducibility across observatories
-- **Chapter 2's numerics** → Why spacecraft navigation requires defensive programming  
-- **Chapter 3's control flow** → How Kepler found 2,700+ exoplanets through systematic searching
-- **Chapter 4's data structures** → How Gaia processes billions of star positions efficiently
-- **Chapter 5's functions** → How the James Webb pipeline processes raw data into science
-- **Chapter 6's objects** → How Mars rovers track component states and prevent failures
-
 ## What's Next?
 
-After building your Python foundation with all six chapters, you'll advance to **[Scientific Computing Core](../02-scientific-computing-core)** where these fundamentals become powerful tools:
+After building your Python foundation with all six chapters, you'll advance to [**Scientific Computing Core**](../02-scientific-computing-core/index.md) where these fundamentals become powerful tools:
 
 - Your classes from Chapter 6 gain **inheritance and advanced patterns**
 - Your lists transform into **NumPy arrays** (100× faster!)
@@ -205,10 +194,10 @@ After building your Python foundation with all six chapters, you'll advance to *
 - Your modules grow into **scientific packages**
 - Your objects integrate with **Matplotlib, Pandas, and SymPy**
 
-The patterns you learn here—defensive programming, algorithmic thinking, performance awareness—will guide you through increasingly sophisticated computational challenges.
+The patterns you learn here—defensive programming, algorithmic thinking, performance awareness — will guide you through increasingly sophisticated computational challenges.
 
 ---
 
-**Ready to build your toolkit?** Start exploring [Chapter 1: Computational Environments & Scientific Workflows](01-python-environment) →
+**Ready to build your toolkit?** Start exploring [Chapter 1: Computational Environments & Scientific Workflows](./01-python-environment.md) →
 
 *Remember: These chapters are your companions throughout the course. Bookmark them, return often, and use them actively as you solve real problems!*
