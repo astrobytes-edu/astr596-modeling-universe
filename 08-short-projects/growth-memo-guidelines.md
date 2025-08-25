@@ -1,4 +1,4 @@
-# ⚠️ Growth Memo Guidelines
+# Growth Memo Guidelines
 
 This document describes the required Growth Memo for each short project. The Growth Memo is a concise reflection (recommended 1–2 pages) submitted alongside your project implementation that documents what you built, why you made technical choices, how you verified results, and how you used (and verified) AI tools.
 
