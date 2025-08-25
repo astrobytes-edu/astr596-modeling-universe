@@ -111,6 +111,16 @@ Resources:
 - Jupyter Book: <https://next.jupyterbook.org/>
 - MyST Markdown: <https://mystmd.org/>
 
+## Optional JAX installation
+
+The JAX ecosystem is optional and requires platform-specific wheels (GPU/CPU). To install it on a capable machine, run:
+
+```bash
+python -m pip install -r requirements-jax.txt
+```
+
+Do not install `requirements-jax.txt` on CI or binder unless you control the runner environment.
+
 ## Excluded files
 
 Files listed in `myst.yml` `exclude:` (for example `TODO.md` and `CONTRIBUTING.md`) are intentionally not published to the public site. Do not remove these entries unless you want them visible.

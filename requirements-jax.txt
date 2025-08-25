@@ -1,0 +1,8 @@
+# Optional heavy dependencies for JAX-based components
+# Install this only on machines with proper CUDA/CPU wheels available, not in default CI.
+# Example: python -m pip install -r requirements-jax.txt
+
+jax>=0.4.20
+jaxlib>=0.4.20
+optax>=0.1.7
+flax>=0.7.0

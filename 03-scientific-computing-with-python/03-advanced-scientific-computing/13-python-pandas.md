@@ -1,18 +1,9 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
 # ⚠️ Chapter 13: Pandas - Python Data Analysis Library
 
 ## Learning Objectives
+
 By the end of this chapter, you will:
+
 - Master DataFrame operations for astronomical catalogs
 - Perform efficient time series analysis on light curves
 - Execute complex GroupBy operations for population studies

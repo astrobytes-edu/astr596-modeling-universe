@@ -20,7 +20,7 @@ dependencies:
   
   # Jupyter ecosystem
   - jupyterlab>=4.0
-  - notebook>=7.0
+  - jupyter_server>=2.6
   - ipywidgets>=8.0
   - ipykernel>=6.25
   
@@ -37,18 +37,21 @@ dependencies:
   # Pip packages not available in conda
   - pip
   - pip:
-    # JAX ecosystem (pip only)
-    - jax>=0.4.20
-    - jaxlib>=0.4.20
-    - optax>=0.1.7
-    - flax>=0.7.0
-    
+    # Optional heavy dependencies (JAX stack) - commented out to avoid CI/binder failures
+    # - jax>=0.4.20
+    # - jaxlib>=0.4.20
+    # - optax>=0.1.7
+    # - flax>=0.7.0
+
     # Plotting
     - plotly>=5.14.0
-    
+
     # Format conversion
     - jupytext>=1.15.0
-    
-    # Notebook conversion
+
+    # Notebook conversion and MyST tooling
     - nbformat>=5.9.0
     - nbconvert>=7.8.0
+    - myst-nb>=0.16.0
+    - myst-parser>=0.18.0
+    - nbclient>=0.8.0

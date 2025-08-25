@@ -1,14 +1,3 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
 # Chapter 3: Control Flow & Logic
 
 ## Learning Objectives
@@ -330,7 +319,7 @@ print(f"Is FITS file? {'fits' in filename}")  # True
 
 Python 3.8 introduced the **walrus operator** (`:=`) which allows assignment within expressions:
 
-```{code-cell} ipython3
+```python
 # Traditional approach - two steps
 data = get_observations()  # Assume this function exists
 if len(data) > 100:
@@ -536,7 +525,7 @@ Conditional statements are where your code makes decisions. In scientific comput
 
 The **if** statement is the simplest conditional — it executes code only when a condition is true:
 
-```{code-cell} ipython3
+```python
 # Basic if statement
 magnitude = 4.5
 
@@ -551,7 +540,7 @@ if magnitude < 6.0:
 # Multiple statements in if block
 stellar_mass = 10.0  # Solar masses
 
-    if stellar_mass > 8:
+if stellar_mass > 8:
     print("Massive star detected!")
     print(f"Mass: {stellar_mass} $M_\\odot$")
     print("Will end as supernova")
@@ -773,8 +762,8 @@ for mass, position in zip(star_masses, star_positions):
     weighted_position += mass * position
 
 center_of_mass = weighted_position / total_mass
-    print(f"Cluster center of mass: {center_of_mass:.3f} pc")
-    print(f"Total cluster mass: {total_mass:.1f} $M_\\odot$")
+print(f"Cluster center of mass: {center_of_mass:.3f} pc")
+print(f"Total cluster mass: {total_mass:.1f} $M_\\odot$")
 
 # This same pattern calculates:
 # - Barycenter of binary systems (how we detect exoplanets!)

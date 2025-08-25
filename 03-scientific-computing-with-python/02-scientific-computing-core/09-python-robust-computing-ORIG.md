@@ -1,14 +1,3 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
 # ⚠️ Chapter 9: Robust Computing Fundamentals - Error Handling and Best Practices
 
 ## Learning Objectives

@@ -1,14 +1,3 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
 # ⚠️ Chapter 7: NumPy - The Foundation of Scientific Computing
 
 ## Learning Objectives
@@ -135,6 +124,7 @@ print(f"First 5 fluxes: {fluxes[:5]}")
 Now let's see the NumPy approach:
 
 ```{code-cell} ipython3
+import time
 import numpy as np  # Standard abbreviation used universally
 
 # NumPy array approach (what you're learning)
@@ -269,7 +259,7 @@ print(f"Wavelengths (cm): {wavelengths_cm}")
 # Essential for frequency grids, stellar masses
 masses_solar = np.logspace(-1, 2, 4)  # 0.1 to 100 solar masses
 masses_g = masses_solar * 1.989e33  # Convert to grams (CGS)
-print(f"Stellar masses (g): {masses_g:.2e}")
+print("Stellar masses (g):", ", ".join(f"{x:.2e}" for x in masses_g))
 ```
 
 ```{code-cell} ipython3
@@ -1169,6 +1159,9 @@ Without NumPy's memory efficiency and speed, modern time-domain astronomy would 
 Understanding NumPy's performance characteristics helps write efficient code:
 
 ```{code-cell} ipython3
+import time
+import numpy as np
+
 # Compare performance: loops vs vectorization
 size = 100000
 a = np.random.randn(size)
@@ -1213,6 +1206,7 @@ Performance comparison: Lists vs NumPy
 Run these on your machine - results vary by hardware!
 """
 import time
+import numpy as np
 
 def benchmark_operation(name, list_func, numpy_func, size=100000):
     """Benchmark a single operation."""
@@ -1264,6 +1258,9 @@ for name, (list_op, numpy_op) in operations.items():
 ```
 
 ```{code-cell} ipython3
+import time
+import numpy as np
+
 # Matrix multiplication comparison (smaller size due to O(n³) complexity)
 def matrix_multiply_lists(A, B):
     """Matrix multiplication with nested lists."""
