@@ -8,7 +8,7 @@ Each project implements fundamental algorithms from scratch using our "glass box
 
 ## Project Timeline
 
-Short projects are assigned on Mondays and due the following Monday(s) at 11:59 PM PT via GitHub Classroom. See the [Short Project Submission Guide](00-project-submission-guide) for detailed requirements.
+Short projects are assigned on Mondays and due the following Monday(s) at 11:59 PM PT via GitHub Classroom. See the [Short Project Submission Guide](./00-project-submission-guide.md) for detailed requirements.
 
 ## Short Projects (50% + 10% Growth Memos = 60% of course grade)
 
@@ -22,8 +22,7 @@ Build strong Python fundamentals while exploring stellar astrophysics. Implement
 - Stellar physics implementation  
 - Professional development environment setup
 - Git workflow and documentation
-
-[**→ Project 1 Details (TBD)**](TBD)
+**→ Project 1 Details (TBD)**
 
 ### 🪐 Project 2: ODE Integration & N-Body Dynamics
 
@@ -35,8 +34,7 @@ Master numerical integration methods through gravitational dynamics. Implement m
 - Planetary and star cluster dynamics
 - Initial Mass Function (IMF) sampling
 - Performance analysis and optimization
-
-[**→ Project 2 Details (TBD)**](TBD)
+**→ Project 2 Details (TBD)**
 
 ### 💡 Project 3: Monte Carlo Radiative Transfer
 
@@ -48,8 +46,7 @@ Dive deep into radiative transfer physics using Monte Carlo methods. Track photo
 - Scattering and absorption physics
 - Optical depth calculations
 - Visualization of radiation fields
-
-[**→ Project 3 Details (TBD)**](TBD)
+**→ Project 3 Details (TBD)**
 
 ### 📊 Project 4: Bayesian Inference & MCMC
 
@@ -61,8 +58,7 @@ Build Markov Chain Monte Carlo samplers from scratch while learning regression f
 - Prior and likelihood functions
 - Gradient descent optimization
 - Parameter estimation and uncertainty quantification
-
-[**→ Project 4 Details (TBD)**](TBD)
+**→ Project 4 Details (TBD)**
 
 ### 📈 Project 5: Gaussian Processes
 
@@ -74,8 +70,7 @@ Implement Gaussian processes for astronomical time series analysis. Master kerne
 - Hyperparameter optimization
 - Time series prediction
 - Uncertainty quantification
-
-[**→ Project 5 Details (TBD)**](TBD)
+**→ Project 5 Details (TBD)**
 
 ## Short Project Submission Requirements
 
@@ -116,8 +111,7 @@ Culminate your learning by building neural networks from scratch, then translati
   - 7 minutes on research project
   - 3 minutes on technical growth journey
   - 2 minutes Q&A
-
-[→ Final Project Details (TBD)](TBD)
+**→ Final Project Details (TBD)**
 
 ## Technical Growth Synthesis (5% of course grade)
 
@@ -136,7 +130,7 @@ Submit as .md or PDF with your Final Project.
 
 ## Getting Help
 
-- **[ASTR 596 Virtual Tutor](https://chatgpt.com/g/g-68aabb9278d08191926feb3f5512686c-astr-596-modeling-the-universe-tutor)**: Custom GPT assistant for concept clarification and learning support
+%- **[ASTR 596 Virtual Tutor](<https://chatgpt.com/g/g-68aabb9278d08191926feb3f5512686c-astr-596-modeling-the-universe-tutor>)**: Custom GPT assistant for concept clarification and learning support
 - **Friday Lab Sessions**: Hands-on implementation support and pair programming
 - **Office Hours**: Wednesdays 1-2 PM for conceptual guidance
 - **Course Slack**: Quick questions and peer collaboration

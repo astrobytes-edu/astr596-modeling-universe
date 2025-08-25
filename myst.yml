@@ -44,11 +44,7 @@ project:
     kernelName: python3
   
   # Notebook execution settings
-  execute:
-    execute_notebooks: cache
-    cache: .jupyter_cache
-    timeout: 300
-    allow_errors: false
+  # Notebook execution settings (moved to top-level execute: section)
   
   # PDF Export configurations
   exports:
@@ -70,10 +66,8 @@ project:
     - 'CONTRIBUTING.md'
     - 'context.md'
     - 'README.md'
+    - 'myst-build-instructions.md'
     - 'instructor-notes/**'
-    - '03-python/03-advanced-scientific-computing/**'
-    - '03-python/04-parallel-and-hpc/**'
-    - '03-python/05-modern-approaches-jax-ecosystem/**'
     - '.ipynb_checkpoints/**'
     - '**/.ipynb_checkpoints/**'
     - '__pycache__/**'
@@ -82,12 +76,17 @@ project:
     - '.DS_Store'
     - '**/.DS_Store'
     - '_build/**'
-    - '01-course-info/02-astr596-schedule.md'
+    # in-prep modules/
     - '03-scientific-computing-with-python/03-**'
     - '03-scientific-computing-with-python/04-**'
     - '03-scientific-computing-with-python/05-**'
+    - '04-astrophysics/**'
+    - '05-math-and-statistics/**'
+    - '06-numerical-methods/**'
+    - '07-machine-learning/**'
     - '09-final-project/**'
     - '10-reference/**'
+    # OLD docs and files to be ignored
     - '**/OLD/**'
     - '**/paper/**'
     - '**/notebooks/**'

@@ -44,14 +44,14 @@ This repository is primarily maintained by `@drannarosen` (Anna Rosen — `alros
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-```
+```bash
 
 1. Install dependencies and build the site:
 
 ```bash
 pip install -r requirements.txt
 jupyter-book build .
-```
+```bash
 
 If you prefer a Markdown-first workflow, install and use the MyST CLI:
 
@@ -62,7 +62,7 @@ pip install mystmd
 myst start
 # build statically
 myst build
-```
+```bash
 
 ## Deploying to GitHub Pages (recommended options)
 
@@ -79,7 +79,7 @@ pip install ghp-import
 
 # Push to gh-pages branch
 ghp-import -n -p -f _build/html
-```
+```bash
 
 - Automated deploy with GitHub Actions (recommended for CI): create `.github/workflows/deploy.yml` that installs dependencies, runs `jupyter-book build .`, and uses `peaceiris/actions-gh-pages` to publish `_build/html` to `gh-pages`.
 
@@ -93,7 +93,7 @@ myst init --gh-pages
 
 # Or Jupyter Book CLI
 jupyter book init --gh-pages
-```
+```bash
 
 This scaffolds a `.github/workflows/*.yml` GitHub Action that will build and deploy your site on push to the configured branch. Commit and push the generated files to trigger the Action. If your repo is not `username.github.io`, ensure `BASE_URL` is set appropriately (the `--gh-pages` init handles this for you in most cases).
 
@@ -103,7 +103,7 @@ See `README.md` for an example workflow and notes about `BASE_URL`.
 
 ```bash
 pytest -q
-```
+```bash
 
 ## Testing & Linting
 

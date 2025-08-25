@@ -127,7 +127,7 @@ git config --list
 
 ### Step 3: Set Up GitHub Account
 
-1. Go to https://github.com
+1. Go to <https://github.com>
 2. Sign up with your **SDSU email** (critical for Student Pack!)
 3. Verify your email address
 4. Apply for Student Developer Pack: <https://education.github.com/pack>
@@ -198,20 +198,13 @@ Master these five commands and you can use Git for this entire course:
 
 :::{list-table} The Essential Five
 :header-rows: 1
-:widths: 30 70
 
-* - Command
-  - Purpose
-* - `git status`
-  - What's changed? (USE THIS CONSTANTLY)
-* - `git add .`
-  - Stage all changes for commit
-* - `git commit -m "message"`
-  - Save changes with description
-* - `git push`
-  - Upload to GitHub
-* - `git pull`
-  - Download latest changes
+* - Command  - Purpose
+* - `git status`  - What's changed? (USE THIS CONSTANTLY)
+* - `git add .`  - Stage all changes for commit
+* - `git commit -m "message"`  - Save changes with description
+* - `git push`  - Upload to GitHub
+* - `git pull`  - Download latest changes
 :::
 
 ## GitHub Classroom: Assignment Workflow
@@ -331,20 +324,6 @@ env/
 venv/
 .ipynb_checkpoints/
 .pytest_cache/
-
-# Data files (usually too large)
-*.fits
-*.hdf5
-*.npy
-*.npz
-data/
-
-# OS files
-.DS_Store
-Thumbs.db
-.Trash-*
-
-# IDE
 .vscode/
 .idea/
 *.swp
@@ -467,14 +446,14 @@ their changes
 >>>>>>> branch-name
 ```
 
-2. Edit file to resolve:
+1. Edit file to resolve:
 
 ```python
 # Keep the version you want (or combine them)
 combined final version
 ```
 
-3. Complete the merge:
+1. Complete the merge:
 
 ```bash
 git add .
@@ -484,64 +463,37 @@ git push
 
 ## Quick Reference Card
 
-:::{list-table} Git Commands Reference
+: :::{list-table} Git Commands Reference
 :header-rows: 1
-:widths: 40 60
-
-* - Command
-  - What it does
-* - **Basic Workflow**
-  - 
-* - `git init`
-  - Create new repository
-* - `git clone <url>`
-  - Copy repository from GitHub
-* - `git status`
-  - Show what's changed
-* - `git add <file>`
-  - Stage specific file
-* - `git add .`
-  - Stage all changes
-* - `git commit -m "msg"`
-  - Save snapshot with message
-* - `git push`
-  - Upload to GitHub
-* - `git pull`
-  - Download from GitHub
-* - **Viewing History**
-  - 
-* - `git log`
-  - Show commit history
-* - `git log --oneline`
-  - Compact history view
-* - `git log --graph`
-  - Visual branch history
-* - `git diff`
-  - Show unstaged changes
-* - `git diff --staged`
-  - Show staged changes
-* - **Undoing Things**
-  - 
-* - `git checkout -- <file>`
-  - Discard changes to file
-* - `git reset HEAD <file>`
-  - Unstage file
-* - `git reset --soft HEAD~1`
-  - Undo last commit, keep changes
-* - `git reset --hard HEAD`
-  - Discard ALL local changes
-* - `git revert <commit>`
-  - Undo specific commit
-* - **Branches** (Advanced)
-  - 
-* - `git branch`
-  - List branches
-* - `git branch <name>`
-  - Create branch
-* - `git checkout <branch>`
-  - Switch branches
-* - `git merge <branch>`
-  - Merge branch into current
+ 
+* - Command  - What it does
+* - **Basic Workflow**  - 
+* - `git init`  - Create new repository
+* - `git clone <url>`  - Copy repository from GitHub
+* - `git status`  - Show what's changed
+* - `git add <file>`  - Stage specific file
+* - `git add .`  - Stage all changes
+* - `git commit -m "msg"`  - Save snapshot with message
+* - `git push`  - Upload to GitHub
+* - `git pull`  - Download from GitHub
+* - **Viewing History**  - 
+* - `git log`  - Show commit history
+* - `git log --oneline`  - Compact history view
+* - `git log --graph`  - Visual branch history
+* - `git diff`  - Show unstaged changes
+* - `git diff --staged`  - Show staged changes
+* - **Undoing Things**  - 
+* - `git checkout -- <file>`  - Discard changes to file
+* - `git reset HEAD <file>`  - Unstage file
+* - `git reset --soft HEAD~1`  - Undo last commit, keep changes
+* - `git reset --hard HEAD`  - Discard ALL local changes
+* - `git revert <commit>`  - Undo specific commit
+* - **Branches** (Advanced)  - 
+* - `git branch`  - List branches
+* - `git branch <name>`  - Create branch
+* - `git checkout <branch>`  - Switch branches
+* - `git merge <branch>`  - Merge branch into current
+:::
 :::
 
 ## Practice Exercises (optional but recommended)
@@ -593,31 +545,31 @@ You're ready for this course when you can:
 :::{warning} 🔧 Common Issues and Fixes
 :class: dropdown
 
-**"Permission denied (publickey)"**
+### "Permission denied (publickey)"
 
 - You're using SSH but haven't set up keys
 - Use HTTPS URLs instead: `https://github.com/...`
 - Or set up SSH keys (see GitHub docs)
 
-**"Authentication failed"**
+### "Authentication failed"
 
 - Personal Access Token issue
 - Create new token following steps above
 - Make sure to paste TOKEN, not password
 
-**"Cannot push to repository"**
+### "Cannot push to repository"
 
 - Check you're in the right directory: `pwd`
 - Verify remote URL: `git remote -v`
 - Make sure you have commits: `git log`
 
-**"Large files" error (>100MB)**
+### "Large files" error (>100MB)
 
 - Git won't accept huge files
 - Add to `.gitignore`: `*.fits`, `*.hdf5`, etc.
 - Use `git rm --cached largefile` to remove
 
-**Accidentally committed sensitive data**
+### "Accidentally committed sensitive data"
 
 - DO NOT push yet!
 - Remove with: `git reset --hard HEAD~1`
@@ -665,11 +617,11 @@ git config --global alias.br branch
 
 ## Resources
 
-- **Official Git Book** (free): https://git-scm.com/book
-- **GitHub's Tutorial**: https://try.github.io
-- **Visual Git Guide**: https://marklodato.github.io/visual-git-guide/
-- **Oh Shit, Git!?!**: https://ohshitgit.com (recovery from mistakes)
-- **GitHub Classroom Guide**: https://classroom.github.com/help
+- **Official Git Book** (free): <https://git-scm.com/book>
+- **GitHub's Tutorial**: <https://try.github.io>
+- **Visual Git Guide**: <https://marklodato.github.io/visual-git-guide/>
+- **Oh Shit, Git!?!**: <https://ohshitgit.com> (recovery from mistakes)
+- **GitHub Classroom Guide**: <https://classroom.github.com/help>
 
 ## Next Steps
 

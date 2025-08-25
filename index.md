@@ -9,11 +9,11 @@ Welcome to **ASTR 596: Modeling the Universe**! This course takes you on a journ
 **Earned Complexity**: We implement fundamental algorithms from first principles before leveraging advanced frameworks. Every line of code serves understanding—no black boxes allowed until you've built the glass box yourself.
 :::
 
-```{image} https://imgs.xkcd.com/comics/astrophysics.png
-:alt: astrophysics <xkcd.com>
-:width: 400px
+```{figure} https://imgs.xkcd.com/comics/astrophysics.png
+:alt: astrophysics
 :align: center
-*credit:* <xkcd.com>
+
+*Credit:* https://xkcd.com
 ```
 
 :::{warning}
@@ -31,31 +31,31 @@ Professional development environment, OOP design, and stellar physics modeling
 :::
 
 :::{grid-item-card} 🪐 **N-Body Dynamics**  
-:link: 04-astrophysics/gravitational-dynamics/index
+:link: 04-astrophysics/02-gravitational-dynamics/index
 
 Gravitational systems, numerical integration, and Monte Carlo sampling
 :::
 
 :::{grid-item-card} 📈 **Machine Learning**
-:link: 06-computational-methods/02-machine-learning
+:link: 07-machine-learning/index.md
 
 Linear regression, optimization, and statistical modeling from scratch
 :::
 
 :::{grid-item-card} 🎲 **Monte Carlo Methods**
-:link: 04-astrophysics/radiative-transfer
+:link: 04-astrophysics/03-radiative-transfer/index
 
 Radiative transfer, photon transport, and observational effects
 :::
 
 :::{grid-item-card} 🔍 **Bayesian Inference**
-:link: 05-math-and-statistics/bayesian-statistics
+:link: 05-math-and-statistics/03-bayesian-statistics/index
 
 MCMC sampling, parameter estimation, and uncertainty quantification
 :::
 
 :::{grid-item-card} 🧠 **Neural Networks**
-:link: 06-computational-methods/02-machine-learning
+:link: 07-machine-learning/index.md
 
 From backpropagation to JAX ecosystem and research applications
 :::
@@ -67,25 +67,25 @@ From backpropagation to JAX ecosystem and research applications
 ::::{grid} 2 2 2 2
 
 :::{grid-item-card} 📋 **Course Information**
-:link: 01-course-info/01-astr596-syllabus-fall25
+:link: ./01-course-info/01-astr596-syllabus-fall25
 
 Syllabus, schedule, policies, and expectations
 :::
 
 :::{grid-item-card} 🎯 **Projects**
-:link: 08-short-projects/index
+:link: ./08-short-projects/index
 
 Six progressive projects building computational skills
 :::
 
 :::{grid-item-card} 🤖 **AI Guidelines**
-:link: 01-course-info/03-astr596-ai-policy
+:link: ./01-course-info/03-astr596-ai-policy
 
 Three-phase approach to responsible AI integration
 :::
 
 :::{grid-item-card} 🛠️ **Getting Started**
-:link: 02-getting-started/index
+:link: ./02-getting-started/index
 
 Setup guides, references, and learning materials
 :::
@@ -127,7 +127,6 @@ This course teaches you to use AI tools (GitHub Copilot, ChatGPT) as **learning 
 
 :::{list-table} **Scaffolded AI Usage Policy: AI as a Learning Partner**
 :header-rows: 1
-:widths: 20 30
 :align: center
 
 * - Phase
@@ -142,10 +141,10 @@ This course teaches you to use AI tools (GitHub Copilot, ChatGPT) as **learning 
 
 ## Getting Started
 
-1. 📖 Review the [Syllabus](01-course-info/01-astr596-syllabus-fall25) and [AI Guidelines](01-course-info/03-astr596-ai-policy)
-2. ⚙️ Set up your development environment (see [Getting Started](02-getting-started))
+1. 📖 Review the [Syllabus](./01-course-info/01-astr596-syllabus-fall25.md) and [AI Guidelines](./01-course-info/03-astr596-ai-policy.md)
+2. ⚙️ Set up your development environment (see [Getting Started](./02-getting-started/index.md))
 3. 👥 Join the course GitHub organization **TBD**
-4. 🚀 Start with [Project 1 **TBD**](08-short-projects)
+4. 🚀 Start with the [Project 0: Onboarding Assignment](./08-short-projects/00-onboarding-assignment.md)
 
 :::{important} Questions or Issues?
 
@@ -153,7 +152,7 @@ This course teaches you to use AI tools (GitHub Copilot, ChatGPT) as **learning 
 - **Office**: Physics 239
 - **Email**: <alrosen@sdsu.edu>
 - **Office Hours**: Wednesday 1-2 pm or  by appointment
-- **Course Issues**: [GitHub repository](https://github.com/astrobytes-edu/astr596-modeling-universe/issues)
+- **Course Issues**: [GitHub repository](<https://github.com/astrobytes-edu/astr596-modeling-universe/issues>)
 :::
 
 ✨ *Welcome to a journey from Python basics to the frontiers of computational astrophysics. Together, we'll model the universe, one algorithm at a time.* ✨

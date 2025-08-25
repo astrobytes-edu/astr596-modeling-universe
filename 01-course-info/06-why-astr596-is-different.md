@@ -292,7 +292,7 @@ Computational thinking requires consistent daily practice, not last-minute cramm
 ### References & Additional Resources
 
 **Core Readings:**
-- Schwartz, M. A. (2008). [The importance of stupidity in scientific research](https://journals.biologists.com/jcs/article/121/11/1771/30038/The-importance-of-stupidity-in-scientific-research). *Journal of Cell Science*
+- Schwartz, M. A. (2008). [The importance of stupidity in scientific research](https://doi.org/10.1242/jcs.033340). *Journal of Cell Science*
 
 **Neuroscience of Learning:**
 

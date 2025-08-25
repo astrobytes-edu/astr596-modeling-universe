@@ -243,7 +243,7 @@ Date | Project | What AI Helped With | Key Insight
 
 ### AI Reflection for Growth Memos
 
-Each Growth Memo (see [Growth Memo Guidelines](short-projects/growth-memo-guidelines) for full requirements) includes a brief AI usage reflection using this template:
+Each Growth Memo (see [Growth Memo Guidelines](../08-short-projects/growth-memo-guidelines) for full requirements) includes a brief AI usage reflection using this template:
 
 ```markdown
 ## AI Usage Reflection

@@ -8,7 +8,7 @@ This section explores the astrophysical motivation behind every computational te
 
 ## Physical Contexts
 
-### ⭐ [Stellar Physics](stellar-physics/index.md)
+### ⭐ [Stellar Physics](./01-stellar-physics/index.md)
 
 The life cycles of stars provide rich computational problems:
 
@@ -20,7 +20,7 @@ The life cycles of stars provide rich computational problems:
 
 *Project Connection: Project 1 implements simple stellar evolution models*
 
-### 🌌 [Gravitational Dynamics](gravitational-dynamics/index.md)
+### 🌌 [Gravitational Dynamics](./02-gravitational-dynamics/gravitational-dynamics/index.md)
 
 N-body systems from planetary motion to galaxy formation:
 
@@ -31,7 +31,7 @@ N-body systems from planetary motion to galaxy formation:
 - **Dark Matter**: Structure formation and cosmological simulations
 *Project Connection: Project 2 builds gravitational N-body simulators*
 
-### 🌟 [Radiative Transfer](radiative-transfer/index.md)
+### 🌟 [Radiative Transfer](./03-radiative-transfer/index.md)
 
 How light travels through astronomical environments:
 
@@ -41,17 +41,6 @@ How light travels through astronomical environments:
 - **Monte Carlo Methods**: Photon transport simulations
 - **Observational Astronomy**: From photons to physical parameters
 *Project Connection: Projects 3 use Monte Carlo radiative transfer*
-
-### 🔬 [Advanced Topics](advanced_topics/index.md)
-
-Cutting-edge astrophysical applications:
-
-- **Magnetohydrodynamics**: Plasma physics in stellar and galactic environments
-- **General Relativity**: Black holes, gravitational waves, cosmology
-- **Astrostatistics**: Bayesian methods for astronomical data analysis
-- **Machine Learning**: Neural networks for classification and discovery
-- **Multi-Messenger Astronomy**: Combining electromagnetic, gravitational, and neutrino observations
-*Project Connection: project 6 and the final project applies ML to modern astrophysical datasets*
 
 ## Scientific Method Integration
 

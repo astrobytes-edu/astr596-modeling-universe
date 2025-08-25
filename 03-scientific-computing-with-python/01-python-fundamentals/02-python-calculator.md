@@ -95,7 +95,7 @@ print(f"Wrong answer is {error_factor:.0f}× too large!")
 
 We use CGS (centimeter-gram-second) units throughout this course because they're standard in stellar physics, galactic dynamics, and most theoretical astrophysics papers. You'll see CGS in plasma physics calculations, stellar structure models, and cosmological simulations. SI units appear more frequently in planetary science, spacecraft dynamics, and gravitational wave astronomy.
 
-**Quick reference:** 1 parsec $= 3.086×10¹⁸$ cm, 1 $M_☉ = 1.989×10³³$ g, 1 $L_☉ = 3.828×10³³$ erg/s. Always verify which system a paper uses — unit confusion has caused spacecraft failures!
+**Quick reference:** 1 parsec $= 3.086×10¹⁸$ cm, 1 $M_\odot$ = 1.989×10³³ g, 1 $L_\odot$ = 3.828×10³³ erg/s. Always verify which system a paper uses — unit confusion has caused spacecraft failures!
 :::
 
 The wrong version calculated $(GM/\sqrt{r})$ instead of $\sqrt{(GM/r)}$ — a factor of $\sqrt{GM}$ error, which for Earth's orbit is about $10^{13}$ times too large!
@@ -106,8 +106,9 @@ The wrong version calculated $(GM/\sqrt{r})$ instead of $\sqrt{(GM/r)}$ — a fa
 Before running this code, predict the result of: `-2**2 + 3*4//2`
 
 Work through it step by step:
+
 1. First, identify the operations: negation, exponentiation, multiplication, floor division, addition
-2. Apply PEMDAS rules (remember: exponentiation before negation!)
+2. Apply PEMDAS rules (*remember*: exponentiation before negation!)
 3. Write your predicted answer
 :::
 
@@ -640,9 +641,9 @@ print(f"Much better! Error: {abs(result_good - true_value)/true_value:.2e}")
 
 The Mars Climate Orbiter was destroyed on September 23, 1999, when it entered Mars' atmosphere at 57 kilometers altitude instead of the planned 140-226 kilometers. While the famous cause was a metric/imperial unit mix-up (Lockheed Martin used pound-force seconds while NASA used newton-seconds), the navigation software also struggled with numerical precision issues.
 
-The spacecraft's trajectory correction maneuvers involved calculating tiny velocity changes (often less than 1 m/s) while traveling at over 20,000 m/s. This requires computing the difference between nearly equal large numbers — exactly the catastrophic cancellation problem we just solved ([Stephenson et al., 1999](https://spaceflight.nasa.gov/spacenews/releases/2000/mco/mco_report_1.pdf)).
+The spacecraft's trajectory correction maneuvers involved calculating tiny velocity changes (often less than 1 m/s) while traveling at over 20,000 m/s. This requires computing the difference between nearly equal large numbers — exactly the catastrophic cancellation problem we just solved.
 
-When you're 400 million kilometers from Earth and need millimeter-per-second precision in velocity, every numerical trick matters. The MCO failure led NASA to implement much stricter numerical validation in all navigation software ([NASA, 2000](https://mars.nasa.gov/msp98/news/mco991110.html)).
+When you're 400 million kilometers from Earth and need millimeter-per-second precision in velocity, every numerical trick matters. The MCO failure led NASA to implement much stricter numerical validation in all navigation software ([NASA, 2000](<https://mars.nasa.gov/msp98/news/mco991110.html>)).
 :::
 
 ### Overflow and Underflow in Astronomical Scales
@@ -812,7 +813,7 @@ def validate_schwarzschild_input(mass_grams):
     return mass_grams
 
 # Test with realistic astrophysical masses
-stellar_bh = validate_schwarzschild_input(10 * 1.989e33)  # 10 M☉
+stellar_bh = validate_schwarzschild_input(10 * 1.989e33)  # 10 $M_\odot$
 print(f"Stellar black hole mass valid: {stellar_bh:.2e} g")
 
 try:
@@ -971,7 +972,7 @@ distance_ly = 548
 luminosity = 1.2e5  # Solar luminosities
 
 print(f"{star_name} is {distance_ly} light-years away")
-print(f"Luminosity: {luminosity:.2e} L☉")
+print(f"Luminosity: {luminosity:.2e} $L_\\odot$")
 ```
 
 ### Format Specifications for Scientific Data

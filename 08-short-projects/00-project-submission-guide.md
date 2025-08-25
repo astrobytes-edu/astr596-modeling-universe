@@ -82,7 +82,7 @@ Projects are assigned on Mondays (posted to GitHub Classroom) with varying compl
 
 ### The Spirit of Extensions
 
-Extensions are meant to be **freeing and engaging** — this is YOUR opportunity to explore what interests you most about the project. The goal is to promote:
+Extensions are meant to be **freeing and engaging** — this is *YOUR* opportunity to explore what interests you most about the project. The goal is to promote:
 
 - **Curiosity:** What happens if...?
 - **Experimentation:** Let me try this approach...
@@ -147,16 +147,91 @@ Extensions are meant to be **freeing and engaging** — this is YOUR opportunity
 
 ### GitHub Classroom Submission
 
-```{admonition} TBD: GitHub Classroom Setup
-:class: info
-Detailed instructions for submitting via GitHub Classroom will be provided once setup is complete. This will include:
-- How to accept assignments
-- Cloning your repository
-- Pushing your work
-- Ensuring all files are properly submitted
-- Verification that submission was successful
-- Please refer to [*Getting Started: Introduction to Git and GitHub*](../02-getting-started/03-git-intro.md). 
-```
+:::{important} GitHub Classroom Submission
+:class: dropdown
+Follow these steps to accept, submit, and verify assignments via GitHub Classroom.
+
+1. Accept the assignment
+
+    - Use the GitHub Classroom link posted in the LMS (or the assignment URL emailed to you). After accepting, you will receive a private repository named something like `astr596-project-<N>-<your-github-user>` under your GitHub account or the course organization.
+
+2. Clone the repository to your machine
+
+    - SSH (recommended):
+
+      ```bash
+      git clone git@github.com:<org>/<assignment-repo>.git
+      cd <assignment-repo>
+      ```
+
+    - HTTPS alternative:
+
+      ```bash
+      git clone https://github.com/<org>/<assignment-repo>.git
+      cd <assignment-repo>
+      ```
+
+3. Work locally and run checks
+
+    - Create and activate a virtual environment, install dependencies, and run tests:
+
+      ```bash
+      python -m venv .venv
+      source .venv/bin/activate       # macOS / Linux
+      .venv\Scripts\activate          # Windows (PowerShell)
+      pip install -r requirements.txt
+      pytest -q                       # run available tests (if provided)
+      ```
+
+    - Recommended workflow: work on a feature branch and open PRs if you want instructor feedback before final submission:
+
+      ```bash
+      git checkout -b feature/my-solution
+      # work, commit, run tests locally
+      ```
+
+4. Finalize and push your submission
+
+    - Add required files, commit with a clear message, and push to the repository's `main` branch (or the branch specified by the assignment):
+
+      ```bash
+      git add -A
+      git commit -m "Complete project: core requirements"
+      git push origin main
+      # or push your feature branch:
+      git push -u origin feature/my-solution
+      ```
+
+5. Verify submission (important)
+
+    - Classroom UI: Open the GitHub Classroom assignment page and confirm your repository appears and that the latest commit timestamp is correct. Many Classroom assignments show a "Submitted" indicator or list the latest commit.
+    - GitHub: Check your repository in the browser for the final commit and for files required by the rubric (`research_memo.pdf`, `growth_memo.md`, `README.md`, `requirements.txt`, and `outputs/` contents).
+    - CI: If the assignment includes Actions, confirm the GitHub Actions checks pass (look under the repository's "Actions" tab or on the commit status). Passing CI is often required for full credit.
+
+6. Resubmitting or fixing issues
+
+    - To resubmit, push additional commits to the same repository/branch; Classroom will pick up the latest commit as your submission.
+    - If you accidentally committed large files, remove them from history (or contact the instructor/TA for help). Example to remove a file from the latest commit:
+
+      ```bash
+      git rm --cached large_file.dat
+      git commit -m "Remove large binary"
+      git push
+      ```
+
+7. Quick verification checklist
+
+    - [ ] I accepted the assignment in GitHub Classroom
+    - [ ] I cloned the correct assignment repository
+    - [ ] Virtual environment created and `requirements.txt` installed
+    - [ ] Tests (if provided) pass locally (`pytest -q`)
+    - [ ] `research_memo.pdf`, `growth_memo.md`, `README.md`, and required code are present
+    - [ ] Final commit pushed to the assignment repository/branch
+    - [ ] Classroom UI shows the repository and final commit timestamp
+    - [ ] CI (GitHub Actions) passed, if applicable
+
+If anything is unclear, or if Classroom shows an unexpected status, see the *Getting Started: Introduction to Git and GitHub* chapter (../02-getting-started/03-git-intro.md) or contact the instructor via Slack/email.
+:::
 
 ### Each Project Must Include
 
@@ -464,8 +539,8 @@ Before submitting, verify:
 **Resources:**
 
 - **Classmates** (collaborate, discuss, learn together!)
-- **[ASTR 596 Virtual Tutor](https://chatgpt.com/g/g-68aabb9278d08191926feb3f5512686c-astr-596-modeling-the-universe-tutor)** (custom GPT for concept help)
-- **Course Slack** (fastest response for quick questions)
+%- [**ASTR 596 Virtual Tutor**](https://chatgpt.com/g/g-68aabb9278d08191926feb3f5512686c-astr-596-modeling-the-universe-tutor) (custom GPT for concept and debugging help)
+- **Course Slack** (fastest response for quick questions and peer support)
 - **Office Hours** (Wednesdays 1-2 PM for complex issues)
 - **Friday Lab Sessions** (pair programming and peer support)
 

@@ -532,7 +532,7 @@ Your progress is saved! When you return:
 :::
 
 1. ✅ Environment is ready
-2. → Continue to [Git and GitHub Guide](03-git-intro-guide)
+2. → Continue to [Git and GitHub Guide](03-git-intro)
 3. → Start working on Project 1
 
 :::{admonition} 💡 Pro Tips
@@ -556,7 +556,7 @@ mkdir -p ~/astr596/{projects,notes,data}
 
 :::{list-table} Essential Commands
 :header-rows: 1
-:widths: 40 60
+ 
 
 * - Command
   - What it does
