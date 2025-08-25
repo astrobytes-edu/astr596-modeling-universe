@@ -84,7 +84,7 @@ Upon successful completion of this course, students will be able to:
 
 ### Textbooks (Free Online Resources)
 
-% - **Required:** Rosen (2025), [www.astrobytes-edu.github.io/astr596-modeling-universe](https://astrobytes-edu.github.io/astr596-modeling-universe/), ASTR 596 Course Website (powered by [Jupyter Book](https://next.jupyterbook.org/))
+% - **Required:** Rosen (2025), [www.astrobytes-edu.github.io/astr596-modeling-universe](https://astrobytes-edu.github.io/astr596-modeling-universe/), ASTR 596 Course Website (powered by [MyST Markdown](https://mystmd.org/))
 
 - Linge & Langtangen (2020), [Programming for Computations - Python (2nd Edition)](https://library.oapen.org/bitstream/id/35449b29-cca0-4d71-8553-2d49609b75fd/1007055.pdf), Springer Open
 
