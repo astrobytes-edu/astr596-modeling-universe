@@ -1,0 +1,13 @@
+{
+  "name": "astr596-tools",
+  "version": "0.0.1",
+  "private": true,
+  "bin": {
+    "render-pdfs": "./render-pdfs.js"
+  },
+  "dependencies": {
+    "glob": "^10.2.7",
+    "minimist": "^1.2.8",
+    "puppeteer": "^21.3.0"
+  }
+}

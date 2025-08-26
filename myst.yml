@@ -123,6 +123,8 @@ site:
     
     analytics:
       google: G-QJLKLBMDSZ
+    extra_javascript:
+      - /_static/js/pdf-map.js
     
     extra_footer: |
       <p>ASTR 596: Modeling the Universe | Fall 2025<br>
