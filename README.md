@@ -38,6 +38,11 @@ Notes:
 
 - The repository's GitHub Actions workflow (`.github/workflows/deploy.yml`) runs `myst build --html` during CI and provides the canonical `BASE_URL` environment variable for Pages deployments.
 
+Important: PDF/Typst export is disabled
+
+- Automated PDF/Typst exports have been intentionally disabled for this repository. The CI workflow and site navigation do not build or link PDFs by default.
+- To re-enable: restore the `exports:` block in `myst.yml`, add a Typst/LaTeX setup step to CI that installs a pinned Typst binary (or LaTeX toolchain), and test locally with the same CLI versions.
+
 ## Prerequisites
 
 - Tested on Python 3.11+. See `requirements.txt` for package versions.
