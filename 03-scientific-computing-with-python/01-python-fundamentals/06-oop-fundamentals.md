@@ -1,3 +1,9 @@
+---
+title: OOP Fundamentals - Organizing Scientific Code
+exports:
+  - format: pdf
+---
+
 # Chapter 6: OOP Fundamentals - Organizing Scientific Code
 
 ## Learning Objectives

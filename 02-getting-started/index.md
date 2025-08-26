@@ -1,3 +1,9 @@
+---
+title: Getting Started
+exports:
+  - format: pdf
+---
+
 # Getting Started
 
 **Your Foundation for Computational Astrophysics**

@@ -1,4 +1,10 @@
-# ⚠️ Chapter 9: Robust Computing Fundamentals - Error Handling and Best Practices
+---
+title: Robust Computing Fundamentals - Error Handling & Best Practices
+exports:
+  - format: pdf
+---
+
+# ⚠️ Chapter 9: Robust Computing Fundamentals - Error Handling & Best Practices
 
 ## Learning Objectives
 

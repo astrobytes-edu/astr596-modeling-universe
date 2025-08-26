@@ -1,3 +1,9 @@
+---
+title: Advanced OOP Patterns - Architecting Scientific Software
+exports:
+  - format: pdf
+---
+
 # ⚠️ Chapter 10: Advanced OOP Patterns - Architecting Scientific Software
 
 ## Learning Objectives

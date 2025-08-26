@@ -5,38 +5,38 @@ Course materials and site source for ASTR 596 (Fall 2025).
 
 ## Quick start
 
-Set up a virtual environment, install dependencies, and build the site locally (Jupyter Book 2.x only):
+Set up a lightweight environment and build the site locally using the MyST-first workflow (recommended):
 
 ```bash
+# create and activate a virtualenv (macOS / zsh)
 python -m venv .venv
 source .venv/bin/activate
+
+# install Python dependencies (core site build)
 pip install -r requirements.txt
-# Build with Jupyter Book 2.x
-jupyter book start #Following https://next.jupyterbook.org/
-```
 
-If you prefer the MyST CLI (Markdown-first workflow), install and use `mystmd`:
+# Install MyST CLI (recommended):
+# Option A (npm, same as CI):
+npm install -g mystmd
+# Option B (pip): install myst-cli if you prefer the Python packaging
+pip install myst-cli
 
-```bash
-# (optional) install myst CLI
-pip install mystmd
-# serve a local dev server (auto-rebuild)
+# Serve a live dev server (auto-rebuild)
 myst start
-# build statically
-myst build
-```
 
-Serve the built site for local preview (simple HTTP server):
+# Build a static site (HTML)
+myst build --html
 
-```bash
+# Serve built output for local preview
 python -m http.server -d _build/html 8000
 # then open http://localhost:8000
 ```
 
-Notes on `jupyter-book start`:
+Notes:
 
-- `jupyter-book build .` is the canonical build command for Jupyter Book 2.x and is the command we pin in `requirements.txt` (`jupyter-book==2.*`).
-- A `jupyter-book start` dev server may be available depending on the installed Jupyter Book release, but it is not required — `myst start` or the simple `http.server` approach are reliable alternatives.
+- This repository uses the Markdown-first MyST workflow as the canonical developer experience. Avoid running `jupyter book build` unless you know you need Jupyter Book 2.x compatibility.
+
+- The repository's GitHub Actions workflow (`.github/workflows/deploy.yml`) runs `myst build --html` during CI and provides the canonical `BASE_URL` environment variable for Pages deployments.
 
 ## Prerequisites
 
@@ -61,50 +61,28 @@ See `CONTRIBUTING.md` for branching, commit style, local build, and PR checklist
 - Format code: `black .`
 - Lint: `flake8` or `pylint` (optional)
 
+
 ## CI & Deployment
 
-Recommended deploy workflow (follow `mystmd` / Jupyter Book docs):
+This repository includes a ready GitHub Actions workflow at `.github/workflows/deploy.yml` that builds the site with the MyST CLI and deploys to GitHub Pages. The workflow sets `BASE_URL` for Pages automatically.
 
-Use the built-in initializer to create a GitHub Actions workflow that deploys to GitHub Pages. This follows the `--gh-pages` flow in the official docs (preferred):
-
-- Option A (MyST CLI, Markdown-first):
+To test the same steps locally:
 
 ```bash
-# Run from the repository root; this interactively scaffolds a Pages action and config
-myst init --gh-pages
+# Build the site (HTML only — PDFs are disabled in CI)
+myst build --html
 
-# After answering prompts, commit the generated files and push to your repo
-git add .github/workflows && git commit -m "Add GitHub Pages workflow (myst init --gh-pages)" && git push
+# Run the local dev server (auto-rebuild)
+myst start
 ```
 
-- Option B (Jupyter Book CLI):
+PDF exports and Typst: currently, automated Typst/PDF exports are disabled in CI and the site nav (the PDF download action has been commented out). To re-enable PDF exports you must:
 
-```bash
-# Run from the repository root; this interactively scaffolds a Pages action and config
-jupyter book init --gh-pages
+1. Restore the Typst export block in `myst.yml`.
+2. Ensure a pinned Typst binary is installed in CI (or vendored into the repo) and re-enable the Typst setup step in `.github/workflows/deploy.yml`.
+3. Test `myst build --typst` locally with a matching Typst CLI version.
 
-# After answering prompts, commit and push the generated workflow
-git add .github/workflows && git commit -m "Add GitHub Pages workflow (jupyter book init --gh-pages)" && git push
-```
-
-After you push the generated workflow, enable GitHub Pages in the repository Settings -> Pages and set the source to *GitHub Actions*. Pushing to the branch you selected (e.g., `main`) will trigger the action and publish your site to `https://<org-or-user>.github.io/<repo>/`.
-
-BASE_URL / repository subpath note:
-
-- If your repo is not a user/organization-level repo (i.e., `username.github.io`), your site will usually be served at `/repo-name/`. The MyST CLI's `--gh-pages` init will configure `BASE_URL` automatically; if not, set `BASE_URL` as an environment variable in the generated GitHub Action or in the action's `with:` configuration.
-
-Build commands (local testing):
-
-```bash
-# Build with Jupyter Book 2.x (canonical)
-jupyter-book build .
-
-# Or with MyST CLI (if using mystmd)
-myst build
-
-# Serve the built site locally
-python -m http.server -d _build/html 8000
-```
+See `.github/copilot-instructions.md` for guidelines on re-enabling PDFs safely.
 
 Resources:
 

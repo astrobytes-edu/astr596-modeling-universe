@@ -42,22 +42,26 @@ project:
       repo: astrobytes-edu/astr596-modeling-universe
       ref: main
     kernelName: python3
-  
-  # Notebook execution settings
-  # Notebook execution settings (moved to top-level execute: section)
-  
+  parts:
+    abstract: |
+      This article-version export compiles selected course materials from
+      "ASTR 596: Modeling the Universe" (Fall 2025) into a typst-formatted
+      article. The abstract is intentionally brief; customize for publication.
+
   # PDF Export configurations
   exports:
     - format: pdf
       template: book-theme-pdf
       output: exports/astr596-complete-book.pdf
       id: complete-book
-    
-    - format: typst
-      template: lapreprint
-      output: exports/astr596-article.pdf
-      id: article-pdf
-  
+
+    # Typst export disabled per maintainer request. To re-enable, restore
+    # the block below and ensure a pinned Typst binary is available in CI.
+    # - format: typst
+    #   template: lapreprint-typst
+    #   output: exports/astr596-article.pdf
+    #   id: article-pdf
+
   # Files to exclude from build
   exclude:
     - 'draft-*.md'
@@ -108,11 +112,11 @@ site:
   actions:
     - title: Open in GitHub Codespaces
       url: https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=astrobytes-edu/astr596-modeling-universe
-    - title: Download Complete Book PDF
-      url: /exports/astr596-complete-book.pdf
+    # - title: Download Complete Book PDF
+    #   url: /exports/astr596-complete-book.pdf
   
   options:
-    base_url: /astr596-modeling-universe/
+  # base_url removed: rely on CI-provided BASE_URL env as single source of truth
     logo_text: "✨ASTR 596✨"
     logo: _static/astr-logo-01.png
     favicon: _static/astr-logo-01.png

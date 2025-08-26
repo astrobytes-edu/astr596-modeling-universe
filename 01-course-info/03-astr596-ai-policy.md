@@ -1,13 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
+title: ASTR 596 AI Policy & Learning Framework
+exports:
+  - format: pdf
 ---
 
 # ASTR 596 AI Policy & Learning Framework

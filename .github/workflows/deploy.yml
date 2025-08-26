@@ -6,7 +6,7 @@ on:
 
 env:
   # Set BASE_URL if your site is served under a subpath (e.g. /repo-name)
-  BASE_URL: /${{ github.event.repository.name }}
+  BASE_URL: /${{ github.event.repository.name }}/
 
 permissions:
   contents: read
@@ -49,18 +49,20 @@ jobs:
       - name: Install MyST CLI
         run: npm install -g mystmd
 
-      - name: Setup Typst (for PDF generation)
-        uses: typst-community/setup-typst@v4
-        with:
-          version: 'latest'
+      # Typst installation removed — PDF exports disabled per maintainer request
+      # - name: Setup Typst (for PDF generation)
+      #   uses: typst-community/setup-typst@v4
+      #   with:
+      #     version: 'latest'
 
       # Build pages without executing code cells (students can execute in-browser via Thebe/Binder)
       - name: Build HTML (no-execute)
         run: myst build --html
 
-      - name: Build PDF exports (optional)
-        run: myst build --pdf
-        continue-on-error: true
+      # PDF exports disabled — remove comments to re-enable
+      # - name: Build PDF exports (optional)
+      #   run: myst build --pdf
+      #   continue-on-error: true
 
       - name: Copy PDF exports into HTML directory
         run: |

@@ -1,3 +1,9 @@
+---
+title: Computational Environments & Scientific Workflows
+exports:
+    - format: pdf
+---
+
 # Chapter 1: Computational Environments & Scientific Workflows
 
 ## Learning Objectives

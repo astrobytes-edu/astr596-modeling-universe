@@ -1,3 +1,9 @@
+---
+title: Python as Your Scientific Calculator
+exports:
+  - format: pdf
+---
+
 # Chapter 2: Python as Your Scientific Calculator
 
 ## Learning Objectives
@@ -84,7 +90,7 @@ print(f"Wrong answer is {error_factor:.0f}× too large!")
 
 We use CGS (centimeter-gram-second) units throughout this course because they're standard in stellar physics, galactic dynamics, and most theoretical astrophysics papers. You'll see CGS in plasma physics calculations, stellar structure models, and cosmological simulations. SI units appear more frequently in planetary science, spacecraft dynamics, and gravitational wave astronomy.
 
-**Quick reference:** 1 parsec $= 3.086×10¹⁸$ cm, 1 $M_\odot$ = 1.989×10³³ g, 1 $L_\odot$ = 3.828×10³³ erg/s. Always verify which system a paper uses — unit confusion has caused spacecraft failures!
+**Quick reference:** 1 parsec $= 3.086×10¹⁸$ cm, 1 $M_{\odot}$ = 1.989×10³³ g, 1 $L_{\odot}$ = 3.828×10³³ erg/s. Always verify which system a paper uses — unit confusion has caused spacecraft failures!
 :::
 
 The wrong version calculated $(GM/\sqrt{r})$ instead of $\sqrt{(GM/r)}$ — a factor of $\sqrt{GM}$ error, which for Earth's orbit is about $10^{13}$ times too large!
@@ -802,7 +808,7 @@ def validate_schwarzschild_input(mass_grams):
     return mass_grams
 
 # Test with realistic astrophysical masses
-stellar_bh = validate_schwarzschild_input(10 * 1.989e33)  # 10 $M_\odot$
+stellar_bh = validate_schwarzschild_input(10 * 1.989e33)  # 10 $M_{\odot}$
 print(f"Stellar black hole mass valid: {stellar_bh:.2e} g")
 
 try:
@@ -957,11 +963,11 @@ Time to make your results shine! Clear output formatting isn't just about aesthe
 ```{code-cell} ipython3
 # Basic f-string formatting
 star_name = "Betelgeuse"
-distance_ly = 548
+distance_pc = 400
 luminosity = 1.2e5  # Solar luminosities
 
-print(f"{star_name} is {distance_ly} light-years away")
-print(f"Luminosity: {luminosity:.2e} $L_\\odot$")
+print(f"{star_name} is {distance_pc} light-years away")
+print(f"Luminosity: {luminosity:.2e} Lsun")
 ```
 
 ### Format Specifications for Scientific Data
@@ -994,6 +1000,7 @@ for name, mag, dist in stars:
 :class: hint
 
 What will this print?
+
 ```python
 redshift = 0.00123456
 print(f"z = {redshift:.2e}")

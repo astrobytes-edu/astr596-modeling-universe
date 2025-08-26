@@ -10,12 +10,12 @@ Hard constraints (do NOT modify these):
 - Ask the user before running any `--gh-pages` initializer. If the user agrees, they must first delete `.github/workflows/deploy.yml` if it exists.
 - Do NOT modify, create, run, or delete `.github/workflows/deploy.yml` or other deploy workflows without explicit user approval.
 - Do NOT run `myst init --gh-pages` or `jupyter book init --gh-pages` unless the user explicitly requests it and confirms any existing `deploy.yml` has been removed.
-- Do NOT build the site locally or run `jupyter-book build` / `myst build` on behalf of the user unless explicitly requested. The user prefers CI builds on GitHub Actions.
+-- Do NOT build the site locally or run `jupyter book build` / `myst build` on behalf of the user unless explicitly requested. The user prefers CI builds on GitHub Actions.
 
 Preferred toolchain and versions
 
 - Use documentation from: <https://next.jupyterbook.org/> and <https://mystmd.org/> only.
-- Pin `jupyter-book` to the 2.x line in `requirements.txt` (for example `jupyter-book==2.*`).
+- Pin the `jupyter-book` package to the 2.x line in `requirements.txt` (for example `jupyter-book==2.*`).
 - Include `myst-parser`, `myst-nb`, and `mystmd` as appropriate in `requirements.txt`.
 - Prefer `jupytext>=1.15.0` for MD-first workflows when needed.
 

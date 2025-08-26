@@ -17,7 +17,7 @@ Treat these chapters as practical, reusable resources: read the concept sections
 
 ## Module Overview
 
-### [⚠️ Chapter 7: NumPy - The Foundation of Scientific Computing in Python](./07-python-numpy-fundamentals-v2.md)
+### [🧮 Chapter 7: NumPy - The Foundation of Scientific Computing in Python](./07-python-numpy-fundamentals-v2.md)
 
 NumPy arrays, vectorization, broadcasting, indexing, and memory/layout considerations — the foundation for efficient astronomical computation.
 

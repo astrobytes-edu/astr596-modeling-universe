@@ -1,3 +1,9 @@
+---
+title: Control Flow & Logic
+exports:
+  - format: pdf
+---
+
 # Chapter 3: Control Flow & Logic
 
 ## Learning Objectives
@@ -542,7 +548,7 @@ stellar_mass = 10.0  # Solar masses
 
 if stellar_mass > 8:
     print("Massive star detected!")
-    print(f"Mass: {stellar_mass} $M_\\odot$")
+    print(f"Mass: {stellar_mass} Msun")
     print("Will end as supernova")
     remnant = "neutron star or black hole"
 ```
@@ -637,7 +643,7 @@ def calculate_orbital_period(a, M, validate=True):
         if a <= 0:
             raise ValueError(f"Semi-major axis must be positive: {a} AU")
         if M <= 0:
-            raise ValueError(f"Mass must be positive: {M} $M_\\odot$")
+            raise ValueError(f"Mass must be positive: {M} Msun")
         
         # Check for orbit inside Schwarzschild radius!
         rs_au = 2.95e-8 * M  # Schwarzschild radius in AU
@@ -645,7 +651,7 @@ def calculate_orbital_period(a, M, validate=True):
             raise ValueError(f"Orbit inside black hole event horizon: a={a} AU, Rs={rs_au} AU")
     
     # Main calculation - only runs if guards pass
-    G_au_msun = 39.478  # G in AU³/$M_\\odot$/year²
+    G_au_msun = 39.478  # G in AU³/Msun/year²
     period_years = math.sqrt(a**3 / M)  # Simplified Kepler's third law
     
     # Sanity check result
@@ -763,7 +769,7 @@ for mass, position in zip(star_masses, star_positions):
 
 center_of_mass = weighted_position / total_mass
 print(f"Cluster center of mass: {center_of_mass:.3f} pc")
-print(f"Total cluster mass: {total_mass:.1f} $M_\\odot$")
+print(f"Total cluster mass: {total_mass:.1f} Msun")
 
 # This same pattern calculates:
 # - Barycenter of binary systems (how we detect exoplanets!)

@@ -1,3 +1,9 @@
+---
+title: Data Structures - Organizing Scientific Data
+exports:
+  - format: pdf
+---
+
 # Chapter 4: Data Structures - Organizing Scientific Data
 
 ## Learning Objectives

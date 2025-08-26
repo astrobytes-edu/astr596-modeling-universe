@@ -1,3 +1,9 @@
+---
+title: Matplotlib - Visualizing Your Universe
+exports:
+  - format: pdf
+---
+
 # ⚠️ Chapter 8: Matplotlib - Visualizing Your Universe
 
 ## Learning Objectives

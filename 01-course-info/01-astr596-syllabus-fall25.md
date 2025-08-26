@@ -1,14 +1,9 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
+title: Syllabus - ASTR 596: Modeling the Universe
+exports:
+  - format: pdf
 ---
+
 # Syllabus - ASTR 596: Modeling the Universe
 
 **Fall 2025 - San Diego State University (SDSU)**  
@@ -27,7 +22,7 @@ kernelspec:
 - **Meeting Time:** Fridays 11:00 AM - 1:40 PM
 - **Format:** ~30-45min lecture review + 2h hands-on project work
 - **Location:** PA 215
-% - **Course Website:** <https://astrobytes-edu.github.io/astr596-modeling-universe/>
+- **Course Website:** <https://astrobytes-edu.github.io/astr596-modeling-universe/>
 % - **Virtual Tutor:** [✨ASTR 596: Modeling the Universe Tutor✨ *(Custom GPT)*](https://chatgpt.com/g/g-68aabb9278d08191926feb3f5512686c-astr-596-modeling-the-universe-tutor)
 - **Platforms:** Canvas, Slack, GitHub Classroom
 
@@ -84,7 +79,7 @@ Upon successful completion of this course, students will be able to:
 
 ### Textbooks (Free Online Resources)
 
-% - **Required:** Rosen (2025), [www.astrobytes-edu.github.io/astr596-modeling-universe](https://astrobytes-edu.github.io/astr596-modeling-universe/), ASTR 596 Course Website (powered by [MyST Markdown](https://mystmd.org/))
+- **Required:** Rosen (2025), [www.astrobytes-edu.github.io/astr596-modeling-universe](https://astrobytes-edu.github.io/astr596-modeling-universe/), ASTR 596 Course Website (powered by [MyST Markdown](https://mystmd.org/))
 
 - Linge & Langtangen (2020), [Programming for Computations - Python (2nd Edition)](https://library.oapen.org/bitstream/id/35449b29-cca0-4d71-8553-2d49609b75fd/1007055.pdf), Springer Open
 

@@ -1,13 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
+title: Course Schedule & Important Dates
+exports:
+  - format: pdf
 ---
 
 # ⚠️ Course Schedule & Important Dates
@@ -52,4 +46,4 @@ kernelspec:
 | **Project 6** | Gaussian Processes | Nov 3 | Nov 17 |
 | **Final Project** | Neural Networks + JAX | Nov 17 | Dec 18 |
 
-**Note:** Reading assignments will be updated as JupyterBook chapters are completed. Check the course website weekly for updates.
+**Note:** Reading assignments will be updated as MyST / Jupyter Book 2.x chapters are completed. Check the course website weekly for updates.

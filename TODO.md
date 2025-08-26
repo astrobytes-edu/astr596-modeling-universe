@@ -26,7 +26,7 @@ This file is the living task list for the `astr596-modeling-universe` course web
 
 ## Course Materials (Lectures, Labs, Notes)
 
-- [ ] Convert lecture notebooks to Jupyter-Book-compatible pages @TA !high ~6
+- [ ] Convert lecture notebooks to MyST / Jupyter Book 2.x pages @TA !high ~6
 - [ ] Add downloadable slides for each week @instructor !med ~4
 - [ ] Link readings and external resources with DOIs @anna !low ~3
 

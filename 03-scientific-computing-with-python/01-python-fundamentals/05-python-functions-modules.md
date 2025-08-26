@@ -1,3 +1,9 @@
+---
+title: Functions & Modules - Building Reusable Scientific Code
+exports:
+  - format: pdf
+---
+
 # Chapter 5: Functions & Modules - Building Reusable Scientific Code
 
 ## Learning Objectives
