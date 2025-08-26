@@ -1,10 +1,11 @@
 ---
-title: Robust Computing Fundamentals - Error Handling & Best Practices
+title: "Chapter 9: Robust Computing Fundamentals - Error Handling & Best Practices"
+subtitle: "Module 2: Scientific Computing Core"
 exports:
   - format: pdf
 ---
 
-# ⚠️ Chapter 9: Robust Computing Fundamentals - Error Handling & Best Practices
+%# ⚠️ Chapter 9: Robust Computing Fundamentals - Error Handling & Best Practices
 
 ## Learning Objectives
 

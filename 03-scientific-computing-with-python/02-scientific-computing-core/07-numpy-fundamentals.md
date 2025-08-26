@@ -1,10 +1,11 @@
 ---
-title: NumPy - The Foundation of Scientific Computing in Python
+title: "Chapter 7: NumPy - The Foundation of Scientific Computing"
+subtitle: "Module 2: Scientific Computing Core"
 exports:
   - format: pdf
 ---
 
-# ⚠️ Chapter 7: NumPy - The Foundation of Scientific Computing in Python
+%# Chapter 7: NumPy - The Foundation of Scientific Computing in Python
 
 ## Learning Objectives
 
@@ -12,13 +13,12 @@ By the end of this chapter, you will be able to:
 
 - [ ] **(1) Create and manipulate NumPy arrays** for efficient numerical computation
 - [ ] **(2) Apply vectorized operations** to eliminate explicit loops and improve performance by 10-100x
-- [ ] **(3) Master array indexing, slicing, and boolean masking** for data selection and filtering
-- [ ] **(4) Understand and leverage broadcasting rules** to perform operations on arrays of different shapes
-- [ ] **(5) Use essential NumPy functions** for scientific computing (`linspace`, `logspace`, `where`, `meshgrid`)
-- [ ] **(6) Perform array transformations** including reshaping, stacking, and splitting for data analysis
-- [ ] **(7) Generate random numbers** from various distributions for Monte Carlo simulations
-- [ ] **(8) Apply NumPy to real astrophysical calculations** with proper CGS units
-- [ ] **(9) Recognize when to use NumPy** instead of pure Python for numerical tasks
+- [ ] **(3) Master array indexing, slicing, boolean masking, and broadcasting** for sophisticated data manipulation
+- [ ] **(4) Use essential NumPy functions** for scientific computing (`linspace`, `logspace`, `where`, `meshgrid`)
+- [ ] **(5) Perform array transformations** including reshaping, stacking, and splitting for data analysis
+- [ ] **(6) Generate and apply random numbers** from various distributions for Monte Carlo simulations
+- [ ] **(7) Apply NumPy to real astrophysical calculations** with proper unit conversions and CGS units
+- [ ] **(8) Recognize when and why to use NumPy** instead of pure Python for numerical tasks
 
 ## Prerequisites Check
 
@@ -67,13 +67,15 @@ flattened = [item for row in matrix for item in row]
 If you got all four correct, you're ready for NumPy! If not, review the indicated chapters.
 :::
 
+---
+
 ## Chapter Overview
 
 You've been using Python lists to store collections of numbers, and the math module to perform calculations. But what happens when you need to analyze a million stellar spectra, each with thousands of wavelength points? Or when you need to perform the same calculation on every pixel in a telescope image? Try using a list comprehension on a million-element list, and you'll be waiting a while. This is where NumPy transforms Python from a general-purpose language into a powerhouse for scientific computing, providing the speed and tools necessary for research-grade computational science.
 
-NumPy, short for Numerical Python, is the foundation upon which the entire scientific Python ecosystem is built. Every plot you'll make with Matplotlib, every optimization you'll run with SciPy, every dataframe you'll analyze with Pandas — they all build on NumPy arrays. But NumPy isn't just about speed; it's about expressing mathematical operations naturally. Instead of writing loops to add corresponding elements of two lists, you simply write `a + b`. Instead of nested loops for matrix multiplication, you write `a @ b`. This isn't just convenience — it's a fundamental shift in how you think about numerical computation, from operating on individual elements to operating on entire arrays at once.
+**NumPy**, short for Numerical Python, is the foundation upon which the entire scientific Python ecosystem is built. Every plot you'll make with Matplotlib, every optimization you'll run with SciPy, every dataframe you'll analyze with Pandas – they all build on NumPy arrays. But NumPy isn't just about speed; it's about expressing mathematical operations naturally. Instead of writing loops to add corresponding elements of two lists, you simply write `a + b`. Instead of nested loops for matrix multiplication, you write `a @ b`. This isn't just convenience – it's a fundamental shift in how you think about numerical computation, from operating on individual elements to operating on entire arrays at once.
 
-This chapter introduces you to NumPy's ndarray (n-dimensional array), the object that makes scientific Python possible. You'll discover why NumPy arrays are 10-100 times faster than Python lists for numerical operations, and how **vectorization** eliminates the need for most explicit loops. You'll master **broadcasting**, NumPy's powerful mechanism for operating on arrays of different shapes, which enables elegant solutions to complex problems. Most importantly, you'll learn to think in arrays — a skill that transforms you from someone who writes code that processes data to someone who writes code that expresses mathematical ideas directly. By the end, you'll understand why virtually every astronomical software package, from data reduction pipelines to cosmological simulations, is built on NumPy's foundation.
+This chapter introduces you to NumPy's ndarray (n-dimensional array), the object that makes scientific Python possible. You'll discover why NumPy arrays are 10-100 times faster than Python lists for numerical operations, and how **vectorization** eliminates the need for most explicit loops. You'll master **broadcasting**, NumPy's powerful mechanism for operating on arrays of different shapes, which enables elegant solutions to complex problems. Most importantly, you'll learn to think in arrays – a skill that transforms you from someone who writes code that processes data to someone who writes code that expresses mathematical ideas directly. By the end, you'll understand why virtually every astronomical software package, from data reduction pipelines to cosmological simulations, is built on NumPy's foundation.
 
 :::{admonition} 📚 Essential Resource: NumPy Documentation
 :class: important
@@ -85,25 +87,27 @@ This chapter introduces NumPy's core concepts, but NumPy is vast! The official d
 - Performance optimization tips
 - Specialized submodules (random, fft, linalg)
 
-**Practice using the documentation NOW**: After each new function you learn, look it up in the official docs. Read the parameters, check the examples, and explore related functions. The ability to efficiently navigate documentation is as important as coding itself. Bookmark the NumPy documentation — you'll use it daily in research!
+**Practice using the documentation NOW**: After each new function you learn, look it up in the official docs. Read the parameters, check the examples, and explore related functions. The ability to efficiently navigate documentation is as important as coding itself. Bookmark the NumPy documentation – you'll use it daily in research!
 
-Pro tip: Use the NumPy documentation's search function to quickly find what you need. Type partial function names or concepts, and it will suggest relevant pages. The "See Also" sections are goldmines for discovering related functionality.
+**Pro tip:** Use the NumPy documentation's search function to quickly find what you need. Type partial function names or concepts, and it will suggest relevant pages. The "See Also" sections are goldmines for discovering related functionality.
 :::
+
+---
 
 ## 7.1 From Lists to Arrays: Why NumPy?
 
-:::{margin} 
-**NumPy**
+:::{margin}
+**NumPy**  
 A fundamental package for scientific computing in Python, providing support for large, multi-dimensional arrays and matrices.
 :::
 
-:::{margin} 
-**ndarray**
+:::{margin}
+**ndarray**  
 NumPy's n-dimensional array object, the core data structure for numerical computation.
 :::
 
-:::{margin} 
-**Contiguous Memory**
+:::{margin}
+**Contiguous Memory**  
 Data stored in adjacent memory locations, enabling fast access and cache efficiency.
 :::
 
@@ -145,7 +149,7 @@ print(f"Speedup: {list_time/numpy_time:.1f}x faster")
 print(f"First 5 fluxes: {fluxes[:5]}")
 ```
 
-The NumPy version is not only faster but also cleaner — no explicit loop needed! This is called **vectorization**, and it's the key to NumPy's power.
+The NumPy version is not only faster but also cleaner – no explicit loop needed! This is called **vectorization**, and it's the key to NumPy's power.
 
 ### NumPy vs. Math Module: A Complete Replacement
 
@@ -184,47 +188,42 @@ print(f"  np.log10({x})   = {np.log10(x):.6f}")
 
 **Key insight**: You can generally replace `import math` with `import numpy as np` and use NumPy for everything. The only exceptions are a few specialized functions like `math.factorial()` that don't have direct NumPy equivalents (though NumPy has `scipy.special.factorial()` if needed).
 
-:::{admonition} 🎯 The More You Know: How NumPy Saved Gravitational Wave Astronomy
+:::{admonition} 🎯 The More You Know: NumPy Powers Gravitational Wave Detection
 :class: note, dropdown
 
-On September 14, 2015, at 09:50:45 UTC, the Laser Interferometer Gravitational-Wave Observatory (LIGO) detected gravitational waves for the first time — ripples in spacetime from two black holes colliding 1.3 billion years ago. But this Nobel Prize-winning discovery almost didn't happen because of a computational bottleneck that NumPy solved.
+On September 14, 2015, at 09:50:45 UTC, the Laser Interferometer Gravitational-Wave Observatory (LIGO) detected gravitational waves for the first time – ripples in spacetime from two black holes colliding 1.3 billion years ago. This Nobel Prize-winning discovery was made possible by sophisticated data analysis pipelines, including PyCBC, which relies heavily on NumPy.
 
-LIGO's detectors produce 16,384 samples per second of incredibly noisy data. Detecting a gravitational wave requires comparing this data stream against hundreds of thousands of theoretical waveform templates using matched filtering. In 2009, the original C++ analysis pipeline took 24 hours to analyze just one hour of data — making real-time detection impossible.
+LIGO's detectors produce 16,384 samples per second of incredibly noisy data. Detecting a gravitational wave requires comparing this data stream against hundreds of thousands of theoretical waveform templates using matched filtering – a computationally intensive process that would be impossible without efficient numerical libraries.
 
-Kipp Cannon, a LIGO scientist, made a radical decision: rewrite the entire pipeline in Python using NumPy. Critics were horrified. "Python is too slow for production!" they said. But Cannon understood something crucial: NumPy's vectorized operations call optimized C libraries (BLAS, LAPACK) that are often faster than hand-written C++ code.
-
-The key transformation was replacing loops with NumPy operations:
+The PyCBC pipeline, one of the primary analysis tools used in the detection of GW150914, is built on NumPy arrays and operations. The power of NumPy's vectorized operations, which call optimized C libraries (BLAS, LAPACK, FFTW), enables the analysis of gravitational wave data in near real-time. Here's how NumPy transforms the core matched filtering operation:
 
 ```python
-# Original approach (simplified)
+# Traditional loop-based approach
 def matched_filter_slow(data, template):
     result = 0
     for i in range(len(data)):
         result += data[i] * template[i]
     return result
 
-# NumPy approach
+# NumPy vectorized approach
 def matched_filter_fast(data, template):
     return np.dot(data, template)  # Or simply: data @ template
 ```
 
-The NumPy version wasn't just cleaner — it was 50x faster! NumPy's FFT implementation (using FFTW under the hood) accelerated frequency-domain operations by another factor of 100. The complete Python/NumPy pipeline could analyze data faster than real-time, searching for gravitational waves as they arrived.
+The vectorized NumPy version is orders of magnitude faster, enabling the search through millions of template waveforms needed to identify gravitational wave signals. NumPy's FFT implementation accelerates the frequency-domain operations that are central to the analysis.
 
-When GW150914 (the first detection) arrived, the NumPy-based pipeline identified it as a candidate within 3 minutes. The same analysis would have taken the original C++ code 72 minutes. Those 69 minutes made the difference between a live detection and a historical footnote. The discovery paper acknowledges NumPy explicitly: "The PyCBC analysis pipeline... makes extensive use of NumPy arrays and operations."
+As stated in the PyCBC documentation: "This package was used in the first direct detection of gravitational waves (GW150914), and is used in the ongoing analysis of LIGO/Virgo data." The scientific papers describing the detection explicitly acknowledge the role of Python scientific computing tools, with NumPy at their foundation.
 
-Today, every gravitational wave detection — from colliding neutron stars to intermediate-mass black holes — flows through NumPy arrays. The library you're learning didn't just speed up the analysis; it made an entirely new kind of astronomy possible. When you vectorize operations with NumPy, you're using the same technique that let humanity hear the universe for the first time!
+Today, every gravitational wave detection – from binary black hole mergers to neutron star collisions – is processed through analysis pipelines built on NumPy arrays. The library you're learning provides the computational foundation that enabled humanity to observe the universe through gravitational waves for the first time!
 :::
+
+---
 
 ## 7.2 Creating Arrays: Your Scientific Data Containers
 
 :::{margin}
-**dtype**
+**dtype**  
 Data type of array elements, controlling memory usage and precision.
-:::
-
-:::{margin}
-**CGS Units**
-Centimeter-Gram-Second system, traditionally used in astronomy for convenient scaling in stellar physics calculations.
 :::
 
 NumPy provides many ways to create arrays, each suited for different scientific tasks:
@@ -248,6 +247,11 @@ print(f"2D array:\n{image_data}")
 ```
 
 ### Essential Array Creation Functions for Science
+
+:::{margin}
+**CGS Units**  
+Centimeter-Gram-Second system, traditionally used in astronomy and astrophysics.
+:::
 
 These functions are workhorses in scientific computing:
 
@@ -278,12 +282,20 @@ dark_frame = np.zeros((100, 100))  # 100x100 CCD dark frame
 flat_field = np.ones((100, 100))   # Flat field (perfect response)
 print(f"Dark frame shape: {dark_frame.shape}, sum: {dark_frame.sum()}")
 print(f"Flat field shape: {flat_field.shape}, sum: {flat_field.sum()}")
+
+# full: Create array filled with specific value
+bias_level = np.full((100, 100), 500)  # CCD bias level
+print(f"Bias array: all values = {bias_level[0, 0]}")
+
+# eye: Identity matrix
+identity = np.eye(3)
+print(f"Identity matrix:\n{identity}")
 ```
 
 :::{admonition} 💡 Computational Thinking Box: Row-Major vs Column-Major
 :class: tip
 
-**PATTERN: Memory Layout Matters for Performance**
+**PATTERN: Memory Layout Matters for Performance**  
 
 NumPy stores arrays in row-major order (C-style) by default, meaning elements in the same row are adjacent in memory. This affects performance dramatically:
 
@@ -299,6 +311,7 @@ image_fortran = np.zeros((1000, 1000), order='F')
 ```
 
 Why this matters:
+
 - Processing images row-by-row? Use default (C-order)
 - Processing spectra in columns? Consider Fortran order
 - Matrix multiplication? NumPy optimizes automatically
@@ -306,7 +319,7 @@ Why this matters:
 Real impact: The wrong memory order can make your code 10x slower for large arrays!
 :::
 
-:::{admonition} 🔍 Check Your Understanding
+::::{admonition} 🔍 Check Your Understanding
 :class: question
 
 What's the memory difference between `np.zeros(1000)`, `np.ones(1000)`, and `np.empty(1000)`? When would you use each?
@@ -318,6 +331,7 @@ All three allocate the same amount of memory (8000 bytes for float64), but:
 - `np.empty()`: Only allocates, doesn't initialize (fastest, dangerous)
 
 Use cases:
+
 - `zeros()/ones()`: When you need initialized values for accumulation or defaults
 - `empty()`: ONLY when you'll immediately overwrite ALL values, like filling with calculated results
 
@@ -328,13 +342,15 @@ for i in range(1000):
     result[i] = expensive_calculation(i)  # Overwrites immediately
 ```
 :::
-:::
+::::
 
 ### Saving and Loading Arrays (Connection to Chapter 6)
 
 Remember the file I/O concepts from Chapter 6? NumPy extends them for efficient array storage:
 
 ```{code-cell} ipython3
+import os  # For cleanup
+
 # Save astronomical data in binary format
 flux_data = np.random.normal(1000, 50, size=1000)
 np.save('observations.npy', flux_data)  # Binary format, fast
@@ -347,16 +363,27 @@ print(f"Loaded {len(loaded_data)} measurements")
 np.savetxt('observations.txt', flux_data[:10], fmt='%.2f')
 text_data = np.loadtxt('observations.txt')
 print(f"Text file sample: {text_data[:3]}")
+
+# Clean up files
+os.remove('observations.npy')
+os.remove('observations.txt')
 ```
+
+---
 
 ## 7.3 Random Numbers for Monte Carlo Simulations
 
-:::{margin} 
-**Monte Carlo**
+:::{margin}
+**Monte Carlo**  
 A computational technique using random sampling to solve problems that might be deterministic in principle.
 :::
 
-Scientific computing often requires random data for Monte Carlo simulations, noise modeling, and statistical testing. NumPy's random module provides a comprehensive suite of distributions essential for computational astrophysics:
+Scientific computing often requires random data for **Monte Carlo** simulations, noise modeling, and statistical testing. NumPy's random module provides a comprehensive suite of distributions essential for computational astrophysics:
+
+:::{admonition} Note on Reproducibility
+:class: note
+Random number generation may produce slightly different values across NumPy versions and hardware architectures, even with the same seed. The patterns and statistical properties remain consistent, but exact values may vary. For absolute reproducibility within a project, document your NumPy version and consider using the newer `np.random.Generator` interface.
+:::
 
 ```{code-cell} ipython3
 # ALWAYS set seed for reproducibility in scientific code!
@@ -373,6 +400,10 @@ print(f"RA range: [{ra.min():.1f}, {ra.max():.1f}]°")
 # Random phases for periodic variables
 phases = np.random.uniform(0, 2*np.pi, n_stars)
 print(f"Phase range: [0, 2π]")
+
+# Shorthand for uniform [0, 1)
+random_fractions = np.random.rand(5)
+print(f"Random fractions: {random_fractions}")
 ```
 
 ```{code-cell} ipython3
@@ -387,6 +418,10 @@ print(f"Pixel statistics:")
 print(f"  Mean: {pixel_values.mean():.1f} (expected: {mean_counts})")
 print(f"  Std: {pixel_values.std():.1f} (expected: {read_noise})")
 print(f"  SNR: {pixel_values.mean()/pixel_values.std():.1f}")
+
+# Shorthand for standard normal (mean=0, std=1)
+standard_normal = np.random.randn(5)
+print(f"Standard normal samples: {standard_normal}")
 ```
 
 ```{code-cell} ipython3
@@ -489,24 +524,24 @@ print(f"Shuffled: {shuffled}")
 
 The random number generation you're learning powers one of modern cosmology's most important techniques: MCMC sampling for parameter estimation. When analyzing the cosmic microwave background or galaxy surveys, we need to explore vast parameter spaces (often 10+ dimensions) to find the best-fit cosmological model.
 
-MCMC uses random walks through parameter space, with each step drawn from distributions like those above. The Planck satellite mission used MCMC with billions of random samples to determine that the universe is 13.8 billion years old, contains 5% ordinary matter, 27% dark matter, and 68% dark energy — all with unprecedented precision.
+MCMC uses random walks through parameter space, with each step drawn from distributions like those above. The Planck satellite mission used MCMC with billions of random samples to determine that the universe is 13.8 billion years old, contains 5% ordinary matter, 27% dark matter, and 68% dark energy – all with unprecedented precision.
 
 Your ability to generate and manipulate random numbers with NumPy is the foundation for these universe-spanning discoveries!
 :::
 
 ## 7.4 Array Operations: Vectorization Powers
 
-:::{margin} 
-**Vectorization**
+:::{margin}
+**Vectorization**  
 Performing operations on entire arrays at once rather than using explicit loops.
 :::
 
-:::{margin} 
-**Universal Functions**
+:::{margin}
+**Universal Functions**  
 NumPy functions that operate element-wise on arrays, supporting broadcasting and type casting.
 :::
 
-The true power of NumPy lies in vectorized operations — performing calculations on entire arrays without writing loops:
+The true power of NumPy lies in vectorized operations – performing calculations on entire arrays without writing loops:
 
 ```{code-cell} ipython3
 # Basic arithmetic operates element-wise
@@ -517,11 +552,15 @@ print(f"a + b = {a + b}")      # Element-wise addition
 print(f"a * b = {a * b}")      # Element-wise multiplication
 print(f"a ** 2 = {a ** 2}")    # Element-wise power
 print(f"b / a = {b / a}")      # Element-wise division
+print(f"b // a = {b // a}")    # Element-wise floor division
+print(f"b % a = {b % a}")      # Element-wise modulo
 
 # Matrix multiplication uses @ operator
 c = np.array([[1, 2], [3, 4]])
 d = np.array([[5, 6], [7, 8]])
 print(f"\nMatrix multiplication (c @ d):\n{c @ d}")
+# Alternative: np.dot(c, d)
+print(f"Using np.dot:\n{np.dot(c, d)}")
 
 # Compare with list approach (verbose and slow)
 a_list = [1, 2, 3, 4]
@@ -560,6 +599,9 @@ print(f"Flux ratios: {flux_ratios}")
 # Verify: magnitude difference = -2.5 * log10(flux ratio)
 recovered_mags = -2.5 * np.log10(flux_ratios)
 print(f"Recovered magnitudes: {recovered_mags}")
+
+# Floating point comparison - use allclose for safety
+print(f"Magnitudes match: {np.allclose(magnitudes, recovered_mags)}")
 ```
 
 ### Array Methods: Built-in Analysis
@@ -587,6 +629,12 @@ print(f"Number of outliers (>150): {n_outliers}")
 clean_data = data[~outliers]  # ~ means NOT
 print(f"Clean mean: {clean_data.mean():.2f}")
 print(f"Clean std: {clean_data.std():.2f}")
+
+# Additional useful statistics
+print(f"\nPercentiles:")
+print(f"  25th: {np.percentile(data, 25):.2f}")
+print(f"  75th: {np.percentile(data, 75):.2f}")
+print(f"  95th: {np.percentile(data, 95):.2f}")
 ```
 
 :::{admonition} ⚠️ Common Bug Alert: Integer Division Trap
@@ -598,7 +646,7 @@ counts = np.array([100, 200, 300])  # Default type is int
 normalized = counts / counts.max()
 print(f"Normalized (float result): {normalized}")
 
-# But watch out for integer division in older NumPy or with //
+# But watch out for integer division with //
 integer_div = counts // 2  # Floor division
 print(f"Integer division by 2: {integer_div}")
 
@@ -635,7 +683,7 @@ def sum_squares_loop(arr):
 def sum_squares_numpy(arr):
     return (arr**2).sum()
 
-# O(n²) - Quadratic time for matrix operations
+# O(n³) - Cubic time for naive matrix multiplication
 def matrix_multiply_loops(A, B):
     n = len(A)
     C = [[0]*n for _ in range(n)]
@@ -645,21 +693,26 @@ def matrix_multiply_loops(A, B):
                 C[i][j] += A[i][k] * B[k][j]
     return C
 
-# O(n^2.37) - Optimized with NumPy (Strassen algorithm)
+# O(n³) - Optimized with NumPy using BLAS
 def matrix_multiply_numpy(A, B):
     return A @ B
 ```
 
-Real impact: For a 1000×1000 matrix:
+**Real impact:** For a 1000×1000 matrix:
+
 - Nested loops: ~10 seconds
-- NumPy: ~10 milliseconds
+- NumPy with optimized BLAS: ~10 milliseconds
 - That's the difference between waiting and real-time processing!
+
+Note: While algorithms like Strassen's achieve O(n^2.807) complexity theoretically, NumPy uses highly optimized BLAS libraries that, despite being O(n³), are typically faster in practice due to cache optimization, vectorization, and parallel processing.
 :::
+
+---
 
 ## 7.5 Indexing and Slicing: Data Selection Mastery
 
 :::{margin}
-**Boolean Masking**
+**Boolean Masking**  
 Using boolean arrays to select elements that meet certain conditions.
 :::
 
@@ -747,9 +800,15 @@ hist, bins = np.histogram(magnitudes, bins=20)
 print(f"Histogram has {len(hist)} bins")
 print(f"Bin edges from {bins[0]:.1f} to {bins[-1]:.1f}")
 print(f"Peak bin has {hist.max()} stars")
+
+# Check for NaN and Inf values
+test_array = np.array([1.0, np.nan, 3.0, np.inf, 5.0])
+print(f"\nNaN check: {np.isnan(test_array)}")
+print(f"Inf check: {np.isinf(test_array)}")
+print(f"Finite check: {np.isfinite(test_array)}")
 ```
 
-:::{admonition} 🔍 Check Your Understanding
+::::{admonition} 🔍 Check Your Understanding
 :class: question
 
 What's the difference between `np.linspace(0, 10, 11)` and `np.arange(0, 11, 1)`?
@@ -766,10 +825,10 @@ In this case they're equivalent, but:
 
 Use `linspace` when you need a specific number of points, `arange` when you need a specific step size.
 :::
-:::
+::::
 
 :::{admonition} 🌟 Why This Matters: Finding Exoplanets with Boolean Masking
-:class: info, important
+:class: important, dropdown
 
 The Kepler Space Telescope discovered over 2,600 exoplanets by monitoring the brightness of 150,000 stars continuously for four years. Finding planets in this data required sophisticated boolean masking with NumPy.
 
@@ -797,16 +856,16 @@ print(f"Found {n_transits} transit events")
 This technique, scaled up with more sophisticated statistics, is how we've discovered thousands of worlds orbiting other stars!
 :::
 
+---
+
 ## 7.6 Broadcasting: NumPy's Secret Superpower
 
 :::{margin}
-**Broadcasting**
+**Broadcasting**  
 NumPy's ability to perform operations on arrays of different shapes by automatically expanding dimensions.
 :::
 
-:::
 **Broadcasting** allows NumPy to perform operations on arrays of different shapes, eliminating the need for explicit loops or array duplication:
-:::
 
 ```{code-cell} ipython3
 # Simple broadcasting: scalar with array
@@ -826,24 +885,31 @@ print(f"Result shape: {matrix.shape}")
 
 ### Broadcasting Rules Visualization
 
-```mermaid
-graph TD
-    A[Array A: Shape 3,1] --> D{Compatible?}
-    B[Array B: Shape 1,4] --> D
-    D -->|Yes| E[Result: Shape 3,4]
-    
-    F[Rule 1: Compare dimensions right to left]
-    G[Rule 2: Dimensions compatible if equal or 1]
-    H[Rule 3: Missing dimensions treated as 1]
-    
-    style E fill:#90EE90
-    style D fill:#FFE4B5
-```
-
 Broadcasting follows simple rules:
+
 1. Arrays are compatible if dimensions are equal or one is 1
 2. Missing dimensions are treated as 1
 3. Arrays are stretched along dimensions of size 1
+
+```markdown
+Text representation of broadcasting rules:
+
+Array A: Shape (3, 1)    Array B: Shape (1, 4)
+         ↓                        ↓
+   [10]  ───┐              [1, 2, 3, 4]
+   [20]  ───┼── (+) ──────────────┘
+   [30]  ───┘
+         ↓
+   Result: Shape (3, 4)
+   [[11, 12, 13, 14],
+    [21, 22, 23, 24],
+    [31, 32, 33, 34]]
+
+Rule Check:
+- Dimension 0: 3 vs 1 → Compatible (1 broadcasts)
+- Dimension 1: 1 vs 4 → Compatible (1 broadcasts)
+- Result shape: (3, 4)
+```
 
 ```{code-cell} ipython3
 # Practical example: Normalize each row of a matrix
@@ -915,12 +981,12 @@ Always check shapes when debugging broadcasting errors!
 ## 7.7 Array Manipulation: Reshaping Your Data
 
 :::{margin}
-**View**
+**View** 
 A new array object that shares data with the original array.
 :::
 
 :::{margin}
-**Copy**
+**Copy**  
 A new array with its own data, independent of the original.
 :::
 
@@ -999,7 +1065,6 @@ print(f"All Dec values: {all_dec}")
 :class: tip
 
 **PATTERN: Understanding When NumPy Shares Memory**
-
 Many NumPy operations return **views**, not copies, sharing memory with the original. This is crucial when working with large telescope images or survey data:
 
 ```python
@@ -1025,11 +1090,13 @@ quadrant1_calibrated -= 100  # Original ccd_image unchanged
 ```
 
 Operations returning views:
+
 - Basic slicing: `arr[2:8]`
 - Reshaping: `arr.reshape(2, 5)`
 - Transpose: `arr.T`
 
 Operations returning copies:
+
 - Fancy indexing: `arr[[1, 3, 5]]`
 - Boolean indexing: `arr[arr > 5]`
 - Arithmetic: `arr + 1`
@@ -1037,30 +1104,84 @@ Operations returning copies:
 For the Vera Rubin Observatory processing 20 TB nightly, understanding views vs copies can mean the difference between feasible and impossible memory requirements!
 :::
 
+---
+
 ## 7.8 Essential Scientific Functions
 
 NumPy provides specialized functions crucial for scientific computing:
 
 ### Meshgrid: Creating Coordinate Grids
 
-The **meshgrid** function is essential for evaluating functions on 2D grids — imagine needing to calculate a value at every point on a detector or create synthetic images:
+The **meshgrid** function is fundamental for numerical simulations and 2D/3D function evaluation. When you need to evaluate a function f(x,y) at every point on a 2D grid, you could use nested loops – but that's slow and cumbersome. Meshgrid creates coordinate matrices that enable vectorized evaluation.
+
+**Mathematical Foundation:**
+Given vectors x = [x₁, x₂, ..., xₙ] and y = [y₁, y₂, ..., yₘ], meshgrid creates two matrices X and Y where:
+- X[i,j] = xⱼ for all i (x-coordinates repeated along rows)
+- Y[i,j] = yᵢ for all j (y-coordinates repeated along columns)
+
+This creates a rectangular grid of (x,y) coordinate pairs covering all combinations.
+
+**Why is this powerful?** Any function f(x,y) can now be evaluated at all grid points simultaneously using vectorized operations, essential for:
+
+- Solving partial differential equations (PDEs)
+- Creating potential fields for N-body simulations
+- Generating synthetic telescope images
+- Computing 2D Fourier transforms
+- Visualizing mathematical surfaces
 
 ```{code-cell} ipython3
-# Create 2D coordinate grids for evaluation
-x = np.linspace(-2, 2, 5)
-y = np.linspace(-1, 1, 3)
+# Basic meshgrid demonstration
+x = np.linspace(-2, 2, 5)  # 5 x-coordinates
+y = np.linspace(-1, 1, 3)  # 3 y-coordinates
 X, Y = np.meshgrid(x, y)
 
-print(f"x coordinates:\n{X}")
-print(f"y coordinates:\n{Y}")
+print(f"Original x: {x}")
+print(f"Original y: {y}")
+print(f"\nX coordinates (shape {X.shape}):\n{X}")
+print(f"\nY coordinates (shape {Y.shape}):\n{Y}")
 
-# Why meshgrid? It lets us evaluate f(x,y) without loops!
-Z = X**2 + Y**2  # Paraboloid - evaluated at every grid point
-print(f"Function values:\n{Z}")
+# Each (X[i,j], Y[i,j]) gives a coordinate pair
+print(f"\nCoordinate at row 1, col 2: ({X[1,2]:.1f}, {Y[1,2]:.1f})")
+
+# Evaluate f(x,y) = x² + y² at every grid point
+Z = X**2 + Y**2  # No loops needed!
+print(f"\nFunction values:\n{Z}")
 ```
 
 ```{code-cell} ipython3
-# Common use: creating synthetic star images
+# Numerical simulation example: gravitational potential field
+# Simulate potential from multiple point masses
+masses = [1.0, 0.5, 0.3]  # Solar masses
+positions = [(0, 0), (3, 2), (-2, 1)]  # AU
+
+# Create fine grid for field calculation
+x_grid = np.linspace(-5, 5, 50)
+y_grid = np.linspace(-5, 5, 50)
+X_field, Y_field = np.meshgrid(x_grid, y_grid)
+
+# Calculate gravitational potential at each grid point
+G = 1  # Normalized units
+potential = np.zeros_like(X_field)
+
+for mass, (px, py) in zip(masses, positions):
+    # Distance from each grid point to this mass
+    R = np.sqrt((X_field - px)**2 + (Y_field - py)**2)
+    # Avoid singularity at mass position
+    R = np.maximum(R, 0.1)
+    # Add contribution to potential (Φ = -GM/r)
+    potential += -G * mass / R
+
+print(f"Potential field shape: {potential.shape}")
+print(f"Min potential: {potential.min():.2f}, Max: {potential.max():.2f}")
+
+# Numerical gradient gives force field
+Fx, Fy = np.gradient(-potential, x_grid[1]-x_grid[0], y_grid[1]-y_grid[0])
+force_magnitude = np.sqrt(Fx**2 + Fy**2)
+print(f"Max force magnitude: {force_magnitude.max():.2f}")
+```
+
+```{code-cell} ipython3
+# Common use: creating synthetic star images  
 x_pixels = np.linspace(0, 10, 100)
 y_pixels = np.linspace(0, 10, 100)
 X_img, Y_img = np.meshgrid(x_pixels, y_pixels)
@@ -1070,6 +1191,17 @@ sigma = 2.0
 star_x, star_y = 5.0, 5.0  # Star position
 psf = np.exp(-((X_img - star_x)**2 + (Y_img - star_y)**2) / (2 * sigma**2))
 print(f"PSF shape: {psf.shape}, peak: {psf.max():.3f}")
+
+# 3D meshgrid for volume simulations
+x_3d = np.linspace(-1, 1, 10)
+y_3d = np.linspace(-1, 1, 10) 
+z_3d = np.linspace(-1, 1, 10)
+X_3d, Y_3d, Z_3d = np.meshgrid(x_3d, y_3d, z_3d)
+print(f"\n3D grid shape: {X_3d.shape}")  # (10, 10, 10)
+
+# Evaluate 3D density field ρ(x,y,z) = exp(-r²)
+density = np.exp(-(X_3d**2 + Y_3d**2 + Z_3d**2))
+print(f"Total mass (integrated density): {density.sum():.2f}")
 ```
 
 ### Numerical Differentiation and Integration
@@ -1110,42 +1242,271 @@ print(f"Flux at 550 nm: {np.interp(550, wavelengths_measured, flux_measured):.3f
 
 ### Fourier Transforms: Frequency Analysis
 
+The **Fast Fourier Transform (FFT)** is one of the most important algorithms in computational science, converting signals from the time domain to the frequency domain. This reveals periodic patterns hidden in noisy data – essential for finding pulsars, detecting exoplanets, and analyzing gravitational waves.
+
+**Mathematical Foundation:**
+The Discrete Fourier Transform (DFT) of a sequence x[n] with N samples is:
+
+$X[k] = Σ(n=0 to N-1) x[n] × e^{(-2πikn/N)}$
+
+where:
+
+- x[n] is the input signal at time sample n
+- X[k] is the frequency component at frequency k
+- k ranges from 0 to N-1, representing frequencies from 0 to the sampling frequency
+
+The FFT algorithm computes this in O(N log N) operations instead of O(N²), making it practical for large datasets.
+
+**Physical Interpretation:**
+
+- **Magnitude |X[k]|**: The amplitude of oscillation at frequency k
+- **Phase arg(X[k])**: The phase shift of that frequency component
+- **Power |X[k]|²**: The energy at that frequency (power spectrum)
+- **Frequency bins**: k corresponds to frequency f = k × (sampling_rate / N)
+
+For real-valued signals, the FFT has symmetry properties – negative frequencies mirror positive ones, so we typically only analyze the positive half.
+
 ```{code-cell} ipython3
 # Create a signal with multiple frequencies
 t = np.linspace(0, 1, 500)  # 1 second, 500 samples
-signal = np.sin(2 * np.pi * 5 * t)  # 5 Hz
-signal += 0.5 * np.sin(2 * np.pi * 10 * t)  # 10 Hz
+sampling_rate = 500  # Hz (samples per second)
+
+# Build composite signal
+signal = np.sin(2 * np.pi * 5 * t)  # 5 Hz component
+signal += 0.5 * np.sin(2 * np.pi * 10 * t)  # 10 Hz component  
+signal += 0.3 * np.sin(2 * np.pi * 50 * t)  # 50 Hz component
 signal += 0.2 * np.random.normal(size=t.shape)  # Noise
 
 # Compute FFT
 fft = np.fft.fft(signal)
-freqs = np.fft.fftfreq(len(t), t[1] - t[0])
 
-# Power spectrum
+# Get corresponding frequencies
+# fftfreq returns frequencies in cycles per unit of sample spacing
+# Since our sample spacing is 1/500 seconds, frequencies are in Hz
+freqs = np.fft.fftfreq(len(t), d=1/sampling_rate)
+
+# Alternative: manually calculate frequencies
+# freqs_manual = np.arange(len(t)) * (sampling_rate / len(t))
+
+# Power spectrum (squared magnitude)
 power = np.abs(fft)**2
 
-# Find positive frequencies only
+# Due to symmetry, only look at positive frequencies
 pos_mask = freqs > 0
 freqs_pos = freqs[pos_mask]
 power_pos = power[pos_mask]
 
 # Find peaks (simplified - use scipy.signal.find_peaks for real work)
-peak_freqs = freqs_pos[power_pos > power_pos.max() / 10]
-print(f"Detected frequencies: {peak_freqs[:5]} Hz")
+threshold = power_pos.max() / 10
+peak_indices = np.where(power_pos > threshold)[0]
+peak_freqs = freqs_pos[peak_indices]
+
+print(f"Sampling rate: {sampling_rate} Hz")
+print(f"Frequency resolution: {freqs[1]-freqs[0]:.2f} Hz")
+print(f"Nyquist frequency: {sampling_rate/2} Hz")
+print(f"Detected peaks at: {peak_freqs} Hz")
+print(f"Expected: 5, 10, and 50 Hz")
+```
+
+```{code-cell} ipython3
+# Practical example: Finding periodic signal in noisy data
+# Simulate exoplanet transit light curve with periodic dips
+time = np.linspace(0, 30, 3000)  # 30 days of observations
+period = 3.456  # Planet orbital period in days
+transit_duration = 0.15  # days
+
+# Create light curve with transits
+flux = np.ones_like(time)
+phase = (time % period) / period
+in_transit = phase < (transit_duration / period)
+flux[in_transit] *= 0.99  # 1% transit depth
+
+# Add realistic noise
+np.random.seed(42)
+flux += np.random.normal(0, 0.002, len(time))  # 0.2% noise
+
+# FFT to find periodicity
+fft_flux = np.fft.fft(flux - flux.mean())  # Remove DC component
+freqs_flux = np.fft.fftfreq(len(time), time[1] - time[0])  # Frequencies in 1/day
+
+# Power spectrum
+power_flux = np.abs(fft_flux)**2
+
+# Look for peak in physically reasonable range (periods from 0.5 to 10 days)
+freq_mask = (freqs_flux > 0.1) & (freqs_flux < 2)
+peak_freq = freqs_flux[freq_mask][np.argmax(power_flux[freq_mask])]
+detected_period = 1 / peak_freq
+
+print(f"True period: {period:.3f} days")
+print(f"Detected period: {detected_period:.3f} days")
+print(f"Error: {abs(detected_period - period)*24*60:.1f} minutes")
+```
+
+### Covariance and Correlation
+
+**Covariance** and **correlation** measure how two variables change together – crucial for understanding relationships in astronomical data like the color-magnitude diagram, period-luminosity relations, or Tully-Fisher correlations.
+
+**Mathematical Definitions:**
+
+**Covariance** between variables $X$ and $Y$:
+
+$$
+\rm{Cov}(X,Y) = E[(X - μₓ)(Y - μᵧ)] = (1/n) Σ(xᵢ - \bar{x})(yᵢ - \bar{y})
+$$
+
+where:
+
+- $E[·]$ is the expected value (mean)
+- $μₓ$, $μᵧ$ (or $\bar{x}$, $\bar{y}$) are the means of $X$ and $Y$
+- $n$ is the number of data points
+
+**Interpretation:**
+
+- Positive covariance: Variables tend to increase together
+- Negative covariance: When one increases, the other tends to decrease
+- Zero covariance: No linear relationship (but there could be nonlinear relationships!)
+
+**Problem with covariance:** It depends on the units. Temperature in Kelvin vs Celsius gives different covariances with luminosity!
+
+**Correlation coefficient** (Pearson's $r$) solves this by normalizing:
+$$
+r = \frac{\rm{Cov}(X,Y)}{(σₓ × σᵧ)}
+$$
+
+Where $σₓ$ and $σᵧ$ are the standard deviations. This gives:
+
+- $r ∈ [-1, 1]$ always
+- $r = 1$: Perfect positive linear correlation
+- $r = -1$: Perfect negative linear correlation  
+- $r = 0$: No linear correlation
+- $|r| > 0.7$: Generally considered strong correlation
+- $|r| < 0.3$: Generally considered weak correlation
+
+**Covariance Matrix:**
+
+For multiple variables, we organize covariances into a matrix:
+
+```
+       X    Y    Z
+   X  Var(X) Cov(X,Y) Cov(X,Z)
+   Y  Cov(Y,X) Var(Y) Cov(Y,Z)
+   Z  Cov(Z,X) Cov(Z,Y) Var(Z)
+```
+
+The diagonal contains variances (a variable's covariance with itself), and the matrix is symmetric ($\rm{Cov}(X,Y) = \rm{Cov}(Y,X)$).
+
+```{code-cell} ipython3
+# Calculate covariance and correlation between datasets
+# Simulate correlated stellar properties
+np.random.seed(42)
+n_stars = 100
+temperature = np.random.normal(5800, 500, n_stars)  # Kelvin
+# Luminosity correlates with temperature (Stefan-Boltzmann: L ∝ T⁴)
+# Add noise to make it realistic
+luminosity_true = (temperature/5800)**4  # Normalized to solar
+luminosity = luminosity_true + np.random.normal(0, 0.1, n_stars)
+
+# Manual calculation to understand the math
+temp_mean = temperature.mean()
+lum_mean = luminosity.mean()
+temp_centered = temperature - temp_mean
+lum_centered = luminosity - lum_mean
+
+# Covariance: average of products of deviations
+covariance_manual = (temp_centered * lum_centered).mean()
+print(f"Manual covariance: {covariance_manual:.6f}")
+
+# Standard deviations
+temp_std = temperature.std()
+lum_std = luminosity.std()
+
+# Correlation coefficient
+correlation_manual = covariance_manual / (temp_std * lum_std)
+print(f"Manual correlation: {correlation_manual:.3f}")
+
+# Using NumPy functions
+# Covariance matrix
+cov_matrix = np.cov(temperature, luminosity)
+print(f"\nCovariance matrix:\n{cov_matrix}")
+print(f"Temperature variance: {cov_matrix[0,0]:.1f}")
+print(f"Luminosity variance: {cov_matrix[1,1]:.6f}")
+print(f"Temp-Lum covariance: {cov_matrix[0,1]:.6f}")
+
+# Correlation coefficient
+corr_matrix = np.corrcoef(temperature, luminosity)
+print(f"\nCorrelation matrix:\n{corr_matrix}")
+print(f"Correlation coefficient: {corr_matrix[0,1]:.3f}")
+
+# Interpretation
+if abs(corr_matrix[0,1]) > 0.7:
+    strength = "strong"
+elif abs(corr_matrix[0,1]) > 0.3:
+    strength = "moderate"
+else:
+    strength = "weak"
+print(f"This indicates a {strength} correlation between temperature and luminosity")
+```
+
+```{code-cell} ipython3
+# Multiple variables: complete covariance analysis
+# Add more stellar properties
+mass = np.random.normal(1, 0.3, n_stars)  # Solar masses
+# Radius correlates with mass (mass-radius relation)
+radius = mass**0.8 + np.random.normal(0, 0.05, n_stars)
+# Age (uncorrelated with current properties for main sequence)
+age = np.random.uniform(1, 10, n_stars)  # Gyr
+
+# Stack all variables
+data = np.vstack([temperature, luminosity, mass, radius, age])
+
+# Full covariance matrix
+full_cov = np.cov(data)
+print("Full covariance matrix shape:", full_cov.shape)
+
+# Full correlation matrix (easier to interpret)
+full_corr = np.corrcoef(data)
+labels = ['Temp', 'Lum', 'Mass', 'Radius', 'Age']
+
+print("\nCorrelation matrix:")
+print("       ", "  ".join(f"{l:>7}" for l in labels))
+for i, label in enumerate(labels):
+    print(f"{label:>7}", "  ".join(f"{full_corr[i,j]:7.3f}" for j in range(5)))
+
+print("\nStrong correlations (|r| > 0.5):")
+for i in range(5):
+    for j in range(i+1, 5):
+        if abs(full_corr[i,j]) > 0.5:
+            print(f"  {labels[i]}-{labels[j]}: {full_corr[i,j]:.3f}")
+```
+
+```{code-cell} ipython3
+# Cross-correlation for time series alignment
+# Useful for aligning light curves or spectra
+signal1 = np.sin(np.linspace(0, 10, 100))
+signal2 = np.sin(np.linspace(0, 10, 100) + 1)  # Phase shifted
+
+# Cross-correlation finds the shift
+correlation = np.correlate(signal1, signal2, mode='same')
+lag = np.argmax(correlation) - len(correlation)//2
+print(f"Maximum correlation at lag: {lag} samples")
+
+# This tells us signal2 is shifted relative to signal1
 ```
 
 :::{admonition} 🌟 Why This Matters: The Vera Rubin Observatory's Data Challenge
-:class: info, important
+:class: important, dropdown
 
-The Vera Rubin Observatory (formerly LSST) will produce 20 TB of data per night — roughly 200,000 images covering the entire visible sky every three days. Using Python lists instead of NumPy arrays would make this impossible:
+The Vera Rubin Observatory (formerly LSST) will produce 15-20 TB of data per night – roughly 200,000 images covering the entire visible sky every three days. Using Python lists instead of NumPy arrays would make this impossible:
 
 **Memory Requirements:**
-- Python list of floats: 28 bytes per number (object overhead)
+
+- Python list of floats: 24+ bytes per number (PyObject overhead + list pointer)
 - NumPy float32 array: 4 bytes per number
-- For one 4k×4k image: Lists need 448 MB, NumPy needs 64 MB
-- Per night: Lists need 1.4 petabytes, NumPy needs 200 TB
+- For one 4k×4k image: Lists need 384+ MB, NumPy needs 64 MB
+- Per night: Lists need 1.2+ petabytes, NumPy needs 200 TB
 
 **Processing Speed:**
+
 - Detecting moving asteroids requires comparing images pixel-by-pixel
 - With lists: 200 seconds per image pair
 - With NumPy: 0.2 seconds per image pair
@@ -1153,6 +1514,7 @@ The Vera Rubin Observatory (formerly LSST) will produce 20 TB of data per night 
 
 **Real-time Alerts:**
 NumPy's vectorization enables the observatory to:
+
 - Detect supernovae within 60 seconds of observation
 - Track potentially hazardous asteroids in real-time
 - Alert astronomers worldwide to transient events while they're still bright
@@ -1300,7 +1662,7 @@ print(f"  NumPy (@):    {numpy_matmul_time*1000:.3f} ms")
 print(f"  Speedup:      {list_matmul_time/numpy_matmul_time:.0f}x")
 ```
 
-:::{admonition} 🔍 Check Your Understanding
+::::{admonition} 🔍 Check Your Understanding
 :class: question
 
 Why is `np.empty()` faster than `np.zeros()` but potentially dangerous?
@@ -1320,7 +1682,7 @@ print(zero_arr)  # Guaranteed [0. 0. 0. 0. 0.]
 
 Use `np.empty()` only when you'll immediately overwrite all values. Otherwise, you might accidentally use uninitialized data, leading to non-reproducible bugs!
 :::
-:::
+::::
 
 ### NumPy Gotchas: Top 5 Student Mistakes
 
@@ -1371,292 +1733,21 @@ Use `np.empty()` only when you'll immediately overwrite all values. Otherwise, y
    ```
 :::
 
-## 7.10 Practice Exercises
-
-### Exercise 1: Photometry Analysis Pipeline
-
-Build a complete photometry analysis system:
-
-**Part A: Basic photometry (5 minutes)**
-
-```{code-cell} ipython3
-# Convert instrumental magnitudes to calibrated values
-instrumental_mags = np.array([14.2, 15.1, 13.8, 16.3, 14.7])
-
-# Known standard star (for calibration)
-standard_instrumental = 14.0
-standard_true = 12.5  # Known true magnitude
-
-# Calculate zero point
-zero_point = standard_true - standard_instrumental
-print(f"Zero point: {zero_point}")
-
-# Calibrate all magnitudes
-calibrated_mags = instrumental_mags + zero_point
-print(f"Calibrated magnitudes: {calibrated_mags}")
-
-# Convert to flux (relative to mag 0)
-fluxes = 10**(-calibrated_mags / 2.5)
-print(f"Relative fluxes: {fluxes}")
-
-# Calculate signal-to-noise (assuming Poisson noise)
-exposure_time = 300  # seconds
-counts = fluxes * 1e6 * exposure_time  # Scale to realistic counts
-snr = np.sqrt(counts)
-print(f"SNR: {snr}")
-```
-
-**Part B: Aperture photometry (10 minutes)**
-
-```{code-cell} ipython3
-# Create synthetic star image
-x = np.arange(50)
-y = np.arange(50)
-X, Y = np.meshgrid(x, y)
-
-# Add three stars at different positions
-star_x = [15, 35, 25]
-star_y = [20, 30, 40]
-star_flux = [1000, 500, 750]
-
-image = np.zeros((50, 50))
-for sx, sy, sf in zip(star_x, star_y, star_flux):
-    # Gaussian PSF for each star
-    r_squared = (X - sx)**2 + (Y - sy)**2
-    image += sf * np.exp(-r_squared / (2 * 2**2))
-
-# Add noise
-np.random.seed(42)
-image += np.random.normal(0, 5, image.shape)
-```
-
-```{code-cell} ipython3
-# Aperture photometry on first star
-cx, cy = star_x[0], star_y[0]
-aperture_radius = 5
-
-# Create circular mask
-distances = np.sqrt((X - cx)**2 + (Y - cy)**2)
-aperture_mask = distances <= aperture_radius
-
-# Measure flux
-aperture_flux = image[aperture_mask].sum()
-aperture_area = aperture_mask.sum()
-background = np.median(image[distances > 20])  # Sky background
-
-# Correct for background
-corrected_flux = aperture_flux - background * aperture_area
-print(f"Aperture flux: {aperture_flux:.1f}")
-print(f"Background: {background:.2f} per pixel")
-print(f"Corrected flux: {corrected_flux:.1f}")
-print(f"True flux: {star_flux[0]}")
-print(f"Recovery: {corrected_flux/star_flux[0]*100:.1f}%")
-```
-
-**Part C: Light curve analysis (15 minutes)**
-
-```{code-cell} ipython3
-# Generate variable star light curve
-time = np.linspace(0, 10, 500)  # 10 days, 500 observations
-period = 1.7  # days
-amplitude = 0.5  # magnitudes
-
-# True light curve
-phase = 2 * np.pi * time / period
-true_mag = 12.0 + amplitude * np.sin(phase)
-
-# Add realistic noise
-np.random.seed(42)
-noise = np.random.normal(0, 0.05, len(time))
-observed_mag = true_mag + noise
-
-# Period finding using simplified Lomb-Scargle
-test_periods = np.linspace(0.5, 5, 1000)
-chi_squared = []
-```
-
-```{code-cell} ipython3
-# Test each period (simplified algorithm)
-for test_period in test_periods:
-    # Fold data at test period
-    test_phase = (time % test_period) / test_period
-    
-    # Bin the folded light curve
-    n_bins = 10
-    binned_mags = []
-    for i in range(n_bins):
-        bin_mask = (test_phase >= i/n_bins) & (test_phase < (i+1)/n_bins)
-        if bin_mask.sum() > 0:
-            binned_mags.append(observed_mag[bin_mask].mean())
-    
-    # Calculate scatter (simplified chi-squared)
-    if len(binned_mags) > 1:
-        chi_squared.append(np.std(binned_mags))
-    else:
-        chi_squared.append(np.inf)
-```
-
-```{code-cell} ipython3
-# Find best period
-chi_squared = np.array(chi_squared)
-best_period = test_periods[chi_squared.argmax()]
-
-print(f"True period: {period} days")
-print(f"Found period: {best_period:.3f} days")
-
-# Verify by folding at found period
-folded_phase = (time % best_period) / best_period
-phase_order = np.argsort(folded_phase)
-
-print(f"Period recovery error: {abs(best_period - period)/period * 100:.1f}%")
-```
-
-### Exercise 2: Spectral Analysis
-
-Analyze stellar spectra with NumPy:
-
-```{code-cell} ipython3
-"""
-Part 1: Generate synthetic spectrum
-"""
-# Generate wavelength grid
-wavelength = np.linspace(4000, 7000, 1000)  # Angstroms
-
-# Continuum (blackbody approximation)
-T = 5800  # Solar temperature in K
-h = 6.626e-27  # erg*s
-c = 2.998e10  # cm/s
-k = 1.381e-16  # erg/K
-wave_cm = wavelength * 1e-8
-
-# Planck function (simplified)
-continuum = 2 * h * c**2 / wave_cm**5
-continuum /= np.exp(h * c / (wave_cm * k * T)) - 1
-continuum /= continuum.max()  # Normalize
-
-# Add absorption lines
-lines = [4861, 6563]  # H-beta, H-alpha
-for line_center in lines:
-    line_depth = 0.3
-    line_width = 5  # Angstroms
-    profile = 1 - line_depth * np.exp(-((wavelength - line_center) / line_width)**2)
-    continuum *= profile
-
-# Add noise
-np.random.seed(42)
-spectrum = continuum + np.random.normal(0, 0.02, len(wavelength))
-```
-
-```{code-cell} ipython3
-"""
-Part 2: Measure equivalent widths
-"""
-for line_center in lines:
-    # Select region around line
-    region_mask = np.abs(wavelength - line_center) < 20
-    wave_region = wavelength[region_mask]
-    flux_region = spectrum[region_mask]
-    
-    # Local continuum (linear fit to edges)
-    edge_mask = (np.abs(wave_region - line_center) > 10)
-    continuum_fit = np.polyfit(wave_region[edge_mask], 
-                               flux_region[edge_mask], 1)
-    local_continuum = np.polyval(continuum_fit, wave_region)
-    
-    # Equivalent width
-    normalized = flux_region / local_continuum
-    ew = np.trapz(1 - normalized, wave_region)
-    
-    print(f"Line at {line_center} Å: EW = {ew:.2f} Å")
-```
-
-```{code-cell} ipython3
-"""
-Part 3: Measure radial velocity
-"""
-# Find line shift
-reference_line = 6563  # nm; H-alpha rest wavelength
-line_region = np.abs(wavelength - reference_line) < 10
-line_flux = spectrum[line_region]
-line_wave = wavelength[line_region]
-
-# Find minimum (line center)
-observed_center = line_wave[line_flux.argmin()]
-shift = observed_center - reference_line
-velocity = (shift / reference_line) * 3e5  # km/s
-
-print(f"Observed line center: {observed_center:.2f} Å")
-print(f"Radial velocity: {velocity:.1f} km/s")
-```
-
-### Exercise 3: Debug This!
-
-```{code-cell} ipython3
-"""
-Debug This! Fixed version with explanations
-"""
-
-def analyze_galaxy_redshifts(distances_mpc, velocities_km_s):
-    """Calculate Hubble constant from galaxy data."""
-    # Original bugs and fixes:
-    
-    # BUG 1 FIXED: Ensure proper operation order
-    # Was: hubble = velocities_km_s / distances_mpc (wrong comment)
-    # Fixed: This is actually correct!
-    
-    # BUG 2 FIXED: Using correct numpy function
-    # Was: distances_log = np.log(distances_mpc)  # Wrong base
-    # Fixed: Use log10 for astronomical calculations
-    distances_log = np.log10(distances_mpc)
-    
-    # BUG 3 FIXED: Ensure float division
-    # Was: normalized = velocities_km_s / velocities_km_s.max()
-    # Fixed: Convert to float to avoid integer division issues
-    normalized = velocities_km_s.astype(float) / velocities_km_s.max()
-    
-    # BUG 4 FIXED: Correct axis for 1D array
-    # Was: residuals = velocities_km_s - np.mean(velocities_km_s, axis=1)
-    # Fixed: No axis needed for 1D array
-    residuals = velocities_km_s - np.mean(velocities_km_s)
-    
-    # Remove outliers for robust estimate
-    mask = (velocities_km_s > 0) & (distances_mpc > 0)
-    clean_vel = velocities_km_s[mask]
-    clean_dist = distances_mpc[mask]
-    
-    # Calculate Hubble constant
-    hubble = clean_vel / clean_dist
-    hubble_mean = np.mean(hubble)
-    
-    return hubble_mean, residuals.std()
-
-# Test data
-distances = np.array([10, 20, 30, 40, 50], dtype=float)  # Mpc
-velocities = np.array([700, 1400, 2200, 2800, 3500], dtype=float)  # km/s
-
-H0, scatter = analyze_galaxy_redshifts(distances, velocities)
-print(f"Hubble constant: {H0:.1f} km/s/Mpc")
-print(f"Velocity scatter: {scatter:.1f} km/s")
-print(f"(Expected H0 ≈ 70 km/s/Mpc for this simplified data)")
-```
-
-:::{admonition} 🌟 Why This Matters: The Hubble Tension
-:class: info, important
-
-The code above calculates the Hubble constant, one of cosmology's most important parameters. Different measurement methods give different values (67 vs 73 km/s/Mpc), creating the "Hubble tension" — one of modern cosmology's biggest mysteries. Your NumPy skills are the foundation for analyzing the data that might resolve this cosmic puzzle!
-:::
+---
 
 ## Main Takeaways
 
-You've just acquired the fundamental tool that transforms Python into a scientific computing powerhouse. NumPy isn't just a faster way to work with numbers — it's a different way of thinking about computation. Instead of writing loops that process elements one at a time, you now express mathematical operations on entire datasets at once. This vectorized thinking mirrors how we conceptualize scientific problems: we don't think about individual photons hitting individual pixels; we think about images, spectra, and light curves as coherent wholes. NumPy lets you write code that matches this conceptual model, making your programs both faster and more readable.
+You've just acquired the fundamental tool that transforms Python into a scientific computing powerhouse. NumPy isn't just a faster way to work with numbers – it's a different way of thinking about computation. Instead of writing loops that process elements one at a time, you now express mathematical operations on entire datasets at once. This vectorized thinking mirrors how we conceptualize scientific problems: we don't think about individual photons hitting individual pixels; we think about images, spectra, and light curves as coherent wholes. NumPy lets you write code that matches this conceptual model, making your programs both faster and more readable.
 
-The performance gains you've witnessed — often 10-100x speedups — aren't just convenient; they're transformative. Calculations that would take hours with Python lists complete in seconds with NumPy arrays. This speed isn't achieved through complex optimization tricks but through NumPy's elegant design: contiguous memory storage, vectorized operations that call optimized C libraries, and broadcasting that eliminates redundant data copying. When you used NumPy to process gravitational wave data or search for exoplanet transits, you experienced the same performance that enables real-time astronomical data analysis at observatories worldwide. The Vera Rubin Observatory's ability to process 20 TB of data nightly, LIGO's detection of gravitational waves, and Kepler's discovery of thousands of exoplanets all depend on the vectorized operations you've mastered.
+The performance gains you've witnessed – often 10-100x speedups – aren't just convenient; they're transformative. Calculations that would take hours with Python lists complete in seconds with NumPy arrays. This speed isn't achieved through complex optimization tricks but through NumPy's elegant design: contiguous memory storage, vectorized operations that call optimized C libraries, and broadcasting that eliminates redundant data copying. When you used NumPy to process gravitational wave data or search for exoplanet transits, you experienced the same performance that enables real-time astronomical data analysis at observatories worldwide. The Vera Rubin Observatory's ability to process 20 TB of data nightly, LIGO's detection of gravitational waves, and Kepler's discovery of thousands of exoplanets all depend on the vectorized operations you've mastered.
 
-Beyond performance, NumPy provides a vocabulary for scientific computing that's consistent across the entire Python ecosystem. The array indexing, broadcasting rules, and ufuncs you've learned aren't just NumPy features — they're the standard interface for numerical computation in Python. When you move on to using SciPy for optimization, Matplotlib for visualization, or Pandas for data analysis, you'll find they all speak NumPy's language. This consistency means the effort you've invested in understanding NumPy pays dividends across every scientific Python library you'll ever use. You've learned to leverage views for memory efficiency, use boolean masking for sophisticated data filtering, and apply broadcasting to solve complex problems elegantly. These aren't just programming techniques; they're computational thinking patterns that will shape how you approach every numerical problem.
+Beyond performance, NumPy provides a vocabulary for scientific computing that's consistent across the entire Python ecosystem. The array indexing, broadcasting rules, and ufuncs you've learned aren't just NumPy features – they're the standard interface for numerical computation in Python. When you move on to using SciPy for optimization, Matplotlib for visualization, or Pandas for data analysis, you'll find they all speak NumPy's language. This consistency means the effort you've invested in understanding NumPy pays dividends across every scientific Python library you'll ever use. You've learned to leverage views for memory efficiency, use boolean masking for sophisticated data filtering, and apply broadcasting to solve complex problems elegantly. These aren't just programming techniques; they're computational thinking patterns that will shape how you approach every numerical problem.
 
-You've also mastered the random number generation capabilities essential for Monte Carlo simulations — a cornerstone of modern computational astrophysics. From simulating photon counting statistics with Poisson distributions to modeling measurement errors with Gaussian noise, you now have the tools to create realistic synthetic data and perform statistical analyses. The ability to generate random samples from various distributions, perform bootstrap resampling, and create correlated multivariate data will be crucial in your upcoming projects, especially when you tackle Monte Carlo sampling techniques.
+You've also mastered the random number generation capabilities essential for Monte Carlo simulations – a cornerstone of modern computational astrophysics. From simulating photon counting statistics with Poisson distributions to modeling measurement errors with Gaussian noise, you now have the tools to create realistic synthetic data and perform statistical analyses. The ability to generate random samples from various distributions, perform bootstrap resampling, and create correlated multivariate data will be crucial in your upcoming projects, especially when you tackle Monte Carlo sampling techniques.
 
-Looking ahead, NumPy arrays will be the primary data structure for the rest of your scientific computing journey. Every image you process, every spectrum you analyze, every simulation you run will flow through NumPy arrays. You now have the tools to replace the math module entirely, using NumPy's functions that work seamlessly on both scalars and arrays. The concepts you've mastered — vectorization, broadcasting, boolean masking — aren't just NumPy features; they're the foundation of modern computational science. You're no longer limited by Python's native capabilities; you have access to the same computational power that enabled the detection of gravitational waves, the discovery of exoplanets, and the imaging of black holes. In the next chapter, you'll see how NumPy arrays become the canvas for scientific visualization with Matplotlib, where every plot, image, and diagram starts with the arrays you now know how to create and manipulate.
+Looking ahead, NumPy arrays will be the primary data structure for the rest of your scientific computing journey. Every image you process, every spectrum you analyze, every simulation you run will flow through NumPy arrays. You now have the tools to replace the math module entirely, using NumPy's functions that work seamlessly on both scalars and arrays. The concepts you've mastered – vectorization, broadcasting, boolean masking – aren't just NumPy features; they're the foundation of modern computational science. You're no longer limited by Python's native capabilities; you have access to the same computational power that enabled the detection of gravitational waves, the discovery of exoplanets, and the imaging of black holes. In the next chapter, you'll see how NumPy arrays become the canvas for scientific visualization with Matplotlib, where every plot, image, and diagram starts with the arrays you now know how to create and manipulate.
+
+---
 
 ## Definitions
 
@@ -1690,29 +1781,33 @@ Looking ahead, NumPy arrays will be the primary data structure for the rest of y
 
 **View**: A new array object that shares data with the original array, saving memory but linking modifications.
 
+---
+
 ## Key Takeaways
 
-✓ **NumPy arrays are 10-100x faster than Python lists** for numerical operations by using contiguous memory and calling optimized C libraries
+✔ **NumPy arrays are 10-100x faster than Python lists** for numerical operations by using contiguous memory and calling optimized C libraries
 
-✓ **Vectorization eliminates explicit loops** by operating on entire arrays at once, making code both faster and more readable
+✔ **Vectorization eliminates explicit loops** by operating on entire arrays at once, making code both faster and more readable
 
-✓ **NumPy can replace the math module entirely** while adding array support — use `np.sin()` instead of `math.sin()` everywhere
+✔ **NumPy can replace the math module entirely** while adding array support – use `np.sin()` instead of `math.sin()` everywhere
 
-✓ **Broadcasting enables operations on different-shaped arrays** by automatically expanding dimensions, eliminating data duplication
+✔ **Broadcasting enables operations on different-shaped arrays** by automatically expanding dimensions, eliminating data duplication
 
-✓ **Boolean masking provides powerful data filtering** using conditions to select array elements, essential for data analysis
+✔ **Boolean masking provides powerful data filtering** using conditions to select array elements, essential for data analysis
 
-✓ **Essential creation functions** like `linspace`, `logspace`, and `meshgrid` are workhorses for scientific computing
+✔ **Essential creation functions** like `linspace`, `logspace`, and `meshgrid` are workhorses for scientific computing
 
-✓ **Random number generation** from various distributions (uniform, normal, Poisson) enables Monte Carlo simulations
+✔ **Random number generation** from various distributions (uniform, normal, Poisson) enables Monte Carlo simulations
 
-✓ **Memory layout matters** — row-major vs column-major ordering can cause 10x performance differences
+✔ **Memory layout matters** – row-major vs column-major ordering can cause 10x performance differences
 
-✓ **Views share memory while copies are independent** — understanding this prevents unexpected data modifications
+✔ **Views share memory while copies are independent** – understanding this prevents unexpected data modifications
 
-✓ **Array methods provide built-in analysis** — `.mean()`, `.std()`, `.max()` operate efficiently along specified axes
+✔ **Array methods provide built-in analysis** – `.mean()`, `.std()`, `.max()` operate efficiently along specified axes
 
-✓ **NumPy is the foundation of scientific Python** — every major package (SciPy, Matplotlib, Pandas) builds on NumPy arrays
+✔ **NumPy is the foundation of scientific Python** – every major package (SciPy, Matplotlib, Pandas) builds on NumPy arrays
+
+---
 
 ## Quick Reference Tables
 
@@ -1724,6 +1819,8 @@ Looking ahead, NumPy arrays will be the primary data structure for the rest of y
 | `np.zeros()` | Initialize with 0s | `np.zeros((3, 4))` |
 | `np.ones()` | Initialize with 1s | `np.ones((2, 3))` |
 | `np.empty()` | Uninitialized (fast) | `np.empty(5)` |
+| `np.full()` | Fill with value | `np.full((3, 3), 7)` |
+| `np.eye()` | Identity matrix | `np.eye(4)` |
 | `np.arange()` | Like Python's range | `np.arange(0, 10, 2)` |
 | `np.linspace()` | N evenly spaced | `np.linspace(0, 1, 11)` |
 | `np.logspace()` | Log-spaced values | `np.logspace(0, 3, 4)` |
@@ -1735,9 +1832,12 @@ Looking ahead, NumPy arrays will be the primary data structure for the rest of y
 |-----------|-------------|---------|
 | `+, -, *, /` | Element-wise arithmetic | `a + b` |
 | `**` | Element-wise power | `a ** 2` |
+| `//` | Floor division | `a // 2` |
+| `%` | Modulo | `a % 3` |
 | `@` | Matrix multiplication | `a @ b` |
+| `np.dot()` | Dot product | `np.dot(a, b)` |
 | `==, !=, <, >` | Element-wise comparison | `a > 5` |
-| `&, \|, ~` | Boolean operations | `(a > 0) & (a < 10)` |
+| `&, |, ~` | Boolean operations | `(a > 0) & (a < 10)` |
 | `.T` | Transpose | `matrix.T` |
 | `.reshape()` | Change dimensions | `arr.reshape(3, 4)` |
 | `.flatten()` | Convert to 1D | `matrix.flatten()` |
@@ -1754,18 +1854,24 @@ Looking ahead, NumPy arrays will be the primary data structure for the rest of y
 | `.argmin()/.argmax()` | Index of extrema | `arr.argmax()` |
 | `np.median()` | Median value | `np.median(arr)` |
 | `np.percentile()` | Percentiles | `np.percentile(arr, 95)` |
+| `np.cov()` | Covariance matrix | `np.cov(x, y)` |
+| `np.corrcoef()` | Correlation coefficient | `np.corrcoef(x, y)` |
+| `np.histogram()` | Compute histogram | `np.histogram(data, bins=20)` |
 
 ### Random Number Functions
 
 | Function | Distribution | Example |
 |----------|-------------|---------|
 | `np.random.uniform()` | Uniform | `np.random.uniform(0, 1, 1000)` |
+| `np.random.rand()` | Uniform [0,1) | `np.random.rand(100)` |
 | `np.random.normal()` | Gaussian/Normal | `np.random.normal(0, 1, 1000)` |
+| `np.random.randn()` | Standard normal | `np.random.randn(100)` |
 | `np.random.poisson()` | Poisson | `np.random.poisson(100, 1000)` |
 | `np.random.exponential()` | Exponential | `np.random.exponential(1.0, 1000)` |
 | `np.random.choice()` | Random selection | `np.random.choice(arr, 10)` |
 | `np.random.permutation()` | Shuffle array | `np.random.permutation(arr)` |
 | `np.random.seed()` | Set random seed | `np.random.seed(42)` |
+| `np.random.multivariate_normal()` | Multivariate normal | `np.random.multivariate_normal(mean, cov, n)` |
 
 ### Common NumPy Functions
 
@@ -1784,6 +1890,28 @@ Looking ahead, NumPy arrays will be the primary data structure for the rest of y
 | `np.unique()` | Find unique values | `set()` |
 | `np.concatenate()` | Join arrays | `+` for lists |
 | `np.gradient()` | Numerical derivative | N/A |
+| `np.interp()` | Linear interpolation | N/A |
+| `np.allclose()` | Float comparison | N/A |
+| `np.isnan()` | Check for NaN | N/A |
+| `np.isinf()` | Check for infinity | N/A |
+| `np.isfinite()` | Check for finite | N/A |
+| `np.correlate()` | Cross-correlation | N/A |
+
+### Memory and Performance Reference
+
+| Operation | Returns View | Returns Copy |
+|-----------|--------------|--------------|
+| Basic slicing `arr[2:8]` | ✓ | |
+| Fancy indexing `arr[[1,3,5]]` | | ✓ |
+| Boolean masking `arr[arr>5]` | | ✓ |
+| `.reshape()` | ✓ | |
+| `.flatten()` | | ✓ |
+| `.ravel()` | ✓ (usually) | |
+| `.T` or `.transpose()` | ✓ | |
+| Arithmetic `arr + 1` | | ✓ |
+| `.copy()` | | ✓ |
+
+---
 
 ## References
 
@@ -1793,30 +1921,36 @@ Looking ahead, NumPy arrays will be the primary data structure for the rest of y
 
 3. van der Walt, S., Colbert, S. C., & Varoquaux, G. (2011). **The NumPy array: a structure for efficient numerical computation**. *Computing in Science & Engineering*, 13(2), 22-30.
 
-4. The LIGO Scientific Collaboration. (2016). **Observation of gravitational waves from a binary black hole merger**. *Physical Review Letters*, 116(6), 061102. - Acknowledges NumPy's role in the discovery.
+4. Abbott, B. P., et al. (2016). **Observation of gravitational waves from a binary black hole merger**. *Physical Review Letters*, 116(6), 061102. - First detection of gravitational waves.
 
-5. Abbott, B. P., et al. (2016). **GW150914: First results from the search for binary black hole coalescence with Advanced LIGO**. *Physical Review D*, 93(12), 122003. - Details the NumPy-based PyCBC pipeline.
+5. Usman, S. A., et al. (2016). **The PyCBC search for gravitational waves from compact binary coalescence**. *Classical and Quantum Gravity*, 33(21), 215004. - Details the PyCBC pipeline that uses NumPy.
 
-6. Canton, K., et al. (2014). **Implementing a search for aligned-spin neutron star-black hole systems with advanced ground based gravitational wave detectors**. *Physical Review D*, 90(8), 082004. - The PyCBC pipeline paper.
+6. Dal Canton, T., et al. (2014). **Implementing a search for aligned-spin neutron star-black hole systems with advanced ground based gravitational wave detectors**. *Physical Review D*, 90(8), 082004. - PyCBC development paper.
 
 7. Borucki, W. J., et al. (2010). **Kepler planet-detection mission: introduction and first results**. *Science*, 327(5968), 977-980. - Kepler mission overview.
 
-8. Ivezić, Ž., et al. (2019). **LSST: From science drivers to reference design and anticipated data products**. *The Astrophysical Journal*, 873(2), 111. - Vera Rubin Observatory data challenges.
+8. Koch, D. G., et al. (2010). **Kepler mission design, realized photometric performance, and early science**. *The Astrophysical Journal Letters*, 713(2), L79. - Details Kepler's data analysis.
 
-9. Virtanen, P., et al. (2020). **SciPy 1.0: fundamental algorithms for scientific computing in Python**. *Nature Methods*, 17(3), 261-272. - Shows NumPy's foundational role.
+9. Ivezić, Ž., et al. (2019). **LSST: From science drivers to reference design and anticipated data products**. *The Astrophysical Journal*, 873(2), 111. - Vera Rubin Observatory data challenges.
 
-10. Hunter, J. D. (2007). **Matplotlib: A 2D graphics environment**. *Computing in Science & Engineering*, 9(3), 90-95. - Matplotlib's dependence on NumPy.
+10. Jurić, M., et al. (2017). **The LSST data management system**. *Astronomical Data Analysis Software and Systems XXV*, 512, 279. - Details the 15-20 TB nightly data rate.
 
-11. McKinney, W. (2010). **Data structures for statistical computing in python**. *Proceedings of the 9th Python in Science Conference*, 445, 51-56. - Pandas built on NumPy.
+11. Virtanen, P., et al. (2020). **SciPy 1.0: fundamental algorithms for scientific computing in Python**. *Nature Methods*, 17(3), 261-272. - Shows NumPy's foundational role.
 
-12. Pedregosa, F., et al. (2011). **Scikit-learn: Machine learning in Python**. *Journal of Machine Learning Research*, 12, 2825-2830. - scikit-learn's NumPy foundation.
+12. Hunter, J. D. (2007). **Matplotlib: A 2D graphics environment**. *Computing in Science & Engineering*, 9(3), 90-95. - Matplotlib's dependence on NumPy.
 
-13. VanderPlas, J. (2016). **Python Data Science Handbook**. O'Reilly Media. - Comprehensive NumPy coverage for data science.
+13. McKinney, W. (2010). **Data structures for statistical computing in python**. *Proceedings of the 9th Python in Science Conference*, 445, 51-56. - Pandas built on NumPy.
 
-14. Johansson, R. (2019). **Numerical Python: Scientific Computing and Data Science Applications with Numpy, SciPy and Matplotlib** (2nd ed.). Apress.
+14. Pedregosa, F., et al. (2011). **Scikit-learn: Machine learning in Python**. *Journal of Machine Learning Research*, 12, 2825-2830. - scikit-learn's NumPy foundation.
 
-15. Hubble, E. (1929). **A relation between distance and radial velocity among extra-galactic nebulae**. *Proceedings of the National Academy of Sciences*, 15(3), 168-173. - The original Hubble constant paper referenced in exercises.
+15. VanderPlas, J. (2016). **Python Data Science Handbook**. O'Reilly Media. - Comprehensive NumPy coverage for data science.
+
+16. Johansson, R. (2019). **Numerical Python: Scientific Computing and Data Science Applications with Numpy, SciPy and Matplotlib** (2nd ed.). Apress.
+
+17. Hubble, E. (1929). **A relation between distance and radial velocity among extra-galactic nebulae**. *Proceedings of the National Academy of Sciences*, 15(3), 168-173. - The original Hubble constant paper referenced in exercises.
+
+---
 
 ## Next Chapter Preview
 
-In Chapter 8: Matplotlib - Visualizing Your Universe, you'll discover how to transform the NumPy arrays you've mastered into publication-quality visualizations. You'll learn to create everything from simple line plots to complex multi-panel figures displaying astronomical data. Using the same NumPy arrays you've been working with, you'll visualize spectra with proper wavelength scales, create color-magnitude diagrams from stellar catalogs, display telescope images with world coordinate systems, and generate the kinds of plots that appear in research papers. You'll master customization techniques to control every aspect of your figures, from axis labels with LaTeX formatting to colormaps optimized for astronomical data. The NumPy operations you've learned — slicing for zooming into data, masking for highlighting specific objects, and meshgrid for creating coordinate systems — become the foundation for creating compelling scientific visualizations. Most importantly, you'll understand how NumPy and Matplotlib work together as an integrated system, with NumPy handling the computation and Matplotlib handling the visualization, forming the core workflow that will carry you through your entire career in computational astrophysics!
+In Chapter 8: Matplotlib - Visualizing Your Universe, you'll discover how to transform the NumPy arrays you've mastered into publication-quality visualizations. You'll learn to create everything from simple line plots to complex multi-panel figures displaying astronomical data. Using the same NumPy arrays you've been working with, you'll visualize spectra with proper wavelength scales, create color-magnitude diagrams from stellar catalogs, display telescope images with world coordinate systems, and generate the kinds of plots that appear in research papers. You'll master customization techniques to control every aspect of your figures, from axis labels with LaTeX formatting to colormaps optimized for astronomical data. The NumPy operations you've learned – slicing for zooming into data, masking for highlighting specific objects, and meshgrid for creating coordinate systems – become the foundation for creating compelling scientific visualizations. Most importantly, you'll understand how NumPy and Matplotlib work together as an integrated system, with NumPy handling the computation and Matplotlib handling the visualization, forming the core workflow that will carry you through your entire career in computational astrophysics!

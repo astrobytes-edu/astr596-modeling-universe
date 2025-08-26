@@ -45,3 +45,12 @@
     background-color: #f8fafc;
     border: 1px solid var(--border-color);
   }
+
+
+  /* Margins doesn't do anything*/
+.margin, aside.margin, .margin-caption, aside.margin-caption {
+    margin-top: 2em !important;
+    margin-bottom: 2em !important;
+    padding-bottom: 4em !important;
+    min-height: 100px !important;
+}

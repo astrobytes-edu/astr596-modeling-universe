@@ -1,10 +1,11 @@
 ---
-title: Python as Your Scientific Calculator
+title: "Chapter 2: Python as Your Scientific Calculator"
+subtitle: "Module 1: Python Fundamentals"
 exports:
   - format: pdf
 ---
 
-# Chapter 2: Python as Your Scientific Calculator
+%# Chapter 2: Python as Your Scientific Calculator
 
 ## Learning Objectives
 
@@ -34,6 +35,8 @@ By the end of this chapter, you will be able to:
 If any boxes are unchecked, review Chapter 1 first.
 :::
 
+---
+
 ## Chapter Overview
 
 Now that you've mastered setting up your computational environment and understand how Python finds and loads code, it's time to transform IPython into your personal calculator. But this chapter goes far beyond simple arithmetic - you're about to discover the hidden complexity of numerical computation that can make the difference between discovering an exoplanet and missing it entirely due to rounding errors.
@@ -42,10 +45,12 @@ You'll learn why spacecraft have crashed, why some astronomical calculations fai
 
 By mastering these fundamentals now, you'll develop the numerical intuition that separates computational scientists from programmers who just happen to work with scientific data. Every orbital integrator you build, every spectrum you analyze, and every statistical test you run will rely on the concepts in this chapter. Let's begin your journey from calculator user to numerical computing expert.
 
+---
+
 ## 2.1 Python as Your Scientific Calculator
 
 :::{margin}
-**operator precedence**
+**operator precedence**  
 The order in which Python evaluates mathematical operations
 :::
 
@@ -157,6 +162,8 @@ print(f"-17 // 3 = {-17 // 3} (floors toward -infinity)")
 
 Floor division with negative numbers often surprises astronomers calculating phases or time intervals before an epoch. When working with Julian dates or phases that can be negative, always test your edge cases or use `int(a/b)` for truncation toward zero.
 :::
+
+---
 
 ## 2.2 How Python Stores Numbers: Critical for Scientific Computing
 
@@ -575,6 +582,8 @@ if verify_distance(d_pc, known_distance):
 :::
 ::::
 
+---
+
 ## 2.3 Numerical Hazards in Scientific Computing
 
 You've mastered how Python stores numbers — now let's see these concepts in action with real scientific calculations! This is where things get exciting: you're about to learn the techniques that enabled Cassini to thread the gap between Saturn's rings, that allow LIGO to detect gravitational waves smaller than a proton's width, and that help the Event Horizon Telescope image black holes.
@@ -818,6 +827,8 @@ except ValueError as e:
     print(f"Validation caught error: {e}")
 ```
 
+---
+
 ## 2.4 Complex Numbers for Wave Physics
 
 :::{margin}
@@ -909,6 +920,8 @@ Without complex numbers and Euler's formula (e^(iωt) = cos(ωt) + i⋅sin(ωt))
 **The bottom line:** Master complex numbers now, because every time-series analysis technique you'll learn builds on them!
 :::
 
+---
+
 ## 2.5 Variables and Dynamic Typing
 
 :::{margin}
@@ -950,6 +963,8 @@ print(f"Type: {type(observation).__name__}, Value: {observation}")
 # This flexibility is powerful but requires discipline
 # In scientific code, changing types unexpectedly is usually a bug!
 ```
+
+---
 
 ## 2.6 Strings and Scientific Output Formatting
 
@@ -1023,6 +1038,8 @@ The `.2e` format specifier means:
 So 0.00123456 becomes 1.23 × 10⁻³, displayed as 1.23e-03.
 :::
 
+---
+
 ## 2.7 Type System and Conversions
 
 :::{margin}
@@ -1074,6 +1091,8 @@ print(f"-3.7 // 1 = {-3.7 // 1}")    # Gives -4.0 (toward -infinity)
 This inconsistency has caused numerous bugs in astronomical calculations where negative values represent positions before an epoch.
 :::
 
+---
+
 ## 2.8 The Math Module: Your Scientific Calculator
 
 Here comes the fun part — Python's math module transforms your computer into a scientific calculator more powerful than anything that existed when we sent humans to the Moon!
@@ -1102,7 +1121,9 @@ print(f"\nGamma(5) = {math.gamma(5)} = 4!")
 print(f"Error function: erf(1) = {math.erf(1):.4f}")
 ```
 
-Remember: trigonometric functions use radians, not degrees! This is a constant source of bugs in astronomical code.
+**Remember:** trigonometric functions use radians, not degrees! This is a constant source of bugs in astronomical code.
+
+---
 
 ## 2.9 From Interactive to Script
 
@@ -1164,6 +1185,7 @@ if __name__ == "__main__":
         rs = schwarzschild_radius_robust(mass)
         print(f"{name}: Rs = {rs:.2e} cm ({rs/1e5:.2f} km)")
 ```
+---
 
 ## Main Takeaways
 
@@ -1174,6 +1196,8 @@ The defensive programming techniques you learned here might seem overcautious at
 Perhaps most importantly, you've learned to think about numbers the way computers do. When you see `0.1 + 0.2`, you now know it's not exactly 0.3, and more crucially, you know why. When you calculate the distance to a galaxy, you instinctively think about whether the number might overflow. When you subtract two nearly-equal values, alarm bells ring about catastrophic cancellation. This numerical awareness will serve you throughout your career.
 
 The disasters we discussed — Patriot missile, Mars Climate Orbiter — weren't caused by incompetent programmers but by the subtle numerical issues you now understand. The successes — New Horizons reaching Pluto, LIGO detecting gravitational waves — all required mastery of exactly these concepts. You're now equipped with the same numerical tools that enabled these triumphs.
+
+---
 
 ## Definitions
 
@@ -1207,6 +1231,8 @@ The disasters we discussed — Patriot missile, Mars Climate Orbiter — weren't
 
 **underflow**: When a calculation produces a value smaller than the minimum representable positive float, resulting in zero.
 
+---
+
 ## Key Takeaways
 
 ✓ Floating-point arithmetic is approximate by design — never use `==` to compare floats
@@ -1231,30 +1257,37 @@ The disasters we discussed — Patriot missile, Mars Climate Orbiter — weren't
 
 ✓ Type conversion can lose information — always validate
 
+---
+
 ## Python Module & Method Reference (Chapter 2 Additions)
 
 ### Math Module Functions
 
 **Mathematical Constants**
+
 ```python
 import math
 ```
+
 - `math.pi` - π (3.14159...)
 - `math.e` - Euler's number (2.71828...)
 - `math.tau` - τ = 2π (6.28318...)
 
 **Arithmetic Functions**
+
 - `math.sqrt(x)` - Square root
 - `math.log(x)` - Natural logarithm
 - `math.log10(x)` - Base-10 logarithm
 - `math.exp(x)` - Exponential (e^x)
 
 **Trigonometric Functions** (use radians!)
+
 - `math.sin(x)`, `math.cos(x)`, `math.tan(x)` - Basic trig
 - `math.radians(degrees)` - Convert degrees to radians
 - `math.degrees(radians)` - Convert radians to degrees
 
 **Special Functions**
+
 - `math.gamma(x)` - Gamma function
 - `math.erf(x)` - Error function
 - `math.isclose(a, b, rel_tol=1e-9)` - Safe float comparison
@@ -1262,18 +1295,22 @@ import math
 - `math.isnan(x)` - Check if Not-a-Number
 
 ### Complex Number Module
+
 ```python
 import cmath
 ```
+
 - `cmath.exp(x)` - Complex exponential
 - `cmath.phase(z)` - Argument/phase of complex number
 - `cmath.polar(z)` - Convert to polar form (r, theta)
 - `cmath.rect(r, theta)` - Convert from polar to rectangular
 
 ### System Information
+
 ```python
 import sys
 ```
+
 - `sys.float_info.epsilon` - Machine epsilon (~2.2e-16)
 - `sys.float_info.max` - Maximum float (~1.8e308)
 - `sys.float_info.min` - Minimum positive float (~2.2e-308)
@@ -1301,6 +1338,8 @@ import sys
 | `int(x)` | Convert to int (truncates!) | `int(3.9)` → `3` |
 | `complex(r, i)` | Create complex | `complex(3, 4)` → `(3+4j)` |
 | `round(x, n)` | Round to n decimals | `round(3.14159, 2)` → `3.14` |
+
+---
 
 ## Next Chapter Preview
 

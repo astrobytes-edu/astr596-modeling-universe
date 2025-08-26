@@ -1,10 +1,8 @@
 ---
-title: Scientific Computing Core
+title: Scientific Computing Core Overview
 exports:
   - format: pdf
 ---
-
-# Scientific Computing Core
 
 ## Deepening Your Computational Toolkit
 

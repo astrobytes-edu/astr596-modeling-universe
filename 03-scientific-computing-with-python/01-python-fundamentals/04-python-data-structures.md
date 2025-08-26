@@ -1,5 +1,6 @@
 ---
-title: Data Structures - Organizing Scientific Data
+title: "Chapter 4: Data Structures - Organizing Scientific Data"
+subtitle: "Module 1: Python Fundamentals"
 exports:
   - format: pdf
 ---

@@ -1,10 +1,8 @@
 ---
-title: Python Fundamentals
+title: Python Fundamentals Overview
 exports:
   - format: pdf
 ---
-
-# Python Fundamentals
 
 ## Your Computational Toolkit for Astrophysics
 

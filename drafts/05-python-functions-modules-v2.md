@@ -1,22 +1,24 @@
 ---
-title: "Chapter 5: Functions & Modules - Building Reusable Scientific Code"
-subtitle: "Module 1: Python Fundamentals"
+title: Functions & Modules - Building Reusable Scientific Code
 exports:
   - format: pdf
 ---
+
+# Chapter 5: Functions & Modules - Building Reusable Scientific Code
 
 ## Learning Objectives
 
 By the end of this chapter, you will be able to:
 
-- [ ] **(1) Design and encapsulate** computational physics and astronomy algorithms with clear input/output contracts, including debugging common errors like mutable defaults and scope violations.
-- [ ] **(2) Apply Python's LEGB scope rules** to prevent variable conflicts in complex numerical simulations.
+- [ ] **(1) Design functions that encapsulate** computational physics and astronomy algorithms with clear input/output contracts
+- [ ] **(2) Apply Python's LEGB scope rules** to prevent variable conflicts in complex numerical simulations  
 - [ ] **(3) Implement flexible function interfaces** using positional, keyword, and default arguments for scientific computing.
 - [ ] **(4) Transform iterative calculations** into functional programming patterns using `map`, `filter`, and `lambda`.
 - [ ] **(5) Organize related computational functions** into reusable modules following scientific Python conventions.
 - [ ] **(6) Write comprehensive docstrings** that document physical units, assumptions, and numerical methods.
-- [ ] **(7) Apply optimization strategies** through memoization and vectorization for large-scale computations.
-- [ ] **(8) Build modular, reusable code** that forms the foundation for object-oriented scientific applications.
+- [ ] **(7) Debug common function errors** including mutable defaults, `UnboundLocalError`, and scope violations.
+- [ ] **(8) Optimize function performance** through memoization and vectorization strategies for large-scale computations.
+- [ ] **(9) Build modular, reusable code** for scientific applications.
 
 ## Prerequisites Check
 
@@ -28,41 +30,31 @@ Before starting this chapter, verify you can:
 - [ ] Use IPython for testing and timing code (Chapter 1)
 - [ ] Design algorithms with pseudocode (Chapter 3)
 
----
-
 ## Chapter Overview
 
 :::{margin}
-**Function**  
+**Function**
 A reusable block of code that performs a specific task, taking inputs (parameters) and optionally returning outputs. Functions encapsulate logic and create abstractions.
 :::
 
 **Functions** are the fundamental building blocks of organized code. Without functions, you'd be copying and pasting the same code repeatedly, making bugs harder to fix and improvements impossible to maintain. But functions are more than just a way to avoid repetition—they're how we create **abstractions**, manage complexity, and build reliable software. Whether you're calculating statistical measures, simulating star cluster dynamics, or processing multi-wavelength observational data, every computational project starts with well-designed functions.
 
-This chapter teaches you to think about functions as contracts between different parts of your code. When you write a function that calculates energy or performs numerical integration, you're creating a promise: given valid input, the function will reliably return the correct output. This contract mindset helps you write functions that others (including future you) can trust and use effectively. You'll learn how to choose between positional and keyword **arguments**, when to use default values, and how to design interfaces that are both flexible and clear.
-
 :::{margin}
-**Abstraction**  
+**Abstraction**
 A simplified interface that hides complex implementation details, allowing users to work with concepts rather than low-level operations. Functions are the fundamental abstraction mechanism in programming.
 :::
 
+This chapter teaches you to think about functions as contracts between different parts of your code. When you write a function that calculates energy or performs numerical integration, you're creating a promise: given valid input, the function will reliably return the correct output. This contract mindset helps you write functions that others (including future you) can trust and use effectively. You'll learn how to choose between positional and keyword **arguments**, when to use default values, and how to design interfaces that are both flexible and clear.
+
 We'll explore Python's scope rules, which determine where variables can be accessed, and learn how seemingly simple concepts like default arguments can create subtle bugs that have plagued even major scientific software packages. You'll discover how Python's flexible parameter system enables powerful interfaces, and how functional programming concepts prepare you for modern scientific computing frameworks. By the end, you'll be organizing your code into modules that can be shared, tested, and maintained professionally—essential skills for collaborative scientific research.
-
-:::{admonition} 📝 Import Statement Convention
-:class: note
-
-In production code, Python modules should be imported at the top of files for clarity and efficiency. However, in these educational examples, we sometimes import inside functions for pedagogical clarity — to show exactly what each function needs. In your own code, always prefer top - level imports unless you have a specific reason to import locally (such as avoiding circular dependencies or optional dependencies).
-:::
-
-+++
 
 ## 5.1 Defining Functions: The Basics
 
-A **function** encapsulates a piece of logic that transforms inputs into outputs. Think of a function as a machine: you feed it raw materials (inputs), it performs some process (the function body), and it produces a product (output). In scientific computing, a function might calculate statistical measures, integrate equations, or transform data — each function performs **one clear task** that can be tested and trusted.
+A **function** encapsulates a piece of logic that transforms inputs into outputs. Think of a function as a machine: you feed it raw materials (inputs), it performs some process (the function body), and it produces a product (output). In scientific computing, a function might calculate statistical measures, integrate equations, or transform data—each function performs **one clear task** that can be tested and trusted.
 
 ### Your First Function
 
-Let's start with something every scientist needs — calculating mean and standard deviation:
+Let's start with something every scientist needs—calculating mean and standard deviation:
 
 ```{code-cell} ipython3
 def calculate_mean(values):
@@ -71,12 +63,8 @@ def calculate_mean(values):
     
     This is our first function - notice the structure!
     """
-    # Note: assert is for development/debugging
-    # In production, use explicit validation:
+    # Validate inputs early using assert (raises error if condition is False)
     assert len(values) > 0, "Cannot calculate mean of empty list"
-    # Better production version would be:
-    # if len(values) == 0:
-    #     raise ValueError("Cannot calculate mean of empty list")
     
     total = sum(values)
     count = len(values)
@@ -89,22 +77,21 @@ avg = calculate_mean(measurements)
 print(f"Mean temperature: {avg:.2f}°C")
 
 # The assert would raise an error with empty list:
-# empty_mean = calculate_mean([])  
-# AssertionError: Cannot calculate mean of empty list
+# empty_mean = calculate_mean([])  # AssertionError: Cannot calculate mean of empty list
 ```
 
 Let's break down exactly how this works:
 
-1. **`def` keyword**: Tells Python we're defining a function.
-2. **Function name** (`calculate_mean`): Follows snake_case convention, describes what it does.
-3. **Parameters** (`values`): Variables that receive values when function is called.
-4. **Docstring**: Brief description of what the function does (always include this!).
-5. **Function body**: Indented code that does the actual work.
-6. **`return` statement**: Sends a value back to whoever called the function.
+1. **`def` keyword**: Tells Python we're defining a function
+2. **Function name** (`calculate_mean`): Follows snake_case convention, describes what it does
+3. **Parameters** (`values`): Variables that receive values when function is called
+4. **Docstring**: Brief description of what the function does (always include this!)
+5. **Function body**: Indented code that does the actual work
+6. **`return` statement**: Sends a value back to whoever called the function
 
 When Python executes `calculate_mean(measurements)`, it creates a temporary namespace where `values = [23.5, 24.1, ...]`, runs the function body, and returns the result.
 
-:::{admonition} 🔍 Check Your Understanding
+:::{admonition} 🔍 Check Your Understanding #1
 :class: question
 
 What will this code print?
@@ -124,7 +111,6 @@ print(f"Product: {result}")
 It prints `Product: None`. The function calculates `product` but doesn't return it. Without an explicit `return` statement, Python functions return `None`. This is a common bug in scientific code!
 
 To fix it:
-
 ```python
 def calculate_product(x, y):
     product = x * y
@@ -157,7 +143,7 @@ report_statistics(temperatures, "Temperature (°C)")
 
 ### Returning Multiple Values
 
-Python functions can return multiple values using tuples — perfect for calculations that produce related results:
+Python functions can return multiple values using tuples—perfect for calculations that produce related results:
 
 ```{code-cell} ipython3
 def analyze_data(values):
@@ -257,37 +243,12 @@ print(f"Valid (positive)? {validate_result(energy, min_val=0)}")
 print(f"Valid (in range)? {validate_result(energy, 0, 10000)}")
 ```
 
-:::{important} 🌟 Why This Matters: The Therac-25 Radiation Overdose Disasters
-:class: dropdown
+:::{admonition} 🌟 Why This Matters: Validation Saves Missions
+:class: important
 
-Between 1985 and 1987, the Therac-25 radiation therapy machine caused at least six accidents where patients received massive radiation overdoses — up to 100 times the intended dose. Three patients died directly from the overdoses, and three others suffered serious injuries including paralysis.
+Validation functions aren't just good practice—they prevent catastrophic failures. When NASA's Mars Climate Orbiter was lost in 1999, the root cause was a simple unit mismatch: one team used pound-seconds while another expected Newton-seconds. A validation function checking that thrust values were within expected ranges would have caught this $327 million error immediately.
 
-The root cause was a software function that lacked proper validation. The machine could be configured in two modes: low-power electron beam (direct) or high-power X-ray mode (with a metal target to convert electrons to X-rays). A race condition in the control software meant that if an operator typed too quickly when changing modes, the validation function would pass but leave the machine in a lethal state: high power WITHOUT the metal target in place, delivering concentrated electron beams directly to patients.
-
-```python
-# Simplified illustration of the type of bug:
-def configure_beam(mode, power_level):
-    # FATAL FLAW: No validation that configuration is complete
-    # Race condition: if operator types fast, these can be inconsistent
-    set_mode(mode)        # Could be "electron" mode
-    set_power(power_level)  # Could be set to X-ray power level!
-    # No check that mode and power are compatible
-    
-# What it should have been:
-def configure_beam_safe(mode, power_level):
-    # Validate configuration before allowing beam
-    if mode == "electron" and power_level > ELECTRON_MAX:
-        raise ValueError("Power too high for electron mode!")
-    if mode == "xray" and not target_in_place():
-        raise ValueError("X-ray mode requires target!")
-    # Only proceed if validation passes
-    set_mode(mode)
-    set_power(power_level)
-```
-
-The tragedy led to fundamental changes in medical device software. Today, every critical function must validate inputs, check system state, and verify outputs. The few lines of validation code you write aren't bureaucratic overhead—they're the difference between healing and harm. Every time you add validation to your functions, you're following safety practices written in the aftermath of preventable deaths.
-
-[Source: Leveson, N.G. & Turner, C.S. (1993). "An Investigation of the Therac-25 Accidents". IEEE Computer, 26(7), 18-41.]
+This is why every function you write should validate its inputs and outputs. The few extra lines of validation code can save years of work and hundreds of millions of dollars!
 :::
 
 :::{admonition} 💡 Computational Thinking: Function Contract Design
@@ -295,18 +256,18 @@ The tragedy led to fundamental changes in medical device software. Today, every 
 
 Every well-designed function follows a contract pattern that applies across all programming:
 
-```markdown
+```
 CONTRACT PATTERN:
-1. **Preconditions:** What must be true before calling
-2. **Postconditions:** What will be true after calling  
-3. **Invariants:** What stays unchanged
-4. **Side effects:** What else happens
+1. Preconditions: What must be true before calling
+2. Postconditions: What will be true after calling  
+3. Invariants: What stays unchanged
+4. Side effects: What else happens
 
 Example for kinetic_energy_cgs():
-- **Precondition:** mass > 0, velocity is numeric
-- **Postcondition:** returns positive energy value
-- **Invariant:** input values unchanged
-- **Side effects:** none (pure function)
+- Precondition: mass > 0, velocity is numeric
+- Postcondition: returns positive energy value
+- Invariant: input values unchanged
+- Side effects: none (pure function)
 
 This pattern appears in:
 - Database transactions (ACID properties)
@@ -314,70 +275,55 @@ This pattern appears in:
 - Parallel computing (thread safety)
 - Unit testing (test contracts)
 ```
-
 :::
-
----
 
 ## 5.2 Function Arguments In-Depth
 
-:::{margin}
-**Parameter**  
+:::{margin} 
+**Parameter**
 A variable in a function definition that receives a value when the function is called.
 :::
->
-Python provides flexible ways to handle function **parameters**. Understanding the distinction between positional arguments, keyword arguments, and default values is crucial for designing clear, flexible interfaces. Let's explore this flexibility through progressive examples.
 
-:::{margin}
-**Argument**  
+:::{margin} 
+**Argument**
 The actual value passed to a function when calling it.
 :::
+
+Python provides flexible ways to handle function **parameters**. Understanding the distinction between positional arguments, keyword arguments, and default values is crucial for designing clear, flexible interfaces. Let's explore this flexibility through progressive examples.
 
 ### Positional vs Keyword Arguments
 
 ```{code-cell} ipython3
-def escape_velocity(mass_g, radius_cm):
+def calculate_force(mass_g, acceleration_cms2):
     """
-    Calculate escape velocity from a spherical body.
+    Calculate force using Newton's second law in CGS units.
     
     Parameters:
-        mass_g: mass of the body in grams
-        radius_cm: radius of the body in cm
+        mass_g: mass in grams
+        acceleration_cms2: acceleration in cm/s²
     
     Returns:
-        escape velocity in cm/s
+        force in dynes (g⋅cm/s²)
     """
-    G = 6.674e-8  # gravitational constant in cm³/(g⋅s²)
-    v_escape = (2 * G * mass_g / radius_cm) ** 0.5
-    return v_escape
+    force_dynes = mass_g * acceleration_cms2
+    return force_dynes
 
-# Earth parameters
-earth_mass = 5.972e27    # grams
-earth_radius = 6.371e8   # cm
+# Different ways to call the same function
+f1 = calculate_force(10, 980)                        # Positional only (Earth's gravity)
+f2 = calculate_force(mass_g=10, acceleration_cms2=980)  # Keywords (clear!)
+f3 = calculate_force(acceleration_cms2=980, mass_g=10)  # Keywords (any order!)
 
-# Correct calculation
-v_correct = escape_velocity(earth_mass, earth_radius)
+print(f"Positional: {f1:.1f} dynes")
+print(f"Keywords: {f2:.1f} dynes")  
+print(f"Reversed keywords: {f3:.1f} dynes")
 
-# WRONG: Arguments reversed
-v_wrong = escape_velocity(earth_radius, earth_mass)
-
-print(f"Correct escape velocity: {v_correct:.2e} cm/s = {v_correct/1e5:.1f} km/s")
-print(f"Wrong (args reversed): {v_wrong:.2e} cm/s")
-print(f"The wrong value is {v_correct/v_wrong:.0f}x too small!")
-
-# Keywords make intent clear
-v_safe = escape_velocity(radius_cm=earth_radius, mass_g=earth_mass)
-print(f"\nWith keywords: {v_safe:.2e} cm/s")
+# This would be wrong (arguments reversed):
+# f_wrong = calculate_force(980, 10)  # Would give 9800 instead of 98000
 ```
 
 ### Default Arguments Make Functions Flexible
 
-:::{margin}
-**Default Argument**  
-A parameter value specified in the function definition that is used when no argument is provided for that parameter during the function call.
-:::
-
-**Default arguments** let users omit parameters when standard values suffice:
+Default arguments let users omit parameters when standard values suffice:
 
 ```{code-cell} ipython3
 def simulate_decay(initial_atoms, half_life_years=5730, time_years=0):
@@ -410,25 +356,21 @@ print(f"U-238 after 1 billion years: {simulate_decay(n0, 4.5e9, 1e9):.0f} atoms"
 :class: note
 
 **Use Positional Arguments When:**
-
 - The meaning is obvious from context (`power(base, exponent)`)
 - There are only 1-2 required parameters
 - The order is natural and memorable
 
 **Use Keyword Arguments When:**
-
 - There are many parameters (>3)
 - Parameters are optional
 - The meaning isn't obvious (`process(True, False, 5)` vs `process(verbose=True, cache=False, retries=5)`)
 
 **Use Default Arguments When:**
-
 - There's a sensible standard value
 - Most calls use the same value
 - You want backward compatibility when adding features
 
 **Best Practice Progression:**
-
 1. Start with required positional arguments
 2. Add defaults for optional behaviors
 3. Use keyword-only arguments for clarity (see Advanced section)
@@ -459,16 +401,20 @@ print(f"Same list? {day1 is day2}")  # True - it's the same object!
 :class: warning
 
 This bug has appeared in:
-
 - CERN analysis scripts (accumulated all runs' data)  
 - NASA trajectory calculations (mixed mission parameters)
 - Weather prediction models (combined different forecasts)
 
-**The symptom:** data from previous runs mysteriously appears in new analyses.
+The symptom: data from previous runs mysteriously appears in new analyses.
 
-**The cause:** Python evaluates default arguments **once** when the function is defined, not each time it's called.
+The cause: Python evaluates default arguments **once** when the function is defined, not each time it's called.
 
 The fix: always use `None` as default for mutable arguments.
+:::
+
+:::{margin} 
+**Sentinel Value**
+A special value (like None) used to signal a particular condition, often used as a default for mutable arguments.
 :::
 
 Here's the correct pattern:
@@ -494,22 +440,15 @@ add_measurement_fixed(24.1, combined)
 print(f"Combined: {combined}")
 ```
 
-:::{margin}
-**Sentinel Value**  
-A special value (like `None`) used to signal a particular condition, often used as a default for mutable arguments.
-:::
-
 ### Variable Arguments (*args and **kwargs)
 
 :::{margin}
-`*args`  
+`*args`
 Collects extra positional arguments into a tuple.
 :::
 
->
-
 :::{margin}
-`**kwargs`  
+`**kwargs`
 Collects extra keyword arguments into a dictionary.
 :::
 
@@ -556,10 +495,10 @@ def run_experiment(name, **parameters):
     """
     print(f"=== Experiment: {name} ===")
     
-    # Default parameters in CGS units
+    # Default parameters
     defaults = {
-        'temperature_k': 293.15,       # Kelvin
-        'pressure_dynes_cm2': 1.01325e6,  # 1 atm in dynes/cm²
+        'temperature': 293.15,  # Kelvin
+        'pressure': 101325,     # Pascals
         'trials': 10
     }
     
@@ -579,320 +518,63 @@ result = run_experiment("Test A")
 # Complex call with many options
 result = run_experiment(
     "Test B",
-    temperature_k=350,
-    pressure_dynes_cm2=2e6,
+    temperature=350,
+    pressure=200000,
     trials=50,
     catalyst="Platinum"
 )
 ```
 
-### Parameter Ordering Rules
-
-Python enforces specific rules about parameter order in function definitions. These rules exist to make functions clearer and prevent ambiguous calls. Let's build up from simple to complex.
-
-#### Basic Rule: Required Before Optional
-
-The fundamental rule is that parameters with defaults must come after parameters without defaults:
-
-```{code-cell} ipython3
-# WRONG - SyntaxError!
-# def bad_function(x=10, y):  # Can't have required after optional
-#     pass
-
-# CORRECT - Required parameters first, then optional
-def good_function(x, y=10):
-    """Required 'x' must come before optional 'y'."""
-    return x + y
-
-# Usage
-print(good_function(5))      # x=5, y=10 (default)
-print(good_function(5, 20))  # x=5, y=20 (override)
-```
-
-#### The Complete Parameter Order
-
-Python supports different parameter types that must appear in a specific order. Here's the complete hierarchy:
-
-:::{list-table} Python Parameter Types (in required order)
-:header-rows: 1
-:widths: 10 20 30 40
-
-* - Order
-  - Type
-  - Syntax Example
-  - How to Call
-* - 1
-  - Positional-only
-  - `def f(x, y, /):`
-  - Must use position: `f(1, 2)`
-* - 2  
-  - Standard
-  - `def f(a, b):`
-  - Position or keyword: `f(1, 2)` or `f(a=1, b=2)`
-* - 3
-  - Default values
-  - `def f(x=10):`
-  - Optional: `f()` or `f(5)`
-* - 4
-  - *args
-  - `def f(*args):`
-  - Collects extras: `f(1, 2, 3)` → args=(1,2,3)
-* - 5
-  - Keyword-only (required)
-  - `def f(*, x):`
-  - Must use name: `f(x=5)` (required)
-* - 6
-  - Keyword-only with default
-  - `def f(*, x=10):`
-  - Optional keyword: `f()` or `f(x=5)`
-* - 7
-  - **kwargs
-  - `def f(**kwargs):`
-  - Collects extra keywords: `f(a=1, b=2)`
-:::
-
->
-
-:::{margin}
-**Positional-Only Parameter**  
-A parameter that can only be passed by position, not by name. Marked with `/` after such parameters (Python 3.8+).
-:::
-
->
-You rarely need all types in one function. Here are practical examples showing common combinations:
->
-
-:::{margin}
-**Keyword-Only Parameter**  
-A parameter that can only be passed by name, not by position. Created by placing parameters after `*args` or a bare `*`.
-:::
-
-```{code-cell} ipython3
-# Example 1: Mixing positional-only and keyword-only (Python 3.8+)
-def divide(numerator, denominator, /, *, precision=2):
-    """
-    numerator, denominator: must be positional
-    precision: must be keyword
-    """
-    result = numerator / denominator
-    return round(result, precision)
-
-print(divide(10, 3))                    # Uses default precision
-print(divide(10, 3, precision=4))       # Specifies precision
-# divide(numerator=10, denominator=3)   # ERROR! Must be positional
-
-# Example 2: Flexible argument collection
-def process(*data_points, normalize=True, **options):
-    """
-    data_points: any number of positional args
-    normalize: keyword-only parameter
-    options: any extra keyword arguments
-    """
-    print(f"Processing {len(data_points)} points")
-    print(f"Normalize: {normalize}")
-    print(f"Options: {options}")
-
-process(1, 2, 3, 4, normalize=False, threshold=0.5, verbose=True)
-```
-
-#### Understanding Keyword-Only Parameters
-
-Any parameter that comes AFTER `*args` (or a bare `*`) can ONLY be passed using its name. This feature makes function calls self-documenting:
-
-```{code-cell} ipython3
-# Without keyword-only: unclear what True and False mean
-def process_data_unclear(data, normalize, remove_outliers):
-    """What do the boolean parameters mean at the call site?"""
-    pass
-
-# Call is confusing:
-# process_data_unclear(measurements, True, False)  # What's True? What's False?
-
-# With keyword-only: self-documenting
-def process_data_clear(data, *, normalize=True, remove_outliers=False):
-    """The * forces callers to name the boolean parameters."""
-    if normalize:
-        # Normalize the data...
-        pass
-    if remove_outliers:
-        # Remove outliers...
-        pass
-
-# Call is clear:
-# process_data_clear(measurements, normalize=True, remove_outliers=False)
-```
-
-#### Common Patterns You'll Use
-
-```{code-cell} ipython3
-# Pattern 1: Simple function with defaults
-def calculate_interest(principal, rate=0.05, years=1):
-    """Most common pattern - some required, some optional."""
-    return principal * (1 + rate) ** years
-
-# Pattern 2: Collecting variable arguments
-def average(*numbers):
-    """Accept any number of arguments."""
-    if not numbers:
-        return 0
-    return sum(numbers) / len(numbers)
-
-print(f"Average of 2, 4, 6, 8: {average(2, 4, 6, 8)}")
-
-# Pattern 3: Force clarity with keyword-only
-def create_particle(mass, velocity, *, charge=0, spin=0.5):
-    """Mass and velocity are required, charge and spin must be named."""
-    return {
-        'mass': mass,
-        'velocity': velocity, 
-        'charge': charge,
-        'spin': spin
-    }
-
-# Clear what each parameter means:
-electron = create_particle(9.109e-28, 1e6, charge=-1.602e-19, spin=0.5)
-
-# Pattern 4: Flexible keyword arguments
-def plot(x, y, **options):
-    """Accept x, y, and any number of plot options."""
-    print(f"Plotting {len(x)} points")
-    for key, value in options.items():
-        print(f"  {key}: {value}")
-
-plot([1, 2, 3], [2, 4, 6], color='red', linewidth=2, marker='o')
-```
-
-#### Understanding the Special Markers
-
-:::{margin}
-**`/` Parameter Marker**  
-Forces all parameters before it to be positional-only. Parameters after `/` can be passed by position or keyword. Python 3.8+.
-
-:::
->
-Python uses two special markers to control how arguments can be passed:
->
-
-:::{margin}
-**`*` Parameter Marker**  
-Forces all parameters after it to be keyword-only. Can be used alone (`*, x`) or with `*args` to collect positional arguments.
-:::
-
-```{code-cell} ipython3
-# The / marker (Python 3.8+): everything before is positional-only
-def divide(dividend, divisor, /):
-    """Both arguments MUST be passed positionally."""
-    return dividend / divisor
-
-print(divide(10, 2))           # Works
-# print(divide(dividend=10, divisor=2))  # ERROR! Can't use keywords
-
-# The * marker: everything after is keyword-only  
-def configure(name, *, debug=False, verbose=False):
-    """name can be positional or keyword, others must be keyword."""
-    print(f"Configuring {name}")
-    if debug:
-        print("  Debug mode enabled")
-    if verbose:
-        print("  Verbose output enabled")
-
-configure("MyApp", debug=True)  # Must name debug
-# configure("MyApp", True)  # ERROR! Can't pass debug positionally
-```
-
-::::{admonition} 🔍 Check Your Understanding #2
+:::{admonition} 🔍 Check Your Understanding #2
 :class: question
 
-Which of these function definitions are valid, and how would you call each?
+What's wrong with this function definition, and how would you fix it?
 
 ```python
-# Definition A
-def func_a(x, y=1, *args, z):
-    pass
-
-# Definition B  
-def func_b(x, *args, z, y=1):
-    pass
-
-# Definition C
-def func_c(x, y=1, z=2, *args):
-    pass
-
-# Definition D
-def func_d(x, /, y, *, z):
+def process_data(values, scale=1.0, *extra, normalize=True):
+    # Process data with options
     pass
 ```
 
-:::{dropdown} Answer
+<details>
+<summary>Answer</summary>
 
-**A: VALID** - `z` is keyword-only (required) because it comes after `*args`
+The parameter order is wrong! Python requires this order:
+1. Regular positional parameters
+2. *args (if any)
+3. Keyword parameters with defaults
+4. **kwargs (if any)
 
+Correct version:
 ```python
-func_a(1, 2, 3, 4, z=5)  # x=1, y=2, args=(3,4), z=5
-func_a(1, z=5)           # x=1, y=1 (default), args=(), z=5
-func_a(1, 2, 3)          # ERROR: missing required keyword argument 'z'
+def process_data(values, *extra, scale=1.0, normalize=True):
+    # Now the order is correct
+    pass
 ```
 
-**B: VALID** - Both `z` (required) and `y` (optional) are keyword-only
-
-```python
-func_b(1, 2, 3, z=5)     # x=1, args=(2,3), z=5, y=1 (default)
-func_b(1, z=5, y=4)      # x=1, args=(), z=5, y=4
-func_b(1, 2, 3)          # ERROR: missing required keyword 'z'
-```
-
-**C: VALID** - Standard pattern, `*args` collects extras at the end
-
-```python
-func_c(1, 2, 3, 4, 5)    # x=1, y=2, z=3, args=(4,5)
-func_c(1)                # x=1, y=1 (default), z=2 (default), args=()
-func_c(1, 10)            # x=1, y=10, z=2 (default), args=()
-```
-
-**D: VALID** (Python 3.8+) - Mixed positioning rules
-
-- `x` must be passed positionally (before `/`)
-- `y` can be positional or keyword (between `/` and `*`)
-- `z` must be passed as keyword (after `*`)
-
-```python
-func_d(1, 2, z=3)        # Valid: positional x, positional y, keyword z
-func_d(1, y=2, z=3)      # Valid: positional x, keyword y, keyword z
-func_d(x=1, y=2, z=3)    # ERROR: x must be positional (not keyword)
-func_d(1, 2, 3)          # ERROR: z must be keyword (not positional)
-```
-
-**Key Patterns to Remember:**
-
-- Parameters after `*args` or `*` are keyword-only
-- Parameters before `/` are positional-only (Python 3.8+)
-- Required parameters must come before optional ones in each section
+The original would give a SyntaxError because *extra can't come after a keyword parameter with a default.
+</details>
 :::
-::::
 
 ## 5.3 Scope and Namespaces
 
-:::{margin}
-**Scope**  
+:::{margin} **Scope**
 The region of a program where a variable is accessible.
 :::
->
 
-Understanding scope—where variables can be accessed—is crucial for writing bug-free code. Python's scope rules determine which variables are visible at any point in your program. Without understanding scope, you'll encounter confusing bugs where variables don't have the values you expect, or worse, where changing a variable in one place mysteriously affects code elsewhere.
-
-:::{margin}
-**Namespace**  
+:::{margin} **Namespace**  
 A container that holds a set of identifiers and their associated objects.
 :::
 
+Understanding scope—where variables can be accessed—is crucial for writing bug-free code. Python's scope rules determine which variables are visible at any point in your program. Without understanding scope, you'll encounter confusing bugs where variables don't have the values you expect, or worse, where changing a variable in one place mysteriously affects code elsewhere.
+
 ### The LEGB Rule
 
-:::{margin}
-**LEGB**   
+:::{margin} **LEGB**
 Local, Enclosing, Global, Built-in - Python's scope resolution order.
 :::
 
-Python resolves variable names using the **LEGB** rule, searching in this order:
+Python resolves variable names using the LEGB rule, searching in this order:
 
 - **L**ocal: Inside the current function
 - **E**nclosing: In the enclosing function (for nested functions)  
@@ -935,7 +617,7 @@ print(f"Global scope: c = {speed_of_light:.2e} cm/s")
 print(f"Final energy: {result:.2e} ergs = {result/1.602e-12:.2f} eV")
 ```
 
-### The `UnboundLocalError` Trap
+### The UnboundLocalError Trap
 
 ```{code-cell} ipython3
 counter = 0  # Global
@@ -967,28 +649,25 @@ increment_with_global()
 print(f"Global counter: {counter}")
 ```
 
-:::{admonition} ⚠️ Common Bug Alert: `UnboundLocalError`
+:::{admonition} ⚠️ Common Bug Alert: UnboundLocalError 
 :class: warning
 
 The error happens because Python sees you're assigning to `counter`, assumes it's local, but then can't find a local value to increment.
 
-**Symptoms:**
-
+Symptoms: 
 - Variable works fine when reading
 - Crashes when trying to modify  
 - Error message mentions "referenced before assignment"
 
-**Fix:** Either use `global` keyword or (better) pass the value explicitly.
+Fix: Either use `global` keyword or (better) pass the value explicitly.
 
-**Real disaster:** A climate model that tried to update global temperature but created local variables instead, producing nonsense results for months before discovery.
+Real disaster: A climate model that tried to update global temperature but created local variables instead, producing nonsense results for months before discovery.
 :::
 
 ### Closures: Functions That Remember
 
-:::{margin} 
-**Closure**  
+{margin} Closure
 A function that remembers variables from its enclosing scope even after that scope has finished.
-:::
 
 ```{code-cell} ipython3
 def create_integrator(method='rectangle'):
@@ -1062,9 +741,8 @@ outer()
 
 Each function sees its own local variable. The inner function's `x` doesn't affect the outer function's `x`. They're in different namespaces!
 
-**Output:**
-
-```markdown
+Output:
+```
 Inner sees: inner
 Outer sees: outer
 ```
@@ -1099,24 +777,18 @@ GOOD: calculate(units='metric')
 
 ## 5.4 Functional Programming Elements
 
-:::{margin
-**Side Effect**  
+{margin} Side Effect
 Any state change that occurs beyond returning a value from a function, such as modifying global variables or printing output.
-:::
 
-:::{margin}
-**Pure Function**  
+{margin} Pure Function
 A function that always returns the same output for the same input with no side effects.
-:::
 
 Python supports functional programming—a style that treats computation as the evaluation of mathematical functions. These concepts are essential for modern scientific frameworks like JAX and lead to cleaner, more testable code.
 
 ### Lambda Functions
 
-:::{margin}
-**Lambda**  
+{margin} Lambda
 An anonymous function defined inline using the `lambda` keyword.
-:::
 
 Lambda functions are small, anonymous functions defined inline:
 
@@ -1183,11 +855,6 @@ print(f"Calibrated: {[f'{x:.1f}' for x in calibrated]}")
 # REDUCE: Calculate mean
 mean = reduce(lambda a, b: a + b, calibrated) / len(calibrated)
 print(f"Final mean: {mean:.1f} cm/s²")
-
-# Note: These functional patterns are essential for JAX
-# Pure functions enable automatic differentiation
-# Map operations parallelize on GPUs
-# Immutable data prevents side effects
 ```
 
 :::{admonition} 🔍 Check Your Understanding #4
@@ -1226,6 +893,7 @@ The list comprehension is generally preferred in Python for readability, but und
 ### Functions as First-Class Objects
 
 In Python, functions are objects you can pass around:
+
 
 ```{code-cell} ipython3
 def apply_operator(data, operator_func):
@@ -1286,29 +954,24 @@ Example: In JAX, you can automatically differentiate through an entire physics s
 
 ## 5.5 Modules and Packages
 
-:::{margin}
-**Module**  
+{margin} Module
 A Python file containing definitions and statements that can be imported.
-:::
+
+{margin} Package
+A directory containing multiple Python modules and an `__init__.py` file.
 
 As your analysis grows from scripts to projects, organization becomes critical. Modules let you organize related functions together and reuse them across projects.
->
-
-:::{margin}
-**Package**  
-A directory containing multiple Python modules and an `__init__.py` file.
-:::
 
 ### Creating Your First Module
 
 :::{admonition} 📝 Creating Module Files
 :class: note
 
-You can create module files two ways:
-1. **Recommended**: Use your text editor to create a new `.py` file
-2. **For this tutorial**: We'll programmatically create files for consistency
+To create a module, you need to save Python code in a separate `.py` file. You can either:
+1. **Create manually**: Open a new file in your editor, paste the code, and save as `statistics_tools.py`
+2. **Create programmatically**: Use the code below to generate the file
 
-If the programmatic method fails in your environment, manually create the files with the shown content.
+For this course, we recommend creating files manually in your editor for better understanding.
 :::
 
 Save this as `statistics_tools.py` in your current directory:
@@ -1607,6 +1270,56 @@ The investigation revealed four critical lessons about function design:
 Every validation function you write, every bounds check you add, every type conversion you verify—these aren't bureaucratic overhead. They're the difference between mission success and catastrophic failure. This disaster led directly to modern software engineering practices that require explicit contracts for all functions, comprehensive range checking, and formal verification of critical code paths.
 :::
 
+
+:class: history
+
+In 1990, the Hubble Space Telescope launched with a precisely ground mirror that was perfectly wrong. The primary mirror's shape was off by just 2.2 micrometers—1/50th the width of a human hair—but this tiny error made the $1.5 billion telescope nearly useless for its first three years.
+
+The cause? A spacing error in the reflective null corrector, the device used to test the mirror during grinding. But the real failure was in the testing software's validation functions. The quality control program had a function like this:
+
+```python
+def validate_mirror_test(measurement, reference):
+    """Check if mirror measurement matches reference."""
+    difference = abs(measurement - reference)
+    threshold = 0.01  # Arbitrary threshold!
+    
+    if difference < threshold:
+        return "PASS"
+    else:
+        return "FAIL"
+```
+
+The problem? When two independent tests disagreed, engineers trusted the wrong one. The software's validation function didn't:
+- Check which test was more reliable
+- Validate the validation equipment itself
+- Require agreement between multiple independent methods
+- Flag when results were suspiciously perfect
+
+A proper validation would have looked like:
+
+```python
+def validate_mirror_comprehensive(test1, test2, test3):
+    """Require agreement between independent tests."""
+    # Check all tests are within tolerance of each other
+    if not all_agree([test1, test2, test3], tolerance=0.001):
+        raise ValueError("Independent tests disagree!")
+    
+    # Check results aren't suspiciously perfect
+    if any(is_too_perfect(test) for test in [test1, test2, test3]):
+        raise ValueError("Measurement suspiciously perfect - check equipment!")
+    
+    # Validate the validators
+    if not validate_test_equipment():
+        raise ValueError("Test equipment out of calibration!")
+    
+    return statistics.mean([test1, test2, test3])
+```
+
+The incorrect mirror required a dramatic Space Shuttle servicing mission in 1993 to install corrective optics. The lesson? In scientific computing, your validation functions are as critical as your calculations. A thorough validation function—checking multiple independent sources, validating the validators, and flagging suspicious results—would have caught this error on the ground instead of in orbit.
+
+Today, Hubble's legacy includes not just stunning images and revolutionary science, but also a fundamental lesson: never trust a single test, always validate your validators, and remember that perfect results are often perfectly wrong.
+:::
+
 ## 5.6 Documentation and Testing
 
 Good documentation and testing make your functions trustworthy and reusable. Professional scientific code requires both to ensure reproducibility and reliability.
@@ -1899,10 +1612,8 @@ print("\nLesson: Overhead only matters for trivial operations!")
 
 ### Memoization for Expensive Calculations
 
-:::{margin}
-**Memoization**  
+{margin} Memoization
 Caching function results to avoid recomputing expensive operations.
-:::
 
 ```{code-cell} ipython3
 from functools import lru_cache
@@ -1919,30 +1630,6 @@ def fib_fast(n):
     if n < 2:
         return n
     return fib_fast(n-1) + fib_fast(n-2)
-
-# Add astrophysics-specific memoization example
-@lru_cache(maxsize=128)
-def planck_function(wavelength_nm, temp_k):
-    """
-    Cached Planck function for blackbody radiation.
-    Expensive calculation cached for repeated calls.
-    Common in spectral fitting where same temps recur.
-    """
-    import math
-    h = 6.626e-27  # Planck constant in erg⋅s
-    c = 2.998e10   # Speed of light in cm/s
-    k = 1.381e-16  # Boltzmann constant in erg/K
-    
-    wavelength_cm = wavelength_nm * 1e-7
-    
-    # Planck function calculation
-    exp_term = (h * c) / (wavelength_cm * k * temp_k)
-    if exp_term > 700:  # Prevent overflow
-        return 0
-    
-    numerator = 2 * h * c**2 / wavelength_cm**5
-    denominator = math.exp(exp_term) - 1
-    return numerator / denominator
 
 # Compare performance
 import time
@@ -1964,10 +1651,170 @@ print(f"Speedup: {time_slow/time_fast:.0f}x")
 
 # Check cache statistics
 print(f"\nCache info: {fib_fast.cache_info()}")
+```
 
-# Test Planck function caching
-print(f"\nPlanck function at 500nm, 5778K: {planck_function(500, 5778):.2e} erg/(s⋅cm²⋅cm⋅sr)")
-print(f"Cache info: {planck_function.cache_info()}")
+## Practice Exercises
+
+### Exercise 5.1: Build Statistical Analysis Functions
+
+Create a suite of analysis functions for experimental data:
+
+```{code-cell} ipython3
+def calculate_statistics(data):
+    """
+    Calculate comprehensive statistics.
+    
+    TODO: Your implementation should:
+    1. Handle empty lists (return None or raise ValueError)
+    2. Check for None values in the data
+    3. Return a dictionary with: mean, std, min, max, median
+    
+    Example return value:
+    {'mean': 5.2, 'std': 1.3, 'min': 3.1, 'max': 7.8, 'median': 5.0}
+    """
+    # Your implementation here
+    # Start with: if not data: return None
+    pass
+
+def remove_outliers(data, n_sigma=3):
+    """
+    Remove points more than n_sigma standard deviations from mean.
+    
+    TODO: Your implementation should:
+    1. Calculate mean and standard deviation
+    2. Keep only values within mean ± n_sigma*std
+    3. Return filtered list
+    
+    Hint: Use the statistics from calculate_statistics()
+    """
+    # Your implementation here
+    pass
+
+def bootstrap_error(data, statistic_func=None, n_samples=1000):
+    """
+    Estimate error using bootstrap resampling.
+    
+    TODO (Advanced challenge!):
+    1. Default to mean if no statistic_func provided
+    2. Resample data with replacement n_samples times
+    3. Calculate statistic for each resample
+    4. Return standard deviation of the statistics
+    
+    Hint: Use random.choices(data, k=len(data)) for resampling
+    """
+    # Your implementation here
+    pass
+
+# Test with sample data
+test_data = [9.8, 9.7, 10.1, 9.9, 50.0, 9.8, 10.0, 9.9]  # Note outlier!
+print(f"Original data: {test_data}")
+print("Implement the functions above to analyze this data!")
+
+# Once implemented, you should be able to:
+# stats = calculate_statistics(test_data)
+# clean_data = remove_outliers(test_data, n_sigma=2)
+# error = bootstrap_error(clean_data)
+```
+
+### Exercise 5.2: Create a Scientific Module
+
+Build `analysis_tools.py` module:
+
+```python
+"""
+analysis_tools.py - Data analysis utilities
+
+TODO: Create this module with:
+1. Constants (confidence levels, etc.)
+2. Statistical functions
+3. Data cleaning functions
+4. Plotting helpers
+5. Module testing in __main__
+"""
+
+# Your module here
+```
+
+### Exercise 5.3: Variable Star Analysis Functions
+
+Continue building our variable star analysis toolkit:
+
+```{code-cell} ipython3
+def generate_cepheid_data(period_days=5.4, amplitude_mag=0.3, n_points=50):
+    """
+    Generate simulated Cepheid variable star data.
+    
+    Parameters:
+        period_days: Period in days
+        amplitude_mag: Amplitude in magnitudes
+        n_points: Number of observations
+    
+    Returns:
+        times, magnitudes, errors (all as lists)
+    """
+    import random
+    import math
+    
+    times = []
+    mags = []
+    errors = []
+    
+    for i in range(n_points):
+        # Irregular sampling
+        t = i * period_days / 10 + random.uniform(-0.1, 0.1)
+        
+        # Cepheid light curve (asymmetric - rises quickly, falls slowly)
+        phase = (t % period_days) / period_days
+        
+        if phase < 0.3:
+            # Rising branch (quick brightening)
+            mag = 12.0 - amplitude_mag * (phase / 0.3)
+        else:
+            # Falling branch (slow dimming)
+            mag = 12.0 - amplitude_mag * math.exp(-(phase - 0.3) / 0.4)
+        
+        # Add realistic noise
+        mag += random.gauss(0, 0.02)
+        error = 0.01 + 0.01 * random.random()
+        
+        times.append(t)
+        mags.append(mag)
+        errors.append(error)
+    
+    return times, mags, errors
+
+# Create analysis functions (for you to implement)
+def find_period_simple(times, mags):
+    """
+    TODO: Estimate period from data.
+    Hint: Look for repeating patterns in brightness!
+    
+    One approach:
+    1. Find time between brightness minima
+    2. Average these intervals
+    3. Return estimated period
+    """
+    # Your implementation here
+    pass
+
+def phase_fold(times, mags, period):
+    """
+    TODO: Fold data on given period.
+    
+    Algorithm:
+    1. Calculate phase for each time: phase = (time % period) / period
+    2. Sort by phase
+    3. Return phases and corresponding magnitudes
+    """
+    # Your implementation here
+    pass
+
+# Generate and analyze data
+t, m, e = generate_cepheid_data()
+print(f"Generated {len(t)} observations")
+print(f"Time range: {min(t):.1f} to {max(t):.1f} days")
+print(f"Magnitude range: {min(m):.2f} to {max(m):.2f}")
+print("\nImplement the analysis functions to find the period!")
 ```
 
 ## Main Takeaways
@@ -2004,7 +1851,7 @@ Looking forward, the functions you've learned to write here form the foundation 
 
 **lambda** - An anonymous function defined inline using the `lambda` keyword
 
-**LEGB** - The order Python searches for variables: **L**ocal, **E**nclosing, **G**lobal, **B**uilt-in
+**LEGB** - The order Python searches for variables: Local, Enclosing, Global, Built-in
 
 **memoization** - Caching function results to avoid recomputing expensive operations
 
@@ -2023,8 +1870,6 @@ Looking forward, the functions you've learned to write here form the foundation 
 **return value** - The result that a function sends back to the code that called it
 
 **scope** - The region of a program where a variable is accessible
-
-**sentinel value** - A special value (like None) used to signal a particular condition, often as default for mutable arguments
 
 **side effect** - Any state change that occurs beyond returning a value from a function
 
@@ -2117,9 +1962,10 @@ The functional programming concepts from this chapter provide essential backgrou
    - LIGO Scientific Collaboration. (2021). "LIGO Algorithm Library - LALSuite." Available at: https://lscsoft.docs.ligo.org/lalsuite/
    - LIGO Open Science Center. (2024). "LIGO Open Data." Available at: https://www.gw-openscience.org/
 
-3. **Therac-25 Radiation Overdose Disasters (1985-1987)**
-   - Leveson, N.G. & Turner, C.S. (1993). "An Investigation of the Therac-25 Accidents." *IEEE Computer*, 26(7), 18-41.
-   - "Therac-25." Wikipedia, The Free Encyclopedia. Wikimedia Foundation, Inc. Retrieved from: https://en.wikipedia.org/wiki/Therac-25
+3. **Hubble Space Telescope Mirror Error (1990)**
+   - Allen, L. et al. (1990). "The Hubble Space Telescope Optical Systems Failure Report." NASA-TM-103443.
+   - Chaisson, E. (1994). *The Hubble Wars*. New York: HarperCollins. ISBN 0-06-017114-6.
+   - Leckrone, D. S. (1995). "The Hubble Space Telescope Servicing Mission." *Astrophysics and Space Science*, 226(1), 1-24.
 
 4. **Mars Climate Orbiter Loss (1999)**
    - Stephenson, A. G. et al. (1999). "Mars Climate Orbiter Mishap Investigation Board Report." NASA.

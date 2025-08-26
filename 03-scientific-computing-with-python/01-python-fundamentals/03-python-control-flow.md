@@ -1,14 +1,11 @@
 ---
-title: Control Flow & Logic
+title: "Chapter 3: Control Flow & Logic"
+subtitle: "Module 1: Python Fundamentals"
 exports:
   - format: pdf
 ---
 
-# Chapter 3: Control Flow & Logic
-
-## Learning Objectives
-
-By the end of this chapter, you will be able to:
+%# Chapter 3: Control Flow & Logic
 
 ## Learning Objectives
 
@@ -38,6 +35,8 @@ By the end of this chapter, you will be able to:
 If any boxes are unchecked, review the indicated chapters first.
 :::
 
+---
+
 ## Chapter Overview
 
 Programming is fundamentally about teaching computers to make decisions and repeat tasks. When you write an **if** statement or a loop, you're translating human logic into instructions a machine can follow. But here's the critical insight that separates computational thinkers from mere coders: the logic must be designed before it's implemented. This chapter transforms you from someone who writes code to someone who designs algorithms.
@@ -45,6 +44,8 @@ Programming is fundamentally about teaching computers to make decisions and repe
 We'll start with the lost art of pseudocode — not as a bureaucratic exercise, but as the difference between code that works by accident and code that works by design. You'll learn to recognize universal patterns that appear across all of computational physics: iteration, accumulation, filtering, mapping, and reduction. These patterns will appear in every project you build, from N-body simulations to neural networks. Whether you're folding light curves to find exoplanet periods or iterating until your stellar model converges, these patterns form the backbone of computational astronomy.
 
 The control flow structures we explore here are where your numerical calculations from Chapter 2 become dynamic algorithms. Every convergence test, every adaptive timestep, every Monte Carlo acceptance criterion depends on mastering these concepts deeply, not just syntactically. By chapter's end, you'll see code not as a sequence of commands, but as a carefully orchestrated flow of decisions and iterations that solve real scientific problems. You'll write algorithms that could process data from the James Webb Space Telescope or control the adaptive optics on the next generation of ground-based observatories.
+
+---
 
 ## 3.1 Algorithmic Thinking: The Lost Art of Pseudocode
 
@@ -228,6 +229,8 @@ This pattern appears everywhere in computational astrophysics:
 
 Once you recognize this pattern, you'll see it in every sophisticated astronomical code!
 :::
+
+---
 
 ## 3.2 Boolean Logic in Scientific Computing
 
@@ -518,6 +521,8 @@ Checking distance first avoids millions of expensive velocity calculations per d
 
 :::
 
+---
+
 ## 3.3 Conditional Statements: Teaching Computers to Decide
 
 :::{margin}
@@ -527,7 +532,7 @@ Early return statement that handles edge cases before main logic
 
 Conditional statements are where your code makes decisions. In scientific computing, these decisions often involve numerical thresholds, convergence criteria, and boundary conditions. Let's build your intuition for writing robust conditionals that could run on spacecraft or control telescopes!
 
-### The if Statement: Your First Decision Maker
+### The `if` Statement: Your First Decision Maker
 
 The **if** statement is the simplest conditional — it executes code only when a condition is true:
 
@@ -553,7 +558,7 @@ if stellar_mass > 8:
     remnant = "neutron star or black hole"
 ```
 
-### The if-else Statement: Binary Decisions
+### The `if`-`else` Statement: Binary Decisions
 
 The **else** clause provides an alternative when the condition is false:
 
@@ -581,7 +586,7 @@ else:
     confidence = "low"
 ```
 
-### The elif Statement: Multiple Choices
+### The `elif` Statement: Multiple Choices
 
 The **elif** (else if) statement allows multiple conditions to be checked in sequence:
 
@@ -720,11 +725,13 @@ def process_thrust_data(force, units):
 The orbiter entered Mars atmosphere at 57 km instead of 226 km altitude and disintegrated. Your guard clauses aren't just good practice — they prevent disasters!
 :::
 
+---
+
 ## 3.4 Loops: The Heart of Scientific Computation
 
 Now that you've mastered making decisions with conditionals, let's make your code repeat tasks efficiently! Loops are where your programs gain superpowers — they're the difference between analyzing one star and analyzing millions. Every N-body simulation, every light curve analysis, every Monte Carlo calculation depends on loops. The patterns you learn here will appear in every algorithm you write for the rest of your career.
 
-### The for Loop: Iterating Over Sequences
+### The `for` Loop: Iterating Over Sequences
 
 The **for** loop iterates over any sequence (list, tuple, string, range):
 
@@ -778,7 +785,7 @@ print(f"Total cluster mass: {total_mass:.1f} Msun")
 # - Weighted mean magnitudes
 ```
 
-### Common for Loop Patterns
+### Common `for` Loop Patterns
 
 Python provides several useful functions for loop patterns:
 
@@ -802,7 +809,7 @@ for t, x in zip(times, positions):
         print(f"  t={t}s: v={velocity:.1f} m/s")
 ```
 
-### The while Loop: Conditional Iteration
+### The `while` Loop: Conditional Iteration
 
 The **while** loop continues as long as a condition remains true:
 
@@ -828,7 +835,7 @@ while abs(value - target) > 0.01 and iteration < 100:  # Safety limit!
 print(f"Converged to {value:.3f} after {iteration} iterations")
 ```
 
-### Loop Control: break, continue, and else
+### Loop Control: `break`, `continue`, and `else`
 
 Python provides additional loop control statements:
 
@@ -864,7 +871,7 @@ else:  # This runs because we didn't break
     print(f"Target {target} not found in list")
 ```
 
-### The pass Statement: Placeholder
+### The `pass` Statement: Placeholder
 
 The **pass** statement does nothing — useful as a placeholder:
 
@@ -964,6 +971,8 @@ while i < 10:
 Always add a maximum iteration safeguard!
 :::
 
+---
+
 ## 3.5 List Comprehensions: Elegant and Efficient
 
 Now that you've mastered loops, let's evolve them into something even more powerful! List comprehensions are Python's gift to scientific programmers. They transform verbose loops into concise, readable, and faster expressions.
@@ -1039,6 +1048,8 @@ L_values = [5e9, 2e10, 8e10, 3e9]
 galaxy_types = classify_galaxies(z_values, L_values)
 print(f"Galaxy classifications: {galaxy_types}")
 ```
+
+---
 
 ## 3.6 Advanced Control Flow Patterns
 
@@ -1130,6 +1141,8 @@ This pattern appears throughout astrophysics:
 
 Master this pattern and you've mastered half of computational astrophysics!
 :::
+
+---
 
 ## 3.7 Debugging Control Flow
 
@@ -1435,6 +1448,8 @@ def assign_telescope_priority_fixed(observation):
 This type of subtle logic error is common in real telescope scheduling software and can lead to suboptimal observation planning!
 :::
 
+---
+
 ## Main Takeaways
 
 What an incredible journey you've just completed! You've transformed from someone who writes code line by line to someone who designs algorithms systematically. This transformation mirrors the evolution every computational scientist goes through, from tentative beginner to confident algorithm designer.
@@ -1450,6 +1465,8 @@ The loop patterns you've mastered are universal across computational physics. Th
 Most importantly, you've learned that bugs aren't failures — they're learning opportunities. Every infinite loop teaches you about termination conditions. Every off-by-one error reinforces proper indexing. The debugging strategies you've developed, from strategic print statements to assertions, will serve you throughout your career. Even the experts at NASA and ESA use these same techniques.
 
 Remember that every major computational achievement relies on these fundamentals. The control flow patterns you've learned detected gravitational waves at LIGO, discovered thousands of exoplanets with Kepler, and process images from JWST. You're not just learning Python syntax — you're joining a tradition of computational thinking that enables humanity's greatest discoveries.
+
+---
 
 ## Definitions
 
@@ -1501,6 +1518,8 @@ Remember that every major computational achievement relies on these fundamentals
 
 **while**: Loop that continues executing as long as a specified condition remains true.
 
+---
+
 ## Key Takeaways
 
 ✓ Pseudocode reveals logical flaws before they become bugs — always design before implementing
@@ -1532,6 +1551,8 @@ Remember that every major computational achievement relies on these fundamentals
 ✓ Use **assert** statements to document and enforce assumptions during development
 
 ✓ Every major astronomical discovery relies on the control flow patterns you've learned
+
+---
 
 ## Quick Reference Tables
 
@@ -1717,46 +1738,55 @@ Remember that every major computational achievement relies on these fundamentals
   - `if value == -999: break`
 ```
 
+---
+
 ## Python Module & Method Reference (Chapter 3 Additions)
 
 ### New Built-in Functions
 
-**Logical Testing**
+**Logical Testing**  
+
 - `all(iterable)` - Returns True if all elements are true
 - `any(iterable)` - Returns True if any element is true
 - `isinstance(obj, type)` - Check if object is of specified type
 
-**Loop Support**
+**Loop Support**  
+
 - `enumerate(iterable, start=0)` - Returns index-value pairs
 - `zip(*iterables)` - Combines multiple iterables for parallel iteration
 - `range(start, stop, step)` - Generate arithmetic progression
 
 ### Control Flow Keywords
 
-**Conditionals**
+**Conditionals**  
+
 - `if` - Execute block if condition is true
 - `elif` - Check additional condition if previous was false
 - `else` - Execute if all previous conditions were false
 
-**Loops**
+**Loops**  
+
 - `for` - Iterate over sequence
 - `while` - Loop while condition is true
 - `break` - Exit loop immediately
 - `continue` - Skip to next iteration
 - `else` - Execute if loop completes without break
 
-**Other**
+**Other**  
+
 - `pass` - Null operation placeholder
 - `assert` - Raise AssertionError if condition is false
 
 ### Operators
 
-**Comparison**
+**Comparison**  
+
 - `>`, `<`, `>=`, `<=`, `==`, `!=` - Numerical comparisons
 - `is`, `is not` - Identity comparisons
 - `in`, `not in` - Membership testing
 
-**Logical**
+**Logical**  
+
 - `and` - Logical AND with short-circuit evaluation
 - `or` - Logical OR with short-circuit evaluation  
 - `not` - Logical NOT (inversion)
@@ -1766,6 +1796,7 @@ Remember that every major computational achievement relies on these fundamentals
 ```python
 import math
 ```
+
 - `math.isclose(a, b, rel_tol=1e-9, abs_tol=0.0)` - Safe floating-point comparison
 - `math.isfinite(x)` - Check if neither infinite nor NaN
 - `math.isnan(x)` - Check if value is NaN
@@ -1773,11 +1804,13 @@ import math
 
 ### Debugging Support
 
-**IPython Magic Commands**
+**IPython Magic Commands**  
+
 - `%debug` - Enter debugger after exception
 - `%pdb` - Automatic debugger on exceptions
 
 **Debugger Commands** (when in pdb)
+
 - `p variable` - Print variable value
 - `pp variable` - Pretty-print variable
 - `l` - List code around current line
@@ -1786,6 +1819,8 @@ import math
 - `c` - Continue execution
 - `u/d` - Move up/down call stack
 - `q` - Quit debugger
+  
+---
 
 ## Next Chapter Preview
 
@@ -1795,4 +1830,4 @@ Imagine trying to find a specific star in a catalog of millions. With a list, yo
 
 The control flow patterns you've mastered here will operate on the data structures you'll learn next. Your loops will iterate through dictionaries of astronomical objects. Your conditionals will filter sets of observations. Your comprehensions will transform lists of measurements into meaningful results. Together, control flow and data structures give you the power to handle the massive datasets of modern astronomy — from Gaia's billion-star catalog to the petabytes of data from the Square Kilometre Array.
 
-Get excited — Chapter 4 is where your code goes from processing dozens of data points to handling millions efficiently!
+Get excited — Chapter 4 is where your code goes from processing dozens of data points to handling thousands efficiently!

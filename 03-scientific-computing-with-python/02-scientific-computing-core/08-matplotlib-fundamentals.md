@@ -1,23 +1,22 @@
 ---
-title: Matplotlib - Visualizing Your Universe
+title: "Chapter 8: Matplotlib - Visualizing Your Universe"
+subtitle: "Module 2: Scientific Computing Core"
 exports:
   - format: pdf
 ---
-
-# ⚠️ Chapter 8: Matplotlib - Visualizing Your Universe
 
 ## Learning Objectives
 
 By the end of this chapter, you will be able to:
 
-- Create publication-quality scientific plots using Matplotlib's object-oriented interface
-- Master the anatomy of a figure: axes, subplots, labels, and legends
-- Visualize astronomical data including light curves, spectra, and images
-- Choose appropriate scaling (linear, log, semilog) for different data relationships
-- Experiment iteratively to find the most revealing visualization
-- Build reusable plotting modules for common astronomical visualizations
-- Apply appropriate color maps and scaling for different types of data
-- Export figures in various formats with proper resolution and sizing
+- [ ] **(1) Implement** Matplotlib's object-oriented interface to create publication-quality scientific figures with full control over every visual element
+- [ ] **(2) Analyze** the hierarchical structure of Matplotlib figures to manipulate axes, subplots, labels, legends, and other components independently
+- [ ] **(3) Design** appropriate visualizations for different astronomical data types (light curves, spectra, images, color-magnitude diagrams) by selecting optimal plot types
+- [ ] **(4) Evaluate** and choose between linear, logarithmic, and semilog scales to reveal hidden patterns and relationships in your data
+- [ ] **(5) Debug** visualization problems through iterative experimentation with different representations, scales, and visual encodings
+- [ ] **(6) Create** reusable plotting functions that encapsulate domain knowledge and best practices for common astronomical visualizations
+- [ ] **(7) Apply** perceptually uniform colormaps and appropriate normalizations to honestly represent 2D data and avoid creating visual artifacts
+- [ ] **(8) Configure** export settings (DPI, format, size) to meet publication requirements for journals, presentations, and web display
 
 ## Prerequisites Check
 
@@ -67,13 +66,15 @@ X, Y = np.meshgrid(np.arange(5), np.arange(3))
 If you got all four correct, you're ready for Matplotlib! If not, review Chapter 7.
 :::
 
+---
+
 ## Chapter Overview
 
-Data without visualization is like a telescope without an eyepiece — you might have collected photons from distant galaxies, but you can't see the universe they reveal. Every major astronomical discovery of the past century has been communicated through carefully crafted visualizations: Hubble's plot showing the expanding universe (Hubble 1929), Hertzsprung and Russell's diagram revealing stellar evolution, the power spectrum of the cosmic microwave background proving inflation theory. These weren't just pretty pictures; they were visual arguments that changed our understanding of the cosmos. **Matplotlib** (Hunter 2007), the foundational plotting library for scientific Python, gives you the power to create these kinds of transformative visualizations, turning your NumPy arrays into insights that can be shared, published, and understood.
+Data without visualization is like a telescope without an eyepiece – you might have collected photons from distant galaxies, but you can't see the universe they reveal. Every major astronomical discovery of the past century has been communicated through carefully crafted visualizations: Hubble's plot showing the expanding universe (Hubble 1929), Hertzsprung and Russell's diagram revealing stellar evolution, the power spectrum of the cosmic microwave background proving inflation theory. These weren't just pretty pictures; they were visual arguments that changed our understanding of the cosmos. **Matplotlib** (Hunter 2007), the foundational plotting library for scientific Python, gives you the power to create these kinds of transformative visualizations, turning your NumPy arrays into insights that can be shared, published, and understood.
 
-But here's what many tutorials won't tell you: Matplotlib isn't just a plotting library — it's an artist's studio. Like an artist selecting brushes, canvases, and colors, you'll learn to choose plot types, figure sizes, and colormaps that best express your data's story. Creating a great visualization isn't about following rigid rules; it's about **experimentation**, iteration, and developing an aesthetic sense for what works. You'll discover that the difference between a confusing plot and a revealing one often comes down to trying different scales — linear versus logarithmic, different color mappings, or simply adjusting the aspect ratio. This chapter embraces that experimental nature, teaching you not just the mechanics of plotting but the art of visual exploration. You'll learn to approach each dataset as a unique challenge, trying multiple visualizations until you find the one that makes the patterns jump off the page.
+But here's what many tutorials won't tell you: Matplotlib isn't just a plotting library – it's an artist's studio. Like an artist selecting brushes, canvases, and colors, you'll learn to choose plot types, figure sizes, and colormaps that best express your data's story. Creating a great visualization isn't about following rigid rules; it's about **experimentation**, iteration, and developing an aesthetic sense for what works. You'll discover that the difference between a confusing plot and a revealing one often comes down to trying different scales – linear versus logarithmic, different color mappings, or simply adjusting the aspect ratio. This chapter embraces that experimental nature, teaching you not just the mechanics of plotting but the art of visual exploration. You'll learn to approach each dataset as a unique challenge, trying multiple visualizations until you find the one that makes the patterns jump off the page.
 
-This chapter introduces Matplotlib's two main interfaces — **pyplot** for quick exploration and the **object-oriented API** for full control — but focuses on the latter because it's what you'll use for research. You'll master the anatomy of a **figure**, understanding how figures contain **axes**, how axes contain plots, and how every element can be customized. You'll learn the astronomical visualization canon: **light curves** that reveal exoplanets, **spectra** that encode stellar chemistry, **color-magnitude diagrams** that map stellar populations, and images that capture the structure of galaxies. Most crucially, you'll develop visualization taste — the ability to choose the right plot type, scale, and layout to honestly and effectively communicate your scientific findings. By the chapter's end, you won't just make plots; you'll craft visual narratives that can stand alongside those historic diagrams that revolutionized astronomy. And you'll have built your own library of plotting functions, turning common visualizations into single function calls that encode your hard-won knowledge about what works.
+This chapter introduces Matplotlib's two main interfaces – **pyplot** for quick exploration and the **object-oriented API** for full control – but focuses on the latter because it's what you'll use for research. You'll master the anatomy of a **figure**, understanding how figures contain **axes**, how axes contain plots, and how every element can be customized. You'll learn the astronomical visualization canon: **light curves** that reveal exoplanets, **spectra** that encode stellar chemistry, **color-magnitude diagrams** that map stellar populations, and images that capture the structure of galaxies. Most crucially, you'll develop visualization taste – the ability to choose the right plot type, scale, and layout to honestly and effectively communicate your scientific findings. By the chapter's end, you won't just make plots; you'll craft visual narratives that can stand alongside those historic diagrams that revolutionized astronomy. And you'll have built your own library of plotting functions, turning common visualizations into single function calls that encode your hard-won knowledge about what works.
 
 :::{admonition} 📚 Essential Resource: Matplotlib Documentation
 :class: important
@@ -85,30 +86,37 @@ Matplotlib is vast, and this chapter covers the essential ~20% you'll use 80% of
 - Tutorials for specific plot types
 - Colormaps reference: https://matplotlib.org/stable/tutorials/colors/colormaps.html
 
-**Pro tip**: The Matplotlib gallery is incredibly valuable — find a plot similar to what you want, then adapt its code. Every plot in the gallery includes complete, downloadable source code. When you see a beautiful plot in a paper and wonder "How did they do that?", the gallery often has the answer.
+**Pro tip**: The Matplotlib gallery is incredibly valuable – find a plot similar to what you want, then adapt its code. Every plot in the gallery includes complete, downloadable source code. When you see a beautiful plot in a paper and wonder "How did they do that?", the gallery often has the answer.
 
-**Essential bookmark**: The "Anatomy of a Figure" guide at https://matplotlib.org/stable/tutorials/introductory/usage.html — keep this open while learning!
+**Essential bookmark**: The "Anatomy of a Figure" guide at https://matplotlib.org/stable/tutorials/introductory/usage.html – keep this open while learning!
+
+**New in Matplotlib 3.10**: As of 2025, Matplotlib has evolved with 337 pull requests from 128 authors. Key improvements include enhanced performance for large datasets and better default styles. Check the release notes for deprecations before upgrading existing code.
 :::
 
 ## 8.1 Matplotlib as Your Artistic Medium
 
-:::{margin} **pyplot**
+:::{margin}
+**pyplot**  
 Matplotlib's MATLAB-like procedural interface for quick plotting.
 :::
 
-:::{margin} **Object-Oriented API**
+:::{margin}
+**Object-Oriented API**  
 Matplotlib's powerful interface providing full control over every plot element.
 :::
 
-:::{margin} **Figure**
+:::{margin}
+**Figure**  
 The overall container for all plot elements, like a canvas.
 :::
 
-:::{margin} **Axes**
+:::{margin}
+**Axes**  
 The plotting area within a figure where data is visualized.
 :::
 
-:::{margin} **Experimentation**
+:::{margin}
+**Experimentation**  
 The iterative process of trying different visualizations to find the most revealing representation.
 :::
 
@@ -143,7 +151,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-Both plots show the same data, but the second one makes deliberate choices about color, transparency, and styling that make it more engaging. This is what we mean by being an artist with Matplotlib — every element is under your control, and those choices matter.
+Both plots show the same data, but the second one makes deliberate choices about color, transparency, and styling that make it more engaging. This is what we mean by being an artist with Matplotlib – every element is under your control, and those choices matter.
 
 ### The Experimentation Mindset
 
@@ -162,8 +170,8 @@ fig, axes = plt.subplots(2, 3, figsize=(12, 8))
 # Attempt 1: Simple scatter
 axes[0, 0].scatter(masses, luminosities, s=1, alpha=0.5)
 axes[0, 0].set_title('Linear Scale: Pattern Hidden')
-axes[0, 0].set_xlabel('Mass [$M_☉$]')
-axes[0, 0].set_ylabel('Luminosity [$L_☉$]')
+axes[0, 0].set_xlabel('Mass [M_☉]')
+axes[0, 0].set_ylabel('Luminosity [L_☉]')
 
 # Attempt 2: Log-log reveals power law!
 axes[0, 1].loglog(masses, luminosities, '.', markersize=2, alpha=0.5)
@@ -188,8 +196,8 @@ axes[1, 0].set_ylabel('log(Luminosity)')
 axes[1, 1].hexbin(masses, luminosities, gridsize=20, 
                   xscale='log', yscale='log', cmap='Blues')
 axes[1, 1].set_title('Hexbin: Good for Large N')
-axes[1, 1].set_xlabel('Mass (M☉)')
-axes[1, 1].set_ylabel('Luminosity (L☉)')
+axes[1, 1].set_xlabel('Mass [M_☉]')
+axes[1, 1].set_ylabel('Luminosity [L_☉]')
 
 # Attempt 6: Contours with scatter overlay
 from scipy.stats import gaussian_kde
@@ -214,9 +222,9 @@ print("that was completely hidden in the linear plot. Always experiment!")
 :::{admonition} 🎯 The More You Know: How a Plot Saved Dark Energy
 :class: note, dropdown
 
-In 1998, two teams were racing to measure the universe's deceleration by observing Type Ia supernovae — "standard candles" whose known brightness reveals their distance. The Supernova Cosmology Project, led by Saul Perlmutter, and the High-Z Supernova Search Team, led by Brian Schmidt and Adam Riess, expected to find the expansion slowing down due to gravity.
+In 1998, two teams were racing to measure the universe's deceleration by observing Type Ia supernovae – "standard candles" whose known brightness reveals their distance. The Supernova Cosmology Project, led by Saul Perlmutter, and the High-Z Supernova Search Team, led by Brian Schmidt and Adam Riess, expected to find the expansion slowing down due to gravity.
 
-The critical moment came not from sophisticated analysis but from visualization choices. The teams tried dozens of ways to plot their data: magnitude versus redshift, distance versus redshift, logarithmic scales, linear scales. Nothing showed a clear pattern. Then Adam Riess had an idea: instead of plotting raw magnitudes, plot the *residuals* — the difference between observed and expected magnitudes for a matter-only universe (Riess et al. 1998).
+The critical moment came not from sophisticated analysis but from visualization choices. The teams tried dozens of ways to plot their data: magnitude versus redshift, distance versus redshift, logarithmic scales, linear scales. Nothing showed a clear pattern. Then Adam Riess had an idea: instead of plotting raw magnitudes, plot the *residuals* – the difference between observed and expected magnitudes for a matter-only universe (Riess et al. 1998).
 
 ```python
 # Simplified version of the Nobel Prize-winning plot
@@ -245,8 +253,10 @@ ax2.set_title('Residual Plot: Universe Accelerating!')
 ax2.legend()
 ```
 
-The residual plot made it obvious: supernovae were consistently dimmer than expected. The universe wasn't just expanding; it was accelerating! This visualization choice — the result of experimentation and artistic judgment — led to a Nobel Prize (Perlmutter et al. 1999). Sometimes the difference between confusion and clarity is how you choose to plot your data.
+The residual plot made it obvious: supernovae were consistently dimmer than expected. The universe wasn't just expanding; it was accelerating! This visualization choice – the result of experimentation and artistic judgment – led to a Nobel Prize (Perlmutter et al. 1999). Sometimes the difference between confusion and clarity is how you choose to plot your data.
 :::
+
+---
 
 ## 8.2 Anatomy of a Figure
 
@@ -355,7 +365,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-This brilliant visualization by Rougier (2018) shows how every element — from the figure container down to individual tick labels — forms part of Matplotlib's hierarchical structure. Understanding these relationships is what gives you the power to customize every aspect of your plots.
+This brilliant visualization by Rougier (2018) shows how every element – from the figure container down to individual tick labels – forms part of Matplotlib's hierarchical structure. Understanding these relationships is what gives you the power to customize every aspect of your plots.
 
 ### Working with the Object-Oriented Interface
 
@@ -438,20 +448,66 @@ for i in range(100):
 ```
 
 For large surveys processing thousands of objects, this difference between memory leak and proper management can mean the difference between success and crashing!
+
+This pattern connects to Chapter 6's file handling context managers – same principle, different resource.
 :::
+
+### Sharing Axes with GridSpec
+
+When plotting multi-wavelength data, you often want aligned time axes:
+
+```{code-cell} python
+from matplotlib.gridspec import GridSpec
+
+# Create figure with shared x-axes using GridSpec
+fig = plt.figure(figsize=(10, 8))
+gs = GridSpec(3, 1, hspace=0.05)
+
+# Create subplots with shared x-axis
+ax1 = fig.add_subplot(gs[0])
+ax2 = fig.add_subplot(gs[1], sharex=ax1)
+ax3 = fig.add_subplot(gs[2], sharex=ax1)
+
+# Generate multi-wavelength data
+time = np.linspace(0, 10, 200)
+optical = np.sin(2 * np.pi * time / 3) + np.random.normal(0, 0.1, 200)
+xray = 2 * np.sin(2 * np.pi * time / 3 + 0.5) + np.random.normal(0, 0.2, 200)
+radio = 0.5 * np.sin(2 * np.pi * time / 3 - 0.3) + np.random.normal(0, 0.05, 200)
+
+# Plot with shared axes
+ax1.plot(time, optical, 'b-', alpha=0.7)
+ax1.set_ylabel('Optical')
+ax1.tick_params(labelbottom=False)  # Hide x labels except bottom
+
+ax2.plot(time, xray, 'r-', alpha=0.7)
+ax2.set_ylabel('X-ray')
+ax2.tick_params(labelbottom=False)
+
+ax3.plot(time, radio, 'g-', alpha=0.7)
+ax3.set_ylabel('Radio')
+ax3.set_xlabel('Time (days)')
+
+fig.suptitle('Multi-wavelength Observations with Shared Time Axis')
+plt.show()
+```
+
+---
 
 ## 8.3 Choosing the Right Scale: Linear, Log, and Everything Between
 
-:::{margin} **Linear Scale**
+:::{margin}
+**Linear Scale**  
 Equal steps in data correspond to equal distances on the plot.
 :::
 
-:::{margin} **Logarithmic Scale**
+:::{margin}
+**Logarithmic Scale**  
 Equal multiplicative factors correspond to equal distances on the plot.
 :::
 
-:::{margin} **Power Law**
-A relationship where $y \propto x^n$ appears as a straight line on a log-log plot.
+:::{margin}
+**Power Law**  
+A relationship where $y \propto x^n$ appears as a straight line with slope $n$ on a log-log plot.
 :::
 
 One of the most important skills in data visualization is choosing the right scale for your axes. The wrong scale can hide patterns; the right scale makes them obvious:
@@ -538,14 +594,14 @@ fig, axes = plt.subplots(2, 2, figsize=(10, 10))
 
 # Linear scale - useless for this data
 axes[0, 0].plot(L, observed_phi, '.', markersize=1, alpha=0.5)
-axes[0, 0].set_xlabel('Luminosity (L☉)')
+axes[0, 0].set_xlabel('Luminosity [L_☉]')
 axes[0, 0].set_ylabel('Φ (Number density)')
 axes[0, 0].set_title('Linear Scale: Cannot See Structure')
 
 # Log-log - reveals power law at faint end
 axes[0, 1].loglog(L, observed_phi, '.', markersize=1, alpha=0.5, label='Data')
 axes[0, 1].loglog(L, phi, 'r-', linewidth=2, label='Schechter Function')
-axes[0, 1].set_xlabel('Luminosity (L☉)')
+axes[0, 1].set_xlabel('Luminosity [L_☉]')
 axes[0, 1].set_ylabel('Φ (Number density)')
 axes[0, 1].set_title('Log-Log: Reveals Power Law + Exponential Cutoff')
 axes[0, 1].legend()
@@ -553,7 +609,7 @@ axes[0, 1].legend()
 # Semilog-y - emphasizes exponential cutoff
 axes[1, 0].semilogx(L, observed_phi, '.', markersize=1, alpha=0.5)
 axes[1, 0].semilogx(L, phi, 'r-', linewidth=2)
-axes[1, 0].set_xlabel('Luminosity (L☉)')
+axes[1, 0].set_xlabel('Luminosity [L_☉]')
 axes[1, 0].set_ylabel('Φ (Number density)')
 axes[1, 0].set_title('Semilog-X: Emphasizes Bright End Cutoff')
 
@@ -561,18 +617,17 @@ axes[1, 0].set_title('Semilog-X: Emphasizes Bright End Cutoff')
 ratio = observed_phi / phi
 axes[1, 1].semilogx(L, ratio, '.', markersize=1, alpha=0.5)
 axes[1, 1].axhline(y=1, color='red', linestyle='--', linewidth=2)
-axes[1, 1].set_xlabel('Luminosity (L☉)')
+axes[1, 1].set_xlabel('Luminosity [L_☉]')
 axes[1, 1].set_ylabel('Observed / Model')
 axes[1, 1].set_title('Residual Plot: Shows Systematic Deviations')
 axes[1, 1].set_ylim(0.1, 10)
 
-fig.suptitle('Galaxy Luminosity Function: Scale Choice Matters', 
-             fontsize=14, fontweight='bold')
+fig.suptitle('Galaxy Luminosity Function: Scale Choice Matters', fontsize=14, fontweight='bold')
 plt.tight_layout()
 plt.show()
 ```
 
-:::{admonition} 🔍 Check Your Understanding
+::::{admonition} 🔍 Check Your Understanding
 :class: question
 
 You have data showing radioactive decay: counts versus time. Which scale would best reveal the half-life?
@@ -581,7 +636,7 @@ You have data showing radioactive decay: counts versus time. Which scale would b
 **Semilog-y (linear time, log counts)** is the best choice!
 
 Radioactive decay follows N(t) = N₀ * e^(-λt), which becomes:
-log(N) = log(N₀) - λt
+$$ log(N) = log(N₀) - λt $$
 
 On a semilog-y plot, this appears as a straight line with slope -λ. The half-life is clearly visible as the time for the counts to drop by half (constant vertical distance on the log scale).
 
@@ -604,8 +659,11 @@ ax2.axhline(y=N0/2, color='r', linestyle='--', label=f't₁/₂ = {half_life}')
 ax2.set_title('Semilog-y: Half-life clear!')
 ax2.legend()
 ```
+
 :::
-:::
+::::
+
+---
 
 ## 8.4 Building Your Plotting Toolkit: Reusable Functions
 
@@ -691,22 +749,25 @@ def plot_light_curve(time, flux, flux_err=None, period=None,
         ax.set_xlim(0, 2)
         ax.grid(True, alpha=0.3)
         
-        # Binned phase curve
+        # Binned phase curve - more efficient version
         ax = axes[3]
         n_bins = 50
-        phase_bins = np.linspace(0, 1, n_bins + 1)
-        binned_flux = []
-        binned_err = []
-        bin_centers = []
+        binned_flux, bin_edges = np.histogram(phase, bins=n_bins, weights=flux)
+        bin_counts, _ = np.histogram(phase, bins=n_bins)
+        bin_centers = (bin_edges[:-1] + bin_edges[1:]) / 2
         
-        for i in range(n_bins):
-            mask = (phase >= phase_bins[i]) & (phase < phase_bins[i+1])
-            if mask.sum() > 0:
-                binned_flux.append(np.median(flux[mask]))
-                binned_err.append(np.std(flux[mask]) / np.sqrt(mask.sum()))
-                bin_centers.append((phase_bins[i] + phase_bins[i+1]) / 2)
+        # Calculate proper error bars using standard error of the mean
+        binned_mean = binned_flux / bin_counts
         
-        ax.errorbar(bin_centers, binned_flux, yerr=binned_err,
+        # For error calculation, need variance
+        flux_squared, _ = np.histogram(phase, bins=n_bins, weights=flux**2)
+        variance = flux_squared / bin_counts - binned_mean**2
+        binned_err = np.sqrt(variance / bin_counts)
+        
+        # Only plot bins with data
+        valid_bins = bin_counts > 0
+        ax.errorbar(bin_centers[valid_bins], binned_mean[valid_bins], 
+                   yerr=binned_err[valid_bins],
                    fmt='go-', markersize=4, linewidth=1, capsize=3)
         ax.set_xlabel('Phase', fontsize=11)
         ax.set_ylabel('Relative Flux', fontsize=11)
@@ -743,6 +804,8 @@ Here's a template for organizing your plotting functions:
 
 ```{code-cell} python
 # my_astro_plots.py - Your personal plotting library
+import numpy as np
+import matplotlib.pyplot as plt
 
 def plot_spectrum(wavelength, flux, flux_err=None, lines=None, 
                   title=None, figsize=(12, 5)):
@@ -857,6 +920,7 @@ fig2, ax2 = plot_time_series(data2, ylabel='Optical Flux')
 ```
 
 Benefits:
+
 - Consistency across all your plots
 - Easy to update style everywhere at once
 - Encode domain knowledge (like inverting magnitude axis)
@@ -864,13 +928,19 @@ Benefits:
 - Build your reputation for quality figures
 :::
 
+---
+
 ## 8.5 Essential Plot Types for Astronomy
 
-{margin} **Light Curve**
+:::{margin}
+**Light Curve**
 A plot showing how an object's brightness varies over time.
+:::
 
-{margin} **Spectrum**
+:::{margin}
+**Spectrum**
 A plot showing intensity as a function of wavelength or frequency.
+:::
 
 ### Line Plots: Time Series and Spectra
 
@@ -919,7 +989,7 @@ plt.show()
 
 **Scatter plots** reveal relationships between variables:
 
-```{code-cell} python
+```{code-cell} ipython3
 # Create a color-magnitude diagram (CMD)
 np.random.seed(42)
 
@@ -960,10 +1030,66 @@ plt.tight_layout()
 plt.show()
 ```
 
-:::{admonition} ⚠️ Common Bug Alert: Histogram Binning
+### Error Bars: Proper Uncertainty Visualization
+
+```{code-cell} ipython3
+# Demonstrating proper error bar visualization
+np.random.seed(42)
+
+# Generate data with varying uncertainties
+x = np.linspace(1, 10, 20)
+y = 2 * x + 3 + np.random.normal(0, 1, 20)
+# Heteroscedastic errors (varying with x)
+y_err = 0.5 + 0.1 * x + np.random.uniform(0, 0.5, 20)
+
+fig, axes = plt.subplots(1, 3, figsize=(14, 5))
+
+# Standard error bars
+axes[0].errorbar(x, y, yerr=y_err, fmt='o', capsize=3, capthick=1,
+                 elinewidth=1, markersize=5, label='Data')
+axes[0].set_title('Standard Error Bars')
+axes[0].set_xlabel('X')
+axes[0].set_ylabel('Y')
+axes[0].grid(True, alpha=0.3)
+
+# Error bars with confidence band
+axes[1].errorbar(x, y, yerr=y_err, fmt='o', capsize=0,
+                 elinewidth=0.5, markersize=5, alpha=0.7)
+# Add model with confidence band
+model_x = np.linspace(0, 11, 100)
+model_y = 2 * model_x + 3
+axes[1].plot(model_x, model_y, 'r-', label='Model')
+axes[1].fill_between(model_x, model_y - 1, model_y + 1, 
+                     alpha=0.3, color='red', label='1σ confidence')
+axes[1].set_title('Model with Confidence Band')
+axes[1].set_xlabel('X')
+axes[1].legend()
+axes[1].grid(True, alpha=0.3)
+
+# Weighted fit visualization
+weights = 1 / y_err**2
+# Fit weighted linear model
+coeffs = np.polyfit(x, y, 1, w=weights)
+fit_y = np.polyval(coeffs, x)
+
+axes[2].errorbar(x, y, yerr=y_err, fmt='o', capsize=3,
+                 elinewidth=1, markersize=5 * weights/weights.max(),
+                 alpha=0.6, label='Data (size ∝ weight)')
+axes[2].plot(x, fit_y, 'g-', linewidth=2, label='Weighted fit')
+axes[2].set_title('Weighted Fitting')
+axes[2].set_xlabel('X')
+axes[2].legend()
+axes[2].grid(True, alpha=0.3)
+
+fig.suptitle('Error Bar Visualization Best Practices', fontsize=14)
+plt.tight_layout()
+plt.show()
+```
+
+:::{admonition} Common Bug Alert: Histogram Binning
 :class: warning
 
-```{code-cell} python
+```{code-cell} ipython3
 # DANGER: Wrong binning can hide or create features!
 data = np.random.normal(0, 1, 1000)
 
@@ -991,7 +1117,7 @@ plt.show()
 Always experiment with bin sizes or use automatic binning algorithms!
 :::
 
-:::{admonition} 🔍 Check Your Understanding
+::::{admonition} 🔍 Check Your Understanding
 :class: question
 
 What's the difference between `plt.plot()` and `ax.plot()`? When would you use each?
@@ -1013,15 +1139,17 @@ Use `ax.plot()` for:
 
 In research, always prefer `ax.plot()` for reproducibility and control!
 :::
-:::
+::::
 
 ## 8.6 Images and 2D Data Visualization
 
-:::{margin} **Colormap**
+:::{margin}
+**Colormap**  
 A mapping from data values to colors for visualization.
 :::
 
-:::{margin} **Normalization**
+:::{margin}
+**Normalization**  
 Scaling data values to a standard range for display.
 :::
 
@@ -1092,6 +1220,54 @@ plt.tight_layout()
 plt.show()
 ```
 
+### WCSAxes for Astronomical Coordinates
+
+When working with FITS files and World Coordinate Systems:
+
+```{code-cell} python
+# Example of WCSAxes usage (simplified without actual FITS data)
+# This would normally use astropy.wcs and astropy.io.fits
+
+# Simulated example showing the concept
+fig = plt.figure(figsize=(10, 8))
+
+# Create synthetic data
+ra_range = np.linspace(150, 151, 100)  # RA in degrees
+dec_range = np.linspace(2, 3, 100)     # Dec in degrees
+RA, DEC = np.meshgrid(ra_range, dec_range)
+
+# Synthetic astronomical image
+image = np.exp(-((RA - 150.5)**2 + (DEC - 2.5)**2) / 0.01)
+
+# Standard matplotlib plot (pixel coordinates)
+ax1 = fig.add_subplot(121)
+im1 = ax1.imshow(image, origin='lower', cmap='viridis')
+ax1.set_xlabel('X (pixels)')
+ax1.set_ylabel('Y (pixels)')
+ax1.set_title('Pixel Coordinates')
+plt.colorbar(im1, ax=ax1)
+
+# WCS-aware plot (would use WCS projection in practice)
+ax2 = fig.add_subplot(122)
+im2 = ax2.imshow(image, origin='lower', cmap='viridis',
+                 extent=[ra_range[0], ra_range[-1], 
+                        dec_range[0], dec_range[-1]])
+ax2.set_xlabel('RA (degrees)')
+ax2.set_ylabel('Dec (degrees)')
+ax2.set_title('Sky Coordinates (WCS)')
+ax2.invert_xaxis()  # RA increases to the left
+plt.colorbar(im2, ax=ax2)
+
+plt.suptitle('Pixel vs Sky Coordinates in Astronomical Images')
+plt.tight_layout()
+plt.show()
+
+print("Note: For real WCS plotting, use:")
+print("from astropy.wcs import WCS")
+print("from astropy.io import fits")
+print("ax = fig.add_subplot(111, projection=wcs)")
+```
+
 :::{admonition} 🌟 Why This Matters: Finding Exoplanets in Pixels
 :class: info, important
 
@@ -1132,17 +1308,22 @@ light_curve = [img[aperture].sum() for img in images]
 This pixel-level visualization revealed not just transiting planets, but also asteroseismology signals, stellar rotation, and even reflected light from hot Jupiters. The ability to visualize and understand pixel data literally opened up new worlds!
 :::
 
+---
+
 ## 8.7 Color Theory and Publication Standards
 
-:::{margin} **DPI**
+:::{margin}
+**DPI**  
 Dots per inch, determining figure resolution for printing or display.
 :::
 
-:::{margin} **LaTeX**
+:::{margin}
+**LaTeX**  
 A typesetting system commonly used for scientific publications, supported by Matplotlib for mathematical notation.
 :::
 
-:::{margin} **GridSpec**
+:::{margin}
+**GridSpec**  
 Matplotlib's flexible system for creating complex subplot layouts.
 :::
 
@@ -1175,7 +1356,50 @@ plt.tight_layout()
 plt.show()
 ```
 
-:::{admonition} ⚠️ Common Bug Alert: DPI and Figure Sizes
+### Journal-Specific Styles with SciencePlots
+
+For publication-ready figures with journal-specific formatting:
+
+```{code-cell} python
+# Example of journal-specific styling
+# Note: SciencePlots package provides pre-configured styles
+
+# Manual implementation of ApJ-like style
+def apply_apj_style():
+    """Apply Astrophysical Journal style settings."""
+    plt.rcParams.update({
+        'font.size': 10,
+        'font.family': 'serif',
+        'font.serif': ['Computer Modern Roman'],
+        'text.usetex': False,  # Set True if LaTeX is installed
+        'figure.figsize': (3.5, 3.5),  # Single column
+        'figure.dpi': 300,
+        'savefig.dpi': 300,
+        'savefig.bbox': 'tight',
+        'axes.linewidth': 0.5,
+        'lines.linewidth': 1.0,
+        'lines.markersize': 4,
+        'xtick.major.width': 0.5,
+        'ytick.major.width': 0.5,
+    })
+
+# Example plot with journal style
+apply_apj_style()
+fig, ax = plt.subplots()
+x = np.linspace(0, 2*np.pi, 100)
+ax.plot(x, np.sin(x), label='sin(x)')
+ax.plot(x, np.cos(x), label='cos(x)')
+ax.set_xlabel('Phase')
+ax.set_ylabel('Amplitude')
+ax.legend()
+ax.grid(True, alpha=0.3)
+plt.show()
+
+# Reset to defaults
+plt.rcParams.update(plt.rcParamsDefault)
+```
+
+:::{admonition} Common Bug Alert: DPI and Figure Sizes
 :class: warning
 
 ```{code-cell} ipython3
@@ -1201,11 +1425,12 @@ plt.show()
 # - ApJ: 300 DPI for print, figure width = 3.5" (single column) or 7" (full page)
 # - Nature: 300-600 DPI, maximum width 183mm
 # - Screen: 72-100 DPI is sufficient
+# - Note: When using LaTeX fonts, ensure LaTeX is installed on your system
 ```
 
 :::
 
-:::{admonition} 🔍 Check Your Understanding
+::::{admonition} 🔍 Check Your Understanding
 :class: question
 
 Why is the 'jet' colormap problematic for scientific visualization?
@@ -1233,330 +1458,154 @@ ax2.set_title('Viridis: Smooth gradient')
 
 Always use perceptually uniform colormaps like viridis, plasma, or cividis for scientific data!
 :::
+::::
+
+---
+
+## 8.8 Optional: yt for Astrophysical Simulations
+
+:::{margin}
+**yt**   
+A Python package for analyzing and visualizing volumetric data from astrophysical simulations.
 :::
 
-## 8.8 Practice Exercises
+:::{margin}
+**AMR**  
+Adaptive Mesh Refinement - a computational technique for solving PDEs with varying resolution.
+:::
 
-### Exercise 1: Creating a Complete Astronomical Figure
+### Introduction to yt
 
-Build a publication-quality multi-wavelength light curve:
-
-**Part A: Generate realistic data (5 minutes)**
-
-```{code-cell} ipython3
-# Simulate multi-wavelength observations of a flaring star
-np.random.seed(42)
-
-# Time array (days)
-time = np.linspace(0, 30, 300)
-
-# Base stellar brightness (different in each band)
-base_optical = 12.0  # magnitude
-base_xray = 1e-12    # erg/s/cm^2
-base_radio = 10.0    # mJy
-
-# Add periodic variation (rotation)
-period = 5.3  # days
-phase = 2 * np.pi * time / period
-
-optical = base_optical - 0.1 * np.sin(phase)
-xray = base_xray * (1 + 0.2 * np.sin(phase + 0.5))
-radio = base_radio * (1 + 0.15 * np.sin(phase - 0.3))
-
-# Add flares at specific times
-flare_times = [8, 15, 22]
-flare_widths = [0.5, 0.3, 0.7]
-
-for ft, fw in zip(flare_times, flare_widths):
-    flare_profile = np.exp(-0.5 * ((time - ft) / fw)**2)
-    optical -= 0.5 * flare_profile  # Brightening (lower magnitude)
-    xray *= (1 + 10 * flare_profile)  # X-ray enhancement
-    radio *= (1 + 3 * flare_profile)  # Radio enhancement
-
-# Add realistic noise
-optical += np.random.normal(0, 0.02, len(time))
-xray *= (1 + np.random.normal(0, 0.1, len(time)))
-radio *= (1 + np.random.normal(0, 0.05, len(time)))
-
-print(f"Generated {len(time)} observations over {time.max():.1f} days")
-print(f"Detected {len(flare_times)} flares")
-```
-
-**Part B: Create the multi-panel figure (10 minutes)**
+For those working with simulation data, **yt** (Turk et al. 2011) is an indispensable tool that complements Matplotlib for 3D volumetric data visualization. It supports over 40 simulation codes including ENZO, FLASH, Gadget, AREPO, and many others.
 
 ```{code-cell} python
-# Create publication-quality figure
-fig = plt.figure(figsize=(10, 8))
-
-# Use GridSpec for custom layout
-from matplotlib.gridspec import GridSpec
-gs = GridSpec(4, 1, height_ratios=[2, 2, 2, 1], hspace=0)
-
-# Optical light curve
-ax1 = fig.add_subplot(gs[0])
-ax1.scatter(time, optical, s=10, alpha=0.6, color='blue')
-ax1.set_ylabel('V Magnitude', fontsize=11)
-ax1.invert_yaxis()  # Astronomical convention
-ax1.grid(True, alpha=0.3)
-ax1.set_xlim(0, 30)
-ax1.tick_params(labelbottom=False)
-
-# Mark flares
-for ft in flare_times:
-    ax1.axvline(x=ft, color='red', linestyle='--', alpha=0.5)
-ax1.text(0.02, 0.98, 'Optical', transform=ax1.transAxes,
-         fontweight='bold', va='top')
-
-# X-ray light curve (log scale)
-ax2 = fig.add_subplot(gs[1], sharex=ax1)
-ax2.semilogy(time, xray, 'r-', linewidth=0.8, alpha=0.8)
-ax2.set_ylabel('X-ray Flux\n(erg/s/cm²)', fontsize=11)
-ax2.grid(True, alpha=0.3)
-ax2.tick_params(labelbottom=False)
-ax2.text(0.02, 0.98, 'X-ray', transform=ax2.transAxes,
-         fontweight='bold', va='top')
-
-# Radio light curve
-ax3 = fig.add_subplot(gs[2], sharex=ax1)
-ax3.plot(time, radio, 'g-', linewidth=1)
-ax3.set_ylabel('Radio Flux\n(mJy)', fontsize=11)
-ax3.grid(True, alpha=0.3)
-ax3.tick_params(labelbottom=False)
-ax3.text(0.02, 0.98, 'Radio', transform=ax3.transAxes,
-         fontweight='bold', va='top')
-
-# Hardness ratio
-ax4 = fig.add_subplot(gs[3], sharex=ax1)
-hardness = xray / (xray.mean())  # Normalized X-ray
-ax4.plot(time, hardness, 'k-', linewidth=0.8)
-ax4.set_ylabel('Hardness\nRatio', fontsize=11)
-ax4.set_xlabel('Time (days)', fontsize=12)
-ax4.grid(True, alpha=0.3)
-ax4.set_xlim(0, 30)
-
-# Overall title
-fig.suptitle('Multi-wavelength Observations of Flare Star', 
-             fontsize=14, fontweight='bold', y=0.995)
-
-plt.show()
-```
-
-**Part C: Export and document (5 minutes)**
-
-```{code-cell} python
-# Create a function to save figures properly
-def save_publication_figure(fig, basename, formats=['pdf', 'png']):
-    """
-    Save figure in multiple formats with proper settings.
-    
-    Parameters
-    ----------
-    fig : matplotlib.figure.Figure
-        Figure to save
-    basename : str
-        Base filename without extension
-    formats : list
-        List of formats to save
-    """
-    for fmt in formats:
-        filename = f"{basename}.{fmt}"
-        
-        if fmt == 'pdf':
-            fig.savefig(filename, format='pdf', dpi=300,
-                       bbox_inches='tight', transparent=True)
-        elif fmt == 'png':
-            fig.savefig(filename, format='png', dpi=300,
-                       bbox_inches='tight', transparent=False,
-                       facecolor='white')
-        elif fmt == 'svg':
-            fig.savefig(filename, format='svg',
-                       bbox_inches='tight', transparent=True)
-        
-        print(f"Saved: {filename}")
-    
-    # Also save the data for reproducibility
-    data_file = f"{basename}_data.npz"
-    np.savez(data_file, time=time, optical=optical, 
-             xray=xray, radio=radio)
-    print(f"Saved data: {data_file}")
-
-# Example usage (commented out to avoid creating files)
-# save_publication_figure(fig, 'flare_star_multiwave')
-
-print("Figure ready for publication!")
-print("\nChecklist:")
-print("✓ All axes labeled with units")
-print("✓ Multi-wavelength data aligned")
-print("✓ Flares marked consistently")
-print("✓ Professional styling applied")
-print("✓ Ready for ApJ submission (7-inch width)")
-```
-
-### Exercise 2: Exploring Scaling Effects
-
-Understand how different scales reveal different features:
-
-```{code-cell} python
+# Conceptual example of yt usage (requires yt installation)
 """
-Part 1: Generate power-law distributed data
+# yt installation: pip install yt
+import yt
+
+# Load simulation data (supports many formats)
+ds = yt.load("galaxy_simulation/output_0050")
+
+# Create a slice plot through the simulation volume
+slc = yt.SlicePlot(ds, 'z', 'density')
+slc.set_cmap('density', 'viridis')
+slc.annotate_timestamp()
+slc.save()
+
+# Volume rendering
+sc = yt.create_scene(ds, 'density')
+sc.save()
+
+# Phase plots
+plot = yt.PhasePlot(ds.all_data(), 
+                    'density', 'temperature', 'cell_mass')
+plot.save()
 """
-np.random.seed(42)
-# Simulate galaxy cluster masses (power law distribution)
-n_galaxies = 5000
-masses = np.random.pareto(1.5, n_galaxies) + 1  # M ∝ N^(-2.5)
-masses *= 1e11  # Solar masses
 
-# Add measurement uncertainty
-masses_observed = masses * np.random.lognormal(0, 0.1, n_galaxies)
+# Demonstrate the concept with synthetic data
+fig, axes = plt.subplots(2, 3, figsize=(14, 9))
 
-print(f"Generated {n_galaxies} galaxy masses")
-print(f"Mass range: {masses_observed.min():.2e} to {masses_observed.max():.2e} M☉")
-```
+# Simulate different yt-style visualizations
+# 1. Density slice
+x = np.linspace(-10, 10, 100)
+y = np.linspace(-10, 10, 100)
+X, Y = np.meshgrid(x, y)
+density = np.exp(-(X**2 + Y**2)/10) + 0.5*np.exp(-((X-3)**2 + Y**2)/5)
 
-```{code-cell} python
-"""
-Part 2: Try different visualizations
-"""
-fig, axes = plt.subplots(2, 3, figsize=(14, 8))
+im1 = axes[0, 0].imshow(density, cmap='magma', origin='lower')
+axes[0, 0].set_title('Density Slice (z=0)')
+plt.colorbar(im1, ax=axes[0, 0], label='ρ [g/cm³]')
 
-# Linear histogram - useless for power law
-axes[0, 0].hist(masses_observed, bins=50, alpha=0.7, color='blue')
-axes[0, 0].set_xlabel('Mass (M☉)')
-axes[0, 0].set_ylabel('Count')
-axes[0, 0].set_title('Linear Scale: Useless for Power Law')
+# 2. Temperature slice
+temperature = 1e4 * density**0.5 + np.random.normal(0, 100, density.shape)
+im2 = axes[0, 1].imshow(temperature, cmap='hot', origin='lower')
+axes[0, 1].set_title('Temperature Slice')
+plt.colorbar(im2, ax=axes[0, 1], label='T [K]')
 
-# Log-scale x-axis
-axes[0, 1].hist(masses_observed, bins=np.logspace(11, 15, 50), 
-                alpha=0.7, color='green')
-axes[0, 1].set_xscale('log')
-axes[0, 1].set_xlabel('Mass (M☉)')
-axes[0, 1].set_ylabel('Count')
-axes[0, 1].set_title('Log X-axis: Better but not ideal')
+# 3. Velocity field
+u = -Y / np.sqrt(X**2 + Y**2 + 0.1)
+v = X / np.sqrt(X**2 + Y**2 + 0.1)
+axes[0, 2].streamplot(x, y, u, v, density=1, color='blue', alpha=0.7)
+axes[0, 2].set_title('Velocity Streamlines')
+axes[0, 2].set_xlim(-10, 10)
+axes[0, 2].set_ylim(-10, 10)
 
-# Log-log scale reveals power law
-axes[0, 2].hist(masses_observed, bins=np.logspace(11, 15, 50), 
-                alpha=0.7, color='red')
-axes[0, 2].set_xscale('log')
-axes[0, 2].set_yscale('log')
-axes[0, 2].set_xlabel('Mass (M☉)')
-axes[0, 2].set_ylabel('Count')
-axes[0, 2].set_title('Log-Log: Power Law Revealed!')
+# 4. Phase plot
+n_points = 1000
+dens_sample = np.random.lognormal(0, 1, n_points)
+temp_sample = 1e4 * dens_sample**0.5 + np.random.normal(0, 500, n_points)
+h = axes[1, 0].hist2d(np.log10(dens_sample), np.log10(temp_sample), 
+                       bins=30, cmap='YlOrBr')
+axes[1, 0].set_xlabel('log(Density)')
+axes[1, 0].set_ylabel('log(Temperature)')
+axes[1, 0].set_title('Phase Diagram')
+plt.colorbar(h[3], ax=axes[1, 0])
 
-# Cumulative distribution
-sorted_masses = np.sort(masses_observed)
-cumulative = np.arange(1, len(sorted_masses) + 1) / len(sorted_masses)
+# 5. Projection (column density)
+column_density = np.sum(np.stack([density]*20), axis=0)  # Fake projection
+im5 = axes[1, 1].imshow(column_density, cmap='viridis', 
+                         origin='lower', norm=LogNorm())
+axes[1, 1].set_title('Column Density Projection')
+plt.colorbar(im5, ax=axes[1, 1], label='Σ [g/cm²]')
 
-axes[1, 0].plot(sorted_masses, cumulative, 'b-', linewidth=2)
-axes[1, 0].set_xlabel('Mass (M☉)')
-axes[1, 0].set_ylabel('Cumulative Fraction')
-axes[1, 0].set_title('Linear CDF')
+# 6. Multi-field composite
+axes[1, 2].imshow(density, cmap='Blues', alpha=0.7, origin='lower')
+contour = axes[1, 2].contour(temperature, levels=5, colors='red', 
+                              linewidths=2, alpha=0.8)
+axes[1, 2].set_title('Multi-field Visualization')
+axes[1, 2].clabel(contour, inline=True, fontsize=8)
 
-axes[1, 1].loglog(sorted_masses, 1 - cumulative, 'r-', linewidth=2)
-axes[1, 1].set_xlabel('Mass (M☉)')
-axes[1, 1].set_ylabel('Fraction > M')
-axes[1, 1].set_title('Log-Log Complementary CDF: Slope = Power Law Index')
-
-# Rank-frequency plot
-ranks = np.arange(1, len(sorted_masses) + 1)
-axes[1, 2].loglog(ranks, sorted_masses[::-1], 'g.', markersize=1)
-axes[1, 2].set_xlabel('Rank')
-axes[1, 2].set_ylabel('Mass (M☉)')
-axes[1, 2].set_title('Rank-Frequency: Alternative Power Law View')
-
-plt.suptitle('Same Data, Different Scales, Different Insights', 
+fig.suptitle('yt-style Visualizations for Simulation Data', 
              fontsize=14, fontweight='bold')
 plt.tight_layout()
 plt.show()
+
+print("\nyt advantages for simulation data:")
+print("✓ Supports 40+ simulation codes natively")
+print("✓ Handles AMR and particle data seamlessly")
+print("✓ Unit-aware (automatic unit conversions)")
+print("✓ Parallel processing for large datasets")
+print("✓ Volume rendering capabilities")
+print("✓ On-the-fly derived fields")
+print("\nLearn more at: https://yt-project.org/")
 ```
 
-### Exercise 3: Debug This!
+:::{admonition} 🌟 Why This Matters: Visualizing the Invisible Universe
+:class: important, dropdown
 
-```{code-cell} python
-"""
-Debug This! Find and fix the visualization problems.
-"""
+Modern astrophysical simulations generate terabytes to petabytes of data, simulating everything from stellar formation to cosmic web evolution. The yt package has become the standard tool for the simulation community because it:
 
-def plot_hr_diagram_broken(b_v, abs_mag):
-    """This function has several plotting issues. Can you fix them?"""
-    # BUG 1: Figure too small for publication
-    # fig, ax = plt.subplots(figsize=(4, 3))  
-    fig, ax = plt.subplots(figsize=(8, 10))  # FIXED: Appropriate size
-    
-    # BUG 2: Wrong plot type for scattered data
-    # ax.plot(b_v, abs_mag, 'b-')  
-    ax.scatter(b_v, abs_mag, s=20, alpha=0.6, c=b_v, cmap='RdYlBu_r')  # FIXED
-    
-    # BUG 3: Y-axis not inverted (astronomical convention)
-    # ax.set_ylim(-10, 15)  
-    ax.set_ylim(15, -10)  # FIXED: Inverted for magnitudes
-    
-    # BUG 4: No axis labels or units
-    # ax.set_xlabel('x')
-    # ax.set_ylabel('y')
-    ax.set_xlabel('B - V Color Index', fontsize=12)  # FIXED
-    ax.set_ylabel('Absolute Magnitude (M$_V$)', fontsize=12)  # FIXED
-    
-    # BUG 5: No title
-    ax.set_title('Hertzsprung-Russell Diagram', fontsize=14, fontweight='bold')
-    
-    # BUG 6: No grid for reference
-    ax.grid(True, alpha=0.3)  # FIXED
-    
-    # BUG 7: Using jet colormap
-    # (Already fixed above with RdYlBu_r)
-    
-    # Add colorbar
-    plt.colorbar(ax.collections[0], ax=ax, label='B - V Color')
-    
-    return fig, ax
+1. **Unifies disparate codes**: Whether you're using ENZO for cosmology, FLASH for stellar explosions, or Gadget for galaxy formation, yt provides a common interface
 
-# Test with synthetic data
-np.random.seed(42)
-n_stars = 1000
+2. **Handles complexity**: AMR grids, SPH particles, octree structures - yt manages them all transparently
 
-# Main sequence
-b_v_ms = np.random.uniform(-0.3, 2.0, n_stars)
-abs_mag_ms = 4.5 * b_v_ms + np.random.normal(0, 1, n_stars) + 2
+3. **Enables discovery**: Many breakthrough discoveries in computational astrophysics were visualized first with yt, including the first simulations of Population III stars and high-resolution galaxy formation
 
-# Giants branch
-b_v_gb = np.random.uniform(0.5, 2.0, 200)
-abs_mag_gb = np.random.normal(-1, 1, 200)
-
-# Combine
-b_v_all = np.concatenate([b_v_ms, b_v_gb])
-abs_mag_all = np.concatenate([abs_mag_ms, abs_mag_gb])
-
-# Create fixed plot
-fig, ax = plot_hr_diagram_broken(b_v_all, abs_mag_all)
-plt.show()
-
-print("Fixed issues:")
-print("✓ Increased figure size for readability")
-print("✓ Changed from line to scatter plot")
-print("✓ Inverted y-axis (astronomical convention)")
-print("✓ Added proper axis labels with units")
-print("✓ Added descriptive title")
-print("✓ Added grid for reference")
-print("✓ Used perceptually uniform colormap")
-```
+The combination of yt for 3D data processing and Matplotlib for publication figures forms the backbone of modern computational astrophysics visualization workflows.
+:::
 
 :::{admonition} 🌟 Why This Matters: The Hubble Tension Revealed Through Visualization
 :class: info, important
 
-The "Hubble tension" — the discrepancy between different measurements of the universe's expansion rate — wasn't discovered through complex statistics but through careful visualization of measurement uncertainties. When plotting H₀ measurements from different methods (CMB, supernovae, gravitational lensing), the error bars don't overlap, revealing a fundamental problem in our understanding of cosmology. Your ability to create clear, honest visualizations with proper error bars might help resolve one of astronomy's biggest mysteries!
+The "Hubble tension" – the discrepancy between different measurements of the universe's expansion rate – wasn't discovered through complex statistics but through careful visualization of measurement uncertainties. When plotting H₀ measurements from different methods (CMB, supernovae, gravitational lensing), the error bars don't overlap, revealing a fundamental problem in our understanding of cosmology. Your ability to create clear, honest visualizations with proper error bars might help resolve one of astronomy's biggest mysteries!
 :::
 
 ## Main Takeaways
 
-You've now mastered the art and science of data visualization with Matplotlib, but more importantly, you've learned to think like a visual artist-scientist. The journey from simple plots to publication-ready figures has taught you that visualization isn't just about displaying data — it's about experimentation, iteration, and making deliberate aesthetic choices that enhance scientific communication. You've discovered that creating effective visualizations requires trying multiple approaches: different scales (linear, log, semilog), different plot types (scatter, line, histogram), and different visual encodings (color, size, transparency) until you find the combination that makes patterns jump off the page. This experimental mindset, combined with the technical skills you've developed, transforms you from someone who makes plots into someone who crafts visual arguments that can change how we understand the universe.
+You've now mastered the art and science of data visualization with Matplotlib, but more importantly, you've learned to think like a visual artist-scientist. The journey from simple plots to publication-ready figures has taught you that visualization isn't just about displaying data – it's about experimentation, iteration, and making deliberate aesthetic choices that enhance scientific communication. You've discovered that creating effective visualizations requires trying multiple approaches: different scales (linear, log, semilog), different plot types (scatter, line, histogram), and different visual encodings (color, size, transparency) until you find the combination that makes patterns jump off the page. This experimental mindset, combined with the technical skills you've developed, transforms you from someone who makes plots into someone who crafts visual arguments that can change how we understand the universe.
 
-The distinction between Matplotlib's two interfaces — pyplot and object-oriented — initially seemed like unnecessary complexity, but you now understand it's about control and reproducibility. While pyplot suffices for quick exploration, the object-oriented approach gives you the artist's palette you need for research-quality visualizations. You've seen how professional figures require attention to countless details: choosing perceptually uniform colormaps over the problematic jet (Crameri et al. 2020), using appropriate scales to reveal power laws or exponential relationships, properly labeling axes with units, and following astronomical conventions like inverting magnitude axes. These aren't arbitrary rules but hard-won practices that ensure your visualizations communicate honestly and effectively. The famous anatomy figure by Nicolas P. Rougier (2018) that you studied shows how every element — from figure to axes to individual tick marks — is under your control, waiting for your artistic vision.
+The distinction between Matplotlib's two interfaces – pyplot and object-oriented – initially seemed like unnecessary complexity, but you now understand it's about control and reproducibility. While pyplot suffices for quick exploration, the object-oriented approach gives you the artist's palette you need for research-quality visualizations. You've seen how professional figures require attention to countless details: choosing perceptually uniform colormaps over the problematic jet (Crameri et al. 2020), using appropriate scales to reveal power laws or exponential relationships, properly labeling axes with units, and following astronomical conventions like inverting magnitude axes. These aren't arbitrary rules but hard-won practices that ensure your visualizations communicate honestly and effectively. The famous anatomy figure by Nicolas P. Rougier (2018) that you studied shows how every element – from figure to axes to individual tick marks – is under your control, waiting for your artistic vision.
 
 Most importantly, you've learned to build your own plotting toolkit, creating reusable functions that encode your domain knowledge and aesthetic preferences. Instead of copy-pasting code and creating technical debt, you now write functions like `plot_light_curve()` or `plot_spectrum()` that embody best practices and can be shared with collaborators. This approach follows the DRY (Don't Repeat Yourself) principle, ensuring consistency across all your visualizations while making it easy to update styles globally. These personal plotting libraries become more valuable over time, accumulating the wisdom of what works for different types of astronomical data. Whether you're phase-folding light curves to find exoplanets, creating color-magnitude diagrams to study stellar populations, or displaying multi-wavelength observations to understand cosmic phenomena, you have both the technical skills and the artistic sensibility to create visualizations that don't just show data but tell stories.
 
-Looking ahead to robust computing, the visualization skills you've developed become essential debugging tools. When your code fails or produces unexpected results, a well-chosen plot can instantly reveal where things went wrong. The ability to quickly visualize intermediate results, check distributions, and compare expected versus actual outputs will make you a more effective debugger and a more reliable scientific programmer. Remember that every great astronomical discovery — from the expanding universe (Hubble 1929) to dark energy (Riess et al. 1998; Perlmutter et al. 1999) to exoplanets (Borucki et al. 2010) — was communicated through a carefully crafted visualization. The skills you've developed here put you in that tradition, able to create the kinds of plots that don't just illustrate findings but reveal new truths about the cosmos.
+For those working with simulation data, the optional introduction to yt opens up a whole new world of volumetric visualization. The yt package's ability to handle data from over 40 different simulation codes – from ENZO's cosmological simulations to FLASH's stellar explosions – makes it indispensable for computational astrophysics. Combined with Matplotlib for publication figures, yt forms the backbone of modern simulation visualization workflows, enabling discoveries from the first Population III stars to the evolution of the cosmic web.
+
+Looking ahead to robust computing, the visualization skills you've developed become essential debugging tools. When your code fails or produces unexpected results, a well-chosen plot can instantly reveal where things went wrong. The ability to quickly visualize intermediate results, check distributions, and compare expected versus actual outputs will make you a more effective debugger and a more reliable scientific programmer. Remember that every great astronomical discovery – from the expanding universe (Hubble 1929) to dark energy (Riess et al. 1998; Perlmutter et al. 1999) to exoplanets (Borucki et al. 2010) – was communicated through a carefully crafted visualization. The skills you've developed here put you in that tradition, able to create the kinds of plots that don't just illustrate findings but reveal new truths about the cosmos.
 
 ## Definitions
+
+**AMR**: Adaptive Mesh Refinement - a computational technique for solving PDEs with varying resolution in simulations.
 
 **Axes**: The plotting area within a figure where data is visualized, including the x and y axis, tick marks, and labels.
 
@@ -1590,27 +1639,33 @@ Looking ahead to robust computing, the visualization skills you've developed bec
 
 **Spectrum**: A plot showing intensity as a function of wavelength or frequency, fundamental in astronomical spectroscopy.
 
+**yt**: A Python package for analyzing and visualizing volumetric data from astrophysical simulations, supporting 40+ codes.
+
 ## Key Takeaways
 
-✓ **Matplotlib is your artistic medium** — Every plot is an opportunity for creative expression and experimentation
+✓ **Matplotlib is your artistic medium** – Every plot is an opportunity for creative expression and experimentation
 
-✓ **Always experiment with different scales** — Linear, log-log, semilog-x, and semilog-y reveal different patterns in your data
+✓ **Always experiment with different scales** – Linear, log-log, semilog-x, and semilog-y reveal different patterns in your data
 
-✓ **Use the object-oriented interface for research** — `fig, ax = plt.subplots()` gives you explicit control needed for publication
+✓ **Use the object-oriented interface for research** – `fig, ax = plt.subplots()` gives you explicit control needed for publication
 
-✓ **Build reusable plotting functions** — Create your own library encoding best practices for common astronomical plots
+✓ **Build reusable plotting functions** – Create your own library encoding best practices for common astronomical plots
 
-✓ **Choose perceptually uniform colormaps** — Use viridis, plasma, or cividis; avoid jet which creates false features
+✓ **Choose perceptually uniform colormaps** – Use viridis, plasma, or cividis; avoid jet which creates false features
 
-✓ **Master the anatomy of figures** — Understanding Rougier's diagram empowers you to customize every element
+✓ **Master the anatomy of figures** – Understanding Rougier's diagram empowers you to customize every element
 
-✓ **Different plots for different data** — Use scatter for measurements, lines for models, histograms for distributions
+✓ **Different plots for different data** – Use scatter for measurements, lines for models, histograms for distributions
 
-✓ **Save in appropriate formats** — Vector (PDF, SVG) for plots, raster (PNG) for images, both for safety
+✓ **Save in appropriate formats** – Vector (PDF, SVG) for plots, raster (PNG) for images, both for safety
 
-✓ **Follow astronomical conventions** — Invert magnitude axes, use proper coordinate systems, follow field standards
+✓ **Follow astronomical conventions** – Invert magnitude axes, use proper coordinate systems, follow field standards
 
-✓ **Visualization reveals patterns** — The right plot can make invisible relationships obvious, leading to discoveries
+✓ **Visualization reveals patterns** – The right plot can make invisible relationships obvious, leading to discoveries
+
+✓ **Consider yt for simulation data** – Essential tool for volumetric data from computational astrophysics codes
+
+✓ **WCSAxes for sky coordinates** – Use proper astronomical projections when working with FITS data
 
 ## Quick Reference Tables
 
@@ -1666,32 +1721,38 @@ Looking ahead to robust computing, the visualization skills you've developed bec
 
 2. Crameri, F., Shephard, G. E., & Heron, P. J. (2020). **The misuse of colour in science communication**. *Nature Communications*, 11(1), 1-10.
 
-3. Hubble, E. (1929). **A relation between distance and radial velocity among extra-galactic nebulae**. *Proceedings of the National Academy of Sciences*, 15(3), 168-173.
+3. Garrett, J. D. (2022). **SciencePlots: Matplotlib styles for scientific plotting**. GitHub repository. https://github.com/garrettj403/SciencePlots
 
-4. Hunter, J. D. (2007). **Matplotlib: A 2D graphics environment**. *Computing in Science & Engineering*, 9(3), 90-95.
+4. Hubble, E. (1929). **A relation between distance and radial velocity among extra-galactic nebulae**. *Proceedings of the National Academy of Sciences*, 15(3), 168-173.
 
-5. Perlmutter, S., et al. (1999). **Measurements of Ω and Λ from 42 high-redshift supernovae**. *The Astrophysical Journal*, 517(2), 565-586.
+5. Hunter, J. D. (2007). **Matplotlib: A 2D graphics environment**. *Computing in Science & Engineering*, 9(3), 90-95.
 
-6. Riess, A. G., et al. (1998). **Observational evidence from supernovae for an accelerating universe and a cosmological constant**. *The Astronomical Journal*, 116(3), 1009-1038.
+6. Perlmutter, S., et al. (1999). **Measurements of Ω and Λ from 42 high-redshift supernovae**. *The Astrophysical Journal*, 517(2), 565-586.
 
-7. Rougier, N. P. (2018). **Scientific Visualization: Python + Matplotlib**. Self-published. Available at: https://github.com/rougier/scientific-visualization-book
+7. Riess, A. G., et al. (1998). **Observational evidence from supernovae for an accelerating universe and a cosmological constant**. *The Astronomical Journal*, 116(3), 1009-1038.
 
-8. Rougier, N. P., et al. (2014). **Ten simple rules for better figures**. *PLoS Computational Biology*, 10(9), e1003833.
+8. Rougier, N. P. (2018). **Scientific Visualization: Python + Matplotlib**. Self-published. Available at: https://github.com/rougier/scientific-visualization-book
 
-9. Salpeter, E. E. (1955). **The luminosity function and stellar evolution**. *The Astrophysical Journal*, 121, 161-167.
+9. Rougier, N. P., et al. (2014). **Ten simple rules for better figures**. *PLoS Computational Biology*, 10(9), e1003833.
 
-10. Schechter, P. (1976). **An analytic expression for the luminosity function for galaxies**. *The Astrophysical Journal*, 203, 297-306.
+10. Salpeter, E. E. (1955). **The luminosity function and stellar evolution**. *The Astrophysical Journal*, 121, 161-167.
 
-11. Tufte, E. R. (2001). **The Visual Display of Quantitative Information** (2nd ed.). Graphics Press.
+11. Schechter, P. (1976). **An analytic expression for the luminosity function for galaxies**. *The Astrophysical Journal*, 203, 297-306.
 
-12. VanderPlas, J. (2016). **Python Data Science Handbook**. O'Reilly Media.
+12. Tufte, E. R. (2001). **The Visual Display of Quantitative Information** (2nd ed.). Graphics Press.
 
-13. Wilke, C. O. (2019). **Fundamentals of Data Visualization**. O'Reilly Media.
+13. Turk, M. J., et al. (2011). **yt: A Multi-code Analysis Toolkit for Astrophysical Simulation Data**. *The Astrophysical Journal Supplement Series*, 192(1), 9.
 
-14. Wong, B. (2011). **Points of view: Color blindness**. *Nature Methods*, 8(6), 441.
+14. VanderPlas, J. (2016). **Python Data Science Handbook**. O'Reilly Media.
 
-15. The Matplotlib Development Team. (2023). **Matplotlib Documentation**. https://matplotlib.org/stable/index.html
+15. Wilke, C. O. (2019). **Fundamentals of Data Visualization**. O'Reilly Media.
+
+16. Wong, B. (2011). **Points of view: Color blindness**. *Nature Methods*, 8(6), 441.
+
+17. The Matplotlib Development Team. (2025). **Matplotlib Documentation (v3.10)**. https://matplotlib.org/stable/index.html
+
+18. The yt Project. (2025). **yt Documentation**. https://yt-project.org/
 
 ## Next Chapter Preview
 
-In Chapter 9: Robust Computing - Writing Reliable Scientific Code, you'll learn how to transform your scripts from fragile prototypes into robust, reliable tools that can handle the messiness of real astronomical data. You'll master error handling with try-except blocks, learning to gracefully manage missing files, corrupted data, and numerical edge cases that would otherwise crash your analysis. You'll discover defensive programming techniques that validate inputs, check assumptions, and fail informatively when something goes wrong. Most importantly, you'll learn to write code that helps you debug problems quickly — using logging instead of print statements, creating useful error messages, and structuring your code to isolate failures. The visualization skills you've developed with Matplotlib will become powerful debugging tools, helping you create diagnostic plots that reveal where your code is failing and why. These skills are essential for research computing, where your code needs to process thousands of files from telescopes, handle incomplete observations, and work with data that's often messier than textbook examples. You'll learn that robust code isn't about preventing all errors — it's about failing gracefully, recovering when possible, and always giving you enough information to understand what went wrong!
+In Chapter 9: Robust Computing - Writing Reliable Scientific Code, you'll learn how to transform your scripts from fragile prototypes into robust, reliable tools that can handle the messiness of real astronomical data. You'll master error handling with try-except blocks, learning to gracefully manage missing files, corrupted data, and numerical edge cases that would otherwise crash your analysis. You'll discover defensive programming techniques that validate inputs, check assumptions, and fail informatively when something goes wrong. Most importantly, you'll learn to write code that helps you debug problems quickly – using logging instead of print statements, creating useful error messages, and structuring your code to isolate failures. The visualization skills you've developed with Matplotlib will become powerful debugging tools, helping you create diagnostic plots that reveal where your code is failing and why. These skills are essential for research computing, where your code needs to process thousands of files from telescopes, handle incomplete observations, and work with data that's often messier than textbook examples. You'll learn that robust code isn't about preventing all errors – it's about failing gracefully, recovering when possible, and always giving you enough information to understand what went wrong!

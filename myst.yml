@@ -114,6 +114,8 @@ site:
     logo_text: "✨ASTR 596✨"
     logo: _static/astr-logo-01.png
     favicon: _static/astr-logo-01.png
+    static: 
+      _static/custom.css
     
     analytics:
       google: G-QJLKLBMDSZ

@@ -1,11 +1,11 @@
 ---
-title: Computational Environments & Scientific Workflows
+title: "Chapter 1: Computational Environments & Scientific Workflows"
+subtitle: "Module 1: Python Fundamentals"
 exports:
     - format: pdf
 ---
 
-# Chapter 1: Computational Environments & Scientific Workflows
-
+%# Chapter 1: Computational Environments & Scientific Workflows
 ## Learning Objectives
 
 By the end of this chapter, you will be able to:
@@ -51,6 +51,8 @@ By chapter's end, you'll transform from someone who hopes code works to someone 
 **IPython**
 Interactive Python - an enhanced interpreter designed for scientific computing
 :::
+
+---
 
 ## 1.1 IPython: Your Computational Laboratory
 
@@ -578,6 +580,8 @@ python your_script.py
 ```
 
 :::
+
+---
 
 ## 1.3 Jupyter Notebooks: Beautiful Disasters Waiting to Happen
 
@@ -1529,6 +1533,8 @@ ipdb> q  # Quit debugger
 """)
 ```
 
+---
+
 ## Section 1.6: Defensive Programming
 
 You've spent the entire afternoon coding a cosmological distance calculator from scratch for tomorrow's Cosmology homework. Every equation matches the textbook. You've triple-checked the math. This is it - your code will generate a beautiful Hubble diagram from redshift 0 to 10.
@@ -1687,6 +1693,8 @@ When you implement Verlet or Leapfrog integration, you'll use these same pattern
 The cosmology example teaches the *pattern* without giving away the *implementation*. You'll apply these same defensive strategies to particle dynamics, just with different physics!
 :::
 
+---
+
 ## Main Takeaways
 
 This chapter has revealed the hidden complexity underlying every astronomical Python analysis you'll perform. You've learned that when your spectral fitting code fails or produces different radial velocities on different systems, it's often a bug in the algoritm or the **environment** surrounding that code. Understanding this distinction transforms you from someone frustrated by `ImportError: No module named 'astropy.modeling'` to someone who systematically diagnoses and fixes environment issues in seconds.
@@ -1702,6 +1710,8 @@ Creating reproducible environments is about scientific integrity, not just conve
 The debugging strategies you've learned will save you countless hours at the telescope. The universal environment check solves most "mysterious" failures before they waste observing time. Systematic import debugging reveals why `astropy.io.fits` can't be found (usually forgetting to activate your environment). IPython's debugger lets you examine why your centroiding algorithm failed without rerunning the entire night's reduction.
 
 **Remember:** Computational astrophysics isn't just about implementing algorithms from papers. It's about creating reliable, reproducible tools that can process terabytes of telescope data and produce trustworthy scientific results. The practices you've learned — from IPython exploration to environment management — are the foundation that enables discoveries. **Defensive programming** isn't paranoia; it's what keeps pipelines running when processing millions of galaxy spectra.
+
+---
 
 ## Definitions
 
@@ -1734,6 +1744,8 @@ The debugging strategies you've learned will save you countless hours at the tel
 
 **__name__**: Special Python variable that equals `"__main__"` when a script runs directly or the module name when imported, enabling code to serve both as a standalone tool and importable library.
 
+---
+
 ## Key Takeaways
 
 ✓ **IPython is your primary scientific computing tool**: Use it for testing algorithms, exploring data, and rapid prototyping — not the basic Python REPL
@@ -1757,6 +1769,8 @@ The debugging strategies you've learned will save you countless hours at the tel
 ✓ **Systematic debugging saves telescope time**: Environment check → verify imports → test with known data
 
 ✓ **Defensive programming handles messy astronomical data**: Assume bad pixels, cosmic rays, and missing headers
+
+---
 
 ## Quick Reference Tables
 
@@ -1826,6 +1840,8 @@ The debugging strategies you've learned will save you countless hours at the tel
   - Your data directory
 :::
 
+---
+
 ## Python Module & Method Reference
 
 :::{note}
@@ -1837,6 +1853,7 @@ This reference focuses on modules and methods essential for astronomical data an
 ### Astronomy-Specific Modules
 
 **`astropy` core modules**
+
 ```python
 import astropy
 import astropy.units as u
@@ -1858,7 +1875,9 @@ Key components:
 ```python
 import numpy as np
 ```
+
 Essential for astronomy:
+
 - `np.median()` - Robust against cosmic rays
 - `np.nanmean()` - Handle masked pixels
 - `np.fft.fft()` - Fourier analysis for periods
@@ -1869,7 +1888,9 @@ Essential for astronomy:
 ```python
 import matplotlib.pyplot as plt
 ```
+
 Astronomy-specific:
+
 - `plt.imshow(image, origin='lower')` - Display FITS images
 - `plt.scatter(phase, mag)` - Phase-folded light curves
 - `plt.errorbar(x, y, yerr)` - Measurements with errors
@@ -1973,6 +1994,8 @@ def monte_carlo_errors(data, n_iterations=1000, seed=42):
 - **For plotting**: Start with matplotlib, consider plotly for interactive
 - **For large arrays**: Use numpy with memmap for files > RAM
 - **For Monte Carlo**: Always set random seed for reproducibility
+
+---
 
 ## Next Chapter Preview
 

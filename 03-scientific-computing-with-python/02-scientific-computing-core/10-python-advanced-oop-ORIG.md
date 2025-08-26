@@ -1,10 +1,11 @@
 ---
-title: Advanced OOP Patterns - Architecting Scientific Software
+title: "Chapter 10: Advanced OOP Patterns - Architecting Scientific Software"
+subtitle: "Module 2: Scientific Computing Core"
 exports:
   - format: pdf
 ---
 
-# ⚠️ Chapter 10: Advanced OOP Patterns - Architecting Scientific Software
+%# ⚠️ Chapter 10: Advanced OOP Patterns - Architecting Scientific Software
 
 ## Learning Objectives
 
