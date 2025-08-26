@@ -1,8 +1,6 @@
----
-title: Syllabus - ASTR 596: Modeling the Universe
+title: ASTR 596 Syllabus - Modeling the Universe
 exports:
   - format: pdf
----
 
 # Syllabus - ASTR 596: Modeling the Universe
 
