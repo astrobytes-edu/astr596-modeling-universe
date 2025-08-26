@@ -5,7 +5,7 @@ exports:
 ---
 
 %# ASTR 596 AI Policy & Learning Framework
-**Living Document Notice:** Given the rapid evolution of AI in education, this policy is essentially a pedagogical experiment. We're exploring together how to best integrate these powerful tools while maintaining deep learning. Your feedback and experiences will help refine these guidelines. Open communication is essential—if something isn't working or you discover better approaches, please share during Hacking Hours or class discussions. We're all learning how to navigate this new landscape together.
+**Living Document Notice:** Given the rapid evolution of AI in education, this policy is essentially a pedagogical experiment. We're exploring together how to best integrate these powerful tools while maintaining deep learning. Your feedback and experiences will help refine these guidelines. Open communication is essential — if something isn't working or you discover better approaches, please share during Hacking Hours or class discussions. We're all learning how to navigate this new landscape together.
 
 ## TL;DR Quick Reference (AI Policy)
 
@@ -23,7 +23,13 @@ exports:
 - 📝 **Attribution**: Every AI-assisted code change must include the in-code 3-line note (*AI* / *Verified* / *Because*).
 - 🧠 **Ownership**: Can't explain it = Can't submit it
 
-![*First Internet Interaction*, xkcd.com](https://imgs.xkcd.com/comics/first_internet_interaction.png)
+```{figure} https://imgs.xkcd.com/comics/first_internet_interaction.png
+:alt: First Internet Interaction (xkcd)
+:width: 400px
+:align: center
+
+*First Internet Interaction*, xkcd.com
+```
 
 ## **Should I Use AI for This? Decision Flowchart**
 
@@ -204,6 +210,7 @@ Keep a simple log of significant AI interactions for your final portfolio (for y
 **Why?** Documents journey, reveals patterns, provides interview examples, mirrors industry practice
 
 **Simple format:**
+
 ```
 Date | Project | What AI Helped With | Key Insight
 9/15 | N-body | Debugging array indexing | Check bounds BEFORE loop
@@ -228,6 +235,7 @@ Date | Project | What AI Helped With | Key Insight
 ❌ **BAD**: "Explain RK4 integration"
 
 ### Optimization (Phase 3)
+
 ✅ **GOOD**: "My N-body simulation works but takes 5 minutes for 1000 particles. I'm using nested loops for force calculation. Here's my approach [show code]. What optimization strategies should I consider?"
 
 ❌ **BAD**: "Make this code faster"
@@ -466,7 +474,7 @@ AI amplifies capability—it doesn't replace understanding. Master fundamentals 
 
 ## References
 
-- Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, O., & Mariman, R. (2024). [*Generative AI can harm learning*](http://dx.doi.org/10.2139/ssrn.4895486) 
+- Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, O., & Mariman, R. (2024). [*Generative AI can harm learning*](http://dx.doi.org/10.2139/ssrn.4895486)
 
 - Bitzenbauer, P. (2023), [*ChatGPT in physics education: A pilot study on easy-to-implement activities*](https://doi.org/10.30935/cedtech/13176), Contemporary Educational Technology
 
