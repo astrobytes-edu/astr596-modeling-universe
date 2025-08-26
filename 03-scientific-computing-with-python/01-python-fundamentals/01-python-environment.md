@@ -1,23 +1,22 @@
 ---
 title: "Chapter 1: Computational Environments & Scientific Workflows"
-subtitle: "Module 1: Python Fundamentals"
+subtitle: "Scientific Computing with Python - Fundamentals"
 exports:
     - format: pdf
 ---
 
-%# Chapter 1: Computational Environments & Scientific Workflows
 ## Learning Objectives
 
 By the end of this chapter, you will be able to:
 
-- [ ] (1) **Configure and navigate IPython** as your primary interactive computing environment for scientific projects and astronomical data analysis.
-- [ ] (2) **Diagnose and fix three common causes** of environment-dependent behavior in scientific code.
-- [ ] (3) **Explain step-by-step how Python's import system** locates and loads modules when you type `import module`.
-- [ ] (4) **Identify five specific dangers** of Jupyter notebooks that can corrupt scientific results.
-- [ ] (5) **Create fully reproducible computational environments** using `conda` with proper version pinning.
-- [ ] (6) **Debug environment problems systematically** using a four-stage diagnostic protocol.
-- [ ] (7) **Transform notebook explorations into reproducible Python scripts** following best practices.
-- [ ] (8) **Execute Python code effectively** from both terminal and IPython environments.
+- [ ] **(1) Configure and navigate IPython as your primary interactive computing environment** for scientific projects and astronomical data analysis.
+- [ ] **(2) Diagnose and fix** three common causes of environment-dependent behavior in scientific code.
+- [ ] **(3) Explain step-by-step how Python's import system** locates and loads modules when you type `import module`.
+- [ ] **(4) Identify** five specific dangers of Jupyter notebooks that can corrupt scientific results.
+- [ ] **(5) Create** fully reproducible computational environments** using `conda` with proper version pinning.
+- [ ] **(6) Debug environment problems systematically** using a four-stage diagnostic protocol.
+- [ ] **(7) Transform notebook explorations into reproducible Python scripts** following best practices.
+- [ ] **(8) Execute Python code effectively** from both terminal and IPython environments.
 
 ## Prerequisites Check
 

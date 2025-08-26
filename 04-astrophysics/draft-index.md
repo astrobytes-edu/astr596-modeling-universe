@@ -6,9 +6,9 @@ Real astronomical phenomena and data analysis techniques that provide scientific
 
 This section explores the astrophysical motivation behind every computational technique in ASTR 596. You'll understand not just *how* to implement algorithms, but *why* they're essential for modern astronomical research.
 
-## Physical Contexts
+## Astrophysical Contexts
 
-### ⭐ [Stellar Physics](./01-stellar-physics/index.md)
+### ⭐ Stellar Physics
 
 The life cycles of stars provide rich computational problems:
 
@@ -17,10 +17,9 @@ The life cycles of stars provide rich computational problems:
 - **Stellar Evolution**: Main sequence to white dwarf/neutron star/black hole
 - **Observational Data**: HR diagrams and stellar classification
 - **Computational Methods**: ODE solving, boundary value problems
-
 *Project Connection: Project 1 implements simple stellar evolution models*
 
-### 🌌 [Gravitational Dynamics](./02-gravitational-dynamics/gravitational-dynamics/index.md)
+### 🌌 Gravitational Dynamics
 
 N-body systems from planetary motion to galaxy formation:
 

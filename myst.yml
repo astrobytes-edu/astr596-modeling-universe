@@ -75,7 +75,7 @@ project:
     - '03-scientific-computing-with-python/03-**'
     - '03-scientific-computing-with-python/04-**'
     - '03-scientific-computing-with-python/05-**'
-    - '04-astrophysics/**'
+    #- '04-astrophysics/**'
     - '05-math-and-statistics/**'
     - '06-numerical-methods/**'
     - '07-machine-learning/**'

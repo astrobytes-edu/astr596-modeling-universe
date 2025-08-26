@@ -1243,3 +1243,270 @@ print("✓ Used perceptually uniform colormap")
 ```
 
 ## Chapter 9
+
+## Chapter 10
+
+## Chapter 11
+
+## Practice Exercises
+
+### Exercise 1: Gravitational Simulation Data Analysis
+
+Practice organizing and analyzing dynamical simulation output:
+
+**Part A: Create simulation output structure (5 minutes)**
+
+```{code-cell} python
+def create_simulation_output():
+    """
+    Generate mock gravitational dynamics output.
+    
+    Create DataFrame with:
+    - timestep: 0, 10, 20, ..., 100
+    - n_particles: stays constant
+    - total_energy: should be ~constant (add small drift)
+    - kinetic_energy: oscillates
+    - potential_energy: oscillates
+    
+    HINTS:
+    - Use np.arange(0, 101, 10) for timesteps
+    - Total energy = kinetic + potential (should sum to ~constant)
+    - Add drift: energy * (1 + np.random.normal(0, 1e-6, size))
+    - Make KE and PE oscillate: use np.sin with different phases
+    
+    Return DataFrame ready for analysis.
+    """
+    # Your code here
+    pass
+
+# Test your function
+# sim_df = create_simulation_output()
+# print(sim_df.head())
+```
+
+**Part B: Check energy conservation (10 minutes)**
+
+```{code-cell} python
+def check_conservation(df):
+    """
+    Analyze energy conservation in dynamics simulation.
+    
+    Should:
+    - Calculate total energy at each timestep
+    - Compute relative energy drift
+    - Flag timesteps with |drift| > 1e-6
+    - Return summary statistics
+    
+    HINTS:
+    - total_energy = df['kinetic_energy'] + df['potential_energy']
+    - drift = (total_energy - total_energy.iloc[0]) / abs(total_energy.iloc[0])
+    - Use boolean masking: bad_steps = df[abs(drift) > 1e-6]
+    - Return dict with: max_drift, n_violations, first_violation_timestep
+    
+    This validates numerical integration schemes!
+    """
+    # Your code here
+    pass
+```
+
+**Part C: Compare different runs (10 minutes)**
+
+```{code-cell} python
+def compare_simulation_runs(runs_list):
+    """
+    Compare multiple runs with different parameters.
+    
+    Should:
+    - Combine multiple DataFrames
+    - Group by run parameters
+    - Compare energy conservation
+    - Identify best parameters
+    
+    HINTS:
+    - Use pd.concat(runs_list) with keys=['run1', 'run2', ...]
+    - Group by run identifier
+    - Calculate max drift per run
+    - Sort by conservation quality
+    
+    Return comparison DataFrame.
+    """
+    # Your code here
+    pass
+```
+
+### Exercise 2: Gaia Proper Motion Analysis
+
+Work with Gaia-like astrometric data:
+
+**Part A: Generate mock Gaia catalog (5 minutes)**
+
+```{code-cell} python
+def create_gaia_catalog():
+    """
+    Create mock Gaia DR3-like catalog.
+    
+    Generate DataFrame with:
+    - source_id: unique identifiers
+    - ra, dec: positions (degrees)
+    - parallax: distance indicator (mas)
+    - pmra, pmdec: proper motions (mas/yr)
+    - g_mag: brightness
+    
+    HINTS:
+    - Use exponential distribution for distances: np.random.exponential(200, n)
+    - Convert to parallax: parallax = 1000 / distance_pc
+    - Add proper motion with np.random.normal(0, 10)
+    - Magnitude: g_mag = 5 + 5*np.log10(distance) + noise
+    
+    Include some high proper motion stars.
+    """
+    # Your code here
+    pass
+```
+
+**Part B: Find moving groups (10 minutes)**
+
+```{code-cell} python
+def find_moving_groups(gaia_df, pm_threshold=50):
+    """
+    Identify potential moving groups.
+    
+    Should:
+    - Calculate total proper motion
+    - Filter by proper motion threshold
+    - Group by sky region (ra/dec bins)
+    - Find overdensities
+    
+    HINTS:
+    - total_pm = np.sqrt(df['pmra']**2 + df['pmdec']**2)
+    - Use pd.cut to bin ra and dec into regions
+    - Group by bins and count sources
+    - Flag regions with > 2x average density
+    
+    Return DataFrame of candidates.
+    """
+    # Your code here
+    pass
+```
+
+**Part C: Solar neighborhood census (10 minutes)**
+
+```{code-cell} python
+def analyze_solar_neighborhood(gaia_df, distance_limit=100):
+    """
+    Statistical analysis of nearby stars.
+    
+    Should:
+    - Convert parallax to distance (d = 1000/parallax)
+    - Select stars within distance_limit parsecs
+    - Compute velocity statistics
+    - Create color-magnitude diagram data
+    
+    HINTS:
+    - distance_pc = 1000 / gaia_df['parallax']
+    - Filter: nearby = gaia_df[distance_pc < distance_limit]
+    - Calculate tangential velocity: v_tan = 4.74 * pm_total * distance_pc
+    - Return dict with: n_stars, median_velocity, brightest_star
+    
+    Return neighborhood statistics.
+    """
+    # Your code here
+    pass
+```
+
+### Exercise 3: LSST Alert Stream Processing
+
+Process transient alerts like Rubin Observatory:
+
+**Part A: Generate alert stream (5 minutes)**
+
+```{code-cell} python
+def generate_alert_stream():
+    """
+    Create mock LSST-like alert stream.
+    
+    Generate DataFrame with:
+    - alert_id: unique identifier
+    - object_id: source identifier
+    - mjd: observation time
+    - mag: brightness measurement
+    - mag_err: uncertainty
+    - n_previous: number of prior detections
+    
+    Mix stable sources, variables, and transients.
+    """
+    # Your code here
+    pass
+```
+
+**Part B: Classify alerts (10 minutes)**
+
+```{code-cell} python
+def classify_alerts(alerts_df):
+    """
+    Real-time alert classification.
+    
+    Should:
+    - Group by object_id
+    - Calculate variability metrics
+    - Identify new transients (n_previous == 0)
+    - Flag high-amplitude variables
+    
+    Return classified alerts with priority scores.
+    """
+    # Your code here
+    pass
+```
+
+**Part C: Build light curves (10 minutes)**
+
+```{code-cell} python
+def build_light_curves(alerts_df, object_ids):
+    """
+    Construct light curves for specific objects.
+    
+    Should:
+    - Filter to requested objects
+    - Group by object and filter
+    - Sort by time
+    - Calculate running statistics
+    - Flag outlier measurements
+    
+    Return light curve DataFrame.
+    """
+    # Your code here
+    pass
+```
+
+### Exercise 4: Debug This!
+
+Fix the astronomical data analysis code:
+
+```{code-cell} python
+def analyze_survey_buggy(catalog_df):
+    """
+    This function has 5 bugs. Find and fix them!
+    """
+    # Bug 1: Forgot parentheses on method
+    bright_sources = catalog_df.groupby('field').count
+    
+    # Bug 2: Chained assignment problem
+    nearby = catalog_df[catalog_df['distance'] < 100]
+    nearby['priority'] = 1  # SettingWithCopyWarning!
+    
+    # Bug 3: Wrong merge suffixes
+    optical = pd.DataFrame({'id': [1, 2], 'mag': [15, 16]})
+    infrared = pd.DataFrame({'id': [1, 2], 'mag': [14, 15]})
+    combined = optical.merge(infrared, on='id')  # Mag_x, mag_y confusion!
+    
+    # Bug 4: Not handling NaN in calculation  
+    catalog_df['color'] = catalog_df['mag_g'] - catalog_df['mag_r']
+    mean_color = catalog_df['color'].mean()  # NaN if any missing!
+    
+    # Bug 5: Inefficient string storage
+    catalog_df['survey'] = 'LSST_DR1' # Repeated 1M times as string!
+    
+    return bright_sources, nearby, combined, mean_color
+
+# Fix the bugs and explain each fix
+```

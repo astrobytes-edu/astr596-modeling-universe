@@ -1,5 +1,6 @@
 ---
-title: Introduction to Git and GitHub
+title: "Chapter 3: Introduction to Git and GitHub"
+subtitle: "Getting Started"
 exports:
   - format: pdf
 ---

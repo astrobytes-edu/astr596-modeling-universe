@@ -5,22 +5,20 @@ exports:
   - format: pdf
 ---
 
-%# Chapter 2: Python as Your Scientific Calculator
-
 ## Learning Objectives
 
 By the end of this chapter, you will be able to:
 
-- [ ] (1) **Use Python as an interactive scientific calculator** with correct operator precedence (PEMDAS) and all seven arithmetic operators (`+`, `-`, `*`, `/`, `//`, `%`, `**`).
-- [ ] (2) **Explain how computers represent numbers in memory** using IEEE 754 standard for floats (64 bits: sign, exponent, mantissa) and arbitrary precision for integers.
-- [ ] (3) **Demonstrate why `0.1 + 0.2 ≠ 0.3`** due to binary representation limits and handle comparisons with `math.isclose()`.
-- [ ] (4) **Recognize and prevent three numerical hazards**: catastrophic cancellation, overflow (~10³⁰⁸ limit), and silent underflow to zero.
-- [ ] (5) **Choose appropriate numeric types** (int, float32, float64, complex) based on precision needs and memory constraints.
-- [ ] (6) **Format scientific output using f-strings** with format specifiers (`.2f`, `.2e`, `:10.2f`, `:,`) for publication-quality results.
-- [ ] (7)**Convert between data types safely** using `int()`, `float()`, `complex()` while understanding truncation vs rounding.
-- [ ] (8) **Apply defensive programming techniques** including validation functions, safe division, and domain-specific checks.
-- [ ] (9) **Use essential `math` module functions** for scientific computing: `sqrt()`, `log()`, `sin()`, `cos()`, `isfinite()`, `isnan()`.
-- [ ] (10) **Work with complex numbers** using Python's `j` notation for wave physics and Fourier analysis.
+- [ ] **(1) Use Python as an interactive scientific calculator** with correct operator precedence (PEMDAS) and all seven arithmetic operators (`+`, `-`, `*`, `/`, `//`, `%`, `**`).
+- [ ] **(2) Explain how computers represent numbers in memory** using IEEE 754 standard for floats (64 bits: sign, exponent, mantissa) and arbitrary precision for integers.
+- [ ] **(3) Demonstrate why `0.1 + 0.2 ≠ 0.3`** due to binary representation limits and handle comparisons with `math.isclose()`.
+- [ ] **(4) Recognize and prevent three numerical hazards**: catastrophic cancellation, overflow (~10³⁰⁸ limit), and silent underflow to zero.
+- [ ] **(5) Choose appropriate numeric types** (int, float32, float64, complex) based on precision needs and memory constraints.
+- [ ] **(6) Format scientific output using f-strings** with format specifiers (`.2f`, `.2e`, `:10.2f`, `:,`) for publication-quality results.
+- [ ] **(7) Convert between data types** safely using `int()`, `float()`, `complex()` while understanding truncation vs rounding.
+- [ ] **(8) Apply defensive programming techniques** including validation functions, safe division, and domain-specific checks.
+- [ ] **(9) Use essential `math` module functions** for scientific computing: `sqrt()`, `log()`, `sin()`, `cos()`, `isfinite()`, `isnan()`.
+- [ ] **(10) Work with complex numbers** using Python's `j` notation for wave physics and Fourier analysis.
 
 ## Prerequisites Check
 
@@ -54,7 +52,7 @@ By mastering these fundamentals now, you'll develop the numerical intuition that
 The order in which Python evaluates mathematical operations
 :::
 
-Fire up IPython (remember from Chapter 1 — not the basic Python interpreter, we want the enhanced features) and let's start with the basics. Python handles arithmetic operations naturally, but there are subtleties that matter for scientific work:
+Fire up `ipython` (remember from Chapter 1 — not the basic `python` interpreter, we want the enhanced features) and let's start with the basics. Python handles arithmetic operations naturally, but there are subtleties that matter for scientific work:
 
 ```{code-cell} ipython3
 # Basic arithmetic - but watch the precision!
@@ -63,7 +61,7 @@ print(f"10 / 3 = {10 / 3}")  # Division always gives a float
 print(f"2 ** 10 = {2 ** 10}")  # Exponentiation - the power operator
 ```
 
-Notice that `10 / 3` gives us `3.3333333333333335`—not exactly 1/3! This tiny imprecision at the end might seem trivial, but it's your first glimpse into a fundamental challenge of computational science.
+Notice that `10 / 3` gives us `3.3333333333333335` — not exactly 1/3! This tiny imprecision at the end might seem trivial, but it's your first glimpse into a fundamental challenge of computational science.
 
 ### Operator Precedence: A Source of Real Bugs
 
@@ -95,7 +93,7 @@ print(f"Wrong answer is {error_factor:.0f}× too large!")
 
 We use CGS (centimeter-gram-second) units throughout this course because they're standard in stellar physics, galactic dynamics, and most theoretical astrophysics papers. You'll see CGS in plasma physics calculations, stellar structure models, and cosmological simulations. SI units appear more frequently in planetary science, spacecraft dynamics, and gravitational wave astronomy.
 
-**Quick reference:** 1 parsec $= 3.086×10¹⁸$ cm, 1 $M_{\odot}$ = 1.989×10³³ g, 1 $L_{\odot}$ = 3.828×10³³ erg/s. Always verify which system a paper uses — unit confusion has caused spacecraft failures!
+**Quick reference:** 1 parsec $= 3.086×10¹⁸$ cm, $M_{\odot} = 1.989×10³³$ g (solar mass), $L_{\odot}$ = 3.828×10³³ erg/s (solar luminosity). Always verify which system a paper uses — unit confusion has caused spacecraft failures!
 :::
 
 The wrong version calculated $(GM/\sqrt{r})$ instead of $\sqrt{(GM/r)}$ — a factor of $\sqrt{GM}$ error, which for Earth's orbit is about $10^{13}$ times too large!

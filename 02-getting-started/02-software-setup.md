@@ -1,5 +1,6 @@
 ---
-title: Software Setup Guide
+title: "Chapter 2: Software Setup Guide"
+subtitle: "Getting Started"
 exports:
   - format: pdf
 ---

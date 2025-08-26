@@ -20,7 +20,7 @@ exports:
 - **Prerequisites:** Physics 196; MATH 254 or 342A; or equivalent with instructor permission, or graduate standing
 - **Meeting Time:** Fridays 11:00 AM - 1:40 PM
 - **Format:** ~30-45min lecture review + 2h hands-on project work
-- **Location:** PA 215
+- **Location:** Physical Sciences 256
 - **Course Website:** <https://astrobytes-edu.github.io/astr596-modeling-universe/>
 - **Virtual Tutor:** [✨ASTR 596: Modeling the Universe Tutor✨ *(Custom GPT)*](https://chatgpt.com/g/g-68aabb9278d08191926feb3f5512686c-astr-596-modeling-the-universe-tutor)
 - **Platforms:** Canvas, Slack, GitHub Classroom
@@ -40,9 +40,9 @@ exports:
 
 ## Course Description
 
-This course provides a hands-on introduction to the practice and theory of scientific computing, with an emphasis on numerical methods and machine learning, applied to astrophysical problems. Beginning with Python programming fundamentals and object-oriented design, the course progresses through sophisticated numerical methods including N-body dynamics, Monte Carlo radiative transfer, Bayesian inference, Gaussian processes, and culminates with neural networks. Students will implement all algorithms from first principles ("glass box" approach) before transitioning to modern frameworks (JAX ecosystem). The course emphasizes professional software development practices, responsible AI integration, and preparation for computational research careers.
+This course provides a hands-on introduction to the practice and theory of scientific computing, with an emphasis on numerical methods and machine learning, applied to astrophysical problems. Beginning with Python programming fundamentals and object-oriented design, the course progresses through sophisticated numerical methods including N-body dynamics, Monte Carlo radiative transfer, Bayesian inference, Gaussian processes, and culminates with neural networks. Students will implement all algorithms from first principles ("glass box" approach) before transitioning to modern frameworks (JAX ecosystem). The course emphasizes professional software development practices, responsible AI integration, and preparation for computational research and industry careers.
 
-**Important Note:** I'm not testing your astrophysics knowledge. All necessary equations and scientific background will be provided. Your task is to learn and understand the scientific concepts, implement them correctly in Python, and connect the computation to the physics. The focus is on computational thinking and implementation skills that transfer to any research domain.
+**Important Note:** I'm not testing your astrophysics knowledge. All necessary equations and scientific background will be provided. Your task is to learn and understand the scientific concepts, implement them correctly in Python, and connect the computation to the astrophysics. The focus is on computational thinking and implementation skills that transfer to any research domain.
 
 **For an expanded description of the course philosophy and approach, see:**
 
@@ -89,7 +89,7 @@ Upon successful completion of this course, students will be able to:
 
 - Deisenroth, Faisal, & Ong (2020), [Mathematics for Machine Learning](https://mml-book.github.io/), Cambridge University Press
 
-- Ting (2025), [Statistical Machine Learning for Astronomy](https://arxiv.org/abs/2506.12230), arXiv preprint
+- Ting (2025), [Statistical Machine Learning for Astronomy *(arXiv preprint)*](https://arxiv.org/abs/2506.12230)
 
 ### Software Requirements
 
@@ -117,7 +117,7 @@ All projects distributed and submitted here. Your last repository push by the de
 
 | Component | Weight | Description |
 |-----------|--------|-------------|
-| **Short Projects 1-5** | 50% | Due biweekly on Mondays at 11:59 PM PT via GitHub Classroom (includes Growth Memos). |
+| **Short Projects 1-5** | 50% | Due roughly every 2-3 weeks on Mondays at 11:59 PM PT via GitHub Classroom (includes Growth Memos). |
 | **Growth Memos** | 10% | Integrated with each project submission (.md or PDF in project repo) |
 | **Final Project** | 25% | JAX implementation with research component. Due Thu Dec 18, 11:59 PM PT. |
 | **Technical Growth Synthesis** | 5% | Comprehensive self-reflection growth portfolio integrated with Final Project submission (.md or PDF in project repo). |

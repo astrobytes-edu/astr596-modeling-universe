@@ -1,10 +1,9 @@
 ---
-title: Introduction to the Command Line Interface (CLI)
+title: "Chapter 1: Introduction to the Command Line Interface (CLI)"
+subtitle: "Getting Started"
 exports:
   - format: pdf
 ---
-
-# Chapter 1: Introduction to the Command Line Interface (CLI)
 
 ## Before You Begin: Safety Rules
 

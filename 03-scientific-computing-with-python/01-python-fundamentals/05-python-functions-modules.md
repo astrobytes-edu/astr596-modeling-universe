@@ -615,7 +615,6 @@ Python supports different parameter types that must appear in a specific order. 
 
 :::{list-table} Python Parameter Types (in required order)
 :header-rows: 1
-:widths: 10 20 30 40
 
 * - Order
   - Type
@@ -800,7 +799,7 @@ configure("MyApp", debug=True)  # Must name debug
 # configure("MyApp", True)  # ERROR! Can't pass debug positionally
 ```
 
-::::{admonition} 🔍 Check Your Understanding #2
+::::{admonition} 🔍 Check Your Understanding
 :class: question
 
 Which of these function definitions are valid, and how would you call each?
@@ -1038,7 +1037,7 @@ print(f"Rectangle error: {abs(rect_result-exact):.6f}")
 print(f"Midpoint error:  {abs(mid_result-exact):.6f}")
 ```
 
-:::{admonition} 🔍 Check Your Understanding #3
+:::{admonition} 🔍 Check Your Understanding
 :class: question
 
 What happens if both inner and outer functions define the same variable name?
@@ -1190,7 +1189,7 @@ print(f"Final mean: {mean:.1f} cm/s²")
 # Immutable data prevents side effects
 ```
 
-:::{admonition} 🔍 Check Your Understanding #4
+:::{admonition} 🔍 Check Your Understanding
 :class: question
 
 Rewrite this loop using functional programming:
@@ -1499,7 +1498,7 @@ print(f"cmath.log(-1) = {complex_log}")  # Returns complex number
 # log(10)  # Which log? math or cmath? Unclear!
 ```
 
-:::{admonition} 🔍 Check Your Understanding #5
+:::{admonition} 🔍 Check Your Understanding
 :class: question
 
 Why is `from module import *` dangerous in scientific code?
