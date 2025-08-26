@@ -103,8 +103,8 @@ site:
   actions:
     - title: Open in GitHub Codespaces
       url: https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=astrobytes-edu/astr596-modeling-universe
-    - title: Launch Binder 🚀
-      url: https://mybinder.org/v2/gh/astrobytes-edu/astr596-modeling-universe/main
+    #- title: Launch Binder 🚀
+    #  url: https://mybinder.org/v2/gh/astrobytes-edu/astr596-modeling-universe/main
     
     # - title: Download Complete Book PDF
     #   url: /exports/astr596-complete-book.pdf

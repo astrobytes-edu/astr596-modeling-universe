@@ -25,7 +25,7 @@ exports:
 
 ```{figure} https://imgs.xkcd.com/comics/first_internet_interaction.png
 :alt: First Internet Interaction (xkcd)
-:width: 400px
+:width: 450px
 :align: center
 
 *First Internet Interaction*, xkcd.com
@@ -211,10 +211,10 @@ Keep a simple log of significant AI interactions for your final portfolio (for y
 
 **Simple format:**
 
-```
+```markdown
 Date | Project | What AI Helped With | Key Insight
 9/15 | N-body | Debugging array indexing | Check bounds BEFORE loop
-10/2 | MCRT | Understanding optical depth (after reading Rybicki) | It's cumulative, not local
+10/2 | MCRT | Understanding optical depth (after reading the course docs) | It's cumulative, not local
 ```
 
 **Final Portfolio:** Select 3-5 best examples showing Phase 1→3 evolution.
