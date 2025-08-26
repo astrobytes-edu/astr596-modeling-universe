@@ -1,6 +1,6 @@
 ---
 title: "Chapter 2: Software Setup Guide"
-subtitle: "Getting Started"
+subtitle: "ASTR 596 - Getting Started"
 exports:
   - format: pdf
 ---

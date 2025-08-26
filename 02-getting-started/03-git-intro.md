@@ -1,6 +1,6 @@
 ---
 title: "Chapter 3: Introduction to Git and GitHub"
-subtitle: "Getting Started"
+subtitle: "ASTR 596 - Getting Started"
 exports:
   - format: pdf
 ---

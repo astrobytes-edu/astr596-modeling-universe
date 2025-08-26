@@ -1,6 +1,6 @@
 ---
 title: "Chapter 1: Computational Environments & Scientific Workflows"
-subtitle: "Scientific Computing with Python - Fundamentals"
+subtitle: "ASTR 596: Modeling the Universe | Python Fundamentals"
 exports:
     - format: pdf
 ---

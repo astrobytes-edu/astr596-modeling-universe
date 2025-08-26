@@ -1,6 +1,6 @@
 ---
 title: "Chapter 1: Introduction to the Command Line Interface (CLI)"
-subtitle: "Getting Started"
+subtitle: "ASTR 596 - Getting Started"
 exports:
   - format: pdf
 ---

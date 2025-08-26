@@ -1,10 +1,9 @@
 ---
-title: Getting Started
+title: Getting Started with ASTR 596
+subtitle: "Modeling the Universe | **Instructor:** Anna Rosen"
 exports:
   - format: pdf
 ---
-
-# Getting Started
 
 **Your Foundation for Computational Astrophysics**
 Before we model the universe, we need to set up our computational laboratory. This module establishes the professional development environment and essential skills you'll use throughout ASTR 596 and your research career.

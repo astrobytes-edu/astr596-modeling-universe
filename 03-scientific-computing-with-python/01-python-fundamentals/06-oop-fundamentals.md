@@ -1,6 +1,6 @@
 ---
 title: "Chapter 6: OOP Fundamentals - Organizing Scientific Code"
-subtitle: "Module 1: Python Fundamentals"
+subtitle: "ASTR 596: Modeling the Universe | Python Fundamentals"
 exports:
   - format: pdf
 ---

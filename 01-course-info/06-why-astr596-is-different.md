@@ -1,5 +1,6 @@
 ---
 title: Why ASTR 596 is Different
+subtitle: "Modeling the Universe | **Instructor:** Anna Rosen"
 exports:
   - format: pdf
 ---

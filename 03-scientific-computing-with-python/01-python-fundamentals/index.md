@@ -1,5 +1,6 @@
 ---
 title: Python Fundamentals Overview
+subtitle: "ASTR 596: Modeling the Universe | **Instructor:** Anna Rosen"
 exports:
   - format: pdf
 ---

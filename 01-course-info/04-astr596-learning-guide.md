@@ -1,5 +1,6 @@
 ---
-title: "ASTR 596 Course Learning Guide"
+title: "ASTR 596: Course Learning Guide"
+subtitle: "Modeling the Universe | **Instructor:** Anna Rosen"
 exports:
   - format: pdf
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Chapter 11: Pandas - Organizing the Universe's Data"
-subtitle: "Module 2: Scientific Computing Core"
+subtitle: "ASTR 596: Modeling the Universe | Scientific Computing Core"
 exports:
   - format: pdf
 ---

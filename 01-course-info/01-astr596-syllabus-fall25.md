@@ -1,10 +1,9 @@
 ---
-title: "ASTR 596 Syllabus"
-subtitle: "Modeling the Universe"
+title: "ASTR 596: Syllabus (Fall 2025)"
+subtitle: "Modeling the Universe | **Instructor:** Anna Rosen"
 exports:
   - format: pdf
 ---
-%# Syllabus - ASTR 596: Modeling the Universe
 **Fall 2025 - San Diego State University (SDSU)**  
 **Fridays 11:00 AM - 1:40 PM | PA 215**
 

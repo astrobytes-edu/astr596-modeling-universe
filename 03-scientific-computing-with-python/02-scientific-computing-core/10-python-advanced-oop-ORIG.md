@@ -1,6 +1,6 @@
 ---
 title: "Chapter 10: Advanced OOP Patterns - Architecting Scientific Software"
-subtitle: "Module 2: Scientific Computing Core"
+subtitle: "ASTR 596: Modeling the Universe | Scientific Computing Core"
 exports:
   - format: pdf
 ---

@@ -1,11 +1,9 @@
 ---
 title: "Chapter 4: Data Structures - Organizing Scientific Data"
-subtitle: "Module 1: Python Fundamentals"
+subtitle: "ASTR 596: Modeling the Universe | Python Fundamentals"
 exports:
   - format: pdf
 ---
-
-# Chapter 4: Data Structures - Organizing Scientific Data
 
 ## Learning Objectives
 

@@ -1,6 +1,6 @@
 ---
 title: "Chapter 8: Matplotlib - Visualizing Your Universe"
-subtitle: "Module 2: Scientific Computing Core"
+subtitle: "ASTR 596: Modeling the Universe | Scientific Computing Core"
 exports:
   - format: pdf
 ---

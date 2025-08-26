@@ -1,5 +1,6 @@
 ---
-title: "ASTR 596 Course Schedule & Important Dates"
+title: "ASTR 596: Course Schedule & Important Dates"
+subtitle: "Modeling the Universe | **Instructor:** Anna Rosen"
 exports:
   - format: pdf
 ---
