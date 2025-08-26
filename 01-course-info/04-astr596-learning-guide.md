@@ -1,11 +1,10 @@
 ---
-title: ASTR 596 - Course Learning Guide
+title: "ASTR 596 Course Learning Guide"
 exports:
   - format: pdf
 ---
 
-# ASTR 596: Course Learning Guide
-
+%# ASTR 596: Course Learning Guide
 :::{tip} Quick Start
 **Before class (≤30 min):** skim the chapter → attempt the project for **30 min** (capture effort evidence) → note two questions.
 

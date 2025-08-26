@@ -4,7 +4,7 @@ exports:
   - format: pdf
 ---
 
-# Understanding Your Learning Journey in ASTR 596
+%# Understanding Your Learning Journey in ASTR 596
 
 ## Why ASTR 596 is designed this way
 

@@ -49,18 +49,9 @@ project:
       article. The abstract is intentionally brief; customize for publication.
 
   # PDF Export configurations
-  exports:
-    - format: pdf
-      template: book-theme-pdf
-      output: exports/astr596-complete-book.pdf
-      id: complete-book
-
-    # Typst export disabled per maintainer request. To re-enable, restore
-    # the block below and ensure a pinned Typst binary is available in CI.
-    # - format: typst
-    #   template: lapreprint-typst
-    #   output: exports/astr596-article.pdf
-    #   id: article-pdf
+  # PDF export removed per maintainer request. To re-enable, add an
+  # `exports:` block with the desired formats and ensure CI has the
+  # necessary toolchain (LaTeX/Typst) available.
 
   # Files to exclude from build
   exclude:
@@ -112,6 +103,9 @@ site:
   actions:
     - title: Open in GitHub Codespaces
       url: https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=astrobytes-edu/astr596-modeling-universe
+    - title: Launch Binder 🚀
+      url: https://mybinder.org/v2/gh/astrobytes-edu/astr596-modeling-universe/main
+    
     # - title: Download Complete Book PDF
     #   url: /exports/astr596-complete-book.pdf
   
@@ -123,8 +117,7 @@ site:
     
     analytics:
       google: G-QJLKLBMDSZ
-    extra_javascript:
-      - /_static/js/pdf-map.js
+    # extra_javascript: pdf-map removed per maintainer request
     
     extra_footer: |
       <p>ASTR 596: Modeling the Universe | Fall 2025<br>

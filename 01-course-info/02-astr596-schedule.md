@@ -1,12 +1,12 @@
 ---
-title: ASTR 596 Course Schedule & Important Dates
+title: "ASTR 596 Course Schedule & Important Dates"
 exports:
   - format: pdf
 ---
 
-# ⚠️ Course Schedule & Important Dates
+%# ⚠️ Course Schedule & Important Dates
 
-## Tentative Schedule Structure
+## ⚠️ Tentative Schedule Structure
 
 **Mondays:** New project assigned via GitHub Classroom; previous project & growth memo due at 11:59 PM
 

@@ -1,11 +1,10 @@
 ---
-title: ASTR 596 AI Policy & Learning Framework
+title: "ASTR 596 AI Policy & Learning Framework"
 exports:
   - format: pdf
 ---
 
-# ASTR 596 AI Policy & Learning Framework
-
+%# ASTR 596 AI Policy & Learning Framework
 **Living Document Notice:** Given the rapid evolution of AI in education, this policy is essentially a pedagogical experiment. We're exploring together how to best integrate these powerful tools while maintaining deep learning. Your feedback and experiences will help refine these guidelines. Open communication is essential—if something isn't working or you discover better approaches, please share during Hacking Hours or class discussions. We're all learning how to navigate this new landscape together.
 
 ## TL;DR Quick Reference (AI Policy)
