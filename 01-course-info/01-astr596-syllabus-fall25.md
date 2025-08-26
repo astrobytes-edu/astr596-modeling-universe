@@ -1,6 +1,8 @@
-title: ASTR 596 Syllabus - Modeling the Universe
+---
+title: ASTR 596 Syllabus (Fall 2025)
 exports:
   - format: pdf
+---
 
 # Syllabus - ASTR 596: Modeling the Universe
 
@@ -21,18 +23,18 @@ exports:
 - **Format:** ~30-45min lecture review + 2h hands-on project work
 - **Location:** PA 215
 - **Course Website:** <https://astrobytes-edu.github.io/astr596-modeling-universe/>
-% - **Virtual Tutor:** [✨ASTR 596: Modeling the Universe Tutor✨ *(Custom GPT)*](https://chatgpt.com/g/g-68aabb9278d08191926feb3f5512686c-astr-596-modeling-the-universe-tutor)
+- **Virtual Tutor:** [✨ASTR 596: Modeling the Universe Tutor✨ *(Custom GPT)*](https://chatgpt.com/g/g-68aabb9278d08191926feb3f5512686c-astr-596-modeling-the-universe-tutor)
 - **Platforms:** Canvas, Slack, GitHub Classroom
 
 ### Class Meeting Structure
 
-**Pre-Class Preparation (Required):**
+#### Pre-Class Preparation (Required)
 
 - Complete assigned readings on course website.
 - Review project requirements if new project assigned.
 - Prepare questions on material and implementation challenges.
 
-**Friday Class Sessions:**
+#### Friday Class Sessions
 
 - **11:00-11:40 AM:** Interactive review of the week's concepts, Q&A on required course readings, clarification of project requirements.
 - **11:40 AM-1:40 PM:** Hands-on project work with pair programming, implementation support, and peer collaboration.
@@ -43,7 +45,10 @@ This course provides a hands-on introduction to the practice and theory of scien
 
 **Important Note:** I'm not testing your astrophysics knowledge. All necessary equations and scientific background will be provided. Your task is to learn and understand the scientific concepts, implement them correctly in Python, and connect the computation to the physics. The focus is on computational thinking and implementation skills that transfer to any research domain.
 
-**For an expanded description of the course philosophy and approach, see:** [Why ASTR 596 is Designed This Way](06-why-astr596-is-different) and [Understanding Your Learning Journey in ASTR 596](05-astr596-course-overview)
+**For an expanded description of the course philosophy and approach, see:**
+
+- [Why ASTR 596 is Designed This Way](06-why-astr596-is-different) 
+- [Understanding Your Learning Journey in ASTR 596](05-astr596-course-overview)
 
 ## Course Learning Outcomes
 
@@ -60,7 +65,7 @@ Upon successful completion of this course, students will be able to:
 9. **Communicate computational methods and scientific results effectively** through written reports and code documentation.
 10. **Think computationally about astrophysics** developing intuition for numerical stability and convergence.
 
-**Where Outcomes Are Assessed**
+### Where Outcomes Are Assessed
 
 - LO1 (implement schemes) → Projects 1–6, Final Project
 - LO2 (professional practices) → repo hygiene, tests, Growth Memos
@@ -125,7 +130,7 @@ All projects distributed and submitted here. Your last repository push by the de
 
 Each short project submission includes both technical implementation and a growth memo reflection. Together these components total 60% of your course grade (50% projects + 10% memos).
 
-**Short Project Components:**
+### Short Project Components
 
 - **Core Implementation** - Working solution with correct physics/algorithms.
 - **Research Memo** - 2-3 pages text plus figures (LaTeX/PDF required).
@@ -133,7 +138,7 @@ Each short project submission includes both technical implementation and a growt
 - **Validation** - Testing against known solutions or benchmarks.
 - **Student-Led Exploration** - Self-directed investigation extending beyond base requirements (**required for graduate students**, optional but encouraged for undergraduates).
 
-**Growth Memo Components (1-2 pages, submit as .md or PDF in project repo):**
+### Growth Memo Components (1-2 pages, submit as .md or PDF in project repo)
 
 *An informal reflection on your learning journey and skill development progression - write authentically about:*
 
@@ -146,7 +151,7 @@ Each short project submission includes both technical implementation and a growt
 
 **Note:** The relative weight between project implementation and growth memo may vary by project based on learning objectives and complexity. Early projects may emphasize reflection more heavily to develop metacognitive skills, while later projects may weigh technical implementation more strongly as mastery develops.
 
-**Research Memo Format:**
+### Research Memo Format
 
 - Single-spaced, submit as PDF in project repo.
 - 2-3 pages of text (not counting figures/references).
@@ -162,7 +167,7 @@ Each short project submission includes both technical implementation and a growt
 | **Written Report** | 30% | Scientific writeup with scientific background and motivation, methods, results, and conclusions. |
 | **Presentation** | 15% | 12-minute total: research project, technical growth summary, and Q&A. |
 
-**Code Package Requirements:**
+### Code Package Requirements
 
 - Proper modular package structure with `__init__.py` files.
 - Unit tests with >70% coverage.
@@ -170,7 +175,7 @@ Each short project submission includes both technical implementation and a growt
 - Clean Git history showing iterative development.
 - Requirements.txt/environment.yml.
 
-**Presentation Structure (12 minutes total):**
+### Presentation Structure (12 minutes total)
 
 - 7 minutes on research project (motivation, methods, results, conclusions).
 - 3 minutes on technical growth journey (key learning moments, skill evolution).
@@ -178,7 +183,7 @@ Each short project submission includes both technical implementation and a growt
 
 ### Technical Growth Synthesis (5% of course grade)
 
-**Portfolio Components (3-5 pages excluding figures, submit with Final Project):**
+### Portfolio Components (3-5 pages excluding figures, submit with Final Project)
 
 *An informal reflective narrative documenting your computational journey through the entire course - write authentically about your evolution as a computational scientist:*
 
@@ -307,7 +312,7 @@ I consider this classroom to be a place where you will be treated with respect, 
 
 For essential information about student academic success, please see the [SDSU Student Academic Success Handbook](https://docs.google.com/document/d/1rXNpNGs1K7nIxcS73o6R-fxZqPIWQwS9gHD7XpIqjhM/edit) and the [SDSU Student Success Hub](https://studentsuccess.sdsu.edu/success-hub). For graduate student resources please refer to [SDSU's Graduate Student Resources](https://grad.sdsu.edu/current-students).
 
-Class rosters are provided to the instructor with the student’s legal name. Please let the instructor know if you prefer an alternate name and/or gender pronoun. 
+Class rosters are provided to the instructor with the student’s legal name. Please let the instructor know if you prefer an alternate name and/or gender pronoun.
 
 SDSU provides disability-related accommodations via [Student Disability Services](https://sds.sdsu.edu) (email: <sds@sdsu.edu>). Please allow 10-14 business days for processing.
 

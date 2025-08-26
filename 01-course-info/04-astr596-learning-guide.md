@@ -1,5 +1,5 @@
 ---
-title: ASTR 596: Course Learning Guide
+title: ASTR 596 - Course Learning Guide
 exports:
   - format: pdf
 ---
@@ -24,7 +24,9 @@ exports:
 
 :::{important} Quick Reference Card
 :class: dropdown
-**Daily Checklist**
+
+## Daily Checklist
+
 - [ ] Pull & create a short-name branch
 - [ ] 30-min attempt (capture effort evidence)
 - [ ] One small verified increment
@@ -32,7 +34,8 @@ exports:
 - [ ] Commit with a descriptive message; push
 - [ ] Write one takeaway line
 
-**When Stuck**
+## When Stuck
+
 1. **Re-read error** – note exception, file:line, and first frame in your code
 2. **Minimal repro** – smallest standalone script (≤20 lines) that reproduces the bug
 3. **Check docs** – verify signature, types/shapes, units match your use
@@ -40,7 +43,8 @@ exports:
 5. **Search specific error** – exact exception + library/version
 6. **Ask with context** – branch link, file:line, minimal repro, expected vs actual
 
-**Git Workflow**
+## Git Workflow
+
 ```bash
 git pull origin main
 git checkout -b feat/short-name
@@ -48,25 +52,30 @@ git checkout -b feat/short-name
 git add -A && git commit -m "message"
 git push -u origin feat/short-name
 ```
+
 :::
 
 ---
 
 ## Learning Workflow
 
+ 
 ### Before Class
+
 1. **Read actively** – skim headings, figures, equations
 2. **Try examples** – type code yourself (no paste)
 3. **Attempt project start (30 min)** – capture effort evidence
 4. **Note questions** – two specific questions for class
 
 ### During Class
+
 1. **Ask high-leverage questions**
 2. **Pair program** – switch driver/navigator every 20-25 min
 3. **Debug together** – close one issue to completion
 4. **Record decisions** – brief notes in README
 
 ### After Class
+
 1. **Implement incrementally** – one small, verified feature
 2. **Visualize** – plot with **units in axis labels**
 3. **Reflect** – one paragraph: what worked, next step
@@ -118,6 +127,8 @@ git push -u origin feat/short-name
 ```
 
 **Computational thinking for astrophysics:**
+-
+**Computational thinking for astrophysics:**
 - Break continuous equations into discrete steps
 - Identify what varies (loop/vectorize) vs what's constant
 - Consider numerical stability (overflow, underflow, cancellation)
@@ -129,6 +140,7 @@ git push -u origin feat/short-name
 
 ### Systematic Approach
 1. **Read the error** – slowly, completely
+1. **Read the error** – slowly, completely
 2. **Pin the line** – where exactly?
 3. **Check assumptions** – inputs, shapes, units
 4. **Simplify** – minimal repro (≤20 lines)
@@ -138,12 +150,16 @@ git push -u origin feat/short-name
 
 ### Minimal Reproducible Example
 A standalone script that anyone can run:
+
+- ≤20 lines of code
+A standalone script that anyone can run:
 - ≤20 lines of code
 - Fixed inputs (no file dependencies)
 - Clear expected vs actual behavior
 - Version info if relevant
 
 ### Testing Strategies
+- **Known solutions** – reproduce textbook cases
 - **Known solutions** – reproduce textbook cases
 - **Limiting cases** – check behavior at extremes
 - **Conservation laws** – verify invariants
@@ -155,11 +171,21 @@ A standalone script that anyone can run:
 ## Getting Help
 
 ### When to Ask
+
 - Blocked >1 hour after genuine attempt
 - Can't understand the prompt after reading
 - Installation/environment issues
 
 ### How to Ask (Template)
+
+```text
+Context: I'm working on [specific part] of [project].
+Attempt: I tried [approach] (minimal repro attached).
+Expected: [outcome]
+Actual: [error/behavior]
+Hypothesis: I think the issue is [your guess].
+Question: Can you help me understand [specific aspect]?
+```
 ```text
 Context: I'm working on [specific part] of [project].
 Attempt: I tried [approach] (minimal repro attached).
@@ -176,6 +202,7 @@ Include: branch/commit link, file:line number, minimal repro
 ## Project Workflow
 
 ### Milestones (not daily schedule)
+- **Kickoff (days 1-2):** Clarify question, run sanity check, list risks
 - **Kickoff (days 1-2):** Clarify question, run sanity check, list risks
 - **Baseline (first third):** Get minimal model running with one correct output
 - **Deepening (second third):** Improve correctness/performance, add capability

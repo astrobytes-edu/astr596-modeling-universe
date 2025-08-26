@@ -1,5 +1,5 @@
 ---
-title: Course Schedule & Important Dates
+title: ASTR 596 Course Schedule & Important Dates
 exports:
   - format: pdf
 ---
@@ -8,7 +8,7 @@ exports:
 
 ## Tentative Schedule Structure
 
-**Mondays:** New project assigned via GitHub Classroom; previous project & growth memo due at 11:59 PM  
+**Mondays:** New project assigned via GitHub Classroom; previous project & growth memo due at 11:59 PM
 
 **Fridays:** Class meeting (11:00 AM - 1:40 PM) with prepared discussion and project work
 
@@ -19,7 +19,7 @@ exports:
 | 1 | Aug 29 | Course introduction, terminal/Git basics, Python fundamentals | *Getting Started Ch. 1-3*, *Python Fundamentals Ch. 1-4* |
 | 2 | Sept 5 | NumPy/matplotlib basics, OOP, stellar physics | *Python Fundamentals Ch. 5-8* |
 | 3 | Sept 12 | Gravitational dynamics, numerical integration | *TBD* |
-| 4 | Sept 19 | Monte Carlo methods, statistical sampling | *TBD* - Numerical Methods Ch. 2** |
+| 4 | Sept 19 | Monte Carlo methods, statistical sampling | *TBD* - Numerical Methods Ch. 2 |
 | 5 | Sept 26 | Linear regression from first principles | *TBD - Machine Learning Ch. 1* |
 | 6 | Oct 3 | Advanced regression, model selection | *TBD - Machine Learning Ch. 2* |
 | 7 | Oct 10 | Monte Carlo radiative transfer | *TBD - Radiative Transfer Ch. 1* |
