@@ -1,6 +1,6 @@
 ---
-title: "ASTR 596: AI Policy & Learning Framework"
-subtitle: "Modeling the Universe | **Instructor:** Anna Rosen"
+title: AI Policy & Learning Framework
+subtitle: "ASTR 596: Modeling the Universe"
 exports:
   - format: pdf
 ---

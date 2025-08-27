@@ -1,6 +1,6 @@
 ---
 title: Understanding Your Learning Journey in ASTR 596
-subtitle: "Modeling the Universe | **Instructor:** Anna Rosen"
+subtitle: "ASTR 596: Modeling the Universe"
 exports:
   - format: pdf
 ---

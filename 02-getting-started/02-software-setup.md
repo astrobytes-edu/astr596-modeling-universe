@@ -1,6 +1,6 @@
 ---
 title: "Chapter 2: Software Setup Guide"
-subtitle: "ASTR 596 - Getting Started"
+subtitle: "ASTR 596: Modeling the Universe"
 exports:
   - format: pdf
 ---

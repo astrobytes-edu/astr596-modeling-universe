@@ -1,11 +1,11 @@
 ---
-title: "ASTR 596: Syllabus (Fall 2025)"
-subtitle: "Modeling the Universe | **Instructor:** Anna Rosen"
+title: Syllabus (Fall 2025)
+subtitle: "ASTR 596: Modeling the Universe"
 exports:
   - format: pdf
 ---
 **Fall 2025 - San Diego State University (SDSU)**  
-**Fridays 11:00 AM - 1:40 PM | PA 215**
+**Fridays 11:00 AM - 1:40 PM | PS 256**
 
 ## Instructor Information
 
@@ -19,27 +19,28 @@ exports:
 - **Prerequisites:** Physics 196; MATH 254 or 342A; or equivalent with instructor permission, or graduate standing
 - **Meeting Time:** Fridays 11:00 AM - 1:40 PM
 - **Format:** ~30-45min lecture review + 2h hands-on project work
-- **Location:** Physical Sciences 256
+- **Location:** PS-256
 - **Course Website:** <https://astrobytes-edu.github.io/astr596-modeling-universe/>
+(*All course material and information will be posted here.*)
 - **Virtual Tutor:** [✨ASTR 596: Modeling the Universe Tutor✨ *(Custom GPT)*](https://chatgpt.com/g/g-68aabb9278d08191926feb3f5512686c-astr-596-modeling-the-universe-tutor)
 - **Platforms:** Canvas, Slack, GitHub Classroom
 
 ### Class Meeting Structure
 
-#### Pre-Class Preparation (Required)
+**Pre-Class Preparation *(Required)*:**
 
 - Complete assigned readings on course website.
 - Review project requirements if new project assigned.
-- Prepare questions on material and implementation challenges.
+- Prepare questions on reading material and assigned project implementation challenges.
 
-#### Friday Class Sessions
+**Friday Class Sessions:**
 
 - **11:00-11:40 AM:** Interactive review of the week's concepts, Q&A on required course readings, clarification of project requirements.
 - **11:40 AM-1:40 PM:** Hands-on project work with pair programming, implementation support, and peer collaboration.
 
 ## Course Description
 
-This course provides a hands-on introduction to the practice and theory of scientific computing, with an emphasis on numerical methods and machine learning, applied to astrophysical problems. Beginning with Python programming fundamentals and object-oriented design, the course progresses through sophisticated numerical methods including N-body dynamics, Monte Carlo radiative transfer, Bayesian inference, Gaussian processes, and culminates with neural networks. Students will implement all algorithms from first principles ("glass box" approach) before transitioning to modern frameworks (JAX ecosystem). The course emphasizes professional software development practices, responsible AI integration, and preparation for computational research and industry careers.
+This course provides a hands-on introduction to the practice and theory of scientific computing, with an emphasis on numerical methods and machine learning, applied to astrophysical problems. Beginning with Python programming fundamentals and object-oriented design, the course progresses through sophisticated numerical methods including N-body dynamics, Monte Carlo radiative transfer (MCRT), Bayesian inference and MCMC, Gaussian processes, and culminates with neural networks. Students will implement all algorithms from first principles ("glass box" approach) before transitioning to modern frameworks (JAX ecosystem). The course emphasizes professional software development practices, responsible AI integration, and preparation for computational research and industry careers.
 
 **Important Note:** I'm not testing your astrophysics knowledge. All necessary equations and scientific background will be provided. Your task is to learn and understand the scientific concepts, implement them correctly in Python, and connect the computation to the astrophysics. The focus is on computational thinking and implementation skills that transfer to any research domain.
 
@@ -80,7 +81,7 @@ Upon successful completion of this course, students will be able to:
 
 ### Textbooks (Free Online Resources)
 
-- **Required:** Rosen (2025), [www.astrobytes-edu.github.io/astr596-modeling-universe](https://astrobytes-edu.github.io/astr596-modeling-universe/), ASTR 596 Course Website (powered by [MyST Markdown](https://mystmd.org/))
+- **Required:** Rosen (2025), [www.astrobytes-edu.github.io/astr596-modeling-universe](https://astrobytes-edu.github.io/astr596-modeling-universe/), official ASTR 596 Course Website (powered by [MyST Markdown](https://mystmd.org/))
 
 - Linge & Langtangen (2020), [Programming for Computations - Python (2nd Edition)](https://library.oapen.org/bitstream/id/35449b29-cca0-4d71-8553-2d49609b75fd/1007055.pdf), Springer Open
 
@@ -104,11 +105,11 @@ Upon successful completion of this course, students will be able to:
 
 - **SDSU Instructional Cluster (Verne):** <https://sdsu-research-ci.github.io/instructionalcluster>
   
-Access to Jupyter Hub provided to enrolled students, however students are strongly recommended to setup their own Python environment/workspace on their own machines. Detailed instructions are included in the [Getting Started](../02-getting-started/index.md) module.
+Access to SDSU's Jupyter Hub provided to enrolled students, however students are strongly encouraged to setup their own Python environment and IDE workspace on their own machines. Detailed instructions are included in the [Getting Started](../02-getting-started/index.md) module.
 
 - **ASTR 596 GitHub Classroom:** <https://classroom.github.com/classrooms/226159624-astr-596-modeling-the-universe>
 
-All projects distributed and submitted here. Your last repository push by the deadline will count as your submitted assignment. For more information please see: <<https://sdsu-research-ci.github.io/github/students>.
+All projects distributed and submitted here. Your last repository push by the deadline will count as your submitted assignment. For more information please see: <https://sdsu-research-ci.github.io/github/students>.
 
 ## Grading Information
 
@@ -122,7 +123,7 @@ All projects distributed and submitted here. Your last repository push by the de
 | **Technical Growth Synthesis** | 5% | Comprehensive self-reflection growth portfolio integrated with Final Project submission (.md or PDF in project repo). |
 | **Participation & Engagement** | 10% | Active contribution in lectures, lab activities, and peer collaboration (includes Project 0 completion). |
 
-**Initial Course Reflection & Setup (Project 0)** must be completed on Canvas by Thursday, August 28 at 11:59 PM PT. This assignment ensures all students have reviewed course policies and logistics, set up their Python development environment with a Git account tied to their SDSU email address, and completed an initial reflection on their learning goals and Python experience. This ensures students come to the first class prepared for hands-on Python activities. **Note:** Project 0 is the only assignment submitted via Canvas and counts toward your Participation grade.
+**Initial Course Reflection & Setup (Project 0)** must be completed on Canvas by Thursday, August 28 at 11:59 PM PT. This assignment ensures all students have reviewed the course policies and logistics, set up their Python development environment with a Git account tied to their SDSU email address, and completed an initial reflection/survey on their learning goals and prior Python experience. This ensures students come to the first class prepared for hands-on Python activities. **Note:** Project 0 is the only assignment submitted via Canvas and counts toward your Participation grade.
 
 ### Short Projects & Growth Memos (60% of course grade combined)
 
@@ -213,9 +214,9 @@ Each short project submission includes both technical implementation and a growt
 
 | Assignment | Due Date |
 |------------|----------|
-| Initial Course Reflection & Setup (Project 0)* | Thursday, Aug 28, 11:59 PM PT |
-| Project 1: Python Fundamentals, OOP, & Stellar Physics (with Growth Memo 1) | Monday, Sept 8, 11:59 PM PT |
-| Project 2: ODE Integration & N-Body Dynamics (with Growth Memo 2) | Monday, Sept 22, 11:59 PM PT |
+| Initial Course Reflection & Software Setup (Project 0)* | Thursday, Aug 28, 11:59 PM PT |
+| Project 1: Python Fundamentals, OOP & Classes, `numpy`/`matplotlib`, <br> & Stellar Physics (with Growth Memo 1) | Monday, Sept 8, 11:59 PM PT |
+| Project 2: ODE Integration & N-Body Dynamics, <br> Monte Carlo Sampling (with Growth Memo 2) | Monday, Sept 22, 11:59 PM PT |
 | Project 3: Monte Carlo Radiative Transfer (with Growth Memo 3) | Monday, Oct 13, 11:59 PM PT |
 | Project 4: Bayesian/MCMC (with Growth Memo 4) | Monday, Nov 3, 11:59 PM PT |
 | Project 5: Gaussian Processes (with Growth Memo 5) | Monday, Nov 24, 11:59 PM PT |
@@ -246,19 +247,19 @@ Final letter grades will be calculated using the grading scale listed below. The
 
 - Submit within 7 calendar days of grade release.
 - ≤200-word written justification referencing rubric and assignment expectations criteria.
-- I will re-evaluate the entire item (score may go up/down/unchanged).
+- I will re-evaluate the entire submitted assignment (score may go up/down/unchanged).
 
 ### Peer Collaboration & Pair Programming
 
-- **Allowed:** discussing strategy, whiteboarding equations & algorithm design, sharing tests you wrote
+- **Allowed:** discussing strategy, whiteboarding equations & algorithm design (pseudocode), sharing tests you wrote
 - **Not allowed:** sharing solution code or copying any code blocks
 - **Must:** credit collaborators and list contributions in README.md project document
 
 ### AI Usage Policy
 
-This course uses a three-phase scaffolded approach to AI integration. **Note:** AI raises the bar for expertise. LLMs confidently generate plausible-looking code that can be subtly wrong, numerically unstable, or inefficient. They also hallucinate facts, misexplain concepts, and make mathematical errors. Our three-phase approach builds your AI literacy systematically – teaching you to understand deeply enough to catch these errors and know why they're wrong.
+This course uses a novel three-phase scaffolded approach to AI integration. **Note:** AI raises the bar for expertise. LLMs confidently generate plausible-looking code that can be subtly wrong, numerically unstable, or inefficient. They also hallucinate facts, misexplain concepts, and make mathematical errors. Our three-phase approach builds your AI literacy systematically – teaching you to understand deeply enough to catch these errors and know why they're wrong.
 
-- **Universal rules (applies all semester):** Always try documentation first. When docs aren't enough for understanding concepts (e.g., complex Python functions, math derivations, astrophysics concepts), AI is encouraged for clarification. For code: verify all AI suggestions; disclose AI use in submissions. If you can't explain a line of code, you can't submit it.
+- **Universal rules (applies all semester):** Always try documentation first. When docs aren't enough for understanding concepts (e.g., complex Python functions, math derivations, astrophysics concepts), AI is encouraged for clarification. For code: verify all AI suggestions; disclose AI use in submissions. *If you can't explain a line of code, you can't submit it.*
 
 - **Phase 1 — Foundations (Weeks 1–6):** No AI-generated first drafts of code. After 30 minutes of documented struggle, AI may be used for debugging/clarification only.
 

@@ -1,6 +1,6 @@
 ---
 title: "Chapter 4: Data Structures - Organizing Scientific Data"
-subtitle: "ASTR 596: Modeling the Universe | Python Fundamentals"
+subtitle: "Modeling the Universe | Python Fundamentals"
 exports:
   - format: pdf
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Chapter 1: Introduction to the Command Line Interface (CLI)"
-subtitle: "ASTR 596 - Getting Started"
+subtitle: "ASTR 596: Modeling the Universe"
 exports:
   - format: pdf
 ---

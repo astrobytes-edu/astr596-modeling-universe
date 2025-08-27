@@ -63,6 +63,7 @@ project:
     - 'README.md'
     - 'myst-build-instructions.md'
     - 'instructor-notes/**'
+    - '**/papers-for-projects/**'
     - '.ipynb_checkpoints/**'
     - '**/.ipynb_checkpoints/**'
     - '__pycache__/**'

@@ -1,6 +1,6 @@
 ---
 title: Why ASTR 596 is Different
-subtitle: "Modeling the Universe | **Instructor:** Anna Rosen"
+subtitle: "ASTR 596: Modeling the Universe"
 exports:
   - format: pdf
 ---

@@ -5,7 +5,7 @@ exports:
   - format: pdf
 ---
 
-## Learning Objectives
+## ⚠️ Learning Objectives
 
 By the end of this chapter, you will be able to:
 

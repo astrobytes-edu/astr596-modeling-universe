@@ -1,13 +1,10 @@
 ---
 title: "Chapter 7: NumPy - The Foundation of Scientific Computing"
-subtitle: "ASTR 596: Modeling the Universe | Scientific Computing Core"
+subtitle: "Modeling the Universe | Scientific Computing Core"
 exports:
   - format: pdf
 ---
-
-%# Chapter 7: NumPy - The Foundation of Scientific Computing in Python
-
-## Learning Objectives
+## ⚠️ Learning Objectives
 
 By the end of this chapter, you will be able to:
 

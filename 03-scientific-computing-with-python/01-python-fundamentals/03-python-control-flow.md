@@ -1,6 +1,6 @@
 ---
 title: "Chapter 3: Control Flow & Logic"
-subtitle: "ASTR 596: Modeling the Universe | Python Fundamentals"
+subtitle: "Modeling the Universe | Python Fundamentals"
 exports:
   - format: pdf
 ---

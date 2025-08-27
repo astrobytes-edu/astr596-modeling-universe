@@ -5,11 +5,10 @@ exports:
   - format: pdf
 ---
 
-%# ⚠️ Chapter 10: Advanced OOP Patterns - Architecting Scientific Software
-
-## Learning Objectives
+## ⚠️ Learning Objectives
 
 By the end of this chapter, you will be able to:
+
 - Design abstract base classes that enforce scientific interfaces and invariants
 - Implement advanced inheritance with mixins and multiple inheritance for code reuse
 - Apply metaprogramming techniques including descriptors and metaclasses for domain-specific behavior

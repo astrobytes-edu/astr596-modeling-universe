@@ -1,6 +1,6 @@
 ---
-title: Getting Started with ASTR 596
-subtitle: "Modeling the Universe | **Instructor:** Anna Rosen"
+title: Getting Started
+subtitle: "ASTR 596: Modeling the Universe"
 exports:
   - format: pdf
 ---
