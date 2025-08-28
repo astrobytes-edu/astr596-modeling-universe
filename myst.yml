@@ -135,4 +135,4 @@ site:
       utterances:
         repo: "astrobytes-edu/astr596-modeling-universe"
         issue_term: "pathname"
-        theme: "preferred-color-scheme"
+        theme: "github-light"
