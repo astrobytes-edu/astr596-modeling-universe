@@ -76,7 +76,7 @@ flowchart TD
 
 **The Reality**: AI tools are transforming scientific computing. You'll work in an AI-integrated environment throughout your career.
 
-**The Challenge**: Research reveals both risks and opportunities. Over-reliance impairs learning (Bastani et al., 2024), while strategic use accelerates understanding (Kasneci et al., 2023; Bitzenbauer, 2023; Ting & O'Briain, 2025). HOW you engage matters—passive consumption atrophies skills, active collaboration enhances capability.
+**The Challenge**: Research reveals both risks and opportunities. Over-reliance impairs learning (Bastani et al., 2024), while strategic use accelerates understanding (Kasneci et al., 2023; Bitzenbauer, 2023; Ting & O'Briain, 2025). HOW you engage matters — passive consumption atrophies skills, active collaboration enhances capability.
 
 **Our Approach**: Develop core competencies through productive struggle, then use AI strategically to amplify performance.
 
@@ -139,7 +139,7 @@ How has your approach to using AI changed since the last project?
 One specific way you plan to improve your AI usage next project
 ```
 
-Write this however works for you—paragraphs, bullets, diagrams. Emojis encouraged! Just help me understand your learning journey.
+Write this however works for you — paragraphs, bullets, diagrams. Emojis encouraged! Just help me understand your learning journey.
 
 ## Scaffolded AI Integration Framework
 
@@ -151,7 +151,7 @@ Write this however works for you—paragraphs, bullets, diagrams. Emojis encoura
 - **30-Minute Rule**: Minimum struggle before AI
 - **AI Usage**: Debugging only after genuine effort
 - **Document**: All interactions with verification
-- **Friday Labs**: Try solving with your partner first—two brains often beat ChatGPT
+- **Friday Labs**: Try solving with your partner first — two brains often beat ChatGPT
 
 **Using AI for Conceptual Understanding (Always OK):**
 
@@ -273,7 +273,7 @@ Throughout the course, expect supportive check-ins:
 - "What alternatives did you consider?"
 - "How would this change if...?"
 
-These conversations support your learning—catching confusion early helps!
+These conversations support your learning — catching confusion early helps!
 
 ## The Cognitive Ownership Principle
 
@@ -283,7 +283,7 @@ After consulting AI, **close the tab and re-implement from memory**. Do not past
 
 **The Simple Rule**: You must be able to explain every line of code you submit and why you implemented it that way.
 
-During class, I may ask you to walk through your approach or explain your implementation choices. This isn't a formal assessment—it's how we learn together and ensure you're building real understanding. If you can't explain your code, that's a signal you need to revisit it until you truly understand it.
+During class, I may ask you to walk through your approach or explain your implementation choices. This isn't a formal assessment — it's how we learn together and ensure you're building real understanding. If you can't explain your code, that's a signal you need to revisit it until you truly understand it.
 
 Your Growth Memos will include the AI reflection template above, helping you track your own journey toward independence and mastery.
 
@@ -386,7 +386,7 @@ Extensive undocumented AI use or inability to explain submitted code:
 #### **ChatGPT (For Conceptual Exploration)
 
 *Note: SDSU provides enterprise access to all students via ChatGPT Plus*
-**Privacy Protection:** The SDSU enterprise account ensures "OpenAI doesn't use San Diego State University workspace data to train its models." Your conversations are private—this tool is provided to enhance your learning, not to monitor your work. Use it freely for conceptual understanding!
+**Privacy Protection:** The SDSU enterprise account ensures "OpenAI doesn't use San Diego State University workspace data to train its models." Your conversations are private — this tool is provided to enhance your learning, not to monitor your work. Use it freely for conceptual understanding!
 
 **Best for:**
 
@@ -460,7 +460,7 @@ AI: "Exactly! Now think about what conservation laws tell us about physical syst
 
 ## **Bottom Line**
 
-AI amplifies capability—it doesn't replace understanding. Master fundamentals AND strategic AI usage to thrive. The struggle is where learning happens; AI should enhance your learning and skill development journey, not bypass it.
+AI amplifies capability — it doesn't replace understanding. Master fundamentals AND strategic AI usage to thrive. The struggle is where learning happens; AI should enhance your learning and skill development journey, not bypass it.
 
 **Questions?** Come to Hacking Hours or ask in class. Open communication helps everyone!
 

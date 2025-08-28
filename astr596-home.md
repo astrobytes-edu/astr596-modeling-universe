@@ -27,7 +27,7 @@ flowchart LR
 :::{admonition} Course Philosophy: "Glass Box" Modeling
 :class: tip
 
-**Earned Complexity**: We implement fundamental algorithms from first principles before leveraging advanced frameworks. Every line of code serves understanding—no black boxes allowed until you've built the glass box yourself.
+**Earned Complexity**: We implement fundamental algorithms from first principles before leveraging advanced frameworks. Every line of code serves understanding — no black boxes allowed until you've built the glass box yourself.
 
 **Core Principles**: 
 - *"Think first, code second"* - An hour of planning saves a week of debugging
@@ -35,7 +35,7 @@ flowchart LR
 - *"Physics first, Python later"* - Debug with physics intuition, not print statements
 - *"Productive struggle is the point"* - Being stuck means you're learning something worth knowing
 
-**Growth Mindset**: Cognitive science shows that working at the edge of your ability—where you're challenged but not overwhelmed—optimizes learning. This is where learning happens. Expect to iterate: professional code is rarely right the first time. When you're confused or stuck, that's not a bug in your learning process, it's a feature.
+**Growth Mindset**: Cognitive science shows that working at the edge of your ability — where you're challenged but not overwhelmed — optimizes learning. This is where learning happens. Expect to iterate: professional code is rarely right the first time. When you're confused or stuck, that's not a bug in your learning process, it's a feature.
 :::
 
 ```{figure} https://imgs.xkcd.com/comics/astrophysics.png
@@ -88,7 +88,7 @@ flowchart TD
 
 :::{admonition} The Beauty of Scaffolding
 :class: tip
-Notice how no code is throwaway! Your `StellarPopulation` class from Week 1 generates the star cluster in Week 2. The leapfrog integrator you write for planetary orbits becomes the engine for exploring parameter space via Hamiltonian Monte Carlo. Most beautifully: your N-body simulations become the training data for your machine learning projects. You're not just learning algorithms—you're building a complete computational research pipeline.
+Notice how no code is throwaway! Your `StellarPopulation` class from Week 1 generates the star cluster in Week 2. The leapfrog integrator you write for planetary orbits becomes the engine for exploring parameter space via Hamiltonian Monte Carlo. Most beautifully: your N-body simulations become the training data for your machine learning projects. You're not just learning algorithms — you're building a complete computational research pipeline.
 :::
 
 ## Friday Class Structure
