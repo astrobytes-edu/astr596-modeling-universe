@@ -1,6 +1,6 @@
 ---
 title: "Stellar Physics: From First Principles to the Main-Sequence"
-subtitle: "Modeling the Universe | Astrophysics Fundamentals"
+subtitle: "Astrophysics Fundamentals | Modeling the Universe"
 exports:
   - format: pdf
 ---
@@ -122,6 +122,7 @@ $$f(v) = 4\pi n \left(\frac{m}{2\pi k_B T}\right)^{3/2} v^2 e^{-\frac{mv^2}{2k_B
 :::
 
 where:
+
 - $f(v)dv$ = number of particles per unit volume with speeds between $v$ and $v + dv$
 - $n$ = total **number density** of particles (particles/cm³)
 - $m$ = mass of one particle (g)
@@ -143,16 +144,19 @@ This is data compression at its finest: $10^{57}$ velocities → 1 temperature!
 Now let's derive pressure from particle collisions. Consider a wall perpendicular to the x-axis. A particle with velocity $v_x$ hitting the wall transfers momentum $\Delta p = 2mv_x$ (elastic collision, velocity reverses).
 
 The number of particles with velocity component $v_x$ that hit area $A$ in time $dt$ is:
-$$dN = n(v_x) \cdot v_x \cdot A \cdot dt$$
+$$
+dN = n(v_x) \cdot v_x \cdot A \cdot dt
+$$
 
 where $n(v_x)$ is the number density of particles with that velocity component.
 
 :::{margin}
-**Momentum Transfer**: The change in momentum during a collision, which creates pressure when averaged over many particles.
+**Momentum Transfer**  
+The change in momentum during a collision, which creates pressure when averaged over many particles.
 :::
 
 The **momentum transfer** per unit area per unit time (which is pressure) is:
-$$P = \int_0^\infty n(v_x) \cdot v_x \cdot 2mv_x \, dv_x = 2m \int_0^\infty n(v_x) v_x^2 \, dv_x$$
+$$P = \int_0^\infty n(v_x) \cdot v_x \cdot 2 m v_x \, dv_x = 2m \int_0^\infty n(v_x) v_x^2 \, dv_x$$
 
 From the Maxwell-Boltzmann distribution, we know:
 $$\langle v_x^2 \rangle = \int v_x^2 P(v_x) dv_x = \frac{k_B T}{m}$$

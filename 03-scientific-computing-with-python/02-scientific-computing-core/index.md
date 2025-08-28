@@ -1,5 +1,6 @@
 ---
-title: Scientific Computing Core Overview
+title: Module Overview
+subtitle: Scientific Computing Core | Modeling the Universe
 exports:
   - format: pdf
 ---

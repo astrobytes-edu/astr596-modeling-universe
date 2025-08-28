@@ -222,7 +222,7 @@ Each short project submission includes both technical implementation and a growt
 | Project 5: Gaussian Processes (with Growth Memo 5) | Monday, Nov 24, 11:59 PM PT |
 | Final Project & Technical Growth Synthesis | Thursday, Dec 18, 11:59 PM PT |
 
-*Counts toward Participation grade
+  *_Counts toward Participation grade_
 
 ### Grading Scale
 
@@ -305,7 +305,7 @@ Trust the process, embrace the challenge, and discover that you're capable of do
 
 ## Diversity and Inclusivity Statement
 
-I consider this classroom to be a place where you will be treated with respect, and I welcome individuals of all ages, backgrounds, beliefs, ethnicities, genders, gender identities, gender expressions, national origins, religious affliations, sexual orientations, ability, and other visible and non-visible differences. All members of this class are expected to contribute to a respectful, welcoming and inclusive environment for every other member of the class. If something is said in class by myself or others that made you uncomfortable, please contact me or submit anonymous feedback. Anonymous feedback can be placed in my department mailbox (located in the mail/copier room, PA-122A) or given to Hilary Scalisi, Department Coordinator in office # P-132, for delivery to me.
+I consider this classroom to be a place where you will be treated with respect, and I welcome individuals of all ages, backgrounds, beliefs, ethnicities, genders, gender identities, gender expressions, national origins, religious affliations, sexual orientations, ability, and other visible and non-visible differences. All members of this class are expected to contribute to a respectful, welcoming and inclusive environment for every other member of the class. If something is said in class by myself or others that made you uncomfortable, please contact me or submit anonymous feedback. Anonymous feedback can be placed in my department mailbox (located in the mail/copier room, PA-122A) or given to Hilary Scalisi, Astronomy Department Coordinator in office # P-132, for delivery to me.
 
 ## Essential Student Information
 

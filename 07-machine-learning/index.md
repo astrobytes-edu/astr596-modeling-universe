@@ -16,9 +16,12 @@
 
 - <https://alvinntnu.github.io/NTNU_ENC2045_LECTURES/nlp/ml-overview.html>
 
-## Gaussian Processes
+## Gaussian Processes/Surrogate Modeling
 
 - <https://gaussianprocess.org/gpml/chapters/>
+- <https://christophm.github.io/interpretable-ml-book/global.html>
+- [Latin Hypercube Sampling](https://en.wikipedia.org/wiki/Latin_hypercube_sampling): Need for sampling star cluster initial parameters.
+- [Gaussian Process Emulation](https://exascale.hutton.ac.uk/sites/exascale.hutton.ac.uk/files/inline-files/Challenor.pdf)
 
 ## Neural Networks
 

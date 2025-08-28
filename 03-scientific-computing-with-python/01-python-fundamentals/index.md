@@ -1,6 +1,6 @@
 ---
-title: Python Fundamentals Overview
-subtitle: "Modeling the Universe | Scientific Computing with Python"
+title: Module Overview
+subtitle: "Python Fundamentals | Modeling the Universe"
 exports:
   - format: pdf
 ---

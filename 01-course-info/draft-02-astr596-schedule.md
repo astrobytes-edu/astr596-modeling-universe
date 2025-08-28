@@ -13,6 +13,19 @@ exports:
 
 **Fridays:** Class meeting (11:00 AM - 1:40 PM) with prepared discussion and project work
 
+The projects follow a deliberate progression from **deterministic simulation** → **stochastic methods** → **statistical inference** → **machine learning**, mirroring how computational astrophysics evolved as a field. Each project builds on previous code and concepts, reducing cognitive load through scaffolding.
+
+## Master Project Timeline
+
+| Project | Title | Duration | Assigned | Due | Core Concept |
+|---------|-------|----------|----------|-----|--------------|
+| 1 | Stellar Populations | 1.5 weeks | Aug 29 | Sept 8 | Object-oriented design & vectorization |
+| 2 | N-Body Dynamics | 2 weeks | Sept 8 | Sept 22 | Numerical integration & sampling |
+| 3 | Radiative Transfer | 3 weeks | Sept 22 | Oct 13 | Monte Carlo methods |
+| 4 | Cosmological Inference | 3 weeks | Oct 13 | Nov 3 | Bayesian/MCMC |
+| 5 | Gaussian Process Emulation | 3 weeks | Nov 3 | Nov 24 | Surrogate modeling |
+| Final | Neural Network Discovery | 4 weeks | Nov 17 | Dec 18 | Deep learning & autodiff |
+
 ## ⚠️ Weekly Topics & Readings
 
 | Week | Date | Topic | Reading Assignment |

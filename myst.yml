@@ -3,8 +3,7 @@ version: 1
 project:
   id: 76c4875f-ba4c-4a35-bc58-52304ee2705e
   title: "ASTR 596: Modeling the Universe"
-  description: "Advanced Undergraduate/Graduate-level computational astrophysics course emphasizing glass-box modeling and modern computational frameworks"
-  
+  description: "Advanced Undergraduate/Graduate-level computational astrophysics course emphasizing glass-box modeling and modern computational frameworks."
   keywords: 
     - computational astrophysics
     - python
@@ -22,6 +21,8 @@ project:
       affiliations:
         - San Diego State University
       orcid: 0000-0003-4423-0660
+  
+  index: astr596-home.md
   
   license:
     content: CC-BY-4.0
@@ -64,6 +65,7 @@ project:
     - 'myst-build-instructions.md'
     - 'instructor-notes/**'
     - '**/papers-for-projects/**'
+    - '**/tools/**'
     - '.ipynb_checkpoints/**'
     - '**/.ipynb_checkpoints/**'
     - '__pycache__/**'
@@ -112,7 +114,7 @@ site:
   
   options:
   # base_url removed: rely on CI-provided BASE_URL env as single source of truth
-    logo_text: "✨ASTR 596✨"
+    #logo_text: "✨ASTR 596✨"
     logo: _static/astr-logo-01.png
     favicon: _static/astr-logo-01.png
     static: 

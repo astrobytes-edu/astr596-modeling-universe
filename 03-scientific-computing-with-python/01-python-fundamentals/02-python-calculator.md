@@ -35,6 +35,13 @@ If any boxes are unchecked, review Chapter 1 first.
 
 ---
 
+```{figure} https://imgs.xkcd.com/comics/astronomy_numbers.png
+:alt: Astronomy Numbers
+:align: center
+
+*Sometimes the universe writes better stories than we could imagine.* ([xkcd](https://xkcd.com))
+```
+
 ## Chapter Overview
 
 Now that you've mastered setting up your computational environment and understand how Python finds and loads code, it's time to transform IPython into your personal calculator. But this chapter goes far beyond simple arithmetic - you're about to discover the hidden complexity of numerical computation that can make the difference between discovering an exoplanet and missing it entirely due to rounding errors.
