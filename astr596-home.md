@@ -105,6 +105,7 @@ Every Friday follows a consistent rhythm designed for active learning:
 :::{grid-item-card} 📚 **11:00-11:40 AM**
 Interactive Lecture
 ^^^
+
 - Concept review & clarification
 - Q&A on required readings
 - Live coding demonstrations
@@ -114,6 +115,7 @@ Interactive Lecture
 :::{grid-item-card} 💻 **11:40 AM-1:40 PM**
 Hands-On Implementation
 ^^^
+
 - **Collaborative work time** with project partners
 - Discuss approaches and debug together
 - Everyone writes their own implementation
@@ -230,19 +232,6 @@ By course end, you will have:
 ✅ **Created a portfolio** – 6 working projects demonstrating progression  
 ✅ **Mastered modern tools** – JAX, autodiff, GPU acceleration potential  
 ✅ **Practiced research skills** – Git, testing, documentation, scientific writing
-
-## Getting Started Checklist
-
-:::{admonition} Before First Class (Friday, Aug 29)
-:class: warning
-
-1. ✅ Complete [Project 0: Onboarding](./08-short-projects/00-onboarding-assignment.md) on Canvas by **Thursday, Aug 28, 11:59 PM**
-2. 📖 Review the [Syllabus](./01-course-info/01-astr596-syllabus-fall25.md) and [AI Guidelines](./01-course-info/03-astr596-ai-policy.md)
-3. ⚙️ Set up your [development environment](./02-getting-started/index.md)
-4. 👥 Join the course [GitHub Classroom](https://classroom.github.com/classrooms/226159624-astr-596-modeling-the-universe)
-5. 💬 Join the course Slack workspace (link on Canvas)
-6. 🤖 Bookmark the [Virtual Tutor GPT](https://chatgpt.com/g/g-68aabb9278d08191926feb3f5512686c-astr-596-modeling-the-universe-tutor)
-:::
 
 ## Instructor & Support
 
