@@ -1,5 +1,5 @@
 ---
-title: Course Schedule & Important Dates (Fall 2025)
+title: Course Schedule & Important Dates
 subtitle: "ASTR 596: Modeling the Universe"
 exports:
   - format: pdf
@@ -33,7 +33,7 @@ The projects follow a deliberate progression from **deterministic simulation** â
 | 3 | Monte Carlo Radiative Transfer | 3 weeks | Sept 22 | Oct 13 | Stochastic methods & photon transport | Phase 1 |
 | 4 | Bayesian Cosmological Inference | 3 weeks | Oct 13 | Nov 3 | Bayesian statistics & MCMC | Phase 2 |
 | 5 | Gaussian Process Emulation | 3 weeks | Nov 3 | Nov 24 | Non-parametric models, emulation & JAX refactoring | Phase 2 |
-| Final | Neural Networks with JAX | 3.5 weeks | Nov 24 | Dec 18 | Deep learning & autodiff | Phase 3 |
+| Final | Neural Networks with JAX | 4.5 weeks | Nov 17 | Dec 18 | Deep learning & autodiff | Phase 3 |
 
 ## AI Scaffolding Phase Transitions
 
@@ -43,22 +43,18 @@ Phase transitions occur at project submission deadlines. You remain in your curr
 
 :::{list-table} AI Scaffolding Phases
 :header-rows: 1
-:widths: 15 25 35 25
+:widths: 20 30 35
 
 * - Phase
   - Period
   - Coverage
-  - AI Usage
 * - **Phase 1: Foundation Building**
-  - Weeks 1-7 (Aug 29 - Oct 13)
   - Projects 1, 2, and 3
   - Struggle first, AI for debugging only after 30 minutes. Ends when you submit Project 3.
 * - **Phase 2: Strategic Integration**
-  - Weeks 8-13 (Oct 14 - Nov 24)
-  - Projects 4 and 5 (including JAX refactoring)
+  - Projects 4 and 5
   - Strategic AI use after baseline implementation. Ends when you submit Project 5.
 * - **Phase 3: Professional Practice**
-  - Weeks 14-16 (Nov 25 - Dec 18)
   - Final Project only
   - Professional AI integration as productivity multiplier. Begins only AFTER Project 5 submission.
 :::

@@ -1,15 +1,20 @@
-# ASTR 596: Modeling the Universe
+---
+title: "ASTR 596: Modeling the Universe"
+subtitle: "SDSU | Fall 2025 | Fridays 11:00 AM - 1:40 PM | PS 256"
+exports:
+  - format: pdf
+---
 
-**SDSU | Fall 2025 | Fridays 11:00 AM - 1:40 PM | PS 256**
+![logo](_static/astr596-logo-rectangle.png)
 
-Welcome to **ASTR 596: Modeling the Universe**! This course takes you on a journey from Python fundamentals to neural networks and JAX, building transparent "glass box" models that reveal the physics within astronomical phenomena.
+**Welcome to ASTR 596: Modeling the Universe!** This course takes you on a journey from Python fundamentals to neural networks and JAX, building transparent "glass box" models that reveal the physics within astronomical phenomena.
 
 Our projects follow a deliberate progression from **deterministic simulation** → **stochastic methods** → **statistical inference** → **machine learning**, mirroring how computational astrophysics evolved as a field. Each project builds on previous code and concepts, reducing cognitive load through scaffolding.
 
 ```{mermaid}
 flowchart LR
     A["Act I:<br/>Weeks 1-7"] --> B["Act II:<br/>Weeks 8-13"]
-    B --> C["Act III:<br/>Weeks 14-16"]
+    B --> C["Act III:<br/>Weeks 13-16"]
     
     A1["Building Universes<br/>Direct Simulation"] --> A
     B1["Observing Universes<br/>Inverse Problems"] --> B
@@ -38,12 +43,12 @@ flowchart LR
 **Growth Mindset**: Cognitive science shows that working at the edge of your ability — where you're challenged but not overwhelmed — optimizes learning. This is where learning happens. Expect to iterate: professional code is rarely right the first time. When you're confused or stuck, that's not a bug in your learning process, it's a feature.
 :::
 
-```{figure} https://imgs.xkcd.com/comics/astrophysics.png
-:alt: astrophysics
-:align: center
+%```{figure} https://imgs.xkcd.com/comics/astrophysics.png
+%:alt: astrophysics
+%:align: center
 
-*Sometimes the universe writes better stories than we could imagine.* ([xkcd](https://xkcd.com))
-```
+%*Sometimes the universe writes better stories than we could imagine.* ([xkcd](https://xkcd.com))
+%```
 
 ## Project Timeline & Core Concepts
 
@@ -113,7 +118,6 @@ Hands-On Implementation
 - Discuss approaches and debug together
 - Everyone writes their own implementation
 - Instructor support rounds
-- Energy breaks every 30-40 min
 :::
 
 ::::

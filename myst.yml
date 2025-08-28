@@ -100,8 +100,8 @@ site:
   title: "ASTR 596: Modeling the Universe"
   
   nav:
-    - title: GitHub
-      url: https://github.com/astrobytes-edu/astr596-modeling-universe
+   # - title: GitHub
+   #   url: https://github.com/astrobytes-edu/astr596-modeling-universe
   
   actions:
     - title: Open in GitHub Codespaces

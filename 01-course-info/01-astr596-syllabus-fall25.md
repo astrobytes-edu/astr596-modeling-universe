@@ -107,7 +107,7 @@ Upon successful completion of this course, students will be able to:
   
 Access to SDSU's Jupyter Hub provided to enrolled students, however students are strongly encouraged to setup their own Python environment and IDE workspace on their own machines. Detailed instructions are included in the [Getting Started](../02-getting-started/index.md) module.
 
-- **ASTR 596 GitHub Classroom:** <https://classroom.github.com/classrooms/226159624-astr-596-modeling-the-universe>
+- **ASTR 596 GitHub Classroom:** <br/> <https://classroom.github.com/classrooms/226159624-astr-596-modeling-the-universe>
 
 All projects distributed and submitted here. Your last repository push by the deadline will count as your submitted assignment. For more information please see: <https://sdsu-research-ci.github.io/github/students>.
 
@@ -121,9 +121,7 @@ All projects distributed and submitted here. Your last repository push by the de
 | **Growth Memos** | 10% | Integrated with each project submission (.md or PDF in project repo) |
 | **Final Project** | 25% | JAX implementation with research component. Due Thu Dec 18, 11:59 PM PT. |
 | **Technical Growth Synthesis** | 5% | Comprehensive self-reflection growth portfolio integrated with Final Project submission (.md or PDF in project repo). |
-| **Participation & Engagement** | 10% | Active contribution in lectures, lab activities, and peer collaboration (includes Project 0 completion). |
-
-**Initial Course Reflection & Setup (Project 0)** must be completed on Canvas by Thursday, August 28 at 11:59 PM PT. This assignment ensures all students have reviewed the course policies and logistics, set up their Python development environment with a Git account tied to their SDSU email address, and completed an initial reflection/survey on their learning goals and prior Python experience. This ensures students come to the first class prepared for hands-on Python activities. **Note:** Project 0 is the only assignment submitted via Canvas and counts toward your Participation grade.
+| **Participation & Engagement** | 10% | Active contribution in lectures, lab activities, and peer collaboration. |
 
 ### Short Projects & Growth Memos (60% of course grade combined)
 
@@ -162,14 +160,14 @@ Each short project submission includes both technical implementation and a growt
 
 | Component | Weight | Description |
 |-----------|--------|-------------|
-| **Code Package** | 55% | Professional package structure with `__init__.py`, tests, and documentation. |
+| **Code Package** | 60% | Professional package structure with `__init__.py`, tests, and documentation. |
 | **Written Report** | 30% | Scientific writeup with scientific background and motivation, methods, results, and conclusions. |
-| **Presentation** | 15% | 12-minute total: research project, technical growth summary, and Q&A. |
+| **Presentation** | 10% | 12-minute total: research project, technical growth summary, and Q&A. |
 
 ### Code Package Requirements
 
 - Proper modular package structure with `__init__.py` files.
-- Unit tests with >70% coverage.
+- Unit tests.
 - Documentation (docstrings, README.md, and Jupyter notebook tutorial).
 - Clean Git history showing iterative development.
 - Requirements.txt/environment.yml.
@@ -206,7 +204,7 @@ Each short project submission includes both technical implementation and a growt
 | 2/10  | Rarely attends or participates, unprepared when present, no discussion contribution |
 | 0/10  | Habitually absent, no engagement |
 
-**Note:** Participation includes: class discussions, asking questions, answering instructor/peer questions, pair programming engagement, Slack contributions, peer code review, and completion of Project 0.
+**Note:** Participation includes: class discussions, asking questions, answering instructor/peer questions, and pair programming engagement.
 
 **Important:** This rubric serves as a guideline. Students may be strong in some areas (e.g., excellent pair programming) while needing improvement in others (e.g., class discussion). Your grade reflects overall engagement. Disruptive behaviors (habitual tardiness, excessive phone use, off-topic conversations) negatively impact participation grades regardless of other contributions.
 
@@ -214,7 +212,6 @@ Each short project submission includes both technical implementation and a growt
 
 | Assignment | Due Date |
 |------------|----------|
-| Initial Course Reflection & Software Setup (Project 0)* | Thursday, Aug 28, 11:59 PM PT |
 | Project 1: Python Fundamentals, OOP & Classes, `numpy`/`matplotlib`, <br> & Stellar Physics (with Growth Memo 1) | Monday, Sept 8, 11:59 PM PT |
 | Project 2: ODE Integration & N-Body Dynamics, <br> Monte Carlo Sampling (with Growth Memo 2) | Monday, Sept 22, 11:59 PM PT |
 | Project 3: Monte Carlo Radiative Transfer (with Growth Memo 3) | Monday, Oct 13, 11:59 PM PT |
@@ -241,7 +238,6 @@ Final letter grades will be calculated using the grading scale listed below. The
 - **One free extension per semester:** Request ≥24h before deadline → 2-day grace, no penalty.
 - **Late submission penalty:** 10% per day (24 hours), maximum 3 days late (30% deduction).
 - **After 3 days:** Not accepted without documented emergency.
-- **Note:** Late policy does not apply to Project 0, which **must** be completed before first class.
 
 ### Regrade Requests
 
@@ -261,11 +257,11 @@ This course uses a novel three-phase scaffolded approach to AI integration. **No
 
 - **Universal rules (applies all semester):** Always try documentation first. When docs aren't enough for understanding concepts (e.g., complex Python functions, math derivations, astrophysics concepts), AI is encouraged for clarification. For code: verify all AI suggestions; disclose AI use in submissions. *If you can't explain a line of code, you can't submit it.*
 
-- **Phase 1 — Foundations (Weeks 1–7 | Projects 1-3):** No AI-generated first drafts of code. After 30 minutes of documented struggle, AI may be used for debugging/clarification only.
+- **Phase 1 — Foundations (Projects 1-3):** No AI-generated first drafts of code. After 30 minutes of documented struggle, AI may be used for debugging/clarification only.
 
-- **Phase 2 — Strategic Integration (Weeks 8–13 | Projects 4-5):** Once a baseline solution works, AI may propose refactors, tests, docstrings, and performance ideas. Keep/Reject each suggestion with a 1–2 line rationale in comments.
+- **Phase 2 — Strategic Integration (Projects 4-5):** Once a baseline solution works, AI may propose refactors, tests, docstrings, and performance ideas. Keep/Reject each suggestion with a 1–2 line rationale in comments.
 
-- **Phase 3 — Professional Practice (Weeks 14-16 | Final Project):** AI allowed for acceleration/boilerplate. All non-trivial logic must be authored or rewritten from memory and justified.
+- **Phase 3 — Professional Practice (Final Project):** AI allowed for acceleration/boilerplate. All non-trivial logic must be authored or rewritten from memory and justified.
 
 **For complete AI usage guidelines and examples, see:** [AI Usage Policy & Learning Guide](03-astr596-ai-policy)
 

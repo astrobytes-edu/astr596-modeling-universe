@@ -5,8 +5,6 @@ exports:
   - format: pdf
 ---
 
-%# Why ASTR 596 is Different
-
 :::{note} **TL;DR:** This Course Prepares You for Research Reality
 :class: dropdown
 

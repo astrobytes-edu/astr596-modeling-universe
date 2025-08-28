@@ -111,11 +111,11 @@ These studies confirm that scaffolded AI use with reflection enhances rather tha
 
 ## TL;DR Quick Reference (AI Policy)
 
-| Phase | Weeks | Projects | Coding with AI | Learning with AI | Key Rule |
-|------|-------|----------|----------------|------------------|----------|
-| **1: Foundation** | 1-7 | Projects 1-3 | ❌ No first-draft code. ✅ Debugging **after 30 min** documented effort. | ✅ Always allowed, **docs-first**; use AI to clarify after reading | Struggle → Docs → AI (debug only) |
-| **2: Strategic** | 8-13 | Projects 4-5 | ✅ After a working baseline; AI for refactors/tests/perf with verification | ✅ Always allowed (summaries, extensions) | Verify & cite source; explain why kept/rejected |
-| **3: Professional** | 14-Finals | Final Project | ✅ Acceleration/boilerplate; ❌ Not for logic you can't explain | ✅ Research exploration; career prep | **Explain every algorithmic choice** |
+| Phase | Projects | Coding with AI | Learning with AI | Key Rule |
+|-------|----------|----------------|------------------|----------|
+| **1: Foundation** | Projects 1-3 | ❌ No first-draft code. ✅ Debugging **after 30 min** documented effort. | ✅ Always allowed, **docs-first**; use AI to clarify after reading | Struggle → Docs → AI (debug only) |
+| **2: Strategic** | Projects 4-5 | ✅ After a working baseline; AI for refactors/tests/perf with verification | ✅ Always allowed (summaries, extensions) | Verify & cite source; explain why kept/rejected |
+| **3: Professional** | Final Project | ✅ Acceleration/boilerplate; ❌ Not for logic you can't explain | ✅ Research exploration; career prep | **Explain every algorithmic choice** |
 
 **Universal Rules:**
 
@@ -139,9 +139,9 @@ These studies confirm that scaffolded AI use with reflection enhances rather tha
 flowchart TD
     Start[I need help with something] --> Q1{What phase am I in?}
     
-    Q1 -->|Weeks 1-7<br/>Projects 1-3| Phase1[Phase 1: Foundation]
-    Q1 -->|Weeks 8-13<br/>Projects 4-5| Phase2[Phase 2: Strategic]
-    Q1 -->|Week 14-Finals<br/>Final Project| Phase3[Phase 3: Professional]
+    Q1 -->|Projects 1-3| Phase1[Phase 1: Foundation]
+    Q1 -->|Projects 4-5| Phase2[Phase 2: Strategic]
+    Q1 -->|Final Project| Phase3[Phase 3: Professional]
     
     Phase1 --> P1Q1{"Have I struggled for<br/>~30 minutes?"}
     P1Q1 -->|No| Struggle["Keep trying!<br/>Check documentation first"]
@@ -216,16 +216,31 @@ Write this however works for you – paragraphs, bullets, diagrams. Emojis encou
 
 ## Scaffolded AI Integration Framework
 
-### Phase 1: Foundation Building (Weeks 1-7, Projects 1-3)
+### Phase 1: Foundation Building (Projects 1-3)
 
-**Dates: Aug 25 - Oct 13** | **Rule: Struggle First, AI Second**
+**Rule: Productive Struggle First, AI Second:**
 
 - **Primary**: Documentation and manual code implementation
-- **30-Minute Rule**: Minimum struggle before AI
+- **30-Minute Rule**: Target ~30 min struggle, but use judgment (see below)
 - **AI Usage**: Debugging only after genuine effort
-- **Document**: All interactions with verification
+- **Document**: Brief notes for your own learning tracking
 - **Friday Labs**: Try solving with your partner first – two brains often beat ChatGPT
 - **Covers**: Projects 1 (Stellar Populations), 2 (N-Body), and 3 (MCRT)
+
+**Structured Struggle Before AI**: Target ~30 minutes of genuine effort, but use judgment:
+
+- Simple syntax/typo errors: 5-10 minutes is enough
+- Conceptual confusion: 15-30 minutes builds understanding  
+- Complex algorithmic issues: Up to 45 minutes if making progress
+- Environment/installation problems: 10 minutes then seek help
+
+The goal is productive struggle, not arbitrary time limits.
+
+**Flexibility in practice:**
+
+- If you spot the issue quickly, document what you tried and move on
+- If genuinely stuck with no new ideas after 20 minutes, that counts
+- The point is effort and learning, not watching the clock
 
 **Using AI for Conceptual Understanding (Always OK):**
 
@@ -234,30 +249,20 @@ Write this however works for you – paragraphs, bullets, diagrams. Emojis encou
 - ❌ **NOT OK**: "Write a function to calculate stellar luminosity" (that's implementation)
 - **The Rule**: Docs open first, identify confusion, then ask AI to clarify
 
-**What counts as genuine effort:**
+**Documentation:**
 
-Document struggle by showing **ANY TWO** of:
-
-- Link to relevant documentation section you consulted
-- Minimal reproducible example (≤20 lines) showing the issue
-- Description of one failed approach and why it didn't work
-- Screenshot of error with timestamp
-- Links to 2+ Stack Overflow/forum searches attempted
-- Photo of whiteboard/paper where you worked through logic
-- Slack/Discord message asking peers for help
-
-**Good Example:**
-
+If something took real effort to solve, add a quick comment like:
 ```python
-# Spent 30 min on matplotlib subplots
-# Checked docs, AI clarified Figure vs Axes
-# Verified: matplotlib.org/stable/api/figure_api.html
-fig, axes = plt.subplots(2, 2, figsize=(10, 8))
+# Off-by-one error in loop
+# or
+# AI helped with matplotlib subplot confusion
 ```
 
-### Phase 2: Strategic Integration (Weeks 8-13, Projects 4-5)
+That's it. This helps you remember for your growth memo later.
 
-**Dates: Oct 14 - Nov 24** | **Rule: Documentation-First**
+### Phase 2: Strategic Integration (Projects 4-5)
+
+**Rule: Documentation-First**:
 
 - **Primary**: Continue documentation-first
 - **AI Enhancement**: For efficiency after understanding
@@ -461,8 +466,8 @@ Master fundamentals AND strategic AI usage to thrive. The struggle is where lear
 
 ## Quick Reference Card
 
-**Phase 1 (Weeks 1–6):** Struggle 30 min → Check docs → Debug with AI only
-**Phase 2 (Weeks 7–12):** Working baseline → Enhance with AI → Verify everything  
+**Phase 1 (Projects 1-3):** Struggle 30 min → Check docs → Debug with AI only
+**Phase 2 (Projects 4-5):** Working baseline → Enhance with AI → Verify everything  
 **Phase 3 (Final Project):** Core understanding → Accelerate with AI → Explain every line
 **Always:** Can't explain = Can't submit | Docs first | Document all AI use
 
