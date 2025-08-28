@@ -11,12 +11,12 @@ exports:
 
 - **Dr. Anna Rosen**
 - **Office:** Physics 239
-- **Student "Hacking" Hours:** Wednesdays 1-2 PM (P-239) or by appointment
+- **Student Hacking Hours:** Wednesdays 1-2 PM (P-239) or by appointment
 - **Email:** <alrosen@sdsu.edu>
 
 ## Course Information
 
-- **Prerequisites:** Physics 196; MATH 254 or 342A; or equivalent with instructor permission, or graduate standing
+- **Prerequisites:** Physics 196; MATH 252; MATH 254 or 342A; or equivalent with instructor permission, or graduate standing
 - **Meeting Time:** Fridays 11:00 AM - 1:40 PM
 - **Format:** ~30-45min lecture review + 2h hands-on project work
 - **Location:** PS-256
@@ -261,11 +261,11 @@ This course uses a novel three-phase scaffolded approach to AI integration. **No
 
 - **Universal rules (applies all semester):** Always try documentation first. When docs aren't enough for understanding concepts (e.g., complex Python functions, math derivations, astrophysics concepts), AI is encouraged for clarification. For code: verify all AI suggestions; disclose AI use in submissions. *If you can't explain a line of code, you can't submit it.*
 
-- **Phase 1 — Foundations (Weeks 1–6):** No AI-generated first drafts of code. After 30 minutes of documented struggle, AI may be used for debugging/clarification only.
+- **Phase 1 — Foundations (Weeks 1–7 | Projects 1-3):** No AI-generated first drafts of code. After 30 minutes of documented struggle, AI may be used for debugging/clarification only.
 
-- **Phase 2 — Strategic Integration (Weeks 7–12):** Once a baseline solution works, AI may propose refactors, tests, docstrings, and performance ideas. Keep/Reject each suggestion with a 1–2 line rationale in comments.
+- **Phase 2 — Strategic Integration (Weeks 8–13 | Projects 4-5):** Once a baseline solution works, AI may propose refactors, tests, docstrings, and performance ideas. Keep/Reject each suggestion with a 1–2 line rationale in comments.
 
-- **Phase 3 — Professional Practice (Weeks 13–16):** AI allowed for acceleration/boilerplate. All non-trivial logic must be authored or rewritten from memory and justified.
+- **Phase 3 — Professional Practice (Weeks 14-16 | Final Project):** AI allowed for acceleration/boilerplate. All non-trivial logic must be authored or rewritten from memory and justified.
 
 **For complete AI usage guidelines and examples, see:** [AI Usage Policy & Learning Guide](03-astr596-ai-policy)
 

@@ -2,14 +2,14 @@
 
 **SDSU | Fall 2025 | Fridays 11:00 AM - 1:40 PM | PS 256**
 
-Welcome to **ASTR 596: Modeling the Universe**! This course takes you on a journey from Python fundamentals to neural networks and JAX, building transparent "glass box" models that reveal the physics within astronomical phenomena. 
+Welcome to **ASTR 596: Modeling the Universe**! This course takes you on a journey from Python fundamentals to neural networks and JAX, building transparent "glass box" models that reveal the physics within astronomical phenomena.
 
 Our projects follow a deliberate progression from **deterministic simulation** → **stochastic methods** → **statistical inference** → **machine learning**, mirroring how computational astrophysics evolved as a field. Each project builds on previous code and concepts, reducing cognitive load through scaffolding.
 
 ```{mermaid}
 flowchart LR
-    A["Act I:<br/>Weeks 1-6"] --> B["Act II:<br/>Weeks 7-12"]
-    B --> C["Act III:<br/>Weeks 13-16"]
+    A["Act I:<br/>Weeks 1-7"] --> B["Act II:<br/>Weeks 8-13"]
+    B --> C["Act III:<br/>Weeks 14-16"]
     
     A1["Building Universes<br/>Direct Simulation"] --> A
     B1["Observing Universes<br/>Inverse Problems"] --> B
@@ -88,7 +88,7 @@ flowchart TD
 
 :::{admonition} The Beauty of Scaffolding
 :class: tip
-Notice how no code is throwaway! Your `StellarPopulation` class from Week 1 generates the star cluster in Week 2. The leapfrog integrator you write for planetary orbits becomes the engine for exploring parameter space via Hamiltonian Monte Carlo. Most beautifully: your N-body simulations become the training data for your machine learning projects. You're not just learning algorithms — you're building a complete computational research pipeline.
+Notice how no code is throwaway! Your `StellarPopulation` class from Week 1 generates the star cluster in Week 2. The leapfrog integrator you write for modeling N-body dynamics becomes the engine for exploring parameter space via Hamiltonian Monte Carlo. Most beautifully: your N-body simulations become the training data for your machine learning projects. You're not just learning algorithms — you're building a complete computational research pipeline.
 :::
 
 ## Friday Class Structure
@@ -151,7 +151,7 @@ Bridge from NumPy to JAX ecosystem by course end
 :::
 
 :::{grid-item-card} 🌟 **Real Astrophysics**
-Every project addresses genuine astronomical problems
+Every project addresses genuine astrophysical problems
 :::
 
 :::{grid-item-card} 🤖 **AI Integration**
@@ -176,13 +176,13 @@ Strategic three-phase approach that builds authentic AI literacy for modern comp
   - Weeks
   - Permitted Usage
 * - **Phase 1**
-  - Weeks 1-6
+  - Weeks 1-7
   - Foundation building with limited AI (30-min rule before debugging help)
 * - **Phase 2**
-  - Weeks 7-12
+  - Weeks 8-13
   - Strategic integration with critical evaluation (refactoring after baseline works)
 * - **Phase 3**
-  - Weeks 13-16
+  - Weeks 14-16
   - Professional practice (acceleration while maintaining understanding)
 :::
 

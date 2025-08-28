@@ -115,8 +115,9 @@ site:
   options:
   # base_url removed: rely on CI-provided BASE_URL env as single source of truth
     #logo_text: "✨ASTR 596✨"
-    logo: _static/astr-logo-01.png
-    favicon: _static/astr-logo-01.png
+    logo: _static/astr596-logo-rectangle.png
+    favicon: _static/astr596-logo-square.png
+
     static: 
       _static/custom.css
     
