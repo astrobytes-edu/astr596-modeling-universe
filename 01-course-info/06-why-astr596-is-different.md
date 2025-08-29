@@ -15,7 +15,6 @@ Traditional lecture-based courses teach you to follow recipes and get right answ
 - **Growth over perfection** - Learn from failure rather than avoiding it.
 - **Strategic AI integration** - Use tools to amplify, not replace, thinking.
 - **Neuroplasticity in action** - Your brain literally rewires through challenge (this is proven neuroscience, not motivational fluff).
-
 :::
 
 ## The Research Environment You're Entering
@@ -37,7 +36,7 @@ Whether pursuing academia, industry, or other technical careers, you'll face:
 As Martin Schwartz explains in his 2008 essay ["The Importance of Stupidity in Scientific Research"](https://doi.org/10.1242/jcs.033340) (required reading for Week 1):
 
 > **Undergraduate coursework**: Getting the right answers, feeling smart when you know them.
-> 
+>
 > **Graduate research**: "Immersion in the unknown," where nobody knows the answers — *that's why it's research*.
 
 Schwartz's key realization came when his Nobel Prize-winning advisor couldn't solve a research problem:
@@ -189,7 +188,7 @@ These aren't just academic exercises – these are the exact tools used at NASA,
 
 ### "I'm making more mistakes than usual!"
 
-**Perfect!** This is exactly what Schwartz advocates for. Remember his key insight: 
+**Perfect!** This is exactly what Schwartz advocates for. Remember his key insight:
 
 > "We don't do a good enough job of teaching our students how to be productively stupid."
 
@@ -248,7 +247,7 @@ All are valid. I hope you choose deeper engagement, but it's your decision.
 
 This progression aligns with research on skill acquisition and deliberate practice [(*Peak: Secrets from the New Science of Expertise*, Ericsson & Pool, 2016)](https://notes.andymatuschak.org/Peak_-_Ericsson_and_Pool).
 
-That "actually fun" phase is real. Once you experience the satisfaction of solving something yourself — debugging that stubborn error, watching your simulation finally work, seeing your MCMC converge — you'll understand why researchers voluntarily spend their lives tackling hard problems and consistently learn new topics and techniques independently. 
+That "actually fun" phase is real. Once you experience the satisfaction of solving something yourself — debugging that stubborn error, watching your simulation finally work, seeing your MCMC converge — you'll understand why researchers voluntarily spend their lives tackling hard problems and consistently learn new topics and techniques independently.
 
 ### Immediate Actions
 
@@ -285,6 +284,7 @@ Computational thinking requires consistent daily practice, not last-minute cramm
 ### References & Additional Resources
 
 **Core Readings:**
+
 - Schwartz, M. A. (2008). [The importance of stupidity in scientific research](https://doi.org/10.1242/jcs.033340). *Journal of Cell Science*
 
 **Neuroscience of Learning:**
@@ -303,5 +303,6 @@ Computational thinking requires consistent daily practice, not last-minute cramm
 
 - Li, Y. (2024). [Characteristics of the mindset and behaviour of university students in the new era and educational countermeasures](https://www.scirp.org/journal/paperinformation?paperid=134134). *Creative Education*
 
-**AI in Education:**
+**AI in Astronomy Education:**
+
 - Ting, Y. S. & O'Briain, D. (2025). [Teaching astronomy with large language models](https://arxiv.org/abs/2506.06921). *arXiv preprint* arXiv:2506.06921.

@@ -174,7 +174,7 @@ The same mathematical structures appear everywhere: calculus and optimization, l
 :::{admonition} Why This Matters: The AI Revolution Connection
 :class: important
 
-**_Why learn to build these from scratch when I can just use ChatGPT?_**
+***Why learn to build these from scratch when I can just use ChatGPT?***
 
 Because understanding the internals makes you irreplaceable in an AI-saturated world.
 
@@ -258,4 +258,4 @@ The neural networks you'll build in the final project share the same fundamental
 
 ---
 
-**Ready to begin this journey? Let's build the universe, one algorithm at a time.**
+*Ready to begin this journey? Let's build the universe, one algorithm at a time.*

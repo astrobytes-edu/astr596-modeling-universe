@@ -94,6 +94,9 @@ project:
     - '**/images/**'
     - '**/tests/**'
     - '**/drafts/**'
+    - '**/04-Just-in-Time-Teaching/02-jitt-mathematics/**'
+    - '**/04-Just-in-Time-Teaching/03-jitt-probability-statistics/**'
+    - '**/04-Just-in-Time-Teaching/04-jitt-machine-learning/**'
 
 site:
   template: book-theme

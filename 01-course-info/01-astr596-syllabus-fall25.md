@@ -161,8 +161,8 @@ Each short project submission includes both technical implementation and a growt
 | Component | Weight | Description |
 |-----------|--------|-------------|
 | **Code Package** | 60% | Professional package structure with `__init__.py`, tests, and documentation. |
-| **Written Report** | 30% | Scientific writeup with scientific background and motivation, methods, results, and conclusions. |
-| **Presentation** | 10% | 12-minute total: research project, technical growth summary, and Q&A. |
+| **Written Report** | 25% | Formal scientific writeup with scientific background and motivation, methods, results, and conclusions. |
+| **Presentation** | 15% | 12-minute total: research project, technical growth summary, and Q&A. |
 
 ### Code Package Requirements
 

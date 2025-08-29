@@ -252,6 +252,7 @@ The goal is productive struggle, not arbitrary time limits.
 **Documentation:**
 
 If something took real effort to solve, add a quick comment like:
+
 ```python
 # Off-by-one error in loop
 # or

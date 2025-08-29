@@ -244,7 +244,7 @@ By course end, you will have:
   - Physics 239
 * - **Email**
   - <alrosen@sdsu.edu>
-* - **Student "Hacking" Hours**
+* - **Student Hacking Hours**
   - Wednesdays 1-2 PM (P-239) or by appointment
 * - **Course Website**
   - <https://astrobytes-edu.github.io/astr596-modeling-universe/>
