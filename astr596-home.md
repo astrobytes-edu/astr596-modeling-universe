@@ -130,6 +130,7 @@ Hands-On Implementation
 **How we work together:** You'll have project partners for discussion and debugging, but everyone maintains their own code. Think of it like a research group - you're tackling the same problem, helping each other understand concepts and fix bugs, but each person owns their implementation.
 
 **What this looks like in practice:**
+
 - ✅ "How are you handling the boundary conditions?" 
 - ✅ "Can you help me understand why this is diverging?"
 - ✅ Looking at each other's code to debug together
@@ -252,8 +253,7 @@ By course end, you will have:
   - [GitHub Issues](https://github.com/astrobytes-edu/astr596-modeling-universe/issues)
 :::
 
-:::{admonition} Growth Mindset Reminder
-:class: note
+:::{important} Growth Mindset Reminder
 
 *"I don't know" means "I don't know **yet**."*
 
@@ -261,5 +261,17 @@ What feels overwhelming in Week 1 will feel manageable by Week 5, and by Week 15
 :::
 
 ---
+
+:::{note} AI Transparency Statement
+
+**Course Development:** This course was developed with substantial assistance from Claude AI as a thought partner and content accelerator. All materials underwent rigorous fact-checking and refinement through domain expertise in computational astrophysics.
+
+**Reality Check:** Through extensive use, I've encountered AI's critical limitations firsthand—frequent generation of incorrect physics content, non-existent functions, faulty code, and confident misinformation. Every piece of content required verification against documentation, textbooks, and primary literature. My workload increased, but became far more productive.
+
+**Pedagogical Impact:** These experiences fundamentally shaped the course design. The three-phase AI scaffolding policy, glass-box methodology, and emphasis on first-principles understanding all emerged from recognizing that students need robust foundations to identify when AI is wrong (which occurs frequently). This isn't about avoiding AI—it's about thoughtful integration that builds genuine expertise.
+
+**Why This Matters:** As AI tools become standard in academia and industry, the differentiator isn't who can prompt AI, but who can verify outputs, catch errors, and guide AI toward meaningful solutions. Human creativity and expertise remain irreplaceable. This course prepares you for a reality where deep understanding, strong BS detectors, and depth in technical skills are mandatory for meaningful contributions.
+:::
+
 
 ✨ *Welcome to a transformative journey from Python basics to the frontiers of computational astrophysics. Together, we'll model the universe, one algorithm at a time.* ✨
