@@ -149,8 +149,13 @@ def integrate_orbit(initial_conditions, time_span, method='RK4', dt=0.01):
 
 ### 2. Research Memo (Markdown or PDF, 2-3 pages of text)
 
+**Markdown Docs:**
+- _*[MyST Markdown Guide \& Docs/Tutorials](https://mystmd.org/guide)*_
+- _*[Jupyter Markdown Cheatsheet](https://jupyterbook.org/en/stable/reference/cheatsheet.html)*_
+  
 Required sections (2-3 pages of text, not counting figures/references):
-- **Executive Summary** - What you did and key findings
+
+- **Executive Summary** - What you did and key findings (similar to an abstract).
 - **Methodology** - Approach, algorithms, numerical methods
 - **Results** - Key findings with figures, quantitative analysis (figures required but don't count toward page limit)
 - **Validation** - How you verified correctness
@@ -165,6 +170,7 @@ Submit as `research_memo.md` or `research_memo.pdf` in your project repository.
 Informal reflection about your learning journey. See the **Growth Memo Guide** for detailed instructions and use the provided **growth_memo_template.md**.
 
 Key elements to address:
+
 - Technical skills developed
 - Challenges and solutions
 - Conceptual insights
@@ -177,6 +183,7 @@ Key elements to address:
 ### 4. README Requirements
 
 Must include:
+
 - Project description
 - Installation instructions
 - Usage examples
