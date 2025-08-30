@@ -182,6 +182,6 @@ Document different approaches you see throughout the semester - from partners an
 
 If you have any issues with your pair programming partnership, please let me know ASAP so we can address it.
 
-After Project 1, we'll collect feedback to see what's working and what could improve.
+After Project 1, I'll collect feedback to see what's working and what could improve.
 
 **Remember:** The goal is to learn from each other and build a supportive classroom community where no one has to debug alone!
