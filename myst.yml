@@ -84,6 +84,7 @@ project:
     - '07-machine-learning/**'
     - '09-final-project/**'
     - '10-reference/**'
+    - '_OLD*/**'
     # OLD docs and files to be ignored
     - '**/OLD/**'
     - '**/paper/**'
@@ -94,10 +95,13 @@ project:
     - '**/images/**'
     - '**/tests/**'
     - '**/drafts/**'
+    - '**/old-**'
     - '**/04-Just-in-Time-Teaching/02-jitt-mathematics/**'
     - '**/04-Just-in-Time-Teaching/03-jitt-probability-statistics/**'
     - '**/04-Just-in-Time-Teaching/04-jitt-machine-learning/**'
-
+    - '**/*.py'           # All Python files
+    - '**/__pycache__'    # Python cache directories
+    - '**/*.ipynb'
 site:
   template: book-theme
   title: "ASTR 596: Modeling the Universe"
@@ -116,7 +120,7 @@ site:
     #   url: /exports/astr596-complete-book.pdf
   
   options:
-  # base_url removed: rely on CI-provided BASE_URL env as single source of truth
+    # base_url removed: rely on CI-provided BASE_URL env as single source of truth
     #logo_text: "✨ASTR 596✨"
     logo: _static/astr596-logo-rectangle.png
     favicon: _static/astr596-logo-square.png

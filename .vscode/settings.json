@@ -4,8 +4,6 @@
     "*.md": "markdown",
     "*.myst.md": "markdown",
     "myst.yml": "yaml",
-    "_config.yml": "yaml",
-    "_toc.yml": "yaml"
   },
   "jupyter.notebookFileRoot": "${workspaceFolder}",
   "search.exclude": {
@@ -16,5 +14,14 @@
   "files.watcherExclude": {
     "**/_build/**": true,
     "**/.jupyter_cache/**": true
-  }
+  },
+  "python.condaPath": "/Users/anna/miniforge3/bin/conda",
+  "python.defaultInterpreterPath": "/Users/anna/miniforge3/envs/astro/bin/python",
+  "python.venvPath": "/Users/anna/miniforge3/envs",
+  "python.terminal.activateEnvironment": true,
+  // Explicitly prefer the astro conda env Python for this workspace
+  "python.defaultInterpreterDisplayName": "Python (astro)",
+  "python-envs.defaultEnvManager": "ms-python.python:conda",
+  "python-envs.defaultPackageManager": "ms-python.python:conda",
+  "python-envs.pythonProjects": []
 }

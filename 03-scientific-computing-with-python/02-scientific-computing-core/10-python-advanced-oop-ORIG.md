@@ -14,6 +14,7 @@ By the end of this chapter, you will be able to:
 - Apply metaprogramming techniques including descriptors and metaclasses for domain-specific behavior
 - Use design patterns (Factory, Observer, Strategy) to solve recurring architectural problems
 - Implement dataclasses to reduce boilerplate in data-heavy scientific classes
+%https://www.dataquest.io/blog/how-to-use-python-data-classes/ 
 - Create asynchronous code for concurrent instrument control and data acquisition
 - Optimize memory and performance using `__slots__`, caching, and profiling techniques
 - Recognize these patterns in NumPy, SciPy, Matplotlib, and Astropy source code

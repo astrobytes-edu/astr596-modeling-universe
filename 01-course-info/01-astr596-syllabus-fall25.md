@@ -212,11 +212,11 @@ Each short project submission includes both technical implementation and a growt
 
 | Assignment | Due Date |
 |------------|----------|
-| Project 1: Python Fundamentals, OOP & Classes, `numpy`/`matplotlib`, <br> & Stellar Physics (with Growth Memo 1) | Monday, Sept 8, 11:59 PM PT |
-| Project 2: ODE Integration & N-Body Dynamics, <br> Monte Carlo Sampling (with Growth Memo 2) | Monday, Sept 22, 11:59 PM PT |
-| Project 3: Monte Carlo Radiative Transfer (with Growth Memo 3) | Monday, Oct 13, 11:59 PM PT |
-| Project 4: Bayesian/MCMC (with Growth Memo 4) | Monday, Nov 3, 11:59 PM PT |
-| Project 5: Gaussian Processes (with Growth Memo 5) | Monday, Nov 24, 11:59 PM PT |
+| Project 1: Python Fundamentals, OOP & Classes, `numpy`/`matplotlib`, <br> & Stellar Physics (with Growth Memo 1) | Wednesday, Sept 10, 11:59 PM PT |
+| Project 2: ODE Integration & N-Body Dynamics, <br> Monte Carlo Sampling (with Growth Memo 2) | Wednesday, Sept 24, 11:59 PM PT |
+| Project 3: Monte Carlo Radiative Transfer (with Growth Memo 3) | Wednesday, Oct 15, 11:59 PM PT |
+| Project 4: Bayesian/MCMC (with Growth Memo 4) | Wednesday, Nov 5, 11:59 PM PT |
+| Project 5: Gaussian Processes (with Growth Memo 5) | Wednesday, Nov 26, 11:59 PM PT |
 | Final Project & Technical Growth Synthesis | Thursday, Dec 18, 11:59 PM PT |
 
   *_Counts toward Participation grade_
