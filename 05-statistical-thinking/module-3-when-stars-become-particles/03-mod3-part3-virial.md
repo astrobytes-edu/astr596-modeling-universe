@@ -1,6 +1,6 @@
 ---
 title: "Part 3: The Virial Theorem as Universal Diagnostic"
-subtitle: "From Stars to Galaxies | Statistical Thinking Module 3 | ASTR 596"
+subtitle: "When Stars Become Particles | Statistical Thinking Module 2 | ASTR 596"
 ---
 
 ## Navigation

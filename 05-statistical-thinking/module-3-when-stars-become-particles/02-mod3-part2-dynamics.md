@@ -1,6 +1,6 @@
 ---
 title: "Part 2: Stellar Dynamics as Collisionless Statistics"
-subtitle: "From Stars to Galaxies | Statistical Thinking Module 3 | ASTR 596"
+subtitle: "When Stars Become Particles | Statistical Thinking Module 2 | ASTR 596"
 ---
 
 ## Navigation
