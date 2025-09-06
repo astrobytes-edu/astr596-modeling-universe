@@ -89,6 +89,8 @@ Upon successful completion of this course, students will be able to:
 
 - Deisenroth, Faisal, & Ong (2020), [Mathematics for Machine Learning](https://mml-book.github.io/), Cambridge University Press
 
+- Hardt & Recht (2022), [Patterns, Predictions, and Actions: A story about machine learning](https://mlstory.org/), Princeton University Press
+
 - Ting (2025), [Statistical Machine Learning for Astronomy *(arXiv preprint)*](https://arxiv.org/abs/2506.12230)
 
 ### Software Requirements
