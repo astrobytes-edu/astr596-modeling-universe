@@ -65,16 +65,16 @@ Phase transitions occur at project submission deadlines. You remain in your curr
 
 **Entering Phase 3 (Nov 25):** Can you verify AI suggestions against documentation? Do you understand why code works, not just that it works?
 
-## Weekly Topics & Learning Objectives
+## Weekly Topics & Course Readings
 
 | Week | Date | Topic | AI Phase | Reading |
 |------|------|-------|----------|---------|
 | 1 | Aug 29 | Python Fundamentals & <br> Object-Oriented Programming | Phase 1 | **Primary:** Python Ch. 5-6 (Functions, OOP);<br> **Reference:** Ch. 1-4 (Python Fundamentals) |
 | 2 | Sept 5 | NumPy, Vectorization, Linear Algebra Review | Phase 1 | **Primary:** Python Ch. 7-8 (NumPy, Matplotlib) |
-| 3 | Sept 12 | Intro to Numerical Methods, Statistical Foundations, & <br> Random Sampling | Phase 1 | [Linear Algebra Core](../04-mathematical-foundations/00a-linear-algebra-core-module.md), <br> Intro to Numerical Methods *(coming soon...)*,<br> [Statistical Thinking Module 1](../05-statistical-thinking/module-1-how-nature-computes/) |
-| 4 | Sept 19 | Numerical Methods (cont.), <br> N-body dynamics & Conservation Laws, The Virial Theorem | Phase 1 | Statistical Thinking [Module 2](../05-statistical-thinking/module-2-from-particles-to-stars/)) & [Module 3](../05-statistical-thinking/module-3-when-stars-become-particles/) |
+| 3 | Sept 12 | Intro to Numerical Methods, Statistical Foundations, & <br> Random Sampling | Phase 1 | [Linear Algebra Module 1](../04-mathematical-foundations/00a-linear-algebra-core-module.md), <br> Intro to Numerical Methods *(coming soon...)*,<br> [Statistical Thinking Module 1](../05-statistical-thinking/module-1-how-nature-computes/) |
+| 4 | Sept 19 | Numerical Methods (cont.), <br> N-body dynamics & Conservation Laws, The Virial Theorem | Phase 1 | Statistical Thinking [Module 2](../05-statistical-thinking/module-2-from-particles-to-stars/) & [Module 3](../05-statistical-thinking/module-3-when-stars-become-particles/) |
 | 5 | Sept 26 | Intro to Radiative Transfer, Numerical Integration | Phase 1 | TBD |
-| 6 | Oct 3 | MCRT Implementation, Solving Linear Systems | Phase 1 | [Linear Algebra](../04-mathematical-foundations/00b-linear-algebra-stats-module.md); TBD |
+| 6 | Oct 3 | MCRT Implementation, Solving Linear Systems | Phase 1 | [Linear Algebra Module 2](../04-mathematical-foundations/00b-linear-algebra-stats-module.md); TBD |
 | 7 | Oct 10 | Intro to Bayesian Inference & Cosmology | Phase 1 | TBD |
 | 8 | Oct 17 | Bayesian Inference (cont.), <br> Intro to MCMC | Phase 2 | TBD |
 | 9 | Oct 24 | MCMC & HMC | Phase 2 | TBD |
