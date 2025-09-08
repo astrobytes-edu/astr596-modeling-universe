@@ -3,9 +3,6 @@ title: "Part 2: Numbers Aren't Real - Computer Arithmetic & Cosmic Consequences"
 subtitle: "Module 1: Foundations of Discrete Computing | ASTR 596"
 ---
 
-**Navigation:**
-[← Part 1: The Fundamental Paradox](./01-fundamental-paradox.md) | [Part 3: Taylor Series →](./03-taylor-series.md)
-
 ## Learning Outcomes
 
 By the end of this section, you will be able to:
