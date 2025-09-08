@@ -48,6 +48,7 @@ By completing this module, you will be able to:
 ### Part 2: Building Better Methods - Runge-Kutta
 
 **Learning Outcomes:**
+
 - Derive RK2 and RK4 from multivariate Taylor expansions
 - Connect RK weights to quadrature rules from Module 2
 - Implement adaptive timestep control
@@ -58,6 +59,7 @@ By completing this module, you will be able to:
 ### Part 3: Symplectic Integration - Geometry Over Accuracy
 
 **Learning Outcomes:**
+
 - Prove symplecticity of leapfrog/Verlet methods
 - Understand modified Hamiltonians and bounded energy error
 - Implement symplectic integrators for N-body problems
@@ -68,6 +70,7 @@ By completing this module, you will be able to:
 ### Part 4: Stability and Performance
 
 **Learning Outcomes:**
+
 - Analyze stability regions for different methods
 - Diagnose and handle stiff equations
 - Transform scalar loops to vectorized operations
@@ -78,6 +81,7 @@ By completing this module, you will be able to:
 ## Prerequisites
 
 ### Required Knowledge
+
 - Modules 1-2 concepts (derivatives, integration, error analysis)
 - Differential equations basics
 - Linear algebra (eigenvalues, matrices)
@@ -91,6 +95,7 @@ By completing this module, you will be able to:
 ## Self-Assessment
 
 Before beginning, verify you can:
+
 - [ ] Explain the difference between local and global error
 - [ ] Use Taylor series to analyze algorithm accuracy
 - [ ] Implement basic numerical integration (trapezoid rule)
@@ -99,19 +104,13 @@ Before beginning, verify you can:
 ## Connections to Course Projects
 
 The methods you learn here are essential for:
+
 - **Project 2 (N-body)**: Core integration methods for orbital dynamics
 - **Project 3 (MCRT)**: Ray integration through varying media
 - **Project 4 (MCMC)**: Hamiltonian Monte Carlo uses symplectic integration
 - **Project 5 (GP)**: Solving SDEs for kernel functions
 - **Final Project**: Training dynamics of neural networks
 
-## Resources
-
-- **Required Reading**: This module content
-- **Reference**: Hairer, Lubich & Wanner, "Geometric Numerical Integration"
-- **Classical**: Goldstein, "Classical Mechanics" (Chapter 8)
-- **Computational**: Numerical Recipes, Chapter 16
-
 ## Module Philosophy
 
-Remember: We're not just solving differential equations—we're preserving the fundamental structure of physics through discrete time. Every integration method creates an alternate reality with slightly different physics. Our job is choosing the reality that best preserves what matters for our problem.
+**Remember**: We're not just solving differential equations — we're preserving the fundamental structure of physics through discrete time. Every integration method creates an alternate reality with slightly different physics. Our job is choosing the reality that best preserves what matters for our problem.

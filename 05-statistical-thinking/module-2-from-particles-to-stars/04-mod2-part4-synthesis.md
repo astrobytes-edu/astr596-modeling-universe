@@ -3,12 +3,6 @@ title: "Part 4: Synthesis - The Universal Framework"
 subtitle: "From Particles to Stars | Statistical Thinking Module 2 | ASTR 596"
 ---
 
-## Navigation
-
-[← Part 3: Stellar Structure](./03-stellar-structure.md) | [Module 2 Home](./00-overview.md) | [Module 3: From Stars to Galaxies →](../module3/00-overview.md)
-
----
-
 ## Module Summary: The Power Revealed
 
 We began with an impossible challenge: modeling systems with $10^{57}$ particles using just a few equations. Through the profound power of statistical mechanics, we discovered that this isn't just possible—it's inevitable.

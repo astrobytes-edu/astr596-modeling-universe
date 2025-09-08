@@ -3,9 +3,6 @@ title: "Part 2: Building Better Methods - Runge-Kutta"
 subtitle: "Module 3: ODE Methods & Conservation | ASTR 596"
 ---
 
-**Navigation:**
-[← Part 1: Failure of Naive Integration](./01-module3-part1-euler.md) | [Part 3: Symplectic Integration →](./03-module3-part3-symplectic.md)
-
 ## Learning Outcomes
 
 By the end of this section, you will be able to:

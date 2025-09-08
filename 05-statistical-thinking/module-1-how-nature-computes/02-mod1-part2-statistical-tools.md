@@ -3,11 +3,6 @@ title: "Part 2: Statistical Tools and Concepts"
 subtitle: "How Nature Computes | Statistical Thinking Module 1 | ASTR 596"
 ---
 
-**Navigation**
-[← Part 1: Foundations](01-part1-foundations.md) | [Module 2a Home](00-part0-overview.md) | [Part 3: Moments →](03-part3-moments.md)
-
----
-
 ## Learning Outcomes
 
 By the end of Part 2, you will be able to:
@@ -1223,6 +1218,3 @@ You've learned six fundamental statistical tools that bridge physics and computa
 You now have the statistical tools. Next, we'll see how to extract meaningful information from distributions using moments—the mathematical bridge between microscopic chaos and macroscopic order.
 
 ---
-
-## Navigation
-[← Part 1: Foundations](01-part1-foundations.md) | [Statistical Foundations Home](00-part0-overview.md) | [Part 3: Moments →](03-part3-moments.md)

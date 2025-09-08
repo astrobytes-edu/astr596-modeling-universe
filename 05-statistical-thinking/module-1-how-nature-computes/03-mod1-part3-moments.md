@@ -3,11 +3,6 @@ title: "Part 3: Moments - The Statistical Bridge to Physics"
 subtitle: "How Nature Computes | Statistical Thinking Module 1 | ASTR 596"
 ---
 
-**Navigation**
-[← Part 2: Statistical Tools](02-part2-statistical-tools.md) | [Module 2a Home](00-part0-overview.md) | [Part 4: Random Sampling →](04-part4-sampling.md)
-
----
-
 ## Learning Outcomes
 
 By the end of Part 3, you will be able to:
@@ -172,6 +167,3 @@ Ready? Let's make these ideas computational!
 You understand the principles and can extract information using moments. Now comes the crucial step: generating samples from these distributions computationally. This bridges theory to simulation.
 
 ---
-
-## Navigation
-[← Part 2: Statistical Tools](02-part2-statistical-tools.md) | [How Nature Computes Home](00-part0-overview.md) | [Part 4: Random Sampling →](04-part4-sampling.md)

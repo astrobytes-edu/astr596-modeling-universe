@@ -3,12 +3,6 @@ title: "Part 1: The Scale Problem & Statistical Victory"
 subtitle: "From Particles to Stars | Statistical Thinking Module 2 | ASTR 596"
 ---
 
-#### Navigation
-
-[← Part 0: Overview](./00-overview.md) | [Module 2 Home](./00-overview.md) | [Part 2: From Boltzmann to Fluids →](./02-boltzmann-to-fluids.md)
-
----
-
 ## Learning Objectives
 
 By the end of Part 1, you will be able to:
@@ -306,7 +300,3 @@ These aren't separate phenomena — they're manifestations of the same principle
 :::
 
 ---
-
-## Navigation
-
-[← Part 0: Overview](./00-overview.md) | [Module 2 Home](./00-overview.md) | [Part 2: From Boltzmann to Fluids →](./02-boltzmann-to-fluids.md)

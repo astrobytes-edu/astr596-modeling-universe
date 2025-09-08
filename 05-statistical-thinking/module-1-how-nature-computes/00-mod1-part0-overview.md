@@ -321,7 +321,3 @@ Before diving in, let's establish the connection between physics language and st
 - Glossary
 
 ---
-
-## Navigation
-
-[→ Part 1: Foundations](01-mod1-part1-foundations.md)

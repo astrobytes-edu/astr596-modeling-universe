@@ -3,12 +3,6 @@ title: "Part 1: Phase Space & Statistical Abstraction"
 subtitle: "When Stars Become Particles | Statistical Thinking Module 2 | ASTR 596"
 ---
 
-## Navigation
-
-[← Part 0: Overview](./00-overview.md) | [Module 3 Home](./00-overview.md) | [Part 2: Stellar Dynamics →](./02-stellar-dynamics.md)
-
----
-
 ## Learning Objectives
 
 By the end of Part 1, you will be able to:
@@ -256,7 +250,3 @@ This abstraction power is why:
 Ready to see how this abstraction leads to the fundamental equations of stellar dynamics? Part 2 awaits.
 
 ---
-
-## Navigation
-
-[← Part 0: Overview](./00-overview.md) | [Module 3 Home](./00-overview.md) | [Part 2: Stellar Dynamics →](./02-stellar-dynamics.md)

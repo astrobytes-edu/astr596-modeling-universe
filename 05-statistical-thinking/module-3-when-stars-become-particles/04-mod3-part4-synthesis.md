@@ -3,12 +3,6 @@ title: "Part 4: The Grand Synthesis - Why Statistics Rules the Universe"
 subtitle: "When Stars Become Particles | Statistical Thinking Module 2 | ASTR 596"
 ---
 
-## Navigation
-
-[← Part 3: The Virial Theorem](./03-virial-theorem.md) | [Module 3 Home](./00-overview.md) | [Next: Your Projects](../../projects/)
-
----
-
 ## Part 4: The Grand Synthesis - Why Statistics Rules the Universe (and Your Code)
 
 ### 4.1 The Profound Realization
@@ -251,7 +245,3 @@ Master the framework, understand the physics, apply appropriately.
 *Welcome to computational thinking at its deepest level.*
 
 ---
-
-## Navigation
-
-[← Part 3: The Virial Theorem](./03-virial-theorem.md) | [Module 3 Home](./00-overview.md) | [Next: Your Projects](../../projects/)

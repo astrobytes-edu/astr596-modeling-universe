@@ -3,9 +3,6 @@ title: "Part 3: Taylor Series Applications & Modern Methods"
 subtitle: "Module 1: Foundations of Discrete Computing | ASTR 596"
 ---
 
-**Navigation:**
-[← Part 2: Numbers Aren't Real](./02-part2-numerical-errors.md) | [Synthesis & Summary →](./04-module1-synthesis.md)
-
 ## Learning Outcomes
 
 By the end of this section, you will be able to:

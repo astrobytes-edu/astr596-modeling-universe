@@ -3,11 +3,6 @@ title: "Synthesis & Summary"
 subtitle: "Module 1: Foundations of Discrete Computing | ASTR 596"
 ---
 
-**Navigation:**
-[← Part 3: Taylor Series](./03-part3-taylor-series.md) | [Module 2: Static Problems →](../02-module2/00-overview.md)
-
----
-
 ## What You've Accomplished
 
 Congratulations! You've mastered the foundations of numerical differentiation and finite precision arithmetic. Let's consolidate what you've learned and see how it all connects.

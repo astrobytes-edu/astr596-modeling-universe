@@ -3,12 +3,6 @@ title: "Overview: From Particles to Stars"
 subtitle: "Statistical Thinking Module 2 | ASTR 596: Modeling the Universe"
 ---
 
-## Navigation
-
-[← Module 1: Statistical Foundations](../module1/00-overview.md) | [Module 2 Home](./00-overview.md) | [Part 1: The Scale Problem →](./01-scale-problem.md)
-
----
-
 ## The Impossible Made Possible: A Story of Statistical Triumph
 
 In 1920, Arthur Eddington faced an impossible challenge. Fresh from confirming Einstein's general relativity by observing starlight bending around the Sun during the 1919 eclipse, he turned to an even more audacious question: what powers the stars?
@@ -92,7 +86,3 @@ When you understand that pressure is variance and temperature is a distribution 
 Ready to transform $10^{57}$ particles into 4 equations? Let's begin.
 
 ---
-
-#### Navigation
-
-[← Module 1: Statistical Foundations](../module1/00-overview.md) | [Module 2 Home](./00-overview.md) | [Part 1: The Scale Problem →](./01-scale-problem.md)

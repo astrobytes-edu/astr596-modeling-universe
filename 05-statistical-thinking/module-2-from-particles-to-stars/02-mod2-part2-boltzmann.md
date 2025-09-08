@@ -3,12 +3,6 @@ title: "Part 2: From Boltzmann to Fluid Equations"
 subtitle: "From Particles to Stars | Statistical Thinking Module 2 | ASTR 596"
 ---
 
-## Navigation
-
-[← Part 1: The Scale Problem](./01-scale-problem.md) | [Module 2 Home](./00-overview.md) | [Part 3: Stellar Structure →](./03-stellar-structure.md)
-
----
-
 ## Learning Objectives
 
 By the end of Part 2, you will be able to:
@@ -303,7 +297,3 @@ With this framework firmly in mind, you're ready to see it applied to real stell
 :::
 
 ---
-
-## Navigation
-
-[← Part 1: The Scale Problem](./01-scale-problem.md) | [Module 2 Home](./00-overview.md) | [Part 3: Stellar Structure →](./03-stellar-structure.md)

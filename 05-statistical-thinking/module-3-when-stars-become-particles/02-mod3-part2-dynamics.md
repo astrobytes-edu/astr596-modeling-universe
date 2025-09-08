@@ -3,12 +3,6 @@ title: "Part 2: Stellar Dynamics as Collisionless Statistics"
 subtitle: "When Stars Become Particles | Statistical Thinking Module 2 | ASTR 596"
 ---
 
-## Navigation
-
-[← Part 1: Phase Space](./01-phase-space.md) | [Module 3 Home](./00-overview.md) | [Part 3: The Virial Theorem →](./03-virial-theorem.md)
-
----
-
 ## Learning Objectives
 
 By the end of Part 2, you will be able to:
@@ -309,7 +303,3 @@ The profound realization: **The universe recycles the same statistical framework
 :::
 
 ---
-
-## Navigation
-
-[← Part 1: Phase Space](./01-phase-space.md) | [Module 3 Home](./00-overview.md) | [Part 3: The Virial Theorem →](./03-virial-theorem.md)

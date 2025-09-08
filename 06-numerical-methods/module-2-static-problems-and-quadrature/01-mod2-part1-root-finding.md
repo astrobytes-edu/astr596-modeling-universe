@@ -3,9 +3,6 @@ title: "Part 1: Root Finding - Where Physics Reaches Equilibrium"
 subtitle: "Static Problems & Quadrature | Numerical Methods Module 2 | ASTR 596"
 ---
 
-**Navigation:**
-[← Module Overview](./00-overview.md) | [Part 2: Quadrature →](./02-quadrature.md)
-
 ## Learning Outcomes
 
 By the end of this section, you will be able to:

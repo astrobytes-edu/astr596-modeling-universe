@@ -1,13 +1,8 @@
 ---
-title: "Synthesis & Summary"
+title: "Module 3 Synthesis & Summary"
 subtitle: "Module 3: ODE Methods & Conservation | ASTR 596"
 ---
 
-**Navigation:**
-[← Part 4: Stability](./04-module3-part4-stability.md) 
-%| [Module 4: Monte Carlo Methods →](../04-module4/00-overview.md)
-
----
 %Numerical Modelling of Dynamical Systems
 %https://webspace.science.uu.nl/~frank011/Classes/numwisk/
 %Frank Verbunt, Utrecht University

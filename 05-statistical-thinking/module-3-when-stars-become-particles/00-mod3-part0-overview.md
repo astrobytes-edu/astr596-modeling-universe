@@ -3,12 +3,6 @@ title: "Overview: When Stars Become Particles"
 subtitle: "Statistical Thinking Module 3 | ASTR 596: Modeling the Universe"
 ---
 
-## Navigation
-
-[← Module 2: From Particles to Stars](../module2/00-overview.md) | [Module 3 Home](./00-overview.md) | [Part 1: Phase Space →](./01-phase-space.md)
-
----
-
 ## When Stars Become Particles: A Story of Scale Invariance
 
 In 1933, Fritz Zwicky made an observation that should have revolutionized astronomy. Studying the Coma galaxy cluster, he applied the virial theorem—a simple statistical relationship you'll master in this module—to measure the cluster's total mass. The result was shocking: the cluster contained 400 times more mass than could be seen in stars and gas.
@@ -106,7 +100,3 @@ This statistical perspective is why:
 Ready to see stars become particles and galaxies become statistical ensembles? Let's begin.
 
 ---
-
-## Navigation
-
-[← Module 2: From Particles to Stars](../module2/00-overview.md) | [Module 3 Home](./00-overview.md) | [Part 1: Phase Space →](./01-phase-space.md)

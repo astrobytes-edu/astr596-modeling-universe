@@ -259,15 +259,26 @@ def figure_2_1_root_methods_comparison():
     # Bisection: linear convergence
     bisection_error = 0.5 * (0.5)**iterations
     
-    # Newton: quadratic convergence (starting from reasonable error)
-    newton_error = [0.1]
+    # Newton: quadratic convergence (realistic simulation)
+    # For f(x) = x^3 - 2x - 5, f'(x) = 3x^2 - 2, f''(x) = 6x
+    # At root r ≈ 2.094: f'(r) ≈ 11.15, f''(r) ≈ 12.56
+    # Convergence constant C = f''(r)/(2*f'(r)) ≈ 0.56
+    C_newton = 0.56
+    newton_error = [0.1]  # Initial error
     for i in range(1, 10):
-        newton_error.append(newton_error[-1]**2 * 0.5)  # Roughly quadratic
+        new_error = C_newton * newton_error[-1]**2
+        newton_error.append(max(new_error, 1e-16))  # Floor at machine precision
     newton_error = np.array(newton_error)
     
-    # Secant: superlinear convergence (golden ratio)
+    # Secant: superlinear convergence (golden ratio ≈ 1.618)
     phi = (1 + np.sqrt(5)) / 2
-    secant_error = 0.1 * (0.3)**iterations**((phi-1))
+    # Correct secant convergence: |e_{n+1}| ≈ C * |e_n|^φ
+    C_secant = 0.8
+    secant_error = [0.1]  # Initial error
+    for i in range(1, 10):
+        new_error = C_secant * secant_error[-1]**phi
+        secant_error.append(max(new_error, 1e-16))  # Floor at machine precision
+    secant_error = np.array(secant_error)
     
     ax4.semilogy(iterations, bisection_error, 'o-', color=COLORS['secondary'],
                 linewidth=3, markersize=6, label='Bisection (linear)', alpha=0.9)
@@ -745,22 +756,35 @@ def figure_2_4_integration_methods_geometry():
     for ax in [ax1, ax2, ax3, ax4]:
         ax.set_facecolor('white')
     
-    # Test function: sin(x) + 0.5 from 0 to π
+    # Test function: e^(-x/2)*cos(2x) + 1 from 0 to 2
+    # This function shows clear differences between integration methods
     def f(x):
-        return np.sin(x) + 0.5
+        return np.exp(-x/2) * np.cos(2*x) + 1
     
-    a, b = 0, np.pi
+    a, b = 0, 2
     x_fine = np.linspace(a, b, 1000)
     y_fine = f(x_fine)
-    true_integral = 2.5  # Analytical result
+    # Calculate true integral numerically with high precision
+    from scipy import integrate
+    true_integral, _ = integrate.quad(f, a, b)
+    
+    # Add main title with function
+    fig.suptitle(r'Numerical Integration Methods Comparison', 
+                 fontsize=20, color=COLORS['dark'], weight='bold', y=0.98)
+    
+    # Add function textbox at the top center
+    function_text = r'$f(x) = e^{-x/2}\cos(2x) + 1$, $\int_0^2 f(x)\,dx$'
+    fig.text(0.5, 0.92, function_text, ha='center', va='center', 
+             fontsize=18, color=COLORS['primary'], weight='bold',
+             bbox=dict(boxstyle='round,pad=0.5', facecolor=COLORS['light'], 
+                      edgecolor=COLORS['primary'], linewidth=2, alpha=0.9))
     
     # Panel 1: Rectangle rule (left)
     n = 5
     x_rect = np.linspace(a, b, n+1)
     h = (b - a) / n
     
-    ax1.plot(x_fine, y_fine, color=COLORS['primary'], linewidth=4, alpha=0.9, 
-             label=r'$f(x) = \sin(x) + 0.5$', zorder=5)
+    ax1.plot(x_fine, y_fine, color=COLORS['primary'], linewidth=4, alpha=0.9, zorder=5)
     ax1.fill_between(x_fine, 0, y_fine, alpha=0.2, color=COLORS['primary'], zorder=1)
     
     # Draw rectangles
@@ -780,19 +804,29 @@ def figure_2_4_integration_methods_geometry():
         ax1.plot(x_left, height, 'o', color=COLORS['secondary'], markersize=8,
                 markeredgewidth=2, markeredgecolor='white', zorder=4)
     
+    # Add error information for Rectangle rule
+    rect_abs_error = abs(rect_sum - true_integral)
+    rect_rel_error = rect_abs_error / true_integral * 100
+    error_text_1 = f'Abs Error: {rect_abs_error:.4f}\nRel Error: {rect_rel_error:.2f}%'
+    
+    ax1.text(0.98, 0.98, error_text_1, transform=ax1.transAxes, 
+             fontsize=11, ha='right', va='top',
+             bbox=dict(boxstyle='round,pad=0.3', facecolor='white', 
+                      edgecolor=COLORS['secondary'], alpha=0.9), 
+             color=COLORS['secondary'], weight='medium')
+    
     ax1.set_xlabel(r'$x$', fontsize=16, color=COLORS['dark'], weight='medium')
     ax1.set_ylabel(r'$f(x)$', fontsize=16, color=COLORS['dark'], weight='medium')
     ax1.set_title(f'Rectangle Rule (Left)\nApprox = {rect_sum:.3f}', 
                   fontsize=16, color=COLORS['dark'], weight='medium', pad=15)
     ax1.grid(True, alpha=0.3)
     ax1.set_xlim(a, b)
-    ax1.set_ylim(0, 1.8)
+    ax1.set_ylim(0, 2.2)
     
     # Panel 2: Midpoint rule
     x_mid = np.linspace(a + h/2, b - h/2, n)
     
-    ax2.plot(x_fine, y_fine, color=COLORS['primary'], linewidth=4, alpha=0.9, 
-             label=r'$f(x) = \sin(x) + 0.5$', zorder=5)
+    ax2.plot(x_fine, y_fine, color=COLORS['primary'], linewidth=4, alpha=0.9, zorder=5)
     ax2.fill_between(x_fine, 0, y_fine, alpha=0.2, color=COLORS['primary'], zorder=1)
     
     # Draw midpoint rectangles
@@ -812,17 +846,27 @@ def figure_2_4_integration_methods_geometry():
         ax2.plot(x_center, height, 'o', color=COLORS['accent'], markersize=8,
                 markeredgewidth=2, markeredgecolor='white', zorder=4)
     
+    # Add error information for Midpoint rule
+    mid_abs_error = abs(mid_sum - true_integral)
+    mid_rel_error = mid_abs_error / true_integral * 100
+    error_text_2 = f'Abs Error: {mid_abs_error:.4f}\nRel Error: {mid_rel_error:.2f}%'
+    
+    ax2.text(0.98, 0.98, error_text_2, transform=ax2.transAxes, 
+             fontsize=11, ha='right', va='top',
+             bbox=dict(boxstyle='round,pad=0.3', facecolor='white', 
+                      edgecolor=COLORS['accent'], alpha=0.9), 
+             color=COLORS['accent'], weight='medium')
+    
     ax2.set_xlabel(r'$x$', fontsize=16, color=COLORS['dark'], weight='medium')
     ax2.set_ylabel(r'$f(x)$', fontsize=16, color=COLORS['dark'], weight='medium')
     ax2.set_title(f'Midpoint Rule\nApprox = {mid_sum:.3f}', 
                   fontsize=16, color=COLORS['dark'], weight='medium', pad=15)
     ax2.grid(True, alpha=0.3)
     ax2.set_xlim(a, b)
-    ax2.set_ylim(0, 1.8)
+    ax2.set_ylim(0, 2.2)
     
     # Panel 3: Trapezoidal rule
-    ax3.plot(x_fine, y_fine, color=COLORS['primary'], linewidth=4, alpha=0.9, 
-             label=r'$f(x) = \sin(x) + 0.5$', zorder=5)
+    ax3.plot(x_fine, y_fine, color=COLORS['primary'], linewidth=4, alpha=0.9, zorder=5)
     ax3.fill_between(x_fine, 0, y_fine, alpha=0.2, color=COLORS['primary'], zorder=1)
     
     # Draw trapezoids
@@ -846,21 +890,31 @@ def figure_2_4_integration_methods_geometry():
         ax3.plot([x1, x2], [y1, y2], 'o', color=COLORS['secondary'], markersize=8,
                 markeredgewidth=2, markeredgecolor='white', zorder=5)
     
+    # Add error information for Trapezoidal rule
+    trap_abs_error = abs(trap_sum - true_integral)
+    trap_rel_error = trap_abs_error / true_integral * 100
+    error_text_3 = f'Abs Error: {trap_abs_error:.4f}\nRel Error: {trap_rel_error:.2f}%'
+    
+    ax3.text(0.98, 0.98, error_text_3, transform=ax3.transAxes, 
+             fontsize=11, ha='right', va='top',
+             bbox=dict(boxstyle='round,pad=0.3', facecolor='white', 
+                      edgecolor=COLORS['secondary'], alpha=0.9), 
+             color=COLORS['secondary'], weight='medium')
+    
     ax3.set_xlabel(r'$x$', fontsize=16, color=COLORS['dark'], weight='medium')
     ax3.set_ylabel(r'$f(x)$', fontsize=16, color=COLORS['dark'], weight='medium')
     ax3.set_title(f'Trapezoidal Rule\nApprox = {trap_sum:.3f}', 
                   fontsize=16, color=COLORS['dark'], weight='medium', pad=15)
     ax3.grid(True, alpha=0.3)
     ax3.set_xlim(a, b)
-    ax3.set_ylim(0, 1.8)
+    ax3.set_ylim(0, 2.2)
     
     # Panel 4: Simpson's rule (need even n)
     n_simp = 6  # Must be even
     x_simp = np.linspace(a, b, n_simp+1)
     h_simp = (b - a) / n_simp
     
-    ax4.plot(x_fine, y_fine, color=COLORS['primary'], linewidth=4, alpha=0.9, 
-             label=r'$f(x) = \sin(x) + 0.5$', zorder=5)
+    ax4.plot(x_fine, y_fine, color=COLORS['primary'], linewidth=4, alpha=0.9, zorder=5)
     ax4.fill_between(x_fine, 0, y_fine, alpha=0.2, color=COLORS['primary'], zorder=1)
     
     # Draw parabolic segments
@@ -888,13 +942,24 @@ def figure_2_4_integration_methods_geometry():
         ax4.plot([x0, x1, x2], [y0, y1, y2], 'o', color=COLORS['accent'], 
                 markersize=8, markeredgewidth=2, markeredgecolor='white', zorder=5)
     
+    # Add error information for Simpson's rule
+    simp_abs_error = abs(simp_sum - true_integral)
+    simp_rel_error = simp_abs_error / true_integral * 100
+    error_text_4 = f'Abs Error: {simp_abs_error:.4f}\nRel Error: {simp_rel_error:.2f}%'
+    
+    ax4.text(0.98, 0.98, error_text_4, transform=ax4.transAxes, 
+             fontsize=11, ha='right', va='top',
+             bbox=dict(boxstyle='round,pad=0.3', facecolor='white', 
+                      edgecolor=COLORS['accent'], alpha=0.9), 
+             color=COLORS['accent'], weight='medium')
+    
     ax4.set_xlabel(r'$x$', fontsize=16, color=COLORS['dark'], weight='medium')
     ax4.set_ylabel(r'$f(x)$', fontsize=16, color=COLORS['dark'], weight='medium')
     ax4.set_title(f'Simpson\'s Rule\nApprox = {simp_sum:.3f}', 
                   fontsize=16, color=COLORS['dark'], weight='medium', pad=15)
     ax4.grid(True, alpha=0.3)
     ax4.set_xlim(a, b)
-    ax4.set_ylim(0, 1.8)
+    ax4.set_ylim(0, 2.2)
     
     # Add true integral annotation to each panel
     true_text = f'True = {true_integral:.3f}'
@@ -912,7 +977,8 @@ def figure_2_4_integration_methods_geometry():
             spine.set_linewidth(1.2)
         ax.tick_params(axis='both', labelsize=14, colors=COLORS['neutral'])
     
-    plt.tight_layout()
+    # Adjust layout to make room for title and function box
+    plt.tight_layout(rect=[0, 0, 1, 0.88])  # Leave space at top for title and function
     save_figure(fig, "2_4_integration_methods_geometry")
     reset_style()
 
@@ -960,10 +1026,13 @@ def figure_2_5_simpson_vs_trapezoid_scaling():
         
         # Simpson's rule (need even n)
         if n % 2 == 0:
-            simp_result = h/3 * (y_points[0] + 
-                               4*np.sum(y_points[1:-1:2]) + 
-                               2*np.sum(y_points[2:-1:2]) + 
-                               y_points[-1])
+            # Correct Simpson's rule implementation
+            # Pattern: 1, 4, 2, 4, 2, 4, ..., 2, 4, 1
+            weights = np.ones(n+1)
+            weights[1:-1:2] = 4  # Odd indices (1,3,5,...): weight 4
+            weights[2:-1:2] = 2  # Even indices (2,4,6,...): weight 2
+            # First and last already have weight 1
+            simp_result = h/3 * np.sum(weights * y_points)
             simp_error = abs(simp_result - true_integral)
             simp_errors.append(simp_error)
         else:
@@ -1111,9 +1180,11 @@ def figure_2_6_monte_carlo_convergence():
         ax.set_facecolor('white')
     
     # Left panel: 2D function visualization with random sampling
-    # Use a 2D Gaussian-like function
+    # Use pedagogically clear function: paraboloid over unit square
     def f_2d(x, y):
-        return np.exp(-((x-0.5)**2 + (y-0.5)**2) / 0.2)
+        # f(x,y) = 4(1-x²-y²) - geometrically intuitive paraboloid
+        # Note: This can go negative, but we only integrate over [0,1]² where it's mostly positive
+        return 4 * (1 - x**2 - y**2)
     
     # Create a grid for visualization
     x_grid = np.linspace(0, 1, 100)
@@ -1121,50 +1192,61 @@ def figure_2_6_monte_carlo_convergence():
     X, Y = np.meshgrid(x_grid, y_grid)
     Z = f_2d(X, Y)
     
-    # Plot the function as a heatmap
-    im = ax1.contourf(X, Y, Z, levels=20, cmap='Blues', alpha=0.7)
-    ax1.contour(X, Y, Z, levels=10, colors='white', alpha=0.5, linewidths=0.8)
+    # Plot the function as a heatmap with consistent colormap
+    # Function ranges from -4 to +4, set explicit levels for better colorbar
+    levels = np.linspace(-4, 4, 21)
+    im = ax1.contourf(X, Y, Z, levels=levels, cmap='viridis', alpha=0.8)
+    ax1.contour(X, Y, Z, levels=np.linspace(-2, 4, 7), colors='white', alpha=0.6, linewidths=0.8)
     
-    # Add random sample points
+    # Add random sample points - show subset for visibility, use all 1000 for computation
     np.random.seed(42)
-    n_samples = 200
+    n_samples = 1000
     x_random = np.random.uniform(0, 1, n_samples)
     y_random = np.random.uniform(0, 1, n_samples)
     z_random = f_2d(x_random, y_random)
     
-    # Color points by function value
-    scatter = ax1.scatter(x_random, y_random, c=z_random, s=30, 
-                         cmap='Reds', alpha=0.8, edgecolors='white', 
-                         linewidth=0.5, zorder=5)
-    
-    # Add colorbar
-    cbar = plt.colorbar(scatter, ax=ax1, shrink=0.8)
-    cbar.set_label(r'$f(x,y)$', fontsize=14, color=COLORS['dark'], weight='medium')
+    # Add colorbar with proper range and clear labels
+    cbar = plt.colorbar(im, ax=ax1, shrink=0.8)
+    cbar.set_label(r'Function Value $f(x,y)$', fontsize=14, color=COLORS['dark'], weight='medium')
     cbar.ax.tick_params(labelsize=12, colors=COLORS['neutral'])
+    cbar.set_ticks(np.arange(-4, 5, 2))
     
     ax1.set_xlabel(r'$x$', fontsize=16, color=COLORS['dark'], weight='medium')
     ax1.set_ylabel(r'$y$', fontsize=16, color=COLORS['dark'], weight='medium')
-    ax1.set_title(r'Monte Carlo Sampling: $f(x,y) = e^{-(x-0.5)^2-(y-0.5)^2)/0.2}$', 
+    ax1.set_title(r'Monte Carlo Sampling: $f(x,y) = 4(1-x^2-y^2)$', 
                   fontsize=16, color=COLORS['dark'], weight='medium', pad=15)
     ax1.set_xlim(0, 1)
     ax1.set_ylim(0, 1)
     ax1.set_aspect('equal')
     
-    # Add annotation explaining the method
-    ax1.text(0.02, 0.98, f'N = {n_samples} random samples\nEstimate = Volume × Average', 
-            transform=ax1.transAxes, fontsize=12, ha='left', va='top',
+    # Display only every 5th point for visual clarity, but computation uses all points
+    # ADD POINTS AFTER axes setup so they appear on top
+    display_every = 5
+    scatter = ax1.scatter(x_random[::display_every], y_random[::display_every], 
+                         c=z_random[::display_every], s=40, 
+                         cmap='viridis', alpha=1.0, edgecolors='black', 
+                         linewidth=0.8, zorder=10, vmin=-4, vmax=4)  # Higher zorder
+    
+    # Add annotation explaining the method with proper LaTeX - AFTER scatter points
+    ax1.text(0.02, 0.98, f'$N = {n_samples}$ random samples\nEstimate = Area $\\times$ Average height\n\nFunction values on $[0,1]^2$:\n$f(0,0) = +4$ (yellow)\n$f(1,1) = -4$ (purple)\n$f(0.5,0.5) = +2$ (green)', 
+            transform=ax1.transAxes, fontsize=11, ha='left', va='top',
             bbox=dict(boxstyle='round,pad=0.4', facecolor='white', 
                      edgecolor=COLORS['primary'], alpha=0.95), 
-            color=COLORS['primary'], weight='medium')
+            color=COLORS['primary'], weight='medium', zorder=15)  # Highest zorder
     
     # Right panel: Convergence with error bars
-    # True integral (computed numerically with high precision)
+    # True integral (computed numerically with high precision) - SAME 2D function as left panel
     from scipy import integrate
     
-    def f_1d(x):
-        return np.sin(x) * np.exp(-x/2)  # 1D function for clearer demonstration
+    # Calculate the true 2D integral analytically for f(x,y) = 4(1-x²-y²)
+    # ∬[0,1]² 4(1-x²-y²) dxdy = 4∬1 - 4∬x² - 4∬y² = 4(1)(1) - 4(1/3)(1) - 4(1)(1/3) = 4/3
+    true_integral = 4/3  # Exact analytical result ≈ 1.333
     
-    true_integral, _ = integrate.quad(f_1d, 0, np.pi)
+    # Verify numerically for validation
+    def integrand(y, x):  # Note: scipy.integrate.dblquad expects y, x order
+        return 4 * (1 - x**2 - y**2)
+    
+    true_integral_numerical, _ = integrate.dblquad(integrand, 0, 1, lambda x: 0, lambda x: 1)
     
     # Monte Carlo simulation
     n_points = np.logspace(1, 5, 50).astype(int)
@@ -1177,9 +1259,11 @@ def figure_2_6_monte_carlo_convergence():
     for n in n_points:
         estimates = []
         for run in range(n_runs):
-            x_mc = np.random.uniform(0, np.pi, n)
-            y_mc = f_1d(x_mc)
-            estimate = np.pi * np.mean(y_mc)  # Volume × average
+            # Sample 2D points (x,y) uniformly over unit square
+            x_mc = np.random.uniform(0, 1, n)
+            y_mc = np.random.uniform(0, 1, n)
+            f_values = f_2d(x_mc, y_mc)  # Use same 2D function as left panel
+            estimate = 1.0 * np.mean(f_values)  # Volume × average (volume = 1 for unit square)
             estimates.append(estimate)
         
         estimates = np.array(estimates)
@@ -1192,32 +1276,33 @@ def figure_2_6_monte_carlo_convergence():
     mc_estimates = np.array(mc_estimates)
     mc_errors = np.array(mc_errors)
     
-    # Plot convergence with error bars
-    ax2.errorbar(n_points, np.abs(mc_estimates - true_integral), 
-                yerr=mc_errors, fmt='o', color=COLORS['primary'], 
-                linewidth=2, markersize=6, capsize=3, alpha=0.8,
-                label='Monte Carlo estimate')
+    # Plot convergence with error bars (plot standard error as main data)
+    ax2.loglog(n_points, mc_errors, 'o', color=COLORS['primary'], 
+              linewidth=2, markersize=6, alpha=0.8,
+              label='Monte Carlo standard error')
     
     # Add theoretical N^(-1/2) reference line
-    # Estimate variance from the data
-    variance_estimate = np.var(f_1d(np.random.uniform(0, np.pi, 10000)))
-    theoretical_error = np.sqrt(variance_estimate * np.pi**2 / n_points)
+    # Estimate variance from the 2D function over unit square
+    x_var = np.random.uniform(0, 1, 10000)
+    y_var = np.random.uniform(0, 1, 10000)
+    variance_estimate = np.var(f_2d(x_var, y_var))
+    theoretical_error = np.sqrt(variance_estimate / n_points)  # Standard error = sqrt(Var[f]/N)
     
     ax2.loglog(n_points, theoretical_error, '--', color=COLORS['secondary'], 
               linewidth=3, alpha=0.8, label=r'$N^{-1/2}$ theoretical')
     
-    # Add machine precision reference
-    ax2.axhline(2.22e-16, color='red', linestyle='-.', alpha=0.6, linewidth=2,
-               label='Machine ε')
+    # Remove machine precision reference - not relevant at this scale
+    # ax2.axhline(2.22e-16, color='red', linestyle='-.', alpha=0.6, linewidth=2,
+    #            label='Machine ε')
     
     # Mark specific points
     convergence_points = [100, 1000, 10000]
     for i, n in enumerate(convergence_points):
         idx = np.argmin(np.abs(n_points - n))
-        error = np.abs(mc_estimates[idx] - true_integral)
-        if i == 1:  # Annotate middle point
-            ax2.annotate(f'N = {n:,}\nError ≈ {error:.4f}', 
-                        xy=(n, error), xytext=(n*3, error*10),
+        std_error = mc_errors[idx]
+        if i == 1:  # Annotate middle point with LaTeX
+            ax2.annotate(f'$N = {n:,}$\nStd Error $\\approx {std_error:.4f}$', 
+                        xy=(n, std_error), xytext=(n*3, std_error*10),
                         arrowprops=dict(arrowstyle='->', color=COLORS['accent'], lw=2),
                         fontsize=12, ha='left', va='center', color=COLORS['accent'], 
                         weight='medium',
@@ -1225,18 +1310,18 @@ def figure_2_6_monte_carlo_convergence():
                                  edgecolor=COLORS['accent'], alpha=0.9))
     
     ax2.set_xlabel('Number of Samples (N)', fontsize=16, color=COLORS['dark'], weight='medium')
-    ax2.set_ylabel('Absolute Error', fontsize=16, color=COLORS['dark'], weight='medium')
-    ax2.set_title(r'MC Convergence: $\int_0^\pi \sin(x)e^{-x/2} dx$', fontsize=16,
+    ax2.set_ylabel('Standard Error', fontsize=16, color=COLORS['dark'], weight='medium')
+    ax2.set_title(r'MC Convergence: $\iint_{[0,1]^2} 4(1-x^2-y^2) \, dx dy = \frac{4}{3}$', fontsize=16,
                   color=COLORS['dark'], weight='medium', pad=15)
     ax2.legend(fontsize=14, frameon=True, fancybox=True,
-              edgecolor=COLORS['neutral'], facecolor='white', loc='upper right')
+              edgecolor=COLORS['neutral'], facecolor='white', loc='lower right')
     ax2.grid(True, alpha=0.3)
     ax2.set_xlim(10, 100000)
-    ax2.set_ylim(1e-6, 1e-1)
+    ax2.set_ylim(1e-3, 1e0)
     
-    # Add key insight
-    ax2.text(0.02, 0.05, 'Key insight:\nError ∝ N^(-1/2)\nindependent of dimension!', 
-            transform=ax2.transAxes, fontsize=12, ha='left', va='bottom',
+    # Add key insight connecting both panels with proper LaTeX - positioned in middle left
+    ax2.text(0.02, 0.5, f'Key insight:\nLeft: Random sampling strategy\nRight: Error $\\propto N^{{-1/2}}$ always\nTrue value $= \\frac{{4}}{{3}} = {4/3:.3f}$', 
+            transform=ax2.transAxes, fontsize=12, ha='left', va='center',
             bbox=dict(boxstyle='round,pad=0.4', facecolor=COLORS['light'], 
                      edgecolor=COLORS['primary'], alpha=0.95), 
             color=COLORS['primary'], weight='bold')

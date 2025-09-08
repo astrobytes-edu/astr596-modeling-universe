@@ -3,9 +3,6 @@ title: "Part 1: The Failure of Naive Integration"
 subtitle: "ODE Methods & Conservation | Numerical Methods Module 3 | ASTR 596"
 ---
 
-**Navigation:**
-[← Module Overview](./00-module3-overview.md) | [Part 2: Runge-Kutta Methods →](./02-module3-part2-runge-kutta.md)
-
 ## Learning Outcomes
 
 By the end of this section, you will be able to:

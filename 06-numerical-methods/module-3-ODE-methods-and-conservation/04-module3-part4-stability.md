@@ -3,9 +3,6 @@ title: "Part 4: Stability Analysis"
 subtitle: "Module 3: ODE Methods & Conservation | ASTR 596"
 ---
 
-**Navigation:**
-[← Part 3: Symplectic Integration](./03-module3-part3-symplectic.md) | [Part 5: Performance Optimization →](./05-module3-part5-performance.md)
-
 ## Learning Outcomes
 
 By the end of this section, you will be able to:

@@ -3,12 +3,6 @@ title: "Part 3: The Virial Theorem as Universal Diagnostic"
 subtitle: "When Stars Become Particles | Statistical Thinking Module 2 | ASTR 596"
 ---
 
-## Navigation
-
-[← Part 2: Stellar Dynamics](./02-stellar-dynamics.md) | [Module 3 Home](./00-overview.md) | [Part 4: Grand Synthesis →](./04-grand-synthesis.md)
-
----
-
 ## Learning Objectives
 
 By the end of Part 3, you will be able to:
@@ -301,7 +295,3 @@ These systematic effects typically introduce **20-50% uncertainties** in mass es
 :::
 
 ---
-
-## Navigation
-
-[← Part 2: Stellar Dynamics](./02-stellar-dynamics.md) | [Module 3 Home](./00-overview.md) | [Part 4: Grand Synthesis →](./04-grand-synthesis.md)

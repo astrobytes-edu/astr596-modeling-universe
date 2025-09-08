@@ -3,12 +3,6 @@ title: "Part 3: Stellar Structure as Applied Statistics"
 subtitle: "From Particles to Stars | Statistical Thinking Module 2 | ASTR 596"
 ---
 
-## Navigation
-
-[← Part 2: From Boltzmann to Fluids](./02-boltzmann-to-fluids.md) | [Module 2 Home](./00-overview.md) | [Part 4: Synthesis →](./04-synthesis.md)
-
----
-
 ## Learning Objectives
 
 By the end of Part 3, you will be able to:
@@ -478,6 +472,3 @@ You haven't just learned how stars work — you've learned why we can understand
 
 ---
 
-## Navigation
-
-[← Part 2: From Boltzmann to Fluids](./02-boltzmann-to-fluids.md) | [Module 2 Home](./00-overview.md) | [Part 4: Synthesis →](./04-synthesis.md)

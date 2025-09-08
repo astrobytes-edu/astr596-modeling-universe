@@ -3,9 +3,6 @@ title: "Part 3: Symplectic Integration - Geometry Over Accuracy"
 subtitle: "Module 3: ODE Methods & Conservation | ASTR 596"
 ---
 
-**Navigation:**
-[← Part 2: Runge-Kutta Methods](./02-module3-part2-runge-kutta.md) | [Part 4: Stability Analysis →](./04-module3-part4-stability.md)
-
 ## Learning Outcomes
 
 By the end of this section, you will be able to:

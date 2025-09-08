@@ -3,11 +3,6 @@ title: "Synthesis & Summary"
 subtitle: "Module 2: Static Problems & Quadrature | ASTR 596"
 ---
 
-**Navigation:**
-[← Part 2: Quadrature](./02-quadrature.md) | [Module 3: ODE Methods →](../03-module3/00-overview.md)
-
----
-
 ## What You've Accomplished
 
 You've mastered the static problems of computational astrophysics: finding where physics balances and measuring cosmic quantities. These aren't just algorithms—they're fundamental tools that appear in every simulation, optimization, and data analysis task you'll encounter.

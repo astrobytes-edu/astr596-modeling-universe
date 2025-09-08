@@ -3,9 +3,6 @@ title: "Part 2: Quadrature - From Photon Counts to Dark Matter Halos"
 subtitle: "Module 2: Static Problems & Quadrature | ASTR 596"
 ---
 
-**Navigation:**
-[← Part 1: Root Finding](./01-module2-part1-root-finding.md) | [Part 3: Synthesis →](./03-module2-synthesis.md)
-
 ## Learning Outcomes
 
 By the end of this section, you will be able to:
@@ -79,7 +76,7 @@ Different choices of $x_i^*$ give different methods:
 :name: fig-integration-methods-geometry
 :width: 100%
 
-**Four geometric approaches to numerical integration.** Each method approximates the area under $f(x) = \sin(x) + 0.5$ using different geometric shapes: **Rectangle rule** (top-left) uses constant function values, often systematically over- or under-estimating; **Midpoint rule** (top-right) also uses rectangles but centers them for better accuracy; **Trapezoidal rule** (bottom-left) connects function values with straight lines, capturing linear trends; **Simpson's rule** (bottom-right) uses parabolic segments through three points, achieving remarkable accuracy for smooth functions. Notice how the approximated areas (colored regions) progressively approach the true integral as the geometric approximation becomes more sophisticated—this visual intuition directly translates to the mathematical error analysis.
+**Four geometric approaches to numerical integration.** Each method approximates the area under $f(x) = e^{-x/2}\cos(2x) + 1$ from 0 to 2 using different geometric shapes: **Rectangle rule** (top-left) uses constant function values at left endpoints, showing systematic error; **Midpoint rule** (top-right) uses rectangles centered at interval midpoints for better accuracy; **Trapezoidal rule** (bottom-left) connects function values with straight lines, capturing linear trends; **Simpson's rule** (bottom-right) uses parabolic segments through three points, achieving fourth-order accuracy for smooth functions. Each panel displays the true integral value, approximation, and relative/absolute errors. Notice how the colored geometric approximations progressively approach the true area as interpolation becomes more sophisticated—this visual intuition directly corresponds to the mathematical convergence orders.
 ```
 
 ---
@@ -413,7 +410,7 @@ Above ~4 dimensions, Monte Carlo becomes superior!
 :name: fig-monte-carlo-convergence
 :width: 100%
 
-**Monte Carlo integration: slow convergence but dimension-independent.** **Left panel**: Unlike grid-based methods, Monte Carlo uses random sampling—here 200 points sample the 2D function $f(x,y) = e^{-(x-0.5)^2-(y-0.5)^2}/0.2}$. Points are colored by function value, and the integral estimate equals the domain volume times the average function value. **Right panel**: The convergence follows the universal $N^{-1/2}$ scaling (dashed line) regardless of dimension—what makes Monte Carlo revolutionary. Error bars show the statistical uncertainty inherent to the method. While convergence is slower than Simpson's rule for low dimensions, this rate never depends on dimension $d$, making Monte Carlo the only practical approach for high-dimensional problems like Bayesian inference, quantum mechanics, and statistical mechanics where $d$ can exceed 100.
+**Monte Carlo integration: slow convergence but dimension-independent.** **Left panel**: Unlike grid-based methods, Monte Carlo uses random sampling—here 200 visible points (from 1000 total) sample the 2D paraboloid function $f(x,y) = 4(1-x^2-y^2)$ over the unit square. Points are colored by function value using the same colormap as the background contours, ranging from $f = +4$ (yellow, maximum at origin) to $f = -4$ (purple, minimum at corners). The integral estimate equals the domain area times the average function value. **Right panel**: Statistical convergence analysis from 50 different sample sizes (10 to 100,000), each tested with 20 independent Monte Carlo runs. The standard error (blue points) follows the universal $N^{-1/2}$ scaling (dashed line) perfectly—this is the fundamental Monte Carlo convergence rate that never depends on dimension $d$, making it revolutionary for high-dimensional integrals in Bayesian inference, quantum mechanics, and statistical mechanics.
 ```
 
 ### Common Failure Modes and Fixes

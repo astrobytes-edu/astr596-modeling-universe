@@ -3,9 +3,6 @@ title: "Part 1: The Fundamental Paradox - Calculus on Computers"
 subtitle: "Foundations of Discrete Computing | Numerical Methods Module 1 | ASTR 596"
 ---
 
-**Navigation:**
-[← Module Overview](./00-overview.md) | [Part 2: Numbers Aren't Real →](./02-numbers-arent-real.md)
-
 ## Learning Outcomes
 
 By the end of this section, you will be able to:
