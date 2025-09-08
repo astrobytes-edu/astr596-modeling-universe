@@ -3,8 +3,7 @@ title: "Part 1: The Foundation - Statistical Mechanics from First Principles"
 subtitle: "How Nature Computes | Statistical Thinking Module 1 | ASTR 596"
 ---
 
-## Navigation
-
+**Navigation**
 [← Overview](00-mod1-part0-overview.md) | [Home](00-mod1-part0-overview.md) | [Part 2: Statistical Tools →](02-mod1-part2-statistical-tools.md)
 
 ---
@@ -598,5 +597,5 @@ Same math, different labels. Temperature controls exploration vs exploitation in
 
 ---
 
-## Navigation
+**Navigation**
 [← Overview](00-mod1-part0-overview.md) | [Home](00-mod1part0-overview.md) | [Part 2: Statistical Tools →](02-mod1-part2-statistical-tools.md)

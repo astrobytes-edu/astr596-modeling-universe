@@ -3,7 +3,7 @@ title: "Part 4: Random Sampling - From Theory to Computation"
 subtitle: "How Nature Computes | Statistical Thinking Module 1 | ASTR 596"
 ---
 
-## Navigation
+**Navigation**
 [← Part 3: Moments](03-part3-moments.md) | [Module 2a Home](00-part0-overview.md) | [Part 5: Summary →](05-part5-synthesis.md)
 
 ---
@@ -660,6 +660,5 @@ This creates self-consistent initial conditions ready for N-body integration!
 
 ---
 
-## Navigation
-
+**Navigation**
 [← Part 3: Moments](03-part3-moments.md) | [Module 2a Home](00-part0-overview.md) | [Part 5: Summary →](05-part5-synthesis.md)

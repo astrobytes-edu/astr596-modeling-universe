@@ -79,8 +79,7 @@ project:
     - '03-scientific-computing-with-python/04-**'
     - '03-scientific-computing-with-python/05-**'
     #- '04-astrophysics/**'
-    - '05-math-and-statistics/**'
-    - '06-numerical-methods/**'
+   # - '06-numerical-methods/**'
     - '07-machine-learning/**'
     - '09-final-project/**'
     - '10-reference/**'
@@ -96,9 +95,6 @@ project:
     - '**/tests/**'
     - '**/drafts/**'
     - '**/old-**'
-    - '**/04-Just-in-Time-Teaching/02-jitt-mathematics/**'
-    - '**/04-Just-in-Time-Teaching/03-jitt-probability-statistics/**'
-    - '**/04-Just-in-Time-Teaching/04-jitt-machine-learning/**'
     - '**/*.py'           # All Python files
     - '**/__pycache__'    # Python cache directories
     - '**/*.ipynb'

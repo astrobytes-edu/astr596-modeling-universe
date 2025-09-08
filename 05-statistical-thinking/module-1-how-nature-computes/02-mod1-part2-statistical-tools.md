@@ -3,8 +3,7 @@ title: "Part 2: Statistical Tools and Concepts"
 subtitle: "How Nature Computes | Statistical Thinking Module 1 | ASTR 596"
 ---
 
-## Navigation
-
+**Navigation**
 [← Part 1: Foundations](01-part1-foundations.md) | [Module 2a Home](00-part0-overview.md) | [Part 3: Moments →](03-part3-moments.md)
 
 ---

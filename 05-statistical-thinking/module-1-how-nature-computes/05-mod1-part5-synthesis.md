@@ -3,8 +3,7 @@ title: "Summary and Synthesis"
 subtitle: "How Nature Computes | Statistical Thinking Module 1 | ASTR 596"
 ---
 
-## Navigation
-
+**Navigation**
 [← Part 4: Random Sampling](04-part4-sampling.md) | [Module 1: Statistical Foundations Home](00-part0-overview.md) | [Module 2: From Particles to Stars](../02-particles-to-stars/)
 
 %[Progressive Problems →](06-progressive-problems.md)
@@ -188,7 +187,7 @@ The journey from "temperature doesn't exist for one particle" to "I can simulate
 
 ---
 
-## Navigation
+**Navigation**
 [← Part 4: Random Sampling](04-part4-sampling.md) | [Module 1: Statistical Foundations Home](00-part0-overview.md) | [Module 2: From Particles to Stars](../02-particles-to-stars/)
 
 %| [Progressive Problems →](06-progressive-problems.md)

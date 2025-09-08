@@ -3,8 +3,7 @@ title: "Part 3: Moments - The Statistical Bridge to Physics"
 subtitle: "How Nature Computes | Statistical Thinking Module 1 | ASTR 596"
 ---
 
-## Navigation
-
+**Navigation**
 [← Part 2: Statistical Tools](02-part2-statistical-tools.md) | [Module 2a Home](00-part0-overview.md) | [Part 4: Random Sampling →](04-part4-sampling.md)
 
 ---
