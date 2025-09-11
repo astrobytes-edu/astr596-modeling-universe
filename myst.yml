@@ -58,6 +58,13 @@ project:
   exclude:
     - 'draft-*.md'
     - '**/draft-*.md'
+    - 'notes-*.md'
+    - '**/notes-*.md'
+    - 'old-*.md'
+    - '**/old-*.md'
+    - 'instructor-*.md'
+    - '**/instructor-*.md'
+    - 'OLD/**'
     - 'TODO.md'
     - 'CONTRIBUTING.md'
     - 'context.md'

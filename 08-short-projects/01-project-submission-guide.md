@@ -25,12 +25,12 @@ Projects are assigned on Mondays (posted to GitHub Classroom) with varying compl
 
 | Project | Assigned | Due Date | Duration | Topic | Key Concepts |
 |---------|----------|----------|----------|-------|--------------|
-| **Project 1** | Aug 29 (Fri) | Sept 8 (Mon) | ~1.5 weeks | Python/OOP/Stellar Physics Basics | OOP & Classes, HR diagrams |
-| **Project 2** | Sept 8 (Mon) | Sept 22 (Mon) | 2 weeks | ODE Integration & N-Body Dynamics | Euler, RK4, Leapfrog, Planetary + Star Cluster Dynamics, IMF Sampling |
-| **Project 3** | Sept 22 (Mon) | Oct 13 (Mon) | 3 weeks | Monte Carlo Radiative Transfer (MCRT) | Photon packets, scattering, absorption |
-| **Project 4** | Oct 13 (Mon) | Nov 3 (Mon) | 3 weeks | Bayesian Inference/MCMC | Priors, Likelihood, Metropolis-Hastings, Gradient descent |
-| **Project 5** | Nov 3 (Mon) | Nov 24 (Mon) | 3 weeks | Gaussian Processes | Kernels, Hyperparameters, Regression |
-| **Final Project** | Nov 17 (Mon) | Dec 18 (Thu) | 4.5 weeks | Neural Networks (From Scratch + JAX) | Backprop, autodiff, JAX Ecosystem |
+| **Project 1** | Aug 29 (Fri) | Sept 10 (Wed) | ~1.5 weeks | Python/OOP/Stellar Physics Basics | OOP & Classes, HR diagrams |
+| **Project 2** | Sept 10 (Wed) | Sept 24 (Wed) | 2 weeks | ODE Integration & N-Body Dynamics | Euler, RK4, Leapfrog, Planetary + Star Cluster Dynamics, IMF Sampling |
+| **Project 3** | Sept 24 (Wed) | Oct 15 (Wed) | 3 weeks | Monte Carlo Radiative Transfer (MCRT) | Photon packets, scattering, absorption |
+| **Project 4** | Oct 15 (Wed) | Nov 5 (Wed) | 3 weeks | Bayesian Inference/MCMC | Priors, Likelihood, Metropolis-Hastings, Gradient descent |
+| **Project 5** | Nov 5 (Wed) | Nov 26 (Mon) | 3 weeks | Gaussian Processes | Kernels, Hyperparameters, Regression |
+| **Final Project** | Nov 17 (Mon) | Dec 18 (Thu) | ~4.5 weeks | Neural Networks (From Scratch + JAX) | Backprop, autodiff, JAX Ecosystem |
 
 ### General Project Timeline
 
