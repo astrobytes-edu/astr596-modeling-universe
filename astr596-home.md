@@ -13,8 +13,8 @@ Our projects follow a deliberate progression from **deterministic simulation** â
 
 ```{mermaid}
 flowchart LR
-    A["Act I:<br/>Weeks 1-7"] --> B["Act II:<br/>Weeks 8-13"]
-    B --> C["Act III:<br/>Weeks 13-16"]
+    A["Act I:<br/>Projects 1-3"] --> B["Act II:<br/>Projects 4-5"]
+    B --> C["Act III:<br/>Final Project"]
     
     A1["Building Universes<br/>Direct Simulation"] --> A
     B1["Observing Universes<br/>Inverse Problems"] --> B
