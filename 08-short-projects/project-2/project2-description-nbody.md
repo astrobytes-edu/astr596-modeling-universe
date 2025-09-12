@@ -8,9 +8,9 @@
 
 **Project 2 Pairings:**
 
-- **Pair 1:** Katarzyna + Paige
+- **Pair 1:** Kasia + Paige
 - **Pair 2:** Hy + Aisling  
-- **Triple:** Caden + Kaitlyn + Nodoka
+- **Triple:** Caden + Katie + Nodoka
 
 **Individual Implementation Requirements:**
 While you work together during Friday sessions:
