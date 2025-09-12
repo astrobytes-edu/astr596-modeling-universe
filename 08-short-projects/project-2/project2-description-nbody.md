@@ -10,7 +10,7 @@
 
 - **Pair 1:** Katarzyna + Paige
 - **Pair 2:** Hy + Aisling  
-- **Triple:** Caleb + Kaitlyn + Nodoka
+- **Triple:** Caden + Kaitlyn + Nodoka
 
 **Individual Implementation Requirements:**
 While you work together during Friday sessions:
