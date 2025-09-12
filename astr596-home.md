@@ -34,7 +34,8 @@ flowchart LR
 
 **Earned Complexity**: We implement fundamental algorithms from first principles before leveraging advanced frameworks. Every line of code serves understanding — no black boxes allowed until you've built the glass box yourself.
 
-**Core Principles**: 
+**Core Principles**:
+
 - *"Think first, code second"* - An hour of planning saves a week of debugging
 - *"Understanding > Performance"* - Slower code you understand beats fast code you don't
 - *"Physics first, Python later"* - Debug with physics intuition, not print statements
