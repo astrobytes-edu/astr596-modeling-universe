@@ -6,10 +6,10 @@
 
 | Project | Pair 1 | Pair 2 | Triple |
 |---------|--------|--------|--------|
-| **Project 2** | Katarzyna + Paige | Hy + Aisling | Caden + Kaitlyn + Nodoka |
-| **Project 3** | Caden + Katarzyna | Hy + Nodoka | Paige + Aisling + Kaitlyn |
-| **Project 4** | Kaitlyn + Aisling | Katarzyna + Nodoka | Caden + Paige + Hy |
-| **Project 5** | Hy + Kaitlyn | Caden + Paige | Aisling + Nodoka + Katarzyna |
+| **Project 2** | Kaisia + Paige | Hy + Aisling | Caden + Katie + Nodoka |
+| **Project 3** | Caden + Kaisia | Hy + Nodoka | Paige + Aisling + Kaitlyn |
+| **Project 4** | Katie + Aisling | Kaisia + Nodoka | Caden + Paige + Hy |
+| **Project 5** | Hy + Katie | Caden + Paige | Aisling + Nodoka + Kaisia |
 
 **Note:** No official pair programming assignments for the Final Project - you're welcome to collaborate informally with classmates, but there are no assigned partners. Everyone still submits their own independent work.
 
