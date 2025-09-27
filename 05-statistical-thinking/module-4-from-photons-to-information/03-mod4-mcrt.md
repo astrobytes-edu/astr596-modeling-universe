@@ -4,9 +4,8 @@ subtitle: "From Mathematics to Computation | Statistical Thinking Module 4 | AST
 ---
 
 :::{epigraph}
-"God does not play dice with the universe... but something strange is going on with the dice."
-
--- Stephen Hawking
+"Anyone who considers arithmetical methods of producing random digits is, of course, in a state of sin."
+-- John von Neumann
 :::
 
 ## Learning Objectives
@@ -565,6 +564,7 @@ When you have multiple sources with different luminosities, how do you ensure pr
 **Question**: Why not give each star a fixed number of packets with different weights?
 
 **Answer**: Equal-weight packets have several advantages:
+
 1. **Simpler statistics**: Each packet contributes equally to uncertainties
 2. **Better sampling**: Bright sources automatically get more packets
 3. **Easier parallelization**: Any processor can handle any packet
@@ -585,6 +585,7 @@ For optically thick media where most photons scatter/absorb quickly, force the f
 **Standard approach**: Many packets absorbed near source, few reach interesting regions
 
 **Forced first scattering**:
+
 1. First interaction always occurs (no escape on first segment)
 2. Sample position from: $p(\tau) = e^{-\tau}/(1 - e^{-\tau_{\text{max}}})$
 3. Weight packet by probability it would have escaped: $w = e^{-\tau_{\text{max}}}$
@@ -622,6 +623,7 @@ How many packets are enough? Monitor convergence!
 :class: note
 
 **1. Running mean and standard error**:
+
 ```python
 def monitor_convergence(results, n_checkpoints=10):
     checkpoint_size = len(results) // n_checkpoints
@@ -638,6 +640,7 @@ def monitor_convergence(results, n_checkpoints=10):
 ```
 
 **2. Variance scaling test**:
+
 ```python
 # Run with N = 10^3, 10^4, 10^5, 10^6
 # Plot log(error) vs log(N)
@@ -645,11 +648,13 @@ def monitor_convergence(results, n_checkpoints=10):
 ```
 
 **3. Spatial convergence**:
+
 - Check that all regions have sufficient packets
 - Energy deposition should be smooth, not noisy
 - Increase N if some cells have < 100 packets
 
 **4. Convergence Criteria for Project 3**:
+
 - **Stability**: Running average should plateau (variations < 1% over last 20% of packets)
 - **Error Scaling**: Standard error should decrease as 1/√N  
 - **Statistical Significance**: Results within 3σ of analytical value
@@ -663,23 +668,27 @@ For problems with wavelength-dependent opacity (like Project 3):
 :::{admonition} 🔋 Algorithm: Multi-Band Monte Carlo
 :class: note
 
-**Approach 1: Separate runs per band**
-```
+**Approach 1: Separate runs per band.**
+
+```python
 for band in [B, V, K]:
     packets = run_monte_carlo(N, opacity[band])
     escape_fraction[band] = count_escaped / N
 ```
+
 - Pros: Simple, independent statistics per band
 - Cons: 3× computation time
 
-**Approach 2: Single run with band sampling**
-```
+**Approach 2: Single run with band sampling.**
+
+```python
 total_luminosity = sum over bands and stars
 for packet in range(N):
     band = sample_band(weighted by luminosity)
     opacity = opacity_table[band]
     propagate_packet(opacity)
 ```
+
 - Pros: One run, automatic importance sampling
 - Cons: Uneven statistics across bands
 
@@ -691,32 +700,39 @@ for packet in range(N):
 :::{admonition} ⚠️ Implementation Pitfalls to Avoid
 :class: warning
 
-**1. Random Number Generator Quality**
+**1. Random Number Generator Quality:**
+
 - ✗ Using poor RNG (e.g., simple linear congruential)
 - ✅ Use Mersenne Twister or PCG
 - Test: Consecutive pairs shouldn't correlate
 
-**2. Boundary Condition Bugs**
+**2. Boundary Condition Bugs:**
+
 - ✗ Packets stuck on boundaries due to floating-point
 - ✅ Add small epsilon when crossing boundaries
 - Test: No packets should make > 1000 cell crossings
 
-**3. Memory Management**
+**3. Memory Management:**
+
 - ✗ Storing all packet histories (memory explosion)
 - ✅ Process packets one at a time or in batches
 - Only store final results and statistics
 
-**4. Numerical Precision**
+**4. Numerical Precision:**
+
 - ✗ Using float32 for optical depth accumulation
 - ✅ Use float64 for τ (accumulation errors matter)
 - Test: Results shouldn't depend on path subdivision
 
-**5. Energy Conservation**
+**5. Energy Conservation:**
+
 - ✗ Losing energy at boundaries or in scattering
 - ✅ Track total energy budget:
+
 ```python
 assert abs(E_in - E_out - E_absorbed) / E_in < 1e-10
 ```
+
 :::
 
 :::{admonition} 💻 Computational Cost Analysis
@@ -727,22 +743,25 @@ assert abs(E_in - E_out - E_absorbed) / E_in < 1e-10
 | Scenario | Packets/sec* | Time for 10⁶ packets | Memory** | Key Bottleneck |
 |----------|--------------|---------------------|----------|----------------|
 | **Uniform medium** | ~10⁵-10⁶ | 1-10 seconds | ~10 MB | RNG & math ops |
-| **3D grid (100³)** | ~10⁴-10⁵ | 20s-2 min | ~100 MB | Ray-cell intersections |
+| **3D grid (128³)** | ~10⁴-10⁵ | 20s-2 min | ~100 MB | Ray-cell intersections |
 | **+ Scattering (ω=0.6)** | ~10³-10⁴ | 2-20 min | ~100 MB | Multiple interactions |
 | **+ Complex opacity** | ~5×10²-5×10³ | 3-30 min | ~500 MB | Table lookups |
-| **High resolution (500³)** | ~10²-10³ | 20 min-3 hrs | ~4 GB | Memory access |
+| **High resolution (528³)** | ~10²-10³ | 20 min-3 hrs | ~4 GB | Memory access |
 
-*Single-core performance on modern CPU (2020+). Actual speeds vary with:
+*Single-core performance on modern CPU (2020+). Actual speeds vary with:*
+
 - Implementation quality (vectorization, caching)
 - Specific geometry and optical depths
 - Output requirements (binning resolution)
 
 **Memory breakdown per packet:**
+
 - Position (3×8 bytes) + Direction (3×8 bytes) = 48 bytes
 - Luminosity + wavelength + auxiliary = ~32 bytes
 - Total: ~80-100 bytes/packet active memory
 
 **Scaling relationships:**
+
 - Speed ∝ 1/(grid resolution) for ray marching
 - Speed ∝ 1/(1 + ⟨n_scatters⟩) for scattering
 - Memory ∝ (grid resolution)³ for field storage
@@ -761,12 +780,14 @@ Let's estimate packets needed for NGC 3603 with $A_V = 5$ mag:
 **For 1% relative error in escape fraction**:
 $$N \approx \frac{1 - f_{\text{esc}}}{\epsilon^2 f_{\text{esc}}} = \frac{0.99}{(0.01)^2 \times 0.01} = 10^6 \text{ packets}$$
 
-**For 3D grid with 100³ cells**:
+**For 3D grid with 128³ cells**:
+
 - Average packets per cell: 1
 - Need ~100 per cell for smooth maps
 - Total needed: ~10⁸ packets
 
 **Computational time** (order-of-magnitude estimates only):
+
 - Simple Python: ~10³ packets/second → 10³ seconds
 - Optimized Python (NumPy): ~10⁵ packets/second → 10 seconds  
 - C/Fortran: ~10⁶ packets/second → 1 second
@@ -783,24 +804,38 @@ Optimization matters!
 The Monte Carlo method leverages key concepts from Module 1:
 
 **Central Limit Theorem Application**:
-Your escape fraction estimate f̂ from N packets has:
-- Mean: E[f̂] = f_true (unbiased estimator)
-- Standard error: σ_f̂ = √(f(1-f)/N)
-- Distribution: Normal for large N (typically N > 30)
+
+Your escape fraction estimate $\hat{f}$ from $N$ packets has:
+
+- Mean: E[\hat{f}] = f_true (unbiased estimator)
+- Standard error: $\sigma_\hat{f} = \sqrt{(f(1-f)/N)}$
+- Distribution: Normal for large $N$
 
 **Confidence Intervals**:
-For 95% confidence: f̂ ± 1.96σ_f̂
+For 95% confidence: $\hat{f} ± 1.96\sigma_\hat{f}$
 
 **Variance Reduction as Importance Sampling**:
 Forcing first interactions samples from:
-p(τ) = e^(-τ)/(1 - e^(-τ_max))
+$$p(τ) = \frac{e^{-τ}}{(1 - e^{-τ_\text{max}})}$$
 instead of the natural distribution, reducing variance in important regions.
 
 **Poisson Process Connection**:
 Photon interactions are a Poisson process with rate λ = κρc:
-- Exponential inter-arrival times: τ = -ln(ξ)
+
+- Exponential inter-arrival times: $τ = -\ln(ξ)$
 - Memoryless property: past doesn't affect future
 - Same mathematics as radioactive decay!
+:::
+
+:::{warning}
+**Verification Is Essential**: Every implementation must be validated against known solutions:
+
+1. **Beer's Law Test**: Pure absorption must give $T = e^{-τ}$
+2. **Conservation Test**: Energy in = Energy out + Energy absorbed (to machine precision)
+3. **Isotropy Test**: Isotropic source must produce isotropic escape
+4. **Convergence Test**: Error must scale as N^(-1/2)
+
+Never trust unvalidated Monte Carlo code — subtle bugs can produce plausible but wrong results!
 :::
 
 ## 3.4 Extension to Scattering
