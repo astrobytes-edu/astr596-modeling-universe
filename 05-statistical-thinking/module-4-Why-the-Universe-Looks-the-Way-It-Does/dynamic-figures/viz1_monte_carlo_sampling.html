@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monte Carlo Photon Packet Sampling Demonstration</title>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <script>
+        // Fallback if CDN fails
+        if (typeof Plotly === 'undefined') {
+            document.write('<script src="https://unpkg.com/plotly.js-dist@2.27.0/plotly.js"><\/script>');
+        }
+    </script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .controls { background: #f5f5f5; padding: 20px; margin: 20px 0; border-radius: 8px; }
+        .control-group { margin: 10px 0; }
+        label { display: inline-block; width: 200px; font-weight: bold; }
+        input[type="range"] { width: 300px; }
+        button { padding: 10px 20px; margin: 5px; background: #007cba; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #005a87; }
+        .plot-container { height: 500px; margin: 20px 0; }
+        .explanation { background: #e8f4fd; padding: 15px; margin: 10px 0; border-left: 4px solid #007cba; }
+        .math { font-family: 'Times New Roman', serif; font-style: italic; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Monte Carlo Photon Packet Sampling</h1>
+        
+        <div class="explanation">
+            <h3>Interactive Demonstration: τ = -ln(ξ) Sampling</h3>
+            <p>This visualization demonstrates how Monte Carlo radiative transfer samples interaction distances from the exponential distribution. Watch how random numbers ξ are transformed into optical depths τ that follow the correct statistical distribution.</p>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label>Number of Samples:</label>
+                <input type="range" id="numSamples" min="100" max="5000" value="1000" step="100">
+                <span id="numSamplesValue">1000</span>
+            </div>
+            
+            <div class="control-group">
+                <label>Maximum Optical Depth:</label>
+                <input type="range" id="maxTau" min="2" max="10" value="5" step="0.5">
+                <span id="maxTauValue">5.0</span>
+            </div>
+            
+            <div class="control-group">
+                <button onclick="generateSamples()">Generate New Samples</button>
+                <button onclick="toggleAnimation()">Start/Stop Animation</button>
+                <button onclick="resetDemo()">Reset</button>
+            </div>
+        </div>
+
+        <div id="histogramPlot" class="plot-container"></div>
+        <div id="transformPlot" class="plot-container"></div>
+        <div id="cumulativePlot" class="plot-container"></div>
+
+        <div class="explanation">
+            <h3>Key Insights for Students:</h3>
+            <ul>
+                <li><strong>Inverse Transform Method:</strong> Uniform random numbers ξ ∈ [0,1] become exponentially distributed τ = -ln(ξ)</li>
+                <li><strong>Physical Meaning:</strong> Most interactions occur at small τ (near surfaces), few at large τ (deep in medium)</li>
+                <li><strong>Validation:</strong> Histogram should match theoretical curve p(τ) = e<sup>-τ</sup></li>
+                <li><strong>Implementation:</strong> This is the core of every Monte Carlo radiative transfer code</li>
+            </ul>
+        </div>
+
+        <div class="explanation">
+            <h3>Pedagogical Value:</h3>
+            <p><strong>Why This Visualization Matters:</strong> Students often struggle to connect abstract mathematical expressions like τ = -ln(ξ) to actual code implementation. This interactive demonstration shows the statistical mechanics in action, building intuition for how Monte Carlo methods work. The ability to adjust parameters helps students understand how sample size affects convergence to the theoretical distribution.</p>
+        </div>
+    </div>
+
+    <script>
+        let animationId;
+        let isAnimating = false;
+        let currentSample = 0;
+
+        function updateSliderValues() {
+            document.getElementById('numSamplesValue').textContent = document.getElementById('numSamples').value;
+            document.getElementById('maxTauValue').textContent = document.getElementById('maxTau').value;
+        }
+
+        function generateSamples() {
+            const numSamples = parseInt(document.getElementById('numSamples').value);
+            const maxTau = parseFloat(document.getElementById('maxTau').value);
+            
+            // Generate uniform random numbers
+            const xi = Array.from({length: numSamples}, () => Math.random());
+            
+            // Transform to optical depths
+            const tau = xi.map(x => -Math.log(x));
+            
+            // Filter by maximum tau
+            const filteredTau = tau.filter(t => t <= maxTau);
+            
+            plotHistogram(filteredTau, maxTau);
+            plotTransformation(xi.slice(0, 100), tau.slice(0, 100), maxTau);
+            plotCumulative(filteredTau, maxTau);
+        }
+
+        function plotHistogram(tau, maxTau) {
+            // Create histogram
+            const binSize = 0.2;
+            const bins = Math.ceil(maxTau / binSize);
+            
+            // Theoretical curve
+            const tauTheory = Array.from({length: 100}, (_, i) => (i / 99) * maxTau);
+            const pdfTheory = tauTheory.map(t => Math.exp(-t));
+            
+            const trace1 = {
+                x: tau,
+                type: 'histogram',
+                nbinsx: bins,
+                name: 'Monte Carlo Samples',
+                opacity: 0.7,
+                histnorm: 'probability density'
+            };
+            
+            const trace2 = {
+                x: tauTheory,
+                y: pdfTheory,
+                mode: 'lines',
+                name: 'Theory: p(τ) = e⁻τ',
+                line: {color: 'red', width: 3}
+            };
+            
+            const layout = {
+                title: 'Distribution of Sampled Optical Depths',
+                xaxis: {title: 'Optical Depth τ'},
+                yaxis: {title: 'Probability Density'},
+                showlegend: true
+            };
+            
+            Plotly.newPlot('histogramPlot', [trace1, trace2], layout);
+        }
+
+        function plotTransformation(xi, tau, maxTau) {
+            // Show transformation xi -> tau
+            const filteredIndices = tau.map((t, i) => t <= maxTau ? i : -1).filter(i => i !== -1);
+            const xiFiltered = filteredIndices.map(i => xi[i]);
+            const tauFiltered = filteredIndices.map(i => tau[i]);
+            
+            const trace = {
+                x: xiFiltered,
+                y: tauFiltered,
+                mode: 'markers',
+                name: 'Sample Points',
+                marker: {size: 8, opacity: 0.6}
+            };
+            
+            // Theoretical transformation curve
+            const xiTheory = Array.from({length: 100}, (_, i) => (i + 1) / 101); // Avoid log(0)
+            const tauTheory = xiTheory.map(x => -Math.log(x));
+            
+            const traceCurve = {
+                x: xiTheory,
+                y: tauTheory,
+                mode: 'lines',
+                name: 'τ = -ln(ξ)',
+                line: {color: 'red', width: 3}
+            };
+            
+            const layout = {
+                title: 'Inverse Transform Method: ξ → τ',
+                xaxis: {title: 'Random Number ξ', range: [0, 1]},
+                yaxis: {title: 'Optical Depth τ', range: [0, maxTau]},
+                showlegend: true
+            };
+            
+            Plotly.newPlot('transformPlot', [trace, traceCurve], layout);
+        }
+
+        function plotCumulative(tau, maxTau) {
+            // Sort tau values
+            const sortedTau = [...tau].sort((a, b) => a - b);
+            const n = sortedTau.length;
+            
+            // Empirical CDF
+            const empiricalCDF = sortedTau.map((_, i) => (i + 1) / n);
+            
+            // Theoretical CDF: F(τ) = 1 - e^(-τ)
+            const tauTheory = Array.from({length: 100}, (_, i) => (i / 99) * maxTau);
+            const cdfTheory = tauTheory.map(t => 1 - Math.exp(-t));
+            
+            const trace1 = {
+                x: sortedTau,
+                y: empiricalCDF,
+                mode: 'lines',
+                name: 'Empirical CDF',
+                line: {width: 2}
+            };
+            
+            const trace2 = {
+                x: tauTheory,
+                y: cdfTheory,
+                mode: 'lines',
+                name: 'Theory: F(τ) = 1 - e⁻τ',
+                line: {color: 'red', width: 3, dash: 'dash'}
+            };
+            
+            const layout = {
+                title: 'Cumulative Distribution Function Comparison',
+                xaxis: {title: 'Optical Depth τ'},
+                yaxis: {title: 'Cumulative Probability'},
+                showlegend: true
+            };
+            
+            Plotly.newPlot('cumulativePlot', [trace1, trace2], layout);
+        }
+
+        function toggleAnimation() {
+            if (isAnimating) {
+                clearInterval(animationId);
+                isAnimating = false;
+            } else {
+                isAnimating = true;
+                currentSample = 0;
+                animationId = setInterval(animateStep, 100);
+            }
+        }
+
+        function animateStep() {
+            if (currentSample > 50) {
+                clearInterval(animationId);
+                isAnimating = false;
+                return;
+            }
+            
+            // Generate one sample at a time for animation
+            const xi = Math.random();
+            const tau = -Math.log(xi);
+            
+            // Update transformation plot with new point
+            // This would require more complex state management for a full animation
+            currentSample++;
+        }
+
+        function resetDemo() {
+            document.getElementById('numSamples').value = 1000;
+            document.getElementById('maxTau').value = 5;
+            updateSliderValues();
+            generateSamples();
+        }
+
+        // Event listeners
+        document.getElementById('numSamples').addEventListener('input', updateSliderValues);
+        document.getElementById('maxTau').addEventListener('input', updateSliderValues);
+
+        // Initialize
+        updateSliderValues();
+        generateSamples();
+    </script>
+</body>
+</html>

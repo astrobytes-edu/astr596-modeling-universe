@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discrete vs Continuous Absorption Demonstration</title>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <script>
+        // Fallback if CDN fails
+        if (typeof Plotly === 'undefined') {
+            document.write('<script src="https://unpkg.com/plotly.js-dist@2.27.0/plotly.js"><\/script>');
+        }
+    </script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .controls { background: #f5f5f5; padding: 20px; margin: 20px 0; border-radius: 8px; }
+        .control-group { margin: 10px 0; }
+        label { display: inline-block; width: 200px; font-weight: bold; }
+        input[type="range"] { width: 300px; }
+        button { padding: 10px 20px; margin: 5px; background: #007cba; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #005a87; }
+        .plot-container { height: 400px; margin: 20px 0; }
+        .explanation { background: #e8f4fd; padding: 15px; margin: 10px 0; border-left: 4px solid #007cba; }
+        .warning { background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 10px 0; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Discrete vs. Continuous Absorption in Monte Carlo</h1>
+        
+        <div class="explanation">
+            <h3>Critical Concept for Project 3</h3>
+            <p>This demonstration shows the fundamental difference between discrete absorption (Monte Carlo) and continuous absorption (ray tracing). Understanding this distinction is essential for implementing Project 3 correctly.</p>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label>Total Optical Depth:</label>
+                <input type="range" id="totalTau" min="1" max="10" value="3" step="0.5">
+                <span id="totalTauValue">3.0</span>
+            </div>
+            
+            <div class="control-group">
+                <label>Number of Packets:</label>
+                <input type="range" id="numPackets" min="10" max="100" value="50" step="10">
+                <span id="numPacketsValue">50</span>
+            </div>
+            
+            <div class="control-group">
+                <button onclick="runSimulation()">Run New Simulation</button>
+                <button onclick="showEnsembleAverage()">Show Ensemble Average</button>
+                <button onclick="showAnalytical()">Show Analytical Solution</button>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div>
+                <h3>Monte Carlo (Discrete Absorption)</h3>
+                <div id="discretePlot" class="plot-container"></div>
+                <div class="explanation">
+                    <p><strong>How it works:</strong> Each packet travels with constant luminosity until τ = τ_target, then ALL energy is deposited at that point. This samples one possible photon history.</p>
+                </div>
+            </div>
+            
+            <div>
+                <h3>Ray Tracing (Continuous Absorption)</h3>
+                <div id="continuousPlot" class="plot-container"></div>
+                <div class="explanation">
+                    <p><strong>How it works:</strong> Packet luminosity decreases continuously as L(τ) = L₀e^(-τ), with energy deposited gradually along the entire path. This computes the ensemble average directly.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="comparisonPlot" class="plot-container"></div>
+
+        <div class="warning">
+            <h3>⚠️ Common Student Error</h3>
+            <p><strong>Never mix both methods!</strong> Using continuous attenuation (L *= exp(-dτ)) AND discrete absorption violates the underlying physics. Choose one approach consistently.</p>
+        </div>
+
+        <div class="explanation">
+            <h3>Key Learning Points:</h3>
+            <ul>
+                <li><strong>Statistical Equivalence:</strong> With enough packets, Monte Carlo recovers the ray tracing result</li>
+                <li><strong>Variance:</strong> Individual Monte Carlo runs vary, but ensemble average converges</li>
+                <li><strong>Physical Interpretation:</strong> Discrete = individual photon histories; Continuous = ensemble average</li>
+                <li><strong>Implementation:</strong> Project 3 uses discrete absorption exclusively</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let currentPacketData = [];
+        let ensembleRuns = [];
+
+        function updateSliderValues() {
+            document.getElementById('totalTauValue').textContent = document.getElementById('totalTau').value;
+            document.getElementById('numPacketsValue').textContent = document.getElementById('numPackets').value;
+        }
+
+        function runSimulation() {
+            const totalTau = parseFloat(document.getElementById('totalTau').value);
+            const numPackets = parseInt(document.getElementById('numPackets').value);
+            
+            // Reset data
+            currentPacketData = [];
+            
+            // Monte Carlo simulation
+            for (let i = 0; i < numPackets; i++) {
+                const tauTarget = -Math.log(Math.random());
+                if (tauTarget <= totalTau) {
+                    currentPacketData.push({
+                        id: i,
+                        tauTarget: tauTarget,
+                        absorbed: true,
+                        luminosity: 1.0 // Each packet carries unit luminosity
+                    });
+                } else {
+                    currentPacketData.push({
+                        id: i,
+                        tauTarget: totalTau,
+                        absorbed: false,
+                        luminosity: 1.0
+                    });
+                }
+            }
+            
+            plotDiscrete(totalTau);
+            plotContinuous(totalTau);
+            plotComparison(totalTau);
+        }
+
+        function plotDiscrete(totalTau) {
+            // Show individual packet paths and absorption points
+            const absorbed = currentPacketData.filter(p => p.absorbed);
+            const escaped = currentPacketData.filter(p => !p.absorbed);
+            
+            // Absorption points
+            const absorbTrace = {
+                x: absorbed.map(p => p.tauTarget),
+                y: absorbed.map(p => p.luminosity),
+                mode: 'markers',
+                marker: {
+                    size: 8,
+                    color: 'red',
+                    symbol: 'x'
+                },
+                name: 'Absorption Events',
+                type: 'scatter'
+            };
+            
+            // Show a few example packet paths
+            const pathTraces = [];
+            for (let i = 0; i < Math.min(5, currentPacketData.length); i++) {
+                const packet = currentPacketData[i];
+                const endTau = packet.absorbed ? packet.tauTarget : totalTau;
+                
+                pathTraces.push({
+                    x: [0, endTau],
+                    y: [1, 1],
+                    mode: 'lines',
+                    line: {
+                        color: packet.absorbed ? 'red' : 'green',
+                        width: 2,
+                        dash: packet.absorbed ? 'solid' : 'dash'
+                    },
+                    name: packet.absorbed ? 'Absorbed Path' : 'Escaped Path',
+                    showlegend: i === 0
+                });
+                
+                if (packet.absorbed) {
+                    pathTraces.push({
+                        x: [endTau, endTau],
+                        y: [1, 0],
+                        mode: 'lines',
+                        line: {color: 'red', width: 3},
+                        name: 'Energy Deposition',
+                        showlegend: i === 0
+                    });
+                }
+            }
+            
+            const layout = {
+                title: 'Monte Carlo: Discrete Absorption',
+                xaxis: {title: 'Optical Depth τ', range: [0, totalTau]},
+                yaxis: {title: 'Packet Luminosity', range: [0, 1.2]},
+                showlegend: true
+            };
+            
+            Plotly.newPlot('discretePlot', [absorbTrace, ...pathTraces], layout);
+        }
+
+        function plotContinuous(totalTau) {
+            // Show continuous attenuation
+            const tau = Array.from({length: 100}, (_, i) => (i / 99) * totalTau);
+            const luminosity = tau.map(t => Math.exp(-t));
+            const absorption = tau.map(t => Math.exp(-t)); // Rate of absorption
+            
+            const attenuationTrace = {
+                x: tau,
+                y: luminosity,
+                mode: 'lines',
+                line: {color: 'blue', width: 3},
+                name: 'L(τ) = e^(-τ)',
+                type: 'scatter'
+            };
+            
+            // Show energy deposition rate
+            const depositionTrace = {
+                x: tau,
+                y: absorption.map(a => -a), // Negative to show deposition
+                mode: 'lines',
+                line: {color: 'red', width: 2},
+                name: 'Energy Deposition Rate',
+                fill: 'tonexty',
+                fillcolor: 'rgba(255, 0, 0, 0.2)'
+            };
+            
+            const layout = {
+                title: 'Ray Tracing: Continuous Absorption',
+                xaxis: {title: 'Optical Depth τ', range: [0, totalTau]},
+                yaxis: {title: 'Luminosity / Deposition Rate', range: [-1.2, 1.2]},
+                showlegend: true
+            };
+            
+            Plotly.newPlot('continuousPlot', [attenuationTrace, depositionTrace], layout);
+        }
+
+        function plotComparison(totalTau) {
+            // Compare transmission fractions
+            const escaped = currentPacketData.filter(p => !p.absorbed).length;
+            const mcTransmission = escaped / currentPacketData.length;
+            const analyticalTransmission = Math.exp(-totalTau);
+            
+            const comparisonTrace = {
+                x: ['Monte Carlo', 'Analytical'],
+                y: [mcTransmission, analyticalTransmission],
+                type: 'bar',
+                marker: {color: ['blue', 'red']},
+                name: 'Transmission Fraction'
+            };
+            
+            const layout = {
+                title: `Transmission Comparison (τ = ${totalTau})`,
+                yaxis: {title: 'Fraction Transmitted', range: [0, 1]},
+                showlegend: false
+            };
+            
+            Plotly.newPlot('comparisonPlot', [comparisonTrace], layout);
+        }
+
+        function showEnsembleAverage() {
+            // Run many simulations and show convergence
+            const totalTau = parseFloat(document.getElementById('totalTau').value);
+            const numPackets = parseInt(document.getElementById('numPackets').value);
+            
+            const numRuns = 50;
+            const transmissions = [];
+            
+            for (let run = 0; run < numRuns; run++) {
+                let escaped = 0;
+                for (let i = 0; i < numPackets; i++) {
+                    const tauTarget = -Math.log(Math.random());
+                    if (tauTarget > totalTau) escaped++;
+                }
+                transmissions.push(escaped / numPackets);
+            }
+            
+            const meanTransmission = transmissions.reduce((a, b) => a + b) / transmissions.length;
+            const analytical = Math.exp(-totalTau);
+            
+            const ensembleTrace = {
+                y: transmissions,
+                type: 'box',
+                name: 'MC Ensemble',
+                boxpoints: 'all',
+                jitter: 0.3
+            };
+            
+            const analyticalTrace = {
+                x: [0],
+                y: [analytical],
+                mode: 'markers',
+                marker: {size: 15, color: 'red', symbol: 'diamond'},
+                name: 'Analytical'
+            };
+            
+            const layout = {
+                title: `Ensemble Average (${numRuns} runs, ${numPackets} packets each)`,
+                yaxis: {title: 'Transmission Fraction'},
+                showlegend: true
+            };
+            
+            Plotly.newPlot('comparisonPlot', [ensembleTrace, analyticalTrace], layout);
+        }
+
+        function showAnalytical() {
+            // Show how analytical solution emerges from MC statistics
+            const totalTau = parseFloat(document.getElementById('totalTau').value);
+            const tauRange = Array.from({length: 100}, (_, i) => (i / 99) * 5);
+            const analytical = tauRange.map(t => Math.exp(-t));
+            
+            // Simulate MC for different tau values
+            const mcResults = tauRange.map(tau => {
+                let escaped = 0;
+                const numTest = 1000;
+                for (let i = 0; i < numTest; i++) {
+                    const tauTarget = -Math.log(Math.random());
+                    if (tauTarget > tau) escaped++;
+                }
+                return escaped / numTest;
+            });
+            
+            const analyticalTrace = {
+                x: tauRange,
+                y: analytical,
+                mode: 'lines',
+                line: {color: 'red', width: 3},
+                name: 'Analytical: e^(-τ)'
+            };
+            
+            const mcTrace = {
+                x: tauRange,
+                y: mcResults,
+                mode: 'markers',
+                marker: {size: 6, color: 'blue'},
+                name: 'Monte Carlo'
+            };
+            
+            const layout = {
+                title: 'Monte Carlo Converges to Analytical Solution',
+                xaxis: {title: 'Optical Depth τ'},
+                yaxis: {title: 'Transmission Fraction'},
+                showlegend: true
+            };
+            
+            Plotly.newPlot('comparisonPlot', [analyticalTrace, mcTrace], layout);
+        }
+
+        // Event listeners
+        document.getElementById('totalTau').addEventListener('input', updateSliderValues);
+        document.getElementById('numPackets').addEventListener('input', updateSliderValues);
+
+        // Initialize
+        updateSliderValues();
+        runSimulation();
+    </script>
+</body>
+</html>
