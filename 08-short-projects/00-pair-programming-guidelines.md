@@ -1,7 +1,5 @@
 # ASTR 596: Pair Programming Schedule & Guidelines
 
-*Document created with assistance from claude.ai*
-
 ## Pair Programming Assignments for Projects 1-5
 
 | Project | Pair 1 | Pair 2 | Triple |

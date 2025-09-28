@@ -8,7 +8,7 @@
 *Pair Programming Assignments:*
 
 - **Pair 1:** Caden + Kasia
-- **Pair 2:** Hy + Nodoka  
+- **Pair 2:** Hy + Nodoka
 - **Triple:** Paige + Aisling + Katie
 
 Core algorithms must be independently implemented. You may share debugging strategies, test cases, and plotting code.
@@ -594,8 +594,8 @@ Implement ONE extension and compare results with the baseline. The list below pr
 
 **Computational Extensions:**
 
-- Performance optimization using `numba` Just-in-Time (JIT) compilation (demonstrate speedup). Click [here](https://numba.pydata.org/) for documentation.
-- Parallel processing with multiprocessing (run bands in parallel)
+- Performance optimization using `numba` Just-in-Time (JIT) compilation (demonstrate speedup). Click [here](https://numba.readthedocs.io/en/stable/) for documentation and [here](https://numba.readthedocs.io/en/stable/user/5minguide.html) for a 5-minute quickstart guide.
+- Parallel processing with `multiprocessing` (run bands in parallel). Click [here](https://docs.python.org/3/library/multiprocessing.html) for documentation and [here](https://www.geeksforgeeks.org/python/parallel-processing-in-python/) for a quick tutorial.
 - Variance reduction: Implement forced first interaction or importance sampling
 
 **Observational Extensions:**
