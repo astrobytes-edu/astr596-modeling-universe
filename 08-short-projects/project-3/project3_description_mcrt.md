@@ -487,8 +487,8 @@ Use log color scale to show dynamic range, choose your limits wisely.
 
 2D histogram showing the angular distribution of escaping light:
 
-- Use spherical coordinates (θ, φ) for packet escape directions
-- Create 2D histogram with θ (0 to π) and φ (0 to 2π) bins
+- Use spherical coordinates $(θ, φ)$ for packet escape directions
+- Create 2D histogram with $θ~(0 \to π)$ and $φ~(0 \to 2π)$ bins
 - Color shows escaped luminosity per solid angle
 - Should Reveal anisotropies due to stellar positions within the box
 
@@ -553,7 +553,7 @@ Your memo should address both the physics and computational aspects. These topic
 3. Lost packets at boundaries (energy not conserved)
 4. Variable packet luminosities (breaks statistics)
 5. Not integrating opacities properly (missing temperature weighting)
-6. Wrong units in wavelength conversion (nm/Î¼m to cm)
+6. Wrong units in wavelength conversion (nm/$\mu$m to cm)
 
 ## Validation Requirements
 
@@ -628,11 +628,11 @@ Before you begin coding, these practical tips will save you hours of debugging:
 
 - Pre-calculate and store grid boundaries (`x_min`, `x_max`, etc.) and cell size (Î”x) as attributes to avoid recalculating them during packet propagation
 
-- Save intermediate results (e.g., after every $10â´$ packets) to avoid losing progress if your code crashes during long runs - Monte Carlo results are additive
+- Save intermediate results (e.g., after every $10^4$ packets) to avoid losing progress if your code crashes during long runs - Monte Carlo results are additive
 
 **Debugging Strategy:**
 
-- Start with `kappa` as a simple constant (e.g., 30000 cmÂ²/g) before implementing the full Draine integration to isolate algorithmic bugs from opacity calculation bugs
+- Start with `kappa` as a simple constant (e.g., 30000 cm²/g) before implementing the full Draine integration to isolate algorithmic bugs from opacity calculation bugs
   
 - During debugging, use `np.random.seed(42)` for reproducible results. Remove the seed for final runs to ensure proper Monte Carlo statistics
 
@@ -640,7 +640,7 @@ Before you begin coding, these practical tips will save you hours of debugging:
 
 **Numerical Robustness:**
 
-- Use DIFFERENT random numbers for position sampling $(Î¾â‚, Î¾â‚‚)$ and direction sampling $(Î¾â‚ƒ, Î¾â‚„)$ - reusing random numbers creates unwanted correlations
+- Use DIFFERENT random numbers for position sampling ($\xi_1$‚ $\xi_2$) and direction sampling $\xi_3$‚ $\xi_4$)  - reusing random numbers creates unwanted correlations
 
 - Handle the special case where a direction component is exactly zero (e.g., dx = 0) by setting the distance to that boundary to infinity rather than dividing by zero
 
