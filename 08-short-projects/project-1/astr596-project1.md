@@ -56,6 +56,7 @@ Create `constants.py` with physical constants in CGS units. No starter code prov
 Create `zams.py` implementing Tout et al. (1996) relations. Starter code provided separately.
 
 **Key points:**
+
 - `isinstance(M, np.ndarray)` checks if M is a numpy array (numpy arrays are objects/instances of the ndarray class!)
 - `np.all()` returns True only if ALL array elements satisfy the condition
 - Look at equations (3)-(4) to understand how Table 1 is organized
