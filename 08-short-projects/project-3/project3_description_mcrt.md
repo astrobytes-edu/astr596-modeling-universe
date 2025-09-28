@@ -211,11 +211,14 @@ The heart of Monte Carlo radiative transfer is determining where photons interac
 
   - If packet reaches boundary before interaction: escapes with ALL luminosity
 
-Here's the corrected version:
+- For each band (B, V, K), each packet carries:
 
-- For each band (B, V, K), each packet carries: $L_{\text{packet}} = \frac{L_{\text{band,total}}}{N_{\text{packets}}}$
-  where $L_{\text{band,total}} = \sum_{\text{stars}} L_{\text{star,band}}$ (sum over all stars for THIS band only)
-  This ensures uniform Monte Carlo statistics within each band's simulation - every packet in that band contributes equally to the error regardless of which star emits it.
+$$
+L_{\text{packet}} = \frac{L_{\text{band,total}}}{N_{\text{packets}}} 
+\text{ where} L_{\text{band,total}} = \sum_{\text{stars}} L_{\text{star,band}}
+$$
+
+  (sum over all stars for THIS band only). This ensures uniform Monte Carlo statistics within each band's simulation - every packet in that band contributes equally to the error regardless of which star emits it.
 
 **Critical Point**: There is no partial absorption! Each packet either deposits 100% of its energy or 0%. This binary outcome, averaged over millions of packets, reproduces the continuous radiation field.
 
