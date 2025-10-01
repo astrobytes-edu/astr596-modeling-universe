@@ -145,13 +145,16 @@ There is NO gradual energy loss - it's all or nothing! As $N \to \infty$, this s
 
 - Skip header lines (~80 lines) when reading the file, these contain metadata
 
-- Look for the line containing "dust/H =" which gives the dust mass per H atom (typically ~1.4Ã—10â»Â²â¶ g)
+- Tabulated Data columns
+  - Tabulated quantities:
+  - lambda  = wavelength in vacuo (micron)
+  - albedo  = (scattering cross section)/(extinction cross section)
+  - $<\cos>$   = $<\cos(\text{theta})>$ for scattered light
+  - C_ext/H = extinction cross section per H nucleon (cm^2/H); Note: this is per H nucleon and includes effects of both absorption and scattering.
+  - K_abs   = absorption cross section per mass of dust (cm^2/gram)
+  - <cos^2> = <cos^(theta)> for scattered light
 
-- Data columns: wavelength(Î¼m) | C_ext/H | albedo | g | ...
-
-- Convert to mass absorption coefficient: Îº_dust = (C_ext/H) / (dust_mass/H)
-
-- Example: If C_ext/H = 5Ã—10â»Â²Â¹ cmÂ² and dust/H = 1.4Ã—10â»Â²â¶ g, then Îº = 3.6Ã—10âµ cmÂ²/g
+- **Important**: Use the K_abs column directly for mass absorption coefficient (cm$^2$/g of dust)
 
 ### Band-Averaged Opacities
 
@@ -159,9 +162,9 @@ You'll calculate **Planck mean opacities** for each band by integrating the Drai
 
 $$\langle\kappa\rangle_{\text{band,star}} = \frac{\int_{\lambda_1}^{\lambda_2} \kappa(\lambda) B_\lambda(T_{\text{eff,star}}) d\lambda}{\int_{\lambda_1}^{\lambda_2} B_\lambda(T_{\text{eff,star}}) d\lambda}$$
 
-**Why Planck mean opacity?** Each star emits radiation following its Planck function $B_Î»(T_\text{eff})$. The Planck mean weights the dust opacity by the actual spectrum of light emitted by the star. This gives the effective opacity "seen" by photons from that specific star. Since hot stars emit more blue light and cool stars emit more red light, each star experiences a different effective dust opacity in each band.
+**Why Planck mean opacity?** Each star emits radiation following its Planck function $B_\nu(T_\text{eff})$. The Planck mean weights the dust opacity by the actual spectrum of light emitted by the star. This gives the effective opacity "seen" by photons from that specific star. Since hot stars emit more blue light and cool stars emit more red light, each star experiences a different effective dust opacity in each band.
 
-**Important:** Calculate separate opacities for each star-band combination. A 38,500 K star will have different band-averaged opacities than a 9,100 K star, even using the same dust model, because their emission spectra weight the wavelength-dependent $Îº(Î»)$ differently.
+**Important:** Calculate separate opacities for each star-band combination. A 38,500 K star will have different band-averaged opacities than a 9,100 K star, even using the same dust model, because their emission spectra weight the wavelength-dependent $\kappa_{\lambda}$ differently.
 
 **Tip:** When creating each star, compute and store $\langle\kappa\rangle_\text{band}$ for each band in a dictionary or array as a `star` attribute for quick lookup during packet emission.
 
@@ -175,9 +178,7 @@ $$\langle\kappa\rangle_{\text{band,star}} = \frac{\int_{\lambda_1}^{\lambda_2} \
 
 **Important:** Convert all wavelengths to cm for CGS consistency (1 nm = $10^{-7}$ cm, 1 $\mu$m = $10^{-4}$ cm)
 
-**Conversion from Draine file:** The file provides $C_{\text{ext}}/H$ (extinction cross-section per H atom). Convert to mass absorption coefficient:
-$$\kappa_{\text{dust}} = \frac{C_{\text{ext}}/H}{M_{\text{dust}}/H}$$
-where $M_{\text{dust}}/H$ is given in the file header.
+**Conversion from Draine file:** The file provides the wavelength-dependent $\kappa_{\text{dust}}$ (per unit dust mass), so $\tau = \kappa_\text{dust} \rho_\text{dust}$.
 
 ### Stellar Sources and Band Luminosities
 
@@ -258,7 +259,7 @@ While stellar radii are tiny compared to the box size ($R_{\text{star}}/L_{\text
 
 $$\hat{n} = (\sin\theta_{\text{dir}}\cos\phi_{\text{dir}}, \sin\theta_{\text{dir}}\sin\phi_{\text{dir}}, \cos\theta_{\text{dir}})$$
 
-***Important note:** Store initial position and $\hat{n}$ as photon attributes!*
+***Important note:** Store $\hat{n}$ as a photon attribute!*
 
 ### Packet Propagation
 
@@ -268,11 +269,11 @@ Since we're modeling pure absorption (no scattering), photon packets travel in s
 
 - **Position update:**
 
-$$\vec{r}_{new} = \vec{r}_{old} + \Delta s \cdot \hat{n}$$
+$$\vec{r}_\text{new} = \vec{r}_\text{old} + \Delta s \cdot \hat{n}$$
 
 where $\Delta s$ is the distance to the next cell boundary or interaction point.
 
-- **Boundary checking:** If $\vec{r}_{new}$ crosses any box boundary, the packet escapes.
+- **Boundary checking:** If $\vec{r}_\text{new}$ crosses any box boundary, the packet escapes.
 
 - **Cell indexing:** Update cell indices after each step to determine local density and opacity.
 
@@ -298,15 +299,15 @@ These apply to dust mass, not gas mass!
 
 ### Grid Resolution Recommendations
 
-- **Initial testing:** $64^3$ grid with $10^3$ packets (fast debugging)
+- **Initial testing:** $16^3$ or $32^3$ grid with $10^3$ packets (fast debugging)
 
-- **Development:** $128^3$ grid with $10^4$ packets (see trends)
+- **Development:** $32^3$ grid with $10^4$ packets (see trends)
 
-- **Analysis:** $128^3$ grid with $10^5$ packets (smooth statistics)
+- **Analysis:**  $64^3$ grid with $10^5$ packets (smooth statistics)
 
-- **Final results:** $128^3$ or $256^3$ grid with $\geq 10^6$ packets (minimizes Monte Carlo noise to ~0.1%)
+- **Final results:** $64^3$ or $128^3$ grid with $\geq 10^6$ packets (minimizes Monte Carlo noise to ~0.1%)
 
-**Why this strategy:** Start with low resolution to debug your algorithm quickly. Once working, increase resolution to see physical trends emerge. For final science analysis, use high packet counts to minimize Monte Carlo noise. The $128^3$ resolution balances memory usage with spatial resolution of dust structures.
+**Why this strategy:** Start with low resolution to debug your algorithm quickly. Once working, increase resolution to see physical trends emerge. For final science analysis, depending on performance, use high packet counts to minimize Monte Carlo noise and high resolution ($64^3$ or $128^3$) resolution balances memory usage with spatial resolution.
 
 ### Performance Measurement
 
@@ -416,11 +417,11 @@ Complete required outputs and implement extensions (see Grading Rubric).
 
 Before diving into analysis, verify your code with these tests:
 
-1. **Empty box test:** Set $\rho_{dust} = 0$ everywhere $\to$ 100% of packets should escape
+1. **Empty box test:** Set $\rho_\text{dust} = 0$ everywhere $\to$ 100% of packets should escape
 
-2. **Extreme opacity test:** Set $\kappa \times \rho_{dust}$ very high $\to$ nearly 0% escape (Note: high opacity reduces runtime during debugging since packets absorb quickly)
+2. **Extreme opacity test:** Set $\kappa \times \rho_\text{dust}$ very high $\to$ nearly 0% escape (Note: high opacity reduces runtime during debugging since packets will be absorbed quickly/close to sources)
 
-3. **Energy conservation:** $|L_{in} - (L_{abs} + L_{esc})| / L_{in} < 0.001$ for all runs
+3. **Energy conservation:** $|L_{in} - (L_{abs} + L_{esc})| / L_{in} < 0.001$ for all runs (note this may be higher for very low packet counts due to Monte Carlo noise and grid resolution).
 
 4. **Statistical convergence:** Error should scale as $1/\sqrt{N_{packets}}$
 
@@ -488,7 +489,7 @@ Use log color scale to show dynamic range, choose your limits wisely.
 2D histogram showing the angular distribution of escaping light:
 
 - Use spherical coordinates $(θ, φ)$ for packet escape directions
-- Create 2D histogram with $θ~(0 \to π)$ and $φ~(0 \to 2π)$ bins
+- Create 2D histogram with $θ~(0 \to π)$ and $φ~(0 \to 2π)$ bins (you'll need to convert Cartesian escape directions to spherical)
 - Color shows escaped luminosity per solid angle
 - Should Reveal anisotropies due to stellar positions within the box
 
@@ -593,7 +594,7 @@ Implement ONE extension and compare results with the baseline. The list below pr
 
 - Isotropic scattering with albedo ω = 0.6 and compare escape fractions with/without scattering. (Note: this will increase runtime.)
 - Different dust models: Compare $R_V = 3.1$ vs $R_V = 5.5$ using provided Draine files
-- Temperature calculation: Compute dust temperature from absorbed energy using $\sigma T^4 = L_{abs}/A_{cell}$
+- Temperature calculation: Compute dust temperature from absorbed energy using $\sigma T^4 = L_{abs}/A_{cell}$ and plot the projected temperature map.
 
 **Computational Extensions:**
 
@@ -610,9 +611,9 @@ Implement ONE extension and compare results with the baseline. The list below pr
 **Analysis Extensions:**
 
 - Density parameter study: Vary $n_H$ from 10 to 10,000 cm$^{-3}$
-- Non-uniform density: Implement $\rho(r) \propto r^{-2}$ profile or exponential disk
+- Non-uniform density: Implement $\rho(r) \propto r^{-2}$ profile.
 - Turbulent density field: Add lognormal density fluctuations to uniform medium (e.g., $\rho = \rho_0 \times 10^{\mathcal{N}(0,\sigma)}$)
-- Statistical study: Multiple realizations with different random stellar positions
+- Statistical study: Multiple realizations with different random stellar positions and/or masses.
 
 **Your own idea:** Propose something that connects to your research interests or explores an aspect of radiative transfer you find intriguing.
 
