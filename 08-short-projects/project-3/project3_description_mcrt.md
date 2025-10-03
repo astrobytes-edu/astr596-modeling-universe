@@ -77,7 +77,7 @@ Before starting this project, you should be comfortable with the following conce
 
 ### The Physical Picture: Monte Carlo Radiative Transfer
 
-Monte Carlo Radiative Transfer (MCRT) solves the radiative transfer equation through a **stochastic process** â€” meaning it uses randomness and probability to represent physical reality. Each "photon packet" represents a bundle of photons carrying a fraction of the source luminosity. The stochastic nature manifests in two key ways: (1) the random sampling of interaction distances from an exponential distribution, and (2) the random emission directions. Through the law of large numbers, these random processes converge to the deterministic solution of the radiative transfer equation.
+Monte Carlo Radiative Transfer (MCRT) solves the radiative transfer equation through a **stochastic process**, meaning it uses randomness and probability to represent physical reality. Each "photon packet" represents a bundle of photons carrying a fraction of the source luminosity. The stochastic nature manifests in two key ways: (1) the random sampling of interaction distances from an exponential distribution, and (2) the random emission directions. Through the law of large numbers, these random processes converge to the deterministic solution of the radiative transfer equation.
 
 **Discrete Absorption**: In this project, you'll implement discrete absorption where each packet either:
 
@@ -245,17 +245,7 @@ While stellar radii are tiny compared to the box size ($R_{\text{star}}/L_{\text
 
   - $z = z_* + R_{\text{star}} \times \cos\theta$
 
-**Initial direction:** Independently sampled isotropic direction
-
-- Sample two NEW uniform random numbers: $\xi_3, \xi_4 \in (0,1)$ (different from position sampling!)
-
-- Convert to direction on unit sphere:
-
-  - $\theta_{\text{dir}} = \arccos(2\xi_3 - 1)$
-
-  - $\phi_{\text{dir}} = 2\pi\xi_4$
-
-- Unit direction vector:
+**Initial direction:** Your independently sampled isotropic direction $\phi$ and $\theta$ will be the packet's propagation direction (i.e., unit vector $\hat{n}$):
 
 $$\hat{n} = (\sin\theta_{\text{dir}}\cos\phi_{\text{dir}}, \sin\theta_{\text{dir}}\sin\phi_{\text{dir}}, \cos\theta_{\text{dir}})$$
 
