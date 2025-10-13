@@ -135,9 +135,9 @@ There is NO gradual energy loss - it's all or nothing! As $N \to \infty$, this s
 
 - **Dust density:** $\rho_{\text{dust}} = \rho_{\text{gas}} \times f_{D/G} = 3.84 \times 10^{-23}$ g/cm$^3$
 
-**Dust Model:** [Draine (2003a,b)](https://ui.adsabs.harvard.edu/abs/2003ApJ...598.1017D/abstract) Milky Way dust with $R_V = 5.5$
+**Dust Model:** [Draine (2003a,b)](https://ui.adsabs.harvard.edu/abs/2003ApJ...598.1017D/abstract) Milky Way dust with $R_V = 5.5$. All data here: <https://www.astro.princeton.edu/~draine/dust/dustmix.html>
 
-- Data file: [kext_albedo_WD_MW_5.5B_30](https://www.astro.princeton.edu/~draine/dust/extcurvs/kext_albedo_WD_MW_5.5B_30)
+- Data file: [kext_albedo_WD_MW_5.5A_30_D03](https://www.astro.princeton.edu/~draine/dust/extcurvs/kext_albedo_WD_MW_5.5A_30_D03.all)
 
 **Note on units:** Use CGS units as your default throughout this project.
 
@@ -277,9 +277,9 @@ where $\Delta s$ is the distance to the next cell boundary or interaction point.
 
 | Band | $\langle\kappa\rangle$ (cm$^2$/g) | Why This Value? |
 |------|--------------------------------|-----------------|
-| B | 35,000-36,000 | Peak dust extinction near 220 nm |
-| V | 30,000-31,000 | Still strong extinction |
-| K | 3,400-3,500 | Wavelength $\gg$ grain size |
+| B | $\sim \times 10^4$ | Peak dust extinction near 220 nm |
+| V | $\sim 7.3 \times 10^3$ | Still strong extinction |
+| K | $\sim 1.5 \times 10^3$ | Wavelength $\gg$ grain size |
 
 These apply to dust mass, not gas mass!
 
@@ -437,8 +437,8 @@ If your results seem wrong:
 
 Validate your opacity calculations from the Draine data:
 
-- X-axis: Wavelength (0.3-3 $\mu$m, log scale)
-- Y-axis: Mass absorption coefficient $\kappa$ (cm$^2$/g, log scale)
+- X-axis: Wavelength
+- Y-axis: Mass absorption coefficient $\kappa$
 - Show the Draine opacity curve for $R_V = 5.5$
 - Overlay vertical shaded bands for B, V, and K filters
 - Include points (`plt.scatter`) or horizontal lines (`plt.axhline`) showing calculated band-averaged opacities
