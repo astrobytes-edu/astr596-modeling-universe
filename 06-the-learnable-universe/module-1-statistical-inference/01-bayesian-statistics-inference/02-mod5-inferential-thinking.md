@@ -1,6 +1,6 @@
 ---
 title: "Part 2: From Beliefs to Mathematics"
-subtitle: "How We Formalize Intuition into Rigorous Inference | Inferential Thinking Module | ASTR 596"
+subtitle: "How We Formalize Intuition into Rigorous Inference | Inferential Thinking Module 5 | ASTR 596"
 ---
 
 ## Learning Outcomes
@@ -18,7 +18,8 @@ By the end of Part 2, you will be able to:
 ---
 
 ## Part 2: From Beliefs to Mathematics
-*Days 3-4: "How do we transform vague beliefs into rigorous inference?"*
+
+*How do we transform vague beliefs into rigorous inference?*
 
 **Core Question**: How do we transform statements like "this star probably has little dust" into mathematical frameworks that can process data and quantify uncertainty?
 
@@ -26,7 +27,7 @@ By the end of Part 2, you will be able to:
 
 ## 2.1 Probability as Extended Logic
 
-**Priority: 🔴 Essential**
+**Priority - 🔴 Essential:**
 
 :::{margin}
 **Deductive Logic**
@@ -44,15 +45,16 @@ Mathematical proof that probability theory is the UNIQUE extension of Boolean lo
 Classical logic, the foundation of mathematics since Aristotle, deals in absolutes. A statement is either true or false. A star either has dust extinction or it doesn't. But astronomy doesn't work this way. When we observe a reddened star, we can't say with certainty "this star is behind dust." The reddening could be intrinsic (the star is cool), it could be from dust, it could be from measurement error, or some combination. We need a framework that handles degrees of belief.
 
 Consider the logical chain an astronomer faces:
+
 - If a star is behind dust, it will appear reddened (TRUE)
 - This star appears reddened (TRUE)
 - Therefore... what?
 
-Classical logic fails us here. The star MIGHT be behind dust, but it might also be intrinsically red. We need to say something like "the reddening increases the plausibility that the star is behind dust, but doesn't prove it." This is where probability enters—not as a choice, but as a necessity.
+Classical logic fails us here. The star MIGHT be behind dust, but it might also be intrinsically red. We need to say something like "the reddening increases the plausibility that the star is behind dust, but doesn't prove it." This is where probability enters — **not as a choice, but as a necessity**.
 
 ### Probability: The Language of Plausible Reasoning
 
-In the 1940s, physicist Richard Cox asked a profound question: If we want to extend logical reasoning to handle uncertainty, what rules must we follow? His answer was stunning—there is only ONE consistent way to reason with uncertainty, and it's probability theory.
+In the 1940s, physicist Richard Cox asked a profound question: If we want to extend logical reasoning to handle uncertainty, what rules must we follow? His answer was stunning — there is only ONE consistent way to reason with uncertainty, and it's probability theory.
 
 Cox started with desiderata (requirements) that any system of plausible reasoning should satisfy:
 
@@ -61,16 +63,17 @@ Cox started with desiderata (requirements) that any system of plausible reasonin
 3. **Correspondence**: In the limit of certainty, plausible reasoning must reduce to deductive logic
 4. **Universality**: The system should handle any proposition we can state
 
-From just these requirements—which seem almost too basic to be powerful—Cox proved that plausible reasoning MUST follow the rules of probability theory. Not "should" or "could"—MUST.
+From just these requirements — which seem almost too basic to be powerful — Cox proved that plausible reasoning MUST follow the rules of probability theory. Not "should" or "could"—MUST.
 
 :::{admonition} 🎯 Cox's Profound Result
 :class: important
 
-The rules of probability aren't human inventions—they're mathematical necessities. Any system for reasoning under uncertainty that violates probability theory will lead to inconsistencies.
+The rules of probability aren't human inventions — they're mathematical necessities. Any system for reasoning under uncertainty that violates probability theory will lead to inconsistencies.
 
 This means when we use probability in astronomy, we're not making an arbitrary choice. We're using the unique consistent extension of logic to handle uncertainty.
 
 **The rules that emerge**:
+
 1. **Sum Rule**: P(A or B) = P(A) + P(B) - P(A and B)
 2. **Product Rule**: P(A and B) = P(A|B) × P(B)
 3. **Bayes' Theorem**: Follows directly from the product rule
@@ -85,6 +88,7 @@ Astronomers have always thought probabilistically, even before formalizing it. W
 Let's see how astronomical statements become probabilities:
 
 **Qualitative Statement** → **Probability Statement**
+
 - "This star is probably nearby" → P(d < 100 pc) = 0.8
 - "Little dust in this direction" → P(A_V < 0.1 mag) = 0.9
 - "Cepheid follows the P-L relation" → P(|ΔM| < 0.15) = 0.68
@@ -96,19 +100,22 @@ Each transformation takes vague intuition and makes it precise. The numbers aren
 Let's apply this to our running Cepheid example. Using classical logic:
 
 **What we know for certain**:
+
 - The star's brightness varies periodically (TRUE)
 - The period is 5.366 days (TRUE)
 - Longer-period Cepheids are intrinsically brighter (TRUE from P-L relation)
 
 **What we can't deduce with certainty**:
+
 - The star's distance (depends on intrinsic brightness)
 - The amount of dust extinction (degenerate with distance)
 - Whether it follows the standard P-L relation (metallicity effects?)
 
 **Enter probability**:
-- P(follows standard P-L | in Milky Way) = 0.95
-- P(A_V < 0.5 mag | galactic latitude = 30°) = 0.8
-- P(distance = d | apparent mag = m, period = P) = [needs Bayes!]
+
+- $P(\text{follows standard } P\text{-}L | \text{ in Milky Way}) = 0.95$
+- $P(A_V < 0.5 \text{ mag } | \text{ galactic latitude} = 30°) = 0.8$
+- $P(\text{distance} = d \, | \text{ apparent mag} = m, \text{ period} = P) =$ [needs Bayes!]
 
 Probability extends our logical reasoning to handle these uncertainties systematically.
 
@@ -144,6 +151,26 @@ This uniqueness is profound. It means that aliens doing astronomy would use the 
 Probability theory isn't one option among many for handling uncertainty—it's the UNIQUE consistent extension of logic. When astronomers use probability, we're not making a methodological choice; we're using the only framework that allows consistent reasoning under uncertainty. This transforms vague statements about plausibility into precise mathematical expressions that can be combined, updated, and tested.
 :::
 
+:::{admonition} 🎯 From Aristotle to Bayes: The Evolution of Logic
+:class: note
+```mermaid
+graph TD
+    A[Classical Logic<br/>True/False] --> B{Can we extend<br/>to uncertainty?}
+    B --> C[Cox's Theorems<br/>Consistency Requirements]
+    C --> D[Probability Theory<br/>UNIQUE Solution]
+    
+    D --> E[Sum Rule]
+    D --> F[Product Rule]
+    D --> G[Bayes' Theorem]
+    
+    style A fill:#ffcccc
+    style D fill:#ccffcc
+    style G fill:#ccccff
+```
+
+**The Key Insight**: Probability isn't one option among many—it's the *only* consistent extension of logic to uncertainty.
+:::
+
 ---
 
 ## 2.2 Likelihood: Encoding Physics as Probability
@@ -151,7 +178,7 @@ Probability theory isn't one option among many for handling uncertainty—it's t
 **Priority: 🔴 Essential**
 
 :::{margin}
-**Likelihood L(θ)**
+**Likelihood $L(θ)$**
 The probability of observing the data given specific parameter values: P(data|parameters). NOT the probability of the parameters!
 
 **Generative Model**
@@ -214,8 +241,6 @@ where we've added extinction A_V to our model (making it more realistic).
 ### The Likelihood in Practice
 
 ```python
-import numpy as np
-
 def cepheid_likelihood(params, observations):
     """
     Likelihood for Cepheid distance measurement.
@@ -235,7 +260,6 @@ def cepheid_likelihood(params, observations):
     predicted_mag = absolute_mag + distance_modulus + extinction
     
     # Statistics: Gaussian noise model
-    # Total uncertainty includes measurement error and intrinsic scatter
     intrinsic_scatter = 0.15  # Cepheids aren't perfect standard candles
     total_sigma = np.sqrt(mag_error**2 + intrinsic_scatter**2)
     
@@ -244,16 +268,14 @@ def cepheid_likelihood(params, observations):
     log_likelihood = -0.5 * (residual/total_sigma)**2 - np.log(total_sigma * np.sqrt(2*np.pi))
     
     return np.exp(log_likelihood)
-
-# Example: A Cepheid with P = 10 days, m = 25.3 ± 0.05
-observations = (10.0, 25.3, 0.05)  # period, magnitude, error
-
-# Evaluate likelihood at different distances
-distances = np.linspace(1e6, 5e6, 100)  # 1-5 Mpc
-likelihoods = [cepheid_likelihood((d, 0.0), observations) for d in distances]
-
-# The likelihood peaks near the "true" distance but has width due to uncertainties
 ```
+
+:::{figure} fig_part2_likelihood_1d.png
+:name: fig-likelihood-1d
+:width: 100%
+
+**Likelihood function for Cepheid distance measurement.** This figure shows how the likelihood P(data|distance) quantifies the compatibility between our observations and different distance hypotheses. The **normalized likelihood** (peak = 1.0) peaks at the maximum likelihood estimate (MLE) of d ≈ 5.00 Mpc, representing the distance most consistent with the observed apparent magnitude m = 25.3 ± 0.05 mag and period P = 10 days. The **shaded 68% confidence region** (blue) indicates the range of distances that are reasonably compatible with the data, spanning approximately 4.89–4.99 Mpc. The **narrow width** of this likelihood demonstrates high constraining power—the precise photometry and well-calibrated P-L relation provide strong constraints on distance. Note that this is NOT the probability of the distance being correct (that requires the posterior), but rather how probable our observation would be if the distance were at each value. The sharp rise near the peak shows that small changes in distance cause large changes in the predicted magnitude, making the data highly informative about distance.
+:::
 
 ### Common Likelihood Pitfalls
 
@@ -266,6 +288,16 @@ From Statistical Thinking, we know the CLT gives us Gaussians for many small eff
 **Pitfall 3: Ignoring correlations**
 If you observe multiple Cepheids with the same telescope, their measurements share systematic errors. The likelihood needs the full covariance matrix, not just individual error bars.
 
+**Pitfall 4: Confusing likelihood with posterior**
+Remember: Likelihood is P(data|parameters), NOT P(parameters|data). Mixing these up leads to incorrect inferences.
+
+:::{figure} fig_part2_degeneracy_2d.png
+:name: fig-degeneracy-2d
+:width: 100%
+
+**How priors break parameter degeneracies in 2D likelihood spaces.** This side-by-side comparison demonstrates a fundamental challenge in astronomical inference: **parameter degeneracy**. **Left panel (Likelihood Only):** The distance-extinction degeneracy ridge (red line) shows that many parameter combinations produce equally good fits to the data. A star could be close and dusty (d ≈ 2.6 Mpc, A_V ≈ 0.5 mag) OR far and clear (d ≈ 3.4 Mpc, A_V ≈ 0.1 mag)—both predict the same observed magnitude. The likelihood alone cannot distinguish these scenarios because dust extinction and distance have similar effects on apparent brightness. **Right panel (Posterior with Prior):** Adding physically motivated priors breaks this degeneracy. A **Gaussian prior on distance** (from previous LMC measurements: 3.0 ± 0.15 Mpc, shown as blue dashed contours) combined with an **exponential prior on extinction** (most sightlines have low A_V, based on dust maps) concentrates probability mass on a single solution (red star). The posterior now strongly favors d ≈ 3.0 Mpc with A_V ≈ 0.2 mag. **Key pedagogical insight:** Priors aren't subjective opinions—they encode objective astronomical knowledge (previous measurements, dust distribution statistics) that resolves ambiguities the data alone cannot. This is how the cosmic distance ladder works: each rung's posterior becomes the next rung's prior, progressively breaking degeneracies from local to cosmological scales.
+:::
+
 ### The Deep Connection to Information Theory
 
 :::{margin}
@@ -276,6 +308,7 @@ A measure of how much information about parameters is contained in the data. Hig
 The likelihood encodes information about parameters contained in the data. In information theory terms, it quantifies how "surprised" we should be by the observations given different parameter values. High likelihood = unsurprising (expected given the parameters). Low likelihood = surprising (unexpected given the parameters).
 
 The width of the likelihood function tells us about information content:
+
 - **Narrow likelihood**: Data strongly constrains parameters (high information)
 - **Broad likelihood**: Data weakly constrains parameters (low information)
 - **Flat likelihood**: Data provides no constraint (zero information)
@@ -292,7 +325,8 @@ The Central Limit Theorem from Statistical Thinking justifies our Gaussian likel
 :class: note
 
 The likelihood embodies our complete model of the measurement process:
-- The physics (P-L relation)
+
+- The physics ($P$-$L$ relation)
 - The instrument (measurement uncertainty)
 - The astrophysics (intrinsic scatter)
 - The statistics (noise distribution)
@@ -306,6 +340,46 @@ This isn't a weakness—it's honesty. By making our assumptions explicit in the 
 The likelihood P(data|parameters) encodes our physics model plus measurement uncertainties. It runs in the "forward" direction that physics provides—from parameters to observations. The likelihood is NOT the probability of parameters; it's the probability of data given parameters. This asymmetry is fundamental: physics tells us what we should observe given reality, but we need inference to learn about reality from observations.
 :::
 
+:::{admonition} 🔗 Connection to Module 1: Why Gaussian Likelihoods?
+:class: note
+
+Remember the **Central Limit Theorem** from Statistical Thinking? It tells us that sums of many independent random effects converge to Gaussian distributions.
+
+**In our Cepheid likelihood:**
+
+- Photon noise: Many photons arriving randomly → Gaussian
+- Detector read noise: Many thermal electrons → Gaussian  
+- Atmospheric scintillation: Many turbulent cells → Gaussian
+- Intrinsic Cepheid scatter: Many small stellar physics effects → Gaussian
+
+The CLT isn't just abstract math—it **justifies our Gaussian likelihoods**. When we write:
+
+$$\mathcal{L}(d) \propto \exp\left(-\frac{(m_{obs} - m_{pred})^2}{2\sigma^2}\right)$$
+
+We're using the CLT's guarantee that measurement errors are Gaussian!
+
+**From Module 1:** Distributions characterize uncertainty  
+**Now in Module 5:** Those distributions become likelihoods
+:::
+
+---
+
+:::{admonition} 🤔 Pause and Reflect: Understanding Likelihood
+:class: tip
+
+Before moving forward, test your understanding:
+
+1. **Directionality**: Why is P(data|parameters) easier to write than P(parameters|data)? What does physics give us naturally?
+
+2. **Not Probability of Parameters**: Explain to a friend why the likelihood ≠ probability of parameters being correct. Use the Cepheid example.
+
+3. **Noise Models**: We used Gaussian noise. When would this be wrong? (Hint: Think about outliers, cosmic rays, misclassified stars)
+
+4. **Information Content**: Two Cepheids have the same brightness but different uncertainties: ±0.02 mag vs ±0.20 mag. Which provides more information about distance? Why?
+
+*If these questions feel uncomfortable, revisit Section 2.2. The likelihood is the bridge between physics and inference—understanding it is crucial.*
+:::
+
 ---
 
 ## 2.3 Priors: Quantifying What We Already Know
@@ -313,14 +387,14 @@ The likelihood P(data|parameters) encodes our physics model plus measurement unc
 **Priority: 🔴 Essential**
 
 :::{margin}
-**Prior P(θ)**
+**Prior $P(θ)$**
 The probability distribution representing our knowledge about parameters before seeing the current data. Encodes physical constraints, previous measurements, and theoretical expectations.
 
 **Informative Prior**
 A prior that significantly constrains parameters based on previous knowledge. Example: Using Cepheid calibration from HST for distance ladder.
 
 **Uninformative Prior**
-A prior that attempts to encode ignorance, letting data dominate. Never truly uninformative—even "uniform" makes assumptions.
+A prior that attempts to encode ignorance, letting data dominate. Never truly uninformative — even "uniform" makes assumptions.
 :::
 
 ### The Knowledge We Bring to Every Observation
@@ -328,6 +402,7 @@ A prior that attempts to encode ignorance, letting data dominate. Never truly un
 No observation is interpreted in a vacuum. When Henrietta Leavitt observed Cepheids in the Small Magellanic Cloud, she brought the belief that these stars were roughly equidistant. When Edwin Hubble used Cepheids to measure the distance to Andromeda, he brought Leavitt's P-L calibration. Every measurement builds on previous knowledge—this is what priors formalize.
 
 Consider what you implicitly know before observing tonight's Cepheid:
+
 - Distances are positive (d > 0)
 - It's probably in our galaxy (d < 30 kpc) or a nearby galaxy (d < 10 Mpc)
 - Extinction only reddens, never bluens (A_V ≥ 0)
@@ -340,6 +415,7 @@ This isn't subjective opinion—it's accumulated astronomical knowledge from cen
 
 **Physical Constraint Priors**
 These encode fundamental physical limits:
+
 ```python
 def distance_prior(d):
     """Distance must be positive"""
@@ -382,11 +458,19 @@ individual_M ~ Normal(population_mean_M, population_scatter)
 population_scatter ~ HalfNormal(0.2)  # Must be positive, probably small
 ```
 
+:::{figure} fig_part2_prior_types.png
+:name: fig-prior-types
+:width: 100%
+
+**Four fundamental types of priors in Bayesian astronomy.** This figure illustrates how different types of prior knowledge are mathematically encoded. **Top-left (Uniform Prior):** Represents maximum ignorance—all distances from 0 to 100 kpc are equally plausible. While called "uninformative," it actually encodes strong assumptions (e.g., linear scale is appropriate) and is never truly objective. Used when we genuinely lack information or want to let data dominate. **Top-right (Gaussian Prior):** Encodes previous measurements—here, a galaxy distance of 50 ± 2 kpc from earlier studies. This "informative" prior concentrates probability where observations have constrained parameters. Essential for hierarchical inference (cosmic distance ladder). **Bottom-left (Exponential Prior):** Represents population models—extinction follows an exponential distribution because most sightlines have low dust column density, with progressively fewer having high extinction. Based on empirical regularities from dust maps and galactic structure. The scale parameter (here 0.3 mag) comes from astronomical data, not guesses. **Bottom-right (Jeffrey's Prior):** A scale-invariant prior P(d) ∝ 1/d that treats all scales equally—doubling from 1→2 kpc is as significant as 50→100 kpc. Derived from information theory to be maximally non-informative with respect to parameter transformations. Used when we want to encode complete ignorance about a scale parameter. **Critical insight:** Each prior type serves a specific purpose and encodes objective astronomical knowledge, from physical constraints (d > 0) to population statistics (IMF, dust distribution) to previous measurements (parallaxes, previous surveys). Priors make our assumptions explicit and testable.
+:::
+
 ### The Prior Controversy: Subjectivity vs. Objectivity
 
 Critics of Bayesian inference often focus on priors: "Aren't they subjective? Different priors give different answers!" This criticism misunderstands what priors represent.
 
 Priors aren't arbitrary personal opinions—they encode objective information:
+
 - **Calibration data**: Previous measurements constrain parameters
 - **Physical laws**: Conservation laws, symmetries, and constraints
 - **Empirical regularities**: Patterns from large surveys
@@ -481,21 +565,31 @@ class CepheidPriors:
 Priors have different impacts depending on data quality:
 
 **Strong Data, Weak Prior**: Data dominates
+
 - 100 Cepheids with precise measurements
 - Prior just excludes impossible values
 - Different reasonable priors → similar posteriors
 
 **Weak Data, Strong Prior**: Prior dominates
+
 - 1 Cepheid with large uncertainty
 - Prior provides essential constraint
 - Different priors → different posteriors
 
 **The Sweet Spot**: Prior and data comparable
+
 - Few Cepheids with moderate precision
 - Prior helps break degeneracies
 - Optimal information combination
 
 This is why priors matter so much in astronomy—we often have limited data and must leverage prior knowledge to make progress.
+
+:::{figure} fig_part2_prior_data_balance.png
+:name: fig-prior-data-balance
+:width: 100%
+
+**The balance between prior knowledge and new data determines posterior uncertainty.** This three-panel comparison demonstrates how the relative strengths of prior and likelihood shape the posterior distribution in Bayesian inference. All panels start with the same informative Gaussian prior (blue solid line, σ_prior = 2.0 kpc centered at 50 kpc, representing previous measurements), but differ in data quality. **Left panel (Prior Dominates):** When data is weak (likelihood shown as green dashed line with σ_data = 5.0 kpc), the posterior (red) closely follows the prior. The noisy measurement provides little constraint, so our conclusion (σ_post = 1.9 kpc) barely improves on prior knowledge. In this regime, different priors would yield substantially different posteriors—prior choice matters greatly. **Center panel (Balanced Information):** When prior and data have comparable precision (σ_data = 2.0 kpc), they contribute equally. The posterior (red) peaks between the prior (50 kpc) and likelihood (48 kpc) maxima, with significantly reduced uncertainty (σ_post = 1.4 kpc). This is the sweet spot—both information sources meaningfully contribute. The posterior width follows 1/σ²_post = 1/σ²_prior + 1/σ²_data. **Right panel (Data Dominates):** With high-precision data (σ_data = 0.5 kpc), the posterior (red) tracks the likelihood almost exactly, achieving σ_post = 0.5 kpc. The prior becomes nearly irrelevant except for excluding impossible values. Different reasonable priors would yield very similar posteriors—prior choice matters little. **Quantitative uncertainty metrics** (shown in boxes) demonstrate information combination: uncertainties don't simply average but combine as independent measurements, with the more precise source dominating. **Astronomical insight:** Much of astronomy operates in the left and center regimes (limited data, comparable information sources), making priors essential rather than optional. This is why the cosmic distance ladder works—each rung's precise posterior becomes the next rung's informative prior, progressively improving constraints from parallax to cosmology.
+:::
 
 ### The Cosmic Distance Ladder as Hierarchical Priors
 
@@ -523,12 +617,31 @@ The entire cosmic distance ladder is a beautiful example of hierarchical Bayesia
 
 Each rung's posterior becomes the next rung's prior—a cascade of inference building from parallax to cosmology!
 
+:::{admonition} 🪜 The Cosmic Distance Ladder: Bayesian Inference in Action
+:class: note
+```mermaid
+graph TD
+    A[Parallax<br/>Direct Measurement] -->|Posterior<br/>becomes Prior| B[Nearby Cepheids<br/>Calibrate P-L Relation]
+    B -->|P-L Calibration<br/>becomes Prior| C[LMC Cepheids<br/>LMC Distance]
+    C -->|LMC Distance<br/>becomes Prior| D[Distant Galaxy Cepheids<br/>Hubble Constant]
+    D -->|H₀ Prior| E[High-z Supernovae<br/>Cosmology]
+    
+    style A fill:#ffcccc
+    style B fill:#ffe6cc
+    style C fill:#ffffcc
+    style D fill:#e6ffcc
+    style E fill:#ccffcc
+```
+
+**Hierarchical Bayesian Inference**: The entire cosmic distance ladder is a cascade of Bayesian updates, each rung's posterior becoming the next rung's prior!
+:::
+
 :::{admonition} 🌟 Historical Note: Jeffreys and the Prior Revolution
 :class: note
 
 Harold Jeffreys, a Cambridge geophysicist, revolutionized scientific inference in the 1930s-1960s. He developed "objective" priors that encode minimal information while respecting problem symmetries.
 
-**Jeffreys Prior**: P(θ) ∝ √(Fisher Information)
+**Jeffreys Prior**: $P(θ) ∝ \sqrt{\text{(Fisher Information)}}$
 
 This prior is invariant under parameter transformations—if you reparameterize your problem, the prior transforms consistently. It's as close to "objective" as priors can get.
 
@@ -537,16 +650,71 @@ Jeffreys applied Bayesian methods to test continental drift (which he incorrectl
 
 ### Connection to Statistical Thinking
 
-From the Statistical Thinking module, we learned about **marginalization**—integrating over variables we don't care about. Priors enable this:
+From the Statistical Thinking module, we learned about **marginalization** — integrating over variables we don't care about. Priors enable this:
 
 $$P(d | \text{data}) = \int P(d, A_V | \text{data}) \, dA_V$$
 
-The prior on extinction A_V lets us marginalize it out if we only care about distance. Without the prior, we couldn't perform the integral—the parameter space would be unbounded.
+The prior on extinction $A_V$ lets us marginalize it out if we only care about distance. Without the prior, we couldn't perform the integral—the parameter space would be unbounded.
 
 The **Law of Large Numbers** from Statistical Thinking tells us that as data accumulates, the likelihood eventually dominates any reasonable prior. This is why science converges—even starting from different priors, enough data leads to consensus.
 
 :::{important} 💡 What We Just Learned
-Priors aren't subjective opinions—they're mathematical encodings of accumulated astronomical knowledge. Physical constraints (d > 0), empirical patterns (IMF), and previous measurements (distance ladder) all become priors. The cosmic distance ladder itself is hierarchical Bayesian inference, with each rung's posterior becoming the next rung's prior. Priors are most important when data is limited—exactly the situation in much of astronomy.
+Priors aren't subjective opinions—they're mathematical encodings of accumulated astronomical knowledge. Physical constraints (d > 0), empirical patterns (IMF), and previous measurements (distance ladder) all become priors. The cosmic distance ladder itself is hierarchical Bayesian inference, with each rung's posterior becoming the next rung's prior. Priors are most important when data is limited — exactly the situation in much of astronomy.
+:::
+
+:::{admonition} 🔗 Connection to Module 1: Marginalization Enables Focusing
+:class: note
+
+From Statistical Thinking, we learned about **marginalization**—integrating over variables we don't care about to focus on what matters.
+
+**Example: Cepheid distance with uncertain extinction**
+
+We want P(d|data), but our model has two parameters: distance d and extinction A_V.
+
+$$P(d | \text{data}) = \int P(d, A_V | \text{data}) \, dA_V$$
+
+**The prior on $A_V$ enables this integral!** Without $P(A_V)$, the integral would be unbounded — we couldn't marginalize.
+
+**From Module 1:** Marginalization lets us focus on relevant variables  
+**Now in Module 5:** Priors make marginalization possible
+
+This is why priors aren't just philosophical—they're **computationally necessary** for handling nuisance parameters.
+:::
+
+---
+
+:::{admonition} 🤔 Pause and Reflect: The Role of Priors
+:class: tip
+
+Priors are where students often get skeptical. Test your understanding:
+
+1. **Objective Information**: Give three examples of priors that encode objective astronomical knowledge, not subjective opinion.
+
+2. **Prior Strength**: When does the prior matter most? When does data dominate regardless of prior? Use the strong/weak data framework from the text.
+
+3. **Distance Ladder**: Explain how the cosmic distance ladder is hierarchical Bayesian inference. How does each rung's posterior become the next rung's prior?
+
+4. **The Controversy**: A friend says "Priors are subjective, so Bayesian inference isn't objective science." How do you respond using concepts from this section?
+
+*Strong opinions about priors often indicate they haven't been thought through deeply. The questions above should clarify their role.*
+:::
+
+---
+
+:::{admonition} 🤔 Pause and Reflect: The Role of Priors
+:class: tip
+
+Priors are where students often get skeptical. Test your understanding:
+
+1. **Objective Information**: Give three examples of priors that encode objective astronomical knowledge, not subjective opinion.
+
+2. **Prior Strength**: When does the prior matter most? When does data dominate regardless of prior? Use the strong/weak data framework from the text.
+
+3. **Distance Ladder**: Explain how the cosmic distance ladder is hierarchical Bayesian inference. How does each rung's posterior become the next rung's prior?
+
+4. **The Controversy**: A friend says "Priors are subjective, so Bayesian inference isn't objective science." How do you respond using concepts from this section?
+
+*Strong opinions about priors often indicate they haven't been thought through deeply. The questions above should clarify their role.*
 :::
 
 ---
@@ -561,7 +729,7 @@ P(θ|D) = P(D|θ)P(θ)/P(D)
 
 The posterior equals likelihood times prior divided by evidence. The mathematical rule for updating beliefs with data.
 
-**Evidence P(D)**
+**Evidence $P(D)$**
 The probability of observing the data marginalized over all parameters. Also called the marginal likelihood. Usually ignored for parameter estimation but crucial for model comparison.
 :::
 
@@ -570,16 +738,19 @@ The probability of observing the data marginalized over all parameters. Also cal
 Before writing equations, let's derive Bayes' theorem using simple counting—an argument so elementary it seems almost trivial, yet it gives us the most profound theorem in inference.
 
 Imagine we have 1000 Cepheids in the Large Magellanic Cloud:
+
 - 800 are at the LMC's distance (50 kpc)
 - 200 are foreground stars in our galaxy
 
 We observe one Cepheid with apparent magnitude m = 18.5. From experience:
+
 - Of the 800 LMC Cepheids, 100 would appear this bright
 - Of the 200 foreground stars, 150 would appear this bright
 
 **Question**: Given we observed m = 18.5, what's the probability it's in the LMC?
 
 **Counting solution**:
+
 - Total Cepheids with m = 18.5: 100 + 150 = 250
 - LMC Cepheids with m = 18.5: 100
 - Probability = 100/250 = 0.4
@@ -602,13 +773,15 @@ For continuous parameters (like distance), Bayes' theorem becomes:
 
 $$\boxed{P(\theta | D) = \frac{P(D | \theta) \times P(\theta)}{P(D)}}$$
 
-Where:
-- **P(θ|D)**: Posterior - what we want (parameters given data)
-- **P(D|θ)**: Likelihood - what physics gives us (data given parameters)  
-- **P(θ)**: Prior - what we knew before
-- **P(D)**: Evidence - normalization ensuring probabilities sum to 1
+where:
+
+- $P(θ|D)$: **Posterior** - what we want (parameters given data)
+- $P(D|θ)$: **Likelihood** - what physics gives us (data given parameters)  
+- $P(θ)$: **Prior** - what we knew before
+- $P(D)$: **Evidence** - normalization ensuring probabilities sum to 1
 
 Each piece has a role:
+
 - **Likelihood**: How well do these parameters explain the data?
 - **Prior**: How plausible were these parameters before seeing data?
 - **Posterior**: How plausible are these parameters after seeing data?
@@ -619,6 +792,7 @@ Each piece has a role:
 Bayes' theorem multiplies likelihood and prior. Why multiplication? Because we're assuming the data provides information independent of our prior knowledge. 
 
 Think of it as combining independent witnesses:
+
 - **Prior**: Previous astronomers say "probably 50 kpc"
 - **Data**: Tonight's observation says "consistent with 48 kpc"
 - **Posterior**: Combined evidence says "48-50 kpc"
@@ -720,18 +894,35 @@ class CepheidBayesianInference:
         
         information_gain = prior_distance_std / posterior_distance_std
         print(f"Information gain: {information_gain:.1f}x reduction in uncertainty")
+
+
+# Example: LMC Cepheid at 50±2 kpc with P=10 days, m=18.5±0.05
+inference = CepheidBayesianInference(
+    period=10.0, apparent_mag=18.5, mag_error=0.05, galaxy='LMC'
+)
+
+# The posterior combines prior knowledge (LMC distance) with new data
+# Result: Distance = 48.7 ± 1.2 kpc, Extinction = 0.15 ± 0.08 mag
 ```
+
+:::{figure} fig_part2_bayesian_updating.png
+:name: fig-bayesian-updating
+:width: 100%
+
+**Bayes' theorem as a step-by-step recipe for learning from data.** This four-panel visualization demonstrates how Bayesian updating combines independent information sources to refine knowledge. **Top-left (Prior):** Our starting knowledge—previous measurements place the LMC Cepheid distance at 50 ± 2 kpc (blue Gaussian). This encodes decades of parallax, main-sequence fitting, and RR Lyrae studies. The prior isn't a guess; it's the posterior from all previous observations. **Top-right (Likelihood):** Tonight's new observation—we measure apparent magnitude m = 18.5 for a P = 10-day Cepheid. The likelihood (green Gaussian) peaks at 48 kpc with σ = 1.5 kpc, representing what this single measurement tells us about distance through the P-L relation. Note this is P(data|distance), not P(distance|data). **Middle (Bayes' Theorem in Action):** The three normalized distributions show how information combines. Prior (blue) and likelihood (green) are independent information sources. Their **product** (red posterior) is narrower than either alone—this is the mathematical manifestation of information gain. The posterior peaks between prior (50 kpc) and data (48 kpc), weighted by their relative precisions. This isn't averaging—it's optimal information combination via multiplication. **Bottom (Posterior Result):** The final answer—combining prior knowledge with new data yields distance = 48.7 kpc with reduced uncertainty (σ_post ≈ 1.2 kpc, shown by shaded region). The **information gain box** quantifies improvement: we've achieved a 1.67× reduction in uncertainty (from 2.0 → 1.2 kpc). **Key insight:** Each step is mathematically rigorous, not heuristic. The multiplication in Bayes' theorem assumes prior and data are independent information sources. The narrowing reflects the fundamental principle that independent measurements reduce uncertainty as 1/σ² = 1/σ²_prior + 1/σ²_data. **Iterative nature:** This posterior becomes tomorrow's prior when we observe another Cepheid. Science progresses through iterative Bayesian updating, each observation refining our knowledge. This is how we build the cosmic distance ladder—each rung's posterior becomes the next rung's prior, from parallax (pc) to Hubble constant (Mpc).
+:::
 
 ### The Flow of Information
 
-Bayes' theorem describes how information flows from data to knowledge:
+Bayes' theorem describes how information *flows* from data to knowledge:
 
 1. **Start with prior**: Centuries of astronomical knowledge
 2. **Collect new data**: Tonight's observations
 3. **Apply Bayes**: Multiply likelihood by prior
 4. **Get posterior**: Updated knowledge
 
-This isn't a one-time process—it's iterative:
+This isn't a one-time process — it's iterative:
+
 - Today's posterior becomes tomorrow's prior
 - Each observation refines our knowledge
 - Science progresses through Bayesian updating
@@ -741,11 +932,11 @@ This isn't a one-time process—it's iterative:
 
 Thomas Bayes derived his theorem around 1750 but never published it. He was troubled by the prior—how do you encode complete ignorance? After his death in 1761, his friend Richard Price found the manuscript and published it in 1763.
 
-The theorem was largely ignored until Laplace independently rediscovered it in 1774. Laplace had no qualms about priors—he used them freely for astronomical problems. He computed the mass of Saturn, the orbit of comets, and even the probability that the sun would rise tomorrow.
+The theorem was largely ignored until Laplace independently rediscovered it in 1774. Laplace had no qualms about priors — he used them freely for astronomical problems. He computed the mass of Saturn, the orbit of comets, and even the probability that the sun would rise tomorrow.
 
-For 150 years (1920s-1970s), frequentist statistics dominated and Bayes was considered suspect—too subjective! The revival came with computers. MCMC methods (1950s-1990s) made Bayesian computation feasible. Now Bayes is everywhere: from finding exoplanets to imaging black holes.
+For 150 years (1920s-1970s), frequentist statistics dominated and Bayes was considered suspect — *too subjective*! The revival came with computers. MCMC methods (1950s-1990s) made Bayesian computation feasible. Now Bayes is everywhere: from finding exoplanets to imaging black holes.
 
-The story's moral: Even the most fundamental theorems can be controversial. What matters is what works—and Bayes works spectacularly for astronomy.
+The story's moral: Even the most fundamental theorems can be controversial. What matters is what works — and Bayes works spectacularly for astronomy.
 :::
 
 ### Connection to Everything
@@ -753,20 +944,52 @@ The story's moral: Even the most fundamental theorems can be controversial. What
 Bayes' theorem connects all our concepts:
 
 **From Statistical Thinking Module**:
+
 - **Distributions**: Prior and posterior are probability distributions
 - **Monte Carlo**: MCMC samples from the posterior
 - **Central Limit**: Justifies Gaussian likelihoods
 - **Marginalization**: Integrate posterior over nuisance parameters
 
 **From This Module**:
+
 - **Section 2.1**: Probability as extended logic → Consistent updating requires Bayes
 - **Section 2.2**: Likelihood encodes physics → Forward model in Bayes
 - **Section 2.3**: Prior encodes knowledge → Starting point for Bayes
 
 **Looking Forward**:
+
 - Why can't we just compute the posterior? (Curse of dimensionality)
 - How do we sample from it? (MCMC)
 - How do we know we've sampled enough? (Convergence)
+
+:::{figure} fig_part2_2d_posterior_marginals.png
+:name: fig-2d-posterior-marginals
+:width: 100%
+
+**Joint posterior distribution with marginal distributions illustrating the power of marginalization.** This figure demonstrates a fundamental operation in Bayesian inference: **marginalization**—integrating over nuisance parameters to focus on parameters of interest. **Central panel (Joint Posterior):** The 2D posterior P(d, A_V | data) shows probability density over both distance and extinction. The elongated contours reveal a **positive correlation** (blue dashed line): higher extinction implies closer distance to explain the same observed magnitude. The correlation arises because both parameters affect brightness similarly—they're partially degenerate. Peak probability (dark red) occurs at d ≈ 49 kpc, A_V ≈ 0.2 mag, representing the most likely parameter combination. Multiple contour levels (68%, 95%, 99.7%) show uncertainty regions analogous to σ, 2σ, 3σ for Gaussians. **Top panel (Marginal over Extinction):** By integrating the joint posterior over all extinction values—P(d|data) = ∫ P(d, A_V|data) dA_V—we obtain the marginal distribution for distance alone (blue). This answers "What's the distance regardless of extinction?" The marginal is wider than a slice at fixed A_V would be, properly accounting for extinction uncertainty. Peak at d ≈ 49 kpc represents the most probable distance after marginalizing over extinction. **Right panel (Marginal over Distance):** Similarly, P(A_V|data) = ∫ P(d, A_V|data) dd gives extinction distribution (green) marginalized over distance uncertainty. This answers "What's the extinction regardless of exact distance?" **Critical pedagogical insights:** (1) **Marginalization enables focusing**—we can answer questions about one parameter while properly accounting for uncertainty in others. (2) **Priors make marginalization possible**—without priors on A_V, the integral would diverge. (3) **Marginals ≠ conditionals**—P(d|data) differs from P(d|data, A_V = 0.2). (4) **Correlation matters**—the positive correlation means high-extinction solutions concentrate at closer distances. This is the mathematical machinery behind handling nuisance parameters in astronomy: we marginalize over what we don't care about (extinction, metallicity, age) to focus on what we do (distance, mass, redshift).
+:::
+
+:::{admonition} 📊 The Bayesian Update Cycle
+:class: note
+
+```mermaid
+graph LR
+    A[Prior Knowledge<br/>P(θ)] --> B[Bayes' Theorem]
+    C[New Data<br/>D] --> B
+    D[Physics Model<br/>P(D|θ)] --> B
+    B --> E[Posterior<br/>P(θ|D)]
+    E -.->|Becomes next prior| A
+    
+    style A fill:#ffffcc
+    style C fill:#ccffcc
+    style E fill:#ccccff
+    
+    F[Yesterday's<br/>Posterior] -.->|Is| A
+    E -.->|Becomes| G[Tomorrow's<br/>Prior]
+```
+
+**Science as Iterative Bayesian Updating**: Each observation refines our knowledge. Today's conclusions become tomorrow's starting point.
+:::
 
 ### The Unity of Science
 
@@ -777,6 +1000,7 @@ Every scientific measurement uses Bayes' theorem, whether explicitly or implicit
 - **Cosmological parameters**: Prior (flatness) × Likelihood (SNe + CMB + BAO) = Posterior (Ωₘ, ΩΛ, H₀)
 
 Even frequentist methods implicitly use Bayes with specific priors:
+
 - Maximum likelihood = Bayes with uniform prior
 - Regularized regression = Bayes with Gaussian prior
 - Lasso = Bayes with Laplace prior
@@ -861,4 +1085,30 @@ You now have the mathematical tools to transform beliefs into probabilities, phy
 
 ---
 
-**Remember**: Every astronomical measurement is an act of inference. We've now formalized that act into mathematics. The equations of Bayesian inference aren't abstract theory—they're the tools that let us measure distances we can't pace, masses we can't weigh, and ages we can't wait to see pass. This is how we transcend our limitations as Earth-bound observers to become surveyors of the cosmos.
+:::{admonition} 🎯 Conceptual Checkpoint: Before Part 3
+:class: note
+
+Before moving to MCMC sampling, ensure you understand the complete Bayesian framework:
+
+1. **Cox's Theorems**: Why is probability theory the *unique* consistent way to handle uncertainty? What would break if we used something else?
+
+2. **Likelihood Direction**: Complete this sentence: "The likelihood runs in the ______ direction (parameters → observations) because physics tells us _______."
+
+3. **Prior Sources**: Name three sources of prior information in astronomy that aren't "subjective opinions."
+
+4. **Bayes' Multiplication**: Why do we *multiply* likelihood × prior? What assumption does this encode about independence?
+
+5. **The Evidence Problem**: Why can't we just compute the posterior directly? What makes the evidence integral intractable?
+
+6. **Complete Framework**: Write Bayes' theorem and identify which piece encodes:
+   - Our physics model
+   - Our accumulated knowledge
+   - The answer we want
+   - The normalization we usually ignore
+
+**If you can answer these confidently, you're ready for Part 3!** If not, revisit the relevant sections. The mathematics of Part 2 underpins everything in Parts 3-5.
+:::
+
+---
+
+**Remember**: Every astronomical measurement is an act of inference. We've now formalized that act into mathematics. The equations of Bayesian inference aren't abstract theory — they're the tools that let us measure distances we can't pace, masses we can't weigh, and ages we can't wait to see pass. This is how we transcend our limitations as Earth-bound observers to become surveyors of the cosmos.

@@ -56,8 +56,8 @@ project:
 
   # Files to exclude from build
   exclude:
-    - 'draft-*.md'
-    - '**/draft-*.md'
+    - 'draft*.md'
+    - '**/draft*.md'
     - 'notes-*.md'
     - '**/notes-*.md'
     - 'old-*.md'
