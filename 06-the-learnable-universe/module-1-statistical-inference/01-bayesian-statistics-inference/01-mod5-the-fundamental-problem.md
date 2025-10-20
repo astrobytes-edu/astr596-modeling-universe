@@ -82,10 +82,10 @@ Each of these beliefs affects how we interpret the measurement. If we believed s
 
 This is why astronomy progresses through successive refinements of our belief framework. Hipparcos satellite measurements updated our beliefs about stellar distances. Gaia refined them further. Each generation doesn't start from scratch—it inherits the accumulated wisdom (and biases) of previous generations. This inherited knowledge shapes what we look for and how we interpret what we find.
 
-:::{admonition} 📚 The More You Know: Newton and the Birth of Mathematical Physics
+::::{admonition} 📚 The More You Know: Newton and the Birth of Mathematical Physics
 :class: note
 
-**The First True Scientific Model**
+**The First True Scientific Model:**
 
 While humans have recognized patterns since antiquity (Babylonian astronomy tracked planetary positions, Greek geometry described shapes), Isaac Newton created the first complete **mathematical model of physical reality** in 1687 with the *Principia Mathematica*.
 
@@ -102,9 +102,10 @@ Newton's radical insight: One equation $(F = GMm/r²)$ explains both realms:
 
 - Why apples fall from trees
 - Why the Moon orbits Earth
-- Why Earth orbits the Sun
+- Why Earth orbits the Sun like *your* N-body simulations!
 - Ocean tides (Moon's gravity pulling water)
 - Precession of equinoxes (Sun and Moon pulling Earth's bulge)
+- Star cluster dynamics like *your* N-body simulations!
 
 **The model's predictive power stunned the world:**
 
@@ -112,12 +113,19 @@ Newton's radical insight: One equation $(F = GMm/r²)$ explains both realms:
 - Astronomers used perturbations in Uranus's orbit to predict Neptune's existence and location
 - Engineers used it to calculate trajectories for Apollo missions
 
-But here's the subtle point about beliefs: Newton's model worked so spectacularly that it became difficult to imagine it could be wrong. For 200 years, any observation that didn't fit was assumed to be an error or due to an undiscovered planet. It took Einstein's genius (and the persistent anomaly of Mercury's perihelion) to realize the model itself needed revision.
+But here's the subtle point about beliefs: Newton's model worked so spectacularly that it became difficult to imagine it could be wrong. For 200 years, any observation that didn't fit was assumed to be an error or due to an undiscovered planet ([Vulcan](https://en.wikipedia.org/wiki/Vulcan_(hypothetical_planet))). It took Einstein's genius (and the persistent anomaly of Mercury's perihelion) to realize the model itself needed revision.
 
-*"Nature and Nature's laws lay hid in night: God said, Let Newton be! and all was light."* — Alexander Pope
+:::{epigraph}
+"Nature and Nature's laws lay hid in night: God said, Let Newton be! and all was light."
 
-*"It did not last: the Devil howling 'Ho! Let Einstein be!' restored the status quo."* — John Collings Squire
+-- Alexander Pope
+
+"It did not last: the Devil howling 'Ho! Let Einstein be!' restored the status quo."
+
+-— John Collings Squire
 :::
+
+::::
 
 <! ALR Note: Should we add Occam's Razor discussion here? Or in 1.2 instead?>
 

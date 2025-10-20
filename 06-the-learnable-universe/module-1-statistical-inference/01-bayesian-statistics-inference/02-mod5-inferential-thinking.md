@@ -270,7 +270,7 @@ def cepheid_likelihood(params, observations):
     return np.exp(log_likelihood)
 ```
 
-:::{figure} fig_part2_likelihood_1d.png
+:::{figure} ./figures/fig_part2_likelihood_1d.png
 :name: fig-likelihood-1d
 :width: 100%
 
@@ -291,7 +291,7 @@ If you observe multiple Cepheids with the same telescope, their measurements sha
 **Pitfall 4: Confusing likelihood with posterior**
 Remember: Likelihood is P(data|parameters), NOT P(parameters|data). Mixing these up leads to incorrect inferences.
 
-:::{figure} fig_part2_degeneracy_2d.png
+:::{figure} ./figures/fig_part2_degeneracy_2d.png
 :name: fig-degeneracy-2d
 :width: 100%
 
@@ -458,7 +458,7 @@ individual_M ~ Normal(population_mean_M, population_scatter)
 population_scatter ~ HalfNormal(0.2)  # Must be positive, probably small
 ```
 
-:::{figure} fig_part2_prior_types.png
+:::{figure} ./figures/fig_part2_prior_types.png
 :name: fig-prior-types
 :width: 100%
 
@@ -584,7 +584,7 @@ Priors have different impacts depending on data quality:
 
 This is why priors matter so much in astronomy—we often have limited data and must leverage prior knowledge to make progress.
 
-:::{figure} fig_part2_prior_data_balance.png
+:::{figure} ./figures/fig_part2_prior_data_balance.png
 :name: fig-prior-data-balance
 :width: 100%
 
@@ -905,7 +905,7 @@ inference = CepheidBayesianInference(
 # Result: Distance = 48.7 ± 1.2 kpc, Extinction = 0.15 ± 0.08 mag
 ```
 
-:::{figure} fig_part2_bayesian_updating.png
+:::{figure} ./figures/fig_part2_bayesian_updating.png
 :name: fig-bayesian-updating
 :width: 100%
 
@@ -962,7 +962,7 @@ Bayes' theorem connects all our concepts:
 - How do we sample from it? (MCMC)
 - How do we know we've sampled enough? (Convergence)
 
-:::{figure} fig_part2_2d_posterior_marginals.png
+:::{figure} ./figures/fig_part2_2d_posterior_marginals.png
 :name: fig-2d-posterior-marginals
 :width: 100%
 
