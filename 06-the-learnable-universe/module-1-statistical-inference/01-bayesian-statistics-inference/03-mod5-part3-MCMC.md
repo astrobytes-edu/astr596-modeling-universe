@@ -580,14 +580,14 @@ $$
 :class: tip
 **Before we derive the acceptance probability, take a moment to think:**
 
-Given that we want detailed balance π(θ)T(θ'|θ) = π(θ')T(θ|θ'), and we've decided T = Q × α, what constraints must α satisfy?
+Given that we want detailed balance $π(θ)T(θ'|θ) = π(θ')T(θ|θ')$, and we've decided $T = Q × α$, what constraints must $α$ satisfy?
 
 Write down your answer before reading on:
 
-- Should α depend on both θ and θ', or just one?
-- If θ' has higher posterior probability than θ, should we always accept?
-- If θ' has lower posterior probability, should we always reject?
-- What role does the proposal distribution Q play?
+- Should $α$ depend on both $θ$ and $θ'$, or just one?
+- If $θ'$ has higher posterior probability than θ, should we always accept?
+- If $θ'$ has lower posterior probability, should we always reject?
+- What role does the proposal distribution $Q$ play?
 
 Think about it for 30 seconds, then continue. The derivation will be more meaningful if you've wrestled with the problem first.
 :::
@@ -618,15 +618,17 @@ $$
 r = \frac{\pi(\theta') Q(\theta | \theta')}{\pi(\theta) Q(\theta' | \theta)}
 $$
 
-**When \(\pi\) is the posterior:** write \(\pi(\theta) \propto p(D\mid\theta)p(\theta)\). Then
+**When $\pi$ is the posterior:** write 
+$$\pi(\theta) \propto p(D\mid\theta)p(\theta).$$
 
-\[
+Then
+
+$$
 r \;=\; \frac{\pi(\theta')\,Q(\theta\mid\theta')}{\pi(\theta)\,Q(\theta'\mid\theta)}
 \;=\; \frac{p(D\mid\theta')\,p(\theta')}{p(D\mid\theta)\,p(\theta)} \cdot \frac{Q(\theta\mid\theta')}{Q(\theta'\mid\theta)},
-\]
+$$
 
-so the evidence \(p(D)\) cancels because it is constant in \(\theta\).
-
+so the evidence $p(D)$ cancels because it is constant in $\theta$.
 
 We need $α(θ'|θ)$ and $α(θ|θ')$ to have ratio $r$. A simple choice that works:
 
@@ -664,7 +666,7 @@ This is an example of the "Barker acceptance" vs. "Metropolis acceptance" distin
 
 ### Proposal Distributions: Symmetric vs. Asymmetric
 
-The acceptance probability depends on the proposal distribution Q. Two important cases:
+The acceptance probability depends on the proposal distribution $Q$. Two important cases:
 
 **Symmetric proposals**: $Q(θ'|θ) = Q(θ|θ')$
 
@@ -680,12 +682,12 @@ $$
 \theta' \sim \mathcal{N}(\theta;\,\Sigma)\quad\Longleftrightarrow\quad \theta'=\theta+\varepsilon,\;\varepsilon\sim\mathcal{N}(0,\Sigma).
 $$
 
-For symmetric \(Q\), the \(Q\)-terms cancel and
+For symmetric $Q$, the $Q$-terms cancel and
 $$
 \alpha=\min\!\left(1,\frac{\pi(\theta')}{\pi(\theta)}\right).
 $$
 
-Here you can evaluate $π$ using only log-likelihood + log-prior; any constant normalizer cancels. This is the **Metropolis algorithm** (the original 1953 version). You only need to evaluate the ratio of posterior probabilities!
+Here you can evaluate $π$ using only log-likelihood + log-prior; any constant normalizer cancels. This is the **Metropolis algorithm** (the original 1953 version). **You only need to evaluate the ratio of posterior probabilities!**
 
 **Asymmetric proposals**: $Q(θ'|θ) ≠ Q(θ|θ')$
 
@@ -718,7 +720,7 @@ The proposal distribution Q determines how the chain explores. A crucial paramet
 :class: dropdown
 For high-dimensional problems with Gaussian targets and Gaussian proposals, there's a beautiful theory (Roberts & Rosenthal 2001):
 
-**Optimal acceptance rate**: ~23.4% as dimension d → ∞
+**Optimal acceptance rate**: ~23.4% as dimension $d → ∞$
 
 This balances:
 
@@ -733,15 +735,15 @@ In practice, aim for:
 
 If your acceptance rate is outside these ranges, adjust your proposal scale σ:
 
-- Too high acceptance (>60%)? Increase σ
-- Too low acceptance (<15%)? Decrease σ
+- Too high acceptance (>60%)? Increase $σ$
+- Too low acceptance (<15%)? Decrease $σ$
 :::
 
 **Adaptive tuning**: In practice, you might run the chain for a **burn-in** period, monitor the acceptance rate, and adjust $\sigma$. Common strategy:
 
 - Run 1000 steps (burn-in)
-- If acceptance rate > 50%, multiply σ by 1.2
-- If acceptance rate < 20%, divide σ by 1.2
+- If acceptance rate > 50%, multiply $σ$ by 1.2
+- If acceptance rate < 20%, divide $σ$ by 1.2
 - Repeat until acceptance rate is in target range
 
 Once tuned, **fix** the proposal and run your production chain. (Don't keep adapting during production — this violates the Markov property and detailed balance.)
@@ -836,7 +838,7 @@ def gaussian_proposal(theta, sigma=1.0):
 
 ### What About the Normalization Constant?
 
-**Recall:** we only need \(\pi(\theta)\) up to proportionality; this section shows explicitly how \(p(D)\) cancels from the MH acceptance ratio.
+**Recall:** we only need $\pi(\theta)$ up to proportionality; this section shows explicitly how $p(D)$ cancels from the MH acceptance ratio.
 
 Remember Bayes' theorem:
 
@@ -881,7 +883,7 @@ This is the **burn-in problem**: Early samples are not from π. You need to disc
 
 The first and most important diagnostic: **Plot your samples over time.**
 
-A trace plot shows θ_t vs. t. What to look for:
+A trace plot shows $θ_t$ vs. $t$. What to look for:
 
 **Good signs**:
 
@@ -1053,14 +1055,14 @@ If $τ = 10$, then your $N=10000$ samples are only as informative as $N_\text{ef
 :class: tip
 **Target**: τ < 100 for most problems.
 
-- τ = 1: Every sample is independent (ideal, rarely achieved)
-- τ = 10-50: Good mixing, typical for well-tuned samplers
-- τ = 100-500: Acceptable, but you'll need a long chain
-- τ > 500: Poor mixing. Fix your proposal or increase step size.
+- $τ = 1$: Every sample is independent (ideal, rarely achieved)
+- $τ = 10-50$: Good mixing, typical for well-tuned samplers
+- $τ = 100-500$: Acceptable, but you'll need a long chain
+- $τ > 500$: Poor mixing. Fix your proposal or increase step size.
 
-If τ is very large, you have two options:
+If $τ$ is very large, you have two options:
 
-1. Run the chain much longer (N = 100τ or more for reliable statistics)
+1. Run the chain much longer ($N = 100τ$ or more for reliable statistics)
 2. Improve your sampler (tune proposals, try HMC, etc.)
 :::
 
@@ -1835,6 +1837,7 @@ Before moving to Project 4, let's address some frequent misunderstandings that t
 **Misconception 7: "MCMC always works"**
 
 **Reality**: MCMC can fail in many ways:
+
 - Multimodal posteriors where chains get trapped in one mode
 - Extremely high-dimensional problems where mixing is glacially slow  
 - Posteriors with complex geometry (funnel shapes, banana-shaped ridges)
