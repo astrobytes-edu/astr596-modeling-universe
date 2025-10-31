@@ -216,7 +216,7 @@ This is **completely general**—it knows nothing about cosmology and should wor
 
 1. Initialize: $\theta^{(0)} = \theta_{\text{init}}$
 2. For $i = 1, 2, \ldots, N$:
-   - Propose: $\theta^* \sim \mathcal{N}(\theta^{(i-1)}, \Sigma_{\text{prop}})$
+   - Propose: $\theta^* \sim \mathcal{N}(\theta^{(i-1)}, \Sigma_{\text{prop}})$ (example: multivariate normal proposal =target distribution)
    - Compute log-probabilities: $\ln p(\theta^*)$ and $\ln p(\theta^{(i-1)})$
    - Compute acceptance ratio: $\alpha = \min\left(1, \exp[\ln p(\theta^*) - \ln p(\theta^{(i-1)})]\right)$
    - Draw $u \sim \text{Uniform}(0, 1)$
@@ -230,6 +230,10 @@ This is **completely general**—it knows nothing about cosmology and should wor
 - Acceptance rate
 
 **Tuning**: Target acceptance rate 20-50%. Adjust proposal covariance to achieve this.
+
+#### The Multivariate Proposal Distribution
+
+[scipy.stats.multivariate_normal](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.multivariate_normal.html)
 
 ---
 
