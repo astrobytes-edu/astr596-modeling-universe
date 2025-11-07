@@ -587,7 +587,7 @@ project4/
 ```
 
 **Validation tests**: Include tests that verify:
-- Forward model accuracy: 
+- Forward model accuracy:
   * $D_L(0) = 0$ (boundary condition)
   * Numerical integration vs. Pen approximation agree within 0.4% on a grid of $z\in[0,1.3]$ (e.g., 0, 0.1, …, 1.3)
   * Worked example: $\mu(z=0.5, \Omega_m=0.3, h=0.7) \approx 42.26 \pm 0.02$ mag
@@ -662,7 +662,7 @@ Generate the following plots for **both MCMC and HMC** (where applicable):
    - Energy conservation for HMC: histogram of $\Delta H$ (should be centered near 0)
    - Acceptance rate vs. proposal scale/step size (for tuning demonstration)
 
-6. **Efficiency comparison**: 
+6. **Efficiency comparison**:
    - Bar chart or table comparing ESS/second for MCMC vs. HMC
    - Illustrative figure showing why HMC explores parameter space more efficiently (e.g., overlaid trace plots showing faster mixing)
 

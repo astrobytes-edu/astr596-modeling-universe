@@ -58,6 +58,8 @@ project:
   exclude:
     - 'draft*.md'
     - '**/draft*.md'
+    - 'outline*.md'
+    - '**/outline*.md'
     - 'notes-*.md'
     - '**/notes-*.md'
     - 'old-*.md'
@@ -106,6 +108,8 @@ project:
     - '**/*.py'           # All Python files
     - '**/__pycache__'    # Python cache directories
     - '**/*.ipynb'
+    - 'ASTR596_*'
+    - 'docs/**'
 site:
   template: book-theme
   title: "ASTR 596: Modeling the Universe"
