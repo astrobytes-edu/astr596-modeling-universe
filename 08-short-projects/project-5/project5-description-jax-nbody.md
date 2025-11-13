@@ -2,7 +2,7 @@
 
 **ASTR 596 Fall 2025**  
 **Instructor:** Anna Rosen  
-**Due:** Wednesday, November 24, 2025 by 11:59 PM  
+**Due:** Wednesday, November 26, 2025 by 11:59 PM  
 
 ---
 
