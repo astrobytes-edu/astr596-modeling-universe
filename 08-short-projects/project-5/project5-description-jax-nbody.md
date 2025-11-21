@@ -230,7 +230,7 @@ Softening models the smoothing effect of finite stellar radii. For star clusters
 
 #### Two Implementation Strategies
 
-**Strategy A: Direct Vectorization (Pairwise Distance Matrix)**
+**Strategy A: Direct Vectorization (Pairwise Distance Matrix).**
 
 Implement a function `accelerations_matrix(x, m, eps2, G)` that:
 
@@ -607,40 +607,44 @@ import jax_nbody.samplers as samplers
 
 **Quickstart for grading**: `quickstart.py` at project root that runs N=64 for 100 steps on CPU and prints: wall-time (after JIT warmup), `max|ΔE/E|`, and $\alpha_{\rm vir}$ summary. I will run `python quickstart.py` to verify basic functionality
 
-### 2. Technical Report (4-5 pages)
+### 2. Research Memo (1-2 pages)
 
-Write a technical report demonstrating your understanding of JAX and the design tradeoffs you made. Your report must include:
+Write a concise research memo demonstrating your implementation works correctly and that you understand JAX's performance advantages. **The primary deliverable is your complete working, validated pipeline**—the memo provides essential evidence and commentary.
 
 **Required Components**:
 
-1. **Algorithm Design** (1-1.5 pages):
-   - Initial conditions implementation (IMF, Plummer, virial velocities)
-   - Force calculation strategy choice and justification
-   - Integration scheme (leapfrog DKD)
-   - Adaptive timestepping approach
-   - **Softening policy**: State your $\epsilon$ choice (constant vs. $\epsilon \propto r_h/\sqrt{N}$), the value/factor used, and 2-line justification tied to energy drift and timestep collapse rates
+1. **Validation Evidence** (≈1 page):
+   - **All 6 required test results** with key figures showing correctness
+   - **Two-body orbit plot**: Energy conservation ($\max|\Delta E/E| < 10^{-8}$)
+   - **Virial equilibrium plot**: $\alpha_{\rm vir} = 1 \pm 0.05$ for virialized cluster
+   - **Multi-scale validation**: Show correct physics from N=2 → N=100+ → production-scale clusters
+   - Use informative captions explaining what each plot demonstrates
 
-2. **Performance Analysis** (1-1.5 pages):
-   - JAX vs. NumPy speedup (quantified with timings)
-   - **Force strategy comparison table**: Matrix vs. vmap for N=32, 64, 128 showing measured error and wall time
-   - Scaling analysis: How does runtime scale with N?
-   - Profiling insights (what dominates runtime?)
+2. **Performance Analysis** (≈0.5 pages):
+   - **JAX vs. NumPy speedup table**: Quantified timings for representative N values
+   - **Force strategy comparison**: Matrix vs. vmap measured error and wall time (N=32, 64, 128)
+   - **Brief commentary**: What dominates runtime? How does performance scale with N?
 
-3. **Validation Results** (1 page):
-   - Evidence that all 6 required tests pass (include key figures/values)
-   - Two-body orbit energy conservation plot
-   - Virial equilibrium verification ($\alpha_{\rm vir} = 1 \pm 0.05$)
-   - Multi-scale validation (N=2 → N=100+ → N=200-500 clusters)
+3. **Key Design Decisions** (≈0.5 pages):
+   - **Softening policy**: State your $\epsilon$ choice (constant vs. $\epsilon \propto r_h/\sqrt{N}$), the value/factor used, and brief justification tied to energy drift and timestep stability
+   - **Integration approach**: Note your adaptive timestepping strategy
+   - **Production ensemble**: Brief description of automated pipeline (50-100 runs, parameter coverage, data organization)
 
-4. **Production Pipeline** (0.5-1 page):
-   - Automated simulation ensemble description (50-100 runs)
-   - Parameter space coverage (N, scale length $a$, mass range)
-   - Statistical validation plot demonstrating ensemble consistency
-   - Data organization and reproducibility approach
+**Format**: Emphasize showing results over prose. Use tables and figures effectively. Quantify performance gains. Demonstrate you understand the tradeoffs through your results, not lengthy explanations.
 
-**Format**: Use figures effectively. Quantify everything. Show you understand the tradeoffs, not just "it works."
+### 3. Growth Memo
 
-### 3. AI as a Learning Accelerator
+Submit a Growth Memo following the standard template at [`03-growth-memo-template.md`](../03-growth-memo-template.md). This is where you reflect on your learning journey, including:
+
+- **Technical skills developed**: What JAX patterns can you now implement?
+- **Key challenges & solutions**: What JAX-specific pitfalls did you encounter?
+- **AI usage reflection**: How did you use AI tools to understand JAX? What worked? What didn't? How did you verify AI suggestions? This detailed reflection belongs in the Growth Memo, NOT the research memo.
+- **Conceptual insights**: How did implementing N-body dynamics in JAX deepen your understanding of functional programming and JIT compilation?
+- **What got you excited**: Any "aha" moments with JAX transformations (jit, vmap, grad)?
+
+The Growth Memo is graded pass/fail based on honest, thoughtful reflection. See the template for detailed prompts.
+
+### 4. AI as a Learning Accelerator
 
 Through Projects 1-4, you've demonstrated solid Python expertise. Now it's time to leverage that foundation with modern learning tools. JAX has a sharp learning curve—its functional programming paradigm and compilation constraints are fundamentally different from NumPy. But you have an advantage: **you already understand the underlying physics and computational concepts**. 
 
@@ -655,7 +659,7 @@ Through Projects 1-4, you've demonstrated solid Python expertise. Now it's time 
 
 **Critical caveat**: Maintain a **"docs first" mindset**. Check the [JAX documentation](https://jax.readthedocs.io/) and [Equinox API](https://docs.kidger.site/equinox/) before asking AI. Always fact-check AI responses—they're often confident but wrong about version-specific details or edge cases. Use AI to understand concepts and documentation, not as a replacement for understanding.
 
-In your technical report, briefly describe how you used AI tools (if at all): What helped you understand JAX's paradigm? What errors did you learn from? This isn't graded for "correct" AI use—we want honest data to improve the course.
+**AI usage reflection belongs in your Growth Memo** (see Deliverable 3 below), not in the research memo. The Growth Memo has dedicated sections for reflecting on AI tool usage, what worked, what didn't, and how your approach evolved.
 
 ---
 
@@ -728,16 +732,17 @@ When something goes wrong (and it will):
 
 ## Grading Approach
 
-**Evaluation Method**: Your grade is based on the technical report, quickstart demo, and repository inspection (code reading, not installation).
+**Evaluation Method**: Your grade is based on your working validated pipeline (code quality), research memo, quickstart demo, and validation evidence.
 
 | Component | Weight | Evaluation Method |
 |-----------|--------|-------------------|
-| **Technical Report** | 40% | Quality of analysis, figures, design justification, performance results, validation evidence |
+| **Code Quality & Working Pipeline** | 40% | Repository inspection: JAX patterns correct, tests present, clean structure, documentation, functional implementation |
 | **Quickstart Demo** | 20% | Does `quickstart.py` run and produce correct physics (energy conservation, $\alpha_{\rm vir} \approx 1$)? |
-| **Code Quality** | 25% | Repository inspection: JAX patterns correct, tests present, clean structure, documentation |
-| **Validation Evidence** | 15% | Report shows all 6 required tests passed with figures/tables proving correctness |
+| **Research Memo** | 20% | Essential validation plots with captions, JAX speedup analysis, design justification |
+| **Validation Evidence** | 20% | Memo shows all 6 required tests passed with figures/tables proving correctness |
+| **Growth Memo** | Pass/Fail | Honest, thoughtful reflection on learning process (graded separately) |
 
-**Note**: Grading will be based on your quickstart demo output, repository code reading, and comprehensive technical report. I will not be installing your package or running your full test suite—your report must provide convincing evidence that your implementation works correctly.
+**Note**: Grading will be based on your quickstart demo output, repository code reading, and research memo. I will not be installing your package or running your full test suite—your memo must provide convincing evidence that your implementation works correctly. The Growth Memo is graded separately as pass/fail.
 
 ---
 
