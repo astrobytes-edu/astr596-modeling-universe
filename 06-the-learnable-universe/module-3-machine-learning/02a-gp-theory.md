@@ -23,6 +23,14 @@ By the end of Part II, you will be able to:
 
 ---
 
+```{admonition} Recommended Reading: Visual Exploration of Gaussian Processes
+:class: tip
+
+For an interactive visual introduction to GPs, see [**A Visual Exploration of Gaussian Processes**](https://distill.pub/2019/visual-exploration-gaussian-processes/) (Görtler et al., 2019, *Distill*). This outstanding article provides interactive visualizations of kernel functions, prior/posterior distributions, and hyperparameter effects. It complements the mathematical treatment below with visual intuition—highly recommended for building geometric understanding before diving into equations!
+```
+
+---
+
 ## The Big Picture: The Computational Crisis in Modern Astrophysics
 
 ### The Problem We're Solving
@@ -357,11 +365,13 @@ $$
 - A GP says: "I don't know the exact function, but I have beliefs about what it looks like"
 - Those beliefs are encoded in the kernel $k(\mathbf{x}, \mathbf{x}')$: "how similar should $f(\mathbf{x})$ and $f(\mathbf{x}')$ be?"
 
-**[FIGURE 2.1: GP Prior Samples - How Lengthscale Controls Smoothness]**
+```{figure} figures/fig_2_1_gp_prior_samples.png
+:label: fig-gp-prior-samples
+:alt: GP prior samples showing lengthscale effects on function smoothness
+:align: center
 
-![GP Prior Samples](figures/fig_2_1_gp_prior_samples.png)
-
-**Figure 2.1**: Random function samples from GP(0, k_SE) with different lengthscales demonstrate how ℓ controls function smoothness. **Top row**: Individual samples show that small ℓ = 0.1 produces highly wiggly (high-frequency) functions, while large ℓ = 1.0 produces smooth (low-frequency) functions. **Bottom row**: Prior confidence bands (±2σ) with correlation length visualization. The red arrows show the lengthscale ℓ—the distance over which function values remain correlated (correlation drops to ~60% at distance ℓ). **Key Insight**: Small lengthscales require dense training data to capture rapid variations; large lengthscales allow sparse sampling since the function varies slowly.
+**Figure 2.1: GP Prior Samples - How Lengthscale Controls Smoothness**. Random function samples from GP(0, k_SE) with different lengthscales demonstrate how ℓ controls function smoothness. **Top row**: Individual samples show that small ℓ = 0.1 produces highly wiggly (high-frequency) functions, while large ℓ = 1.0 produces smooth (low-frequency) functions. **Bottom row**: Prior confidence bands (±2σ) with correlation length visualization. The red arrows show the lengthscale ℓ—the distance over which function values remain correlated (correlation drops to ~60% at distance ℓ). **Key Insight**: Small lengthscales require dense training data to capture rapid variations; large lengthscales allow sparse sampling since the function varies slowly.
+```
 
 :::{admonition} Why This Matters for Emulation
 :class: tip
@@ -807,11 +817,14 @@ Now predict at $Q_* = 0.80$ (outside training range):
 - ⚠️  Use uncertain predictions with caution (check physics plausibility)
 - ❌ Avoid relying on extrapolation predictions for publication without validation
 
-**[FIGURE 3.2: GP Uncertainty - Interpolation vs Extrapolation]**
+```{figure} figures/fig_3_2_gp_uncertainty.png
+:label: fig-gp-uncertainty
+:alt: GP uncertainty showing confident interpolation and uncertain extrapolation
+:align: center
 
-![GP Uncertainty](figures/fig_3_2_gp_uncertainty.png)
+**Figure 3.2: GP Uncertainty - Interpolation vs Extrapolation**. GP posterior with training data at x ∈ {1, 3, 5} demonstrates automatic uncertainty quantification. **Blue mean line**: Predictive mean μ(x) interpolates smoothly between training points (black dots with white edges). **Shaded regions**: Inner blue band shows ±2σ epistemic (function) uncertainty; outer coral band shows ±2σ total (epistemic + noise) uncertainty. **Green arrows** (interpolation regions): Narrow uncertainty between training points where GP is confident. **Red arrows** (extrapolation regions): Wide uncertainty outside training range where GP warns "I don't know—don't trust me here!" **Key Insight**: GP uncertainty σ(x) automatically grows far from data, providing a principled warning system for when predictions become unreliable. This is the epistemic uncertainty that shrinks with more training data.
+```
 
-**Figure 3.2**: GP posterior with training data at x ∈ {1, 3, 5} demonstrates automatic uncertainty quantification. **Blue mean line**: Predictive mean μ(x) interpolates smoothly between training points (black dots with white edges). **Shaded regions**: Inner blue band shows ±2σ epistemic (function) uncertainty; outer coral band shows ±2σ total (epistemic + noise) uncertainty. **Green arrows** (interpolation regions): Narrow uncertainty between training points where GP is confident. **Red arrows** (extrapolation regions): Wide uncertainty outside training range where GP warns "I don't know—don't trust me here!" **Key Insight**: GP uncertainty σ(x) automatically grows far from data, providing a principled warning system for when predictions become unreliable. This is the epistemic uncertainty that shrinks with more training data.
 :::
 
 :::{admonition} Conceptual Checkpoint #3
@@ -928,11 +941,14 @@ Now each dimension has its own lengthscale $\ell_d$.
 - ARD learns this automatically from data!
 - **Bonus**: Tells you which parameters matter most (scientific discovery!)
 
-**[FIGURE 4.3: ARD Effect - Automatic Parameter Importance Discovery]**
+```{figure} figures/fig_4_3_ard_effect.png
+:label: fig-ard-effect
+:alt: ARD automatic parameter importance discovery for N-body simulations
+:align: center
 
-![ARD Effect](figures/fig_4_3_ard_effect.png)
+**Figure 4.3: ARD Effect - Automatic Parameter Importance Discovery**. ARD automatically discovers which parameters matter for N-body cluster evolution. **Left panel**: GP prediction with ARD lengthscales ℓ_Q = 0.3 (small) and ℓ_N = 2.0 (large). The **vertical contours** reveal that bound fraction is highly sensitive to virial ratio Q but weakly sensitive to particle number N. **Right panel**: True underlying function confirms ARD learned correctly. **Yellow box annotation**: Lengthscale ratio ℓ_N/ℓ_Q = 6.7× means the GP is ~7× more sensitive to Q than N—the GP automatically discovered from just 25 training points (red dots) that Q is the dominant physics parameter! **Key Insight**: ARD performs automatic feature selection by learning which input dimensions actually affect the output. Small ℓ_d → parameter d matters; large ℓ_d → parameter d is relatively unimportant. This is scientific discovery from data—no physics intuition required (though validating against physics is essential!).
+```
 
-**Figure 4.3**: ARD automatically discovers which parameters matter for N-body cluster evolution. **Left panel**: GP prediction with ARD lengthscales ℓ_Q = 0.3 (small) and ℓ_N = 2.0 (large). The **vertical contours** reveal that bound fraction is highly sensitive to virial ratio Q but weakly sensitive to particle number N. **Right panel**: True underlying function confirms ARD learned correctly. **Yellow box annotation**: Lengthscale ratio ℓ_N/ℓ_Q = 6.7× means the GP is ~7× more sensitive to Q than N—the GP automatically discovered from just 25 training points (red dots) that Q is the dominant physics parameter! **Key Insight**: ARD performs automatic feature selection by learning which input dimensions actually affect the output. Small ℓ_d → parameter d matters; large ℓ_d → parameter d is relatively unimportant. This is scientific discovery from data—no physics intuition required (though validating against physics is essential!).
 :::
 
 ### The Matérn Family: More Realistic Smoothness
@@ -1010,11 +1026,13 @@ Consider emulating different cluster properties:
 **The key**: Match kernel smoothness to your physical intuition. When uncertain, Matérn-5/2 is a good default.
 :::
 
-**[FIGURE 2.3: Matérn Smoothness Comparison]**
+```{figure} figures/fig_2_3_matern_smoothness.png
+:label: fig-matern-smoothness
+:alt: Matérn family smoothness comparison showing differentiability controlled by nu
+:align: center
 
-![Matérn Smoothness](figures/fig_2_3_matern_smoothness.png)
-
-**Figure 2.3**: Matérn family smoothness comparison showing how ν controls differentiability. **Top row**: Function samples f(x) for each smoothness parameter. **Middle row**: Numerical derivatives f'(x) reveal roughness—Matérn-1/2 (ν=0.5) shows visible kinks and is NOT differentiable (rough, discontinuous slopes); Matérn-3/2 (ν=1.5) has smooth first derivatives but rough second derivatives (once differentiable); Matérn-5/2 (ν=2.5) is very smooth (twice differentiable). **Bottom row**: Kernel correlation k(r) vs distance shows how quickly correlations decay. **Practical Recommendation**: Use **Matérn-5/2 as default** for physics emulation—smooth enough for realistic systems but more flexible than infinitely-smooth SE kernel. Only use SE when you KNOW the function is truly infinitely smooth (rare in real physics). Use Matérn-3/2 if validation shows underfitting or if you expect rougher behavior.
+**Figure 2.3: Matérn Smoothness Comparison**. Matérn family smoothness comparison showing how ν controls differentiability. **Top row**: Function samples f(x) for each smoothness parameter. **Middle row**: Numerical derivatives f'(x) reveal roughness—Matérn-1/2 (ν=0.5) shows visible kinks and is NOT differentiable (rough, discontinuous slopes); Matérn-3/2 (ν=1.5) has smooth first derivatives but rough second derivatives (once differentiable); Matérn-5/2 (ν=2.5) is very smooth (twice differentiable). **Bottom row**: Kernel correlation k(r) vs distance shows how quickly correlations decay. **Practical Recommendation**: Use **Matérn-5/2 as default** for physics emulation—smooth enough for realistic systems but more flexible than infinitely-smooth SE kernel. Only use SE when you KNOW the function is truly infinitely smooth (rare in real physics). Use Matérn-3/2 if validation shows underfitting or if you expect rougher behavior.
+```
 
 ### Periodic Kernels: Exploiting Symmetries
 
@@ -1038,11 +1056,13 @@ where:
 
 **N-body example**: If you're emulating cluster properties in a rotating frame, periodic kernel might capture rotational symmetry. (Rare, but possible!)
 
-**[FIGURE 2.2: Kernel Gallery]**
+```{figure} figures/fig_2_2_kernel_gallery.png
+:label: fig-kernel-gallery
+:alt: Comprehensive kernel gallery comparing common GP kernels
+:align: center
 
-![Kernel Gallery](figures/fig_2_2_kernel_gallery.png)
-
-**Figure 2.2**: Comprehensive kernel gallery comparing five common GP kernels. **Top row**: Kernel correlation k(r) vs distance r—shows how correlation decays with separation. SE (RBF) has smooth Gaussian decay; Matérn-1/2 has exponential decay (roughest); Matérn-3/2 and 5/2 are intermediate; Periodic shows repeating pattern. **Middle row**: Random function samples demonstrate smoothness—SE is infinitely smooth (no kinks ever), Matérn-1/2 can have kinks (rough), Matérn-5/2 is very smooth but more realistic than SE, Periodic captures repeating patterns. **Bottom row**: Prior ±2σ confidence bands show expected function variability. **Key Comparisons**: SE (blue) is too smooth for most physics; Matérn-1/2 (purple) is too rough (kinks visible); Matérn-5/2 (red) balances smoothness with realism (**recommended default**); Periodic (green) for phenomena with known periodicity. All kernels share lengthscale ℓ=0.3 for fair comparison.
+**Figure 2.2: Kernel Gallery**. Comprehensive kernel gallery comparing five common GP kernels. **Top row**: Kernel correlation k(r) vs distance r—shows how correlation decays with separation. SE (RBF) has smooth Gaussian decay; Matérn-1/2 has exponential decay (roughest); Matérn-3/2 and 5/2 are intermediate; Periodic shows repeating pattern. **Middle row**: Random function samples demonstrate smoothness—SE is infinitely smooth (no kinks ever), Matérn-1/2 can have kinks (rough), Matérn-5/2 is very smooth but more realistic than SE, Periodic captures repeating patterns. **Bottom row**: Prior ±2σ confidence bands show expected function variability. **Key Comparisons**: SE (blue) is too smooth for most physics; Matérn-1/2 (purple) is too rough (kinks visible); Matérn-5/2 (red) balances smoothness with realism (**recommended default**); Periodic (green) for phenomena with known periodicity. All kernels share lengthscale ℓ=0.3 for fair comparison.
+```
 
 ### Compositional Kernels: Building Complexity
 
