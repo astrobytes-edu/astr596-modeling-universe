@@ -150,7 +150,7 @@ $$
 
 **Goal**: Initialize with virial parameter $\alpha_{\rm vir} = 1$ (equilibrium)
 
-The **virial parameter** (or virial ratio) is defined as:
+The **virial parameter** (or virial ratio $Q$) is defined as:
 
 $$
 \alpha_{\rm vir} = \frac{2K}{|W|}
@@ -403,20 +403,19 @@ Implement helper functions for energy analysis and validation:
 
 ## Part 2: Production Pipeline
 
-**Goal**: Generate a diverse ensemble of 50-100 simulations to serve as training data for your final ML project.
+**Goal**: Generate an ensemble of 10 simulations. (This production pipeline will generate the training data for your final ML project for a much larger ensemble with specific parameter ranges.)
 
 ### Requirements
 
 1. **Parameter sweep**:
    - Vary $N \in [200, 500]$
    - Vary $a$ (Plummer scale length) over $\sim 10\times$ range
-   - Vary total mass $M_{\rm total}$ (via IMF sampling)
    - All clusters start at $\alpha_{\rm vir} = 1 \pm 0.05$
 
 2. **Automated pipeline**:
    - A simple Python script (e.g., `run_ensemble.py`) that generates all simulations
    - Explicit random seed management (log seeds for reproducibility)
-   - Can be sequential—no need for complex parallelization
+   - Can be sequential (no need for complex parallelization)
 
 3. **Data storage**:
    - Organized directory structure (e.g., `sim_0000/`, `sim_0001/`, ...)
