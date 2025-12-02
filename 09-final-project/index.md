@@ -1,59 +1,88 @@
-# Final Project: Neural Networks & JAX
+# Final Project: From Simulation to Surrogate
 
-The culminating project for ASTR 596 where you implement neural networks from scratch and then translate to the JAX ecosystem.
+The culminating project for ASTR 596 where you build a neural network emulator for your N-body simulations and use it for Bayesian inference.
 
 ## Project Overview
 
-This capstone project synthesizes everything you've learned throughout the course:
+This capstone project brings your semester full circle, synthesizing everything you've learned:
 
-- **Neural Network Implementation**: Build backpropagation from first principles
-- **JAX Translation**: Convert your NumPy implementation to JAX
-- **Astrophysical Application**: Apply your networks to real astronomical data
-- **Research-Quality Output**: Publication-ready analysis and documentation
+- **Surrogate Modeling**: Train a neural network to approximate expensive N-body simulations
+- **JAX Ecosystem**: Master Equinox (NNs), Optax (optimization), and NumPyro (probabilistic programming)
+- **Bayesian Inference**: Use your fast emulator to solve the inverse problem with NUTS
+- **Research-Quality Output**: Professional code package and research memo
+
+:::{admonition} The Big Idea
+:class: tip
+Your N-body simulations are too slow for Bayesian inference (thousands of evaluations). Solution: train a neural network that predicts simulation outcomes in milliseconds, then use it inside NumPyro to infer what initial conditions produced an observed cluster state.
+:::
 
 ## Learning Objectives
 
 By completing this project, you will:
 
-1. **Understand neural network fundamentals** at the mathematical level.
-2. **Implement automatic differentiation** manually before using JAX.
-3. **Master the JAX ecosystem** for high-performance computing.
-4. **Apply ML to astrophysics** with proper scientific methodology.
-5. **Produce research-quality work** suitable for academic or industry contexts.
+1. **Design training data** using Latin Hypercube Sampling for efficient parameter space coverage
+2. **Build neural network emulators** using Equinox and Optax
+3. **Quantify uncertainty** through ensemble methods
+4. **Perform Bayesian inference** with NumPyro's NUTS sampler
+5. **Produce research-quality work** with professional code structure and documentation
+
+## The Scientific Question
+
+Given the final state of a star cluster—its bound mass fraction, velocity dispersion, and spatial extent—can we infer what initial conditions produced it? You'll vary the initial virial ratio $Q_0$ and Plummer scale radius $a$, train an emulator on the resulting summary statistics, and then recover parameters from held-out "observations."
 
 ## Project Components
 
-### Phase 1: From Scratch Implementation (Weeks 13-14)
+### Part 1: Generate Training Data
 
-- Manual backpropagation in pure `NumPy`
-- Custom automatic differentiation
-- Training on astronomical datasets
+- Run 80–100 N-body simulations using your Project 5 JAX package
+- Vary initial conditions $(Q_0, a)$ using Latin Hypercube Sampling
+- Compute summary statistics: $f_{\rm bound}$, $\sigma_v$, $r_h$
 
-### Phase 2: JAX Translation (Week 15)
+### Part 2: Neural Network Emulator
 
-- Convert NumPy code to JAX
-- Leverage automatic differentiation
-- Optimize for performance
+- Build an MLP using Equinox
+- Train with Optax (Adam optimizer)
+- Implement ensemble uncertainty quantification
 
-### Phase 3: Research Application (Finals Week)
+### Part 3: Evaluate Your Emulator
 
-- Apply to cutting-edge astrophysical problems
-- Generate publication-quality figures
-- Write formal research report
+- Compute accuracy metrics (MAE, RMSE)
+- Visualize predicted vs. true values
+- Analyze uncertainty and edge behavior
+
+### Part 4: Inference with NumPyro
+
+- Build a probabilistic model with your emulator as the forward model
+- Run NUTS to sample the posterior over initial conditions
+- Validate parameter recovery on held-out simulations
+
+### Part 5: Package & Document
+
+- Organize as an installable Python package
+- Write a research memo with methods, results, and figures
 
 ## Resources
 
-- [Project Guide](final_project_guide.md) - Detailed requirements and rubric
-- [JAX Documentation](https://jax.readthedocs.io/) - Official JAX guide
-- [Flax Examples](https://github.com/google/flax/tree/main/examples) - Neural network implementations
+- [Project Description](final-project-description.md) — Full requirements, rubric, and code skeletons
+- [Equinox Documentation](https://docs.kidger.site/equinox/) — Neural networks as PyTrees
+- [Optax Documentation](https://optax.readthedocs.io/) — Gradient-based optimization
+- [NumPyro Documentation](https://num.pyro.ai/) — Probabilistic programming
 
 ## Timeline
 
-| Week | Milestone | Deliverable |
-|------|-----------|-------------|
-| 13 | Implement forward pass | Working neural network |
-| 14 | Add backpropagation | Training pipeline |
-| 15 | JAX translation | High-performance version |
-| Finals | Research application | Final report & presentation |
+| Week | Focus | Goal |
+|------|-------|------|
+| Week 1 | Training Data + Emulator | Data generated, NN training |
+| Week 2 | Evaluation + Inference | NumPyro pipeline working |
+| Week 2.5 | Polish | Package complete, memo submitted |
 
-This project represents the culmination of your journey from Python fundamentals to cutting-edge computational astrophysics. You'll emerge with both deep understanding and practical skills for modern research careers.
+:::{admonition} Due Date
+:class: warning
+**Thursday, December 18, 2025, 11:59 PM**
+
+Submit via GitHub Classroom. No late submissions accepted.
+:::
+
+## What You'll Emerge With
+
+This project teaches the workflow of modern computational science: expensive simulations → machine learning surrogate → probabilistic inference. The JAX ecosystem you're learning (Equinox, Optax, NumPyro) represents the frontier of scientific ML. You'll finish the course with both deep understanding and practical skills for research careers in astrophysics, data science, and beyond.

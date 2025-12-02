@@ -91,7 +91,7 @@ project:
     #- '04-astrophysics/**'
    # - '06-numerical-methods/**'
     - '07-machine-learning/**'
-    - '09-final-project/**'
+   # - '09-final-project/**'
     - '10-reference/**'
     - '_OLD*/**'
     # OLD docs and files to be ignored
