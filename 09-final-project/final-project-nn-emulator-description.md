@@ -3,7 +3,7 @@
 **ASTR 596: Modeling the Universe**  
 **Instructor:** Dr. Anna Rosen  
 **Due:** Thursday, December 18, 2025, 11:59 PM  
-**AI Policy:** Phase 3 (Professional integration—use AI tools as a working scientist would)
+**AI Policy:** Phase 3 (Professional integration — use AI tools as a working scientist would, but all code must be your own)
 
 :::{admonition} No Late Submissions
 :class: warning
@@ -17,13 +17,15 @@ Final projects cannot be accepted after the deadline. This is a hard cutoff due 
 **What you're building**: A neural network that predicts N-body simulation outcomes, then using it for Bayesian inference.
 
 **The pipeline**:
-1. Run 80–100 N-body simulations with varied initial conditions $(Q_0, a)$
+
+1. Run 100 N-body simulations with varied initial conditions $(Q_0, a)$
 2. Train a neural network to predict summary statistics $(f_{\rm bound}, \sigma_v, r_h)$
-3. Use the fast emulator inside NumPyro to infer what initial conditions produced a given outcome
+3. Use the fast emulator inside `NumPyro` to infer what initial conditions produced a given outcome
 
 **Packages you'll learn**: Equinox (NNs), Optax (optimization), NumPyro (probabilistic programming)
 
 **Time**: ~2.5 weeks | **Deliverables**: Code package + research memo
+*Note*: You do not need to submit a growth memo for this final project. Instead, you will submit a growth synthesis reflection separately.
 
 ---
 
@@ -62,27 +64,33 @@ Given the final state of a star cluster—its bound mass fraction, velocity disp
 This project synthesizes everything:
 
 **Module 1 — Statistical Foundations:**
+
 - Training data as samples from parameter space
 - Summary statistics compress high-dimensional simulation outputs into meaningful numbers
 
 **Module 3 — Stellar Dynamics:**
-- The virial theorem: $2K + W = 0$ at equilibrium (where $W < 0$ is gravitational potential energy)
-- Virial ratio $Q = 2K/|W|$ characterizes dynamical state
-- Relaxation, mass segregation, and cluster evolution
+
+- The virial theorem: $2K + W = 0$ at equilibrium (where $W < 0$ is gravitational potential energy and $K$ is kinetic energy).
+- Virial ratio $Q = 2K/|W|$ characterizes dynamical state.
+- Relaxation, mass segregation, and cluster evolution.
 
 **Module 5 — Bayesian Inference:**
+
 - Inverse problems: observations → parameters
 - You built MCMC/HMC from scratch; now you'll use NumPyro's production implementation
 
 **Module 6 — JAX:**
+
 - Automatic differentiation enables gradient-based optimization
 - JIT compilation makes emulator evaluation fast enough for inference
 
 **Module 7 — Machine Learning:**
+
 - Neural networks as universal function approximators
 - Training via gradient descent with Optax
 
-**Projects 2 & 5:**
+**Connection to Projects 2 & 5:**
+
 - Your N-body code generates the ground truth
 - Your JAX package provides the infrastructure
 
@@ -94,11 +102,11 @@ You'll learn three professional JAX packages:
 
 | Package | Purpose | Documentation |
 |---------|---------|---------------|
-| **Equinox** | Neural networks as PyTrees | https://docs.kidger.site/equinox/ |
-| **Optax** | Gradient-based optimization | https://optax.readthedocs.io/ |
-| **NumPyro** | Probabilistic programming | https://num.pyro.ai/ |
+| **Equinox** | Neural networks as PyTrees | <https://docs.kidger.site/equinox/> |
+| **Optax** | Gradient-based optimization | <https://optax.readthedocs.io/> |
+| **NumPyro** | Probabilistic programming | <https://num.pyro.ai/> |
 
-All three follow JAX conventions—pure functions, explicit state, composable transformations. **Read the "Getting Started" tutorials for each.** Learning new tools from documentation is a core professional skill.
+All three follow JAX conventions: pure functions, explicit state, composable transformations. **Read the "Getting Started" tutorials for each.** Learning new tools from documentation is a core professional skill.
 
 ---
 
@@ -112,10 +120,11 @@ Train a neural network to predict **summary statistics** of N-body simulations a
 
 | Parameter | Symbol | Definition | Range |
 |-----------|--------|------------|-------|
-| Initial virial ratio | $Q_0$ | $Q = \dfrac{2K}{|W|}$ | 0.5 – 1.5 |
+| Initial virial ratio | $Q_0$ | $Q = \tfrac{2K}{|W|}$ | 0.5 – 1.5 |
 | Plummer scale radius | $a$ | Sets initial concentration | 50 – 200 AU |
 
 The virial ratio characterizes the dynamical state:
+
 - $Q < 1$: Subvirial ("cold")—system will collapse
 - $Q = 1$: Virial equilibrium
 - $Q > 1$: Supervirial ("hot")—system will expand and dissolve
@@ -139,7 +148,7 @@ These are fundamental diagnostics of stellar dynamics:
 - $\sigma_v$ connects to total energy via the virial theorem
 - $r_h$ characterizes spatial structure and concentration
 
-Together they encode the dynamical state. An emulator that predicts these accurately has learned real physics—not just interpolation.
+Together they encode the dynamical state. An emulator that predicts these accurately has learned real physics, not just interpolation.
 :::
 
 ### 1.2 Fixed Simulation Parameters
@@ -150,7 +159,7 @@ Hold these constant across all training runs:
 |-----------|-------|-----------|
 | $N$ | 200 | Large enough for dynamics, fast enough to generate many runs |
 | IMF | Kroupa | Realistic mass spectrum enables mass segregation, preferential ejection |
-| Integrator | Leapfrog | Symplectic—your Project 2/5 code |
+| Integrator | Leapfrog | Symplectic (your Project 2/5 code) |
 | Timestep | Constant $\Delta t$ | Required for symplectic structure (see below) |
 | Softening | $\epsilon \sim 0.1 \times a / N^{1/3}$ | ~10% of mean interparticle spacing |
 
@@ -168,9 +177,10 @@ where $R$ is a characteristic radius (use your Plummer scale radius $a$) and $\s
 
 $$t_{\rm cross} \sim \sqrt{\frac{a^3}{GM}}$$
 
-This is essentially the dynamical time—the timescale over which gravitational dynamics operate. The scaling $t_{\rm cross} \propto a^{3/2} M^{-1/2}$ is what matters; compute it from your initial conditions.
+This is essentially the dynamical time: the timescale over which gravitational dynamics operate. The scaling $t_{\rm cross} \propto a^{3/2} M^{-1/2}$ is what matters; compute it from your initial conditions.
 
 After $\sim 10 \, t_{\rm cross}$:
+
 - Subvirial systems ($Q < 1$) have collapsed and re-virialized
 - Systems near equilibrium ($Q \approx 1$) remain bound with modest evolution
 - Supervirial systems ($Q > 1$) have expanded, with unbound stars escaping
@@ -205,7 +215,7 @@ If you see secular drift or much larger oscillations, reduce $\Delta t$ by a fac
 
 When training an emulator, the design of your training set matters. You need samples that **cover the parameter space efficiently**—not clustered in one region, not leaving gaps where the emulator must extrapolate blindly.
 
-**Why not uniform random sampling?** 
+**Why not uniform random sampling?**
 
 Random samples from a uniform distribution tend to clump and leave holes, especially in higher dimensions. With only 100 samples in 2D, random sampling might accidentally cluster points in one corner, leaving another corner with no training data. Your emulator would perform poorly there.
 
@@ -218,6 +228,7 @@ Random samples from a uniform distribution tend to clump and leave holes, especi
 The result: every "row" and "column" of parameter space contains exactly one sample. No clumping, no gaps, guaranteed coverage.
 
 For 2D with $N = 100$ samples:
+
 - Divide $Q_0 \in [0.5, 1.5]$ into 100 bins of width 0.01
 - Divide $a \in [50, 200]$ into 100 bins of width 1.5 AU
 - Each bin in $Q_0$ gets exactly one sample; same for $a$
@@ -228,8 +239,9 @@ LHS is standard practice for computer experiments and surrogate modeling. It pro
 **Implementation**: `scipy.stats.qmc.LatinHypercube`
 
 **Dataset sizes**:
-- Training set: 80–100 simulations
-- Test set: ~20 simulations (held out—never used in training)
+
+- Training set: 100 simulations
+- Test set: 20 simulations (held out — never used in training)
 
 :::{admonition} Practical Tip
 :class: tip
@@ -250,7 +262,7 @@ $$f_{\rm bound} = \frac{\sum_{i \in \text{bound}} m_i}{\sum_i m_i}$$
 **Velocity dispersion** (mass-weighted RMS speed in the COM frame, bound particles only):
 $$\sigma_v^2 = \frac{\sum_{i \in \text{bound}} m_i \, |\mathbf{v}_i - \mathbf{v}_{\rm COM}|^2}{\sum_{i \in \text{bound}} m_i}$$
 
-Note: First compute $\mathbf{v}_{\rm COM}$ for the bound population, then compute $\sigma_v$ using velocities relative to that COM. This removes bulk motion and isolates the internal velocity dispersion.
+*Note:* First compute $\mathbf{v}_{\rm COM}$ for the bound population, then compute $\sigma_v$ using velocities relative to that COM. This removes bulk motion and isolates the internal velocity dispersion.
 
 **Half-mass radius**: Sort bound particles by distance from the center of mass. Find the radius $r_h$ enclosing half of the *bound* mass (i.e., the radius within which the cumulative bound mass equals $\frac{1}{2}\sum_{i \in \text{bound}} m_i$).
 
