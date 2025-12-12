@@ -1,9 +1,7 @@
-# Technical Growth Synthesis
+# ASTR 596: Technical Growth Synthesis
 
-**ASTR 596: Modeling the Universe**
-
-**Instructor:** Dr. Anna Rosen
 **Due Date:** December 18, 2025 by 11:59 PM PST
+
 *Submission via GitHub in your Final Project repository.*
 
 ## Technical Growth Synthesis - Final Project
