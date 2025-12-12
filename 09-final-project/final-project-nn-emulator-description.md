@@ -47,15 +47,17 @@ Final projects cannot be accepted after the deadline. This is a hard cutoff due 
 
 ## The Big Picture
 
-This project brings your semester full circle. You've built simulations from scratch, inference engines from scratch, and transformed your N-body code into a professional JAX package. Now you'll tackle one of the most powerful techniques in modern computational science: **surrogate modeling**.
+This project brings your semester full circle. You've built simulations from scratch, inference engines from scratch, and transformed your N-body code into a professional JAX package. Now you'll tackle one of the most powerful techniques in modern computational science: **surrogate modeling**. 
 
 **The Problem**: Your N-body simulations are expensive. Each run takes seconds to minutes. But scientific inference requires *thousands* of model evaluations. What if you could train a fast approximation that captures the essential physics?
 
-**The Solution**: Build an *emulator*—a neural network trained on simulation outputs that predicts results for new parameters in milliseconds instead of minutes. Then use that emulator for Bayesian inference with NumPyro. The pipeline closes a loop using tools you've built all semester: your N-body package (Project 5) generates training data, your neural network learns to approximate the simulation, and NumPyro's NUTS sampler (the production version of the HMC you built in Project 4) explores the posterior over initial conditions.
+**The Solution**: Build an *emulator* — a neural network trained on simulation outputs that predicts results for new parameters in milliseconds instead of minutes. Then use that emulator for Bayesian inference with NumPyro. The pipeline closes a loop using tools you've built all semester: your N-body package (Project 5) generates training data, your neural network learns to approximate the simulation, and NumPyro's NUTS sampler (the production version of the HMC you built in Project 4) explores the posterior over initial conditions.
+
+See these slides for an overview of the workflow: [*Neurons to Emulators* (NotebookLM-made slides)](./Neurons_to_Emulators_NotebookLM_slides.pdf)
 
 ### The Scientific Question
 
-Given the final state of a star cluster—its bound mass fraction, velocity dispersion, spatial extent—can we infer what initial conditions produced it? This is an *inverse problem*, the same class as inferring cosmological parameters from supernovae (Project 4), recovering dark matter distributions from stellar kinematics, or constraining protoplanetary disk properties from exoplanet populations.
+Given the final state of a star cluster — its bound mass fraction, velocity dispersion, spatial extent — can we infer what initial conditions produced it? This is an *inverse problem*, the same class as inferring cosmological parameters from supernovae (Project 4), recovering dark matter distributions from stellar kinematics, or constraining protoplanetary disk properties from exoplanet populations.
 
 ---
 
