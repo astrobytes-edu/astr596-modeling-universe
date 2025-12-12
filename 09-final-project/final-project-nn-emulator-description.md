@@ -1,4 +1,4 @@
-# Final Project: From Simulation to Surrogate
+# Final Project Description: From Simulation to Surrogate
 
 **ASTR 596: Modeling the Universe**  
 **Instructor:** Dr. Anna Rosen  

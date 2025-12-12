@@ -1,4 +1,4 @@
-# Final Project: From Simulation to Surrogate
+# Final Project Overview: From Simulation to Surrogate
 
 The culminating project for ASTR 596 where you build a neural network emulator for your N-body simulations and use it for Bayesian inference.
 
